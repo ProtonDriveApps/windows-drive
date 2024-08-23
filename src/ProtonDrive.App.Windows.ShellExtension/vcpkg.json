@@ -1,0 +1,5 @@
+{
+  "name": "proton-drive-windows-shell-extension",
+  "version-string": "1.0",
+  "dependencies": [ "nlohmann-json", "nameof" ]
+}

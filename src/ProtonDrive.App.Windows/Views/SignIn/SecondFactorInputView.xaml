@@ -1,0 +1,62 @@
+﻿<UserControl
+    x:Class="ProtonDrive.App.Windows.Views.SignIn.SecondFactorInputView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ProtonDrive.App.Windows.Views.SignIn"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance local:SecondFactorInputViewModel}">
+    <Grid FocusManager.FocusedElement="{Binding ElementName=CodeTextBox}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Text="Two-factor authentication"
+            FontSize="20"
+            HorizontalAlignment="Center"
+            Margin="0,20,0,0" />
+
+        <TextBlock
+            Grid.Row="2"
+            Text="Enter the code from your authenticator app"
+            FontSize="{StaticResource TextBlock.Default.FontSize}"
+            Foreground="{StaticResource GrayBrush}"
+            TextWrapping="Wrap"
+            HorizontalAlignment="Center"
+            Margin="0,10,0,0" />
+
+        <TextBox
+            Name="CodeTextBox"
+            AutomationProperties.AutomationId="TwoFactorCodeTextBox"
+            Grid.Row="3"
+            Text="{Binding Code, UpdateSourceTrigger=PropertyChanged}"
+            Margin="0,20,0,0" />
+
+        <Button
+            AutomationProperties.AutomationId="ContinueButton"
+            Grid.Row="4"
+            Content="_Authenticate"
+            Command="{Binding ContinueSigningInCommand}"
+            IsDefault="True"
+            Style="{StaticResource PrimaryButtonStyle}"
+            Height="32"
+            Margin="0,30,0,0" />
+
+        <Button
+            AutomationProperties.AutomationId="SignInAsAnotherUserButton"
+            Grid.Row="5"
+            Content="_Back"
+            Command="{Binding RestartSignInCommand}"
+            Style="{StaticResource HyperlinkButtonStyle}"
+            HorizontalAlignment="Center"
+            Margin="0,15,0,0" />
+    </Grid>
+</UserControl>

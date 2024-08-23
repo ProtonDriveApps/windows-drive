@@ -1,0 +1,84 @@
+﻿<Application
+    x:Class="ProtonDrive.App.Windows.App"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:bugReport="clr-namespace:ProtonDrive.App.Windows.Views.BugReport"
+    xmlns:signIn="clr-namespace:ProtonDrive.App.Windows.Views.SignIn"
+    xmlns:syncedDevices="clr-namespace:ProtonDrive.App.Windows.Views.Main.Computers"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    ShutdownMode="OnExplicitShutdown">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/ColorPalette.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/ColorPalette.DarkTheme.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/DialogStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Images.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/Brushes.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/IconStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/TextStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/TextStyle.DarkTheme.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/TextBoxStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/CheckboxStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/ScrollBarStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/LabelStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/ContextMenuStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/MenuItemStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/ButtonStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/ButtonStyle.DarkTheme.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/ToggleButtonStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/ExpanderStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/DatePickerStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/ListViewStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/BadgeStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/BorderStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/ProgressBarStyle.xaml" />
+                <ResourceDictionary Source="/Themes/Generic.CustomChromeWindow.xaml" />
+                <ResourceDictionary Source="/Themes/Generic.ToggleSwitch.xaml" />
+                <ResourceDictionary Source="/Themes/Generic.ProgressRingStyle.xaml" />
+                <ResourceDictionary Source="/Resources/Icons/ProtonDriveLogo.xaml" />
+                <ResourceDictionary Source="/Resources/Styles/WindowStyle.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <system:Int32 x:Key="IntZero">0</system:Int32>
+
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+
+            <!-- Workaround to remove the flickering effect when context menus are opened -->
+            <PopupAnimation x:Key="{x:Static SystemParameters.MenuPopupAnimationKey}">None</PopupAnimation>
+
+            <Style
+                TargetType="Button"
+                BasedOn="{StaticResource ButtonStyle}" />
+
+            <Style
+                TargetType="DatePicker"
+                BasedOn="{StaticResource DatePickerStyle}" />
+
+            <Style
+                TargetType="MenuItem"
+                BasedOn="{StaticResource IconlessMenuItemStyle}" />
+
+            <Style TargetType="ItemsControl">
+                <Setter Property="Focusable" Value="False" />
+            </Style>
+
+            <Style TargetType="ContentControl">
+                <Setter Property="Focusable" Value="False" />
+            </Style>
+
+            <DataTemplate DataType="{x:Type bugReport:BugReportViewModel}">
+                <bugReport:BugReportView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type syncedDevices:AddFoldersViewModel}">
+                <syncedDevices:AddFoldersView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type signIn:SessionWorkflowViewModel}">
+                <signIn:SessionWorkflowView />
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

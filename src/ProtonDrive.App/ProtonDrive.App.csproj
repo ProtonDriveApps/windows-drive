@@ -1,0 +1,52 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>$(DefaultTargetFramework)-windows</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>$(MSBuildProjectName).Tests</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>DynamicProxyGenAssembly2</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>ProtonDrive.Sync.Adapter.Tests</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+    <PackageReference Include="morelinq" Version="4.3.0" />
+    <PackageReference Include="Sentry" Version="1.2.0" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="8.0.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="8.0.1" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="2.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+    <PackageReference Include="System.Linq.Async" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProtonDrive.Client\ProtonDrive.Client.csproj" />
+    <ProjectReference Include="..\ProtonDrive.DataAccess\ProtonDrive.DataAccess.csproj" />
+    <ProjectReference Include="..\ProtonDrive.Sync.Adapter\ProtonDrive.Sync.Adapter.csproj" />
+    <ProjectReference Include="..\ProtonDrive.Sync.Agent\ProtonDrive.Sync.Agent.csproj" />
+    <ProjectReference Include="..\ProtonDrive.Sync.Engine\ProtonDrive.Sync.Engine.csproj" />
+    <ProjectReference Include="..\ProtonDrive.Sync.Shared\ProtonDrive.Sync.Shared.csproj" />
+    <ProjectReference Include="..\ProtonDrive.Sync.Windows\ProtonDrive.Sync.Windows.csproj" />
+    <ProjectReference Include="..\ProtonDrive.Update\ProtonDrive.Update.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ProtonDrive.config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

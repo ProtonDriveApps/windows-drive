@@ -1,0 +1,103 @@
+﻿<UserControl
+    x:Class="ProtonDrive.App.Windows.Views.Main.Settings.AccountRootSyncFolderView"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:behaviors="clr-namespace:ProtonDrive.App.Windows.Toolkit.Behaviors"
+    xmlns:controls="clr-namespace:ProtonDrive.App.Windows.Controls"
+    xmlns:converters="clr-namespace:ProtonDrive.App.Windows.Toolkit.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mapping="clr-namespace:ProtonDrive.App.Mapping;assembly=ProtonDrive.App"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:settings="clr-namespace:ProtonDrive.App.Windows.Views.Main.Settings"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance settings:AccountRootSyncFolderViewModel}">
+    <StackPanel>
+        <TextBlock
+            Text="Your Proton Drive folder:"
+            AutomationProperties.HeadingLevel="Level2"
+            FontWeight="SemiBold" />
+
+        <Button
+            AutomationProperties.AutomationId="SelectFolderButton"
+            Command="{Binding SelectFolderCommand}"
+            AutomationProperties.HelpText="Change your Proton Drive root folder."
+            Foreground="{StaticResource GrayBrush}"
+            Style="{StaticResource SectionButtonStyle}"
+            Margin="0,15,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Image
+                    Grid.Column="0"
+                    Source="{StaticResource Icon.Folder}"
+                    Width="16"
+                    Height="16"
+                    VerticalAlignment="Center" />
+
+                <TextBlock
+                    Grid.Column="1"
+                    Margin="15,0,0,0">
+                    <Run
+                        Text="Location"
+                        Foreground="{StaticResource Text.DarkTheme.Brush}" />
+                    <LineBreak />
+                    <TextBlock
+                        AutomationProperties.AutomationId="LocalFolderPathTextBlock"
+                        Text="{Binding LocalFolderPath, Mode=OneWay}"
+                        FontSize="{StaticResource TextBlock.Default.FontSize}"
+                        Foreground="{StaticResource GrayBrush}"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{Binding LocalFolderPath, Mode=OneWay}">
+                        <b:Interaction.Behaviors>
+                            <behaviors:TextBlockAutoToolTipBehavior />
+                        </b:Interaction.Behaviors>
+                    </TextBlock>
+                </TextBlock>
+
+                <controls:ProgressRing
+                    Grid.Column="2"
+                    Visibility="{Binding Status, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static mapping:MappingSetupStatus.SettingUp}}"
+                    Width="14"
+                    Height="14"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="10,2,0,0" />
+
+                <Image
+                    AutomationProperties.AutomationId="RootSyncFolderSuccessfullySyncIcon"
+                    Grid.Column="2"
+                    Source="{StaticResource Icon.Success}"
+                    Visibility="{Binding Status, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static mapping:MappingSetupStatus.Succeeded}}"
+                    Width="16"
+                    Height="16"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="10,2,0,0" />
+
+                <Image
+                    Grid.Column="2"
+                    Source="{StaticResource Icon.Error}"
+                    ToolTip="{Binding ErrorCode, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}}"
+                    Visibility="{Binding Status, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static mapping:MappingSetupStatus.Failed}}"
+                    Width="16"
+                    Height="16"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="10,2,0,0" />
+
+                <AccessText
+                    Grid.Column="3"
+                    Text="_Change"
+                    VerticalAlignment="Center"
+                    Margin="15,0,0,0" />
+            </Grid>
+        </Button>
+    </StackPanel>
+</UserControl>

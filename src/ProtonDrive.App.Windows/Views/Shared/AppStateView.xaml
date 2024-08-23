@@ -1,0 +1,114 @@
+﻿<UserControl
+    x:Class="ProtonDrive.App.Windows.Views.Shared.AppStateView"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:ProtonDrive.App.Windows.Toolkit.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shared="clr-namespace:ProtonDrive.App.Windows.Views.Shared"
+    TextElement.FontSize="{StaticResource TextBlock.Default.FontSize}"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance shared:AppStateViewModel}">
+    <DockPanel>
+        <Grid
+            DockPanel.Dock="Left"
+            Width="16">
+            <Image
+                AutomationProperties.AutomationId="SyncSucceededImage"
+                Source="{StaticResource Icon.Success}"
+                Visibility="{Binding IconStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static shared:AppIconStatus.Synchronized}}"
+                Width="16"
+                Height="16"
+                VerticalAlignment="Top"
+                Margin="0,2,0,0" />
+
+            <Image
+                Source="{StaticResource Icon.Active}"
+                Visibility="{Binding IconStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static shared:AppIconStatus.Active}}"
+                Width="16"
+                Height="16"
+                VerticalAlignment="Top"
+                Margin="0,2,0,0" />
+
+            <Image
+                Source="{StaticResource Icon.Syncing}"
+                Visibility="{Binding IconStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static shared:AppIconStatus.Synchronizing}}"
+                Width="16"
+                Height="16"
+                VerticalAlignment="Top"
+                Margin="0,2,0,0" />
+
+            <Image
+                Source="{StaticResource Icon.Pause}"
+                Visibility="{Binding IconStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static shared:AppIconStatus.Paused}}"
+                Width="16"
+                Height="16"
+                VerticalAlignment="Top"
+                Margin="0,2,0,0" />
+
+            <Image
+                Source="{StaticResource Icon.Offline}"
+                Visibility="{Binding IconStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static shared:AppIconStatus.Offline}}"
+                Width="16"
+                Height="16"
+                VerticalAlignment="Top"
+                Margin="0,2,0,0" />
+
+            <Image
+                Source="{StaticResource Icon.Error}"
+                Visibility="{Binding IconStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static shared:AppIconStatus.Error}}"
+                Width="16"
+                Height="16"
+                VerticalAlignment="Top"
+                Margin="0,2,0,0" />
+
+            <Image
+                Source="{StaticResource Icon.Warning}"
+                Visibility="{Binding IconStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static shared:AppIconStatus.Warning}}"
+                Width="16"
+                Height="16"
+                VerticalAlignment="Top"
+                Margin="0,2,0,0" />
+
+            <Image
+                Source="{StaticResource Icon.Information}"
+                Visibility="{Binding IconStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static shared:AppIconStatus.Inactive}}"
+                Width="16"
+                Height="16"
+                VerticalAlignment="Top"
+                Margin="0,2,0,0" />
+        </Grid>
+
+        <TextBlock
+            AutomationProperties.AutomationId="AppStatusText"
+            FontSize="14"
+            TextWrapping="Wrap"
+            MaxWidth="180"
+            Margin="10,0,0,0">
+            <TextBlock.Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Text" Value="{Binding DisplayStatus, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}}" />
+                    <Style.Triggers>
+                        <DataTrigger
+                            Binding="{Binding DisplayStatus}"
+                            Value="{x:Static shared:AppDisplayStatus.Synchronized}">
+                            <Setter Property="Text">
+                                <Setter.Value>
+                                    <MultiBinding StringFormat="{}{0} ({1})">
+                                        <Binding
+                                            Path="DisplayStatus"
+                                            Converter="{x:Static converters:EnumToDisplayTextConverter.Instance}" />
+                                        <Binding
+                                            Path="LastSynchronizedAt"
+                                            Converter="{x:Static converters:DateTimeToFormattedTimeElapsedConverter.Instance}" />
+                                    </MultiBinding>
+                                </Setter.Value>
+                            </Setter>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+    </DockPanel>
+</UserControl>

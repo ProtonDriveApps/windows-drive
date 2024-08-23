@@ -1,0 +1,15 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Color x:Key="DarkTheme.Black">#16141C</Color>
+    <Color x:Key="DarkTheme.Black.Light">#1A2030</Color>
+    <Color x:Key="DarkTheme.Black.Lighter">#292733</Color>
+    <Color x:Key="DarkTheme.Black.ExtraLight">#333647</Color>
+
+    <Color x:Key="DarkTheme.Gray">#A7A4B5</Color>
+    <Color x:Key="DarkTheme.Gray.Dark">#4A4658</Color>
+    <Color x:Key="DarkTheme.Gray.ExtraDark">#343140</Color>
+    <Color x:Key="DarkTheme.Gray.ExtraExtraDark">#292733</Color>
+
+</ResourceDictionary>

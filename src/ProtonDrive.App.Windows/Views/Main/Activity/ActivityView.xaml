@@ -1,0 +1,844 @@
+﻿<UserControl
+    x:Class="ProtonDrive.App.Windows.Views.Main.Activity.ActivityView"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:activity="clr-namespace:ProtonDrive.App.Windows.Views.Main.Activity"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:behaviors="clr-namespace:ProtonDrive.App.Windows.Toolkit.Behaviors"
+    xmlns:controls="clr-namespace:ProtonDrive.App.Windows.Controls"
+    xmlns:converters="clr-namespace:ProtonDrive.App.Windows.Toolkit.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:syncActivity="clr-namespace:ProtonDrive.Sync.Shared.SyncActivity;assembly=ProtonDrive.Sync.Shared"
+    xmlns:syncShared="clr-namespace:ProtonDrive.Sync.Shared;assembly=ProtonDrive.Sync.Shared"
+    xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance activity:SyncStateViewModel}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <DataTemplate
+                x:Key="ActivityItemSizeCellTemplate"
+                DataType="activity:SyncActivityItemViewModel">
+                <TextBlock
+                    Text="{Binding Size, Converter={x:Static converters:FileSizeToStringConverter.Instance}}"
+                    Foreground="{StaticResource GrayBrush}" />
+            </DataTemplate>
+
+            <DataTemplate
+                x:Key="ActivityItemSyncedErrorMessageCellTemplate"
+                DataType="activity:SyncActivityItemViewModel">
+                <TextBlock
+                    Foreground="{StaticResource GrayBrush}"
+                    TextTrimming="CharacterEllipsis">
+                    <TextBlock.Text>
+                        <MultiBinding
+                            Converter="{x:Static converters:ArrayToFirstValuableItemConverter.Instance}"
+                            Mode="OneWay">
+                            <Binding Path="ErrorMessage" />
+                            <Binding
+                                Path="ErrorCode"
+                                Converter="{x:Static converters:EnumToDisplayTextConverter.Instance}" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+
+                    <TextBlock.ToolTip>
+                        <MultiBinding
+                            Converter="{x:Static converters:ArrayToFirstValuableItemConverter.Instance}"
+                            Mode="OneWay">
+                            <Binding Path="ErrorMessage" />
+                            <Binding
+                                Path="ErrorCode"
+                                Converter="{x:Static converters:EnumToDisplayTextConverter.Instance}" />
+                        </MultiBinding>
+                    </TextBlock.ToolTip>
+                </TextBlock>
+            </DataTemplate>
+
+            <DataTemplate
+                x:Key="ActivityItemSyncedTimeCellTemplate"
+                DataType="activity:SyncActivityItemViewModel">
+                <TextBlock
+                    Text="{Binding SynchronizedAt, Converter={x:Static converters:DateTimeToFormattedTimeElapsedConverter.Instance}}"
+                    Foreground="{StaticResource GrayBrush}" />
+            </DataTemplate>
+
+            <Style
+                x:Key="CircularProgressBarStyle"
+                TargetType="{x:Type ProgressBar}">
+                <Setter Property="Foreground" Value="{StaticResource PrimaryColorBrush}" />
+                <Setter Property="Height" Value="16" />
+                <Setter Property="Width" Value="16" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type ProgressBar}">
+                            <Grid
+                                x:Name="TemplateRoot"
+                                SnapsToDevicePixels="true">
+                                <controls:CircularProgress
+                                    Progress="100"
+                                    Stroke="#251D44" />
+                                <controls:CircularProgress
+                                    Progress="{TemplateBinding Value}"
+                                    Stroke="{TemplateBinding Foreground}" />
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <DataTemplate x:Key="IndeterminateProgressStatusTemplate">
+                <controls:ProgressRing
+                    Width="16"
+                    Height="16" />
+            </DataTemplate>
+
+            <DataTemplate
+                x:Key="ProgressStatusTemplate"
+                DataType="{x:Type activity:SyncActivityItemViewModel}">
+                <ProgressBar
+                    AutomationProperties.AutomationId="ItemInProgress"
+                    Maximum="100"
+                    Style="{DynamicResource CircularProgressBarStyle}"
+                    Value="{Binding Progress.Ratio, Mode=OneWay}">
+                    <ProgressBar.ToolTip>
+                        <ToolTip>
+                            <TextBlock>
+                                <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="Text" Value="{Binding Progress.Ratio, Mode=OneWay, StringFormat='P0'}" />
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Progress.Ratio}">
+                                                <DataTrigger.Value>
+                                                    <sys:Double>1</sys:Double>
+                                                </DataTrigger.Value>
+                                                <Setter Property="Text" Value="Finalizing..." />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                        </ToolTip>
+                    </ProgressBar.ToolTip>
+                </ProgressBar>
+            </DataTemplate>
+
+            <DataTemplate
+                x:Key="SuccessStatusTemplate"
+                DataType="{x:Type activity:SyncActivityItemViewModel}">
+                <Image
+                    AutomationProperties.AutomationId="ItemSuccessfullySyncedIcon"
+                    Source="{StaticResource Icon.Success}"
+                    ToolTip="{Binding ActivityTypeDisplayText, Mode=OneWay, Converter={x:Static converters:CapitalizationConverter.Instance}}"
+                    Width="16"
+                    Height="16"
+                    VerticalAlignment="Center" />
+            </DataTemplate>
+
+            <DataTemplate
+                x:Key="CancelledStatusTemplate"
+                DataType="{x:Type activity:SyncActivityItemViewModel}">
+                <Border Background="Transparent">
+                    <FrameworkElement.ToolTip>
+                        <MultiBinding
+                            Converter="{x:Static converters:ArrayToFirstValuableItemConverter.Instance}"
+                            Mode="OneWay">
+                            <Binding Path="ErrorMessage" />
+                            <Binding
+                                Path="ErrorCode"
+                                Converter="{x:Static converters:EnumToDisplayTextConverter.Instance}" />
+                        </MultiBinding>
+                    </FrameworkElement.ToolTip>
+
+                    <Image
+                        AutomationProperties.AutomationId="ItemCancelledSyncIcon"
+                        Source="{StaticResource Icon.CancelledOperation}"
+                        Width="16"
+                        Height="16"
+                        VerticalAlignment="Center" />
+                </Border>
+            </DataTemplate>
+
+            <DataTemplate
+                x:Key="WarningStatusTemplate"
+                DataType="{x:Type activity:SyncActivityItemViewModel}">
+                <Border Background="Transparent">
+                    <FrameworkElement.ToolTip>
+                        <MultiBinding
+                            Converter="{x:Static converters:ArrayToFirstValuableItemConverter.Instance}"
+                            Mode="OneWay">
+                            <Binding Path="ErrorMessage" />
+                            <Binding
+                                Path="ErrorCode"
+                                Converter="{x:Static converters:EnumToDisplayTextConverter.Instance}" />
+                        </MultiBinding>
+                    </FrameworkElement.ToolTip>
+
+                    <Image
+                        Source="{StaticResource Icon.Warning}"
+                        Width="16"
+                        Height="16"
+                        VerticalAlignment="Center" />
+                </Border>
+            </DataTemplate>
+
+            <DataTemplate
+                x:Key="FailureStatusTemplate"
+                DataType="{x:Type activity:SyncActivityItemViewModel}">
+                <Border Background="Transparent">
+                    <FrameworkElement.ToolTip>
+                        <MultiBinding
+                            Converter="{x:Static converters:ArrayToFirstValuableItemConverter.Instance}"
+                            Mode="OneWay">
+                            <Binding Path="ErrorMessage" />
+                            <Binding
+                                Path="ErrorCode"
+                                Converter="{x:Static converters:EnumToDisplayTextConverter.Instance}" />
+                        </MultiBinding>
+                    </FrameworkElement.ToolTip>
+
+                    <Image
+                        Source="{StaticResource Icon.Error}"
+                        Width="16"
+                        Height="16"
+                        VerticalAlignment="Center" />
+                </Border>
+            </DataTemplate>
+
+            <DataTemplate
+                x:Key="ActivityItemTypeCellTemplate"
+                DataType="activity:SyncActivityItemViewModel">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Border
+                        Grid.Column="0"
+                        Background="Transparent"
+                        ToolTip="{Binding ActivityTypeDisplayText, Mode=OneWay, Converter={x:Static converters:CapitalizationConverter.Instance}}"
+                        Visibility="{Binding Replica, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsHidden}, ConverterParameter={x:Static syncShared:Replica.Remote}}">
+                        <Image
+                            Source="{StaticResource Icon.ArrowUp}"
+                            Height="14" />
+                    </Border>
+
+                    <Border
+                        Grid.Column="0"
+                        Background="Transparent"
+                        ToolTip="{Binding ActivityTypeDisplayText, Mode=OneWay, Converter={x:Static converters:CapitalizationConverter.Instance}}"
+                        Visibility="{Binding Replica, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsHidden}, ConverterParameter={x:Static syncShared:Replica.Local}}">
+                        <Image
+                            Source="{StaticResource Icon.ArrowDown}"
+                            Height="14" />
+                    </Border>
+
+                    <ContentPresenter
+                        Grid.Column="1"
+                        Content="{Binding}"
+                        Margin="5,0,0,0">
+                        <ContentPresenter.Style>
+                            <Style TargetType="ContentPresenter">
+                                <Style.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Status}"
+                                        Value="{x:Static syncActivity:SyncActivityItemStatus.Cancelled}">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource CancelledStatusTemplate}" />
+                                    </DataTrigger>
+
+                                    <DataTrigger
+                                        Binding="{Binding Status}"
+                                        Value="{x:Static syncActivity:SyncActivityItemStatus.Failed}">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource FailureStatusTemplate}" />
+                                    </DataTrigger>
+
+                                    <DataTrigger
+                                        Binding="{Binding Status}"
+                                        Value="{x:Static syncActivity:SyncActivityItemStatus.Succeeded}">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource SuccessStatusTemplate}" />
+                                    </DataTrigger>
+
+                                    <DataTrigger
+                                        Binding="{Binding Status}"
+                                        Value="{x:Static syncActivity:SyncActivityItemStatus.Warning}">
+                                        <Setter Property="ContentTemplate" Value="{StaticResource WarningStatusTemplate}" />
+                                    </DataTrigger>
+
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding Status}" Value="{x:Static syncActivity:SyncActivityItemStatus.InProgress}" />
+                                            <Condition Binding="{Binding ProgressIsIndeterminate}" Value="True" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="ContentTemplate" Value="{StaticResource IndeterminateProgressStatusTemplate}" />
+                                    </MultiDataTrigger>
+
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding Status}" Value="{x:Static syncActivity:SyncActivityItemStatus.InProgress}" />
+                                            <Condition Binding="{Binding ProgressIsIndeterminate}" Value="False" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="ContentTemplate" Value="{StaticResource ProgressStatusTemplate}" />
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentPresenter.Style>
+                    </ContentPresenter>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate
+                x:Key="ActivityItemNameCellTemplate"
+                DataType="activity:SyncActivityItemViewModel">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                        AutomationProperties.AutomationId="ItemNodeTypeIcon"
+                        Grid.Column="0"
+                        AutomationProperties.HelpText="{Binding NodeType, Mode=OneWay}"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor"
+                        Source="{Binding Icon, Mode=OneWay}"
+                        Stretch="None"
+                        VerticalAlignment="Center" />
+
+                    <TextBlock
+                        AutomationProperties.AutomationId="ItemNameTextBlock"
+                        Grid.Column="1"
+                        Text="{Binding Name, Mode=OneWay}"
+                        TextTrimming="CharacterEllipsis"
+                        VerticalAlignment="Center"
+                        Margin="7,0,0,0">
+                        <b:Interaction.Behaviors>
+                            <behaviors:TextBlockAutoToolTipBehavior />
+                        </b:Interaction.Behaviors>
+                    </TextBlock>
+                </Grid>
+            </DataTemplate>
+
+            <DataTemplate
+                x:Key="ActivityItemFolderCellTemplate"
+                DataType="activity:SyncActivityItemViewModel">
+                <Button
+                    Command="{Binding OpenFolderCommand}"
+                    Style="{StaticResource GrayHyperlinkButtonStyle}">
+                    <TextBlock
+                        Text="{Binding FolderName, Mode=OneWay}"
+                        TextDecorations="Underline"
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{Binding FolderPath, Mode=OneWay}" />
+                </Button>
+            </DataTemplate>
+
+            <DataTemplate x:Key="SynchronizationStatusTemplate">
+                <StackPanel
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center">
+                    <Image
+                        Source="{StaticResource Icon.Syncing.Gray}"
+                        Visibility="{Binding SynchronizationStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, Mode=OneWay, ConverterParameter={x:Static syncActivity:SyncStatus.Initializing}}"
+                        VerticalAlignment="Center"
+                        Margin="0,0,6,0" />
+
+                    <Image
+                        Source="{StaticResource Icon.Syncing.Gray}"
+                        Visibility="{Binding SynchronizationStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, Mode=OneWay, ConverterParameter={x:Static syncActivity:SyncStatus.DetectingUpdates}}"
+                        VerticalAlignment="Center"
+                        Margin="0,0,6,0" />
+
+                    <Image
+                        Source="{StaticResource Icon.Syncing.Gray}"
+                        Visibility="{Binding SynchronizationStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, Mode=OneWay, ConverterParameter={x:Static syncActivity:SyncStatus.Synchronizing}}"
+                        VerticalAlignment="Center"
+                        Margin="0,0,6,0" />
+
+                    <TextBlock AutomationProperties.AutomationId="SyncStatusTextBlock">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Text" Value="{Binding SynchronizationStatus, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}, Mode=OneWay}" />
+                                <Setter Property="Foreground" Value="{StaticResource GrayBrush}" />
+                                <Style.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding SynchronizationStatus}"
+                                        Value="{x:Static syncActivity:SyncStatus.Idle}">
+                                        <Setter Property="Foreground" Value="{StaticResource PositiveBrush}" />
+                                    </DataTrigger>
+
+                                    <DataTrigger
+                                        Binding="{Binding SynchronizationStatus}"
+                                        Value="{x:Static syncActivity:SyncStatus.Terminated}">
+                                        <Setter Property="Foreground" Value="{StaticResource PositiveBrush}" />
+                                    </DataTrigger>
+
+                                    <DataTrigger
+                                        Binding="{Binding IsInitializingForTheFirstTime}"
+                                        Value="true">
+                                        <Setter Property="Text" Value="Initializing..." />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+                </StackPanel>
+            </DataTemplate>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid Visibility="{Binding IsDisplayingDetails, Converter={x:Static converters:BooleanToVisibilityConverter.TrueIsCollapsed}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0"
+                Margin="0,24,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        AutomationProperties.AutomationId="ActivityPageTitleText"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Text="Activity"
+                        Style="{StaticResource Heading1Style}"
+                        Margin="24,0,0,0" />
+
+                    <ContentPresenter
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Content="{Binding}"
+                        ContentTemplate="{StaticResource SynchronizationStatusTemplate}"
+                        Margin="24,5,0,0" />
+
+                    <ToggleButton
+                        AutomationProperties.AutomationId="PauseAndResumeToggleButton"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        IsChecked="{Binding Paused}"
+                        VerticalAlignment="Top"
+                        Margin="0,0,20,0">
+                        <ToggleButton.Style>
+                            <Style
+                                TargetType="ToggleButton"
+                                BasedOn="{StaticResource StatelessToggleButtonStyle.DarkTheme}">
+                                <Style.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding Paused}"
+                                        Value="True">
+                                        <Setter Property="Content" Value="_Resume sync" />
+                                    </DataTrigger>
+                                    <DataTrigger
+                                        Binding="{Binding Paused}"
+                                        Value="False">
+                                        <Setter Property="Content" Value="_Pause sync" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ToggleButton.Style>
+                    </ToggleButton>
+                </Grid>
+            </Grid>
+
+            <StackPanel
+                Grid.Row="2"
+                Visibility="{Binding SyncActivityItems.Count, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={StaticResource IntZero}}">
+                <StackPanel Visibility="{Binding SynchronizationStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static syncActivity:SyncStatus.Paused}}">
+                    <Image
+                        Source="PausedSyncPlaceholder.png"
+                        Width="200"
+                        Margin="0,100,0,0" />
+
+                    <TextBlock
+                        Text="Sync is paused"
+                        AutomationProperties.HelpText="Sync is paused"
+                        Style="{StaticResource Subtitle.DarkTheme.Style}"
+                        HorizontalAlignment="Center" />
+
+                    <TextBlock
+                        Text="Click &quot;Resume sync&quot; to enable the synchronization"
+                        Foreground="{StaticResource GrayBrush}"
+                        HorizontalAlignment="Center"
+                        Margin="0,10,0,0" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel
+                Grid.Row="2"
+                Visibility="{Binding SyncActivityItems.Count, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={StaticResource IntZero}}">
+                <StackPanel Visibility="{Binding SynchronizationStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static syncActivity:SyncStatus.Idle}}">
+                    <Image
+                        Source="ActivityListPlaceholder.png"
+                        Width="200"
+                        Margin="0,100,0,0" />
+
+                    <TextBlock
+                        Text="Your files are up to date"
+                        AutomationProperties.HelpText="All your files are up to date"
+                        Style="{StaticResource Subtitle.DarkTheme.Style}"
+                        HorizontalAlignment="Center" />
+
+                    <TextBlock
+                        Text="Sync information about files and folders will show up here"
+                        Foreground="{StaticResource GrayBrush}"
+                        HorizontalAlignment="Center"
+                        Margin="0,10,0,0" />
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2">
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                        <Style.Triggers>
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding SyncActivityItems.Count}" Value="0" />
+                                    <Condition Binding="{Binding SynchronizationStatus}" Value="{x:Static syncActivity:SyncStatus.Initializing}" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Visibility" Value="Visible" />
+                            </MultiDataTrigger>
+
+                            <MultiDataTrigger>
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Binding="{Binding SyncActivityItems.Count}" Value="0" />
+                                    <Condition Binding="{Binding IsInitializingForTheFirstTime}" Value="True" />
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Visibility" Value="Visible" />
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+
+                <Image
+                    Source="InitializingSyncPlaceholder.png"
+                    Width="200"
+                    Margin="0,100,0,0" />
+
+                <TextBlock
+                    Text="Initializing sync"
+                    AutomationProperties.HelpText="Synchronization is getting initialized"
+                    Style="{StaticResource Subtitle.DarkTheme.Style}"
+                    HorizontalAlignment="Center"
+                    Margin="0,20,0,0" />
+
+                <TextBlock
+                    Foreground="{StaticResource GrayBrush}"
+                    TextAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="0,10,0,0">
+                    <Run Text="This process may take a few minutes." />
+                    <LineBreak />
+                    <Run Text="You can safely minimize or close the window." />
+                </TextBlock>
+            </StackPanel>
+
+            <Grid
+                Grid.Row="2"
+                Margin="0,10,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <ToggleButton
+                    Grid.Row="0"
+                    AutomationProperties.HelpText="Display all the errors in a new section"
+                    AutomationProperties.Name="DisplayErrorDetailsButton"
+                    Cursor="Hand"
+                    IsChecked="{Binding IsDisplayingDetails}"
+                    Style="{StaticResource TransparentButtonStyle}"
+                    Visibility="{Binding FailedItems.Count, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={StaticResource IntZero}}"
+                    HorizontalContentAlignment="Stretch"
+                    Padding="0"
+                    Margin="10,10,10,10">
+                    <Border Style="{StaticResource RoundedSection.DarkTheme.Error}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image
+                                Grid.Column="0"
+                                Source="{StaticResource Icon.Error}"
+                                Width="20"
+                                Height="20"
+                                VerticalAlignment="Center" />
+
+                            <StackPanel
+                                Grid.Column="1"
+                                Margin="15,0,0,0">
+                                <TextBlock Foreground="{StaticResource Text.DarkTheme.Brush}">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Text">
+                                                <Setter.Value>
+                                                    <MultiBinding StringFormat="{}There are {0} issues">
+                                                        <Binding Path="FailedItems.Count" />
+                                                    </MultiBinding>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Style.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding FailedItems.Count}"
+                                                    Value="1">
+                                                    <Setter Property="Text" Value="There is 1 issue" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+
+                                <TextBlock
+                                    Text="Click to learn more about these issues"
+                                    FontSize="{StaticResource TextBlock.Small.FontSize}"
+                                    Foreground="{StaticResource GrayBrush}" />
+                            </StackPanel>
+
+                            <TextBlock
+                                Grid.Column="2"
+                                FontSize="{StaticResource TextBlock.Small.FontSize}"
+                                Foreground="{StaticResource GrayBrush}"
+                                VerticalAlignment="Center">
+                                <Run Text="Show more details" />
+                            </TextBlock>
+
+                            <Image
+                                Grid.Column="3"
+                                Source="{StaticResource Icon.RightChevron}"
+                                Height="14"
+                                VerticalAlignment="Center"
+                                Margin="10,0,0,0" />
+                        </Grid>
+                    </Border>
+                </ToggleButton>
+
+                <ListView
+                    Grid.Row="1"
+                    ItemsSource="{Binding SyncActivityItems}"
+                    Visibility="{Binding SyncActivityItems.Count, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={StaticResource IntZero}}">
+                    <ListView.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                        </Style>
+
+                        <Style
+                            x:Key="NonResizableColumnStyle"
+                            TargetType="{x:Type GridViewColumnHeader}"
+                            BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
+                            <Setter Property="IsEnabled" Value="False" />
+                        </Style>
+                    </ListView.Resources>
+
+                    <ListView.ItemContainerStyle>
+                        <Style
+                            TargetType="ListViewItem"
+                            BasedOn="{StaticResource NonSelectableListViewItemStyle}">
+                            <Setter Property="AutomationProperties.AutomationId" Value="SyncActivityItem" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+
+                    <ListView.View>
+                        <GridView AllowsColumnReorder="True">
+                            <GridViewColumn
+                                CellTemplate="{StaticResource ActivityItemTypeCellTemplate}"
+                                Header="Name"
+                                HeaderContainerStyle="{StaticResource NonResizableColumnStyle}"
+                                Width="56" />
+
+                            <GridViewColumn
+                                CellTemplate="{StaticResource ActivityItemNameCellTemplate}"
+                                Width="270" />
+
+                            <GridViewColumn
+                                CellTemplate="{StaticResource ActivityItemFolderCellTemplate}"
+                                Header="Folder"
+                                Width="120" />
+
+                            <GridViewColumn
+                                CellTemplate="{StaticResource ActivityItemSizeCellTemplate}"
+                                Header="Size"
+                                Width="80" />
+
+                            <GridViewColumn
+                                CellTemplate="{StaticResource ActivityItemSyncedTimeCellTemplate}"
+                                Header="Synced"
+                                Width="120" />
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+            </Grid>
+        </Grid>
+
+        <Grid Visibility="{Binding IsDisplayingDetails, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Grid
+                Grid.Row="0"
+                Margin="0,24,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Orientation="Horizontal"
+                        Margin="24,0,0,0">
+                        <ToggleButton
+                            Cursor="Hand"
+                            IsChecked="{Binding IsDisplayingDetails}"
+                            ToolTip="Back to activity">
+                            <ToggleButton.Style>
+                                <Style
+                                    TargetType="ButtonBase"
+                                    BasedOn="{StaticResource TransparentButtonStyle}">
+                                    <Setter Property="Foreground" Value="{StaticResource GrayBrush}" />
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="true">
+                                            <Setter Property="Foreground" Value="{StaticResource Text.DarkTheme.Brush}" />
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </ToggleButton.Style>
+
+                            <TextBlock
+                                Text="Activity"
+                                Style="{StaticResource Heading1Style}" />
+                        </ToggleButton>
+
+                        <Image
+                            Source="{StaticResource Icon.RightChevron}"
+                            Height="16"
+                            Margin="15,0,0,0" />
+
+                        <TextBlock
+                            Text="{Binding FailedItems.Count, StringFormat=Sync issues ({0})}"
+                            Foreground="{StaticResource Text.DarkTheme.Brush}"
+                            Style="{StaticResource Heading1Style}"
+                            Margin="15,0,0,0" />
+                    </StackPanel>
+
+                    <Button
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Content="Retry syncing"
+                        Command="{Binding RetrySyncCommand}"
+                        VerticalAlignment="Top"
+                        Margin="0,0,20,0" />
+                </Grid>
+            </Grid>
+
+            <ListView
+                Grid.Row="1"
+                ItemsSource="{Binding FailedItems}"
+                Margin="0,20,0,0">
+                <ListView.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+                    </Style>
+
+                    <Style
+                        x:Key="NonResizableColumnStyle"
+                        TargetType="{x:Type GridViewColumnHeader}"
+                        BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
+                        <Setter Property="IsEnabled" Value="False" />
+                    </Style>
+                </ListView.Resources>
+
+                <ListView.ItemContainerStyle>
+                    <Style
+                        TargetType="ListViewItem"
+                        BasedOn="{StaticResource NonSelectableListViewItemStyle}">
+                        <Setter Property="AutomationProperties.AutomationId" Value="SyncActivityItem" />
+                    </Style>
+                </ListView.ItemContainerStyle>
+
+                <ListView.View>
+                    <GridView AllowsColumnReorder="False">
+                        <GridViewColumn
+                            x:Name="Column1"
+                            CellTemplate="{StaticResource ActivityItemTypeCellTemplate}"
+                            Header="Type"
+                            HeaderContainerStyle="{StaticResource NonResizableColumnStyle}"
+                            Width="56" />
+
+                        <GridViewColumn
+                            x:Name="Column2"
+                            CellTemplate="{StaticResource ActivityItemNameCellTemplate}"
+                            Header="Name"
+                            Width="270" />
+
+                        <GridViewColumn
+                            x:Name="Column3"
+                            CellTemplate="{StaticResource ActivityItemFolderCellTemplate}"
+                            Header="Folder"
+                            Width="120" />
+
+                        <GridViewColumn
+                            CellTemplate="{StaticResource ActivityItemSyncedErrorMessageCellTemplate}"
+                            Header="Status">
+                            <GridViewColumn.Width>
+                                <MultiBinding Converter="{x:Static converters:LastColumnSizeCalculatingConverter.Instance}">
+                                    <Binding
+                                        Path="ActualWidth"
+                                        RelativeSource="{RelativeSource AncestorType=ListView}" />
+                                    <Binding
+                                        Path="ActualWidth"
+                                        Source="{x:Reference Column1}" />
+                                    <Binding
+                                        Path="ActualWidth"
+                                        Source="{x:Reference Column2}" />
+                                    <Binding
+                                        Path="ActualWidth"
+                                        Source="{x:Reference Column3}" />
+                                    <Binding>
+                                        <Binding.Source>
+                                            <sys:Double>10</sys:Double>
+                                        </Binding.Source>
+                                    </Binding>
+                                </MultiBinding>
+                            </GridViewColumn.Width>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </Grid>
+</UserControl>

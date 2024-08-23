@@ -1,0 +1,112 @@
+﻿{
+  "AppName": "Proton Drive",
+  "DriveApi": {
+    "AuthBaseUrl": "https://drive-api.proton.me/auth/",
+    "CoreBaseUrl": "https://drive-api.proton.me/core/",
+    "DataBaseUrl": "https://drive-api.proton.me/data/",
+    "PaymentsBaseUrl": "https://drive-api.proton.me/payments/",
+    "DriveBaseUrl": "https://drive-api.proton.me/drive/",
+    "FeatureBaseUrl": "https://drive-api.proton.me/feature/",
+    "DocsBaseUrl": "https://drive-api.proton.me/docs/",
+    "ClientVersion": "windows-drive@{AppVersion}",
+    "UserAgent": "ProtonDrive/{AppVersion} ({SystemInfo})",
+    "ContentType": "application/vnd.protonmail.api+json",
+    "Timeout": "00:00:20",
+    "BlocksTimeout": "00:05:00",
+    "RevisionUpdateTimeout": "00:01:30",
+    "DefaultNumberOfRetries": 3,
+    "DriveApiNumberOfRetries": 7,
+    "EventsPollingInterval": "00:01:30",
+    "ForeignVolumeEventsPollingInterval": "00:10:00",
+    "ConsecutiveErrorsBeforeSwitchingOffline": 6,
+    "DelayBeforeSwitchingOnline": "00:01:00",
+    "FeaturesUpdateInterval": "00:10:00"
+  },
+  "UserUpdateInterval": "00:05:00",
+  "MinFailedSetupRetryInterval": "00:00:10",
+  "MaxFailedSetupRetryInterval": "00:10:00",
+  "FailedDataRetrievalRetryInterval": "00:01:00",
+  "FileSyncStateMaintenanceInterval": "00:00:10",
+  "MaxLocalFileAccessRetryInterval": "00:10:00",
+  "MaxRemoteFileAccessRetryInterval": "00:30:00",
+  "MaxFileRevisionCreationInterval": "00:08:00",
+  "MinDelayBeforeFileUpload": "00:00:04",
+  "PeriodicTelemetryReportInterval": "00:30:00",
+  "ActivityQueryInterval": "06:00:00",
+  "FolderNames": {
+    "TempFolderName": "$Temp",
+    "TrashFolderName": "Trash",
+    "BackupFolderName": "$Backup",
+    "CloudFilesFolderName": "My files",
+    "ForeignDevicesFolderName": "Other computers",
+    "SharedWithMeItemsFolderName": "Shared with me"
+  },
+  "MaxNumberOfSyncedSharedWithMeItems": 20,
+  "Urls": {
+    "WebClient": "https://drive.proton.me",
+    "AppDownloadPage": "https://proton.me/drive/download",
+    "TermsAndConditions": "https://proton.me/legal/terms",
+    "PrivacyPolicy": "https://proton.me/legal/privacy",
+    "ManageAccount": "https://account.proton.me/drive",
+    "SignUp": "https://account.proton.me/signup",
+    "ResetPassword": "https://account.proton.me/reset-password",
+    "Dashboard": "https://account.proton.me/drive/dashboard",
+    "UpgradePlanFromOnboarding": "https://account.proton.me/drive/upgrade?ref=upgrade-drive-windows-app-onboarding",
+    "UpgradePlanFromSidebar": "https://account.proton.me/drive/upgrade?ref=upgrade-drive-windows-app-sidebar",
+    "ChangePassword": "https://account.proton.me/drive/account-password",
+    "ManageSessions": "https://account.proton.me/drive/security#sessions",
+    "Trash": "https://drive.proton.me/trash",
+    "Docs": "https://docs.proton.me"
+  },
+  "Update": {
+    "UpdateUrl": "https://proton.me/download/drive/windows/version.json",
+    "CheckInterval": "03:00:00",
+    "NotificationInterval": "1.00:00:00",
+    "MinProgressDuration": "00:00:02",
+    "CleanupDelay": "00:00:20",
+    "Timeout": "00:00:20",
+    "NumberOfRetries": 3
+  },
+  "TlsPinning": {
+    "TlsPinningReport": {
+      "Enforce": false
+    },
+    "DownloadUpdate": {
+      "Enforce": false
+    },
+    "Default": {
+      "PublicKeyHashes": [
+        "CT56BhOTmj5ZIPgb/xD5mH8rY3BLo/MlhP7oPyJUEDo=",
+        "35Dx28/uzN3LeltkCBQ8RHK0tlNSa2kCpCRGNp34Gxc=",
+        "qYIukVc63DEITct8sFT7ebIq5qsWmuscaIKeJx+5J5A="
+      ],
+      "Enforce": true,
+      "SendReport": true
+    }
+  },
+  "FeatureManagement": {
+  },
+  "Serilog": {
+    "Using": [ "Serilog.Sinks.Async", "Serilog.Sinks.File" ],
+    "MinimumLevel": {
+      "Default": "Information"
+    },
+    "WriteTo:Async": {
+      "Name": "Async",
+      "Args": {
+        "configure": [
+          {
+            "Name": "File",
+            "Args": {
+              "path": "%LOCALAPPDATA%/Proton/Proton Drive/Logs/App-.log",
+              "rollingInterval": "Day",
+              "rollOnFileSizeLimit": true,
+              "fileSizeLimitBytes": "20971520", // 20 MB
+              "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:l}{NewLine}{Exception}"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

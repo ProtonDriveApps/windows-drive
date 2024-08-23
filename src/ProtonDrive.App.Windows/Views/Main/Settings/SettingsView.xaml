@@ -1,0 +1,121 @@
+﻿<UserControl
+    x:Class="ProtonDrive.App.Windows.Views.Main.Settings.SettingsView"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:ProtonDrive.App.Windows.Controls"
+    xmlns:converters="clr-namespace:ProtonDrive.App.Windows.Toolkit.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mapping="clr-namespace:ProtonDrive.App.Mapping;assembly=ProtonDrive.App"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:settings="clr-namespace:ProtonDrive.App.Windows.Views.Main.Settings"
+    Padding="24"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance settings:SettingsViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Text="Settings"
+            Style="{StaticResource Heading1Style}" />
+
+        <settings:AccountRootSyncFolderView
+            Grid.Row="1"
+            DataContext="{Binding AccountRootSyncFolder}"
+            Margin="0,30,0,0" />
+
+        <TextBlock
+            Grid.Row="2"
+            Text="General"
+            AutomationProperties.HeadingLevel="Level2"
+            FontWeight="SemiBold"
+            Margin="0,40,0,0" />
+
+        <Border
+            Grid.Row="3"
+            Style="{StaticResource RoundedSection.DarkTheme}"
+            Height="60"
+            VerticalAlignment="Top"
+            Margin="0,10,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Image
+                    Grid.Column="0"
+                    Source="{StaticResource Icon.Sun}"
+                    Height="16"
+                    VerticalAlignment="Center" />
+
+                <TextBlock
+                    Grid.Column="1"
+                    Text="Open on startup"
+                    VerticalAlignment="Center"
+                    Margin="15,0,0,0" />
+
+                <controls:ToggleSwitch
+                    Grid.Column="2"
+                    AutomationProperties.HelpText="Open Proton Drive on Windows startup"
+                    AutomationProperties.Name="OpenOnWindowsStartupToggleSwitch"
+                    Foreground="{StaticResource GrayBrush}"
+                    IsChecked="{Binding AppIsOpeningOnStartup}" />
+            </Grid>
+        </Border>
+
+        <Border
+            Grid.Row="4"
+            Style="{StaticResource RoundedSection.DarkTheme.Error}"
+            Visibility="{Binding AccountRootSyncFolder.ValidationResult, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={x:Static mapping:SyncFolderValidationResult.Succeeded}}"
+            Margin="0,20,0,0">
+            <ScrollViewer
+                VerticalScrollBarVisibility="Auto"
+                MaxHeight="100">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Image
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Source="{StaticResource Icon.Error}"
+                        Width="20"
+                        Height="20"
+                        VerticalAlignment="Center" />
+
+                    <TextBlock
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="{Binding AccountRootSyncFolder.ValidationResult, Converter={x:Static converters:EnumToDisplayTitleTextConverter.Instance}, FallbackValue='Invalid sync folder'}"
+                        FontWeight="SemiBold"
+                        TextWrapping="Wrap"
+                        Margin="15,0,0,0" />
+
+                    <TextBlock
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Text="{Binding AccountRootSyncFolder.ValidationResult, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}}"
+                        Foreground="{StaticResource GrayBrush}"
+                        TextWrapping="Wrap"
+                        Margin="15,0,0,0" />
+                </Grid>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</UserControl>

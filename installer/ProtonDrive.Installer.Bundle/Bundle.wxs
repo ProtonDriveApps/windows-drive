@@ -1,0 +1,30 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:bal="http://wixtoolset.org/schemas/v4/wxs/bal">
+  <!--
+  The 1-pixel dummy splash screen is necessary to work around 2 anomalies: a flashing white window, and UAC not being focused
+  See https://github.com/wixtoolset/issues/issues/7379
+  -->
+  <Bundle
+    Name="$(ProductName)"
+    Manufacturer="$(CompanyName)"
+    Version="$(ProductVersion)"
+    UpgradeCode="198f3e44-4f43-41bf-aa0c-30fca64dbcf3"
+    IconSourceFile="../../assets/ProtonDrive.ico"
+    SplashScreenSourceFile="DummySplash.bmp"
+    DisableModify="button">
+
+    <BootstrapperApplication>
+      <bal:WixInternalUIBootstrapperApplication />
+    </BootstrapperApplication>
+
+    <Variable Name="NoAutoLaunch" Type="numeric" Value="0" bal:Overridable="yes"/>
+    <Variable Name="NoDesktopShortcut" Type="numeric" Value="0" bal:Overridable="yes"/>
+
+    <Chain>
+      <MsiPackage SourceFile="$(ProtonDrive.Installer.Package.TargetFileName)">
+        <MsiProperty Name="LIMITUI" Value="1" Condition="WixBundleUILevel = 3" />
+        <MsiProperty Name="NOAUTOLAUNCH" Value="1" Condition="NoAutoLaunch &lt;&gt; 0" />
+        <MsiProperty Name="NODESKTOPSHORTCUT" Value="1" Condition="NoDesktopShortcut &lt;&gt; 0" />
+      </MsiPackage>
+    </Chain>
+  </Bundle>
+</Wix>

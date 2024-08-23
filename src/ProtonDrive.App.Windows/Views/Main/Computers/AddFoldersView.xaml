@@ -1,0 +1,171 @@
+﻿<UserControl
+    x:Class="ProtonDrive.App.Windows.Views.Main.Computers.AddFoldersView"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:behaviors="clr-namespace:ProtonDrive.App.Windows.Toolkit.Behaviors"
+    xmlns:computers="clr-namespace:ProtonDrive.App.Windows.Views.Main.Computers"
+    xmlns:controls="clr-namespace:ProtonDrive.App.Windows.Controls"
+    xmlns:converters="clr-namespace:ProtonDrive.App.Windows.Toolkit.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontSize="{StaticResource TextBlock.Default.FontSize}"
+    Margin="20"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance computers:AddFoldersViewModel}">
+
+    <b:Interaction.Behaviors>
+        <behaviors:CloseDataContextOnUnloadBehavior />
+    </b:Interaction.Behaviors>
+
+    <b:Interaction.Triggers>
+        <b:DataTrigger
+            Binding="{Binding SyncFoldersSaved}"
+            Value="True">
+            <b:InvokeCommandAction Command="SystemCommands.CloseWindowCommand" />
+        </b:DataTrigger>
+    </b:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0">
+            <TextBlock
+                Text="Add folders"
+                Style="{StaticResource Heading2Style}" />
+            <LineBreak />
+            <TextBlock
+                Text="Adding a folder will back up all of its data to Proton Drive."
+                Margin="0,7,0,0" />
+        </TextBlock>
+
+        <ScrollViewer
+            Grid.Row="1"
+            VerticalScrollBarVisibility="Auto"
+            MaxWidth="350"
+            MaxHeight="500"
+            Margin="0,20,0,0">
+            <ItemsControl
+                IsEnabled="{Binding IsSaving, Converter={x:Static converters:BooleanToOppositeBooleanConverter.Instance}}"
+                ItemsSource="{Binding SyncFolders}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="computers:SelectableFolderViewModel">
+                        <Grid Height="32">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="32" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox
+                                Grid.Column="0"
+                                IsChecked="{Binding IsChecked}"
+                                IsEnabled="{Binding IsDisabled, Converter={x:Static converters:BooleanToOppositeBooleanConverter.Instance}}"
+                                VerticalAlignment="Center" />
+
+                            <Image
+                                Grid.Column="1"
+                                Source="{Binding Icon}"
+                                Height="16"
+                                VerticalAlignment="Center" />
+
+                            <TextBlock
+                                Grid.Column="2"
+                                Text="{Binding Name}"
+                                TextTrimming="CharacterEllipsis"
+                                ToolTip="{Binding Path}"
+                                VerticalAlignment="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <Button
+            AutomationProperties.AutomationId="SelectArbitraryFolderButton"
+            Grid.Row="2"
+            Command="{Binding SelectArbitraryFolderCommand}"
+            Background="Transparent"
+            BorderBrush="{StaticResource Button.DarkTheme.Border}"
+            BorderThickness="1"
+            HorizontalAlignment="Left"
+            Padding="30,10"
+            Margin="0,10,0,0">
+            <StackPanel Orientation="Horizontal">
+                <Image
+                    Source="{StaticResource Icon.AddFolder}"
+                    Height="16"
+                    VerticalAlignment="Center" />
+                <AccessText
+                    Text="_Add more folders"
+                    VerticalAlignment="Center"
+                    Margin="10,0,0,0" />
+            </StackPanel>
+        </Button>
+
+        <Grid
+            Grid.Row="3"
+            Margin="0,15,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <WrapPanel
+                Grid.Column="0"
+                Visibility="{Binding IsSaving, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}">
+                <controls:ProgressRing />
+
+                <TextBlock
+                    Text="Saving folders..."
+                    VerticalAlignment="Center"
+                    Margin="20,0,0,0" />
+            </WrapPanel>
+
+            <WrapPanel
+                Grid.Column="0"
+                Visibility="{Binding ErrorMessage, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={x:Null}}"
+                VerticalAlignment="Center">
+                <Image
+                    Source="{StaticResource Icon.Error}"
+                    Width="16"
+                    Height="16"
+                    VerticalAlignment="Center" />
+
+                <TextBlock
+                    AutomationProperties.AutomationId="AddSyncFoldersErrorMessage"
+                    Text="{Binding ErrorMessage}"
+                    FontSize="{StaticResource TextBlock.Small.FontSize}"
+                    Foreground="{StaticResource ErrorBrush}"
+                    TextWrapping="Wrap"
+                    MaxWidth="250"
+                    Margin="7,0,0,0" />
+            </WrapPanel>
+
+            <Button
+                AutomationProperties.AutomationId="SaveSelectedArbitraryFolderButton"
+                Grid.Column="1"
+                Content="_Save"
+                Command="{Binding SaveCommand}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                VerticalAlignment="Center"
+                Margin="20,0,0,0" />
+
+            <Button
+                AutomationProperties.AutomationId="CancelDialogButton"
+                Grid.Column="2"
+                Content="_Cancel"
+                Command="SystemCommands.CloseWindowCommand"
+                IsCancel="True"
+                VerticalAlignment="Center"
+                Margin="20,0,0,0" />
+        </Grid>
+    </Grid>
+</UserControl>

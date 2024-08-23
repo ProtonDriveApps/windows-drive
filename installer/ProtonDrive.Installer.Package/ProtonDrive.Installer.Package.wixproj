@@ -1,0 +1,33 @@
+﻿<Project Sdk="WixToolset.Sdk/5.0.1">
+  <PropertyGroup>
+    <OutputName>Proton Drive Setup $(Version)</OutputName>
+    <DefineConstants>Product=$(Product);Version=$(Version);Company=$(Company)</DefineConstants>
+    <SuppressIces>ICE61</SuppressIces>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(SourceRevisionId)' != ''">
+    <OutputName>$(OutputName) ($(SourceRevisionId))</OutputName>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(ApplicationFilesPath)' != ''">
+    <BindPath Include="$(ApplicationFilesPath)">
+      <BindName>ApplicationFiles</BindName>
+    </BindPath>
+  </ItemGroup>
+  <ItemGroup Condition="'$(ApplicationFilesPath)' == ''">
+    <ProjectReference Include="..\..\src\ProtonDrive.App.Windows\ProtonDrive.App.Windows.csproj" Publish="true" />
+    <BindPath Include="$(IntermediateOutputPath)\publish\ProtonDrive.App.Windows">
+      <BindName>ApplicationFiles</BindName>
+    </BindPath>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UI\Banner.png" />
+    <Content Include="UI\Dialog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Heat" Version="5.0.*" />
+    <PackageReference Include="WixToolset.UI.wixext" Version="5.0.*" />
+    <PackageReference Include="WixToolset.Util.wixext" Version="5.0.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProtonDrive.Installer.Extensions\ProtonDrive.Installer.Extensions.csproj" />
+  </ItemGroup>
+</Project>

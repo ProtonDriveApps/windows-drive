@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <CustomAction
+      Id="RemoveStartupEntry"
+      BinaryRef="ProtonExtensions"
+      DllEntry="RemoveStartupEntry"
+      Execute="immediate"
+      Return="check" />
+
+    <Property Id="RUNONSTARTUPENTRYEXISTS" Secure="yes">
+      <RegistrySearch Root="HKCU" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Run" Name="[ProductName]" Type="raw" />
+    </Property>
+
+    <Component Id="RunOnStartupRegistryEntry" Condition="((NOT Installed) AND (NOT WIX_UPGRADE_DETECTED)) OR RUNONSTARTUPENTRYEXISTS">
+      <RegistryValue Type="string" Root="HKCU" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\Run" Name="[ProductName]" Value='"[INSTALLFOLDER]ProtonDrive.exe" -quiet'/>
+    </Component>
+
+    <InstallExecuteSequence>
+      <!--
+      If the condition for the startup registry entry component was not met during installation, the uninstaller will not remove a registry entry created by the app.
+      We use a custom action to ensure removal.
+      -->
+      <Custom Action="RemoveStartupEntry" After="RemoveExistingProducts" Condition="Installed AND (NOT UPGRADINGPRODUCTCODE) AND (NOT REINSTALL)" />
+    </InstallExecuteSequence>
+  </Fragment>
+</Wix>

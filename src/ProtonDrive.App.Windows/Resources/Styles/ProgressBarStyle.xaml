@@ -1,0 +1,133 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:account="clr-namespace:ProtonDrive.App.Account;assembly=ProtonDrive.App"
+    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+
+    <SolidColorBrush
+        x:Key="ProgressBar.Default.Background"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Black.ExtraLight}" />
+
+    <SolidColorBrush
+        x:Key="ProgressBar.Default.Foreground"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Gray}" />
+
+    <Style TargetType="{x:Type ProgressBar}">
+        <Setter Property="Foreground" Value="{StaticResource PositiveBrush}" />
+        <Setter Property="Background" Value="{StaticResource ProgressBar.Default.Background}" />
+        <Setter Property="Height" Value="12" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ProgressBar}">
+                    <Grid x:Name="TemplateRoot">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="4" />
+                        <Rectangle x:Name="PART_Track" />
+                        <Grid
+                            x:Name="PART_Indicator"
+                            ClipToBounds="true"
+                            HorizontalAlignment="Left">
+                            <Border
+                                x:Name="Indicator"
+                                Background="{TemplateBinding Foreground}"
+                                CornerRadius="4" />
+                            <Rectangle
+                                x:Name="Animation"
+                                Fill="{TemplateBinding Foreground}"
+                                RadiusX="4"
+                                RadiusY="4"
+                                RenderTransformOrigin="0.5,0.5">
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <SkewTransform />
+                                        <RotateTransform />
+                                        <TranslateTransform />
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+                            </Rectangle>
+                        </Grid>
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Determinate" />
+                                <VisualState x:Name="Indeterminate">
+                                    <Storyboard RepeatBehavior="Forever">
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetName="Animation"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)">
+                                            <EasingDoubleKeyFrame
+                                                KeyTime="0"
+                                                Value="0.25" />
+                                            <EasingDoubleKeyFrame
+                                                KeyTime="0:0:1"
+                                                Value="0.25" />
+                                            <EasingDoubleKeyFrame
+                                                KeyTime="0:0:2"
+                                                Value="0.25" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                        <PointAnimationUsingKeyFrames
+                                            Storyboard.TargetName="Animation"
+                                            Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)">
+                                            <EasingPointKeyFrame
+                                                KeyTime="0"
+                                                Value="-0.5,0.5" />
+                                            <EasingPointKeyFrame
+                                                KeyTime="0:0:1"
+                                                Value="0.5,0.5" />
+                                            <EasingPointKeyFrame
+                                                KeyTime="0:0:2"
+                                                Value="1.5,0.5" />
+                                        </PointAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="Orientation" Value="Vertical">
+                            <Setter TargetName="TemplateRoot" Property="LayoutTransform">
+                                <Setter.Value>
+                                    <RotateTransform Angle="-90" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsIndeterminate" Value="true">
+                            <Setter TargetName="Indicator" Property="Visibility" Value="Collapsed" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style
+        x:Key="QuotaProgressBarStyle"
+        TargetType="ProgressBar"
+        BasedOn="{StaticResource {x:Type ProgressBar}}">
+        <Style.Triggers>
+            <DataTrigger
+                Binding="{Binding UserQuotaStatus}"
+                Value="{x:Static account:UserQuotaStatus.WarningLevel1Exceeded}">
+                <Setter Property="Foreground" Value="{StaticResource PendingBrush}" />
+            </DataTrigger>
+
+            <DataTrigger
+                Binding="{Binding UserQuotaStatus}"
+                Value="{x:Static account:UserQuotaStatus.WarningLevel2Exceeded}">
+                <Setter Property="Foreground" Value="{StaticResource ErrorBrush}" />
+            </DataTrigger>
+
+            <DataTrigger
+                Binding="{Binding UserQuotaStatus}"
+                Value="{x:Static account:UserQuotaStatus.LimitExceeded}">
+                <Setter Property="Foreground" Value="{StaticResource ErrorBrush}" />
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+</ResourceDictionary>

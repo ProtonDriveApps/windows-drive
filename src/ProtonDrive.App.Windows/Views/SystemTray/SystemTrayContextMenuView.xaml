@@ -1,0 +1,61 @@
+﻿<ContextMenu
+    x:Class="ProtonDrive.App.Windows.Views.SystemTray.SystemTrayContextMenuView"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:ProtonDrive.App.Windows.Toolkit.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ProtonDrive.App.Windows.Views.SystemTray"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Style="{StaticResource DarkContextMenuStyle}"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance local:SystemTrayViewModel}">
+    <ContextMenu.Resources>
+        <ResourceDictionary Source="/Resources/Styles/MenuItemStyle.DarkTheme.xaml" />
+    </ContextMenu.Resources>
+
+    <MenuItem
+        Command="{Binding ShowMainWindowCommand}"
+        Header="_Open Proton Drive"
+        Style="{StaticResource DarkMenuItemStyle}"
+        Visibility="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}" />
+
+    <MenuItem
+        Command="{Binding SignInCommand}"
+        Header="_Sign-in"
+        Style="{StaticResource DarkMenuItemStyle}"
+        Visibility="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}" />
+
+    <Separator
+        BorderBrush="{StaticResource SystemTrayMenu.Separator.BorderBrush}"
+        Margin="0,3,0,3" />
+
+    <MenuItem
+        Command="{Binding OpenDriveOnlineCommand}"
+        Header="Open in _browser"
+        Style="{StaticResource DarkMenuItemStyle}" />
+
+    <MenuItem
+        x:Name="OpenLocalFolderItemMenu"
+        Command="{Binding OpenAccountRootFolderCommand}"
+        Header="Open local _folder"
+        Style="{StaticResource DarkMenuItemStyle}"
+        Visibility="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}" />
+
+    <MenuItem
+        Header="_Pause the synchronization"
+        IsCheckable="True"
+        IsChecked="{Binding SynchronizationPaused}"
+        IsEnabled="{Binding ElementName=OpenLocalFolderItemMenu, Path=IsEnabled}"
+        Style="{StaticResource DarkMenuItemStyle}"
+        Visibility="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}" />
+
+    <Separator
+        BorderBrush="{StaticResource SystemTrayMenu.Separator.BorderBrush}"
+        Margin="0,3,0,3" />
+
+    <MenuItem
+        Command="{Binding ExitCommand}"
+        Header="E_xit"
+        Style="{StaticResource DarkMenuItemStyle}" />
+</ContextMenu>

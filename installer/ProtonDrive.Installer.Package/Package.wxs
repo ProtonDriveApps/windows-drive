@@ -1,0 +1,74 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
+  <Package
+    Name="$(Product)"
+    Manufacturer="$(Company)"
+    Version="$(Version)"
+    ProductCode="*"
+    UpgradeCode="f3b95bd2-1311-4b82-8b4a-b9eb7c0500ed"
+    Scope="perUser">
+
+    <Property Id="MsiLogging" Value="v" />
+
+    <Binary Id="ProtonExtensions" SourceFile="ProtonDrive.Installer.Extensions.CA.dll" />
+
+    <!--
+    When upgrading to a newer version, the "afterInstallInitialize" schedule uninstalls the old version first, and installs the new one after,
+    under a single transaction. If either the uninstallation or installation fails, everything that was not done by a custom action is rolled back.
+    -->
+    <MajorUpgrade Schedule="afterInstallInitialize" DowngradeErrorMessage="!(loc.DowngradeError)" AllowSameVersionUpgrades="yes" IgnoreLanguage="yes"/>
+
+    <!-- Embed everything in the .msi file, instead of having one or more .cab files next to it -->
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Icon Id="ProtonDrive.ico" SourceFile="../../assets/ProtonDrive.ico" />
+    <Icon Id="ProtonDocs.ico" SourceFile="../../assets/ProtonDocs.ico" />
+
+    <Property Id="DISABLEADVTSHORTCUTS" Value="1" />
+    
+    <Property Id="ARPPRODUCTICON" Value="ProtonDrive.ico" />
+
+    <!--
+    The "ARPNOMODIFY" is cleared after the UI sequence, so that only the "Change" button was disabled in the maintenance dialog,
+    but not the "Modify" option in the ARP (Add/Remove Programs)
+    -->
+    <SetProperty Id="ARPNOMODIFY" Value="{}" Sequence="execute" Before="InstallValidate" />
+
+    <Launch
+      Condition="NOT ALLUSERS"
+      Message="Setting the ALLUSERS property is not allowed because [ProductName] is a per-user application. Setup will now exit." />
+
+    <Property Id="WINDOWSBUILDNUMBER">
+      <RegistrySearch Id="WindowsBuildNumberSearch" Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion" Name="CurrentBuildNumber" Type="raw"/>
+    </Property>
+
+    <!-- This will set the WIX_NATIVE_MACHINE property, for which we want the value 34404 which means x64 -->
+    <util:QueryNativeMachine />
+
+    <Launch
+      Condition="Installed OR (VersionNT64 >= 603 AND WINDOWSBUILDNUMBER >= 17763 AND WIX_NATIVE_MACHINE = 34404)"
+      Message="This application requires an x64 edition of Windows 10 or Windows Server 2016 v1809 or later." />
+
+    <util:CloseApplication Target="ProtonDrive.exe" EndSessionMessage="yes" RebootPrompt="no" />
+
+    <CustomActionRef Id="DoPerMachineUpgradeSupportActions" />
+
+    <Feature Id="Main">
+      <ComponentGroupRef Id="ApplicationFiles" />
+      <ComponentRef Id="RunOnStartupRegistryEntry" />
+      <ComponentRef Id="DesktopShortcut" />
+      <ComponentRef Id="LocalAppData" />
+    </Feature>
+
+    <UIRef Id="WixUI_Minimal_WithoutEULA" />
+
+    <InstallExecuteSequence>
+      <!-- By default, the action to close applications happens after InstallValidate, it needs to happen before to avoid the FilesInUse dialog -->
+      <Custom Action="override Wix4CloseApplications_$(sys.BUILDARCHSHORT)" Before="InstallValidate" />
+      <!-- Prevent removal of shortcuts during upgrades, to avoid breaking taskbar pin -->
+      <RemoveShortcuts Condition="Installed AND NOT UPGRADINGPRODUCTCODE" />
+    </InstallExecuteSequence>
+
+    <CustomActionRef Id="HideCancelButton" />
+    <CustomActionRef Id="LaunchApplication" />
+  </Package>
+</Wix>

@@ -1,0 +1,73 @@
+﻿<UserControl
+    x:Class="ProtonDrive.App.Windows.Views.Main.MainView"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:about="clr-namespace:ProtonDrive.App.Windows.Views.Main.About"
+    xmlns:account="clr-namespace:ProtonDrive.App.Windows.Views.Main.Account"
+    xmlns:activity="clr-namespace:ProtonDrive.App.Windows.Views.Main.Activity"
+    xmlns:computers="clr-namespace:ProtonDrive.App.Windows.Views.Main.Computers"
+    xmlns:converters="clr-namespace:ProtonDrive.App.Windows.Toolkit.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:main="clr-namespace:ProtonDrive.App.Windows.Views.Main"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:settings="clr-namespace:ProtonDrive.App.Windows.Views.Main.Settings"
+    xmlns:sharedWithMe="clr-namespace:ProtonDrive.App.Windows.Views.Main.SharedWithMe"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance main:MainViewModel}">
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type activity:SyncStateViewModel}">
+            <activity:ActivityView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type computers:SyncedDevicesViewModel}">
+            <computers:ComputersView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type sharedWithMe:SharedWithMeViewModel}">
+            <sharedWithMe:SharedWithMeView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type account:AccountViewModel}">
+            <account:AccountView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type settings:SettingsViewModel}">
+            <settings:SettingsView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type about:AboutViewModel}">
+            <about:AboutView />
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid>
+        <DockPanel Visibility="{Binding DetailsPages.CurrentPage, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Null}}">
+            <main:SidebarView Margin="0,4,0,20" />
+
+            <!-- Page -->
+            <Border
+                AutomationProperties.ItemType="MainLandmark"
+                AutomationProperties.Name="MainPage"
+                Background="{StaticResource Window.Page.Background}"
+                BorderBrush="{StaticResource NavigationMenu.Separator.BorderBrush}"
+                BorderThickness="1,1,0,0"
+                CornerRadius="12,0,0,0">
+                <ContentControl
+                    Content="{Binding Page, Mode=OneWay}"
+                    FontSize="{StaticResource TextBlock.Default.FontSize}" />
+            </Border>
+        </DockPanel>
+
+        <!-- Details page -->
+        <ScrollViewer
+            VerticalScrollBarVisibility="Auto"
+            Visibility="{Binding DetailsPages.CurrentPage, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={x:Null}}"
+            Padding="24"
+            Focusable="False">
+            <ContentControl
+                Content="{Binding DetailsPages.CurrentPage, Mode=OneWay}"
+                FontSize="{StaticResource TextBlock.Default.FontSize}" />
+        </ScrollViewer>
+    </Grid>
+</UserControl>

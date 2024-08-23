@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <Property Id="NOAUTOLAUNCH" Secure="yes" />
+    
+    <CustomAction
+      Id="LaunchApplication"
+      Execute="immediate"
+      FileRef="ProtonDrive.exe"
+      ExeCommand=""
+      Impersonate="yes"
+      Return="asyncNoWait" />
+    
+    <CustomAction
+      Id="LaunchApplicationSilently"
+      Execute="immediate"
+      FileRef="ProtonDrive.exe"
+      ExeCommand="-quiet"
+      Impersonate="yes"
+      Return="asyncNoWait" />
+
+    <!--
+    When the installer has full UI, run the action only when the user presses the "Finish" button on the exit dialog.
+    That way, the app will not overlap the installer.
+    -->
+    <UI>
+      <Publish Dialog="ExitDialog"
+               Control="Finish"
+               Event="DoAction"
+               Value="LaunchApplication"
+               Condition="(NOT NOAUTOLAUNCH) AND (NOT REMOVE)" />
+    </UI>
+
+    <!--
+    When the installer does not have full UI, run the action at the end of the installation sequence.
+    -->
+    <InstallExecuteSequence>
+      <Custom Action="LaunchApplication" After="InstallFinalize" Condition='(NOT NOAUTOLAUNCH) AND (NOT REMOVE) AND (UILevel &lt; 5) AND (UILevel &gt; 2)' />
+      <Custom Action="LaunchApplicationSilently" After="InstallFinalize" Condition='(NOT NOAUTOLAUNCH) AND (NOT REMOVE) AND (UILevel &lt; 3)' />
+    </InstallExecuteSequence>
+  </Fragment>
+</Wix>

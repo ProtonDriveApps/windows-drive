@@ -1,0 +1,302 @@
+﻿<UserControl
+    x:Class="ProtonDrive.App.Windows.Views.Main.About.AboutView"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:ProtonDrive.App.Windows.Controls"
+    xmlns:converters="clr-namespace:ProtonDrive.App.Windows.Toolkit.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ProtonDrive.App.Windows.Views.Main.About"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance local:AboutViewModel}">
+    <UserControl.Resources>
+        <DataTemplate x:Key="ReleaseNoteItemTemplate">
+            <TextBlock TextWrapping="Wrap">
+                <Run Text=" • " />
+                <Run Text="{Binding ., Mode=OneTime}" />
+            </TextBlock>
+        </DataTemplate>
+
+        <DataTemplate
+            x:Key="ReleaseNoteSectionTemplate"
+            DataType="local:ReleaseNoteSectionViewModel">
+            <StackPanel>
+                <TextBlock
+                    Text="{Binding Type, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}}"
+                    FontWeight="SemiBold"
+                    Foreground="{StaticResource Text.DarkTheme.Brush}"
+                    Margin="0,5,0,0" />
+
+                <ItemsControl
+                    Foreground="{StaticResource Text.DarkTheme.Brush}"
+                    ItemTemplate="{StaticResource ReleaseNoteItemTemplate}"
+                    ItemsSource="{Binding Notes}" />
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate
+            x:Key="ReleaseNoteTemplate"
+            DataType="local:ReleaseNoteViewModel">
+            <Grid>
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            Text="{Binding Version}"
+                            AutomationProperties.HeadingLevel="Level3"
+                            FontSize="16"
+                            FontWeight="SemiBold"
+                            Foreground="{StaticResource Text.DarkTheme.Brush}" />
+
+                        <Border
+                            BorderBrush="{StaticResource PendingBrush}"
+                            BorderThickness="1"
+                            CornerRadius="3"
+                            Visibility="{Binding IsNewVersion, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}"
+                            Padding="3,0"
+                            Margin="7,0,0,0">
+                            <TextBlock
+                                Text="NEW"
+                                Foreground="{StaticResource PendingBrush}" />
+                        </Border>
+                    </StackPanel>
+
+                    <TextBlock
+                        Text="{Binding ReleaseDate, StringFormat='{}{0:D}'}"
+                        FontSize="{StaticResource TextBlock.Small.FontSize}"
+                        Foreground="{StaticResource GrayBrush}"
+                        Margin="0,4,0,0" />
+
+                    <ItemsControl
+                        ItemTemplate="{StaticResource ReleaseNoteSectionTemplate}"
+                        ItemsSource="{Binding Sections}" />
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid Margin="24,24,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Text="About"
+            Style="{StaticResource Heading1Style}" />
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <StackPanel
+                Grid.Row="0"
+                Orientation="Horizontal"
+                Margin="0,30,0,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition
+                            Height="Auto"
+                            MinHeight="16" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel
+                        Grid.Row="0"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            Text="Current version"
+                            Foreground="{StaticResource GrayBrush}" />
+
+                        <TextBlock
+                            AutomationProperties.AutomationId="VersionTextBlock"
+                            Text="{Binding CurrentVersion, Mode=OneWay}"
+                            Margin="15,0,0,0" />
+                    </StackPanel>
+
+                    <StackPanel
+                        Grid.Row="1"
+                        Orientation="Horizontal"
+                        Margin="0,20,0,0">
+                        <TextBlock
+                            Text="Release date"
+                            Foreground="{StaticResource GrayBrush}" />
+
+                        <TextBlock
+                            Text="{Binding ReleaseDate, Mode=OneWay, StringFormat=d, FallbackValue='-', TargetNullValue='-'}"
+                            Margin="15,0,0,0" />
+                    </StackPanel>
+
+                    <StackPanel
+                        Grid.Row="2"
+                        Orientation="Horizontal"
+                        Visibility="{Binding UpdateStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static local:UpdateStatus.UpToDate}}"
+                        Margin="0,20,0,0">
+                        <TextBlock
+                            AutomationProperties.AutomationId="UpToDateTextBlock"
+                            Text="Up to date"
+                            Foreground="{StaticResource GrayBrush}"
+                            VerticalAlignment="Center" />
+
+                        <Image
+                            Source="{StaticResource Icon.Success}"
+                            Width="16"
+                            Height="16"
+                            VerticalAlignment="Center"
+                            Margin="15,2,0,0" />
+                    </StackPanel>
+
+                    <StackPanel
+                        Grid.Row="2"
+                        Orientation="Horizontal"
+                        Visibility="{Binding UpdateStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static local:UpdateStatus.Checking}}"
+                        VerticalAlignment="Center"
+                        Margin="0,20,0,0">
+                        <controls:ProgressRing
+                            Width="16"
+                            Height="16" />
+
+                        <TextBlock
+                            Text="Checking for update..."
+                            VerticalAlignment="Center"
+                            Margin="7,0,0,0" />
+                    </StackPanel>
+
+                    <StackPanel
+                        Grid.Row="2"
+                        Orientation="Horizontal"
+                        Visibility="{Binding UpdateStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static local:UpdateStatus.Downloading}}"
+                        VerticalAlignment="Center"
+                        Margin="0,20,0,0">
+                        <controls:ProgressRing
+                            Width="16"
+                            Height="16" />
+
+                        <TextBlock
+                            Text="Downloading an update..."
+                            VerticalAlignment="Center"
+                            Margin="7,0,0,0" />
+                    </StackPanel>
+
+                    <StackPanel
+                        Grid.Row="2"
+                        Orientation="Horizontal"
+                        Visibility="{Binding UpdateStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static local:UpdateStatus.Available}}"
+                        Margin="0,15,0,0">
+                        <TextBlock
+                            AutomationProperties.AutomationId="UpdatesAvailableTextBlock"
+                            Text="Updates available"
+                            Foreground="{StaticResource GrayBrush}"
+                            VerticalAlignment="Center" />
+
+                        <Image
+                            Source="{StaticResource Icon.DownloadUpdates}"
+                            Width="16"
+                            Height="16"
+                            VerticalAlignment="Center"
+                            Margin="15,0,0,0" />
+
+                        <Button
+                            AutomationProperties.AutomationId="UpdateNowButton"
+                            Content="_Update now"
+                            Command="{Binding UpdateCommand}"
+                            AutomationProperties.HelpText="A new version of Proton Drive is available, please update it now."
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            VerticalAlignment="Center"
+                            Margin="20,0,0,0" />
+                    </StackPanel>
+
+                    <StackPanel
+                        Grid.Row="2"
+                        Orientation="Horizontal"
+                        Visibility="{Binding UpdateStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static local:UpdateStatus.CheckFailed}}"
+                        Margin="0,20,0,0">
+                        <Image
+                            Source="{StaticResource Icon.Error}"
+                            Width="16"
+                            Height="16"
+                            VerticalAlignment="Center" />
+
+                        <TextBlock
+                            Text="Failed to check for update"
+                            FontWeight="SemiBold"
+                            Margin="7,0,0,0" />
+                    </StackPanel>
+
+                    <StackPanel
+                        Grid.Row="3"
+                        Orientation="Horizontal"
+                        Margin="0,20,0,0">
+                        <Button
+                            Content="_Terms of service"
+                            Command="{Binding OpenTermsAndConditionsCommand}"
+                            Style="{StaticResource HyperlinkButtonStyle}"
+                            VerticalAlignment="Center" />
+
+                        <Button
+                            Content="_Privacy policy"
+                            Command="{Binding OpenPrivacyPolicyCommand}"
+                            Style="{StaticResource HyperlinkButtonStyle}"
+                            VerticalAlignment="Center"
+                            Margin="30,0,0,0" />
+
+                        <TextBlock
+                            Text="{Binding CopyrightMessage}"
+                            Foreground="{StaticResource GrayBrush}"
+                            VerticalAlignment="Center"
+                            Margin="30,0,0,0" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+
+            <TextBlock
+                Grid.Row="2"
+                Text="What's new"
+                Style="{StaticResource Heading2Style}"
+                Margin="0,25,0,0" />
+
+            <ScrollViewer
+                Grid.Row="3"
+                VerticalScrollBarVisibility="Auto"
+                Padding="0,0,10,0"
+                Margin="0,10,0,0"
+                Focusable="False">
+                <ScrollViewer.Style>
+                    <Style TargetType="ScrollViewer">
+                        <Style.Triggers>
+                            <DataTrigger
+                                Binding="{Binding ReleaseNotes.Count}"
+                                Value="0">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+
+                            <DataTrigger
+                                Binding="{Binding ReleaseNotes}"
+                                Value="{x:Null}">
+                                <Setter Property="Visibility" Value="Collapsed" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </ScrollViewer.Style>
+
+                <ItemsControl
+                    ItemTemplate="{StaticResource ReleaseNoteTemplate}"
+                    ItemsSource="{Binding ReleaseNotes}">
+                    <ItemsControl.ItemContainerStyle>
+                        <Style TargetType="FrameworkElement">
+                            <Setter Property="Margin" Value="0,0,0,20" />
+                        </Style>
+                    </ItemsControl.ItemContainerStyle>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</UserControl>

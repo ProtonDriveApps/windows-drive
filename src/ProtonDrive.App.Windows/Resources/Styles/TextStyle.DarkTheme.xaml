@@ -1,0 +1,21 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style
+        x:Key="TextBlock.DarkTheme.Style"
+        TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style
+        x:Key="Title.DarkTheme.Style"
+        BasedOn="{StaticResource Heading1Style}">
+        <Setter Property="TextElement.Foreground" Value="{StaticResource Text.DarkTheme.Brush}" />
+    </Style>
+
+    <Style
+        x:Key="Subtitle.DarkTheme.Style"
+        BasedOn="{StaticResource Heading2Style}">
+        <Setter Property="TextElement.Foreground" Value="{StaticResource Text.DarkTheme.Brush}" />
+    </Style>
+</ResourceDictionary>

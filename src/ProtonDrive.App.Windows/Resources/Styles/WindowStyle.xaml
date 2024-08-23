@@ -1,0 +1,114 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:ProtonDrive.App.Windows.Toolkit.Converters"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    xmlns:windows="clr-namespace:ProtonDrive.App.Windows.Toolkit.Windows">
+
+    <Style
+        x:Key="TitlebarBackButtonStyle"
+        TargetType="{x:Type Button}"
+        BasedOn="{StaticResource TransparentButtonStyle}">
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <SolidColorBrush Color="{StaticResource GrayColor}" />
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="DefaultWindowStyle"
+        TargetType="{x:Type windows:CustomChromeWindow}"
+        BasedOn="{StaticResource {x:Type windows:CustomChromeWindow}}">
+        <Setter Property="ActiveTitleBarBackground" Value="{StaticResource Titlebar.Default.Background}" />
+        <Setter Property="InactiveTitleBarBackground" Value="{Binding ActiveTitleBarBackground, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="InactiveTitleBarForeground" Value="{StaticResource Window.Inactive.Foreground}" />
+        <Setter Property="ActiveOuterBorderBrush" Value="{StaticResource Window.Default.BorderBrush}" />
+        <Setter Property="InactiveOuterBorderBrush" Value="{StaticResource Window.Inactive.BorderBrush}" />
+        <Setter Property="TitleFontSize" Value="14" />
+        <Setter Property="TitleBarHeight" Value="30" />
+        <Setter Property="OuterResizeBorderThickness" Value="1" />
+        <Setter Property="OuterBorderPadding" Value="0" />
+        <Setter Property="InnerResizeBorderThickness" Value="4" />
+        <Setter Property="MinHeight" Value="500" />
+        <Setter Property="MinWidth" Value="900" />
+        <Setter Property="TitleBarButtonHeight" Value="{x:Static system:Double.NaN}" />
+        <Setter Property="TitleBarButtonWidth" Value="45" />
+        <Setter Property="TitleIsVisible" Value="False" />
+        <Setter Property="TitleBarLeftPart" Value="{Binding Title, RelativeSource={RelativeSource Self}}" />
+        <Setter Property="TitleBarLeftPartTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <StackPanel
+                        Orientation="Horizontal"
+                        WindowChrome.IsHitTestVisibleInChrome="False">
+                        <ContentControl
+                            Template="{StaticResource ProtonDriveLogoTemplate}"
+                            Height="16"
+                            Margin="7,0,0,0" />
+
+                        <TextBlock
+                            Text="{Binding}"
+                            VerticalAlignment="Center"
+                            Margin="7,0,0,0" />
+                    </StackPanel>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <DataTrigger
+                Binding="{Binding IsOnboarding}"
+                Value="True">
+                <Setter Property="ResizeMode" Value="NoResize" />
+                <Setter Property="SizeToContent" Value="WidthAndHeight" />
+                <Setter Property="MinWidth" Value="620" />
+            </DataTrigger>
+
+            <DataTrigger
+                Binding="{Binding DetailsPages.CurrentPage, Converter={x:Static converters:ObjectEqualityToBooleanConverter.EqualIsTrue}, ConverterParameter={x:Null}}"
+                Value="False">
+                <Setter Property="TitleBarLeftPartTemplate" Value="{x:Null}" />
+                <Setter Property="TitleBarLeftPart">
+                    <Setter.Value>
+                        <StackPanel
+                            Orientation="Horizontal"
+                            Visibility="{Binding DetailsPages.CurrentPage, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={x:Null}}">
+                            <Button
+                                x:Name="MyButton"
+                                Command="{Binding DetailsPages.NavigateBackCommand}"
+                                Style="{StaticResource TitlebarBackButtonStyle}"
+                                Padding="15,0">
+                                <TextBlock
+                                    Text="{StaticResource icon-left-arrow-key-time}"
+                                    Style="{StaticResource FontIconStyle}"
+                                    VerticalAlignment="Center" />
+                            </Button>
+
+                            <TextBlock
+                                Text="{Binding DetailsPages.CurrentPage.Title, FallbackValue=''}"
+                                WindowChrome.IsHitTestVisibleInChrome="False"
+                                VerticalAlignment="Center"
+                                Margin="5,0,0,0" />
+                        </StackPanel>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="Window.DarkTheme.Style"
+        TargetType="{x:Type windows:CustomChromeWindow}"
+        BasedOn="{StaticResource DefaultWindowStyle}">
+        <Setter Property="ActiveTitleBarBackground" Value="{StaticResource Titlebar.Background}" />
+        <Setter Property="ActiveTitleBarForeground" Value="{StaticResource Text.DarkTheme.Brush}" />
+        <Setter Property="Background" Value="{StaticResource Titlebar.Background}" />
+    </Style>
+</ResourceDictionary>

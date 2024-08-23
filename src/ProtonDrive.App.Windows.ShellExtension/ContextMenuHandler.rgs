@@ -1,0 +1,35 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {434CAC7A-CB48-4832-8F85-83ADE7E52DAC} = s 'Proton Drive Context Menu'
+		{
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{E7C15560-A668-4CC7-B801-63016CF7AEEC}'
+			Version = s '1.0'
+		}
+	}
+	NoRemove *
+	{
+		NoRemove shellex
+		{
+			NoRemove ContextMenuHandlers
+			{
+				ForceRemove 'Proton Drive' = s '{434CAC7A-CB48-4832-8F85-83ADE7E52DAC}'
+			}
+		}
+	}
+	NoRemove Folder
+	{
+		NoRemove shellex
+		{
+			NoRemove ContextMenuHandlers
+			{
+				ForceRemove 'Proton Drive' = s '{434CAC7A-CB48-4832-8F85-83ADE7E52DAC}'
+			}
+		}
+	}
+}

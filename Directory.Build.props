@@ -1,0 +1,22 @@
+<Project>
+  <PropertyGroup>
+    <DefaultTargetFramework>net8.0</DefaultTargetFramework>
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)ProtonDrive.ruleset</CodeAnalysisRuleSet>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+
+    <Product>Proton Drive</Product>
+    <Company>Proton AG</Company>
+    <Version>1.6.3</Version>
+
+    <Nullable>enable</Nullable>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.556">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,368 @@
+﻿<UserControl
+    x:Class="ProtonDrive.App.Windows.Views.Main.Computers.ComputersView"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="clr-namespace:ProtonDrive.App.Windows.Toolkit.Behaviors"
+    xmlns:computers="clr-namespace:ProtonDrive.App.Windows.Views.Main.Computers"
+    xmlns:controls="clr-namespace:ProtonDrive.App.Windows.Controls"
+    xmlns:converters="clr-namespace:ProtonDrive.App.Windows.Toolkit.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:mapping="clr-namespace:ProtonDrive.App.Mapping;assembly=ProtonDrive.App"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:shared="clr-namespace:ProtonDrive.App.Windows.Views.Shared"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance computers:SyncedDevicesViewModel}">
+    <ScrollViewer
+        VerticalScrollBarVisibility="Auto"
+        Padding="24"
+        Focusable="False">
+        <Grid Margin="4">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock
+                Grid.Row="0"
+                Text="My computer"
+                Style="{StaticResource Heading1Style}" />
+
+            <TextBlock
+                AutomationProperties.HeadingLevel="Level2"
+                Grid.Row="1"
+                Text="This device"
+                FontWeight="SemiBold"
+                Margin="0,24,0,0" />
+
+            <Button
+                AutomationProperties.AutomationId="EditDeviceNameButton"
+                AutomationProperties.HelpText="Rename your device"
+                AutomationProperties.Name="RenameDeviceButton"
+                Grid.Row="2"
+                Command="{Binding EditDeviceNameCommand}"
+                Style="{StaticResource SectionButtonStyle}"
+                VerticalContentAlignment="Center"
+                Padding="16"
+                Margin="0,20,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image
+                        Source="{StaticResource Icon.Computer}"
+                        Height="16"
+                        VerticalAlignment="Center" />
+
+                    <Grid
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Visibility="{Binding IsEditing, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}"
+                        Height="32">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox
+                            Name="RenameDeviceTextBox"
+                            AutomationProperties.HelpText="Edit the device name"
+                            Grid.Column="0"
+                            Text="{Binding NewDeviceName, FallbackValue='', UpdateSourceTrigger=PropertyChanged}"
+                            Background="{Binding Background, RelativeSource={RelativeSource AncestorType={x:Type Control}}}"
+                            IsEnabled="{Binding SaveDeviceNameCommand.IsRunning, Converter={x:Static converters:BooleanToOppositeBooleanConverter.Instance}}"
+                            MaxLength="255"
+                            MaxLines="1"
+                            Width="250"
+                            VerticalAlignment="Center"
+                            Margin="20,0,0,0">
+                            <TextBox.Style>
+                                <Style
+                                    TargetType="TextBox"
+                                    BasedOn="{StaticResource {x:Type TextBox}}">
+                                    <Style.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsEditing}"
+                                            Value="True">
+                                            <Setter Property="FocusManager.FocusedElement" Value="{Binding RelativeSource={RelativeSource Mode=Self}}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+
+                            <i:Interaction.Behaviors>
+                                <behaviors:SelectAllOnFocusTextBoxBehavior />
+                            </i:Interaction.Behaviors>
+                        </TextBox>
+
+                        <Image
+                            Grid.Column="1"
+                            Source="{StaticResource Icon.Error}"
+                            ToolTip="Invalid device name: the new name must not be empty and must not exceed 255 characters."
+                            Visibility="{Binding IsNewDeviceNameValid, Converter={x:Static converters:BooleanToVisibilityConverter.TrueIsCollapsed}}"
+                            Width="16"
+                            Height="16"
+                            VerticalAlignment="Center"
+                            Margin="20,0,0,0" />
+
+                        <controls:ProgressRing
+                            Grid.Column="2"
+                            Visibility="{Binding SaveDeviceNameCommand.IsRunning, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}"
+                            Width="16"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" />
+
+                        <Button
+                            AutomationProperties.HelpText="Save the device name"
+                            Grid.Column="3"
+                            Content="_Save"
+                            Command="{Binding SaveDeviceNameCommand}"
+                            IsDefault="True"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            VerticalAlignment="Center" />
+
+                        <Button
+                            AutomationProperties.HelpText="Cancel device renaming"
+                            Grid.Column="4"
+                            Content="_Cancel"
+                            Command="{Binding CancelDeviceNameCommand}"
+                            VerticalAlignment="Center"
+                            Margin="20,0,0,0" />
+                    </Grid>
+
+                    <TextBlock
+                        Grid.Column="1"
+                        Text="{Binding HostDevice.Name, FallbackValue=''}"
+                        TextTrimming="CharacterEllipsis"
+                        Visibility="{Binding IsEditing, Converter={x:Static converters:BooleanToVisibilityConverter.TrueIsCollapsed}}"
+                        MaxWidth="600"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="15,0,0,0">
+                        <i:Interaction.Behaviors>
+                            <behaviors:TextBlockAutoToolTipBehavior />
+                        </i:Interaction.Behaviors>
+                    </TextBlock>
+
+                    <StackPanel
+                        Grid.Column="2"
+                        Orientation="Horizontal"
+                        Visibility="{Binding IsEditing, Converter={x:Static converters:BooleanToVisibilityConverter.TrueIsCollapsed}}"
+                        VerticalAlignment="Center">
+                        <AccessText
+                            Text="_Rename"
+                            Foreground="{StaticResource GrayBrush}"
+                            VerticalAlignment="Center" />
+
+                        <Image
+                            Source="{StaticResource Icon.Pencil}"
+                            Style="{StaticResource FontIconStyle}"
+                            Height="16"
+                            VerticalAlignment="Center"
+                            Margin="10,0,0,0" />
+                    </StackPanel>
+                </Grid>
+            </Button>
+
+            <StackPanel
+                Grid.Row="3"
+                Visibility="{Binding SyncedFolders.Count, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={StaticResource IntZero}}">
+                <TextBlock
+                    AutomationProperties.HeadingLevel="Level2"
+                    Text="Folders syncing from this device"
+                    FontWeight="SemiBold"
+                    Margin="0,24,0,0" />
+
+                <Border
+                    BorderBrush="{StaticResource Section.Default.Background}"
+                    BorderThickness="0,0,0,1"
+                    Padding="0,0,0,10"
+                    Margin="0,24,0,0">
+                    <TextBlock
+                        Text="Name"
+                        Margin="7,0,0,0" />
+                </Border>
+
+                <ItemsControl
+                    ItemsSource="{Binding SyncedFolders}"
+                    Margin="0,5,0,0">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid MinHeight="28">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid
+                                    Grid.Column="0"
+                                    ToolTip="{Binding Path, Mode=OneWay}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="32" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image
+                                        Grid.Column="0"
+                                        Source="{Binding Icon, Mode=OneTime}"
+                                        Height="16"
+                                        VerticalAlignment="Center" />
+
+                                    <TextBlock
+                                        AutomationProperties.AutomationId="SyncFolderName"
+                                        Grid.Column="1"
+                                        Text="{Binding Name, Mode=OneTime}"
+                                        TextTrimming="CharacterEllipsis"
+                                        VerticalAlignment="Center"
+                                        Margin="7,0,0,0">
+                                        <i:Interaction.Behaviors>
+                                            <behaviors:TextBlockAutoToolTipBehavior />
+                                        </i:Interaction.Behaviors>
+                                    </TextBlock>
+
+                                    <shared:MappingStatusView
+                                        Grid.Column="2"
+                                        MaxWidth="400"
+                                        VerticalAlignment="Center"
+                                        Margin="15,0,0,0" />
+                                </Grid>
+
+                                <Menu
+                                    AutomationProperties.AutomationId="SyncFolderMenu"
+                                    Grid.Column="1"
+                                    Background="Transparent"
+                                    KeyboardNavigation.DirectionalNavigation="Continue"
+                                    Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ContentPresenter}}"
+                                    HorizontalAlignment="Right"
+                                    Focusable="True">
+                                    <Menu.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <Grid />
+                                        </ItemsPanelTemplate>
+                                    </Menu.ItemsPanel>
+
+                                    <MenuItem Style="{StaticResource EllipseIconlessMenuItemStyle}">
+                                        <MenuItem.Header>
+                                            <TextBlock
+                                                Text="{StaticResource icon-more}"
+                                                Foreground="{StaticResource Text.DarkTheme.Brush}"
+                                                Style="{StaticResource FontIconStyle}"
+                                                VerticalAlignment="Center" />
+                                        </MenuItem.Header>
+
+                                        <MenuItem
+                                            AutomationProperties.AutomationId="OpenFolderMenuItem"
+                                            Command="{Binding OpenFolderCommand}"
+                                            Header="_Open folder" />
+
+                                        <MenuItem
+                                            AutomationProperties.AutomationId="RemoveFolderMenuItem"
+                                            Command="{Binding RemoveFolderCommand}"
+                                            Header="_Remove folder" />
+                                    </MenuItem>
+                                </Menu>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <Button
+                    AutomationProperties.AutomationId="AddFoldersButton"
+                    AutomationProperties.HelpText="Add a new folder to sync"
+                    Content="_Add folders"
+                    Command="{Binding AddFoldersCommand}"
+                    HorizontalAlignment="Left"
+                    Margin="0,16,0,0" />
+            </StackPanel>
+
+            <StackPanel
+                Grid.Row="3"
+                Visibility="{Binding SyncedFolders.Count, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={StaticResource IntZero}}"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <Image
+                    Source="SyncedFoldersPlaceholder.png"
+                    Width="120"
+                    Margin="0,20,0,0" />
+
+                <TextBlock
+                    Text="Safely sync your files"
+                    FontSize="20"
+                    HorizontalAlignment="Center"
+                    Margin="0,24,0,0" />
+
+                <TextBlock
+                    Text="Add folder to start securely syncing files to the cloud"
+                    FontSize="14"
+                    Foreground="{StaticResource GrayBrush}"
+                    HorizontalAlignment="Center"
+                    Margin="0,8,0,0" />
+
+                <Button
+                    AutomationProperties.AutomationId="AddFirstFoldersButton"
+                    AutomationProperties.HelpText="Add your first folders to sync"
+                    Content="_Add folders"
+                    Command="{Binding AddFoldersCommand}"
+                    HorizontalAlignment="Center"
+                    Margin="0,24,0,0" />
+            </StackPanel>
+
+            <ItemsControl
+                AutomationProperties.AutomationId="ForeignDevicesItemsControl"
+                Grid.Row="4"
+                ItemsSource="{Binding ForeignDevices}"
+                Visibility="{Binding ForeignDevices.Count, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={StaticResource IntZero}}"
+                Margin="0,24,0,0">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type computers:DeviceViewModel}">
+                        <Border
+                            Style="{StaticResource RoundedSection.DarkTheme.Error}"
+                            Visibility="{Binding SetupStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static mapping:MappingSetupStatus.Failed}}"
+                            Margin="0,10,0,0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image
+                                    Grid.Column="0"
+                                    Source="{StaticResource Icon.Error}"
+                                    Width="16"
+                                    Height="16"
+                                    VerticalAlignment="Center" />
+
+                                <StackPanel
+                                    Grid.Column="1"
+                                    Margin="15,0,0,0">
+                                    <TextBlock
+                                        Text="{Binding Name}"
+                                        FontWeight="SemiBold" />
+                                    <TextBlock
+                                        Text="{Binding SetupErrorCode, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}}"
+                                        TextTrimming="CharacterEllipsis"
+                                        ToolTip="{Binding SetupErrorCode, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}}">
+                                        <i:Interaction.Behaviors>
+                                            <behaviors:TextBlockAutoToolTipBehavior />
+                                        </i:Interaction.Behaviors>
+                                    </TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

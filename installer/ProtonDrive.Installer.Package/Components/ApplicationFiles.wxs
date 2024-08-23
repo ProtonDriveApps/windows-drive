@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <StandardDirectory Id="ProgramFiles6432Folder">
+      <Directory Name="Proton">
+        <Directory Id="INSTALLFOLDER" Name="Drive" />
+      </Directory>
+    </StandardDirectory>
+
+    <!-- Include workaround -->
+    <CustomActionRef Id="SetINSTALLFOLDER" />
+
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="ProtonProgramMenuFolder" Name="Proton" />
+    </StandardDirectory>
+
+    <ComponentGroup Id="ApplicationFiles" Directory="INSTALLFOLDER">
+      <Files Include="!(bindpath.ApplicationFiles)**">
+        <Exclude Files="!(bindpath.ApplicationFiles)*.pdb" />
+        <Exclude Files="!(bindpath.ApplicationFiles)ProtonDrive.exe" />
+      </Files>
+
+      <Component>
+        <File Id="ProtonDrive.exe" Name="ProtonDrive.exe" KeyPath="yes" Source="!(bindpath.ApplicationFiles)ProtonDrive.exe">
+          <Shortcut Id="ProgramMenuShortcut" Name="!(bind.Property.ProductName)" Directory="ProtonProgramMenuFolder" Advertise="yes">
+            <ShortcutProperty Key="System.AppUserModel.ID" Value="Proton.ProtonDrive" />
+          </Shortcut>
+        </File>
+
+        <RemoveFolder Directory="ProtonProgramMenuFolder" On="uninstall" />
+
+        <ProgId Id="Proton.Drive.protondoc" Description="Proton Docs" Advertise="yes" Icon="ProtonDocs.ico">
+          <Extension Id="protondoc">
+            <Verb Id="open" Argument='"%1"' />
+          </Extension>
+        </ProgId>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

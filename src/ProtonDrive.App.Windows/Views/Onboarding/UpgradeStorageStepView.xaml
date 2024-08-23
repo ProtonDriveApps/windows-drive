@@ -1,0 +1,227 @@
+﻿<UserControl
+    x:Class="ProtonDrive.App.Windows.Views.Onboarding.UpgradeStorageStepView"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:ProtonDrive.App.Windows.Toolkit.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:onboarding="clr-namespace:ProtonDrive.App.Windows.Views.Onboarding"
+    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+    Background="{StaticResource Window.SignIn.Background}"
+    TextElement.FontSize="{StaticResource TextBlock.Default.FontSize}"
+    TextElement.Foreground="{StaticResource Text.DarkTheme.Brush}"
+    Padding="30,10,30,30"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance onboarding:UpgradeStorageStepViewModel}">
+    <UserControl.Resources>
+        <SolidColorBrush
+            x:Key="Offer.Highlighted.ColorBrush"
+            po:Freeze="True"
+            Color="#24212B" />
+
+        <SolidColorBrush
+            x:Key="Offer.DetailIcon.ColorBrush"
+            po:Freeze="True"
+            Color="#18C398" />
+
+        <Style
+            x:Key="OfferBorderStyle"
+            TargetType="Border">
+            <Setter Property="Margin" Value="10,0" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="CornerRadius" Value="6" />
+        </Style>
+
+        <DataTemplate
+            x:Key="UpgradeOfferTemplate"
+            DataType="{x:Type onboarding:StorageUpgradeOffer}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Border
+                    Grid.Row="1"
+                    BorderBrush="{StaticResource Section.Default.BorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="8">
+                    <StackPanel>
+                        <TextBlock
+                            Text="{Binding Name}"
+                            FontSize="18"
+                            Foreground="{StaticResource GrayBrush}"
+                            HorizontalAlignment="Center"
+                            Margin="0,30,0,0" />
+
+                        <TextBlock
+                            Text="{Binding StorageDescription}"
+                            FontSize="30"
+                            HorizontalAlignment="Center"
+                            Margin="0,10,0,0" />
+
+                        <Button
+                            Content="Upgrade"
+                            Command="{Binding UpgradeCommand}"
+                            BorderBrush="White"
+                            Style="{StaticResource Button.DarkTheme.Style}"
+                            Margin="10,30,10,0" />
+
+                        <Border
+                            Background="{StaticResource Offer.Highlighted.ColorBrush}"
+                            Style="{StaticResource OfferBorderStyle}"
+                            Margin="10,30,10,0">
+                            <StackPanel Orientation="Horizontal">
+                                <Path
+                                    Data="{StaticResource Icon.Product.Drive}"
+                                    Fill="{StaticResource Offer.DetailIcon.ColorBrush}"
+                                    VerticalAlignment="Center" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Margin="7,0,0,0">
+                                    <Run Text="{Binding StorageDescription, Mode=OneWay}" />
+                                    <Run>storage</Run>
+                                </TextBlock>
+                            </StackPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource OfferBorderStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <Path
+                                    Data="{StaticResource Icon.Users}"
+                                    Fill="{StaticResource Offer.DetailIcon.ColorBrush}"
+                                    VerticalAlignment="Center" />
+                                <TextBlock
+                                    Text="{Binding NumberOfUsersDescription}"
+                                    VerticalAlignment="Center"
+                                    Margin="7,0,0,0" />
+                            </StackPanel>
+                        </Border>
+
+                        <Border
+                            Background="{StaticResource Offer.Highlighted.ColorBrush}"
+                            Style="{StaticResource OfferBorderStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <Path
+                                    Data="{StaticResource Icon.Product.Vpn}"
+                                    Fill="{StaticResource Offer.DetailIcon.ColorBrush}"
+                                    VerticalAlignment="Center" />
+                                <TextBlock
+                                    Text="VPN"
+                                    VerticalAlignment="Center"
+                                    Margin="7,0,0,0" />
+                            </StackPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource OfferBorderStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <Path
+                                    Data="{StaticResource Icon.Product.Mail}"
+                                    Fill="{StaticResource Offer.DetailIcon.ColorBrush}"
+                                    VerticalAlignment="Center" />
+                                <TextBlock
+                                    Text="Mail"
+                                    VerticalAlignment="Center"
+                                    Margin="7,0,0,0" />
+                            </StackPanel>
+                        </Border>
+
+                        <Border
+                            Background="{StaticResource Offer.Highlighted.ColorBrush}"
+                            Style="{StaticResource OfferBorderStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <Path
+                                    Data="{StaticResource Icon.Product.Calendar}"
+                                    Fill="{StaticResource Offer.DetailIcon.ColorBrush}"
+                                    VerticalAlignment="Center" />
+                                <TextBlock
+                                    Text="Calendar"
+                                    Margin="7,0,0,0" />
+                            </StackPanel>
+                        </Border>
+
+                        <Border Style="{StaticResource OfferBorderStyle}">
+                            <StackPanel Orientation="Horizontal">
+                                <Path
+                                    Data="{StaticResource Icon.Product.Pass}"
+                                    Fill="{StaticResource Offer.DetailIcon.ColorBrush}"
+                                    VerticalAlignment="Center" />
+                                <TextBlock
+                                    Text="Password Manager"
+                                    VerticalAlignment="Center"
+                                    Margin="7,0,0,0" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Border>
+
+                <Border
+                    Grid.Row="0"
+                    Background="{StaticResource Offer.Highlighted.ColorBrush}"
+                    BorderBrush="{StaticResource Section.Default.BorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="12"
+                    Visibility="{Binding IsRecommended, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsHidden}}"
+                    HorizontalAlignment="Center"
+                    Padding="20,8"
+                    Margin="0,0,0,-20">
+                    <StackPanel Orientation="Horizontal">
+                        <Path
+                            Data="{StaticResource Icon.FilledStar}"
+                            Fill="White" />
+                        <TextBlock
+                            Text="Recommended"
+                            Margin="12,0,0,0" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Text="Get more storage"
+            Style="{StaticResource Heading1Style}" />
+
+        <ItemsControl
+            Grid.Row="1"
+            ItemTemplate="{StaticResource UpgradeOfferTemplate}"
+            ItemsSource="{Binding RelevantOffers}"
+            Margin="0,20,0,0">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="1" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="FrameworkElement">
+                    <Setter Property="Margin" Value="10,0,0,0" />
+                    <Style.Triggers>
+                        <DataTrigger
+                            Binding="{Binding RelativeSource={RelativeSource PreviousData}}"
+                            Value="{x:Null}">
+                            <Setter Property="Margin" Value="0" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+        </ItemsControl>
+
+        <Button
+            AutomationProperties.AutomationId="SkipStorageOffersButton"
+            Grid.Row="2"
+            Content="_Not now"
+            Command="{Binding SkipCommand}"
+            Style="{StaticResource PrimaryButtonStyle}"
+            HorizontalAlignment="Left"
+            Margin="0,30,0,0" />
+    </Grid>
+</UserControl>

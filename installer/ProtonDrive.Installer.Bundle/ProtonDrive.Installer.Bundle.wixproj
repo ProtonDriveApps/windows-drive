@@ -1,0 +1,19 @@
+﻿<Project Sdk="WixToolset.Sdk/5.0.1">
+  <PropertyGroup>
+    <OutputType>Bundle</OutputType>
+    <OutputName>Proton Drive Setup $(Version)</OutputName>
+    <DefineConstants>ProductName=$(Product);ProductVersion=$(Version);CompanyName=$(Company)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(SourceRevisionId)' != ''">
+    <OutputName>$(OutputName) ($(SourceRevisionId))</OutputName>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="DummySplash.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Bal.wixext" Version="5.0.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProtonDrive.Installer.Package\ProtonDrive.Installer.Package.wixproj" />
+  </ItemGroup>
+</Project>

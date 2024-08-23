@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Fragment>
+    <CustomAction
+      Id="HideCancelButton"
+      BinaryRef="ProtonExtensions"
+      DllEntry="HideCancelButton"
+      Execute="immediate"
+      Return="ignore" />
+
+    <InstallExecuteSequence>
+      <Custom Action="HideCancelButton" Before="FindRelatedProducts" />
+    </InstallExecuteSequence>
+  </Fragment>
+</Wix>

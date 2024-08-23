@@ -1,0 +1,70 @@
+﻿<windows:CustomChromeWindow
+    x:Class="ProtonDrive.App.Windows.Views.Main.MainWindow"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:behaviors="clr-namespace:ProtonDrive.App.Windows.Toolkit.Behaviors"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:main="clr-namespace:ProtonDrive.App.Windows.Views.Main"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:onboarding="clr-namespace:ProtonDrive.App.Windows.Views.Onboarding"
+    xmlns:toolkit="clr-namespace:ProtonDrive.App.Windows.Toolkit"
+    xmlns:windows="clr-namespace:ProtonDrive.App.Windows.Toolkit.Windows"
+    Title="Proton Drive"
+    AutomationProperties.AutomationId="MainWindow"
+    TextElement.Foreground="{StaticResource Text.DarkTheme.Brush}"
+    WindowStartupLocation="CenterScreen"
+    Width="1200"
+    Height="600"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance main:MainWindowViewModel}">
+    <windows:CustomChromeWindow.Style>
+        <Style
+            TargetType="{x:Type windows:CustomChromeWindow}"
+            BasedOn="{StaticResource Window.DarkTheme.Style}">
+            <Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding IsOnboarding}"
+                    Value="True">
+                    <Setter Property="ActiveTitleBarBackground" Value="{StaticResource Titlebar.SignIn.Background}" />
+                    <Setter Property="ActiveTitleBarForeground" Value="{StaticResource Text.DarkTheme.Brush}" />
+                    <Setter Property="Background" Value="{StaticResource Window.DarkTheme.Background}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </windows:CustomChromeWindow.Style>
+
+    <FrameworkElement.Resources>
+        <DataTemplate DataType="{x:Type onboarding:AccountRootFolderSelectionStepViewModel}">
+            <onboarding:AccountRootFolderSelectionStepView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type onboarding:SyncFolderSelectionStepViewModel}">
+            <onboarding:SyncFolderSelectionStepView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type onboarding:UpgradeStorageStepViewModel}">
+            <onboarding:UpgradeStorageStepView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type main:MainViewModel}">
+            <main:MainView />
+        </DataTemplate>
+    </FrameworkElement.Resources>
+
+    <b:Interaction.Behaviors>
+        <behaviors:HideOnClosingWindowBehavior />
+        <behaviors:CloseDataContextOnClosingWindowBehavior />
+        <behaviors:VisibilityChangeNotificationBehavior />
+        <behaviors:ClearFocusOnMouseDownBehavior />
+    </b:Interaction.Behaviors>
+
+    <windows:CustomChromeWindow.InputBindings>
+        <MouseBinding
+            Command="{Binding DetailsPages.NavigateBackCommand}"
+            Gesture="{x:Static toolkit:MouseX1ButtonGesture.Instance}" />
+    </windows:CustomChromeWindow.InputBindings>
+
+    <ContentPresenter Content="{Binding Content}" />
+</windows:CustomChromeWindow>

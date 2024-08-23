@@ -1,0 +1,484 @@
+﻿<UserControl
+    x:Class="ProtonDrive.App.Windows.Views.Main.Account.AccountView"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:account="clr-namespace:ProtonDrive.App.Account;assembly=ProtonDrive.App"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:behaviors="clr-namespace:ProtonDrive.App.Windows.Toolkit.Behaviors"
+    xmlns:converters="clr-namespace:ProtonDrive.App.Windows.Toolkit.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ProtonDrive.App.Windows.Views.Main.Account"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance local:AccountViewModel}">
+    <UserControl.Resources>
+        <DataTemplate x:Key="ExceedingQuotaTemplate">
+            <Border
+                BorderBrush="{StaticResource PendingBrush}"
+                Style="{StaticResource RoundedSection.DarkTheme.Error}"
+                Margin="0,10,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Image
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Source="{StaticResource Icon.Warning}"
+                        Width="20"
+                        Height="20"
+                        VerticalAlignment="Center" />
+
+                    <TextBlock
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Text="You are about to reach your storage limit."
+                        FontSize="16"
+                        FontWeight="SemiBold"
+                        TextTrimming="CharacterEllipsis"
+                        Margin="15,0,0,0" />
+
+                    <WrapPanel
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Margin="15,0,0,0">
+                        <TextBlock
+                            Text="To ensure uninterrupted syncing, please get more storage now."
+                            Foreground="{StaticResource GrayBrush}"
+                            VerticalAlignment="Center" />
+                    </WrapPanel>
+
+                    <Button
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Content="Upgrade plan"
+                        Command="{Binding DataContext.UpgradePlanCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=local:AccountView}}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10,0,0,0" />
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ExceededQuotaTemplate">
+            <Border
+                Style="{StaticResource RoundedSection.DarkTheme.Error}"
+                Margin="0,10,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Image
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Source="{StaticResource Icon.Error}"
+                        Width="20"
+                        Height="20"
+                        VerticalAlignment="Center" />
+
+                    <TextBlock
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        FontSize="16"
+                        FontWeight="SemiBold"
+                        TextTrimming="CharacterEllipsis"
+                        Margin="15,0,0,0">
+                        <TextBlock.Style>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Text" Value="You are about to reach your storage limit." />
+                                <Style.Triggers>
+                                    <DataTrigger
+                                        Binding="{Binding DataContext.UserQuotaStatus, RelativeSource={RelativeSource FindAncestor, AncestorType=local:AccountView}}"
+                                        Value="{x:Static account:UserQuotaStatus.LimitExceeded}">
+                                        <Setter Property="Text" Value="Sync stopped. Your account has exceeded the storage capacity." />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
+
+                    <WrapPanel
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Margin="15,0,0,0">
+                        <TextBlock
+                            Text="To ensure uninterrupted syncing, please get more storage now."
+                            Foreground="{StaticResource GrayBrush}"
+                            TextTrimming="CharacterEllipsis"
+                            VerticalAlignment="Center" />
+                    </WrapPanel>
+
+                    <Button
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Content="Upgrade plan"
+                        Command="{Binding DataContext.UpgradePlanCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=local:AccountView}}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        Margin="10,0,0,0" />
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <local:UpgradePlanTemplateSelector
+            x:Key="UpgradePlanTemplateSelector"
+            ExceededQuotaTemplate="{StaticResource ExceededQuotaTemplate}"
+            ExceedingQuotaTemplate="{StaticResource ExceedingQuotaTemplate}" />
+    </UserControl.Resources>
+
+    <ScrollViewer
+        VerticalScrollBarVisibility="Auto"
+        Focusable="False">
+        <Grid Margin="24,24,20,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
+                <TextBlock
+                    Text="Account"
+                    Style="{StaticResource Heading1Style}"
+                    VerticalAlignment="Center" />
+            </StackPanel>
+
+            <Button
+                Grid.Row="1"
+                Command="{Binding ManageAccountCommand}"
+                AutomationProperties.HelpText="Manage your account"
+                Style="{StaticResource SectionButtonStyle}"
+                Margin="0,16,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border
+                        Grid.Column="0"
+                        Background="{StaticResource UserInitials.Background}"
+                        CornerRadius="4"
+                        Width="32"
+                        Height="32">
+                        <TextBlock
+                            Text="{Binding UserInitials, Mode=OneWay, FallbackValue=''}"
+                            Foreground="White"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center" />
+                    </Border>
+
+                    <TextBlock
+                        Grid.Column="1"
+                        TextTrimming="CharacterEllipsis"
+                        VerticalAlignment="Center"
+                        Margin="15,0,0,0">
+                        <TextBlock
+                            AutomationProperties.AutomationId="Username"
+                            Text="{Binding Username, Mode=OneWay, FallbackValue='Unknown user'}"
+                            ToolTip="{Binding Username, Mode=OneWay, FallbackValue=''}">
+                            <b:Interaction.Behaviors>
+                                <behaviors:TextBlockAutoToolTipBehavior />
+                            </b:Interaction.Behaviors>
+                        </TextBlock>
+                        <LineBreak />
+                        <Run
+                            Text="{Binding UserEmailAddress, Mode=OneWay, FallbackValue=''}"
+                            FontSize="{StaticResource TextBlock.Small.FontSize}"
+                            Foreground="{StaticResource GrayBrush}" />
+                    </TextBlock>
+
+                    <StackPanel
+                        Grid.Column="2"
+                        Orientation="Horizontal"
+                        VerticalAlignment="Center"
+                        Margin="15,0,0,0">
+                        <AccessText
+                            Text="Manage _account"
+                            Foreground="{StaticResource GrayBrush}"
+                            Height="20"
+                            VerticalAlignment="Center" />
+                        <Image
+                            Source="{StaticResource Icon.RightChevron}"
+                            Height="14"
+                            VerticalAlignment="Center"
+                            Margin="10,0,0,0" />
+                    </StackPanel>
+                </Grid>
+            </Button>
+
+            <StackPanel
+                Grid.Row="2"
+                Visibility="{Binding UsedSpace, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={x:Null}}"
+                Margin="0,20,0,0">
+
+                <TextBlock
+                    Text="Storage capacity"
+                    AutomationProperties.HeadingLevel="Level2"
+                    FontWeight="SemiBold" />
+
+                <Grid Margin="0,10,0,0">
+                    <ProgressBar
+                        x:Name="QuotaProgressBar"
+                        Maximum="{Binding MaxSpace}"
+                        Style="{StaticResource QuotaProgressBarStyle}"
+                        Value="{Binding UsedSpace, Mode=OneWay}" />
+
+                    <Border
+                        x:Name="LowStorageUsageIndicator"
+                        Background="{Binding Foreground, Source={x:Reference QuotaProgressBar}}"
+                        CornerRadius="4,0,0,4"
+                        Visibility="{Binding UsedSpace, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={StaticResource IntZero}}"
+                        Width="3"
+                        HorizontalAlignment="Left" />
+                </Grid>
+
+                <TextBlock
+                    Foreground="{StaticResource GrayBrush}"
+                    Margin="0,6,0,0">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}Total used space: {0} of {1}">
+                            <Binding
+                                Path="UsedSpace"
+                                Converter="{x:Static converters:FileSizeToStringConverter.Instance}" />
+                            <Binding
+                                Path="MaxSpace"
+                                Converter="{x:Static converters:FileSizeToStringConverter.Instance}" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+
+                <Button
+                    Command="{Binding ManagePlanCommand}"
+                    AutomationProperties.HelpText="See other Proton Drive plans"
+                    Style="{StaticResource SectionButtonStyle}"
+                    Margin="0,16,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image
+                            Grid.Column="0"
+                            Source="{StaticResource Icon.HardDrive}"
+                            Width="16"
+                            Height="16"
+                            VerticalAlignment="Center" />
+
+                        <StackPanel
+                            Grid.Column="1"
+                            Margin="15,0,0,0">
+                            <TextBlock
+                                Text="{Binding PlanDisplayName}"
+                                VerticalAlignment="Center" />
+
+                            <TextBlock
+                                Text="Get more storage"
+                                FontSize="{StaticResource TextBlock.Small.FontSize}"
+                                Foreground="{StaticResource GrayBrush}"
+                                VerticalAlignment="Center" />
+                        </StackPanel>
+
+                        <StackPanel
+                            Grid.Column="2"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center">
+                            <AccessText
+                                Text="See _plans"
+                                Foreground="{StaticResource GrayBrush}"
+                                Height="20"
+                                VerticalAlignment="Center" />
+                            <Image
+                                Source="{StaticResource Icon.RightChevron}"
+                                Height="14"
+                                VerticalAlignment="Center"
+                                Margin="10,0,0,0" />
+                        </StackPanel>
+                    </Grid>
+                </Button>
+            </StackPanel>
+
+            <StackPanel
+                Grid.Row="3"
+                Visibility="{Binding UserQuotaStatus, Mode=OneWay, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={x:Static account:UserQuotaStatus.Regular}}"
+                Margin="0,15,0,0">
+                <ContentPresenter
+                    Content="{Binding UserQuotaStatus}"
+                    ContentTemplateSelector="{StaticResource UpgradePlanTemplateSelector}" />
+            </StackPanel>
+
+            <StackPanel
+                Grid.Row="4"
+                Margin="0,24,0,0">
+                <TextBlock
+                    Text="Security"
+                    AutomationProperties.HeadingLevel="Level2"
+                    FontWeight="SemiBold" />
+
+                <Button
+                    Command="{Binding ChangePasswordCommand}"
+                    AutomationProperties.HelpText="Change your Proton Drive password"
+                    Style="{StaticResource SectionButtonStyle}"
+                    Margin="0,16,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image
+                            Grid.Column="0"
+                            Source="{StaticResource Icon.Key}"
+                            Width="16"
+                            Height="16"
+                            VerticalAlignment="Center" />
+
+                        <TextBlock
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Margin="15,0,0,0">
+                            <Run Text="Password" />
+                            <LineBreak />
+                            <Run
+                                Text="Change the password for your account."
+                                FontSize="{StaticResource TextBlock.Small.FontSize}"
+                                Foreground="{StaticResource GrayBrush}" />
+                        </TextBlock>
+
+                        <StackPanel
+                            Grid.Column="2"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center">
+                            <AccessText
+                                Text="_Change"
+                                Foreground="{StaticResource GrayBrush}"
+                                Height="20"
+                                VerticalAlignment="Center" />
+                            <Image
+                                Source="{StaticResource Icon.RightChevron}"
+                                Height="14"
+                                VerticalAlignment="Center"
+                                Margin="10,0,0,0" />
+                        </StackPanel>
+                    </Grid>
+                </Button>
+
+                <Button
+                    Command="{Binding ManageSessionsCommand}"
+                    AutomationProperties.HelpText="Manage your session. After 60 days of inactivity the session will expire."
+                    Style="{StaticResource SectionButtonStyle}"
+                    Margin="0,16,0,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image
+                            Grid.Column="0"
+                            Source="{StaticResource Icon.LockLayers}"
+                            Height="16 "
+                            VerticalAlignment="Center" />
+
+                        <TextBlock
+                            Grid.Column="1"
+                            TextWrapping="Wrap"
+                            Margin="15,0,0,0">
+                            <Run Text="Session management" />
+                            <LineBreak />
+                            <Run
+                                Text="Unless you sign out of your account or change your password, your session will remain active. Sessions expire after 60 days of inactivity."
+                                FontSize="{StaticResource TextBlock.Small.FontSize}"
+                                Foreground="{StaticResource GrayBrush}" />
+                        </TextBlock>
+
+                        <StackPanel
+                            Grid.Column="2"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            Margin="10,0,0,0">
+                            <AccessText
+                                Text="_Manage"
+                                Foreground="{StaticResource GrayBrush}"
+                                Height="20"
+                                VerticalAlignment="Center" />
+                            <Image
+                                Source="{StaticResource Icon.RightChevron}"
+                                Height="14"
+                                VerticalAlignment="Center"
+                                Margin="10,0,0,0" />
+                        </StackPanel>
+                    </Grid>
+                </Button>
+            </StackPanel>
+
+            <StackPanel
+                Grid.Row="5"
+                Margin="0,24,0,0">
+                <TextBlock
+                    Text="Account"
+                    AutomationProperties.HeadingLevel="Level2"
+                    FontWeight="SemiBold" />
+
+                <Button
+                    AutomationProperties.AutomationId="SignOutButton"
+                    Command="{Binding SignOutCommand}"
+                    AutomationProperties.HelpText="Sign out from Proton Drive"
+                    Style="{StaticResource SectionButtonStyle}"
+                    Margin="0,16,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <Image
+                            Source="{StaticResource Icon.SignOut}"
+                            Width="16"
+                            Height="16"
+                            VerticalAlignment="Center" />
+
+                        <StackPanel Margin="15,0,0,0">
+                            <AccessText
+                                Text="_Sign out"
+                                VerticalAlignment="Center" />
+                            <TextBlock
+                                Text="Sign out and disable sync. You can sign back in with the same account to resume sync."
+                                FontSize="{StaticResource TextBlock.Small.FontSize}"
+                                Foreground="{StaticResource GrayBrush}" />
+                        </StackPanel>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

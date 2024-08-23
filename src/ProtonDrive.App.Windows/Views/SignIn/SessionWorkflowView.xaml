@@ -1,0 +1,107 @@
+﻿<UserControl
+    x:Class="ProtonDrive.App.Windows.Views.SignIn.SessionWorkflowView"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:ProtonDrive.App.Windows.Controls"
+    xmlns:converters="clr-namespace:ProtonDrive.App.Windows.Toolkit.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ProtonDrive.App.Windows.Views.SignIn"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+    Width="620"
+    MinHeight="580"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance local:SessionWorkflowViewModel}">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Icons/ProtonDriveWordmark.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type local:CredentialInputViewModel}">
+                <local:CredentialInputView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type local:SecondFactorInputViewModel}">
+                <local:SecondFactorInputView />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type local:DataPasswordInputViewModel}">
+                <local:DataPasswordInputView />
+            </DataTemplate>
+
+            <SolidColorBrush
+                x:Key="Separator.DarkTheme.Border"
+                po:Freeze="True"
+                Color="{StaticResource DarkTheme.Gray.ExtraDark}" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Image
+            Grid.Row="0"
+            Source="/Views/SignIn/Banner.DarkTheme.png"
+            Height="208" />
+
+        <Image
+            Grid.Row="1"
+            Source="{StaticResource ProtonDriveLogoImageSource}"
+            Width="175" />
+
+        <StackPanel
+            Grid.Row="2"
+            Visibility="{Binding IsConnecting, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            Margin="0,30,0,0">
+            <TextBlock
+                Text="Signing in to your account"
+                FontSize="20"
+                HorizontalAlignment="Center" />
+
+            <Border
+                Background="{StaticResource Separator.DarkTheme.Border}"
+                Width="400"
+                Height="1"
+                HorizontalAlignment="Center"
+                Margin="0,20,0,0" />
+
+            <controls:ProgressRing
+                HorizontalAlignment="Center"
+                Margin="0,36,0,0" />
+        </StackPanel>
+
+        <ContentControl
+            Grid.Row="2"
+            Width="340"
+            HorizontalAlignment="Center">
+            <ContentControl.Style>
+                <Style
+                    TargetType="ContentControl"
+                    BasedOn="{StaticResource {x:Type ContentControl}}">
+                    <Style.Triggers>
+                        <DataTrigger
+                            Binding="{Binding IsConnecting}"
+                            Value="False">
+                            <Setter Property="Content" Value="{Binding CurrentStepViewModel, ValidatesOnNotifyDataErrors=False}" />
+                        </DataTrigger>
+
+                        <DataTrigger
+                            Binding="{Binding IsConnecting}"
+                            Value="True">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Setter Property="Visibility" Value="Collapsed" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ContentControl.Style>
+        </ContentControl>
+    </Grid>
+</UserControl>

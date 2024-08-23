@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
+  <Fragment>
+    <Property Id="CLEANSUPAPPDATAONUNINSTALL" Value="1" Secure="yes" />
+
+    <StandardDirectory Id="LocalAppDataFolder" />
+
+    <!-- Only set the path if cleanup is enabled -->
+    <SetProperty Id="PathOfLocalAppDataToDelete" Value="[LocalAppDataFolder]Proton\[ProductName]" Condition="REMOVE AND (NOT UPGRADINGPRODUCTCODE) AND CLEANSUPAPPDATAONUNINSTALL = 1" Before="Wix4RemoveFoldersEx_$(sys.BUILDARCHSHORT)" Sequence="execute" />
+
+    <Component Id="LocalAppData" Directory="INSTALLFOLDER" Guid="EC53C504-7015-4F3F-A76F-615089E79F5A">
+      <!-- This removes the Proton Drive folder, even if it's not empty -->
+      <util:RemoveFolderEx Property="PathOfLocalAppDataToDelete" On="uninstall" />
+      <!-- This removes the Proton folder, only if it's empty -->
+      <RemoveFolder Directory="LocalAppDataFolder" Subdirectory="Proton" On="uninstall" />
+    </Component>
+
+    <CustomAction
+      Id="CleanUpFromApp"
+      Execute="immediate"
+      Directory="INSTALLFOLDER"
+      ExeCommand='"[#ProtonDrive.exe]" -uninstall' />
+
+    <InstallExecuteSequence>
+      <Custom Action="CleanUpFromApp" After="InstallValidate" Condition="REMOVE AND (NOT UPGRADINGPRODUCTCODE) AND CLEANSUPAPPDATAONUNINSTALL = 1" />
+    </InstallExecuteSequence>
+  </Fragment>
+</Wix>

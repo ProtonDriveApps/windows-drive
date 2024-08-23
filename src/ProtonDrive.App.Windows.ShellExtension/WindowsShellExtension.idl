@@ -1,0 +1,27 @@
+// WindowsShellExtension.idl : IDL source for WindowsShellExtension
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (WindowsShellExtension.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+    uuid(E7C15560-A668-4CC7-B801-63016CF7AEEC),
+    version(1.0),
+]
+library WindowsShellExtensionLib
+{
+    importlib("stdole2.tlb");
+    [
+        uuid(434CAC7A-CB48-4832-8F85-83ADE7E52DAC)
+    ]
+    coclass ContextMenuHandler
+    {
+        [default] interface IContextMenu;
+        interface IShellExtInit;
+    };
+};
+
+import "shobjidl.idl";

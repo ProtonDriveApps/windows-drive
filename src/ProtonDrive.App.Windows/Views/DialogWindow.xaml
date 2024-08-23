@@ -1,0 +1,14 @@
+﻿<windows:CustomChromeWindow
+    x:Class="ProtonDrive.App.Windows.Views.DialogWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:ProtonDrive.App.Windows.Views"
+    xmlns:windows="clr-namespace:ProtonDrive.App.Windows.Toolkit.Windows"
+    Title="{Binding Path=(views:IDialogViewModel.Title), Mode=OneWay, TargetNullValue='Proton Drive'}"
+    Content="{Binding Mode=OneWay}"
+    Style="{StaticResource DialogStyle}"
+    WindowStartupLocation="CenterScreen"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance views:IDialogViewModel}" />

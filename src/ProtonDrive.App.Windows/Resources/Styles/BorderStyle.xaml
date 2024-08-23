@@ -1,0 +1,56 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+
+    <SolidColorBrush
+        x:Key="Section.Default.Background"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Gray.ExtraExtraDark}" />
+
+    <SolidColorBrush
+        x:Key="Section.Default.BorderBrush"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Gray.ExtraDark}" />
+
+    <SolidColorBrush
+        x:Key="Section.Error.Background"
+        po:Freeze="True"
+        Color="#22161F" />
+
+    <SolidColorBrush
+        x:Key="Section.Error.BorderBrush"
+        po:Freeze="True"
+        Color="{StaticResource RedColor}" />
+
+    <SolidColorBrush
+        x:Key="Section.Warning.BorderBrush"
+        po:Freeze="True"
+        Color="Orange" />
+
+    <Style
+        x:Key="RoundedSection.DarkTheme"
+        TargetType="Border">
+        <Setter Property="BorderBrush" Value="{StaticResource Section.Default.BorderBrush}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="Padding" Value="16,10" />
+        <Setter Property="Background" Value="{StaticResource Section.Default.Background}" />
+    </Style>
+
+    <Style
+        x:Key="RoundedSection.DarkTheme.Error"
+        TargetType="Border"
+        BasedOn="{StaticResource RoundedSection.DarkTheme}">
+        <Setter Property="Background" Value="{StaticResource Section.Error.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Section.Error.BorderBrush}" />
+    </Style>
+
+    <Style
+        x:Key="RoundedSection.DarkTheme.Warning"
+        TargetType="Border"
+        BasedOn="{StaticResource RoundedSection.DarkTheme}">
+        <Setter Property="Background" Value="{StaticResource Section.Error.Background}" />
+        <Setter Property="BorderBrush" Value="{StaticResource Section.Warning.BorderBrush}" />
+    </Style>
+</ResourceDictionary>

@@ -1,0 +1,190 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:po="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/Resources/Styles/ColorPalette.xaml" />
+        <ResourceDictionary Source="/Resources/Styles/ColorPalette.DarkTheme.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    <SolidColorBrush
+        x:Key="NegativeBrush"
+        po:Freeze="True"
+        Color="{StaticResource RedColor}" />
+
+    <SolidColorBrush
+        x:Key="PositiveBrush"
+        po:Freeze="True"
+        Color="{StaticResource GreenColor}" />
+
+    <SolidColorBrush
+        x:Key="WhiteBrush"
+        po:Freeze="True"
+        Color="White" />
+
+    <SolidColorBrush
+        x:Key="GrayBrush"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Gray}" />
+
+    <SolidColorBrush
+        x:Key="PendingBrush"
+        po:Freeze="True"
+        Color="Orange" />
+
+    <SolidColorBrush
+        x:Key="NeutralBrush"
+        po:Freeze="True"
+        Color="Gray" />
+
+    <SolidColorBrush
+        x:Key="Text.Normal.Brush"
+        po:Freeze="True"
+        Color="{StaticResource BlackTextColor}" />
+
+    <SolidColorBrush
+        x:Key="Text.DarkTheme.Brush"
+        po:Freeze="True"
+        Color="White" />
+
+    <SolidColorBrush
+        x:Key="ErrorBrush"
+        po:Freeze="True"
+        Color="{StaticResource RedColor}" />
+
+    <SolidColorBrush
+        x:Key="PrimaryColorBrush"
+        po:Freeze="True"
+        Color="{StaticResource PrimaryColor}" />
+
+    <SolidColorBrush
+        x:Key="DarkPrimaryColorBrush"
+        po:Freeze="True"
+        Color="{StaticResource PrimaryColor.Dark}" />
+
+    <SolidColorBrush
+        x:Key="ExtraDarkPrimaryColorBrush"
+        po:Freeze="True"
+        Color="{StaticResource PrimaryColor.ExtraDark}" />
+
+    <SolidColorBrush
+        x:Key="PrimaryButton.Default.Background"
+        po:Freeze="True"
+        Color="{StaticResource PrimaryColor}" />
+
+    <SolidColorBrush
+        x:Key="PrimaryButton.MouseOver.Background"
+        po:Freeze="True"
+        Color="{StaticResource PrimaryColor.Dark}" />
+
+    <SolidColorBrush
+        x:Key="PrimaryButton.Pressed.Background"
+        po:Freeze="True"
+        Color="{StaticResource PrimaryColor.ExtraDark}" />
+
+    <SolidColorBrush
+        x:Key="NavigationMenu.Default.Background"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Black.Light}" />
+
+    <SolidColorBrush
+        x:Key="SeparatorBrush"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Gray.Dark}" />
+
+    <SolidColorBrush
+        x:Key="NavigationMenu.Separator.BorderBrush"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Gray.Dark}" />
+
+    <SolidColorBrush
+        x:Key="MenuButton.MouseOver.Background"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Black.ExtraLight}" />
+
+    <SolidColorBrush
+        x:Key="StatelessToggleButton.Background"
+        po:Freeze="True"
+        Color="LightGray" />
+
+    <SolidColorBrush
+        x:Key="StatelessToggleButton.MouseOver.Background"
+        po:Freeze="True"
+        Color="{StaticResource GrayColor}" />
+
+    <SolidColorBrush
+        x:Key="StatelessToggleButton.DarkTheme.MouseOver.Background"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Black.Light}" />
+
+    <SolidColorBrush
+        x:Key="PrimaryButton.Default.Foreground"
+        po:Freeze="True"
+        Color="{StaticResource WhiteColor}" />
+
+    <SolidColorBrush
+        x:Key="Window.Default.BorderBrush"
+        po:Freeze="True"
+        Color="#707070" />
+
+    <SolidColorBrush
+        x:Key="Window.Inactive.BorderBrush"
+        po:Freeze="True"
+        Color="#AAAAAA" />
+
+    <SolidColorBrush
+        x:Key="Window.Inactive.Foreground"
+        po:Freeze="True"
+        Color="#AAAAAA" />
+
+    <SolidColorBrush
+        x:Key="Window.Default.Background"
+        po:Freeze="True"
+        Color="{StaticResource WhiteColor}" />
+
+    <SolidColorBrush
+        x:Key="Window.DarkTheme.Background"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Black.Light}" />
+
+    <SolidColorBrush
+        x:Key="Window.SignIn.Background"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Black}" />
+
+    <SolidColorBrush
+        x:Key="Window.Page.Background"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Black}" />
+
+    <SolidColorBrush
+        x:Key="Titlebar.Default.Background"
+        po:Freeze="True"
+        Color="{StaticResource GrayColor.Light}" />
+
+    <SolidColorBrush
+        x:Key="Titlebar.SignIn.Background"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Black}" />
+
+    <SolidColorBrush
+        x:Key="UserInitials.Background"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Black}" />
+
+    <SolidColorBrush
+        x:Key="NavigationPanel.Background"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Black.Light}" />
+
+    <SolidColorBrush
+        x:Key="Titlebar.Background"
+        po:Freeze="True"
+        Color="{StaticResource DarkTheme.Black.Light}" />
+
+    <SolidColorBrush
+        x:Key="ErrorPanelBackground"
+        po:Freeze="True"
+        Color="{StaticResource LightRedColor}" />
+</ResourceDictionary>

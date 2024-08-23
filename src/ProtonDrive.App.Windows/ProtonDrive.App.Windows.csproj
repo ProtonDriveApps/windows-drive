@@ -1,0 +1,80 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>$(DefaultTargetFramework)-windows10.0.17763.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <StartupObject>ProtonDrive.App.Windows.Program</StartupObject>
+    <ApplicationIcon>../../assets/ProtonDrive.ico</ApplicationIcon>
+    <AssemblyName>ProtonDrive</AssemblyName>
+    <AssemblyTitle>Proton Drive</AssemblyTitle>
+    <Platforms>AnyCPU;x64;ARM64;x86</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishReadyToRun>false</PublishReadyToRun>
+    <PublishTrimmed>false</PublishTrimmed>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>$(MSBuildProjectName).Tests</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>DynamicProxyGenAssembly2</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.WindowsDesktop.App.WindowsForms" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.122" />
+    <PackageReference Include="morelinq" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProtonDrive.App\ProtonDrive.App.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\Notification\Active.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Error.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Inactive.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Synchronized.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Synchronizing.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Offline.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Offline.Dark.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Paused.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Paused.Dark.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Warning.ico" />
+    <Resource Include="Views\SignIn\Banner.DarkTheme.png" />
+    <Resource Include="Views\Main\Activity\PausedSyncPlaceholder.png" />
+    <Resource Include="Views\Main\Activity\ActivityListPlaceholder.png" />
+    <Resource Include="Views\Main\Activity\InitializingSyncPlaceholder.png" />
+    <Resource Include="Views\Main\Computers\SyncedFoldersPlaceholder.png" />
+    <Resource Include="Views\Main\SharedWithMe\SharedWithMeListPlaceholder.png" />
+    <Resource Include="Views\Onboarding\FileExplorer.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+
+    <EmbeddedResource Update="Resources\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ContentWithTargetPath Include="Resources\Icons\Logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>Logo.png</TargetPath>
+    </ContentWithTargetPath>
+  </ItemGroup>
+</Project>
