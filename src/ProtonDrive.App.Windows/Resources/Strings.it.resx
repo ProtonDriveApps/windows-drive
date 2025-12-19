@@ -1020,6 +1020,12 @@ disattivare l'ottimizzazione della memoria in qualsiasi momento.</value>
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>Localizzazione</value>
   </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Get early access and help us test new versions of Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Beta access</value>
+  </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>La tua cartella Proton Drive:</value>
   </data>
@@ -1630,7 +1636,7 @@ I contenuti dei file verranno scaricati sono se necessari.</value>
     <value>Completamento...</value>
   </data>
   <data name="SystemTray_Menu_Item_Exit">
-    <value>_Uscita</value>
+    <value>_Esci</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_OpenInBrowser">

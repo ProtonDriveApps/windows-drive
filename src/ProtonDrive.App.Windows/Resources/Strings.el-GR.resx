@@ -1020,6 +1020,12 @@
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>Τοποθεσία</value>
   </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Αποκτήστε πρώιμη πρόσβαση και βοηθήστε μας να δοκιμάσουμε νέες εκδόσεις του Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Πρόσβαση Beta</value>
+  </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Ο φάκελος Proton Drive σας:</value>
   </data>

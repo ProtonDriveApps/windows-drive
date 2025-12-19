@@ -19,7 +19,7 @@ namespace ProtonDrive.App.Windows.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Strings {
@@ -2585,6 +2585,24 @@ namespace ProtonDrive.App.Windows.Resources {
         internal static string Main_Settings_AccountRootFolder_Title {
             get {
                 return ResourceManager.GetString("Main_Settings_AccountRootFolder_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get early access and help us test new versions of Proton Drive..
+        /// </summary>
+        internal static string Main_Settings_EarlyAccess_HelpText {
+            get {
+                return ResourceManager.GetString("Main_Settings_EarlyAccess_HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beta access.
+        /// </summary>
+        internal static string Main_Settings_EarlyAccess_Title {
+            get {
+                return ResourceManager.GetString("Main_Settings_EarlyAccess_Title", resourceCulture);
             }
         }
         

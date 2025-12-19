@@ -20,7 +20,7 @@ public enum EventType
 
     /// <summary>
     /// A file or folder metadata was updated. Includes updates to name, parent link,
-    /// shares, share urls, also to state (stable, trashed, permanently deleted).
+    /// shares, share urls, also to state (active, trashed, permanently deleted).
     /// </summary>
     UpdateMetadata = 3,
 }

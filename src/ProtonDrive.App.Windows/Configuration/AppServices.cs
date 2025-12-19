@@ -6,6 +6,7 @@ using ProtonDrive.App.Account;
 using ProtonDrive.App.Authentication;
 using ProtonDrive.App.Configuration;
 using ProtonDrive.App.Devices;
+using ProtonDrive.App.EarlyAccess;
 using ProtonDrive.App.FileSystem.Metadata.GoogleTakeout;
 using ProtonDrive.App.InterProcessCommunication;
 using ProtonDrive.App.Localization;
@@ -227,6 +228,7 @@ internal static class AppServices
             .AddSingleton<IPhotosFeatureStateAware>(provider => provider.GetRequiredService<PhotosImportViewModel>())
 
             .AddSingleton<SettingsViewModel>()
+            .AddSingleton<IEarlyAccessStateAware>(provider => provider.GetRequiredService<SettingsViewModel>())
             .AddSingleton<AboutViewModel>()
             .AddTransient<BugReportViewModel>()
             .AddSingleton<Func<BugReportViewModel>>(provider => provider.GetRequiredService<BugReportViewModel>)

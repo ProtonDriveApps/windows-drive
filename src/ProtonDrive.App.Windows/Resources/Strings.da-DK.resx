@@ -437,7 +437,7 @@ Slå synkroniseringen fra og til igen for at gendanne den og fjerne denne fejl.<
     <value>Filen er skrivebeskyttet</value>
   </data>
   <data name="FileSystemErrorCode_Value_ReadOnlyRoot">
-    <value>Filer og mapper, der kun kan ses, kan ikke ændres. Slå synkronisering fra og til under "Delt med mig" for at løse problemet.</value>
+    <value>Read-only filer og mapper kan ikke ændres. Slå synkronisering fra og til under "Delt med mig" for at løse problemet.</value>
   </data>
   <data name="FileSystemErrorCode_Value_ServerError">
     <value>Noget gik galt</value>
@@ -688,10 +688,10 @@ Slå synkroniseringen fra og til igen for at gendanne den og fjerne denne fejl.<
     <value>Klik på "Genoptag synkronisering" for at aktivere synkroniseringen</value>
   </data>
   <data name="Main_Activity_Intro_Paused_HelpText">
-    <value>Synkronisering er pauset</value>
+    <value>Synkronisering er sat på pause</value>
   </data>
   <data name="Main_Activity_Intro_Paused_Title">
-    <value>Synkronisering er pauset</value>
+    <value>Synkronisering er sat på pause</value>
   </data>
   <data name="Main_Activity_Rename_CurrentName_Label">
     <value>Nuværende navn:</value>
@@ -832,8 +832,8 @@ Slå synkroniseringen fra og til igen for at gendanne den og fjerne denne fejl.<
     <value>Optimér lagerplads</value>
   </data>
   <data name="Main_MyComputer_Folders_Column_StorageOptimization_Info_Tooltip">
-    <value>Optimér lagerplads ved at aktivere on‑demand sync.
-Filer optager kun lokal plads, når du åbner dem eller vælger at altid beholde dem på denne enhed. Du kan deaktivere lagerpladsoptimeringen til enhver tid.</value>
+    <value>Optimér lagerplads ved at aktivere on‑demand synkronisering.
+Filer optager kun lokal plads, når du åbner dem eller vælger altid beholde dem på denne enhed. Du kan deaktivere lagerpladsoptimeringen til enhver tid.</value>
   </data>
   <data name="Main_MyComputer_Folders_Intro_Description">
     <value>Tilføj mappe for at starte sikker synkronisering af filer til skyen</value>
@@ -887,7 +887,7 @@ Filer optager kun lokal plads, når du åbner dem eller vælger at altid beholde
     <value>Alle filer er altid tilgængelige på denne enhed</value>
   </data>
   <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1">
-    <value>Den "{0}" mappe kan ikke bruge on‑demand sync til at optimere lagerpladsen, fordi {1}.</value>
+    <value>Den "{0}" mappe kan ikke bruge on‑demand synkronisering til at optimere lagerpladsen, fordi {1}.</value>
     <comment>Placeholder {0}: folder name. Placeholder {1}: the reason text, one of resources with "StorageOptimizationErrorCode_Value_..." key.</comment>
   </data>
   <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_2">
@@ -904,7 +904,7 @@ Filer optager kun lokal plads, når du åbner dem eller vælger at altid beholde
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_MyComputer_Onboarding_Page1_Description">
-    <value>Aktivér on‑demand sync for at spare plads på harddrevet. Filer optager kun lokal lagerplads, når du åbner dem eller markerer dem som "Always keep on this device".</value>
+    <value>Aktivér on‑demand synkronisering for at spare plads på harddisken. Filer optager kun lokal lagerplads, når du åbner dem eller markerer dem som "Always keep on this device".</value>
     <comment>"Always keep on this device" is the exact text displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
   </data>
   <data name="Main_MyComputer_Onboarding_Page1_Title">
@@ -1017,6 +1017,12 @@ Filer optager kun lokal plads, når du åbner dem eller vælger at altid beholde
   </data>
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>Placering</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Få tidlig adgang og hjælp os med at teste nye versioner af Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Beta-adgang</value>
   </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Din Proton Drive-mappe:</value>
@@ -1303,7 +1309,7 @@ Indholdet af filerne downloades kun efter behov.</value>
     <value>Synkroniseringsmappe blev uventet afregistreret. Opret en ny synkroniseringsmappe.</value>
   </data>
   <data name="MappingErrorCode_Value_PhotoImportFailed">
-    <value>Importering af foto mislykkedes</value>
+    <value>Import af foto mislykkedes</value>
   </data>
   <data name="MappingErrorCode_Value_PhotosDisabled">
     <value>Proton Fotos ikke tilgængelig</value>
@@ -1517,10 +1523,10 @@ Indholdet af filerne downloades kun efter behov.</value>
     <value>Anden adgangskode</value>
   </data>
   <data name="SignIn_Text_SecurityKey">
-    <value>Indsæt en sikkerhedsnøgle, der er knyttet din Proton-konto.</value>
+    <value>Indsæt en sikkerhedsnøgle, der er knyttet til din Proton-konto.</value>
   </data>
   <data name="SignIn_Text_SecurityKeyNotSupported">
-    <value>Dit system understøtter ikke sikkerhedsnøgle</value>
+    <value>Dit system understøtter ikke sikkerhedsnøgler</value>
   </data>
   <data name="SignIn_Text_Username">
     <value>E-mail eller _brugernavn</value>
@@ -1562,7 +1568,7 @@ Indholdet af filerne downloades kun efter behov.</value>
     <value>flytbare drev understøttes ikke</value>
   </data>
   <data name="StorageOptimizationErrorCode_Value_Unknown">
-    <value>aktivering af on‑demand sync mislykkedes</value>
+    <value>aktivering af on‑demand synkronisering mislykkedes</value>
   </data>
   <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
     <value>lokal drevtype understøttes ikke</value>
@@ -1642,7 +1648,7 @@ Indholdet af filerne downloades kun efter behov.</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSync">
-    <value>_Pause synkroniseringen</value>
+    <value>_Sæt synkroniseringen på pause</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_SignIn">

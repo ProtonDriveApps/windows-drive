@@ -6,6 +6,7 @@ using Polly.CircuitBreaker;
 using Proton.Drive.Sdk;
 using Proton.Drive.Sdk.Nodes;
 using Proton.Drive.Sdk.Nodes.Download;
+using Proton.Drive.Sdk.Nodes.Upload;
 using Proton.Drive.Sdk.Nodes.Upload.Verification;
 using Proton.Sdk;
 using ProtonDrive.Client.Cryptography;
@@ -46,6 +47,7 @@ internal static class ExceptionMapping
             // Proton Drive SDK exceptions
             NodeKeyAndSessionKeyMismatchException => CreateFileSystemClientException(FileSystemErrorCode.IntegrityFailure),
             SessionKeyAndDataPacketMismatchException => CreateFileSystemClientException(FileSystemErrorCode.IntegrityFailure),
+            IntegrityException => CreateFileSystemClientException(FileSystemErrorCode.IntegrityFailure),
             NodeMetadataDecryptionException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
             FileContentsDecryptionException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
             NodeWithSameNameExistsException => CreateFileSystemClientException(FileSystemErrorCode.DuplicateName),
@@ -98,6 +100,17 @@ internal static class ExceptionMapping
         };
 
         return mappedException is not null;
+    }
+
+    public static bool IsSdkIntegrityFailure(Exception exception)
+    {
+        return exception is
+            CryptographicException or
+            NodeMetadataDecryptionException or
+            FileContentsDecryptionException or
+            NodeKeyAndSessionKeyMismatchException or
+            SessionKeyAndDataPacketMismatchException or
+            IntegrityException;
     }
 
     private static FileSystemErrorCode ToErrorCode(Proton.Sdk.Api.ResponseCode value)

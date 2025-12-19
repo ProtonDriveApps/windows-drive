@@ -19,6 +19,7 @@ public class DriveApiConfig
     public int DriveApiNumberOfRetries { get; internal set; }
     public TimeSpan EventsPollingInterval { get; internal set; }
     public TimeSpan ForeignVolumeEventsPollingInterval { get; internal set; }
+    public TimeSpan EventsThrottleInterval { get; internal set; }
     public int ConsecutiveErrorsBeforeSwitchingOffline { get; internal set; }
     public TimeSpan DelayBeforeSwitchingOnline { get; internal set; }
     public TimeSpan FeaturesUpdateInterval { get; internal set; }

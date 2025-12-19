@@ -6,6 +6,7 @@ using ProtonDrive.Client.Events;
 using ProtonDrive.Client.RemoteNodes;
 using ProtonDrive.Client.Shares.Events;
 using ProtonDrive.Client.Volumes.Events;
+using ProtonDrive.Shared;
 using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Shared.Logging;
 using ProtonDrive.Shared.Repository;
@@ -18,10 +19,12 @@ internal sealed class RemoteEventLogClient : IEventLogClient<string>, IDisposabl
 {
     private readonly bool _isVolumeBased;
     private readonly string _volumeOrShareId;
+    private readonly IRepository<string> _anchorIdRepository;
+    private readonly TimeSpan _throttleInterval;
     private readonly IVolumeEventClient _volumeEventClient;
     private readonly IShareEventClient _shareEventClient;
     private readonly IRemoteNodeService _remoteNodeService;
-    private readonly IRepository<string> _anchorIdRepository;
+    private readonly IClock _clock;
     private readonly ILogger<RemoteEventLogClient> _logger;
 
     private readonly string _volumeOrShare;
@@ -30,24 +33,29 @@ internal sealed class RemoteEventLogClient : IEventLogClient<string>, IDisposabl
 
     private DriveEventResumeToken _resumeToken = DriveEventResumeToken.Start;
     private bool _enabled;
+    private DateTime _lastPollingTime;
 
     public RemoteEventLogClient(
         bool isVolumeBased,
         string volumeOrShareId,
         IRepository<string> anchorIdRepository,
         TimeSpan pollInterval,
+        TimeSpan throttleInterval,
         IVolumeEventClient volumeEventClient,
         IShareEventClient shareEventClient,
         IRemoteNodeService remoteNodeService,
         IScheduler scheduler,
+        IClock clock,
         ILogger<RemoteEventLogClient> logger)
     {
         _isVolumeBased = isVolumeBased;
         _volumeOrShareId = volumeOrShareId;
+        _anchorIdRepository = anchorIdRepository;
+        _throttleInterval = throttleInterval;
         _volumeEventClient = volumeEventClient;
         _shareEventClient = shareEventClient;
         _remoteNodeService = remoteNodeService;
-        _anchorIdRepository = anchorIdRepository;
+        _clock = clock;
         _logger = logger;
 
         _volumeOrShare = isVolumeBased ? "volume" : "share";
@@ -65,6 +73,7 @@ internal sealed class RemoteEventLogClient : IEventLogClient<string>, IDisposabl
         LoadResumeToken();
 
         _enabled = true;
+        _lastPollingTime = DateTime.MinValue;
         _getEventsTimer.Start();
 
         GetEventsAsync();
@@ -133,11 +142,19 @@ internal sealed class RemoteEventLogClient : IEventLogClient<string>, IDisposabl
             return;
         }
 
+        if (_clock.UtcNow < _lastPollingTime + _throttleInterval)
+        {
+            _logger.LogInformation("Skipped retrieving remote events on {VolumeOrShare} with ID={VolumeOrShareId}, throttle interval has not passed", _volumeOrShare, _volumeOrShareId);
+            return;
+        }
+
         _logger.LogDebug("Started retrieving remote events on {VolumeOrShare} with ID={VolumeOrShareId}", _volumeOrShare, _volumeOrShareId);
 
         while (await GetEventsAsync(cancellationToken).ConfigureAwait(false))
         {
         }
+
+        _lastPollingTime = _clock.UtcNow;
 
         _logger.LogDebug("Finished retrieving remote events on {VolumeOrShare} with ID={VolumeOrShareId}", _volumeOrShare, _volumeOrShareId);
     }

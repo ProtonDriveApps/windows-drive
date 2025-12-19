@@ -1020,6 +1020,12 @@ inaktivera lagringsoptimering när som helst.</value>
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>Plats</value>
   </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Få förhandstillgång och hjälp oss testa nya versioner av Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Betaåtkomst</value>
+  </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Din Proton Drive-mapp:</value>
   </data>

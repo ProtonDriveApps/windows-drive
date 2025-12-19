@@ -1020,6 +1020,12 @@
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>Размяшчэнне</value>
   </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Атрымаць ранні доступ і дапамагчы нам пратэсціраваць новую версію Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Доступ да бэта-версіі</value>
+  </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Ваша папка Proton Drive:</value>
   </data>

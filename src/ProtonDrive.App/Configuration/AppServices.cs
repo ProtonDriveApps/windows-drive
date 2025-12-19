@@ -196,6 +196,7 @@ public static class AppServices
 
                 .AddSingleton<EarlyAccessService>()
                 .AddSingleton<IStartableService>(provider => provider.GetRequiredService<EarlyAccessService>())
+                .AddSingleton<IEarlyAccessService>(provider => provider.GetRequiredService<EarlyAccessService>())
 
                 .AddSingleton<RemoteSettingsService>()
                 .AddSingleton<IRemoteSettingsService>(provider => provider.GetRequiredService<RemoteSettingsService>())

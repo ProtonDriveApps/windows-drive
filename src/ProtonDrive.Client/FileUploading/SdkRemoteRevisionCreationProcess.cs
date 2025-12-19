@@ -10,17 +10,20 @@ internal sealed class SdkRemoteRevisionCreationProcess : IRevisionCreationProces
     private readonly FileUploader _fileUploader;
     private readonly IThumbnailProvider _thumbnailProvider;
     private readonly Action<Progress>? _progressCallback;
+    private readonly Action<Exception> _reportIntegrityFailure;
 
     public SdkRemoteRevisionCreationProcess(
         FileUploader fileUploader,
         NodeInfo<string> fileInfo,
         IThumbnailProvider thumbnailProvider,
-        Action<Progress>? progressCallback)
+        Action<Progress>? progressCallback,
+        Action<Exception> reportIntegrityFailure)
     {
         FileInfo = fileInfo;
         _fileUploader = fileUploader;
         _thumbnailProvider = thumbnailProvider;
         _progressCallback = progressCallback;
+        _reportIntegrityFailure = reportIntegrityFailure;
     }
 
     public NodeInfo<string> FileInfo { get; private set; }
@@ -54,6 +57,11 @@ internal sealed class SdkRemoteRevisionCreationProcess : IRevisionCreationProces
         }
         catch (Exception ex) when (ExceptionMapping.TryMapSdkClientException(ex, FileInfo.Id, includeObjectId: false, out var mappedException))
         {
+            if (ExceptionMapping.IsSdkIntegrityFailure(ex))
+            {
+                _reportIntegrityFailure.Invoke(ex);
+            }
+
             throw mappedException;
         }
     }

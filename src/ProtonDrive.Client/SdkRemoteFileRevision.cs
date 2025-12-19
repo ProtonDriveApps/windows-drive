@@ -10,18 +10,21 @@ internal sealed class SdkRemoteFileRevision : IRevision
 
     private readonly FileDownloader _fileDownloader;
     private readonly ExtendedAttributes? _extendedAttributes;
+    private readonly Action<Exception> _reportIntegrityFailure;
 
     public SdkRemoteFileRevision(
         FileDownloader fileDownloader,
         DateTime creationTimeUtc,
         DateTime lastWriteTimeUtc,
         ExtendedAttributes? extendedAttributes,
-        long sizeOnStorage)
+        long sizeOnStorage,
+        Action<Exception> reportIntegrityFailure)
     {
         _fileDownloader = fileDownloader;
         CreationTimeUtc = creationTimeUtc;
         LastWriteTimeUtc = lastWriteTimeUtc;
         _extendedAttributes = extendedAttributes;
+        _reportIntegrityFailure = reportIntegrityFailure;
 
         Size = _extendedAttributes?.Common?.Size ?? sizeOnStorage;
     }
@@ -42,15 +45,21 @@ internal sealed class SdkRemoteFileRevision : IRevision
         return Task.CompletedTask;
     }
 
-    public Task CopyContentToAsync(Stream destination, CancellationToken cancellationToken)
+    public async Task CopyContentToAsync(Stream destination, CancellationToken cancellationToken)
     {
         try
         {
             var controller = _fileDownloader.DownloadToStream(destination, NullProgressCallback, cancellationToken);
-            return controller.Completion;
+
+            await controller.Completion.ConfigureAwait(false);
         }
         catch (Exception ex) when (ExceptionMapping.TryMapSdkClientException(ex, id: null, includeObjectId: false, out var mappedException))
         {
+            if (ExceptionMapping.IsSdkIntegrityFailure(ex))
+            {
+                _reportIntegrityFailure.Invoke(ex);
+            }
+
             throw mappedException;
         }
     }

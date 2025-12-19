@@ -25,7 +25,7 @@
     <Project Path="src/ProtonDrive.Sync.Windows/ProtonDrive.Sync.Windows.csproj" />
     <Project Path="src/ProtonDrive.Update/ProtonDrive.Update.csproj" />
   </Folder>
-  <Folder Name="/Configuration/">
+  <Folder Name="/App/Configuration/">
     <File Path=".editorconfig" />
     <File Path=".gitignore" />
     <File Path="Directory.Build.props" />

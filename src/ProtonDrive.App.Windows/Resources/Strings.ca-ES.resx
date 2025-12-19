@@ -1020,6 +1020,12 @@ desactivar l'optimització d'emmagatzematge en qualsevol moment.</value>
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>Ubicació</value>
   </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Obtingueu un accés anticipat i ajudeu-nos a provar les noves versions de Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Accés beta</value>
+  </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>La vostra carpeta de Proton Drive:</value>
   </data>
@@ -1422,7 +1428,7 @@ El contingut dels fitxers es descarregarà només sota demanda.</value>
     <value></value>
   </data>
   <data name="PhotoImportFolderStatus_Value_Interrupted">
-    <value>La importació s'ha interromput</value>
+    <value>S'ha interromput la importació</value>
   </data>
   <data name="PhotoImportFolderStatus_Value_NotStarted">
     <value></value>

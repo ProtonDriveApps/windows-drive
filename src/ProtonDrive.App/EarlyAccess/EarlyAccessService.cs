@@ -5,7 +5,7 @@ using ProtonDrive.Shared.Repository;
 
 namespace ProtonDrive.App.EarlyAccess;
 
-internal sealed class EarlyAccessService : IStartableService
+internal sealed class EarlyAccessService : IStartableService, IEarlyAccessService
 {
     private readonly IRepository<UserSettings> _settingsRepository;
     private readonly Lazy<IEnumerable<IEarlyAccessStateAware>> _stateAware;
@@ -49,6 +49,26 @@ internal sealed class EarlyAccessService : IStartableService
         }
 
         return Task.CompletedTask;
+    }
+
+    void IEarlyAccessService.SetEarlyAccessStatus(EarlyAccessStatus status)
+    {
+        if (Status == status)
+        {
+            return;
+        }
+
+        SaveEarlyAccessEnabled(status);
+    }
+
+    private void SaveEarlyAccessEnabled(EarlyAccessStatus status)
+    {
+        var settings = _settingsRepository.Get() ?? new UserSettings();
+        settings.EarlyAccessEnabled = status == EarlyAccessStatus.Enabled;
+        _settingsRepository.Set(settings);
+
+        Status = status;
+        _logger.LogInformation(settings.EarlyAccessEnabled ? "Early access is now enabled" : "Early access is now disabled");
     }
 
     private void OnStatusChanged(EarlyAccessStatus value)

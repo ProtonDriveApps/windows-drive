@@ -795,22 +795,22 @@ Désactivez et réactivez sa synchronisation pour le restaurer et effacer cette 
     <value>{0} dossiers ne peuvent pas être synchronisé car ils ont un sous-dossier déjà synchronisé avec Proton Drive</value>
   </data>
   <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFileSystemAccessFailedFormat">
-    <value>{0} Les fichiers sont inaccessibles</value>
+    <value>{0} dossiers ne sont pas accessibles.</value>
   </data>
   <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFolderDoesNotExistFormat">
-    <value>{0} Les fichiers sont manquants ou ne peuvent être ouverts.</value>
+    <value>{0} dossiers sont introuvables ou ne peuvent être ouverts.</value>
   </data>
   <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalVolumeNotSupportedFormat">
-    <value>{0} Les fichiers sont impossibles d'être synchronisés car ils se trouvent sur un lecteur non pris en charge</value>
+    <value>{0} dossiers ne peuvent pas être synchronisé car ils se trouvent sur un lecteur non pris en charge</value>
   </data>
   <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NetworkFolderNotSupportedFormat">
-    <value>{0} Les fichiers ne peuvent pas être synchronisés puisque les dossiers réseau ne sont pas pris en charge.</value>
+    <value>{0} dossiers ne peuvent pas être synchronisés car les dossiers réseau ne sont pas pris en charge.</value>
   </data>
   <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat">
-    <value>{0} Les fichiers ne peuvent pas être synchronisés étant des fichiers du système.</value>
+    <value>{0} dossiers ne peuvent pas être synchronisés car il s'agit de dossiers système.</value>
   </data>
   <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
-    <value>Impossible d'ajouter {0} des fichiers</value>
+    <value>Impossible d'ajouter {0} dossiers</value>
   </data>
   <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder">
     <value>Impossible d'ajouter 1 dossier</value>
@@ -879,14 +879,14 @@ désactiver l'optimisation du stockage à tout moment.</value>
     <value>Retirer le dossier ?</value>
   </data>
   <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_1">
-    <value>Les fichiers dans le dossier "{0}" seront désormais disponibles en permanence sur votre appareil. Cela peut prendre quelques minutes avant que tous les fichiers ne soient téléchargés (vous pouvez vérifier le statut dans l’explorateur de fichiers).</value>
+    <value>Les fichiers dans le dossier « {0} » seront désormais toujours disponibles sur votre appareil. Cela peut prendre quelques minutes avant que tous les fichiers ne soient téléchargés (vous pouvez vérifier l’état dans l’explorateur de fichiers).</value>
     <comment>Placeholder {0}: folder name</comment>
   </data>
   <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_2">
     <value>Vous pouvez toujours libérer manuellement de l'espace pour chaque fichier dans ses paramètres.</value>
   </data>
   <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Title">
-    <value>Tous les fichiers sont disponibles sur cet appareil en permanence</value>
+    <value>Tous les fichiers sont disponibles en permanence sur cet appareil.</value>
   </data>
   <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1">
     <value>Le dossier « {0} » ne peut pas utiliser la synchronisation à la demande pour optimiser le stockage car {1}.</value>
@@ -945,7 +945,7 @@ désactiver l'optimisation du stockage à tout moment.</value>
     <value>Importation en cours... {0} sur {1}</value>
   </data>
   <data name="Main_Photos_Folders_Items_Label">
-    <value>Les éléments</value>
+    <value>éléments</value>
   </data>
   <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
     <value>_Ouvrir le dossier</value>
@@ -1019,6 +1019,12 @@ désactiver l'optimisation du stockage à tout moment.</value>
   </data>
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>Emplacement</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Bénéficiez d'un accès anticipé et aidez-nous à tester les nouvelles versions de Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Accès à la version bêta</value>
   </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Votre dossier Proton Drive :</value>
@@ -1136,7 +1142,7 @@ Le contenu des fichiers sera téléchargé à la demande uniquement.</value>
     <value>Pour ajouter des éléments, veuillez arrêter la synchronisation de certains éléments anciens.</value>
   </data>
   <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Limit">
-    <value>Vous ne pouvez synchroniser que {0} éléments simultanément.</value>
+    <value>Vous ne pouvez synchroniser que {0} éléments à la fois.</value>
   </data>
   <data name="Main_SharedWithMe_Warning_SharingUnavailable">
     <value>Le partage est temporairement indisponible.</value>

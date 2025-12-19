@@ -1,10 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
+using Proton.Drive.Sdk.Telemetry;
 using Proton.Sdk.Telemetry;
 using ProtonDrive.Client.Sdk.Metrics;
+using ProtonDrive.Shared.Reporting;
 
 namespace ProtonDrive.Client.Sdk;
 
-internal sealed class SdkDiagnostics(SdkMetrics metrics, ILoggerFactory loggerFactory) : ITelemetry
+internal sealed class SdkDiagnostics(SdkMetrics metrics, IErrorReporting errorReporting, ILoggerFactory loggerFactory) : ITelemetry
 {
     public ILogger GetLogger(string name)
     {
@@ -14,5 +16,20 @@ internal sealed class SdkDiagnostics(SdkMetrics metrics, ILoggerFactory loggerFa
     public void RecordMetric(IMetricEvent metricEvent)
     {
         metrics.Record(metricEvent);
+        ReportUnknownFileTransferError(metricEvent);
+    }
+
+    private void ReportUnknownFileTransferError(IMetricEvent metricEvent)
+    {
+        switch (metricEvent)
+        {
+            case UploadEvent { Error: UploadError.Unknown } uploadEvent:
+                errorReporting.CaptureError($"Drive SDK upload Unknown error: {uploadEvent.OriginalError}");
+                break;
+
+            case DownloadEvent { Error: DownloadError.Unknown } downloadEvent:
+                errorReporting.CaptureError($"Drive SDK download Unknown error: {downloadEvent.OriginalError}");
+                break;
+        }
     }
 }

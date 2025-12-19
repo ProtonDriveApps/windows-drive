@@ -33,7 +33,8 @@ internal sealed class RemoteFileSystemClientFactory : IRemoteFileSystemClientFac
     private readonly IRevisionManifestCreator _revisionManifestCreator;
     private readonly IBlockVerifierFactory _blockVerifierFactory;
     private readonly ILoggerFactory _loggerFactory;
-    private readonly Action<Exception> _reportBlockVerificationOrDecryptionFailure;
+
+    private readonly Action<Exception> _reportIntegrityFailure;
 
     public RemoteFileSystemClientFactory(
         DriveApiConfig driveApi,
@@ -72,7 +73,8 @@ internal sealed class RemoteFileSystemClientFactory : IRemoteFileSystemClientFac
         _revisionManifestCreator = revisionManifestCreator;
         _blockVerifierFactory = blockVerifierFactory;
         _loggerFactory = loggerFactory;
-        _reportBlockVerificationOrDecryptionFailure = errorReporting.CaptureException;
+
+        _reportIntegrityFailure = errorReporting.CaptureException;
     }
 
     public IFileSystemClient<string> CreateClient(FileSystemClientParameters parameters)
@@ -108,7 +110,7 @@ internal sealed class RemoteFileSystemClientFactory : IRemoteFileSystemClientFac
             _revisionManifestCreator,
             _blockVerifierFactory,
             _loggerFactory,
-            _reportBlockVerificationOrDecryptionFailure);
+            _reportIntegrityFailure);
     }
 
     private SdkFileSystemClient CreateSdkClient(FileSystemClientParameters parameters)
@@ -118,6 +120,7 @@ internal sealed class RemoteFileSystemClientFactory : IRemoteFileSystemClientFac
             _sdkClientFactory.GetOrCreateClient(),
             _fileContentTypeProvider,
             _remoteNodeService,
-            _linkApiClient);
+            _linkApiClient,
+            _reportIntegrityFailure);
     }
 }

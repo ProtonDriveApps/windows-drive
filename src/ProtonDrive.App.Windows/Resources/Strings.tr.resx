@@ -1018,6 +1018,12 @@ Dosyaların bu aygıtta yalnızca onları açtığınızda ya da her zaman bulun
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>Konum</value>
   </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Erken erişim elde edin ve Proton Drive'ın yeni sürümlerini test etmemize yardımcı olun.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Beta erişimi</value>
+  </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Proton Drive klasörünüz:</value>
   </data>

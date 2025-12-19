@@ -1020,6 +1020,12 @@ Optimalizaci úložiště můžete kdykoliv deaktivovat.</value>
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>Umístění</value>
   </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Získejte předběžný přístup a pomozte nám testovat nové verze Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Beta přístup</value>
+  </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Vaše složka Proton Drive:</value>
   </data>

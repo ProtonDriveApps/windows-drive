@@ -1020,6 +1020,12 @@ Optimalizáciu úložiska môžete kedykoľvek vypnúť.</value>
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>Poloha</value>
   </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Získajte skorší prístup a pomôžte nám testovať nové verzie Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Beta prístup</value>
+  </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Váš Proton Drive priečinok:</value>
   </data>

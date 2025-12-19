@@ -18,7 +18,7 @@ internal sealed class UpdateService
     private readonly ISchedulerTimer _timer;
     private readonly CoalescingAction _handleStateChange;
 
-    private bool? _isEarlyAccessEnabled;
+    private bool? _earlyAccessIsEnabled;
     private bool _stopping;
     private IAppUpdateState _state = new EmptyAppUpdateState();
     private AppUpdateStatus _prevStatus;
@@ -37,7 +37,7 @@ internal sealed class UpdateService
         _updateConfig = updateConfig;
         _appUpdate = appUpdate;
 
-        _appUpdate.StateChanged += AppUpdateOnStateChanged;
+        _appUpdate.StateChanged += OnAppUpdateStateChanged;
         messenger.RegisterAll(this);
 
         _timer = scheduler.CreateTimer();
@@ -51,12 +51,12 @@ internal sealed class UpdateService
 
     public void StartCheckingForUpdate()
     {
-        StartCheckingForUpdate(true);
+        StartCheckingForUpdate(manualCheck: true);
     }
 
     public void StartUpdating()
     {
-        _appUpdate.StartUpdating(false);
+        _appUpdate.StartUpdating(auto: false);
     }
 
     public Task<bool> TryInstallDownloadedUpdateAsync()
@@ -71,14 +71,18 @@ internal sealed class UpdateService
 
     void IEarlyAccessStateAware.OnEarlyAccessStateChanged(EarlyAccessStatus status)
     {
-        _isEarlyAccessEnabled = status is EarlyAccessStatus.Enabled;
+        // Upon app start, a cached value is notified.
+        // Further notifications contain a change due to manaul user action.
+        var isManualChange = _earlyAccessIsEnabled is not null;
+
+        _earlyAccessIsEnabled = status is EarlyAccessStatus.Enabled;
 
         if (!_sessionIsStarted)
         {
             return;
         }
 
-        StartCheckingForUpdate(manualCheck: false);
+        StartCheckingForUpdate(isManualChange);
         _timer.Start();
     }
 
@@ -86,7 +90,7 @@ internal sealed class UpdateService
     {
         _sessionIsStarted = value.Status == SessionStatus.Started;
 
-        if (!_sessionIsStarted || _isEarlyAccessEnabled is null)
+        if (!_sessionIsStarted || _earlyAccessIsEnabled is null)
         {
             _timer.Stop();
             return;
@@ -120,11 +124,11 @@ internal sealed class UpdateService
             return;
         }
 
-        _appUpdate.StartCheckingForUpdate(_isEarlyAccessEnabled ?? false, manualCheck);
+        _appUpdate.StartCheckingForUpdate(_earlyAccessIsEnabled ?? false, manualCheck);
         _lastCheckedAt = DateTime.UtcNow;
     }
 
-    private void AppUpdateOnStateChanged(object? sender, IAppUpdateState state)
+    private void OnAppUpdateStateChanged(object? sender, IAppUpdateState state)
     {
         _state = state;
         _handleStateChange.Run();

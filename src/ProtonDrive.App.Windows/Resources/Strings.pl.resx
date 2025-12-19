@@ -1020,6 +1020,12 @@ wyłączyć optymalizację przestrzeni dyskowej w dowolnym momencie.</value>
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>Lokalizacja</value>
   </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Get early access and help us test new versions of Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Beta access</value>
+  </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Folder Proton Drive:</value>
   </data>

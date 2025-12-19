@@ -1020,6 +1020,12 @@ desactivar la optimización del almacenamiento en cualquier momento.</value>
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>Ubicación</value>
   </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Obtén acceso anticipado y ayúdanos a probar nuevas versiones de Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Acceso beta</value>
+  </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Tu carpeta de Proton Drive:</value>
   </data>

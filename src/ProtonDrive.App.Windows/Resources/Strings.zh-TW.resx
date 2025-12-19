@@ -1019,6 +1019,12 @@
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>位置</value>
   </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Get early access and help us test new versions of Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Beta access</value>
+  </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>你的Proton Drive資料夾</value>
   </data>

@@ -998,7 +998,7 @@
     <value>Fényképek importálása</value>
   </data>
   <data name="Main_Photos_Info_Duplicates">
-    <value>We'll only import what's new — duplicates are skipped automatically.</value>
+    <value>Csak az újdonságokat importáljuk – az ismétlődéseket automatikusan kihagyjuk.</value>
   </data>
   <data name="Main_Photos_Title">
     <value>Fényképek</value>
@@ -1015,6 +1015,12 @@
   </data>
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>Hely</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Get early access and help us test new versions of Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Beta access</value>
   </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Az Ön Proton Drive mappája</value>

@@ -1,27 +1,34 @@
 ﻿using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
+using ProtonDrive.App.EarlyAccess;
 using ProtonDrive.App.Localization;
 using ProtonDrive.App.Windows.SystemIntegration;
+using ProtonDrive.Shared.Threading;
 
 namespace ProtonDrive.App.Windows.Views.Main.Settings;
 
-internal class SettingsViewModel : PageViewModel
+internal class SettingsViewModel : PageViewModel, IEarlyAccessStateAware
 {
     private readonly IOperatingSystemIntegrationService _operatingSystemIntegrationService;
+    private readonly IEarlyAccessService _earlyAccessService;
     private readonly ILanguageService _languageService;
+    private readonly SingleAction _updateEarlyAccess;
 
     private bool _appIsOpeningOnStartup;
     private bool _languageHasChanged;
+    private bool _earlyAccessEnabled;
     private Language _selectedLanguage;
 
     public SettingsViewModel(
         IApp app,
         IOperatingSystemIntegrationService operatingSystemIntegrationService,
         AccountRootSyncFolderViewModel accountRootSyncFolder,
+        IEarlyAccessService earlyAccessService,
         ILanguageService languageService)
     {
         AccountRootSyncFolder = accountRootSyncFolder;
         _operatingSystemIntegrationService = operatingSystemIntegrationService;
+        _earlyAccessService = earlyAccessService;
         _languageService = languageService;
         _appIsOpeningOnStartup = _operatingSystemIntegrationService.GetRunApplicationOnStartup();
 
@@ -29,6 +36,7 @@ internal class SettingsViewModel : PageViewModel
         _selectedLanguage = languageService.CurrentLanguage;
 
         RestartAppCommand = new AsyncRelayCommand(app.RestartAsync);
+        _updateEarlyAccess = new SingleAction(UpdateEarlyAccessAsync);
     }
 
     public IReadOnlyList<Language> SupportedLanguages { get; }
@@ -64,9 +72,27 @@ internal class SettingsViewModel : PageViewModel
         }
     }
 
+    public bool EarlyAccessEnabled
+    {
+        get => _earlyAccessEnabled;
+        set
+        {
+            if (SetProperty(ref _earlyAccessEnabled, value))
+            {
+                _updateEarlyAccess.Cancel();
+                _updateEarlyAccess.RunAsync();
+            }
+        }
+    }
+
     public ICommand RestartAppCommand { get; }
 
     public AccountRootSyncFolderViewModel AccountRootSyncFolder { get; }
+
+    void IEarlyAccessStateAware.OnEarlyAccessStateChanged(EarlyAccessStatus status)
+    {
+        EarlyAccessEnabled = status is EarlyAccessStatus.Enabled;
+    }
 
     internal override void OnActivated()
     {
@@ -77,5 +103,19 @@ internal class SettingsViewModel : PageViewModel
     {
         _languageService.CurrentLanguage = value;
         LanguageHasChanged = _languageService.HasLanguageChanged;
+    }
+
+    private async Task UpdateEarlyAccessAsync(CancellationToken cancellationToken)
+    {
+        const int throttlingBeforeExecuting = 1000;
+
+        await Task.Delay(TimeSpan.FromMilliseconds(throttlingBeforeExecuting), cancellationToken).ConfigureAwait(false);
+
+        if (cancellationToken.IsCancellationRequested)
+        {
+            return;
+        }
+
+        _earlyAccessService.SetEarlyAccessStatus(EarlyAccessEnabled ? EarlyAccessStatus.Enabled : EarlyAccessStatus.Disabled);
     }
 }

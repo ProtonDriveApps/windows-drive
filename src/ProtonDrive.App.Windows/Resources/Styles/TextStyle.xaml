@@ -17,6 +17,7 @@
     <system:String x:Key="icon-chevron-down">&#xE70D;</system:String>
     <system:String x:Key="icon-calendar">&#xE787;</system:String>
     <system:String x:Key="icon-locale-language">&#xF2B7;</system:String>
+    <system:String x:Key="icon-power-button">&#xE7E8;</system:String>
     <system:String x:Key="icon-error-full">&#xEB90;</system:String>
 
     <FontFamily x:Key="SegoeAssetsFont">Segoe MDL2 Assets</FontFamily>

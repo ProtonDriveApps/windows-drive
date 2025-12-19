@@ -779,6 +779,12 @@ disable storage optimization at any time.</value>
   <data name="Main_Settings_Language_Title" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="Main_Settings_EarlyAccess_Title" xml:space="preserve">
+    <value>Beta access</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText" xml:space="preserve">
+    <value>Get early access and help us test new versions of Proton Drive.</value>
+  </data>
   <data name="Main_Settings_Language_Button_Restart" xml:space="preserve">
     <value>Restart now</value>
   </data>

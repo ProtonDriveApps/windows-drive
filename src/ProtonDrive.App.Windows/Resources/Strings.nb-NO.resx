@@ -1020,6 +1020,12 @@ deaktivere lagringsoptimalisering når som helst.</value>
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>Plassering</value>
   </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Get early access and help us test new versions of Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Beta access</value>
+  </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Din Proton Drive-mappe:</value>
   </data>

@@ -1017,6 +1017,12 @@ Schalte ihre Synchronisierung aus und wieder ein, um sie wiederherzustellen und 
   <data name="Main_Settings_AccountRootFolder_Title">
     <value>Standort</value>
   </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Erhalte frühzeitigen Zugang und hilf uns, neue Versionen von Proton Drive zu testen.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Beta-Zugang</value>
+  </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Dein Proton Drive Ordner:</value>
   </data>

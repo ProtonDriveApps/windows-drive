@@ -17,6 +17,7 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
 {
     private readonly ProtonDriveClient _sdkClient;
     private readonly IFileContentTypeProvider _fileContentTypeProvider;
+    private readonly Action<Exception> _reportIntegrityFailure;
 
     private readonly string _volumeId;
     private readonly string? _virtualParentId;
@@ -27,11 +28,13 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
         ProtonDriveClient sdkClient,
         IFileContentTypeProvider fileContentTypeProvider,
         IRemoteNodeService remoteNodeService,
-        ILinkApiClient linkApiClient)
+        ILinkApiClient linkApiClient,
+        Action<Exception> reportIntegrityFailure)
     : base(parameters, linkApiClient, remoteNodeService, fileContentTypeProvider)
     {
         _sdkClient = sdkClient;
         _fileContentTypeProvider = fileContentTypeProvider;
+        _reportIntegrityFailure = reportIntegrityFailure;
 
         _volumeId = parameters.VolumeId;
         _virtualParentId = parameters.VirtualParentId;
@@ -105,7 +108,8 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
                 fileUploader,
                 info,
                 thumbnailProvider,
-                progressCallback);
+                progressCallback,
+                _reportIntegrityFailure);
         }
         catch
         {
@@ -144,7 +148,8 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
                 remoteFile.CreationTime,
                 remoteFile.ModificationTime,
                 remoteFile.ExtendedAttributes,
-                remoteFile.SizeOnStorage);
+                remoteFile.SizeOnStorage,
+                _reportIntegrityFailure);
         }
         catch
         {
@@ -205,7 +210,8 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
                 fileUploader,
                 nodeInfo,
                 thumbnailProvider,
-                progressCallback);
+                progressCallback,
+                _reportIntegrityFailure);
         }
         catch
         {
