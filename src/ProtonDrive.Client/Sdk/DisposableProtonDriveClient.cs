@@ -29,7 +29,8 @@ internal sealed class DisposableProtonDriveClient : IDisposable
                 _secretCacheRepository,
                 featureFlagProvider,
                 sdkDiagnostics,
-                clientInstanceIdentityProvider.GetClientInstanceId());
+                bindingsLanguage: "csharp",
+                uid: clientInstanceIdentityProvider.GetClientInstanceId());
         }
         catch
         {

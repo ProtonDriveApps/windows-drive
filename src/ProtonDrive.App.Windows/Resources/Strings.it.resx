@@ -1021,10 +1021,10 @@ disattivare l'ottimizzazione della memoria in qualsiasi momento.</value>
     <value>Localizzazione</value>
   </data>
   <data name="Main_Settings_EarlyAccess_HelpText">
-    <value>Get early access and help us test new versions of Proton Drive.</value>
+    <value>Ottieni l'accesso anticipato e aiutaci a testare le nuove versioni di Proton Drive.</value>
   </data>
   <data name="Main_Settings_EarlyAccess_Title">
-    <value>Beta access</value>
+    <value>Accesso a versioni beta</value>
   </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>La tua cartella Proton Drive:</value>

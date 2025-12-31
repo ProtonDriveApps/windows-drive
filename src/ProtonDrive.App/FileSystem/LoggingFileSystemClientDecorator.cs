@@ -41,7 +41,7 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
         return base.Enumerate(info, cancellationToken);
     }
 
-    public override Task<IRevision> OpenFileForReading(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public override async Task<IRevision> OpenFileForReading(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
         _logger.LogDebug(
             "Opening the file for reading \"{Root}\"/\"{Path}\"/{ParentId}/{Id}",
@@ -50,7 +50,16 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
             info.ParentId,
             info.Id);
 
-        return base.OpenFileForReading(info, cancellationToken);
+        var revision = await base.OpenFileForReading(info, cancellationToken).ConfigureAwait(false);
+
+        _logger.LogDebug(
+            "Opening the file for reading \"{Root}\"/\"{Path}\"/{ParentId}/{Id} completed",
+            info.Root?.Id,
+            info.Path,
+            info.ParentId,
+            info.Id);
+
+        return revision;
     }
 
     public override Task<NodeInfo<TId>> CreateDirectory(NodeInfo<TId> info, CancellationToken cancellationToken)
@@ -64,7 +73,7 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
         return base.CreateDirectory(info, cancellationToken);
     }
 
-    public override Task<IRevisionCreationProcess<TId>> CreateFile(
+    public override async Task<IRevisionCreationProcess<TId>> CreateFile(
         NodeInfo<TId> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -79,10 +88,20 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
             info.ParentId,
             tempFileName ?? string.Empty);
 
-        return base.CreateFile(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken);
+        var result = await base.CreateFile(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken)
+            .ConfigureAwait(false);
+
+        _logger.LogDebug(
+            "Creating a file \"{Root}\"/\"{Path}\"/{ParentId}/-, TempFileName=\"{TempFileName}\" completed, ready for transferring data",
+            info.Root?.Id,
+            info.Path,
+            info.ParentId,
+            tempFileName ?? string.Empty);
+
+        return result;
     }
 
-    public override Task<IRevisionCreationProcess<TId>> CreateRevision(
+    public override async Task<IRevisionCreationProcess<TId>> CreateRevision(
         NodeInfo<TId> info,
         long size,
         DateTime lastWriteTime,
@@ -100,7 +119,18 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
             info.Id,
             tempFileName ?? string.Empty);
 
-        return base.CreateRevision(info, size, lastWriteTime, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken);
+        var result = await base.CreateRevision(info, size, lastWriteTime, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken)
+            .ConfigureAwait(false);
+
+        _logger.LogDebug(
+            "Creating a revision \"{Root}\"/\"{Path}\"/{ParentId}/{Id}, TempFileName=\"{tempFileName}\" completed, ready for transferring data",
+            info.Root?.Id,
+            info.Path,
+            info.ParentId,
+            info.Id,
+            tempFileName ?? string.Empty);
+
+        return result;
     }
 
     public override Task Move(NodeInfo<TId> info, NodeInfo<TId> newInfo, CancellationToken cancellationToken)

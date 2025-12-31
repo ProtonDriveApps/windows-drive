@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
+using System.Net.Sockets;
 using System.Runtime.InteropServices;
 
 namespace ProtonDrive.Shared.Extensions;
@@ -38,7 +39,7 @@ public static class ExceptionTypeExtensions
 
     public static string? GetRelevantFormattedErrorCode(this Exception ex)
     {
-        return TryGetRelevantFormattedErrorCode(ex, out var errorCode) ? errorCode : default;
+        return TryGetRelevantFormattedErrorCode(ex, out var errorCode) ? errorCode : null;
     }
 
     public static bool TryGetRelevantFormattedErrorCode(this Exception ex, [MaybeNullWhen(false)] out string formattedErrorCode)
@@ -47,6 +48,17 @@ public static class ExceptionTypeExtensions
         {
             IFormattedErrorCodeProvider errorCodeProvider
                 => errorCodeProvider.TryGetRelevantFormattedErrorCode(out formattedErrorCode),
+
+            HttpRequestException httpException
+                => httpException.StatusCode != null
+                    ? TryFormatEnumValue(httpException.StatusCode.Value, out formattedErrorCode)
+                    : TryFormatEnumValue(httpException.HttpRequestError, out formattedErrorCode),
+
+            HttpIOException httpIoException
+                => TryFormatEnumValue(httpIoException.HttpRequestError, out formattedErrorCode),
+
+            SocketException socketException
+                => TryFormatEnumValue(socketException.SocketErrorCode, out formattedErrorCode),
 
             Win32Exception win32Exception
                 => TryFormatErrorCode(win32Exception.NativeErrorCode, 0, ErrorCodeFormat.Decimal, out formattedErrorCode),
@@ -85,6 +97,14 @@ public static class ExceptionTypeExtensions
         {
             // If the first bit is set to 1, it is likely to be the severity bit of an HRESULT which is usually displayed in hex format.
             return (errorCode & 0x80000000) != 0;
+        }
+
+        static bool TryFormatEnumValue<T>(T value, [MaybeNullWhen(false)] out string formattedCode)
+        where T : struct
+        {
+            formattedCode = value.ToString();
+
+            return formattedCode is not null;
         }
     }
 }

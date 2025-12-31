@@ -168,7 +168,7 @@ internal class UpdateLogging<TId, TAltId>
             if (_logger.IsEnabled(LogLevel.Debug))
             {
                 _logger.LogInformation(
-                    "Detected {OperationType} {Type} \"{Root}\"/\"{Path}\"/{Id} {AltId} to parent \"{NewRoot}\"/\"{NewPath}\"/{ParentId} {ParentAltId} as \"{NewName}\"",
+                    "Detected {OperationType} {Type} \"{Root}\"/\"{Path}\"/{Id} {AltId} to parent \"{NewRoot}\"/\"{NewPath}\"/{ParentId} {ParentAltId} as \"{NewName}\" from {PreviousParentId}",
                     operation.Type,
                     node.Type,
                     oldRoot,
@@ -179,12 +179,13 @@ internal class UpdateLogging<TId, TAltId>
                     newParentPath,
                     node.Parent!.Id,
                     node.Parent.AltId,
-                    model.Name);
+                    model.Name,
+                    previous.ParentId);
             }
             else
             {
                 _logger.LogInformation(
-                    "Detected {OperationType} {Type} \"{Root}\"/{Id} {AltId} to parent \"{NewRoot}\"/{ParentId} {ParentAltId}",
+                    "Detected {OperationType} {Type} \"{Root}\"/{Id} {AltId} to parent \"{NewRoot}\"/{ParentId} {ParentAltId} from {PreviousParentId}",
                     operation.Type,
                     node.Type,
                     oldRoot,
@@ -192,7 +193,8 @@ internal class UpdateLogging<TId, TAltId>
                     node.AltId,
                     newRoot,
                     node.Parent!.Id,
-                    node.Parent.AltId);
+                    node.Parent.AltId,
+                    previous.ParentId);
             }
         }
     }

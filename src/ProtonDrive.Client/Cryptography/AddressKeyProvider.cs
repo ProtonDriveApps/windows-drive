@@ -8,6 +8,7 @@ using ProtonDrive.Client.Authentication;
 using ProtonDrive.Client.Contracts;
 using ProtonDrive.Shared.Caching;
 using ProtonDrive.Shared.Extensions;
+using ProtonDrive.Shared.Logging;
 
 namespace ProtonDrive.Client.Cryptography;
 
@@ -153,8 +154,11 @@ internal sealed class AddressKeyProvider : IAddressKeyProvider
 
                 foreach (var address in addresses.OrderBy(x => x.Order))
                 {
+                    var emailAddressToLog = _logger.GetSensitiveValueForLogging(address.EmailAddress);
+
                     _logger.LogInformation(
-                        "User address, {Status}, active keys: {NumberOfActiveKeys}, inactive keys: {NumberOfInactiveKeys}, ID={Id}",
+                        "User address \"{EmailAddress}\", {Status}, active keys: {NumberOfActiveKeys}, inactive keys: {NumberOfInactiveKeys}, ID={Id}",
+                        emailAddressToLog,
                         address.Status,
                         address.Keys.Count(k => k.IsActive),
                         address.Keys.Count(k => !k.IsActive),
@@ -210,7 +214,7 @@ internal sealed class AddressKeyProvider : IAddressKeyProvider
 
                     if (primaryKeyIndex is null)
                     {
-                        _logger.LogError("Address with ID {AddressID} has no primary key", address.Id);
+                        _logger.LogError("User address \"{EmailAddress}\" with ID {AddressID} has no primary key", emailAddressToLog, address.Id);
                         continue;
                     }
 

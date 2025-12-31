@@ -29,12 +29,12 @@ internal sealed class SyncRootCallbackDispatcher : IAsyncDisposable
         _fileHydrationDemandHandler = fileHydrationDemandHandler;
         _logger = logger;
 
-        CallbackTable = new[]
-        {
-            new() { Type = CF_CALLBACK_TYPE.CF_CALLBACK_TYPE_FETCH_DATA, Callback = FetchData },
-            new() { Type = CF_CALLBACK_TYPE.CF_CALLBACK_TYPE_CANCEL_FETCH_DATA, Callback = CancelFetchData },
+        CallbackTable =
+        [
+            new CF_CALLBACK_REGISTRATION { Type = CF_CALLBACK_TYPE.CF_CALLBACK_TYPE_FETCH_DATA, Callback = FetchData },
+            new CF_CALLBACK_REGISTRATION { Type = CF_CALLBACK_TYPE.CF_CALLBACK_TYPE_CANCEL_FETCH_DATA, Callback = CancelFetchData },
             CF_CALLBACK_REGISTRATION.CF_CALLBACK_REGISTRATION_END,
-        };
+        ];
     }
 
     public CF_CALLBACK_REGISTRATION[] CallbackTable { get; }
@@ -71,7 +71,7 @@ internal sealed class SyncRootCallbackDispatcher : IAsyncDisposable
             FileSystemFileAccess.ReadAttributes,
             FileShare.ReadWrite | FileShare.Delete);
 
-        return file.ToNodeInfo(parentId: default, refresh: false).WithPath(filePath);
+        return file.ToNodeInfo(parentId: 0, refresh: false).WithPath(filePath);
     }
 
     private static long GetActualRequiredLength(long requiredLength, long fileSize)
@@ -91,13 +91,6 @@ internal sealed class SyncRootCallbackDispatcher : IAsyncDisposable
         long requiredLength,
         long localFileId)
     {
-        _logger.LogInformation(
-            "Aborting TRANSFER_DATA for TransferKey={TransferKey}, RequestKey={RequestKey}, RequiredFileOffset={RequiredFileOffset}, RequiredLength={RequiredLength}",
-            transferKey.GetHashCode(),
-            requestKey.GetHashCode(),
-            requiredFileOffset,
-            requiredLength);
-
         if (dataTransferException is not null && ExceptionMapping.TryMapException(dataTransferException, localFileId, out var mappedDataTransferException))
         {
             dataTransferException = mappedDataTransferException;
@@ -123,9 +116,29 @@ internal sealed class SyncRootCallbackDispatcher : IAsyncDisposable
             },
         };
 
+        _logger.LogInformation(
+            "Aborting TRANSFER_DATA for TransferKey={TransferKey}, RequestKey={RequestKey}, RequiredFileOffset={RequiredFileOffset}, RequiredLength={RequiredLength}",
+            transferKey.GetHashCode(),
+            requestKey.GetHashCode(),
+            requiredFileOffset,
+            requiredLength);
+
         try
         {
-            CfExecute(operation, ref parameters).ThrowExceptionForHR();
+            var result = CfExecute(operation, ref parameters);
+
+            if (result.Failed)
+            {
+                _logger.LogWarning(
+                    "Aborting TRANSFER_DATA for TransferKey={TransferKey}, RequestKey={RequestKey}, RequiredFileOffset={RequiredFileOffset}, RequiredLength={RequiredLength} failed ({HResult})",
+                    transferKey.GetHashCode(),
+                    requestKey.GetHashCode(),
+                    requiredFileOffset,
+                    requiredLength,
+                    result);
+            }
+
+            result.ThrowExceptionForHR();
         }
         catch (OperationCanceledException)
         {
@@ -221,11 +234,6 @@ internal sealed class SyncRootCallbackDispatcher : IAsyncDisposable
 
             if (requiredFileOffset > 0)
             {
-                _logger.LogInformation(
-                    "Sending RESTART_HYDRATION for TransferKey={TransferKey}, RequestKey={RequestKey}",
-                    transferKey.GetHashCode(),
-                    requestKey.GetHashCode());
-
                 // If the offset is not 0, we can assume that this is trying to resume a previously failed hydration.
                 // At the moment, we do not support that, so we request a hydration restart.
                 RestartHydration(connectionKey, transferKey, requestKey, requiredFileOffset, requiredLength, callbackInfo.FileId);
@@ -363,7 +371,7 @@ internal sealed class SyncRootCallbackDispatcher : IAsyncDisposable
 
             CfExecute(operation, ref parameters).ThrowExceptionForHR();
 
-            return file.ToNodeInfo(parentId: default, refresh: true);
+            return file.ToNodeInfo(parentId: 0, refresh: true);
         }
     }
 
@@ -390,9 +398,25 @@ internal sealed class SyncRootCallbackDispatcher : IAsyncDisposable
             RestartHydration = new RESTARTHYDRATION { Flags = CF_OPERATION_RESTART_HYDRATION_FLAGS.CF_OPERATION_RESTART_HYDRATION_FLAG_NONE },
         };
 
+        _logger.LogInformation(
+            "RESTART_HYDRATION for TransferKey={TransferKey}, RequestKey={RequestKey}",
+            transferKey.GetHashCode(),
+            requestKey.GetHashCode());
+
         try
         {
-            CfExecute(operation, ref parameters).ThrowExceptionForHR();
+            var result = CfExecute(operation, ref parameters);
+
+            if (result.Failed)
+            {
+                _logger.LogWarning(
+                    "RESTART_HYDRATION for TransferKey={TransferKey}, RequestKey={RequestKey} failed ({HResult})",
+                    transferKey.GetHashCode(),
+                    requestKey.GetHashCode(),
+                    result);
+            }
+
+            result.ThrowExceptionForHR();
         }
         catch (Exception ex)
         {

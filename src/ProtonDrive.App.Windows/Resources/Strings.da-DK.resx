@@ -437,7 +437,7 @@ Slå synkroniseringen fra og til igen for at gendanne den og fjerne denne fejl.<
     <value>Filen er skrivebeskyttet</value>
   </data>
   <data name="FileSystemErrorCode_Value_ReadOnlyRoot">
-    <value>Read-only filer og mapper kan ikke ændres. Slå synkronisering fra og til under "Delt med mig" for at løse problemet.</value>
+    <value>Skrivebeskyttede filer og mapper kan ikke ændres. Slå synkronisering fra og til under "Delt med mig" for at løse problemet.</value>
   </data>
   <data name="FileSystemErrorCode_Value_ServerError">
     <value>Noget gik galt</value>
@@ -921,7 +921,7 @@ Filer optager kun lokal plads, når du åbner dem eller vælger altid beholde de
     <value>1.</value>
   </data>
   <data name="Main_MyComputer_Onboarding_Page2_Point_2">
-    <value>Vælg "Always keep on this device" for at gemme den offline, eller "Free up space" for at beholde den udelukkende i skyen.</value>
+    <value>Vælg "Behold altid på denne enhed" for at gemme den offline, eller "Frigør plads" for kun at beholde den i skyen.</value>
     <comment>"Always keep on this device" and "Free up space" are the exact texts displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
   </data>
   <data name="Main_MyComputer_Onboarding_Page2_Point_2_Label">

@@ -1021,10 +1021,10 @@ deaktivere lagringsoptimalisering når som helst.</value>
     <value>Plassering</value>
   </data>
   <data name="Main_Settings_EarlyAccess_HelpText">
-    <value>Get early access and help us test new versions of Proton Drive.</value>
+    <value>Få tidlig tilgang og hjelp oss med å teste nye versjoner av Proton Drive.</value>
   </data>
   <data name="Main_Settings_EarlyAccess_Title">
-    <value>Beta access</value>
+    <value>Beta-tilgang</value>
   </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Din Proton Drive-mappe:</value>

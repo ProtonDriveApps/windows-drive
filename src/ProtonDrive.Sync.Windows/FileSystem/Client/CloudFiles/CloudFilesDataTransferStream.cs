@@ -158,7 +158,20 @@ internal sealed class CloudFilesDataTransferStream : Stream
                     _transferPosition,
                     chunk.Length);
 
-                CfExecute(_operation, ref parameters).ThrowExceptionForHR();
+                var result = CfExecute(_operation, ref parameters);
+
+                if (result.Failed)
+                {
+                    _logger.LogWarning(
+                        "TRANSFER_DATA for TransferKey={TransferKey}, RequestKey={RequestKey}, Offset={_position}, Length={Count} failed ({HResult})",
+                        _operation.TransferKey.GetHashCode(),
+                        _operation.RequestKey.GetHashCode(),
+                        _transferPosition,
+                        chunk.Length,
+                        result);
+                }
+
+                result.ThrowExceptionForHR();
             }
             catch (Exception e) when (ExceptionMapping.TryMapException(e, _id, out var mappedException))
             {
@@ -184,7 +197,27 @@ internal sealed class CloudFilesDataTransferStream : Stream
             },
         };
 
-        CfExecute(operation, ref parameters).ThrowIfFailed();
+        _logger.LogDebug(
+            "ACK_DATA for TransferKey={TransferKey}, RequestKey={RequestKey}, Offset={_position}, Length={Count}",
+            _operation.TransferKey.GetHashCode(),
+            _operation.RequestKey.GetHashCode(),
+            _transferPosition,
+            length);
+
+        var result = CfExecute(operation, ref parameters);
+
+        if (result.Failed)
+        {
+            _logger.LogWarning(
+                "TRANSFER_DATA for TransferKey={TransferKey}, RequestKey={RequestKey}, Offset={_position}, Length={Count} failed ({HResult})",
+                _operation.TransferKey.GetHashCode(),
+                _operation.RequestKey.GetHashCode(),
+                _transferPosition,
+                length,
+                result);
+        }
+
+        result.ThrowIfFailed();
     }
 
     private void FlushCarryOver()

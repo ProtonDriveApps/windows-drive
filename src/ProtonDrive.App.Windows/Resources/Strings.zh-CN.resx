@@ -139,7 +139,7 @@
     <value>已登录</value>
   </data>
   <data name="AccountErrorCode_Value_AccountSwitchingFailed">
-    <value>切换账户失败。请重新启动应用程序。</value>
+    <value>切换账户失败。请重启应用程序。</value>
   </data>
   <data name="AccountErrorCode_Value_Delinquent">
     <value>账户有未付发票。请前往控制面板付款或告知您的管理员。</value>
@@ -166,7 +166,7 @@
     <comment>Indicates a file being downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Local_InProgress_SyncActivityType_Value_FetchUpdates">
-    <value>获取更新</value>
+    <value>获取更新中</value>
     <comment>Indicates local file system changes being fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Local_InProgress_SyncActivityType_Value_Move">
@@ -254,11 +254,11 @@
     <comment>Indicates changes have been fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Move">
-    <value>移至 Proton Drive</value>
+    <value>已移至 Proton Drive</value>
     <comment>Indicates the file or folder has been moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Rename">
-    <value>在 Proton Drive 上重命名</value>
+    <value>已在 Proton Drive 上重命名</value>
     <comment>Indicates the file or folder has been renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Upload">
@@ -290,7 +290,7 @@
     <value>正在登出...</value>
   </data>
   <data name="AppDisplayStatus_Value_SyncFolderError">
-    <value>无法设置同步文件夹</value>
+    <value>同步文件夹设置失败</value>
   </data>
   <data name="AppDisplayStatus_Value_SynchronizationError">
     <value>同步失败</value>
@@ -308,21 +308,21 @@
     <value>正在同步...</value>
   </data>
   <data name="BugReport_Button_Cancel">
-    <value>取消</value>
+    <value>_取消</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="BugReport_Button_Cancel_HelpText">
     <value>取消您的报告</value>
   </data>
   <data name="BugReport_Button_Report">
-    <value>报告</value>
+    <value>_报告</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="BugReport_Button_Report_HelpText">
     <value>发送您的报告</value>
   </data>
   <data name="BugReport_Button_ShowLogs">
-    <value>显示日志</value>
+    <value>显示_日志</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="BugReport_CheckBox_IncludeLogs">
@@ -1020,10 +1020,10 @@
     <value>本地</value>
   </data>
   <data name="Main_Settings_EarlyAccess_HelpText">
-    <value>Get early access and help us test new versions of Proton Drive.</value>
+    <value>抢先体验并帮助我们测试新版 Proton Drive。</value>
   </data>
   <data name="Main_Settings_EarlyAccess_Title">
-    <value>Beta access</value>
+    <value>测试版访问</value>
   </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>您的 Proton Drive 文件夹:</value>
