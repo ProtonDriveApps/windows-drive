@@ -69,14 +69,19 @@ internal class ClassicRevisionCreationProcess : IRevisionCreationProcess<long>
         return CopyFileContentAsync(destination, source, cancellationToken);
     }
 
-    public Task<NodeInfo<long>> FinishAsync(CancellationToken cancellationToken)
+    public async Task<NodeInfo<long>> FinishAsync(CancellationToken cancellationToken)
     {
         _succeeded = true;
         try
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            return Task.FromResult(FinishRevisionCreation());
+            if (_contentWritingStream is not null)
+            {
+                await _contentWritingStream.FlushAsync(cancellationToken).ConfigureAwait(false);
+            }
+
+            return FinishRevisionCreation();
         }
         catch
         {
