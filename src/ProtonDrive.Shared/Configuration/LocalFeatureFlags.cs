@@ -6,6 +6,9 @@ public sealed class LocalFeatureFlags
     public bool? OffersEnabled { get; internal set; }
     public bool? DriveSdkEnabled { get; internal set; }
     public bool? DriveCryptoEncryptBlocksWithPgpAeadEnabled { get; internal set; }
+    public bool FileConsistencyGuardRemoteApplicabilityForceEnabled { get; internal set; }
+    public bool? FileConsistencyGuardEnabled { get; set; }
+    public bool? FileConsistencyGuardRepairingEnabled { get; internal set; }
 
     // When the feature flag is not present (null), it has no effect.
     // When the feature flag has a value, it overrides the corresponding remote feature flag, if any.

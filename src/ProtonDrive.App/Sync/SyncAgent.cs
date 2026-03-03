@@ -6,7 +6,7 @@ using ProtonDrive.Shared.Telemetry;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Adapter;
 using ProtonDrive.Sync.Adapter.Shared;
-using ProtonDrive.Sync.Agent.Validation;
+using ProtonDrive.Sync.Agent.Health;
 using ProtonDrive.Sync.Engine;
 using ProtonDrive.Sync.Shared;
 using ProtonDrive.Sync.Shared.ExecutionStatistics;
@@ -30,6 +30,7 @@ internal class SyncAgent : IDisposable
     private readonly LocalAdapterDatabase _localAdapterDatabase;
     private readonly SyncEngineDatabase _syncEngineDatabase;
     private readonly StateConsistencyGuard<long> _stateConsistencyGuard;
+    private readonly IFileConsistencyGuard _fileConsistencyGuard;
     private readonly IClock _clock;
     private readonly IErrorCounter _errorCounter;
     private readonly ILogger<SyncAgent> _logger;
@@ -58,6 +59,7 @@ internal class SyncAgent : IDisposable
         LocalAdapterDatabase localAdapterDatabase,
         SyncEngineDatabase syncEngineDatabase,
         StateConsistencyGuard<long> stateConsistencyGuard,
+        IFileConsistencyGuard fileConsistencyGuard,
         IScheduler scheduler,
         IClock clock,
         IErrorCounter errorCounter,
@@ -70,6 +72,7 @@ internal class SyncAgent : IDisposable
         _localAdapterDatabase = localAdapterDatabase;
         _syncEngineDatabase = syncEngineDatabase;
         _stateConsistencyGuard = stateConsistencyGuard;
+        _fileConsistencyGuard = fileConsistencyGuard;
         _clock = clock;
         _errorCounter = errorCounter;
         _logger = logger;
@@ -195,6 +198,8 @@ internal class SyncAgent : IDisposable
         _synchronizationTimer.Start();
         Synchronize();
 
+        _fileConsistencyGuard.StartExecuting();
+
         return true;
     }
 
@@ -221,7 +226,11 @@ internal class SyncAgent : IDisposable
 
         Status = SyncStatus.Terminating;
 
+        var stopFileConsistencyGuardTask = _fileConsistencyGuard.StopExecutingAsync();
+
         await WaitSyncEngineToFinishSynchronizingAsync().ConfigureAwait(false);
+
+        await stopFileConsistencyGuardTask.ConfigureAwait(false);
 
         try
         {

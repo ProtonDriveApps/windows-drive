@@ -1,5 +1,4 @@
-﻿using System.Collections.Immutable;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
@@ -97,17 +96,17 @@ internal sealed class RemoteNodeService : IRemoteNodeService
 
     public async Task<RemoteNode> GetRemoteNodeFromHierarchyAsync(
         string rootShareId,
-        IImmutableList<Link> linksHierarchy,
+        IEnumerable<Link> linkHierarchyFromRootToNode,
         CancellationToken cancellationToken)
     {
-        var linkIndex = 0;
         var parentPathBuilder = new StringBuilder();
+        var isRootFolder = true;
+        Link? lastLink = null;
 
         // Cache all the ancestor nodes (without further API calls)
-        while (linkIndex < linksHierarchy.Count - 1)
+        foreach (var link in linkHierarchyFromRootToNode)
         {
-            var link = linksHierarchy[linkIndex];
-
+            lastLink = link;
             var node = await _remoteNodeCache.GetOrAddAsync(
                     new RemoteNodeCacheKey(link.Id),
                     async () => await GetRemoteNodeAsync(rootShareId, link, cancellationToken).ConfigureAwait(false),
@@ -116,19 +115,22 @@ internal sealed class RemoteNodeService : IRemoteNodeService
 
             var parentName = node.Name;
 
-            var isRootFolder = linkIndex == 0;
-
             if (!isRootFolder)
             {
                 parentPathBuilder.Append(Path.DirectorySeparatorChar).Append(parentName);
             }
 
-            ++linkIndex;
+            isRootFolder = false;
+        }
+
+        if (lastLink is null)
+        {
+            throw new ArgumentException("Hierarchy cannot be empty", nameof(linkHierarchyFromRootToNode));
         }
 
         var parentPath = parentPathBuilder.Length == 0 ? Path.DirectorySeparatorChar.ToString() : parentPathBuilder.ToString();
 
-        return await GetRemoteNodeAsync(rootShareId, linksHierarchy[linkIndex], parentPath, cancellationToken).ConfigureAwait(false);
+        return await GetRemoteNodeAsync(rootShareId, lastLink, parentPath, cancellationToken).ConfigureAwait(false);
     }
 
     public async Task<Share> GetShareAsync(string shareId, CancellationToken cancellationToken)

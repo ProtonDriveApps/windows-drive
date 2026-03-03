@@ -108,7 +108,7 @@ public class NodeInfo<TId> : ICloneable
         return this;
     }
 
-    public NodeInfo<TId> WithSha1Digest(string value)
+    public NodeInfo<TId> WithSha1Digest(string? value)
     {
         Sha1Digest = value;
 

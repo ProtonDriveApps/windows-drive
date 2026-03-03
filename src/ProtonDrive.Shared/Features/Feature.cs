@@ -3,9 +3,13 @@
 public enum Feature
 {
     DriveAlbumsDisabled,
+    DriveCryptoEncryptBlocksWithPgpAead,
+    DriveCryptoEncryptBlocksWithPgpAeadDisabled,
     DrivePhotosUploadDisabled,
     DriveSharingDisabled,
     DriveSharingEditingDisabled,
+    DriveWindowsFileConsistencyGuard,
+    DriveWindowsFileConsistencyGuardRepairing,
     DriveWindowsForceMigrationToVolumeEvents,
     DriveWindowsRemoteNodeRenamingDisabled,
     DriveWindowsStorageOptimizationNewFeatureBadge,
@@ -15,6 +19,4 @@ public enum Feature
     DriveWindowsSdkUploadMain,
     DriveWindowsSdkDownloadMain,
     DriveWindowsSdkUploadPhoto,
-    DriveCryptoEncryptBlocksWithPgpAead,
-    DriveCryptoEncryptBlocksWithPgpAeadDisabled,
 }

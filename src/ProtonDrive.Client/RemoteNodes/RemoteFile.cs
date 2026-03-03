@@ -67,7 +67,11 @@ internal sealed record RemoteFile(
 
     public override NodeInfo<string> ToNodeInfo()
     {
-        var result = base.ToNodeInfo().WithRevisionId(ActiveRevision?.Id).WithSize(PlainSize).WithSizeOnStorage(SizeOnStorage);
+        var result = base.ToNodeInfo()
+            .WithRevisionId(ActiveRevision?.Id)
+            .WithSize(PlainSize)
+            .WithSizeOnStorage(SizeOnStorage)
+            .WithSha1Digest(ExtendedAttributes?.Common?.Digests?.Sha1);
 
         if (Link.State == LinkState.Draft)
         {

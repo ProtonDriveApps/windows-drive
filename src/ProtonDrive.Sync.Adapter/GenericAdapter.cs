@@ -40,7 +40,6 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
     private readonly IIdentitySource<TId> _idSource;
     private readonly IFileSystemClient<TAltId> _fileSystemClient;
 
-    private readonly ITransactedScheduler _syncScheduler;
     private readonly ExternalFileRevisionProviderProxy _externalFileRevisionProvider;
     private readonly MappedNodeIdentityProviderProxy _mappedNodeIdProvider;
     private readonly DirtyNodes<TId, TAltId> _dirtyNodes;
@@ -91,7 +90,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
         var syncRoots = new Dictionary<TId, RootInfo<TAltId>>();
 
         var executionScheduler = new SerialScheduler();
-        _syncScheduler = new IntermittentTransactedScheduler(
+        SyncScheduler = new IntermittentTransactedScheduler(
             loggerFactory.CreateLogger<GenericAdapter<TId, TAltId>>(),
             new SerialScheduler(),
             transactionProvider,
@@ -123,7 +122,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
             detectedUpdateIdentitySource,
             detectedUpdateRepository,
             transactionProvider,
-            _syncScheduler);
+            SyncScheduler);
 
         DetectedUpdates = _detectedUpdates;
 
@@ -150,7 +149,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
             new OperationExecutionPipeline<TId, TAltId>(
                 loggerFactory.CreateLogger<OperationExecutionPipeline<TId, TAltId>>(),
                 executionScheduler,
-                _syncScheduler,
+                SyncScheduler,
                 copiedNodes,
                 updateDetectionSequencer,
                 _accessRateLimiter,
@@ -198,7 +197,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
         var exclusionFilter = new ItemExclusionFilter(specialFolderNames);
 
         var rootEnumeration = new RootEnumeration<TId, TAltId>(
-            _syncScheduler,
+            SyncScheduler,
             FileSystemTree,
             fileSystemEnumeration,
             new RootEnumerationSuccessStep<TId, TAltId>(
@@ -218,7 +217,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
 
         var dirtyNodeUpdateDetection = new DirtyNodeUpdateDetection<TId, TAltId>(
             new NodeEnumeration<TId, TAltId>(
-                _syncScheduler,
+                SyncScheduler,
                 fileSystemEnumeration,
                 new NodeEnumerationSuccessStep<TId, TAltId>(
                     loggerFactory.CreateLogger<NodeEnumerationSuccessStep<TId, TAltId>>(),
@@ -234,7 +233,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
                     FileSystemTree),
                 loggerFactory.CreateLogger<NodeEnumeration<TId, TAltId>>()),
             new ChildrenEnumeration<TId, TAltId>(
-                _syncScheduler,
+                SyncScheduler,
                 fileSystemEnumeration,
                 new ChildrenEnumerationPreparationStep<TId, TAltId>(
                     nodeUpdateDetection),
@@ -258,7 +257,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
 
         var deletionDetection = new DeletionDetection<TId, TAltId>(
             loggerFactory.CreateLogger<DeletionDetection<TId, TAltId>>(),
-            _syncScheduler,
+            SyncScheduler,
             FileSystemTree,
             DirtyTree,
             syncRoots,
@@ -267,7 +266,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
         var stateBasedUpdateDetection = new StateBasedUpdateDetection<TId, TAltId>(
             loggerFactory.CreateLogger<StateBasedUpdateDetection<TId, TAltId>>(),
             executionScheduler,
-            _syncScheduler,
+            SyncScheduler,
             FileSystemTree,
             DirtyTree,
             syncRoots,
@@ -279,7 +278,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
         var logBasedUpdateDetection = new LogBasedUpdateDetection<TId, TAltId>(
             loggerFactory,
             executionScheduler,
-            _syncScheduler,
+            SyncScheduler,
             FileSystemTree,
             _dirtyNodes,
             eventLogClient,
@@ -307,7 +306,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
 
             _syncedStateHandler = new SyncedStateHandler<TId, TAltId>(
                 loggerFactory.CreateLogger<SyncedStateHandler<TId, TAltId>>(),
-                _syncScheduler,
+                SyncScheduler,
                 FileSystemTree,
                 _syncedUpdates);
 
@@ -319,7 +318,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
                 appConfig,
                 scheduler,
                 executionScheduler,
-                _syncScheduler,
+                SyncScheduler,
                 FileSystemTree,
                 StateMaintenanceTree,
                 syncRoots,
@@ -332,12 +331,12 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
         _fileRevisionProvider =
             new FallbackFileRevisionProviderDecorator<TId, TAltId>(
                 loggerFactory.CreateLogger<FallbackFileRevisionProviderDecorator<TId, TAltId>>(),
-                _syncScheduler,
+                SyncScheduler,
                 copiedNodes,
                 _externalFileRevisionProvider,
                 _mappedNodeIdProvider,
                 new FileRevisionProvider<TId, TAltId>(
-                    _syncScheduler,
+                    SyncScheduler,
                     FileSystemTree,
                     fileSystemClient,
                     syncRoots,
@@ -349,7 +348,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
 
         var fileSizeCorrector = new FileSizeCorrectionPipeline<TId, TAltId>(
             loggerFactory.CreateLogger<FileSizeCorrectionPipeline<TId, TAltId>>(),
-            _syncScheduler,
+            SyncScheduler,
             updateDetectionSequencer,
             new OnDemandHydration.FileSizeCorrection.PreconditionsValidationStep<TId, TAltId>(
                 loggerFactory.CreateLogger<OnDemandHydration.FileSizeCorrection.PreconditionsValidationStep<TId, TAltId>>(),
@@ -366,7 +365,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
         _fileHydrationDemandHandler = new HydrationDemandHandler<TId, TAltId>(
             loggerFactory.CreateLogger<HydrationDemandHandler<TId, TAltId>>(),
             executionScheduler,
-            _syncScheduler,
+            SyncScheduler,
             FileSystemTree,
             _externalFileRevisionProvider,
             _mappedNodeIdProvider,
@@ -385,6 +384,8 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
 
     public ITreeChangeProvider<TId> DetectedUpdates { get; }
     public IExecutionStatistics ExecutionStatistics => _updateDetection.ExecutionStatistics;
+
+    public ITransactedScheduler SyncScheduler { get; }
 
     internal AdapterTree<TId, TAltId> FileSystemTree { get; }
     internal DirtyTree<TId> DirtyTree { get; }
@@ -474,7 +475,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
 
     public Task<bool> TryMarkNodeAsDirtyAsync(TId id, CancellationToken cancellationToken)
     {
-        return _syncScheduler.Schedule(
+        return SyncScheduler.Schedule(
             () =>
             {
                 var node = FileSystemTree.NodeByIdOrDefault(id);
@@ -493,12 +494,12 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
 
     public Task<LooseCompoundAltIdentity<TAltId>?> GetNodeAltIdByIdOrDefaultAsync(TId id, CancellationToken cancellationToken)
     {
-        return _syncScheduler.Schedule(() => _adapterTreeRepository.NodeById(id)?.AltId, cancellationToken);
+        return SyncScheduler.Schedule(() => _adapterTreeRepository.NodeById(id)?.AltId, cancellationToken);
     }
 
     public Task<TId?> GetNodeIdByAltIdOrDefaultAsync(LooseCompoundAltIdentity<TAltId> altId, CancellationToken cancellationToken)
     {
-        return _syncScheduler.Schedule(() => _adapterTreeRepository.NodeByAltId(altId)?.Id, cancellationToken);
+        return SyncScheduler.Schedule(() => _adapterTreeRepository.NodeByAltId(altId)?.Id, cancellationToken);
     }
 
     private async Task SaveStateAsync()
@@ -506,7 +507,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
         try
         {
             // Persist latest state changes
-            await _syncScheduler.ScheduleAndCommit(() => { }).ConfigureAwait(false);
+            await SyncScheduler.ScheduleAndCommit(() => { }).ConfigureAwait(false);
         }
         catch
         {

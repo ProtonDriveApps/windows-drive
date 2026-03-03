@@ -116,6 +116,16 @@ public sealed class FeatureService : IFeatureFlagProvider, IStartableService, IA
         {
             yield return (Feature.DriveCryptoEncryptBlocksWithPgpAead, IsEnabled: localFeatureFlags.DriveCryptoEncryptBlocksWithPgpAeadEnabled.Value);
         }
+
+        if (localFeatureFlags.FileConsistencyGuardEnabled.HasValue)
+        {
+            yield return (Feature.DriveWindowsFileConsistencyGuard, IsEnabled: localFeatureFlags.FileConsistencyGuardEnabled.Value);
+        }
+
+        if (localFeatureFlags.FileConsistencyGuardRepairingEnabled.HasValue)
+        {
+            yield return (Feature.DriveWindowsFileConsistencyGuardRepairing, IsEnabled: localFeatureFlags.FileConsistencyGuardRepairingEnabled.Value);
+        }
     }
 
     private static string GetFeatureValueForLogging(bool isEnabled)

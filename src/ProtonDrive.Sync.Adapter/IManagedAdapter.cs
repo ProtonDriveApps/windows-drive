@@ -1,4 +1,5 @@
-﻿using ProtonDrive.Sync.Shared.ExecutionStatistics;
+﻿using ProtonDrive.Sync.Shared;
+using ProtonDrive.Sync.Shared.ExecutionStatistics;
 using ProtonDrive.Sync.Shared.SyncActivity;
 
 namespace ProtonDrive.Sync.Adapter;
@@ -8,18 +9,24 @@ public interface IManagedAdapter<TId> : IExecutionStatisticsProvider
     /// <summary>
     /// Raised when synchronization activity item changes.
     /// </summary>
-    public event EventHandler<SyncActivityChangedEventArgs<TId>> SyncActivityChanged;
+    event EventHandler<SyncActivityChangedEventArgs<TId>> SyncActivityChanged;
 
     /// <summary>
     /// Indicates whether the adapter contains dirty nodes to enumerate.
     /// </summary>
-    public bool HasUpdatesToDetect { get; }
+    bool HasUpdatesToDetect { get; }
 
     /// <summary>
     /// Indicates whether the adapter contains detected updates not yet consumed by
     /// the Sync Engine.
     /// </summary>
-    public bool HasUpdatesToSynchronize { get; }
+    bool HasUpdatesToSynchronize { get; }
+
+    /// <summary>
+    /// An intermittent transacted scheduler used by the adapter for synchronizing access
+    /// to the internal state and adapter database.
+    /// </summary>
+    ITransactedScheduler SyncScheduler { get; }
 
     /// <summary>
     /// Starts automatic file system event-based update detection and retrieves attributes
@@ -27,18 +34,18 @@ public interface IManagedAdapter<TId> : IExecutionStatisticsProvider
     /// </summary>
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     /// <returns>A task that represents the asynchronous connect operation.</returns>
-    public Task ConnectAsync(CancellationToken cancellationToken);
+    Task ConnectAsync(CancellationToken cancellationToken);
 
     /// <summary>
     /// Stops automatic event-based update detection.
     /// </summary>
     /// <returns>A task that represents the asynchronous disconnect operation.</returns>
-    public Task DisconnectAsync();
+    Task DisconnectAsync();
 
     /// <summary>
     /// Runs state-based update detection.
     /// </summary>
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     /// <returns>A task that represents the asynchronous update detection operation.</returns>
-    public Task DetectUpdatesAsync(CancellationToken cancellationToken);
+    Task DetectUpdatesAsync(CancellationToken cancellationToken);
 }

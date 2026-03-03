@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using ProtonDrive.App.Account;
 using ProtonDrive.App.Instrumentation.Telemetry.Errors;
+using ProtonDrive.App.Instrumentation.Telemetry.FileIntegrity;
 using ProtonDrive.App.Instrumentation.Telemetry.FirstLaunch;
 using ProtonDrive.App.Instrumentation.Telemetry.MappingSetup;
 using ProtonDrive.App.Instrumentation.Telemetry.Synchronization;
@@ -20,6 +21,7 @@ internal sealed class TelemetryService : IRemoteSettingsAware, IUserStateAware
     private readonly CancellationHandle _cancellationHandle = new();
     private readonly SyncStatistics _syncStatistics;
     private readonly MappingSetupStatistics _mappingStatistics;
+    private readonly FileIntegrityStatistics _fileIntegrityStatistics;
     private readonly SharedWithMeItemCounters _sharedWithMeItemCounters;
     private readonly OpenedDocumentsCounters _openedDocumentsCounters;
     private readonly IErrorCounter _errorCounter;
@@ -37,6 +39,7 @@ internal sealed class TelemetryService : IRemoteSettingsAware, IUserStateAware
         AppConfig appConfig,
         SyncStatistics syncStatistics,
         MappingSetupStatistics mappingStatistics,
+        FileIntegrityStatistics fileIntegrityStatistics,
         SharedWithMeItemCounters sharedWithMeItemCounters,
         OpenedDocumentsCounters openedDocumentsCounters,
         IErrorCounter errorCounter,
@@ -44,14 +47,15 @@ internal sealed class TelemetryService : IRemoteSettingsAware, IUserStateAware
         ITelemetryApiClient telemetryApiClient,
         ILogger<TelemetryService> logger)
     {
-        _telemetryApiClient = telemetryApiClient;
-        _logger = logger;
         _syncStatistics = syncStatistics;
         _mappingStatistics = mappingStatistics;
+        _fileIntegrityStatistics = fileIntegrityStatistics;
         _sharedWithMeItemCounters = sharedWithMeItemCounters;
         _openedDocumentsCounters = openedDocumentsCounters;
         _errorCounter = errorCounter;
         _errorCountProvider = errorCountProvider;
+        _telemetryApiClient = telemetryApiClient;
+        _logger = logger;
 
         _period = appConfig.PeriodicTelemetryReportInterval.RandomizedWithDeviation(0.2);
         _timer = new PeriodicTimer(_period);
@@ -168,7 +172,12 @@ internal sealed class TelemetryService : IRemoteSettingsAware, IUserStateAware
 
                     var mappingReport = MappingSetupReportFactory.CreateReport(_mappingStatistics.GetMappingDetails());
 
-                    var telemetryEvents = new TelemetryEvents([.. syncReport, .. errorReport, .. mappingReport]);
+                    var fileIntegrityReport = FileIntegrityReportFactory.CreateReport(_fileIntegrityStatistics.GetDetails());
+
+                    var fileIntegrityStatusReport = FileIntegrityReportFactory.CreateStatusReport(_fileIntegrityStatistics.GetOverallStatus());
+
+                    var telemetryEvents = new TelemetryEvents(
+                        [.. syncReport, .. errorReport, .. mappingReport, .. fileIntegrityReport, .. fileIntegrityStatusReport]);
 
                     if (telemetryEvents.Events.Count == 0)
                     {

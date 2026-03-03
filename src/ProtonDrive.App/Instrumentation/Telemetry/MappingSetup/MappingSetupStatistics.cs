@@ -7,7 +7,7 @@ using ProtonDrive.Shared.Extensions;
 
 namespace ProtonDrive.App.Instrumentation.Telemetry.MappingSetup;
 
-public sealed class MappingSetupStatistics : IMappingsAware, IMappingStateAware, IPhotoImportFoldersAware
+internal sealed class MappingSetupStatistics : IMappingsAware, IMappingStateAware, IPhotoImportFoldersAware
 {
     private readonly ConcurrentDictionary<int, MappingSetupDetails> _mappingStatisticsById = new();
 

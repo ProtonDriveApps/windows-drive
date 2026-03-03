@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Logging;
 using ProtonDrive.App.FileSystem.Local;
 using ProtonDrive.App.FileSystem.Remote;
+using ProtonDrive.App.Health;
 using ProtonDrive.App.Mapping;
 using ProtonDrive.App.Settings;
 using ProtonDrive.App.SystemIntegration;
@@ -12,7 +13,7 @@ using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Telemetry;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Adapter;
-using ProtonDrive.Sync.Agent.Validation;
+using ProtonDrive.Sync.Agent.Health;
 using ProtonDrive.Sync.Engine;
 using ProtonDrive.Sync.Shared;
 using ProtonDrive.Sync.Shared.FileSystem;
@@ -46,6 +47,7 @@ internal sealed class SyncAgentFactory
     private readonly ILocalEventLogClientFactory _localUndecoratedEventLogClientFactory;
     private readonly IRootDeletionHandler _syncRootDeletionHandler;
     private readonly ISyncFolderStructureProtector _folderStructureProtector;
+    private readonly IFileConsistencyGuardFactory _fileConsistencyGuardFactory;
     private readonly IScheduler _scheduler;
     private readonly IClock _clock;
     private readonly ILoggerFactory _loggerFactory;
@@ -61,6 +63,7 @@ internal sealed class SyncAgentFactory
         ILocalEventLogClientFactory localUndecoratedEventLogClientFactory,
         IRootDeletionHandler syncRootDeletionHandler,
         ISyncFolderStructureProtector folderStructureProtector,
+        IFileConsistencyGuardFactory fileConsistencyGuardFactory,
         IScheduler scheduler,
         IClock clock,
         ILoggerFactory loggerFactory,
@@ -75,6 +78,7 @@ internal sealed class SyncAgentFactory
         _localUndecoratedEventLogClientFactory = localUndecoratedEventLogClientFactory;
         _syncRootDeletionHandler = syncRootDeletionHandler;
         _folderStructureProtector = folderStructureProtector;
+        _fileConsistencyGuardFactory = fileConsistencyGuardFactory;
         _scheduler = scheduler;
         _clock = clock;
         _loggerFactory = loggerFactory;
@@ -204,6 +208,14 @@ internal sealed class SyncAgentFactory
             syncEngineDatabase,
             _loggerFactory);
 
+        var fileConsistencyGuard = _fileConsistencyGuardFactory.Create(
+            mappings,
+            localAdapter,
+            localAdapter.SyncScheduler,
+            localAdapterDatabase,
+            remoteAdapter.SyncScheduler,
+            remoteAdapterDatabase);
+
         return new SyncAgent(
             remoteAdapter,
             localAdapter,
@@ -212,6 +224,7 @@ internal sealed class SyncAgentFactory
             localAdapterDatabase,
             syncEngineDatabase,
             stateConsistencyGuard,
+            fileConsistencyGuard,
             _scheduler,
             _clock,
             _errorCounter,

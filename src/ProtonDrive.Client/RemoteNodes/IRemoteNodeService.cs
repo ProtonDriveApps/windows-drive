@@ -1,5 +1,4 @@
-﻿using System.Collections.Immutable;
-using ProtonDrive.Client.Contracts;
+﻿using ProtonDrive.Client.Contracts;
 
 namespace ProtonDrive.Client.RemoteNodes;
 
@@ -12,12 +11,12 @@ internal interface IRemoteNodeService
     /// <summary>
     /// From an ordered list of hierarchy links, it returns the last node and facilitate the caching of ancestor nodes.
     /// </summary>
-    /// <param name="rootShareId"></param>
-    /// <param name="linksHierarchy">Ordered list (from the root to the node) containing all the ancestor nodes of the target node.
+    /// <param name="rootShareId">Share ID for the parent root folder.</param>
+    /// <param name="linkHierarchyFromRootToNode">Ordered list (from the root to the node) containing all the ancestor nodes of the target node.
     /// This hierarchical list facilitates the caching process.</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     /// <returns>Gets the node details from its hierarchy.</returns>
-    Task<RemoteNode> GetRemoteNodeFromHierarchyAsync(string rootShareId, IImmutableList<Link> linksHierarchy, CancellationToken cancellationToken);
+    Task<RemoteNode> GetRemoteNodeFromHierarchyAsync(string rootShareId, IEnumerable<Link> linkHierarchyFromRootToNode, CancellationToken cancellationToken);
 
     Task<Share> GetShareAsync(string shareId, CancellationToken cancellationToken);
 }

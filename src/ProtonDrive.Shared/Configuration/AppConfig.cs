@@ -52,4 +52,6 @@ public sealed class AppConfig
 
     public int MaxNumberOfConcurrentFileTransfers { get; internal set; }
     public int MaxNumberOfSyncedSharedWithMeItems { get; internal set; }
+    public TimeSpan FileConsistencyGuardRetryInterval { get; internal set; }
+    public DateTimeOffset FileConsistencyGuardNotApplicableSince { get; internal set; }
 }

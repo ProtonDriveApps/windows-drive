@@ -53,6 +53,8 @@
   },
   "MaxNumberOfConcurrentFileTransfers": 4,
   "MaxNumberOfSyncedSharedWithMeItems": 20,
+  "FileConsistencyGuardRetryInterval": "00:30:00",
+  "FileConsistencyGuardNotApplicableSince": "2026-01-11Z",
   "Urls": {
     "WebClient": "https://drive.proton.me",
     "AppDownloadPage": "https://proton.me/drive/download",

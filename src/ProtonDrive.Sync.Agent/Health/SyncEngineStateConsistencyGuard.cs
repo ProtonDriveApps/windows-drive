@@ -8,7 +8,7 @@ using ProtonDrive.Sync.Shared;
 using ProtonDrive.Sync.Shared.Trees.FileSystem.Traversal;
 using ProtonDrive.Sync.Shared.Trees.Operations;
 
-namespace ProtonDrive.Sync.Agent.Validation;
+namespace ProtonDrive.Sync.Agent.Health;
 
 public sealed class SyncEngineStateConsistencyGuard<TId>
     where TId : IEquatable<TId>

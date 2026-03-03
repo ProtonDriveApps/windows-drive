@@ -28,6 +28,7 @@ public enum ResponseCode
     AlreadyExists = 2500,
     DoesNotExist = 2501,
     Timeout = 2503,
+    IncompatibleState = 2511,
     InvalidApp = 5002,
     OutdatedApp = 5003,
     Offline = 7001,

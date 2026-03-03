@@ -18,6 +18,7 @@ using ProtonDrive.Client.Cryptography.TimeProvision;
 using ProtonDrive.Client.Devices;
 using ProtonDrive.Client.Features;
 using ProtonDrive.Client.FileUploading;
+using ProtonDrive.Client.Health;
 using ProtonDrive.Client.Instrumentation.Observability;
 using ProtonDrive.Client.Instrumentation.Observability.Download;
 using ProtonDrive.Client.Instrumentation.Observability.Integrity;
@@ -159,6 +160,7 @@ public static class ApiClientConfigurator
         services.AddSingleton<IDeviceClient, DeviceClient>();
         services.AddSingleton<IContactService, ContactService>();
         services.AddSingleton<ISharedWithMeClient, SharedWithMeClient>();
+        services.AddSingleton<IDriveHealthClient, DriveHealthClient>();
 
         services.AddSingleton<IPhotoHashProvider, PhotoHashProvider>();
         services.AddSingleton<IPhotoDuplicateService, PhotoDuplicateService>();
@@ -206,6 +208,7 @@ public static class ApiClientConfigurator
                 GetDefaultTimeout,
                 useOfflinePolicy: false)
             .AddApiClient<IDriveUserApiClient>()
+            .AddApiClient<IDriveHealthApiClient>()
             ;
 
         services.AddApiHttpClients(FileRevisionUpdateHttpClientName, GetDriveBaseAddress, GetDriveApiNumberOfRetries, GetRevisionUpdateTimeout)
@@ -250,6 +253,7 @@ public static class ApiClientConfigurator
         services.AddSingleton(provider => new Func<IAddressKeyProvider>(provider.GetRequiredService<IAddressKeyProvider>));
         services.AddSingleton<ICryptographyService, CryptographyService>();
         services.AddSingleton<IRemoteNodeService, RemoteNodeService>();
+        services.AddSingleton<IRemoteFileMetadataProvider, RemoteFileMetadataProvider>();
 
         services.AddSingleton<IBugReportClient, BugReportClient>();
 

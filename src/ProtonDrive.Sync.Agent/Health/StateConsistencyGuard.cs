@@ -5,7 +5,7 @@ using ProtonDrive.Sync.Engine.Shared.Trees.Update;
 using ProtonDrive.Sync.Shared;
 using ProtonDrive.Sync.Shared.Trees;
 
-namespace ProtonDrive.Sync.Agent.Validation;
+namespace ProtonDrive.Sync.Agent.Health;
 
 public sealed class StateConsistencyGuard<TId>
     where TId : IEquatable<TId>

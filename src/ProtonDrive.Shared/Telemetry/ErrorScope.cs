@@ -26,4 +26,14 @@ public enum ErrorScope
     /// Error occured when attempting to enable or disable local storage optimization
     /// </summary>
     StorageOptimization,
+
+    /// <summary>
+    /// Error occured during the file consistency guard execution
+    /// </summary>
+    DataIntegrity,
+
+    /// <summary>
+    /// Error occurred while handling a file by the file consistency guard
+    /// </summary>
+    DataIntegrityItemOperation,
 }

@@ -16,9 +16,11 @@ using ProtonDrive.App.Features;
 using ProtonDrive.App.FileSystem.Local;
 using ProtonDrive.App.FileSystem.Metadata.GoogleTakeout;
 using ProtonDrive.App.FileSystem.Remote;
+using ProtonDrive.App.Health;
 using ProtonDrive.App.Instrumentation.Observability;
 using ProtonDrive.App.Instrumentation.Observability.TransferPerformance;
 using ProtonDrive.App.Instrumentation.Telemetry;
+using ProtonDrive.App.Instrumentation.Telemetry.FileIntegrity;
 using ProtonDrive.App.Instrumentation.Telemetry.MappingSetup;
 using ProtonDrive.App.Instrumentation.Telemetry.Synchronization;
 using ProtonDrive.App.InterProcessCommunication;
@@ -175,6 +177,16 @@ public static class AppServices
                     provider => provider.GetRequiredService<ClearingOnAccountSwitchingRepositoryDecorator<NotificationSettings>>())
                 .AddSingleton<IAccountSwitchingHandler>(
                     provider => provider.GetRequiredService<ClearingOnAccountSwitchingRepositoryDecorator<NotificationSettings>>())
+
+                .AddSingleton(
+                    provider =>
+                        new ClearingOnAccountSwitchingRepositoryDecorator<FileConsistencyGuardSettings>(
+                            provider.GetRequiredService<IRepositoryFactory>()
+                                .GetCachingRepository<FileConsistencyGuardSettings>("FileConsistencyGuardSettings.json")))
+                .AddSingleton<IRepository<FileConsistencyGuardSettings>>(
+                    provider => provider.GetRequiredService<ClearingOnAccountSwitchingRepositoryDecorator<FileConsistencyGuardSettings>>())
+                .AddSingleton<IAccountSwitchingHandler>(
+                    provider => provider.GetRequiredService<ClearingOnAccountSwitchingRepositoryDecorator<FileConsistencyGuardSettings>>())
 
                 .AddSingleton(
                     provider => provider.GetRequiredService<IRepositoryFactory>()
@@ -408,7 +420,12 @@ public static class AppServices
                 .AddSingleton<LocalRootMapForDeletionDetectionFactory>()
                 .AddSingleton<RemoteDecoratedFileSystemClientFactory>()
                 .AddSingleton<RemoteDecoratedEventLogClientFactory>()
+
                 .AddSingleton<SyncAgentFactory>()
+
+                .AddSingleton<IFileConsistencyGuardFactory, FileConsistencyGuardFactory>()
+                .AddSingleton<FileConsistencyGuardStatusReporter>()
+                .AddSingleton<FileConsistencyGuardApplicabilityVerifier>()
 
                 .AddSingleton<RemoteRootMapForDeletionDetectionFactory>()
                 .AddSingleton<IDevicesAware>(provider => provider.GetRequiredService<RemoteRootMapForDeletionDetectionFactory>())
@@ -453,6 +470,9 @@ public static class AppServices
                 .AddSingleton<DownloadSuccessMeter>()
                 .AddSingleton<ISyncActivityAware>(provider => provider.GetRequiredService<DownloadSuccessMeter>())
                 .AddSingleton<IMappingsAware>(provider => provider.GetRequiredService<DownloadSuccessMeter>())
+
+                .AddSingleton<FileIntegrityStatistics>()
+                .AddSingleton<IStartableService>(provider => provider.GetRequiredService<FileIntegrityStatistics>())
 
                 .AddSingleton<TransferPerformanceMonitors>()
 
