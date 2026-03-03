@@ -116,7 +116,7 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
 
                         await SanitizeFilesAsync(cancellationToken).ConfigureAwait(false);
 
-                        await VerifyCompletionAsync(cancellationToken).ConfigureAwait(false);
+                        VerifyCompletion(cancellationToken);
                     }
                     finally
                     {
@@ -253,17 +253,22 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
             return;
         }
 
-        await _fileSanitizer.ExecuteAsync(cancellationToken).ConfigureAwait(false);
+        if (await _fileSanitizer.ExecuteAsync(cancellationToken).ConfigureAwait(false))
+        {
+            await UpdateStatisticsAsync(cancellationToken).ConfigureAwait(false);
+        }
     }
 
-    private async Task VerifyCompletionAsync(CancellationToken cancellationToken)
+    private void VerifyCompletion(CancellationToken cancellationToken)
     {
         if (Status is not FileConsistencyGuardStatus.Initialized)
         {
             return;
         }
 
-        var verdict = await _completionVerifier.ExecuteAsync(cancellationToken).ConfigureAwait(false);
+        cancellationToken.ThrowIfCancellationRequested();
+
+        var verdict = _completionVerifier.Execute(_settings.FileStatistics);
 
         if (verdict is CompletionVerdict.Completed)
         {
@@ -343,11 +348,29 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
     {
         _settings = _settingsRepository.Get() ?? new FileConsistencyGuardSettings();
 
+        MigrateSettings();
+
         _logger.LogInformation("File consistency guard: {Status}", Status);
     }
 
     private void SaveSettings()
     {
         _settingsRepository.Set(_settings);
+    }
+
+    private void MigrateSettings()
+    {
+        if (_settings.Version != 0)
+        {
+            return;
+        }
+
+        if (_settings.Status is FileConsistencyGuardStatus.Completed or FileConsistencyGuardStatus.Finished)
+        {
+            _settings.Status = FileConsistencyGuardStatus.Initialized;
+        }
+
+        _settings.Version = 1;
+        SaveSettings();
     }
 }

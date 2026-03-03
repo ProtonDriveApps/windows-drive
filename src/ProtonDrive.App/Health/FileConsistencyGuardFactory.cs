@@ -112,7 +112,6 @@ internal sealed class FileConsistencyGuardFactory : IFileConsistencyGuardFactory
             _loggerFactory.CreateLogger<FileConsistencyGuardFileSanitizer>());
 
         var completionVerifier = new FileConsistencyGuardCompletionVerifier(
-            database,
             _loggerFactory.CreateLogger<FileConsistencyGuardCompletionVerifier>());
 
         return new FileConsistencyGuard(

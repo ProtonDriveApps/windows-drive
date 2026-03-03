@@ -1,29 +1,24 @@
 ﻿using Microsoft.Extensions.Logging;
-using ProtonDrive.DataAccess.Databases;
 using ProtonDrive.Sync.Shared.Health;
 
 namespace ProtonDrive.App.Health;
 
 internal sealed class FileConsistencyGuardCompletionVerifier
 {
-    private readonly FileConsistencyGuardDatabase _database;
     private readonly ILogger<FileConsistencyGuardCompletionVerifier> _logger;
 
-    public FileConsistencyGuardCompletionVerifier(
-        FileConsistencyGuardDatabase database,
-        ILogger<FileConsistencyGuardCompletionVerifier> logger)
+    public FileConsistencyGuardCompletionVerifier(ILogger<FileConsistencyGuardCompletionVerifier> logger)
     {
-        _database = database;
         _logger = logger;
     }
 
-    public async Task<CompletionVerdict> ExecuteAsync(CancellationToken cancellationToken)
+    public CompletionVerdict Execute(IReadOnlyCollection<FileConsistencyGuardFileStatisticsEntry> statistics)
     {
         _logger.LogDebug("File consistency guard: Verifying completion");
 
-        var verdict = await VerifyCompletionAsync(cancellationToken).ConfigureAwait(false);
+        var hasCompleted = HasCompleted(statistics);
 
-        if (verdict is CompletionVerdict.Completed)
+        if (hasCompleted)
         {
             _logger.LogInformation("File consistency guard: Completed");
         }
@@ -32,43 +27,22 @@ internal sealed class FileConsistencyGuardCompletionVerifier
             _logger.LogDebug("File consistency guard: Not yet completed");
         }
 
-        return verdict;
+        return hasCompleted ? CompletionVerdict.Completed : CompletionVerdict.NotCompleted;
     }
 
-    private async Task<CompletionVerdict> VerifyCompletionAsync(CancellationToken cancellationToken)
+    private static bool HasCompleted(IReadOnlyCollection<FileConsistencyGuardFileStatisticsEntry> statistics)
     {
-        if (await HasInconsistentFilesAsync().ConfigureAwait(false))
-        {
-            return CompletionVerdict.NotCompleted;
-        }
-
-        cancellationToken.ThrowIfCancellationRequested();
-
-        if (await HasSkippedFilesAsync().ConfigureAwait(false))
-        {
-            return CompletionVerdict.NotCompleted;
-        }
-
-        return CompletionVerdict.Completed;
-    }
-
-    private async Task<bool> HasInconsistentFilesAsync()
-    {
-        return (await _database.FileRepository
-                .GetFilesByStatusAsync(FileConsistencyGuardFileStatus.Inconsistent, includeDisabledRoots: true)
-                .ConfigureAwait(false))
-            .Any();
-    }
-
-    private async Task<bool> HasSkippedFilesAsync()
-    {
-        return (await _database.FileRepository
-                .GetFilesByStatusAsync(FileConsistencyGuardFileStatus.Skipped, includeDisabledRoots: true)
-                .ConfigureAwait(false))
-            .Any(x => x.Reason
+        var containsFilesToVerify = statistics.Any(x => x.Status is FileConsistencyGuardFileStatus.None);
+        var containsFilesToSanitize = statistics.Any(x => x.Status is FileConsistencyGuardFileStatus.Inconsistent);
+        var containsFilesToDownload = statistics.Any(x => x.Status is FileConsistencyGuardFileStatus.Skipped
+            && x.Reason
                 is FileConsistencyGuardFileReason.SizeUnknown
                 or FileConsistencyGuardFileReason.ChecksumUnknown
                 or FileConsistencyGuardFileReason.SizeRule
                 or FileConsistencyGuardFileReason.LastBytes);
+
+        return !containsFilesToVerify
+            && !containsFilesToSanitize
+            && !containsFilesToDownload;
     }
 }
