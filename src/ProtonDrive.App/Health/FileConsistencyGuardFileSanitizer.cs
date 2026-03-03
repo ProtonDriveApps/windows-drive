@@ -15,8 +15,6 @@ internal sealed class FileConsistencyGuardFileSanitizer
     private readonly ILogger<FileConsistencyGuardFileSanitizer> _logger;
 
     private bool _isFirstRun = true;
-    private int _succeededCount;
-    private int _failedCount;
 
     public FileConsistencyGuardFileSanitizer(
         FileConsistencyGuardDatabase database,
@@ -58,13 +56,9 @@ internal sealed class FileConsistencyGuardFileSanitizer
 
     private async Task<int> SanitizeFilesAsync(CancellationToken cancellationToken)
     {
-        _succeededCount = 0;
-        _failedCount = 0;
-
         var files = (await _database.FileRepository.GetFilesByStatusAsync(
                 FileConsistencyGuardFileStatus.Inconsistent,
                 includeDisabledRoots: _isFirstRun).ConfigureAwait(false))
-            .Where(x => x.Reason is FileConsistencyGuardFileReason.Checksum or FileConsistencyGuardFileReason.SizeMismatch)
             .ToList();
 
         if (files.Count == 0)
@@ -74,6 +68,9 @@ internal sealed class FileConsistencyGuardFileSanitizer
 
         _logger.LogInformation("File consistency guard: Sanitizing {NumberOfFiles} files", files.Count);
 
+        var succeededCount = 0;
+        var failedCount = 0;
+
         foreach (var file in files)
         {
             await SanitizeFileAsync(file, cancellationToken).ConfigureAwait(false);
@@ -82,11 +79,11 @@ internal sealed class FileConsistencyGuardFileSanitizer
 
             if (file.Error is FileConsistencyGuardFileError.None)
             {
-                _succeededCount++;
+                succeededCount++;
             }
             else
             {
-                _failedCount++;
+                failedCount++;
             }
 
             await Task.Delay(DelayBetweenFiles, cancellationToken).ConfigureAwait(false);
@@ -94,8 +91,8 @@ internal sealed class FileConsistencyGuardFileSanitizer
 
         _logger.LogInformation(
             "File consistency guard: Sanitization completed ({Succeeded} succeeded, {Failed} failed)",
-            _succeededCount,
-            _failedCount);
+            succeededCount,
+            failedCount);
 
         _isFirstRun = false;
         return files.Count;

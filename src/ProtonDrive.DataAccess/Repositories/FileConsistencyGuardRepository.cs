@@ -41,8 +41,8 @@ public sealed class FileConsistencyGuardRepository
         const string sql =
             $"""
              INSERT INTO {FilesTableName}
-             (Id, LocalRootId, RemoteRootId, LocalId, RemoteId, Name, LocalSize, RemoteSize, RemotePlainSize, RemoteSizeOnStorage, LocalLastWriteTime, RemoteLastWriteTime, RevisionId, ContentVersion, LocalHash, RemoteHash, TrailingZeroBytesLength, Status, Reason, Error)
-             VALUES (@Id, @LocalRootId, @RemoteRootId, @LocalId, @RemoteId, @Name, @LocalSize, @RemoteSize, @RemotePlainSize, @RemoteSizeOnStorage, @LocalLastWriteTime, @RemoteLastWriteTime, @RevisionId, @ContentVersion, @LocalHash, @RemoteHash, @TrailingZeroBytesLength, @Status, @Reason, @Error)
+             (Id, LocalRootId, RemoteRootId, LocalId, RemoteId, Name, LocalSize, RemoteSize, RemotePlainSize, RemoteSizeOnStorage, LocalLastWriteTime, RemoteLastWriteTime, RevisionId, ContentVersion, LocalHash, RemoteHash, TrailingZeroBytesLength, Status, Reason, DownloadReason, Error)
+             VALUES (@Id, @LocalRootId, @RemoteRootId, @LocalId, @RemoteId, @Name, @LocalSize, @RemoteSize, @RemotePlainSize, @RemoteSizeOnStorage, @LocalLastWriteTime, @RemoteLastWriteTime, @RevisionId, @ContentVersion, @LocalHash, @RemoteHash, @TrailingZeroBytesLength, @Status, @Reason, @DownloadReason, @Error)
              """;
 
         try
@@ -84,6 +84,7 @@ public sealed class FileConsistencyGuardRepository
                  TrailingZeroBytesLength = @TrailingZeroBytesLength,
                  Status = @Status,
                  Reason = @Reason,
+                 DownloadReason = @DownloadReason,
                  Error = @Error
              WHERE Id = @Id
              """;
@@ -108,15 +109,16 @@ public sealed class FileConsistencyGuardRepository
         const string sql =
             $"""
              SELECT 
-                 COUNT(Id) AS NumberOfFiles,
-                 ROUND(SUM(RemoteSize)/1024/1024/1024.0, 3) AS TotalFileSizeInGigaBytes,
-                 SUM((RemoteSize + (4*1024*1024) - 1) / (4*1024*1024)) AS NumberOfBlocks,
-                 Status,
-                 Reason,
-                 Error
+             COUNT(Id) AS NumberOfFiles,
+             ROUND(SUM(RemoteSize)/1024/1024/1024.0, 3) AS TotalFileSizeInGigaBytes,
+             SUM((RemoteSize + (4*1024*1024) - 1) / (4*1024*1024)) AS NumberOfBlocks,
+             Status,
+             Reason,
+             DownloadReason,
+             Error
              FROM {FilesTableName}
-             GROUP BY Status, Reason, Error
-             ORDER BY Status, Reason, Error;
+             GROUP BY Status, Reason, DownloadReason, Error
+             ORDER BY Status, Reason, DownloadReason, Error;
              """;
 
         return await _database.Connection.QueryAsync<FileConsistencyGuardFileStatisticsEntry>(sql).ConfigureAwait(false);

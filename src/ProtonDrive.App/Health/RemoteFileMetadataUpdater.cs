@@ -17,6 +17,8 @@ internal sealed class RemoteFileMetadataUpdater
 
     private const int BatchSize = 100;
 
+    private static readonly TimeSpan DelayBetweenBatches = TimeSpan.FromMilliseconds(200);
+
     private readonly FileConsistencyGuardDatabase _database;
     private readonly Dictionary<int, RemoteToLocalMapping> _mappingsByRootId;
     private readonly IRemoteFileMetadataProvider _metadataProvider;
@@ -65,12 +67,12 @@ internal sealed class RemoteFileMetadataUpdater
         }
     }
 
-    private static void SetMetadata(FileConsistencyGuardFileModel file, string sha1Digest, long sizeOnStorage)
+    private static void SetMetadata(FileConsistencyGuardFileModel file, string hash, long sizeOnStorage)
     {
         file.Status = FileConsistencyGuardFileStatus.None;
         file.Reason = FileConsistencyGuardFileReason.None;
         file.Error = FileConsistencyGuardFileError.None;
-        file.RemoteHash = sha1Digest;
+        file.RemoteHash = hash;
         file.RemoteSizeOnStorage = sizeOnStorage;
 
         file.UpdateStatus();
@@ -189,7 +191,7 @@ internal sealed class RemoteFileMetadataUpdater
                 }
 
                 // Small delay after each batch to reduce API and I/O pressure
-                await Task.Delay(200, cancellationToken).ConfigureAwait(false);
+                await Task.Delay(DelayBetweenBatches, cancellationToken).ConfigureAwait(false);
             }
         }
 

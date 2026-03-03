@@ -4,7 +4,7 @@ public static class TimeSpanExtensions
 {
     private static readonly Random Random = new();
 
-    public static TimeSpan RandomizedWithDeviation(this TimeSpan value, double deviation)
+    public static TimeSpan RandomizedWithDeviation(this TimeSpan value, double deviation, JitterDirection jitterDirection = JitterDirection.Symmetric)
     {
         if (value <= TimeSpan.Zero)
         {
@@ -16,6 +16,15 @@ public static class TimeSpanExtensions
             throw new ArgumentOutOfRangeException(nameof(deviation), "Argument value must be between zero and one");
         }
 
-        return value + TimeSpan.FromMilliseconds(value.TotalMilliseconds * deviation * ((2.0 * Random.NextDouble()) - 1.0));
+        var factor = jitterDirection switch
+        {
+            JitterDirection.Symmetric => (2.0 * Random.NextDouble()) - 1.0, // [-1, +1)
+            JitterDirection.PositiveOnly => Random.NextDouble(), // [0, +1)
+            _ => throw new ArgumentOutOfRangeException(nameof(jitterDirection), jitterDirection, null),
+        };
+
+        var jitter = TimeSpan.FromMilliseconds(value.TotalMilliseconds * deviation * factor);
+
+        return value + jitter;
     }
 }

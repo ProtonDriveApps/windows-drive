@@ -47,12 +47,13 @@ internal sealed class FileRevisionProvider<TId, TAltId> : IFileRevisionProvider<
 
         var pathToLog = _logger.GetSensitiveValueForLogging(fileInfo.Path);
         _logger.LogInformation(
-            "Reading the file \"{Path}\" \"{Root}\"/{Id} {ExternalId}, ContentVersion={ContentVersion}",
+            "Reading the file \"{Path}\" \"{Root}\"/{Id} {ExternalId}, ContentVersion={ContentVersion}, Size={Size} KiB",
             pathToLog,
             fileInfo.Root?.Id,
             id,
             fileInfo.GetCompoundId(),
-            contentVersion);
+            contentVersion,
+            (fileInfo.Size + 1023) / 1024);
 
         try
         {

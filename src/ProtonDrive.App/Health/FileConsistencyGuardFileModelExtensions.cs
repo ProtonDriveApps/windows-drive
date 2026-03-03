@@ -25,7 +25,7 @@ internal static class FileConsistencyGuardFileModelExtensions
 
     public static bool UpdateStatus(this FileConsistencyGuardFileModel file)
     {
-        if (file.Status is not FileConsistencyGuardFileStatus.None)
+        if (file.Status is not FileConsistencyGuardFileStatus.None and not FileConsistencyGuardFileStatus.Skipped)
         {
             return false;
         }
@@ -56,7 +56,7 @@ internal static class FileConsistencyGuardFileModelExtensions
             // Partial local file
             if (file.LocalHash == LocalFileMetadataUpdater.PartialFileIndicator)
             {
-                file.Status = FileConsistencyGuardFileStatus.Skipped;
+                file.Status = FileConsistencyGuardFileStatus.Consistent;
                 file.Reason = FileConsistencyGuardFileReason.Partial;
                 file.Error = FileConsistencyGuardFileError.None;
 
@@ -89,7 +89,7 @@ internal static class FileConsistencyGuardFileModelExtensions
             // Full local file
             if (file.TrailingZeroBytesLength is not null)
             {
-                var numberOfBytesToVerify = FileSizeVerifier.GetNumberOfBytesToVerify(file.RemoteSize);
+                var numberOfBytesToVerify = FileSizeVerifier.GetNumberOfBytesToVerify(file.LocalSize);
 
                 if (numberOfBytesToVerify == 0)
                 {
@@ -100,11 +100,12 @@ internal static class FileConsistencyGuardFileModelExtensions
                     return true;
                 }
 
-                file.Status = file.TrailingZeroBytesLength < numberOfBytesToVerify
-                    ? FileConsistencyGuardFileStatus.Skipped
-                    : FileConsistencyGuardFileStatus.Inconsistent;
+                file.Status = FileConsistencyGuardFileStatus.Skipped;
 
-                file.Reason = FileConsistencyGuardFileReason.LastBytes;
+                file.Reason = file.TrailingZeroBytesLength < numberOfBytesToVerify
+                    ? FileConsistencyGuardFileReason.LastBytes
+                    : FileConsistencyGuardFileReason.ChecksumUnknown;
+
                 file.Error = FileConsistencyGuardFileError.None;
 
                 return true;
@@ -121,21 +122,22 @@ internal static class FileConsistencyGuardFileModelExtensions
             return true;
         }
 
-        // File size neither clearly match neither mismatch (remote plain size is unknown)
+        // File size neither clearly match neither mismatch (local size does not match remote, remote plain size is unknown)
         else
         {
             // Full local file
             if (file.TrailingZeroBytesLength is not null)
             {
-                var numberOfBytesToVerify = FileSizeVerifier.GetNumberOfBytesToVerify(file.RemoteSize);
+                var numberOfBytesToVerify = FileSizeVerifier.GetNumberOfBytesToVerify(file.LocalSize);
 
                 if (numberOfBytesToVerify != 0)
                 {
-                    file.Status = file.TrailingZeroBytesLength < numberOfBytesToVerify
-                        ? FileConsistencyGuardFileStatus.Skipped
-                        : FileConsistencyGuardFileStatus.Inconsistent;
+                    file.Status = FileConsistencyGuardFileStatus.Skipped;
 
-                    file.Reason = FileConsistencyGuardFileReason.LastBytes;
+                    file.Reason = file.TrailingZeroBytesLength < numberOfBytesToVerify
+                        ? FileConsistencyGuardFileReason.LastBytes
+                        : FileConsistencyGuardFileReason.ChecksumUnknown;
+
                     file.Error = FileConsistencyGuardFileError.None;
 
                     return true;

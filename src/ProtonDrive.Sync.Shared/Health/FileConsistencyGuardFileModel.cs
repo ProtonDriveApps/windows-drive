@@ -21,5 +21,6 @@ public sealed record FileConsistencyGuardFileModel
     public long? TrailingZeroBytesLength { get; set; }
     public FileConsistencyGuardFileStatus Status { get; set; }
     public FileConsistencyGuardFileReason Reason { get; set; }
+    public FileConsistencyGuardFileReason DownloadReason { get; set; }
     public FileConsistencyGuardFileError Error { get; set; }
 }

@@ -14,4 +14,5 @@ public enum FileConsistencyGuardFileReason
     Uploaded = 9,
     SizeRule = 10,
     SizeUnknown = 11,
+    ChecksumUnknown = 12,
 }

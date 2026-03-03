@@ -1,9 +1,8 @@
 ﻿using System.Security.Cryptography;
-using ProtonDrive.Shared.IO;
 
-namespace ProtonDrive.Client;
+namespace ProtonDrive.Shared.IO;
 
-internal sealed class HashingStream : WrappingStream
+public sealed class HashingStream : WrappingStream
 {
     private readonly IncrementalHash _hash;
 
@@ -12,6 +11,8 @@ internal sealed class HashingStream : WrappingStream
     {
         _hash = IncrementalHash.CreateHash(hashAlgorithmName);
     }
+
+    public long NumberOfBytesHashed { get; set; }
 
     public override bool CanSeek => false;
 
@@ -47,7 +48,9 @@ internal sealed class HashingStream : WrappingStream
 
     public override Task WriteAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
     {
-        _hash.AppendData(buffer);
+        _hash.AppendData(buffer, offset, count);
+
+        NumberOfBytesHashed += count;
 
         return base.WriteAsync(buffer, offset, count, cancellationToken);
     }
@@ -55,6 +58,8 @@ internal sealed class HashingStream : WrappingStream
     public override ValueTask WriteAsync(ReadOnlyMemory<byte> buffer, CancellationToken cancellationToken = default)
     {
         _hash.AppendData(buffer.Span);
+
+        NumberOfBytesHashed += buffer.Length;
 
         return base.WriteAsync(buffer, cancellationToken);
     }

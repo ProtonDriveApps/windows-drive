@@ -122,6 +122,16 @@ public sealed class FeatureService : IFeatureFlagProvider, IStartableService, IA
             yield return (Feature.DriveWindowsFileConsistencyGuard, IsEnabled: localFeatureFlags.FileConsistencyGuardEnabled.Value);
         }
 
+        if (localFeatureFlags.FileConsistencyGuardDownloadWave1Enabled.HasValue)
+        {
+            yield return (Feature.DriveWindowsFileConsistencyGuardDownloadWave1, IsEnabled: localFeatureFlags.FileConsistencyGuardDownloadWave1Enabled.Value);
+        }
+
+        if (localFeatureFlags.FileConsistencyGuardDownloadWave2Enabled.HasValue)
+        {
+            yield return (Feature.DriveWindowsFileConsistencyGuardDownloadWave2, IsEnabled: localFeatureFlags.FileConsistencyGuardDownloadWave2Enabled.Value);
+        }
+
         if (localFeatureFlags.FileConsistencyGuardSanitizationEnabled.HasValue)
         {
             yield return (Feature.DriveWindowsFileConsistencyGuardSanitization, IsEnabled: localFeatureFlags.FileConsistencyGuardSanitizationEnabled.Value);

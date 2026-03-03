@@ -8,6 +8,8 @@ public sealed class LocalFeatureFlags
     public bool? DriveCryptoEncryptBlocksWithPgpAeadEnabled { get; internal set; }
     public bool FileConsistencyGuardRemoteApplicabilityForceEnabled { get; internal set; }
     public bool? FileConsistencyGuardEnabled { get; set; }
+    public bool? FileConsistencyGuardDownloadWave1Enabled { get; set; }
+    public bool? FileConsistencyGuardDownloadWave2Enabled { get; set; }
     public bool? FileConsistencyGuardSanitizationEnabled { get; internal set; }
 
     // When the feature flag is not present (null), it has no effect.

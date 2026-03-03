@@ -9,6 +9,8 @@ public enum Feature
     DriveSharingDisabled,
     DriveSharingEditingDisabled,
     DriveWindowsFileConsistencyGuard,
+    DriveWindowsFileConsistencyGuardDownloadWave1,
+    DriveWindowsFileConsistencyGuardDownloadWave2,
     DriveWindowsFileConsistencyGuardSanitization,
     DriveWindowsForceMigrationToVolumeEvents,
     DriveWindowsRemoteNodeRenamingDisabled,

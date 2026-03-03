@@ -211,6 +211,7 @@ internal sealed class SyncAgentFactory
         var fileConsistencyGuard = _fileConsistencyGuardFactory.Create(
             mappings,
             localAdapter,
+            remoteAdapter,
             localAdapter.SyncScheduler,
             localAdapterDatabase,
             remoteAdapter.SyncScheduler,

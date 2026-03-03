@@ -39,10 +39,9 @@ public sealed class FileConsistencyGuardDatabase : Database
             "TrailingZeroBytesLength INTEGER, " +
             "Status INTEGER NOT NULL, " +
             "Reason INTEGER NOT NULL, " +
+            "DownloadReason INTEGER NOT NULL, " +
             "Error INTEGER NOT NULL" +
             ")");
-
-        connection.Execute("CREATE INDEX IF NOT EXISTS Files_Idx_Status_Reason_Error ON Files(Status, Reason, Error)");
 
         if (!ColumnExists(connection, "Files", "RemotePlainSize"))
         {
@@ -63,6 +62,15 @@ public sealed class FileConsistencyGuardDatabase : Database
         {
             connection.Execute("ALTER TABLE Files DROP COLUMN LastByteIsNonZero");
         }
+
+        if (!ColumnExists(connection, "Files", "DownloadReason"))
+        {
+            connection.Execute("ALTER TABLE Files ADD COLUMN DownloadReason INTEGER NOT NULL DEFAULT 0");
+        }
+
+        connection.Execute("DROP INDEX IF EXISTS Files_Idx_Status_Reason_Error");
+
+        connection.Execute("CREATE INDEX IF NOT EXISTS Files_Idx_Status_Reason_DownloadReason_Error ON Files(Status, Reason, DownloadReason, Error)");
 
         new FileConsistencyGuardDataMigration(connection).Execute();
     }

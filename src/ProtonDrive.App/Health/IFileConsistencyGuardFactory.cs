@@ -12,6 +12,7 @@ public interface IFileConsistencyGuardFactory
     IFileConsistencyGuard Create(
         IReadOnlyCollection<RemoteToLocalMapping> mappings,
         IFileRevisionProvider<long> localFileRevisionProvider,
+        IFileRevisionProvider<long> remoteFileRevisionProvider,
         ITransactedScheduler localAdapterSyncScheduler,
         LocalAdapterDatabase localAdapterDatabase,
         ITransactedScheduler remoteAdapterSyncScheduler,

@@ -52,6 +52,7 @@ internal sealed class FileConsistencyGuardFactory : IFileConsistencyGuardFactory
     public IFileConsistencyGuard Create(
         IReadOnlyCollection<RemoteToLocalMapping> mappings,
         IFileRevisionProvider<long> localFileRevisionProvider,
+        IFileRevisionProvider<long> remoteFileRevisionProvider,
         ITransactedScheduler localAdapterSyncScheduler,
         LocalAdapterDatabase localAdapterDatabase,
         ITransactedScheduler remoteAdapterSyncScheduler,
@@ -88,6 +89,12 @@ internal sealed class FileConsistencyGuardFactory : IFileConsistencyGuardFactory
             _errorCounter,
             _loggerFactory.CreateLogger<RemoteFileMetadataUpdater>());
 
+        var remoteFileMetadataCalculator = new RemoteFileMetadataCalculator(
+            database,
+            remoteFileRevisionProvider,
+            _errorCounter,
+            _loggerFactory.CreateLogger<RemoteFileMetadataCalculator>());
+
         var localFileMetadataValidator = new LocalFileMetadataValidator(
             localFileRevisionProvider,
             _errorCounter,
@@ -104,6 +111,10 @@ internal sealed class FileConsistencyGuardFactory : IFileConsistencyGuardFactory
             remoteFileDownloadTrigger,
             _loggerFactory.CreateLogger<FileConsistencyGuardFileSanitizer>());
 
+        var completionVerifier = new FileConsistencyGuardCompletionVerifier(
+            database,
+            _loggerFactory.CreateLogger<FileConsistencyGuardCompletionVerifier>());
+
         return new FileConsistencyGuard(
             _appConfig,
             _settingsRepository,
@@ -116,7 +127,9 @@ internal sealed class FileConsistencyGuardFactory : IFileConsistencyGuardFactory
             localFileMetadataProvider,
             remoteFileMetadataRefresher,
             remoteFileMetadataProvider,
+            remoteFileMetadataCalculator,
             fileSanitizer,
+            completionVerifier,
             _errorCounter,
             _loggerFactory.CreateLogger<FileConsistencyGuard>());
     }

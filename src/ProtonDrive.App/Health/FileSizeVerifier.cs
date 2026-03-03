@@ -2,9 +2,9 @@
 
 internal static class FileSizeVerifier
 {
-    private const int DefaultFileBlockSize = 4 * 1024 * 1024;
-    private const int DriveSdkBufferSize = 132 * 1024;
-    private const int ChunkSize = 4 * 1024;
+    internal const int DefaultFileBlockSize = 4 * 1024 * 1024;
+    internal const int DriveSdkBufferSize = 132 * 1024;
+    internal const int ChunkSize = 4 * 1024;
 
     public static long GetNumberOfBytesToVerify(long remoteFileSize)
     {

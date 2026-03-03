@@ -2,6 +2,7 @@
 using ProtonDrive.Client.Contracts;
 using ProtonDrive.Shared;
 using ProtonDrive.Shared.Extensions;
+using ProtonDrive.Shared.IO;
 using ProtonDrive.Sync.Shared.FileSystem;
 
 namespace ProtonDrive.Client.FileUploading;

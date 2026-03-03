@@ -207,6 +207,11 @@ internal sealed class CryptographyService : ICryptographyService
             ? await _addressKeyProvider.Value.GetPublicKeysForEmailAddressAsync(signatureEmailAddress, cancellationToken).ConfigureAwait(false)
             : [nodeKey.ToPublic()];
 
+        if (verificationKeys.Count == 0)
+        {
+            return PgpVerificationStatus.NoVerifier;
+        }
+
         var armoredSignatureBytes = Encoding.ASCII.GetBytes(manifestSignature);
         var verificationResult = new PgpKeyRing(verificationKeys).Verify(manifest.Span, armoredSignatureBytes, PgpEncoding.AsciiArmor);
 

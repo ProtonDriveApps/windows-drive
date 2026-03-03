@@ -27,6 +27,7 @@ internal sealed class TelemetryService : IRemoteSettingsAware, IUserStateAware
     private readonly IErrorCounter _errorCounter;
     private readonly IErrorCountProvider _errorCountProvider;
     private readonly TimeSpan _period;
+    private readonly TimeSpan _startupDelay;
     private readonly ITelemetryApiClient _telemetryApiClient;
     private readonly ILogger<TelemetryService> _logger;
     private readonly Lazy<Task> _reportFirstLaunchTask;
@@ -57,7 +58,9 @@ internal sealed class TelemetryService : IRemoteSettingsAware, IUserStateAware
         _telemetryApiClient = telemetryApiClient;
         _logger = logger;
 
-        _period = appConfig.PeriodicTelemetryReportInterval.RandomizedWithDeviation(0.2);
+        _period = appConfig.PeriodicTelemetryReportInterval.RandomizedWithDeviation(0.1, JitterDirection.PositiveOnly);
+        _startupDelay = TimeSpan.FromSeconds(appConfig.PeriodicTelemetryReportInterval.TotalSeconds / 5).RandomizedWithDeviation(0.2);
+
         _timer = new PeriodicTimer(_period);
         _reportFirstLaunchTask = new Lazy<Task>(ReportFirstLaunchAsync);
     }
@@ -137,7 +140,6 @@ internal sealed class TelemetryService : IRemoteSettingsAware, IUserStateAware
             return; // Task already started
         }
 
-        _timer = new PeriodicTimer(_period);
         _timerTask = ReportStatisticsAsync(_cancellationHandle.Token);
     }
 
@@ -157,6 +159,10 @@ internal sealed class TelemetryService : IRemoteSettingsAware, IUserStateAware
     {
         try
         {
+            await Task.Delay(_startupDelay, cancellationToken).ConfigureAwait(false);
+
+            _timer = new PeriodicTimer(_period);
+
             await _reportFirstLaunchTask.Value.ConfigureAwait(false);
 
             while (await _timer.WaitForNextTickAsync(cancellationToken).ConfigureAwait(false))

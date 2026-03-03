@@ -54,11 +54,11 @@ internal sealed class ExecutionStep<TId, TAltId>
     }
 
     private static async Task<NodeInfo<TAltId>> FinalizeAsync(
-        IRevisionCreationProcess<TAltId> creationProcess,
+        IRevisionCreationProcess<TAltId> destinationRevision,
         UpdateDetectionSwitch updateDetection,
         CancellationToken cancellationToken)
     {
-        // Finishing file transfer (creationProcess) generates remote file creation or revision
+        // Finishing file transfer (destinationRevision) generates remote file creation or revision
         // change events on remote file system / local temporary file rename to the
         // desired name events on local file system.
         // To make sure operation execution result is applied to the Adapter Tree before
@@ -66,7 +66,7 @@ internal sealed class ExecutionStep<TId, TAltId>
         // file transfer is finished and the result is applied to the Adapter Tree.
         await updateDetection.PostponeAsync(cancellationToken).ConfigureAwait(false);
 
-        return await creationProcess.FinishAsync(cancellationToken).ConfigureAwait(false);
+        return await destinationRevision.FinishAsync(cancellationToken).ConfigureAwait(false);
     }
 
     private async Task<NodeInfo<TAltId>> CreateFolderAsync(

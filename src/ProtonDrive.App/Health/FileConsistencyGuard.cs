@@ -28,8 +28,10 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
     private readonly LocalFileMetadataUpdater _localMetadataUpdater;
     private readonly RemoteFileMetadataRefresher _remoteMetadataRefresher;
     private readonly RemoteFileMetadataUpdater _remoteMetadataUpdater;
-    private readonly IErrorCounter _errorCounter;
+    private readonly RemoteFileMetadataCalculator _remoteMetadataCalculator;
     private readonly FileConsistencyGuardFileSanitizer _fileSanitizer;
+    private readonly FileConsistencyGuardCompletionVerifier _completionVerifier;
+    private readonly IErrorCounter _errorCounter;
     private readonly ILogger<FileConsistencyGuard> _logger;
 
     private readonly SingleAction _execution;
@@ -48,7 +50,9 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
         LocalFileMetadataUpdater localMetadataUpdater,
         RemoteFileMetadataRefresher remoteMetadataRefresher,
         RemoteFileMetadataUpdater remoteMetadataUpdater,
+        RemoteFileMetadataCalculator remoteMetadataCalculator,
         FileConsistencyGuardFileSanitizer fileSanitizer,
+        FileConsistencyGuardCompletionVerifier completionVerifier,
         IErrorCounter errorCounter,
         ILogger<FileConsistencyGuard> logger)
     {
@@ -62,7 +66,9 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
         _localMetadataUpdater = localMetadataUpdater;
         _remoteMetadataRefresher = remoteMetadataRefresher;
         _remoteMetadataUpdater = remoteMetadataUpdater;
+        _remoteMetadataCalculator = remoteMetadataCalculator;
         _fileSanitizer = fileSanitizer;
+        _completionVerifier = completionVerifier;
         _errorCounter = errorCounter;
         _logger = logger;
 
@@ -109,6 +115,8 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
                         await VerifyConsistencyAsync(cancellationToken).ConfigureAwait(false);
 
                         await SanitizeFilesAsync(cancellationToken).ConfigureAwait(false);
+
+                        await VerifyCompletionAsync(cancellationToken).ConfigureAwait(false);
                     }
                     finally
                     {
@@ -206,6 +214,30 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
         {
             await UpdateStatisticsAsync(cancellationToken).ConfigureAwait(false);
         }
+
+        if (await _featureFlagProvider.IsEnabledAsync(Feature.DriveWindowsFileConsistencyGuardDownloadWave1, cancellationToken).ConfigureAwait(false))
+        {
+            if (await _remoteMetadataCalculator.ExecuteWave1Async(cancellationToken).ConfigureAwait(false))
+            {
+                await UpdateStatisticsAsync(cancellationToken).ConfigureAwait(false);
+            }
+        }
+        else
+        {
+            _logger.LogInformation("File consistency guard: Metadata calculation (Wave 1) is disabled");
+        }
+
+        if (await _featureFlagProvider.IsEnabledAsync(Feature.DriveWindowsFileConsistencyGuardDownloadWave2, cancellationToken).ConfigureAwait(false))
+        {
+            if (await _remoteMetadataCalculator.ExecuteWave2Async(cancellationToken).ConfigureAwait(false))
+            {
+                await UpdateStatisticsAsync(cancellationToken).ConfigureAwait(false);
+            }
+        }
+        else
+        {
+            _logger.LogInformation("File consistency guard: Metadata calculation (Wave 2) is disabled");
+        }
     }
 
     private async Task SanitizeFilesAsync(CancellationToken cancellationToken)
@@ -217,10 +249,26 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
 
         if (!await _featureFlagProvider.IsEnabledAsync(Feature.DriveWindowsFileConsistencyGuardSanitization, cancellationToken).ConfigureAwait(false))
         {
+            _logger.LogInformation("File consistency guard: Sanitization is disabled");
             return;
         }
 
         await _fileSanitizer.ExecuteAsync(cancellationToken).ConfigureAwait(false);
+    }
+
+    private async Task VerifyCompletionAsync(CancellationToken cancellationToken)
+    {
+        if (Status is not FileConsistencyGuardStatus.Initialized)
+        {
+            return;
+        }
+
+        var verdict = await _completionVerifier.ExecuteAsync(cancellationToken).ConfigureAwait(false);
+
+        if (verdict is CompletionVerdict.Completed)
+        {
+            SetStatus(FileConsistencyGuardStatus.Completed);
+        }
     }
 
     private async Task ReportCompletionAsync(CancellationToken cancellationToken)

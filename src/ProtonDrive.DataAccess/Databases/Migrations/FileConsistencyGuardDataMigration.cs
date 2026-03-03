@@ -21,41 +21,88 @@ internal class FileConsistencyGuardDataMigration
 
     public void Execute()
     {
+        MigrateToVersion1();
+        MigrateToVersion2();
+    }
+
+    private void MigrateToVersion1()
+    {
         var dataVersion = GetProperty<int?>(DataVersionPropertyKey) ?? 0;
 
-        if (dataVersion == 0)
+        if (dataVersion != 0)
         {
-            using var transaction = _connection.BeginTransaction();
-
-            const string resetStatusToNoneSql =
-                """
-                UPDATE Files SET
-                    Status = 0,     -- None
-                    Reason = 0,     -- None,
-                    Error = 0       -- None
-                WHERE
-                    Reason = 6      -- SizeMismatch
-                 OR Reason = 7      -- LastBytes
-                 OR Reason = 10     -- SizeRule
-                """;
-
-            _connection.Execute(resetStatusToNoneSql);
-
-            const string updateStatusFromSkippedToConsistentSql =
-                """
-                UPDATE Files SET
-                    Status = 2      -- Consistent
-                WHERE
-                    Status = 1      -- Skipped
-                AND Reason = 5      -- SizeZero
-                """;
-
-            _connection.Execute(updateStatusFromSkippedToConsistentSql);
-
-            SetProperty(DataVersionPropertyKey, 1);
-
-            transaction.Commit();
+            return;
         }
+
+        using var transaction = _connection.BeginTransaction();
+
+        const string resetStatusToNoneSql =
+            """
+            UPDATE Files SET
+                Status = 0,     -- None
+                Reason = 0,     -- None,
+                Error = 0       -- None
+            WHERE
+                Reason = 6      -- SizeMismatch
+             OR Reason = 7      -- LastBytes
+             OR Reason = 10     -- SizeRule
+            """;
+
+        _connection.Execute(resetStatusToNoneSql);
+
+        const string updateStatusFromSkippedToConsistentSql =
+            """
+            UPDATE Files SET
+                Status = 2      -- Consistent
+            WHERE
+                Status = 1      -- Skipped
+            AND Reason = 5      -- SizeZero
+            """;
+
+        _connection.Execute(updateStatusFromSkippedToConsistentSql);
+
+        SetProperty(DataVersionPropertyKey, 1);
+
+        transaction.Commit();
+    }
+
+    private void MigrateToVersion2()
+    {
+        var dataVersion = GetProperty<int?>(DataVersionPropertyKey) ?? 0;
+
+        if (dataVersion != 1)
+        {
+            return;
+        }
+
+        using var transaction = _connection.BeginTransaction();
+
+        const string updateStatusFromSkippedToConsistentSql =
+            """
+            UPDATE Files SET
+                Status = 2      -- Consistent
+            WHERE
+                Status = 1      -- Skipped
+            AND Reason = 1      -- Partial
+            """;
+
+        _connection.Execute(updateStatusFromSkippedToConsistentSql);
+
+        const string updateStatusFromInconsistentToSkippedSql =
+            """
+            UPDATE Files SET
+                Status = 1,     -- Skipped
+                Reason = 12     -- HashUnknown
+            WHERE
+                Status = 3      -- Inconsistent
+            AND Reason = 7      -- LastBytes
+            """;
+
+        _connection.Execute(updateStatusFromInconsistentToSkippedSql);
+
+        SetProperty(DataVersionPropertyKey, 2);
+
+        transaction.Commit();
     }
 
     private T? GetProperty<T>(string key)
