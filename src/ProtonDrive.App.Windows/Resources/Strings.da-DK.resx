@@ -732,6 +732,9 @@ Slå synkroniseringen fra og til igen for at gendanne den og fjerne denne fejl.<
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Gør klar... ({0} elementer forberedt til synkronisering)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>for et øjeblik siden</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>{0} dage siden</value>
   </data>
@@ -807,7 +810,7 @@ Slå synkroniseringen fra og til igen for at gendanne den og fjerne denne fejl.<
     <value>{0} mappe(r) kan ikke synkroniseres, fordi netværksmapper ikke understøttes</value>
   </data>
   <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat">
-    <value>{0} mappe(r) kan ikke synkroniseres, fordi de er systemmappe(r)</value>
+    <value>{0} mappe(r) kan ikke synkroniseres, fordi de(n) er systemmappe(r)</value>
   </data>
   <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
     <value>Kan ikke tilføje {0} mappe(r)</value>

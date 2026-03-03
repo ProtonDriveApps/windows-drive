@@ -732,6 +732,9 @@
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>正在设置...（{0} 个项目准备同步）</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>几分钟前</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>{0} 天前</value>
   </data>

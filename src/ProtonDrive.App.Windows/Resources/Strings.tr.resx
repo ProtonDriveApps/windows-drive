@@ -732,6 +732,9 @@ Geri yüklemek ve bu hatayı gidermek için eşitlemeyi kapatıp yeniden açın.
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Kuruluyor... ({0} öge eşitlemeye hazırlandı)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>biraz önce</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>{0} gün önce</value>
   </data>
@@ -1019,7 +1022,7 @@ Dosyaların bu aygıtta yalnızca onları açtığınızda ya da her zaman bulun
     <value>Konum</value>
   </data>
   <data name="Main_Settings_EarlyAccess_HelpText">
-    <value>Erken erişim elde edin ve Proton Drive'ın yeni sürümlerini test etmemize yardımcı olun.</value>
+    <value>Yeni Proton Drive sürümlerine daha erken erişin ve denememize yardımcı olun.</value>
   </data>
   <data name="Main_Settings_EarlyAccess_Title">
     <value>Beta erişimi</value>

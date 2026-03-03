@@ -732,6 +732,9 @@ Slå synkroniseringen av og på igjen for å gjenopprette den og fjerne denne fe
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Konfigurerer...({0} elementer forberedt for synkronisering)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>for et øyeblikk siden</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>{0} dager siden</value>
   </data>

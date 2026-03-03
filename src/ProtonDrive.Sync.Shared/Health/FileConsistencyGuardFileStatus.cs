@@ -6,5 +6,5 @@ public enum FileConsistencyGuardFileStatus
     Skipped = 1,
     Consistent = 2,
     Inconsistent = 3,
-    Repaired = 4,
+    Sanitized = 4,
 }

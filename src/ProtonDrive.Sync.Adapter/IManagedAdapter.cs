@@ -48,4 +48,13 @@ public interface IManagedAdapter<TId> : IExecutionStatisticsProvider
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
     /// <returns>A task that represents the asynchronous update detection operation.</returns>
     Task DetectUpdatesAsync(CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Triggers a pseudo edit for the specified file, simulating a content change.
+    /// </summary>
+    /// <param name="id">The file node ID to trigger pseudo edit for.</param>
+    /// <param name="requestedVersion">Expected file content version.</param>
+    /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+    /// <returns>A task that represents the asynchronous operation.</returns>
+    Task TriggerPseudoFileEditAsync(TId id, long requestedVersion, CancellationToken cancellationToken);
 }

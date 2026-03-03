@@ -5,6 +5,7 @@ using MoreLinq.Extensions;
 using ProtonDrive.DataAccess.Databases;
 using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Extensions;
+using ProtonDrive.Shared.IO;
 using ProtonDrive.Shared.Telemetry;
 using ProtonDrive.Sync.Shared.Adapters;
 using ProtonDrive.Sync.Shared.FileSystem;
@@ -66,13 +67,13 @@ internal sealed class LocalFileMetadataUpdater
         return true;
     }
 
-    private static void SetHash(FileConsistencyGuardFileModel file, string hash, bool? lastByteIsNonZero)
+    private static void SetHash(FileConsistencyGuardFileModel file, string hash, long? trailingZeroBytesLength)
     {
         file.Status = FileConsistencyGuardFileStatus.None;
         file.Reason = FileConsistencyGuardFileReason.None;
         file.Error = FileConsistencyGuardFileError.None;
         file.LocalHash = hash;
-        file.LastByteIsNonZero = lastByteIsNonZero;
+        file.TrailingZeroBytesLength = trailingZeroBytesLength;
 
         file.UpdateStatus();
     }
@@ -105,25 +106,6 @@ internal sealed class LocalFileMetadataUpdater
         file.Error = FileConsistencyGuardFileError.None;
     }
 
-    private static async Task<bool?> TryGetLastByteIsNonZero(Stream stream, CancellationToken cancellationToken)
-    {
-        if (stream.Length <= 0)
-        {
-            return null;
-        }
-
-        var lastByte = new byte[1];
-        stream.Seek(-1, SeekOrigin.End);
-        var bytesRead = await stream.ReadAsync(lastByte.AsMemory(), cancellationToken).ConfigureAwait(false);
-
-        if (bytesRead != 1)
-        {
-            return null;
-        }
-
-        return lastByte[0] != 0;
-    }
-
     private async Task<int> UpdateMetadataAsync(CancellationToken cancellationToken)
     {
         // We skip files on disabled roots during second and subsequent runs, because the root cannot become enabled without restarting synchronization.
@@ -131,7 +113,7 @@ internal sealed class LocalFileMetadataUpdater
         var files = (await _database.FileRepository
                 .GetFilesByStatusAsync(FileConsistencyGuardFileStatus.None, includeDisabledRoots: _isFirstRun)
                 .ConfigureAwait(false))
-            .Where(x => x.LocalHash is null)
+            .Where(x => x.LocalHash is null || x.TrailingZeroBytesLength is null)
             .ToList();
 
         if (files.Count == 0)
@@ -175,11 +157,19 @@ internal sealed class LocalFileMetadataUpdater
     {
         var fileRevision = await OpenFileForReadingAsync(file, cancellationToken).ConfigureAwait(false);
 
-        var metadata = await HashContentAsync(fileRevision, file, cancellationToken).ConfigureAwait(false);
-
-        if (metadata is not null)
+        if (fileRevision is null)
         {
-            SetHash(file, metadata.Value.Hash, metadata.Value.LastByteIsNonZero);
+            return;
+        }
+
+        await using (fileRevision.ConfigureAwait(false))
+        {
+            var metadata = await HashContentAsync(fileRevision, file, cancellationToken).ConfigureAwait(false);
+
+            if (metadata is not null)
+            {
+                SetHash(file, metadata.Value.Hash, metadata.Value.TrailingZeroBytesLength);
+            }
         }
     }
 
@@ -204,7 +194,7 @@ internal sealed class LocalFileMetadataUpdater
         }
     }
 
-    private async Task<(string Hash, bool? LastByteIsNonZero)?> HashContentAsync(IRevision? revision, FileConsistencyGuardFileModel file, CancellationToken cancellationToken)
+    private async Task<(string Hash, long TrailingZeroBytesLength)?> HashContentAsync(IRevision? revision, FileConsistencyGuardFileModel file, CancellationToken cancellationToken)
     {
         if (revision is null)
         {
@@ -213,7 +203,9 @@ internal sealed class LocalFileMetadataUpdater
 
         try
         {
-            var bufferedStream = new BufferedStream(revision.GetContentStream(), bufferSize: 64 * 1024);
+            var trailingZeroBytesCountingStream = new TrailingZeroBytesCountingStream(revision.GetContentStream());
+
+            var bufferedStream = new BufferedStream(trailingZeroBytesCountingStream, bufferSize: 64 * 1024);
 
             await using (bufferedStream.ConfigureAwait(false))
             {
@@ -227,9 +219,7 @@ internal sealed class LocalFileMetadataUpdater
                         file.Id);
                 }
 
-                var lastByteIsNonZero = await TryGetLastByteIsNonZero(bufferedStream, cancellationToken).ConfigureAwait(false);
-
-                return (Hash: Convert.ToHexStringLower(hash), lastByteIsNonZero);
+                return (Hash: Convert.ToHexStringLower(hash), trailingZeroBytesCountingStream.TrailingZeroBytesLength);
             }
         }
         catch (FileSystemClientException ex)
@@ -277,7 +267,7 @@ internal sealed class LocalFileMetadataUpdater
         }
         else if (ex.ErrorCode is FileSystemErrorCode.Partial)
         {
-            SetHash(file, PartialFileIndicator, lastByteIsNonZero: null);
+            SetHash(file, PartialFileIndicator, trailingZeroBytesLength: null);
         }
         else
         {

@@ -8,6 +8,7 @@ using ProtonDrive.Shared.Devices;
 using ProtonDrive.Shared.Features;
 using ProtonDrive.Shared.Repository;
 using ProtonDrive.Shared.Telemetry;
+using ProtonDrive.Sync.Adapter;
 using ProtonDrive.Sync.Agent.Health;
 using ProtonDrive.Sync.Shared;
 using ProtonDrive.Sync.Shared.Adapters;
@@ -54,7 +55,8 @@ internal sealed class FileConsistencyGuardFactory : IFileConsistencyGuardFactory
         ITransactedScheduler localAdapterSyncScheduler,
         LocalAdapterDatabase localAdapterDatabase,
         ITransactedScheduler remoteAdapterSyncScheduler,
-        RemoteAdapterDatabase remoteAdapterDatabase)
+        RemoteAdapterDatabase remoteAdapterDatabase,
+        IManagedAdapter<long> remoteAdapter)
     {
         var database = new FileConsistencyGuardDatabase(new DatabaseConfig(Path.Combine(_appConfig.AppDataPath, "FileConsistencyGuard.sqlite")));
 
@@ -86,6 +88,22 @@ internal sealed class FileConsistencyGuardFactory : IFileConsistencyGuardFactory
             _errorCounter,
             _loggerFactory.CreateLogger<RemoteFileMetadataUpdater>());
 
+        var localFileMetadataValidator = new LocalFileMetadataValidator(
+            localFileRevisionProvider,
+            _errorCounter,
+            _loggerFactory.CreateLogger<LocalFileMetadataValidator>());
+
+        var remoteFileDownloadTrigger = new RemoteFileDownloadTrigger(
+            remoteAdapter,
+            _errorCounter,
+            _loggerFactory.CreateLogger<RemoteFileDownloadTrigger>());
+
+        var fileSanitizer = new FileConsistencyGuardFileSanitizer(
+            database,
+            localFileMetadataValidator,
+            remoteFileDownloadTrigger,
+            _loggerFactory.CreateLogger<FileConsistencyGuardFileSanitizer>());
+
         return new FileConsistencyGuard(
             _appConfig,
             _settingsRepository,
@@ -98,6 +116,7 @@ internal sealed class FileConsistencyGuardFactory : IFileConsistencyGuardFactory
             localFileMetadataProvider,
             remoteFileMetadataRefresher,
             remoteFileMetadataProvider,
+            fileSanitizer,
             _errorCounter,
             _loggerFactory.CreateLogger<FileConsistencyGuard>());
     }

@@ -732,6 +732,9 @@ Desactive y active la sincronización nuevamente para restaurarlo y eliminar est
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Configurando... ({0} elementos preparados para sincronizarse)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>hace un momento</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>hace {0} días</value>
   </data>

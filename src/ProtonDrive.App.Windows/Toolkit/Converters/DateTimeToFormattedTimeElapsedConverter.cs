@@ -42,6 +42,7 @@ internal class DateTimeToFormattedTimeElapsedConverter : IValueConverter
 
         return minutesElapsed switch
         {
+            < 1 => Strings.Main_Activity_TimeElapsed_AMomentAgo,
             < 2 => Strings.Main_Activity_TimeElapsed_OneMinuteAgo,
             < 60 => string.Format(Strings.Main_Activity_TimeElapsed_MinutesAgoFormat, minutesElapsed),
             < 60 * 2 => Strings.Main_Activity_TimeElapsed_OneHourAgo,

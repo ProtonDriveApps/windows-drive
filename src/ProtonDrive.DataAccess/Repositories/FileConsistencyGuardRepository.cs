@@ -41,8 +41,8 @@ public sealed class FileConsistencyGuardRepository
         const string sql =
             $"""
              INSERT INTO {FilesTableName}
-             (Id, LocalRootId, RemoteRootId, LocalId, RemoteId, Name, LocalSize, RemoteSize, LocalLastWriteTime, RemoteLastWriteTime, RevisionId, ContentVersion, LocalHash, RemoteHash, LastByteIsNonZero, Status, Reason, Error)
-             VALUES (@Id, @LocalRootId, @RemoteRootId, @LocalId, @RemoteId, @Name, @LocalSize, @RemoteSize, @LocalLastWriteTime, @RemoteLastWriteTime, @RevisionId, @ContentVersion, @LocalHash, @RemoteHash, @LastByteIsNonZero, @Status, @Reason, @Error)
+             (Id, LocalRootId, RemoteRootId, LocalId, RemoteId, Name, LocalSize, RemoteSize, RemotePlainSize, RemoteSizeOnStorage, LocalLastWriteTime, RemoteLastWriteTime, RevisionId, ContentVersion, LocalHash, RemoteHash, TrailingZeroBytesLength, Status, Reason, Error)
+             VALUES (@Id, @LocalRootId, @RemoteRootId, @LocalId, @RemoteId, @Name, @LocalSize, @RemoteSize, @RemotePlainSize, @RemoteSizeOnStorage, @LocalLastWriteTime, @RemoteLastWriteTime, @RevisionId, @ContentVersion, @LocalHash, @RemoteHash, @TrailingZeroBytesLength, @Status, @Reason, @Error)
              """;
 
         try
@@ -73,13 +73,15 @@ public sealed class FileConsistencyGuardRepository
                  Name = @Name,
                  LocalSize = @LocalSize,
                  RemoteSize = @RemoteSize,
+                 RemotePlainSize = @RemotePlainSize,
+                 RemoteSizeOnStorage = @RemoteSizeOnStorage,
                  LocalLastWriteTime = @LocalLastWriteTime,
                  RemoteLastWriteTime = @RemoteLastWriteTime,
                  RevisionId = @RevisionId,
                  ContentVersion = @ContentVersion,
                  LocalHash = @LocalHash,
                  RemoteHash = @RemoteHash,
-                 LastByteIsNonZero = @LastByteIsNonZero,
+                 TrailingZeroBytesLength = @TrailingZeroBytesLength,
                  Status = @Status,
                  Reason = @Reason,
                  Error = @Error

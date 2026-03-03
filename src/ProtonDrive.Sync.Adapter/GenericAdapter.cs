@@ -52,6 +52,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
     private readonly FileSyncStateHandler<TId, TAltId>? _fileSyncStateHandler;
     private readonly IFileRevisionProvider<TId> _fileRevisionProvider;
     private readonly HydrationDemandHandler<TId, TAltId> _fileHydrationDemandHandler;
+    private readonly PseudoUpdateTrigger<TId, TAltId> _manualUpdateTrigger;
 
     private readonly ConcurrentExecutionStatistics _stateBasedUpdateDetectionExecutionStatistics = new();
     private readonly FileSystemAccessRateLimiter<TId> _accessRateLimiter;
@@ -195,6 +196,14 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
             syncRoots);
 
         var exclusionFilter = new ItemExclusionFilter(specialFolderNames);
+
+        _manualUpdateTrigger = new PseudoUpdateTrigger<TId, TAltId>(
+            SyncScheduler,
+            FileSystemTree,
+            syncRoots,
+            contentVersionSequence,
+            nodeUpdateDetection,
+            loggerFactory.CreateLogger<PseudoUpdateTrigger<TId, TAltId>>());
 
         var rootEnumeration = new RootEnumeration<TId, TAltId>(
             SyncScheduler,
@@ -461,6 +470,11 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
     public Task DetectUpdatesAsync(CancellationToken cancellationToken)
     {
         return _updateDetection.ExecuteAsync(cancellationToken);
+    }
+
+    public Task TriggerPseudoFileEditAsync(TId id, long requestedVersion, CancellationToken cancellationToken)
+    {
+        return _manualUpdateTrigger.TriggerPseudoFileEditAsync(id, requestedVersion, cancellationToken);
     }
 
     public void Reset()

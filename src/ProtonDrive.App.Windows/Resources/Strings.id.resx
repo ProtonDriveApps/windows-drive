@@ -732,6 +732,9 @@ Nonaktifkan dan aktifkan kembali sinkronisasi berkas ini untuk memulihkan berkas
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Mempersiapkan... ({0} item disiapkan untuk penyinkronan)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>a moment ago</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>{0} hari yang lalu</value>
   </data>

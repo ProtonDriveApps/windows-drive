@@ -732,6 +732,9 @@
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Γίνεται ρύθμιση... ({0} στοιχεία έτοιμα για συγχρονισμό)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>πριν από λίγο</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>{0} ημέρες πριν</value>
   </data>

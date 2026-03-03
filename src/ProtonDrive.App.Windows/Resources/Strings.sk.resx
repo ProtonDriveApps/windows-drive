@@ -230,7 +230,7 @@
     <comment>Indicates the file or folder is being moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Rename">
-    <value>Premenúvanie v Proton Drive</value>
+    <value>Premenovanie na Proton Drive</value>
     <comment>Indicates the file or folder is being renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Upload">
@@ -502,7 +502,7 @@ Vypnutím a opätovným zapnutím jeho synchronizácie ho obnovíte a odstránit
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_About_Button_UpdateNow">
-    <value>Akt_ualizovať teraz</value>
+    <value>_Aktualizovať teraz</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_About_Button_UpdateNow_HelpText">
@@ -612,7 +612,7 @@ Vypnutím a opätovným zapnutím jeho synchronizácie ho obnovíte a odstránit
     <value>Premenovať</value>
   </data>
   <data name="Main_Activity_Button_Rename_Tooltip">
-    <value>Premenovanie tejto položky vyrieši problém so synchronizáciou</value>
+    <value>Premenujte túto položku na opravu problému so synchronizáciou</value>
   </data>
   <data name="Main_Activity_Button_ResumeSync">
     <value>_Obnoviť synchronizáciu</value>
@@ -732,6 +732,9 @@ Vypnutím a opätovným zapnutím jeho synchronizácie ho obnovíte a odstránit
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Nastavenie... ({0} položiek pripravených na synchronizáciu)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>pred chvíľou</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>pred {0} dňami</value>
   </data>
@@ -816,7 +819,7 @@ Vypnutím a opätovným zapnutím jeho synchronizácie ho obnovíte a odstránit
     <value>Nie je možné pridať 1 priečinok</value>
   </data>
   <data name="Main_MyComputer_Folders_Button_Add">
-    <value>Prid_ať priečinky</value>
+    <value>_Pridať priečinky</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst">
@@ -851,7 +854,7 @@ Optimalizáciu úložiska môžete kedykoľvek vypnúť.</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder">
-    <value>Odst_rániť priečinok</value>
+    <value>_Odstrániť priečinok</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm">
@@ -902,7 +905,7 @@ Optimalizáciu úložiska môžete kedykoľvek vypnúť.</value>
     <value>Zavrieť predstavenie funkcie používania počítača</value>
   </data>
   <data name="Main_MyComputer_Onboarding_Page1_Button_Next">
-    <value>_Nasl.</value>
+    <value>_Ďalej</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_MyComputer_Onboarding_Page1_Description">
@@ -913,7 +916,7 @@ Optimalizáciu úložiska môžete kedykoľvek vypnúť.</value>
     <value>Optimalizovať úložisko</value>
   </data>
   <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted">
-    <value>Z_ačíname</value>
+    <value>_Začať</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_MyComputer_Onboarding_Page2_Point_1">

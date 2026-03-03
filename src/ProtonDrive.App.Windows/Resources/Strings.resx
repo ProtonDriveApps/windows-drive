@@ -278,6 +278,9 @@
   <data name="Main_Activity_Button_Rename_Tooltip" xml:space="preserve">
     <value>Rename this item to fix the synchronization issue</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo" xml:space="preserve">
+    <value>a moment ago</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_OneMinuteAgo" xml:space="preserve">
     <value>a minute ago</value>
   </data>

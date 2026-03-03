@@ -732,6 +732,9 @@ Desactiveu i torneu a activar la sincronització per restaurar-lo i esborrar aqu
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>S'està configurant... ({0} elements preparats per a la sincronització)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>fa un moment</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>fa {0} dies</value>
   </data>
@@ -810,7 +813,7 @@ Desactiveu i torneu a activar la sincronització per restaurar-lo i esborrar aqu
     <value>No es poden sincronitzar {0} carpetes perquè són carpetes del sistema.</value>
   </data>
   <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
-    <value>No es pot afegir {0} carpetes.</value>
+    <value>No s'han pogut afegir {0} carpetes</value>
   </data>
   <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder">
     <value>No es pot afegir 1 carpeta.</value>
@@ -969,13 +972,13 @@ desactivar l'optimització d'emmagatzematge en qualsevol moment.</value>
     <value>Guia pas a pas de com exportar les vostres fotos des de Google Fotos</value>
   </data>
   <data name="Main_Photos_ImportFromGoogle_Export_Title">
-    <value>1. Exporteu les vostres fotos des de Google Fotos</value>
+    <value>1. Exporteu les fotos des del Google Fotos</value>
   </data>
   <data name="Main_Photos_ImportFromGoogle_Import_Description">
     <value>Ha de ser la carpeta descomprimida que conté les vostres fotos i vídeos exportats.</value>
   </data>
   <data name="Main_Photos_ImportFromGoogle_Import_Title">
-    <value>2. Importeu la carpeta de Google Fotos</value>
+    <value>2. Importeu la carpeta del Google Fotos</value>
   </data>
   <data name="Main_Photos_ImportFromGoogle_SelectFolder_Button">
     <value>Selecciona la carpeta</value>
@@ -1214,7 +1217,7 @@ El contingut dels fitxers es descarregarà només sota demanda.</value>
     <value>La compartició no està disponible temporalment</value>
   </data>
   <data name="Main_Sidebar_Notification_SyncFoldersFailure_Description">
-    <value>Ha fallat en sincronitzar la carpeta</value>
+    <value>No s'ha pogut sincronitzar la carpeta</value>
   </data>
   <data name="Main_Sidebar_Notification_UpdateRequired_Description">
     <value>Per seguir utilitzant el Proton Drive, actualitzeu-lo a la versió més recent</value>
@@ -1422,7 +1425,7 @@ El contingut dels fitxers es descarregarà només sota demanda.</value>
     <value>No s'ha pogut fer la importació. Torneu-ho a provar.</value>
   </data>
   <data name="PhotoImportFolderStatus_Value_Failed">
-    <value>S'ha produït un error en la importació</value>
+    <value>Ha fallat la importació</value>
   </data>
   <data name="PhotoImportFolderStatus_Value_Importing">
     <value></value>

@@ -731,6 +731,9 @@
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Beállítás folyamatban... ({0} elem szinkronizálásra előkészítve)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>a moment ago</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>{0} nappal ezelőtt</value>
   </data>

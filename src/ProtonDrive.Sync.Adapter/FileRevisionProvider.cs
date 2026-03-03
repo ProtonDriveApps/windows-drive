@@ -80,7 +80,7 @@ internal sealed class FileRevisionProvider<TId, TAltId> : IFileRevisionProvider<
         return (ToNodeInfo(node), node.Model);
     }
 
-    private void ValidatePreconditions(AdapterTreeNode<TId, TAltId> node, long contentVersion)
+    private void ValidatePreconditions(AdapterTreeNode<TId, TAltId> node, long requestedVersion)
     {
         if (node.Type != NodeType.File)
         {
@@ -109,10 +109,10 @@ internal sealed class FileRevisionProvider<TId, TAltId> : IFileRevisionProvider<
                 FileRevisionProviderErrorCode.NodeOrBranchDeleted);
         }
 
-        if (node.Model.ContentVersion != contentVersion)
+        if (node.Model.ContentVersion != requestedVersion)
         {
             throw new FileRevisionProviderException(
-                $"File with Id={node.Id} content version has diverged from expected {contentVersion} to {node.Model.ContentVersion}",
+                $"File with Id={node.Id} content version has diverged from expected {requestedVersion} to {node.Model.ContentVersion}",
                 FileRevisionProviderErrorCode.ContentVersionDiverged);
         }
 

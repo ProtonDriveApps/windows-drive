@@ -6,7 +6,7 @@ internal static class FileConsistencyGuardFileModelExtensions
 {
     public static bool UpdateStatus(this FileConsistencyGuardFileModel file, long remoteContentVersion)
     {
-        if (file.Status is not FileConsistencyGuardFileStatus.None and not FileConsistencyGuardFileStatus.Inconsistent)
+        if (file.Status is not FileConsistencyGuardFileStatus.None)
         {
             return false;
         }
@@ -30,79 +30,48 @@ internal static class FileConsistencyGuardFileModelExtensions
             return false;
         }
 
-        if (file is { LocalSize: 0, RemoteSize: 0 })
+        // Zero size file
+        if (file.LocalSize == 0 && (file.RemoteSize == 0 || file.RemotePlainSize == 0))
         {
-            file.Status = FileConsistencyGuardFileStatus.Skipped;
+            file.Status = FileConsistencyGuardFileStatus.Consistent;
             file.Reason = FileConsistencyGuardFileReason.SizeZero;
             file.Error = FileConsistencyGuardFileError.None;
 
             return true;
         }
 
-        if (file.LocalSize == file.RemoteSize)
-        {
-            // Uploaded files have odd content version
-            if (file.ContentVersion % 2 == 1)
-            {
-                file.Status = FileConsistencyGuardFileStatus.Skipped;
-                file.Reason = FileConsistencyGuardFileReason.Uploaded;
-                file.Error = FileConsistencyGuardFileError.None;
-
-                return true;
-            }
-
-            if (RemoteFileSizeVerifier.IsNotAffected(file.RemoteSize))
-            {
-                file.Status = FileConsistencyGuardFileStatus.Skipped;
-                file.Reason = FileConsistencyGuardFileReason.SizeRule;
-                file.Error = FileConsistencyGuardFileError.None;
-
-                return true;
-            }
-        }
-
-        if (file.LocalSize != file.RemoteSize &&
-            (file.RemoteHash == RemoteFileMetadataUpdater.MissingHashIndicator ||
-            file.LocalHash == LocalFileMetadataUpdater.PartialFileIndicator))
-        {
-            file.Status = FileConsistencyGuardFileStatus.Inconsistent;
-            file.Reason = FileConsistencyGuardFileReason.SizeMismatch;
-            file.Error = FileConsistencyGuardFileError.None;
-
-            return true;
-        }
-
-        if (file.LocalHash == LocalFileMetadataUpdater.PartialFileIndicator)
+        // Uploaded file (has odd content version)
+        if (file.ContentVersion % 2 == 1)
         {
             file.Status = FileConsistencyGuardFileStatus.Skipped;
-            file.Reason = FileConsistencyGuardFileReason.Partial;
+            file.Reason = FileConsistencyGuardFileReason.Uploaded;
             file.Error = FileConsistencyGuardFileError.None;
 
             return true;
         }
 
-        if (file.RemoteHash == RemoteFileMetadataUpdater.MissingHashIndicator)
+        // File size match
+        if (file.LocalSize == file.RemoteSize || file.LocalSize == file.RemotePlainSize)
         {
-            if (file.LastByteIsNonZero == true)
+            // Partial local file
+            if (file.LocalHash == LocalFileMetadataUpdater.PartialFileIndicator)
             {
-                file.Status = FileConsistencyGuardFileStatus.Consistent;
-                file.Reason = FileConsistencyGuardFileReason.LastByte;
-                file.Error = FileConsistencyGuardFileError.None;
-
-                return true;
-            }
-
-            if (file.LastByteIsNonZero == false)
-            {
-                file.Status = FileConsistencyGuardFileStatus.Inconsistent;
-                file.Reason = FileConsistencyGuardFileReason.LastByte;
+                file.Status = FileConsistencyGuardFileStatus.Skipped;
+                file.Reason = FileConsistencyGuardFileReason.Partial;
                 file.Error = FileConsistencyGuardFileError.None;
 
                 return true;
             }
         }
 
-        if (file.LocalHash is not null && file.RemoteHash is not null)
+        if (file.LocalHash is null || file.RemoteHash is null)
+        {
+            return false;
+        }
+
+        // Both hashes available
+        if (file.LocalHash != LocalFileMetadataUpdater.PartialFileIndicator
+            && file.RemoteHash != RemoteFileMetadataUpdater.MissingHashIndicator)
         {
             file.Status = file.RemoteHash.Equals(file.LocalHash)
                 ? FileConsistencyGuardFileStatus.Consistent
@@ -114,6 +83,94 @@ internal static class FileConsistencyGuardFileModelExtensions
             return true;
         }
 
+        // File size match
+        if (file.LocalSize == file.RemoteSize || file.LocalSize == file.RemotePlainSize)
+        {
+            // Full local file
+            if (file.TrailingZeroBytesLength is not null)
+            {
+                var numberOfBytesToVerify = FileSizeVerifier.GetNumberOfBytesToVerify(file.RemoteSize);
+
+                if (numberOfBytesToVerify == 0)
+                {
+                    file.Status = FileConsistencyGuardFileStatus.Skipped;
+                    file.Reason = FileConsistencyGuardFileReason.SizeRule;
+                    file.Error = FileConsistencyGuardFileError.None;
+
+                    return true;
+                }
+
+                file.Status = file.TrailingZeroBytesLength < numberOfBytesToVerify
+                    ? FileConsistencyGuardFileStatus.Skipped
+                    : FileConsistencyGuardFileStatus.Inconsistent;
+
+                file.Reason = FileConsistencyGuardFileReason.LastBytes;
+                file.Error = FileConsistencyGuardFileError.None;
+
+                return true;
+            }
+        }
+
+        // File size mismatch
+        else if (file.TryGetRemotePlainSize(out var remotePlainSize) && file.LocalSize != remotePlainSize)
+        {
+            file.Status = FileConsistencyGuardFileStatus.Inconsistent;
+            file.Reason = FileConsistencyGuardFileReason.SizeMismatch;
+            file.Error = FileConsistencyGuardFileError.None;
+
+            return true;
+        }
+
+        // File size neither clearly match neither mismatch (remote plain size is unknown)
+        else
+        {
+            // Full local file
+            if (file.TrailingZeroBytesLength is not null)
+            {
+                var numberOfBytesToVerify = FileSizeVerifier.GetNumberOfBytesToVerify(file.RemoteSize);
+
+                if (numberOfBytesToVerify != 0)
+                {
+                    file.Status = file.TrailingZeroBytesLength < numberOfBytesToVerify
+                        ? FileConsistencyGuardFileStatus.Skipped
+                        : FileConsistencyGuardFileStatus.Inconsistent;
+
+                    file.Reason = FileConsistencyGuardFileReason.LastBytes;
+                    file.Error = FileConsistencyGuardFileError.None;
+
+                    return true;
+                }
+            }
+
+            file.Status = FileConsistencyGuardFileStatus.Skipped;
+
+            file.Reason = FileSizeVerifier.FileIsNotTruncated(file.LocalSize)
+                ? FileConsistencyGuardFileReason.SizeRule
+                : FileConsistencyGuardFileReason.SizeUnknown;
+
+            file.Error = FileConsistencyGuardFileError.None;
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private static bool TryGetRemotePlainSize(this FileConsistencyGuardFileModel file, out long remotePlainSize)
+    {
+        if (file.RemotePlainSize is not null)
+        {
+            remotePlainSize = file.RemotePlainSize.Value;
+            return true;
+        }
+
+        if (file.RemoteSizeOnStorage is not null && file.RemoteSize < file.RemoteSizeOnStorage)
+        {
+            remotePlainSize = file.RemoteSize;
+            return true;
+        }
+
+        remotePlainSize = 0;
         return false;
     }
 }

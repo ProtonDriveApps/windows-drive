@@ -732,6 +732,9 @@ Slå av/på dess synkronisering igen för att återställa den och rensa detta f
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Konfigurerar... ({0} objekt förberedda för synkronisering)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>för ett ögonblick sedan</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>{0} dagar sedan</value>
   </data>

@@ -732,6 +732,9 @@ Desative e ative novamente a sincronização para restaurá-lo e eliminar esse e
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Configurando... ({0} itens preparando para sincronizar)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>a moment ago</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>{0} dias atrás</value>
   </data>

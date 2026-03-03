@@ -732,6 +732,9 @@ Vypnutím a opětovným zapnutím synchronizace soubor obnovíte a tuto chybu od
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Probíhá nastavování... ({0} položek připraveno pro synchronizaci)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>před chvílí</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>před {0} dny</value>
   </data>

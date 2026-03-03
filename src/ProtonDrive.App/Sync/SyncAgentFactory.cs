@@ -214,7 +214,8 @@ internal sealed class SyncAgentFactory
             localAdapter.SyncScheduler,
             localAdapterDatabase,
             remoteAdapter.SyncScheduler,
-            remoteAdapterDatabase);
+            remoteAdapterDatabase,
+            remoteAdapter);
 
         return new SyncAgent(
             remoteAdapter,

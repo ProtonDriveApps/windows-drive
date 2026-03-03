@@ -122,9 +122,9 @@ public sealed class FeatureService : IFeatureFlagProvider, IStartableService, IA
             yield return (Feature.DriveWindowsFileConsistencyGuard, IsEnabled: localFeatureFlags.FileConsistencyGuardEnabled.Value);
         }
 
-        if (localFeatureFlags.FileConsistencyGuardRepairingEnabled.HasValue)
+        if (localFeatureFlags.FileConsistencyGuardSanitizationEnabled.HasValue)
         {
-            yield return (Feature.DriveWindowsFileConsistencyGuardRepairing, IsEnabled: localFeatureFlags.FileConsistencyGuardRepairingEnabled.Value);
+            yield return (Feature.DriveWindowsFileConsistencyGuardSanitization, IsEnabled: localFeatureFlags.FileConsistencyGuardSanitizationEnabled.Value);
         }
     }
 

@@ -107,9 +107,4 @@ public class AdapterDatabase : Database
             connection.Execute("CREATE INDEX IF NOT EXISTS StateMaintenanceTree_Idx_ParentId ON StateMaintenanceTree(ParentId)");
         }
     }
-
-    protected static bool ColumnExists(IDbConnection connection, string tableName, string columnName)
-    {
-        return connection.QueryFirstOrDefault<int>($"SELECT COUNT(1) FROM pragma_table_info('{tableName}') WHERE name='{columnName}'") > 0;
-    }
 }

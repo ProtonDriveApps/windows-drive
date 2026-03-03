@@ -65,12 +65,13 @@ internal sealed class RemoteFileMetadataUpdater
         }
     }
 
-    private static void SetHash(FileConsistencyGuardFileModel file, string value)
+    private static void SetMetadata(FileConsistencyGuardFileModel file, string sha1Digest, long sizeOnStorage)
     {
         file.Status = FileConsistencyGuardFileStatus.None;
         file.Reason = FileConsistencyGuardFileReason.None;
         file.Error = FileConsistencyGuardFileError.None;
-        file.RemoteHash = value;
+        file.RemoteHash = sha1Digest;
+        file.RemoteSizeOnStorage = sizeOnStorage;
 
         file.UpdateStatus();
     }
@@ -101,7 +102,7 @@ internal sealed class RemoteFileMetadataUpdater
         var files = (await _database.FileRepository
                 .GetFilesByStatusAsync(FileConsistencyGuardFileStatus.None, includeDisabledRoots: false)
                 .ConfigureAwait(false))
-            .Where(x => x.LocalHash is not null && x.RemoteHash is null)
+            .Where(x => x.LocalHash is not null && (x.RemoteHash is null || x.RemoteSizeOnStorage is null))
             .ToList();
 
         if (files.Count == 0)
@@ -256,7 +257,7 @@ internal sealed class RemoteFileMetadataUpdater
                 }
             }
 
-            SetHash(file, nodeInfo.Sha1Digest ?? MissingHashIndicator);
+            SetMetadata(file, nodeInfo.Sha1Digest ?? MissingHashIndicator, nodeInfo.SizeOnStorage ?? 0L);
         }
 
         await UpdateFilesAsync(files).ConfigureAwait(false);

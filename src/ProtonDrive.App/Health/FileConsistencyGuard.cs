@@ -29,6 +29,7 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
     private readonly RemoteFileMetadataRefresher _remoteMetadataRefresher;
     private readonly RemoteFileMetadataUpdater _remoteMetadataUpdater;
     private readonly IErrorCounter _errorCounter;
+    private readonly FileConsistencyGuardFileSanitizer _fileSanitizer;
     private readonly ILogger<FileConsistencyGuard> _logger;
 
     private readonly SingleAction _execution;
@@ -47,6 +48,7 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
         LocalFileMetadataUpdater localMetadataUpdater,
         RemoteFileMetadataRefresher remoteMetadataRefresher,
         RemoteFileMetadataUpdater remoteMetadataUpdater,
+        FileConsistencyGuardFileSanitizer fileSanitizer,
         IErrorCounter errorCounter,
         ILogger<FileConsistencyGuard> logger)
     {
@@ -60,6 +62,7 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
         _localMetadataUpdater = localMetadataUpdater;
         _remoteMetadataRefresher = remoteMetadataRefresher;
         _remoteMetadataUpdater = remoteMetadataUpdater;
+        _fileSanitizer = fileSanitizer;
         _errorCounter = errorCounter;
         _logger = logger;
 
@@ -88,6 +91,8 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
 
             while (Status is not FileConsistencyGuardStatus.Finished)
             {
+                cancellationToken.ThrowIfCancellationRequested();
+
                 if (await FeatureIsEnabledAsync(cancellationToken).ConfigureAwait(false) &&
                     await VerifyApplicabilityAsync(cancellationToken).ConfigureAwait(false))
                 {
@@ -102,6 +107,8 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
                         await InitializeDataAsync(cancellationToken).ConfigureAwait(false);
 
                         await VerifyConsistencyAsync(cancellationToken).ConfigureAwait(false);
+
+                        await SanitizeFilesAsync(cancellationToken).ConfigureAwait(false);
                     }
                     finally
                     {
@@ -114,7 +121,7 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
                 await Task.Delay(_retryInterval, cancellationToken).ConfigureAwait(false);
             }
         }
-        catch (Exception ex)
+        catch (Exception ex) when (ex is not OperationCanceledException)
         {
             _errorCounter.Add(ErrorScope.DataIntegrity, ex);
             throw;
@@ -201,6 +208,21 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
         }
     }
 
+    private async Task SanitizeFilesAsync(CancellationToken cancellationToken)
+    {
+        if (Status is not FileConsistencyGuardStatus.Initialized)
+        {
+            return;
+        }
+
+        if (!await _featureFlagProvider.IsEnabledAsync(Feature.DriveWindowsFileConsistencyGuardSanitization, cancellationToken).ConfigureAwait(false))
+        {
+            return;
+        }
+
+        await _fileSanitizer.ExecuteAsync(cancellationToken).ConfigureAwait(false);
+    }
+
     private async Task ReportCompletionAsync(CancellationToken cancellationToken)
     {
         if (Status is not FileConsistencyGuardStatus.Completed)
@@ -210,10 +232,10 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
 
         var fileStatistics = _settings.FileStatistics;
         var inspectedItemCount = fileStatistics
-            .Where(x => x.Status is FileConsistencyGuardFileStatus.Consistent or FileConsistencyGuardFileStatus.Inconsistent or FileConsistencyGuardFileStatus.Repaired)
+            .Where(x => x.Status is FileConsistencyGuardFileStatus.Consistent or FileConsistencyGuardFileStatus.Inconsistent or FileConsistencyGuardFileStatus.Sanitized)
             .Sum(x => x.NumberOfFiles);
         var refreshedItemCount = fileStatistics
-            .Where(x => x.Status is FileConsistencyGuardFileStatus.Repaired)
+            .Where(x => x.Status is FileConsistencyGuardFileStatus.Sanitized)
             .Sum(x => x.NumberOfFiles);
         var failedItemCount = fileStatistics
             .Where(x => x.Status is FileConsistencyGuardFileStatus.None or FileConsistencyGuardFileStatus.Inconsistent)

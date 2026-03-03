@@ -732,6 +732,9 @@ Schalte ihre Synchronisierung aus und wieder ein, um sie wiederherzustellen und 
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Einrichten... ({0} Elemente für die Synchronisierung vorbereitet)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>Kürzlich</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>Vor {0} Tagen</value>
   </data>

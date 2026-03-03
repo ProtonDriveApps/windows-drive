@@ -732,6 +732,9 @@ Zet de synchronisatie uit en weer aan om deze te herstellen en deze fout te verw
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Instellen... ({0} items voorbereid voor synchronisatie)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>een ogenblik geleden</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>{0} dagen geleden</value>
   </data>
@@ -1020,10 +1023,10 @@ opslag optimalisatie op elk gewenst moment uitschakelen.</value>
     <value>Locatie</value>
   </data>
   <data name="Main_Settings_EarlyAccess_HelpText">
-    <value>Get early access and help us test new versions of Proton Drive.</value>
+    <value>Krijg vroege toegang en help ons nieuwe versies van Proton Drive te testen.</value>
   </data>
   <data name="Main_Settings_EarlyAccess_Title">
-    <value>Beta access</value>
+    <value>Bèta toegang</value>
   </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Uw Proton Drive map:</value>

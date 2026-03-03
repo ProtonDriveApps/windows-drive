@@ -732,6 +732,9 @@ Disattiva e riattiva la sincronizzazione per ripristinarla ed eliminare questo e
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Configurazione... ({0} elementi preparati per la sincronizzazione)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>un momento fa</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>{0} giorni fa</value>
   </data>

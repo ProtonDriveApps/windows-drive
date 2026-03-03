@@ -732,6 +732,9 @@ Désactivez et réactivez sa synchronisation pour le restaurer et effacer cette 
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Configuration... (préparation de {0} éléments à synchroniser)</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>il y a quelques instants</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>il y a {0} jours</value>
   </data>
@@ -1021,7 +1024,7 @@ désactiver l'optimisation du stockage à tout moment.</value>
     <value>Emplacement</value>
   </data>
   <data name="Main_Settings_EarlyAccess_HelpText">
-    <value>Bénéficiez d'un accès anticipé et aidez-nous à tester les nouvelles versions de Proton Drive.</value>
+    <value>Bénéficiez d'un accès en avant-première et aidez-nous à tester les nouvelles versions de Proton Drive.</value>
   </data>
   <data name="Main_Settings_EarlyAccess_Title">
     <value>Accès à la version bêta</value>

@@ -98,6 +98,11 @@ public abstract class Database : IConnectionProvider, ITransactionProvider
         }
     }
 
+    protected static bool ColumnExists(IDbConnection connection, string tableName, string columnName)
+    {
+        return connection.QueryFirstOrDefault<int>($"SELECT COUNT(1) FROM pragma_table_info('{tableName}') WHERE name='{columnName}'") > 0;
+    }
+
     protected virtual void SetupDatabase(IDbConnection connection)
     {
         connection.Execute("CREATE TABLE IF NOT EXISTS Properties(" +

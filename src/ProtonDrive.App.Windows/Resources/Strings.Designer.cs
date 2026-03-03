@@ -1772,6 +1772,15 @@ namespace ProtonDrive.App.Windows.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to a moment ago.
+        /// </summary>
+        internal static string Main_Activity_TimeElapsed_AMomentAgo {
+            get {
+                return ResourceManager.GetString("Main_Activity_TimeElapsed_AMomentAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to {0} days ago.
         /// </summary>
         internal static string Main_Activity_TimeElapsed_DaysAgoFormat {

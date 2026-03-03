@@ -142,7 +142,7 @@
     <value>Eșuare comutare cont. Reporniți aplicația.</value>
   </data>
   <data name="AccountErrorCode_Value_Delinquent">
-    <value>Contul are facturi neplătite. Accesați panoul de administrare pentru a plăti și anunța administratorul.</value>
+    <value>Contul are facturi neplătite. Accesați panoul de control pentru a plăti și a anunța administratorul.</value>
   </data>
   <data name="AccountErrorCode_Value_DriveAccessFailed">
     <value>Nu se poate conecta la Proton Drive. Verificați conexiunea la internet.</value>
@@ -731,6 +731,9 @@ Dezactivați și reactivați sincronizarea pentru a o restabili și a șterge ac
   </data>
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Se setează... (articole pregătite pentru sincronizare: {0})</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>acum un moment</value>
   </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>acum {0} zile</value>

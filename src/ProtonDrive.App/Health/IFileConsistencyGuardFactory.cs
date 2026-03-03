@@ -1,5 +1,6 @@
 ﻿using ProtonDrive.App.Settings;
 using ProtonDrive.DataAccess.Databases;
+using ProtonDrive.Sync.Adapter;
 using ProtonDrive.Sync.Agent.Health;
 using ProtonDrive.Sync.Shared;
 using ProtonDrive.Sync.Shared.Adapters;
@@ -14,5 +15,6 @@ public interface IFileConsistencyGuardFactory
         ITransactedScheduler localAdapterSyncScheduler,
         LocalAdapterDatabase localAdapterDatabase,
         ITransactedScheduler remoteAdapterSyncScheduler,
-        RemoteAdapterDatabase remoteAdapterDatabase);
+        RemoteAdapterDatabase remoteAdapterDatabase,
+        IManagedAdapter<long> remoteAdapter);
 }

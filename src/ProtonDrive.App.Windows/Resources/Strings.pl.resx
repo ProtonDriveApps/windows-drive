@@ -406,7 +406,7 @@
     <value>Plik został pominięty, ponieważ został ostatnio zmieniony. Aplikacja spróbuje ponownie rozwiązać problem</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
-    <value>Live Photo cannot be uploaded.</value>
+    <value>Nie można przesłać zdjęcia Live Photo.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MetadataMismatch">
     <value>Plik lub folder uległ rozbieżności</value>
@@ -732,6 +732,9 @@ Włącz ponownie synchronizację, aby go przywrócić i usunąć błąd.</value>
   <data name="Main_Activity_Status_Value_SettingUpFormat">
     <value>Konfigurowanie {0} elementów do synchronizacji...</value>
   </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>a moment ago</value>
+  </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>{0} dni temu</value>
   </data>
@@ -1002,7 +1005,7 @@ wyłączyć optymalizację przestrzeni dyskowej w dowolnym momencie.</value>
     <value>Importuj zdjęcia</value>
   </data>
   <data name="Main_Photos_Info_Duplicates">
-    <value>We'll only import what's new — duplicates are skipped automatically.</value>
+    <value>Będziemy importować tylko nowe elementy — duplikaty są automatycznie pomijane.</value>
   </data>
   <data name="Main_Photos_Title">
     <value>Zdjęcia</value>
@@ -1021,10 +1024,10 @@ wyłączyć optymalizację przestrzeni dyskowej w dowolnym momencie.</value>
     <value>Lokalizacja</value>
   </data>
   <data name="Main_Settings_EarlyAccess_HelpText">
-    <value>Get early access and help us test new versions of Proton Drive.</value>
+    <value>Uzyskaj wcześniejszy dostęp i pomóż nam testować nowe wersje Proton Drive.</value>
   </data>
   <data name="Main_Settings_EarlyAccess_Title">
-    <value>Beta access</value>
+    <value>Dostęp beta</value>
   </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Folder Proton Drive:</value>
@@ -1296,7 +1299,7 @@ Zawartość plików będzie pobierana na żądanie.</value>
     <value>Lokalny folder musi być pusty przed skonfigurowaniem synchronizacji</value>
   </data>
   <data name="MappingErrorCode_Value_LocalVolumeDiverged">
-    <value>Local volume serial number has changed. Set up a new sync folder.</value>
+    <value>Numer seryjny woluminu lokalnego uległ zmianie. Skonfiguruj nowy folder synchronizacji.</value>
   </data>
   <data name="MappingErrorCode_Value_LocalVolumeNotSupported">
     <value>Typ lokalnego dysku jest nieobsługiwany. Spróbuj skonfigurować folder synchronizacji na innym lokalnym dysku.</value>
@@ -1515,7 +1518,7 @@ Zawartość plików będzie pobierana na żądanie.</value>
     <value>Wpisz kod z aplikacji uwierzytelniającej</value>
   </data>
   <data name="SignIn_Text_No2FAMethodFound">
-    <value>No two-factor authentication method found.</value>
+    <value>Nie znaleziono żadnej metody uwierzytelniania dwustopniowego.</value>
   </data>
   <data name="SignIn_Text_Password">
     <value>Hasło</value>
@@ -1525,10 +1528,10 @@ Zawartość plików będzie pobierana na żądanie.</value>
     <value>Drugie hasło</value>
   </data>
   <data name="SignIn_Text_SecurityKey">
-    <value>Insert a security key linked to your Proton Account.</value>
+    <value>Wstaw klucz bezpieczeństwa powiązany z Twoim kontem Proton.</value>
   </data>
   <data name="SignIn_Text_SecurityKeyNotSupported">
-    <value>Your system does not support security key</value>
+    <value>Twój system nie obsługuje klucza zabezpieczeń</value>
   </data>
   <data name="SignIn_Text_Username">
     <value>Adres e-mail lub nazwa użytkownika</value>

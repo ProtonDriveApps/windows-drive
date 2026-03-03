@@ -62,7 +62,8 @@
                 DataType="activity:SyncActivityItemViewModel">
                 <TextBlock
                     Text="{Binding SynchronizedAt, Converter={x:Static converters:DateTimeToFormattedTimeElapsedConverter.Instance}}"
-                    Foreground="{StaticResource GrayBrush}" />
+                    Foreground="{StaticResource GrayBrush}"
+                    TextTrimming="CharacterEllipsis" />
             </DataTemplate>
 
             <DataTemplate
