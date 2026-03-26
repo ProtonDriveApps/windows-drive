@@ -3,7 +3,7 @@ using ProtonDrive.Sync.Adapter;
 using ProtonDrive.Sync.Shared.FileSystem;
 using ProtonDrive.Sync.Shared.Trees;
 
-namespace ProtonDrive.App.FileSystem.Remote;
+namespace ProtonDrive.App.FileSystem.Local;
 
 internal sealed class TransferAbortionCapableFileSystemClientDecorator<TAltId> : FileSystemClientDecoratorBase<TAltId>
     where TAltId : IEquatable<TAltId>
@@ -45,6 +45,8 @@ internal sealed class TransferAbortionCapableFileSystemClientDecorator<TAltId> :
     {
         private readonly ISourceRevision _decoratedInstance;
 
+        private Stream? _decoratedStream;
+
         public AbortionCapableRevisionDecorator(
             ISourceRevision instanceToDecorate,
             LooseCompoundAltIdentity<TAltId> id,
@@ -59,12 +61,12 @@ internal sealed class TransferAbortionCapableFileSystemClientDecorator<TAltId> :
 
         public long Size => _decoratedInstance.Size;
         public bool CanGetContentStream => _decoratedInstance.CanGetContentStream;
+        public CancellationToken AbortionToken { get; }
         public DateTime CreationTimeUtc => _decoratedInstance.CreationTimeUtc;
         public DateTime LastWriteTimeUtc => _decoratedInstance.LastWriteTimeUtc;
 
         private LooseCompoundAltIdentity<TAltId> Id { get; }
         private IFileTransferAbortionStrategy<TAltId> AbortionStrategy { get; }
-        private CancellationToken AbortionToken { get; }
 
         public Task<ReadOnlyMemory<byte>?> TryGetThumbnailAsync(int numberOfPixelsOnLargestSide, int maxNumberOfBytes, CancellationToken cancellationToken)
         {
@@ -85,14 +87,20 @@ internal sealed class TransferAbortionCapableFileSystemClientDecorator<TAltId> :
         {
             AbortionStrategy.HandleFileClosed(Id);
 
+            _decoratedStream?.Dispose();
             _decoratedInstance.Dispose();
         }
 
-        public ValueTask DisposeAsync()
+        public async ValueTask DisposeAsync()
         {
             AbortionStrategy.HandleFileClosed(Id);
 
-            return _decoratedInstance.DisposeAsync();
+            if (_decoratedStream is not null)
+            {
+                await _decoratedStream.DisposeAsync().ConfigureAwait(false);
+            }
+
+            await _decoratedInstance.DisposeAsync().ConfigureAwait(false);
         }
 
         public Task CheckReadabilityAsync(CancellationToken cancellationToken)
@@ -106,7 +114,7 @@ internal sealed class TransferAbortionCapableFileSystemClientDecorator<TAltId> :
         {
             // GetContentStream is called when downloading, because local revisions support obtaining content stream, but remote ones don't.
             // Abortion due to local file content change is relevant for uploading only.
-            return new AbortionCapableStream(_decoratedInstance.GetContentStream(), this);
+            return _decoratedStream ??= new AbortionCapableStream(_decoratedInstance.GetContentStream(), this);
         }
 
         public bool TryGetFileHasChanged(out bool hasChanged)
@@ -119,95 +127,49 @@ internal sealed class TransferAbortionCapableFileSystemClientDecorator<TAltId> :
             return _decoratedInstance.CopyContentToAsync(destination, cancellationToken);
         }
 
-        private sealed class AbortionCapableStream(Stream inner, AbortionCapableRevisionDecorator owner) : WrappingStream(inner)
+        private sealed class AbortionCapableStream(Stream inner, AbortionCapableRevisionDecorator owner) : WrappingStream(inner, ownsInnerStream: false)
         {
-            public override long Length
-            {
-                get
-                {
-                    var length = base.Length;
-
-                    if (length != owner.Size)
-                    {
-                        ThrowFileHasChanged();
-                    }
-
-                    return length;
-                }
-            }
+            public override int Read(byte[] buffer, int offset, int count) => throw new NotSupportedException();
+            public override int Read(Span<byte> buffer) => throw new NotSupportedException();
+            public override int ReadByte() => throw new NotSupportedException();
+            public override IAsyncResult BeginRead(byte[] buffer, int offset, int count, AsyncCallback? callback, object? state) => throw new NotSupportedException();
+            public override int EndRead(IAsyncResult asyncResult) => throw new NotSupportedException();
 
             public override async Task<int> ReadAsync(byte[] buffer, int offset, int count, CancellationToken cancellationToken)
             {
-                ThrowIfAbortionRequested();
-
                 return HandleFileTransferCompletion(
                     await base.ReadAsync(buffer, offset, count, cancellationToken).ConfigureAwait(false),
-                    count);
+                    count,
+                    cancellationToken);
             }
 
             public override async ValueTask<int> ReadAsync(Memory<byte> buffer, CancellationToken cancellationToken = default)
             {
-                ThrowIfAbortionRequested();
-
                 return HandleFileTransferCompletion(
                     await base.ReadAsync(buffer, cancellationToken).ConfigureAwait(false),
-                    buffer.Length);
+                    buffer.Length,
+                    cancellationToken);
             }
 
             public override async Task CopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken)
             {
-                using var linkedToken = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, owner.AbortionToken);
-
-                try
-                {
-                    await base.CopyToAsync(destination, bufferSize, linkedToken.Token).ConfigureAwait(false);
-
-                    ThrowIfFileHasChanged();
-                }
-                catch (Exception exception) when (exception is OperationCanceledException)
-                {
-                    ThrowIfAbortionRequested();
-                    throw;
-                }
+                await BaseCopyToAsync(destination, bufferSize, cancellationToken).ConfigureAwait(false);
             }
 
-            private int HandleFileTransferCompletion(int numberOfBytesRead, int maxNumberOfBytesToRead)
+            private int HandleFileTransferCompletion(int numberOfBytesRead, int maxNumberOfBytesToRead, CancellationToken cancellationToken)
             {
-                ThrowIfAbortionRequested();
-
-                if (numberOfBytesRead == 0 && maxNumberOfBytesToRead != 0)
+                if (numberOfBytesRead != 0 || maxNumberOfBytesToRead == 0)
                 {
-                    ThrowIfFileHasChanged();
+                    return numberOfBytesRead;
+                }
+
+                if (owner.TryGetFileHasChanged(out var fileHasChanged) && fileHasChanged)
+                {
+                    owner.AbortionStrategy.HandleFileChanged(owner.Id);
+                    cancellationToken.ThrowIfCancellationRequested();
                 }
 
                 return numberOfBytesRead;
-            }
-
-            private void ThrowIfFileHasChanged()
-            {
-                if (!owner.TryGetFileHasChanged(out var fileHasChanged) || !fileHasChanged)
-                {
-                    return;
-                }
-
-                ThrowFileHasChanged();
-            }
-
-            private void ThrowFileHasChanged()
-            {
-                owner.AbortionStrategy.HandleFileChanged(owner.Id);
-
-                ThrowIfAbortionRequested();
-            }
-
-            private void ThrowIfAbortionRequested()
-            {
-                if (owner.AbortionToken.IsCancellationRequested)
-                {
-                    throw new FileSystemClientException(
-                        "File transfer aborted. File has changed before the transfer was completed",
-                        FileSystemErrorCode.TransferAbortedDueToFileChange);
-                }
             }
         }
     }

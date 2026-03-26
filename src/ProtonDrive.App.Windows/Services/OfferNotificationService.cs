@@ -7,6 +7,7 @@ using ProtonDrive.App.Services;
 using ProtonDrive.App.Settings;
 using ProtonDrive.App.Windows.Views.Offer;
 using ProtonDrive.Shared;
+using ProtonDrive.Shared.Features;
 using ProtonDrive.Shared.Logging;
 using ProtonDrive.Shared.Repository;
 using ProtonDrive.Shared.Threading;
@@ -14,11 +15,13 @@ using static ProtonDrive.App.Settings.NotificationSettings;
 
 namespace ProtonDrive.App.Windows.Services;
 
-internal sealed class OfferNotificationService : IStoppableService, IOnboardingStateAware, IOffersAware
+internal sealed class OfferNotificationService : IStoppableService, IOnboardingStateAware, IOffersAware, IFeatureFlagsAware
 {
     public const string NotificationGroupId = "Offer";
     public const string NotificationId = "Offer";
     public const string GetDealActionName = "GetDeal";
+
+    private static readonly TimeSpan DelayBeforeShowingNotification = TimeSpan.FromSeconds(10);
 
     private readonly INotificationService _notificationService;
     private readonly IDialogService _dialogService;
@@ -33,6 +36,7 @@ internal sealed class OfferNotificationService : IStoppableService, IOnboardingS
 
     private OnboardingState _onboardingState = OnboardingState.Initial;
     private Offer? _offer;
+    private bool _notificationPopupEnabled;
     private bool _isStopping;
 
     public OfferNotificationService(
@@ -63,14 +67,19 @@ internal sealed class OfferNotificationService : IStoppableService, IOnboardingS
     {
         _onboardingState = value;
 
-        ScheduleExternalStateChangeHandling();
+        ScheduleExternalStateChangeHandling(forceRestart: false);
     }
 
     void IOffersAware.OnActiveOfferChanged(Offer? offer)
     {
         _offer = offer;
 
-        ScheduleExternalStateChangeHandling();
+        ScheduleExternalStateChangeHandling(forceRestart: true);
+    }
+
+    void IFeatureFlagsAware.OnFeatureFlagsChanged(IReadOnlyDictionary<Feature, bool> features)
+    {
+        _notificationPopupEnabled = features[Feature.DriveWindowsOffersSystemNotificationPopup];
     }
 
     async Task IStoppableService.StopAsync(CancellationToken cancellationToken)
@@ -90,7 +99,7 @@ internal sealed class OfferNotificationService : IStoppableService, IOnboardingS
         return _stateChangeHandler.WaitForCompletionAsync();
     }
 
-    private static Notification GetNotificationInfo(Offer offer)
+    private static Notification GetNotificationInfo(Offer offer, bool popupEnabled)
     {
         var message = Ensure.NotNull(offer.NotificationMessage, nameof(offer), nameof(offer.NotificationMessage));
 
@@ -99,8 +108,12 @@ internal sealed class OfferNotificationService : IStoppableService, IOnboardingS
             .SetId(NotificationId)
             .SetHeaderText(message.HeaderText)
             .SetText(message.ContentText)
-            .SetExpirationTime(offer.EndTimeUtc)
-            .SuppressPopup();
+            .SetExpirationTime(offer.EndTimeUtc);
+
+        if (!popupEnabled)
+        {
+            notificationInfo.SuppressPopup();
+        }
 
         if (!string.IsNullOrEmpty(message.ButtonText))
         {
@@ -117,49 +130,54 @@ internal sealed class OfferNotificationService : IStoppableService, IOnboardingS
         return notificationInfo;
     }
 
-    private void ScheduleExternalStateChangeHandling()
+    private void ScheduleExternalStateChangeHandling(bool forceRestart)
     {
         if (_isStopping)
         {
             return;
         }
 
+        if (forceRestart)
+        {
+            _stateChangeHandler.Cancel();
+        }
+
         _stateChangeHandler.Run();
     }
 
-    private Task HandleExternalStateChangeAsync(CancellationToken cancellationToken)
+    private async Task HandleExternalStateChangeAsync(CancellationToken cancellationToken)
     {
         if (_onboardingState.Status is OnboardingStatus.Onboarding)
         {
             // Prevent showing offer notification during onboarding
-            return Task.CompletedTask;
+            return;
         }
 
         var offer = _offer;
 
         if (offer?.NotificationMessage is not null)
         {
-            ShowNotificationIfNotYetShown(offer);
+            await ShowNotificationIfNotYetShownAsync(offer, cancellationToken).ConfigureAwait(false);
         }
         else
         {
             RemoveNotification();
         }
-
-        return Task.CompletedTask;
     }
 
-    private void ShowNotificationIfNotYetShown(Offer offer)
+    private async Task ShowNotificationIfNotYetShownAsync(Offer offer, CancellationToken cancellationToken)
     {
         if (!HasNotificationBeenShown(offer.Id))
         {
+            await Task.Delay(DelayBeforeShowingNotification, cancellationToken).ConfigureAwait(false);
+
             ShowNotification(offer);
         }
     }
 
     private void ShowNotification(Offer offer)
     {
-        _notificationService.ShowNotification(GetNotificationInfo(offer));
+        _notificationService.ShowNotification(GetNotificationInfo(offer, _notificationPopupEnabled));
 
         MarkNotificationAsShown(offer.Id);
     }

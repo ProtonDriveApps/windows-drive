@@ -32,6 +32,7 @@ internal sealed class LocalFileRevision : ISourceRevision
 
     public long Size { get; }
     public bool CanGetContentStream => true;
+    public CancellationToken AbortionToken { get; } = CancellationToken.None;
     public DateTime CreationTimeUtc { get; }
     public DateTime LastWriteTimeUtc { get; }
 

@@ -310,7 +310,7 @@
         BasedOn="{StaticResource ButtonStyle}">
         <Setter Property="Padding" Value="6,6" />
         <Setter Property="Background" Value="{StaticResource OfferButtonBrush.Default.Background}" />
-        <Setter Property="Foreground" Value="{StaticResource Text.Normal.Brush}" />
+        <Setter Property="Foreground" Value="{StaticResource Text.DarkTheme.Brush}" />
         <Setter Property="FontWeight" Value="Bold" />
         <Setter Property="Effect">
             <Setter.Value>
@@ -318,7 +318,7 @@
                     BlurRadius="30"
                     Opacity="0.5"
                     ShadowDepth="0"
-                    Color="{StaticResource SaladColor}" />
+                    Color="{StaticResource OfferButtonColor}" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">

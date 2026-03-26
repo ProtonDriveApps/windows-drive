@@ -13,6 +13,9 @@ public sealed record UserSubscription
     [JsonPropertyName("InvoiceID")]
     public string? InvoiceId { get; init; }
 
+    [JsonPropertyName("External")]
+    public UserSubscriptionChannel Channel { get; init; }
+
     public string? CouponCode { get; init; }
 
     public int Cycle { get; init; }

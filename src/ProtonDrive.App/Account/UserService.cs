@@ -164,7 +164,7 @@ internal sealed class UserService : IUserService, IDisposable
             SubscriptionPlanCouponCode = userSubscriptionPlan.CouponCode,
             LatestSubscriptionCancellationTimeUtc = latestSubscriptionCancellationTimeUtc,
             OrganizationDisplayName = userSubscriptionPlan.OrganizationDisplayName,
-            CanBuySubscription = _hasPaymentsScope && user.Type != UserType.Managed,
+            CanBuySubscription = _hasPaymentsScope && user.Type != UserType.Managed && !userSubscriptionPlan.ExternalChannel,
         };
     }
 
@@ -245,7 +245,13 @@ internal sealed class UserService : IUserService, IDisposable
             _cachedOrganization = organization;
         }
 
-        return new UserSubscriptionPlan(organization.PlanCode, DisplayName: null, organization.DisplayName, CouponCode: null, Cycle: 0);
+        return new UserSubscriptionPlan(
+            organization.PlanCode,
+            DisplayName: null,
+            organization.DisplayName,
+            CouponCode: null,
+            Cycle: 0,
+            ExternalChannel: false);
     }
 
     private async Task<UserSubscriptionPlan?> GetAccountPlanNameAsync(User user, CancellationToken cancellationToken)
@@ -271,7 +277,13 @@ internal sealed class UserService : IUserService, IDisposable
 
             return subscription.Plans
                 .Where(x => x.Type == PlanType.PrimaryPlan)
-                .Select(x => new UserSubscriptionPlan(x.Code, x.DisplayName, null, subscription.CouponCode, subscription.Cycle))
+                .Select(x => new UserSubscriptionPlan(
+                    x.Code,
+                    x.DisplayName,
+                    null,
+                    subscription.CouponCode,
+                    subscription.Cycle,
+                    subscription.Channel is not UserSubscriptionChannel.Proton))
                 .FirstOrDefault();
         }
         catch (ApiException ex) when (ex.ResponseCode == ResponseCode.NoActiveSubscription)
@@ -298,7 +310,13 @@ internal sealed class UserService : IUserService, IDisposable
             _cachedDefaultPlan = defaultPlan;
         }
 
-        return new UserSubscriptionPlan(defaultPlan.Code, defaultPlan.DisplayName, OrganizationDisplayName: null, CouponCode: null, Cycle: 0);
+        return new UserSubscriptionPlan(
+            defaultPlan.Code,
+            defaultPlan.DisplayName,
+            OrganizationDisplayName: null,
+            CouponCode: null,
+            Cycle: 0,
+            ExternalChannel: false);
     }
 
     private async Task SafeGetLatestSubscriptionCancellationAsync(CancellationToken cancellationToken)
@@ -375,8 +393,20 @@ internal sealed class UserService : IUserService, IDisposable
         }
     }
 
-    private record UserSubscriptionPlan(string? Code, string? DisplayName, string? OrganizationDisplayName, string? CouponCode, int Cycle)
+    private record UserSubscriptionPlan(
+        string? Code,
+        string? DisplayName,
+        string? OrganizationDisplayName,
+        string? CouponCode,
+        int Cycle,
+        bool ExternalChannel)
     {
-        public static UserSubscriptionPlan Empty { get; } = new(Code: null, DisplayName: null, OrganizationDisplayName: null, CouponCode: null, Cycle: 0);
+        public static UserSubscriptionPlan Empty { get; } = new(
+            Code: null,
+            DisplayName: null,
+            OrganizationDisplayName: null,
+            CouponCode: null,
+            Cycle: 0,
+            ExternalChannel: false);
     }
 }

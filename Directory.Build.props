@@ -7,7 +7,7 @@
 
     <Product>Proton Drive</Product>
     <Company>Proton AG</Company>
-    <Version>1.12.10</Version>
+    <Version>1.12.11</Version>
 
     <Nullable>enable</Nullable>
     <NeutralLanguage>en</NeutralLanguage>

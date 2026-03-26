@@ -2,7 +2,7 @@
 
 namespace ProtonDrive.Client.Features.Contracts;
 
-internal sealed class FeatureListParameters
+internal sealed class CoreFeatureListParameters
 {
     /// <summary>
     /// Feature codes(s) to filter by

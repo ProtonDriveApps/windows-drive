@@ -1,4 +1,4 @@
-﻿using System.Collections.Concurrent;
+using System.Collections.Concurrent;
 using Microsoft.Extensions.Logging;
 using ProtonDrive.Sync.Adapter;
 using ProtonDrive.Sync.Shared.Trees;
@@ -34,7 +34,10 @@ internal sealed class FileUploadAbortionStrategy(ILogger<FileUploadAbortionStrat
             return;
         }
 
-        cancellationTokenSource.Dispose();
+        lock (cancellationTokenSource)
+        {
+            cancellationTokenSource.Dispose();
+        }
     }
 
     public void HandleFileChanged(LooseCompoundAltIdentity<long> altId)
@@ -44,11 +47,21 @@ internal sealed class FileUploadAbortionStrategy(ILogger<FileUploadAbortionStrat
             return;
         }
 
-        if (!cancellationTokenSource.IsCancellationRequested)
+        lock (cancellationTokenSource)
         {
-            logger.LogWarning("File change detected for {ExternalId}", altId);
-        }
+            if (!cancellationTokenSource.IsCancellationRequested)
+            {
+                logger.LogWarning("File change detected for {ExternalId}", altId);
+            }
 
-        cancellationTokenSource.Cancel();
+            try
+            {
+                cancellationTokenSource.Cancel();
+            }
+            catch (ObjectDisposedException)
+            {
+                // File closed
+            }
+        }
     }
 }

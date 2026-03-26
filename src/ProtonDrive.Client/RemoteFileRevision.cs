@@ -19,6 +19,7 @@ internal sealed class RemoteFileRevision : ISourceRevision
 
     public long Size => _contentStream.Length;
     public bool CanGetContentStream => false;
+    public CancellationToken AbortionToken { get; } = CancellationToken.None;
 
     public DateTime CreationTimeUtc { get; }
     public DateTime LastWriteTimeUtc { get; }

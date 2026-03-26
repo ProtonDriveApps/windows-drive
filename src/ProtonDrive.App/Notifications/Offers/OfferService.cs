@@ -3,6 +3,7 @@ using ProtonDrive.App.Account;
 using ProtonDrive.App.Services;
 using ProtonDrive.App.Settings.Remote;
 using ProtonDrive.Client.Contracts;
+using ProtonDrive.Client.Features;
 using ProtonDrive.Client.Notifications;
 using ProtonDrive.Client.Notifications.Contracts;
 using ProtonDrive.Shared;
@@ -17,9 +18,13 @@ namespace ProtonDrive.App.Notifications.Offers;
 
 internal sealed class OfferService : IStoppableService, IAccountStateAware, IUserStateAware, IRemoteSettingsAware, IFeatureFlagsAware, IDisposable
 {
+    public const string OfferRetentionFeatureCode1 = "OfferMar26DrivePlusRetentionExperiment";
+    public const string OfferRetentionFeatureCode2 = "OfferMar26UnlimitedRetentionExperiment";
+
     private readonly AppConfig _appConfig;
     private readonly IClock _clock;
     private readonly INotificationClient _notificationClient;
+    private readonly ICoreFeatureClient _coreFeatureClient;
     private readonly Lazy<IEnumerable<IOffersAware>> _offersAwareInstances;
     private readonly ILogger<OfferService> _logger;
 
@@ -29,6 +34,7 @@ internal sealed class OfferService : IStoppableService, IAccountStateAware, IUse
     private AccountStatus _accountStatus;
     private RemoteSettings _settings = RemoteSettings.Default;
     private UserState _userState = UserState.Empty;
+    private bool? _eligibleForRetentionOffers;
     private Offer? _activeOffer;
     private bool _offersEnabled;
     private bool _isStopping;
@@ -38,12 +44,14 @@ internal sealed class OfferService : IStoppableService, IAccountStateAware, IUse
         IScheduler scheduler,
         IClock clock,
         INotificationClient notificationClient,
+        ICoreFeatureClient coreFeatureClient,
         Lazy<IEnumerable<IOffersAware>> offersAwareInstances,
         ILogger<OfferService> logger)
     {
         _appConfig = appConfig;
         _clock = clock;
         _notificationClient = notificationClient;
+        _coreFeatureClient = coreFeatureClient;
         _offersAwareInstances = offersAwareInstances;
         _logger = logger;
 
@@ -61,6 +69,12 @@ internal sealed class OfferService : IStoppableService, IAccountStateAware, IUse
 
         var currentSucceeded = state.Status is AccountStatus.Succeeded;
         var previousSucceeded = prevStatus is AccountStatus.Succeeded;
+
+        if (!currentSucceeded)
+        {
+            _eligibleForRetentionOffers = null;
+        }
+
         if (currentSucceeded != previousSucceeded)
         {
             ScheduleExternalStateChangeHandling(forceRestart: !currentSucceeded);
@@ -149,7 +163,7 @@ internal sealed class OfferService : IStoppableService, IAccountStateAware, IUse
         };
     }
 
-    private static bool IsEligibleForOffer(UserState userState, ClientNotification notification)
+    private static bool IsEligibleForOffer(UserState userState, ClientNotification notification, bool eligibleForRetentionOffers)
     {
         Ensure.NotNull(notification.Offer, nameof(notification), nameof(notification.Offer));
 
@@ -179,6 +193,12 @@ internal sealed class OfferService : IStoppableService, IAccountStateAware, IUse
         // The currency must match if specified
         if (!string.IsNullOrEmpty(notification.UserCurrency) &&
             !notification.UserCurrency.Equals(userState.Currency, StringComparison.OrdinalIgnoreCase))
+        {
+            return false;
+        }
+
+        // The user must be eligible for retention offers if the offer is retention offer
+        if (notification.Retention == true && !eligibleForRetentionOffers)
         {
             return false;
         }
@@ -247,6 +267,7 @@ internal sealed class OfferService : IStoppableService, IAccountStateAware, IUse
             !_offersEnabled ||
             !CanGetAnOffer(userState))
         {
+            _eligibleForRetentionOffers = null;
             _timer.Stop();
             SetActiveOffer(null);
 
@@ -254,6 +275,8 @@ internal sealed class OfferService : IStoppableService, IAccountStateAware, IUse
         }
 
         _timer.Start();
+
+        await UpdateEligibilityForRetentionOffers(cancellationToken).ConfigureAwait(false);
 
         var offer = await GetActiveOfferAsync(userState, cancellationToken).ConfigureAwait(false);
 
@@ -278,9 +301,21 @@ internal sealed class OfferService : IStoppableService, IAccountStateAware, IUse
             .Where(n => n.Type is NotificationType.Offer &&
                 now >= n.StartTime.UtcDateTime &&
                 now <= (n.EndTime.UtcDateTime - _timer.Interval) &&
-                IsEligibleForOffer(userState, n))
+                IsEligibleForOffer(userState, n, _eligibleForRetentionOffers ?? false))
             .Select(ToOffer)
             .FirstOrDefault();
+    }
+
+    private async Task UpdateEligibilityForRetentionOffers(CancellationToken cancellationToken)
+    {
+        if (_eligibleForRetentionOffers is not null)
+        {
+            return;
+        }
+
+        _eligibleForRetentionOffers =
+            await _coreFeatureClient.IsFeatureEnabledAsync(OfferRetentionFeatureCode1, cancellationToken).ConfigureAwait(false) == true ||
+            await _coreFeatureClient.IsFeatureEnabledAsync(OfferRetentionFeatureCode2, cancellationToken).ConfigureAwait(false) == true;
     }
 
     private void SetActiveOffer(Offer? offer)

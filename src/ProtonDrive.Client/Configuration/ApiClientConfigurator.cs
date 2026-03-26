@@ -164,6 +164,7 @@ public static class ApiClientConfigurator
         services.AddSingleton<IContactService, ContactService>();
         services.AddSingleton<ISharedWithMeClient, SharedWithMeClient>();
         services.AddSingleton<IDriveHealthClient, DriveHealthClient>();
+        services.AddSingleton<ICoreFeatureClient, CoreFeatureClient>();
 
         services.AddSingleton<IPhotoHashProvider, PhotoHashProvider>();
         services.AddSingleton<IPhotoDuplicateService, PhotoDuplicateService>();
@@ -187,6 +188,7 @@ public static class ApiClientConfigurator
             .AddApiClient<IKeyApiClient>()
             .AddApiClient<ISettingsApiClient>()
             .AddApiClient<ICoreEventApiClient>()
+            .AddApiClient<ICoreFeatureApiClient>()
             ;
 
         services.AddApiHttpClients(TlsPinningReportHttpClientName, GetCoreBaseAddress, GetDefaultNumberOfRetries, GetDefaultTimeout)

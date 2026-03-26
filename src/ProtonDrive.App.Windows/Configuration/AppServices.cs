@@ -142,6 +142,7 @@ internal static class AppServices
             .AddSingleton<IStoppableService>(provider => provider.GetRequiredService<OfferNotificationService>())
             .AddSingleton<IOnboardingStateAware>(provider => provider.GetRequiredService<OfferNotificationService>())
             .AddSingleton<IOffersAware>(provider => provider.GetRequiredService<OfferNotificationService>())
+            .AddSingleton<IFeatureFlagsAware>(provider => provider.GetRequiredService<OfferNotificationService>())
 
             .AddSingleton<AppCommands>()
             .AddSingleton<ISessionStateAware>(provider => provider.GetRequiredService<AppCommands>())

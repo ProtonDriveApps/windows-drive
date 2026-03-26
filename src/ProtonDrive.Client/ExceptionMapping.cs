@@ -57,7 +57,6 @@ internal static class ExceptionMapping
             NodeWithSameNameExistsException => CreateFileSystemClientException(FileSystemErrorCode.DuplicateName),
             RevisionDraftConflictException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
             InvalidNodeTypeException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
-            UploadContentReadingException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
             ProtonDriveException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
 
             // Proton SDK and Proton Drive SDK lets some HTTP client exceptions to bubble up

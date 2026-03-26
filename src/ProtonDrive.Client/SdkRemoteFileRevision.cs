@@ -34,9 +34,10 @@ internal sealed class SdkRemoteFileRevision : ISourceRevision
     }
 
     public long Size { get; }
+    public bool CanGetContentStream => false;
+    public CancellationToken AbortionToken { get; } = CancellationToken.None;
     public DateTime CreationTimeUtc { get; }
     public DateTime LastWriteTimeUtc { get; }
-    public bool CanGetContentStream => false;
 
     public Stream GetContentStream()
     {
@@ -79,13 +80,16 @@ internal sealed class SdkRemoteFileRevision : ISourceRevision
     {
         DownloadController? controller = null;
 
+        // On resuming paused download, Drive SDK can seek the destination stream
+        var numberOfRetries = destination.CanSeek ? NumberOfRetries : 0;
+
         try
         {
             controller = _fileDownloader.DownloadToStream(destination, NullProgressCallback, cancellationToken);
 
             await using (controller.ConfigureAwait(false))
             {
-                await controller.ExecuteWithRetryAsync(NumberOfRetries, DelayBeforeRetry, cancellationToken).ConfigureAwait(false);
+                await controller.ExecuteWithRetryAsync(numberOfRetries, DelayBeforeRetry, cancellationToken).ConfigureAwait(false);
 
                 await controller.Completion.ConfigureAwait(false);
             }

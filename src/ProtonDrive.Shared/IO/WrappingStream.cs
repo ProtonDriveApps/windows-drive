@@ -2,9 +2,12 @@
 
 public abstract class WrappingStream : Stream
 {
-    protected WrappingStream(Stream origin)
+    private readonly bool _ownsInnerStream;
+
+    protected WrappingStream(Stream origin, bool ownsInnerStream = true)
     {
         Origin = origin;
+        _ownsInnerStream = ownsInnerStream;
     }
 
     public override bool CanRead => Origin.CanRead;
@@ -135,6 +138,11 @@ public abstract class WrappingStream : Stream
 
     public override void Close()
     {
+        if (!_ownsInnerStream)
+        {
+            return;
+        }
+
         // On the off chance that some wrapped stream has different
         // semantics for Close vs. Dispose, let's preserve that.
         try
@@ -149,6 +157,11 @@ public abstract class WrappingStream : Stream
 
     public override async ValueTask DisposeAsync()
     {
+        if (!_ownsInnerStream)
+        {
+            return;
+        }
+
         try
         {
             await Origin.DisposeAsync().ConfigureAwait(false);
@@ -161,6 +174,11 @@ public abstract class WrappingStream : Stream
 
     protected override void Dispose(bool disposing)
     {
+        if (!_ownsInnerStream)
+        {
+            return;
+        }
+
         try
         {
             if (disposing)
@@ -173,5 +191,10 @@ public abstract class WrappingStream : Stream
         {
             base.Dispose(disposing);
         }
+    }
+
+    protected Task BaseCopyToAsync(Stream destination, int bufferSize, CancellationToken cancellationToken)
+    {
+        return base.CopyToAsync(destination, bufferSize, cancellationToken);
     }
 }

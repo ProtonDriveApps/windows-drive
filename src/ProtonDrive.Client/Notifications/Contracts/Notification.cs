@@ -10,6 +10,7 @@ public sealed class Notification
     public IReadOnlyCollection<string> UserSubscriptionPlanCodes { get; init; } = [];
     public IReadOnlyCollection<string> ExcludedUserSubscriptionPlanCouponCodes { get; init; } = [];
     public int? UserSubscriptionCycle { get; init; }
+    public bool? Retention { get; init; }
     public string? UserCurrency { get; init; }
 
     public required DateTimeOffset StartTime { get; init; }

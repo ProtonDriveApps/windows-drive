@@ -4,6 +4,7 @@ public interface ISourceRevision : IThumbnailProvider, IFileMetadataProvider, ID
 {
     long Size { get; }
     bool CanGetContentStream { get; }
+    CancellationToken AbortionToken { get; }
 
     Task<ReadOnlyMemory<byte>?> GetSha1Async(CancellationToken cancellationToken);
     Stream GetContentStream();

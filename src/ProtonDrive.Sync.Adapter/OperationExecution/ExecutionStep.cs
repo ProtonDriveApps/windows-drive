@@ -151,9 +151,23 @@ internal sealed class ExecutionStep<TId, TAltId>
             ? await sourceRevision.GetSha1Async(cancellationToken).ConfigureAwait(false)
             : null;
 
-        await sourceRevision.CopyContentToAsync(destinationRevision, sha1, cancellationToken).ConfigureAwait(false);
+        var transferAbortionToken = sourceRevision.AbortionToken;
+        using var linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, transferAbortionToken);
+        var linkedCancellationToken = linkedTokenSource.Token;
 
-        return await FinalizeAsync(sha1, destinationRevision, updateDetection, cancellationToken).ConfigureAwait(false);
+        try
+        {
+            await sourceRevision.CopyContentToAsync(destinationRevision, sha1, linkedCancellationToken).ConfigureAwait(false);
+
+            return await FinalizeAsync(sha1, destinationRevision, updateDetection, linkedCancellationToken).ConfigureAwait(false);
+        }
+        catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested && linkedCancellationToken.IsCancellationRequested)
+        {
+            // File transfer aborted due to source file content change
+            throw new FileSystemClientException(
+                "File was modified before data transfer was complete",
+                FileSystemErrorCode.TransferAbortedDueToFileChange);
+        }
     }
 
     private async Task<NodeInfo<TAltId>> MoveAsync(
