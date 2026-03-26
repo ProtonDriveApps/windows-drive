@@ -17,4 +17,5 @@ public interface IExternalHyperlinks
     IExternalHyperlink HowToUseSecurityKey { get; }
     IExternalHyperlink HowToImportPhotosFromGoogle { get; }
     IExternalHyperlink HowPhotoImportWorks { get; }
+    IExternalHyperlink ManageAlbums { get; }
 }

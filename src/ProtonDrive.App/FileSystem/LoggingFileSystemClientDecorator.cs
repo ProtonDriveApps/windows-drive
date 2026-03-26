@@ -289,11 +289,11 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
             }
         }
 
-        public async Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+        public async Task WriteContentAsync(Stream source, FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
         {
             try
             {
-                await _decoratedInstance.WriteContentAsync(source, expectedSha1, cancellationToken).ConfigureAwait(false);
+                await _decoratedInstance.WriteContentAsync(source, expectedChecksum, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception ex) when (IsWorthLoggingStackTrace(ex))
             {
@@ -302,11 +302,11 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
             }
         }
 
-        public async Task<NodeInfo<TId>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+        public async Task<NodeInfo<TId>> FinishAsync(FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
         {
             try
             {
-                return await _decoratedInstance.FinishAsync(expectedSha1, cancellationToken).ConfigureAwait(false);
+                return await _decoratedInstance.FinishAsync(expectedChecksum, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception ex) when (IsWorthLoggingStackTrace(ex))
             {

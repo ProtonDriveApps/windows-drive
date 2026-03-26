@@ -7,7 +7,7 @@ internal static class VolumeTypeMapping
     private static readonly Dictionary<VolumeType, string> Mapping = new()
     {
         { VolumeType.OwnVolume, "own_volume" },
-        { VolumeType.OwnPhotoVolume, "own_photo_volume" },
+        { VolumeType.OwnPhotosVolume, "own_photo_volume" },
         { VolumeType.Shared, "shared" },
         { VolumeType.SharedPublic, "shared_public" },
     };

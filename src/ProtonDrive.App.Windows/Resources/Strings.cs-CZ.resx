@@ -956,6 +956,10 @@ Optimalizaci úložiště můžete kdykoliv deaktivovat.</value>
   <data name="Main_Photos_Folders_Items_Label">
     <value>položka(y)</value>
   </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Manage _albums</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
     <value>_Otevřít složku</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>

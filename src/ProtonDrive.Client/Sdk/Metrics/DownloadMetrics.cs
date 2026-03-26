@@ -68,8 +68,8 @@ internal sealed class DownloadMetrics
                 new KeyValuePair<string, object?>(SdkMetrics.VolumeTypeKeyName, MapVolumeType(downloadEvent.VolumeType)),
                 new KeyValuePair<string, object?>(SdkMetrics.FailureTypeKeyName, MapErrorType(downloadEvent.Error.Value)));
 
-            _failuresFileSize.Record(downloadEvent.ClaimedFileSize);
-            _failuresTransferSize.Record(downloadEvent.DownloadedSize);
+            _failuresFileSize.Record(downloadEvent.ApproximateClaimedFileSize);
+            _failuresTransferSize.Record(downloadEvent.ApproximateDownloadedSize);
         }
     }
 

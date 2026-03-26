@@ -1,5 +1,7 @@
+using Microsoft.Extensions.Logging;
 using Proton.Drive.Sdk;
 using Proton.Drive.Sdk.Nodes;
+using ProtonDrive.Client.Configuration;
 using ProtonDrive.Client.FileUploading;
 using ProtonDrive.Client.MediaTypes;
 using ProtonDrive.Client.RemoteNodes;
@@ -17,11 +19,13 @@ namespace ProtonDrive.Client;
 /// </summary>
 internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSystemClient<string>
 {
+    private readonly DriveApiConfig _apiConfig;
     private readonly ProtonDriveClient _sdkClient;
     private readonly IFileContentTypeProvider _fileContentTypeProvider;
     private readonly IFeatureFlagProvider _featureFlagProvider;
     private readonly Action<MetricEvent> _recordMetricEvent;
     private readonly Action<Exception> _reportIntegrityFailure;
+    private readonly ILoggerFactory _loggerFactory;
 
     private readonly string _volumeId;
     private readonly string? _virtualParentId;
@@ -29,20 +33,24 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
 
     public SdkFileSystemClient(
         FileSystemClientParameters parameters,
+        DriveApiConfig apiConfig,
         ProtonDriveClient sdkClient,
         IFileContentTypeProvider fileContentTypeProvider,
         IRemoteNodeService remoteNodeService,
         ILinkApiClient linkApiClient,
         IFeatureFlagProvider featureFlagProvider,
         Action<MetricEvent> recordMetricEvent,
-        Action<Exception> reportIntegrityFailure)
+        Action<Exception> reportIntegrityFailure,
+        ILoggerFactory loggerFactory)
     : base(parameters, linkApiClient, remoteNodeService, fileContentTypeProvider)
     {
+        _apiConfig = apiConfig;
         _sdkClient = sdkClient;
         _fileContentTypeProvider = fileContentTypeProvider;
         _featureFlagProvider = featureFlagProvider;
         _recordMetricEvent = recordMetricEvent;
         _reportIntegrityFailure = reportIntegrityFailure;
+        _loggerFactory = loggerFactory;
 
         _volumeId = parameters.VolumeId;
         _virtualParentId = parameters.VirtualParentId;
@@ -98,14 +106,19 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
 
         var metadata = await fileMetadataProvider.GetMetadataAsync().ConfigureAwait(false);
 
+        var uploadMetadata = new FileUploadMetadata
+        {
+            LastModificationTime = info.LastWriteTimeUtc,
+            AdditionalMetadata = metadata.ConvertToAdditionalMetadataProperties(),
+        };
+
         var fileUploader = await _sdkClient
             .GetFileUploaderAsync(
                 parentNodeUid.Value,
                 info.Name,
                 mediaType,
                 info.Size,
-                info.LastWriteTimeUtc,
-                metadata.ConvertToAdditionalMetadataProperties(),
+                uploadMetadata,
                 overrideExistingDraftByOtherClient: false,
                 cancellationToken)
             .ConfigureAwait(false);
@@ -115,13 +128,15 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
             var checksumVerificationEnabled = await _featureFlagProvider.UploadChecksumVerificationIsEnabledAsync(cancellationToken).ConfigureAwait(false);
 
             return new SdkRemoteRevisionCreationProcess(
+                _apiConfig,
                 fileUploader,
                 info,
                 checksumVerificationEnabled,
                 thumbnailProvider,
                 progressCallback,
                 _recordMetricEvent,
-                _reportIntegrityFailure);
+                _reportIntegrityFailure,
+                _loggerFactory.CreateLogger<SdkRemoteRevisionCreationProcess>());
         }
         catch
         {
@@ -156,12 +171,15 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
         try
         {
             return new SdkRemoteFileRevision(
+                _apiConfig,
                 fileDownloader,
                 remoteFile.CreationTime,
                 remoteFile.ModificationTime,
                 remoteFile.ExtendedAttributes,
+                remoteFile.ActiveRevision?.ChecksumVerified,
                 remoteFile.SizeOnStorage,
-                _reportIntegrityFailure);
+                _reportIntegrityFailure,
+                _loggerFactory.CreateLogger<SdkRemoteFileRevision>());
         }
         catch
         {
@@ -202,12 +220,17 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
 
         var metadata = await fileMetadataProvider.GetMetadataAsync().ConfigureAwait(false);
 
+        var uploadMetadata = new FileUploadMetadata
+        {
+            LastModificationTime = lastWriteTime,
+            AdditionalMetadata = metadata.ConvertToAdditionalMetadataProperties(),
+        };
+
         var fileUploader = await _sdkClient
             .GetFileRevisionUploaderAsync(
                 activeRevisionUid.Value,
                 size,
-                lastWriteTime,
-                metadata.ConvertToAdditionalMetadataProperties(),
+                uploadMetadata,
                 cancellationToken)
             .ConfigureAwait(false);
 
@@ -221,13 +244,15 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
             var checksumVerificationEnabled = await _featureFlagProvider.UploadChecksumVerificationIsEnabledAsync(cancellationToken).ConfigureAwait(false);
 
             return new SdkRemoteRevisionCreationProcess(
+                _apiConfig,
                 fileUploader,
                 nodeInfo,
                 checksumVerificationEnabled,
                 thumbnailProvider,
                 progressCallback,
                 _recordMetricEvent,
-                _reportIntegrityFailure);
+                _reportIntegrityFailure,
+                _loggerFactory.CreateLogger<SdkRemoteRevisionCreationProcess>());
         }
         catch
         {

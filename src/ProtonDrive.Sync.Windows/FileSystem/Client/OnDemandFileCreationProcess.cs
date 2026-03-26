@@ -25,12 +25,12 @@ internal sealed class OnDemandFileCreationProcess : IDestinationRevision<long>
         throw new NotSupportedException();
     }
 
-    public Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+    public Task WriteContentAsync(Stream source, FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }
 
-    public Task<NodeInfo<long>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+    public Task<NodeInfo<long>> FinishAsync(FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
     {
         return Task.FromResult(FileInfo.CreatePlaceholderFile(_parentDirectory));
     }

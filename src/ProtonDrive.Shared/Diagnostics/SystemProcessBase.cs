@@ -14,10 +14,12 @@ public abstract class SystemProcessBase : IOsProcess
         Process = process;
     }
 
+    protected Process Process { get; }
+
     public virtual void Start()
     {
         var processName = GetProcessName(Process.StartInfo.FileName);
-        _logger.LogInformation($"Starting new {processName} process");
+        _logger.LogInformation("Starting new \"{ProcessName}\" process", processName);
 
         Process.Start();
     }
@@ -34,10 +36,8 @@ public abstract class SystemProcessBase : IOsProcess
         _disposed = true;
     }
 
-    protected Process Process { get; }
-
-    private string GetProcessName(string executablePath)
+    private static string GetProcessName(string executablePath)
     {
-        return Path.GetFileNameWithoutExtension(executablePath);
+        return Path.GetFileName(executablePath);
     }
 }

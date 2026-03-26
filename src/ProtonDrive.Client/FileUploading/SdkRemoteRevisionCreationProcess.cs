@@ -1,4 +1,6 @@
-﻿using Proton.Drive.Sdk.Nodes.Upload;
+﻿using Microsoft.Extensions.Logging;
+using Proton.Drive.Sdk.Nodes.Upload;
+using ProtonDrive.Client.Configuration;
 using ProtonDrive.Client.Sdk;
 using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Shared.IO;
@@ -9,24 +11,26 @@ namespace ProtonDrive.Client.FileUploading;
 
 internal sealed class SdkRemoteRevisionCreationProcess : IDestinationRevision<string>
 {
-    private const int NumberOfRetries = 10;
-    private static readonly TimeSpan DelayBeforeRetry = TimeSpan.FromMinutes(1).RandomizedWithDeviation(0.2);
-
+    private readonly DriveApiConfig _apiConfig;
     private readonly FileUploader _fileUploader;
     private readonly IThumbnailProvider _thumbnailProvider;
     private readonly Action<Progress>? _progressCallback;
     private readonly Action<MetricEvent> _recordMetricEvent;
     private readonly Action<Exception> _reportIntegrityFailure;
+    private readonly ILogger<SdkRemoteRevisionCreationProcess> _logger;
 
     public SdkRemoteRevisionCreationProcess(
+        DriveApiConfig apiConfig,
         FileUploader fileUploader,
         NodeInfo<string> fileInfo,
         bool checksumVerificationEnabled,
         IThumbnailProvider thumbnailProvider,
         Action<Progress>? progressCallback,
         Action<MetricEvent> recordMetricEvent,
-        Action<Exception> reportIntegrityFailure)
+        Action<Exception> reportIntegrityFailure,
+        ILogger<SdkRemoteRevisionCreationProcess> logger)
     {
+        _apiConfig = apiConfig;
         _fileUploader = fileUploader;
         FileInfo = fileInfo;
         ChecksumVerificationEnabled = checksumVerificationEnabled;
@@ -34,6 +38,7 @@ internal sealed class SdkRemoteRevisionCreationProcess : IDestinationRevision<st
         _progressCallback = progressCallback;
         _recordMetricEvent = recordMetricEvent;
         _reportIntegrityFailure = reportIntegrityFailure;
+        _logger = logger;
     }
 
     public NodeInfo<string> FileInfo { get; private set; }
@@ -47,11 +52,11 @@ internal sealed class SdkRemoteRevisionCreationProcess : IDestinationRevision<st
         throw new NotSupportedException();
     }
 
-    public async Task WriteContentAsync(Stream contentStream, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+    public async Task WriteContentAsync(Stream contentStream, FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
     {
         var thumbnails = await _thumbnailProvider.GetThumbnailsAsync(cancellationToken).ConfigureAwait(false);
 
-        Func<ReadOnlyMemory<byte>>? expectedSha1Provider = ChecksumVerificationEnabled && expectedSha1 is not null ? () => expectedSha1.Value : null;
+        Func<ReadOnlyMemory<byte>>? expectedSha1Provider = ChecksumVerificationEnabled && expectedChecksum.Sha1 is not null ? () => expectedChecksum.Sha1.Value : null;
 
         RecordChecksumVerificationAttempt(expectedSha1Provider);
 
@@ -66,7 +71,11 @@ internal sealed class SdkRemoteRevisionCreationProcess : IDestinationRevision<st
 
             await using (controller.ConfigureAwait(false))
             {
-                await controller.ExecuteWithRetryAsync(NumberOfRetries, DelayBeforeRetry, cancellationToken).ConfigureAwait(false);
+                await controller.ExecuteWithRetryAsync(
+                    _apiConfig.FileTransferNumberOfRetries,
+                    _apiConfig.FileTransferDelayBetweenRetries,
+                    _logger,
+                    cancellationToken).ConfigureAwait(false);
 
                 var (fileNodeUid, fileRevisionUid) = await controller.Completion.ConfigureAwait(false);
 
@@ -87,7 +96,7 @@ internal sealed class SdkRemoteRevisionCreationProcess : IDestinationRevision<st
         }
     }
 
-    public Task<NodeInfo<string>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+    public Task<NodeInfo<string>> FinishAsync(FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
     {
         return Task.FromResult(FileInfo);
     }

@@ -954,6 +954,10 @@ Fișierele ocupă spațiul local doar când sunt deschise sau alegeți să fie p
   <data name="Main_Photos_Folders_Items_Label">
     <value>articol(e)</value>
   </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Gestionare _albume</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
     <value>Deschidere f_older</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1288,7 +1292,7 @@ Conținutul fișierelor va fi descărcat numai la cerere.</value>
     <value>Folderul de sincronizare a fost înlocuit de un alt folder în cale. Refaceți folderul de sincronizare anterior sau setați unul nou.</value>
   </data>
   <data name="MappingErrorCode_Value_LocalFolderDoesNotExist">
-    <value>Folderul de sincronizare nu a fost găsit. Ar putea să fie șters, redenumit sau mutat. Restaurați-l sau setați un folder nou de sincronizare.</value>
+    <value>Folderul de sincronizare nu a fost găsit. Ar putea fi șters, redenumit sau mutat. Restaurați-l sau setați unul nou pentru sincronizare.</value>
   </data>
   <data name="MappingErrorCode_Value_LocalFolderIncludedByAnAlreadySyncedFolder">
     <value>Folderul selectat este deja inclus cu alt folder sincronizat.</value>

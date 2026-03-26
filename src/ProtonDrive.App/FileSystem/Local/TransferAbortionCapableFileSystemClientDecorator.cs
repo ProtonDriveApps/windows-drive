@@ -108,7 +108,7 @@ internal sealed class TransferAbortionCapableFileSystemClientDecorator<TAltId> :
             return _decoratedInstance.CheckReadabilityAsync(cancellationToken);
         }
 
-        public Task<ReadOnlyMemory<byte>?> GetSha1Async(CancellationToken cancellationToken) => _decoratedInstance.GetSha1Async(cancellationToken);
+        public Task<FileContentChecksum> GetContentChecksumAsync(CancellationToken cancellationToken) => _decoratedInstance.GetContentChecksumAsync(cancellationToken);
 
         public Stream GetContentStream()
         {

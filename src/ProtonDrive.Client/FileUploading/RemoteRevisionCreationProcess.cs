@@ -51,7 +51,7 @@ internal class RemoteRevisionCreationProcess : IDestinationRevision<string>
         return _destinationStream;
     }
 
-    public virtual async Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+    public virtual async Task WriteContentAsync(Stream source, FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
     {
         var destination = GetContentStream();
 
@@ -66,11 +66,11 @@ internal class RemoteRevisionCreationProcess : IDestinationRevision<string>
         await destination.FlushAsync(cancellationToken).ConfigureAwait(false);
     }
 
-    public async Task<NodeInfo<string>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+    public async Task<NodeInfo<string>> FinishAsync(FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
     {
         try
         {
-            ValidateUpload(expectedSha1);
+            ValidateUpload(expectedChecksum);
 
             var revisionSealingParameters = GetRevisionSealingParameters();
 
@@ -99,7 +99,7 @@ internal class RemoteRevisionCreationProcess : IDestinationRevision<string>
         };
     }
 
-    private void ValidateUpload(ReadOnlyMemory<byte>? expectedSha1)
+    private void ValidateUpload(FileContentChecksum expectedChecksum)
     {
         var expectedNumberOfContentBlocks = (FileInfo.Size + _blockSize - 1) / _blockSize;
 
@@ -121,7 +121,7 @@ internal class RemoteRevisionCreationProcess : IDestinationRevision<string>
             throw new FileSystemClientException("The number of uploaded blocks does not equal the expected number", FileSystemErrorCode.IntegrityFailure);
         }
 
-        if (ChecksumVerificationEnabled && expectedSha1?.Span.SequenceEqual(GetContentSha1()) == false)
+        if (ChecksumVerificationEnabled && expectedChecksum.Sha1?.Span.SequenceEqual(GetContentSha1()) == false)
         {
             throw new FileSystemClientException("The uploaded file checksum does not match the expected checksum", FileSystemErrorCode.IntegrityFailure);
         }

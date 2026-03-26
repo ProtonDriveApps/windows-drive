@@ -955,6 +955,10 @@
   <data name="Main_Photos_Folders_Items_Label">
     <value>项</value>
   </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>管理相册(_A)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
     <value>打开文件夹 (_O)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>

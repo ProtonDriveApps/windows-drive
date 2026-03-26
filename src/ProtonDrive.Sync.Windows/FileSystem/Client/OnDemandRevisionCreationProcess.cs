@@ -27,12 +27,12 @@ internal sealed class OnDemandRevisionCreationProcess : IDestinationRevision<lon
         throw new NotSupportedException();
     }
 
-    public Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+    public Task WriteContentAsync(Stream source, FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }
 
-    public Task<NodeInfo<long>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+    public Task<NodeInfo<long>> FinishAsync(FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
     {
         using var placeholderCreationInfo = FileInfo.ToPlaceholderCreationInfo();
 

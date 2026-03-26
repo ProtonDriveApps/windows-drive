@@ -760,7 +760,7 @@ Desative e ative novamente a sincronização para restaurá-lo e eliminar esse e
     <value>Saiba mais</value>
   </data>
   <data name="Main_MyComputer_Description">
-    <value>Folders synced from your computers will appear in the "Computers" section across your Drive apps.</value>
+    <value>As pastas sincronizadas dos seus computadores aparecerão na seção "Computadores" em todos os seus aplicativos do Drive.</value>
   </data>
   <data name="Main_MyComputer_Device_Button_Rename">
     <value>_Renomear</value>
@@ -955,6 +955,10 @@ desative a otimização de armazenamento a qualquer momento.</value>
   </data>
   <data name="Main_Photos_Folders_Items_Label">
     <value>itens</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Gerenciar _álbuns</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
     <value>_Abrir pasta</value>

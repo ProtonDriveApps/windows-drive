@@ -8,11 +8,18 @@ internal sealed class RemoteFileRevision : ISourceRevision
 {
     private readonly Stream _contentStream;
     private readonly ExtendedAttributes? _extendedAttributes;
+    private readonly bool? _checksumVerified;
 
-    public RemoteFileRevision(Stream contentStream, DateTime creationTimeUtc, DateTime lastWriteTimeUtc, ExtendedAttributes? extendedAttributes)
+    public RemoteFileRevision(
+        Stream contentStream,
+        DateTime creationTimeUtc,
+        DateTime lastWriteTimeUtc,
+        ExtendedAttributes? extendedAttributes,
+        bool? checksumVerified)
     {
         _contentStream = contentStream;
         _extendedAttributes = extendedAttributes;
+        _checksumVerified = checksumVerified;
         CreationTimeUtc = creationTimeUtc;
         LastWriteTimeUtc = lastWriteTimeUtc;
     }
@@ -29,30 +36,32 @@ internal sealed class RemoteFileRevision : ISourceRevision
         return Task.CompletedTask;
     }
 
-    public Task<ReadOnlyMemory<byte>?> GetSha1Async(CancellationToken cancellationToken)
+    public Task<FileContentChecksum> GetContentChecksumAsync(CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        return Task.FromResult(GetSha1());
+        return Task.FromResult(GetChecksum());
 
-        ReadOnlyMemory<byte>? GetSha1()
+        FileContentChecksum GetChecksum()
         {
             var hexSha1 = _extendedAttributes?.Common?.Digests?.Sha1;
 
             if (string.IsNullOrEmpty(hexSha1))
             {
-                return null;
+                return FileContentChecksum.Empty;
             }
 
             try
             {
                 var sha1 = Convert.FromHexString(hexSha1);
 
-                return sha1.Length == SHA1.HashSizeInBytes ? sha1 : null;
+                return sha1.Length == SHA1.HashSizeInBytes
+                    ? new FileContentChecksum { Sha1 = sha1, Sha1Verified = _checksumVerified ?? false }
+                    : FileContentChecksum.Empty;
             }
             catch (FormatException)
             {
-                return null;
+                return FileContentChecksum.Empty;
             }
         }
     }

@@ -2409,6 +2409,15 @@ namespace ProtonDrive.App.Windows.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Manage _albums.
+        /// </summary>
+        internal static string Main_Photos_Folders_Menu_Item_ManageAlbums {
+            get {
+                return ResourceManager.GetString("Main_Photos_Folders_Menu_Item_ManageAlbums", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Open folder.
         /// </summary>
         internal static string Main_Photos_Folders_Menu_Item_OpenFolder {

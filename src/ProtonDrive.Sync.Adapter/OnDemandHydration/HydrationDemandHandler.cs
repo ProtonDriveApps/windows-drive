@@ -73,11 +73,11 @@ internal sealed class HydrationDemandHandler<TId, TAltId> : IFileHydrationDemand
 
                 _syncActivity.OnProgress(syncActivityItem, Progress.Zero);
 
-                var expectedSha1Checksum = hydrationDemand.ChecksumVerificationEnabled
-                    ? await sourceRevision.GetSha1Async(cancellationToken).ConfigureAwait(false)
-                    : null;
+                var expectedChecksum = hydrationDemand.ChecksumVerificationEnabled
+                    ? await sourceRevision.GetContentChecksumAsync(cancellationToken).ConfigureAwait(false)
+                    : FileContentChecksum.Empty;
 
-                var hydrationStream = hydrationDemand.GetHydrationStream(expectedSha1Checksum);
+                var hydrationStream = hydrationDemand.GetHydrationStream(expectedChecksum);
                 var destinationStream = new WriteOnlyProgressReportingStream(hydrationStream, NotifyProgressChanged);
 
                 await using (destinationStream.ConfigureAwait(false))

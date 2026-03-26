@@ -104,14 +104,14 @@ internal sealed class ProtectingFileFileSystemClientDecorator : FileSystemClient
             return _decoratedInstance.GetContentStream();
         }
 
-        public Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+        public Task WriteContentAsync(Stream source, FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
         {
-            return _decoratedInstance.WriteContentAsync(source, expectedSha1, cancellationToken);
+            return _decoratedInstance.WriteContentAsync(source, expectedChecksum, cancellationToken);
         }
 
-        public Task<NodeInfo<long>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+        public Task<NodeInfo<long>> FinishAsync(FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
         {
-            return _decoratedInstance.FinishAsync(expectedSha1, cancellationToken);
+            return _decoratedInstance.FinishAsync(expectedChecksum, cancellationToken);
         }
 
         public ValueTask DisposeAsync()

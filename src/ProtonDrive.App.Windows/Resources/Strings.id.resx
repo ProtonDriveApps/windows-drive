@@ -214,7 +214,7 @@
     <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
-    <value>Moving to Proton Drive Trash</value>
+    <value>Memindahkan ke Sampah Proton Drive</value>
     <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
@@ -242,7 +242,7 @@
     <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
-    <value>Moved to Proton Drive Trash</value>
+    <value>Dipindahkan ke Sampah Proton Drive</value>
     <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
@@ -406,7 +406,7 @@
     <value>Berkas ini dilewati karena terdapat perubahan yang terlalu terkini pada berkas. Aplikasi akan mencoba ulang secara otomatis</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
-    <value>Live Photo cannot be uploaded.</value>
+    <value>Live Photo tidak dapat diunggah.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MetadataMismatch">
     <value>Berkas atau folder telah berubah</value>
@@ -733,7 +733,7 @@ Nonaktifkan dan aktifkan kembali sinkronisasi berkas ini untuk memulihkan berkas
     <value>Mempersiapkan... ({0} item disiapkan untuk penyinkronan)</value>
   </data>
   <data name="Main_Activity_TimeElapsed_AMomentAgo">
-    <value>a moment ago</value>
+    <value>beberapa saat yang lalu</value>
   </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
     <value>{0} hari yang lalu</value>
@@ -757,10 +757,10 @@ Nonaktifkan dan aktifkan kembali sinkronisasi berkas ini untuk memulihkan berkas
     <value>Aktivitas</value>
   </data>
   <data name="Main_MyComputer_Button_LearnMore">
-    <value>Learn more</value>
+    <value>Pelajari lebih lanjut</value>
   </data>
   <data name="Main_MyComputer_Description">
-    <value>Folders synced from your computers will appear in the "Computers" section across your Drive apps.</value>
+    <value>Folder yang disinkronkan dari komputer akan muncul di bagian "Komputer" di seluruh aplikasi Drive.</value>
   </data>
   <data name="Main_MyComputer_Device_Button_Rename">
     <value>_Ubah nama</value>
@@ -956,6 +956,10 @@ menonaktifkan optimisasi ruang penyimpanan ini kapan saja.</value>
   <data name="Main_Photos_Folders_Items_Label">
     <value>item(s)</value>
   </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Manage _albums</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
     <value>_Buka folder</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1011,7 +1015,7 @@ menonaktifkan optimisasi ruang penyimpanan ini kapan saja.</value>
     <value>Impor foto</value>
   </data>
   <data name="Main_Photos_Info_Duplicates">
-    <value>We'll only import what's new — duplicates are skipped automatically.</value>
+    <value>Kami hanya akan mengimpor apa yang baru — duplikat akan dilewati secara otomatis.</value>
   </data>
   <data name="Main_Photos_Title">
     <value>Foto</value>
@@ -1030,10 +1034,10 @@ menonaktifkan optimisasi ruang penyimpanan ini kapan saja.</value>
     <value>Lokasi</value>
   </data>
   <data name="Main_Settings_EarlyAccess_HelpText">
-    <value>Get early access and help us test new versions of Proton Drive.</value>
+    <value>Dapatkan akses awal dan bantu kami menguji versi baru Proton Drive.</value>
   </data>
   <data name="Main_Settings_EarlyAccess_Title">
-    <value>Beta access</value>
+    <value>Akses beta</value>
   </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Folder Proton Drive Anda:</value>
@@ -1305,7 +1309,7 @@ Konten berkas hanya akan diunduh apabila diminta.</value>
     <value>Folder lokal harus kosong sebelum mempersiapkan sinkronisasi</value>
   </data>
   <data name="MappingErrorCode_Value_LocalVolumeDiverged">
-    <value>Local volume serial number has changed. Set up a new sync folder.</value>
+    <value>Nomor seri volume lokal telah berubah. Siapkan folder sinkronisasi baru.</value>
   </data>
   <data name="MappingErrorCode_Value_LocalVolumeNotSupported">
     <value>Tipe drive lokal tidak didukung. Cobalah untuk mengatur folder sinkronisasi pada drive lokal yang berbeda.</value>
@@ -1461,13 +1465,13 @@ Konten berkas hanya akan diunduh apabila diminta.</value>
     <value>Peningkatan</value>
   </data>
   <data name="SecondFactorInputPage_Value_Fido2">
-    <value>Security key</value>
+    <value>Kunci keamanan</value>
   </data>
   <data name="SecondFactorInputPage_Value_NotSupported">
     <value></value>
   </data>
   <data name="SecondFactorInputPage_Value_Totp">
-    <value>Authenticator app</value>
+    <value>Aplikasi autentikator</value>
   </data>
   <data name="SessionStatus_Value_Ending">
     <value>Sedang keluar…</value>
@@ -1504,7 +1508,7 @@ Konten berkas hanya akan diunduh apabila diminta.</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Button_LearnMore">
-    <value>Learn more</value>
+    <value>Pelajari lebih lanjut</value>
   </data>
   <data name="SignIn_Button_SignIn">
     <value>_Masuk</value>
@@ -1524,7 +1528,7 @@ Konten berkas hanya akan diunduh apabila diminta.</value>
     <value>Masukkan kode dari aplikasi autentikator Anda</value>
   </data>
   <data name="SignIn_Text_No2FAMethodFound">
-    <value>No two-factor authentication method found.</value>
+    <value>Tidak ada metode autentikasi dua faktor yang ditemukan.</value>
   </data>
   <data name="SignIn_Text_Password">
     <value>_Kata sandi</value>
@@ -1534,10 +1538,10 @@ Konten berkas hanya akan diunduh apabila diminta.</value>
     <value>Kata sandi kedua</value>
   </data>
   <data name="SignIn_Text_SecurityKey">
-    <value>Insert a security key linked to your Proton Account.</value>
+    <value>Masukkan kunci keamanan yang tertaut ke Akun Proton Anda.</value>
   </data>
   <data name="SignIn_Text_SecurityKeyNotSupported">
-    <value>Your system does not support security key</value>
+    <value>Sistem Anda tidak mendukung kunci keamanan</value>
   </data>
   <data name="SignIn_Text_Username">
     <value>Email atau _nama pengguna</value>

@@ -26,6 +26,7 @@ internal sealed class IntegrityMetrics
     public const string Sha1ProvidedKeyName = "sha1Provided";
     public const string ResultKeyName = "result";
     public const string FileSizeKeyName = "fileSize";
+    public const string ChecksumVerifiedKeyName = "checksumVerified";
 
     private const long KiB = 1024L;
     private const long MiB = 1024L * 1024;
@@ -123,7 +124,8 @@ internal sealed class IntegrityMetrics
         _downloadChecksumVerificationAttempts.Add(
             1,
             GetTag(ResultKeyName, MapChecksumVerificationResult(metricEvent.Result)),
-            GetTag(FileSizeKeyName, MapChecksumVerificationFileSize(metricEvent.FileSize)));
+            GetTag(FileSizeKeyName, MapChecksumVerificationFileSize(metricEvent.FileSize)),
+            GetTag(ChecksumVerifiedKeyName, MapBoolean(metricEvent.ChecksumVerified, BooleanMapping.TrueFalse)));
     }
 
     private static string MapVolumeType(VolumeType volumeType)

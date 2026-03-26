@@ -346,11 +346,11 @@ internal sealed class SyncRootCallbackDispatcher : IAsyncDisposable
             {
                 await _fileHydrationDemandHandler.HandleAsync(hydrationProcess, cancellationToken).ConfigureAwait(false);
 
-                RecordVerificationSuccess(hydrationProcess);
+                RecordVerificationResult(hydrationProcess);
             }
             catch (FileSystemClientException ex) when (ex.ErrorCode is FileSystemErrorCode.IntegrityFailure)
             {
-                RecordVerificationFailure(hydrationProcess);
+                RecordVerificationResult(hydrationProcess);
                 throw;
             }
         }
@@ -452,26 +452,19 @@ internal sealed class SyncRootCallbackDispatcher : IAsyncDisposable
         }
     }
 
-    private void RecordVerificationSuccess(FileHydrationProcess<long> hydrationProcess)
+    private void RecordVerificationResult(FileHydrationProcess<long> hydrationProcess)
     {
-        _recordMetric.Invoke(new DownloadChecksumVerificationAttemptEvent
-        {
-            Result = hydrationProcess.ChecksumVerificationPerformed ? ChecksumVerificationResult.Success : ChecksumVerificationResult.Skipped,
-            FileSize = hydrationProcess.FileInfo.Size,
-        });
-    }
-
-    private void RecordVerificationFailure(FileHydrationProcess<long> hydrationProcess)
-    {
-        if (!hydrationProcess.ChecksumVerificationFailed)
-        {
-            return;
-        }
+        var result = hydrationProcess.ChecksumVerificationPerformed
+            ? hydrationProcess.ChecksumVerificationFailed
+                ? ChecksumVerificationResult.Failure
+                : ChecksumVerificationResult.Success
+            : ChecksumVerificationResult.Skipped;
 
         _recordMetric.Invoke(new DownloadChecksumVerificationAttemptEvent
         {
-            Result = ChecksumVerificationResult.Failure,
+            Result = result,
             FileSize = hydrationProcess.FileInfo.Size,
+            ChecksumVerified = hydrationProcess.ExpectedChecksumVerified,
         });
     }
 }

@@ -44,11 +44,11 @@ internal sealed class LocalFileRevision : ISourceRevision
         stream.Seek(0, SeekOrigin.Begin);
     }
 
-    public async Task<ReadOnlyMemory<byte>?> GetSha1Async(CancellationToken cancellationToken)
+    public async Task<FileContentChecksum> GetContentChecksumAsync(CancellationToken cancellationToken)
     {
         var fileInfo = NodeInfo<long>.File().WithPath(_file.FullPath).WithId(_file.ObjectId);
 
-        return await fileInfo.GetContentSha1Async(cancellationToken).ConfigureAwait(false);
+        return await fileInfo.GetContentChecksumAsync(cancellationToken).ConfigureAwait(false);
     }
 
     public Stream GetContentStream()

@@ -506,7 +506,7 @@
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_About_Button_UpdateNow_HelpText">
-    <value>Доступна новая версия Proton Drive, обновите её сейчас.</value>
+    <value>Доступна новая версия Proton Drive. Обновите приложение сейчас.</value>
   </data>
   <data name="Main_About_Label_CurrentVersion">
     <value>Текущая версия</value>
@@ -593,7 +593,7 @@
     <value>Использовано: {0} из {1}</value>
   </data>
   <data name="Main_Account_Storage_Title">
-    <value>Объем хранилища</value>
+    <value>Объём хранилища</value>
   </data>
   <data name="Main_Account_Storage_Warning_StorageExceeded">
     <value>Синхронизация остановлена. Объем хранилища вашего аккаунта превышен.</value>
@@ -694,16 +694,16 @@
     <value>Синхронизация приостановлена</value>
   </data>
   <data name="Main_Activity_Rename_CurrentName_Label">
-    <value>Текущий имя:</value>
+    <value>Текущее имя:</value>
   </data>
   <data name="Main_Activity_Rename_Description">
-    <value>Это имя включает символы, не поддерживаемые в Windows.</value>
+    <value>Имя этого элемента содержит символы, не поддерживаемые в Windows.</value>
   </data>
   <data name="Main_Activity_Rename_NewName_Error_AlreadyExists">
     <value>Имя уже используется</value>
   </data>
   <data name="Main_Activity_Rename_NewName_Error_ContainsInvalidCharacter">
-    <value>Имя содержит некорректные символы</value>
+    <value>Имя содержит недопустимые символы</value>
   </data>
   <data name="Main_Activity_Rename_NewName_Error_Failed">
     <value>Что-то пошло не так</value>
@@ -955,6 +955,10 @@
   </data>
   <data name="Main_Photos_Folders_Items_Label">
     <value>элемент(ов)</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Manage _albums</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
     <value>_Открыть папку</value>
@@ -1380,7 +1384,7 @@
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders">
-    <value>_Добавить больше папок</value>
+    <value>_Добавить ещё папки</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText">
@@ -1500,7 +1504,7 @@
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Button_ForgotPassword">
-    <value>_Забыли ваш пароль?</value>
+    <value>_Забыли пароль?</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Button_LearnMore">

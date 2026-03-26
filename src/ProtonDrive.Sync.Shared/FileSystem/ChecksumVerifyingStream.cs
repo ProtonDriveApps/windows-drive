@@ -5,7 +5,7 @@ namespace ProtonDrive.Sync.Shared.FileSystem;
 
 public sealed class ChecksumVerifyingStream : WrappingStream
 {
-    private readonly ReadOnlyMemory<byte> _expectedSha1Checksum;
+    private readonly ReadOnlyMemory<byte> _expectedSha1;
     private readonly IncrementalHash _sha1;
 
     /// <summary>
@@ -14,14 +14,17 @@ public sealed class ChecksumVerifyingStream : WrappingStream
     /// </summary>
     private byte? _pendingByte;
 
-    public ChecksumVerifyingStream(Stream origin, ReadOnlyMemory<byte> expectedSha1Checksum)
+    public ChecksumVerifyingStream(Stream origin, ReadOnlyMemory<byte> expectedSha1, bool expectedSha1Verified)
         : base(origin)
     {
-        _expectedSha1Checksum = expectedSha1Checksum;
+        _expectedSha1 = expectedSha1;
+        ExpectedChecksumVerified = expectedSha1Verified;
+
         _sha1 = IncrementalHash.CreateHash(HashAlgorithmName.SHA1);
     }
 
     public bool VerificationFailed { get; private set; }
+    public bool ExpectedChecksumVerified { get; }
 
     /// <summary>
     /// The consumer of this stream expects the pending byte to be included in the length and position,
@@ -30,8 +33,12 @@ public sealed class ChecksumVerifyingStream : WrappingStream
     public override long Position
     {
         get => base.Position + (_pendingByte is not null ? 1 : 0);
-        set => base.Position = value;
+        set => throw new NotSupportedException("Setting position is not supported");
     }
+
+    public override bool CanSeek => false;
+
+    public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException("Seeking is not supported");
 
     public override void SetLength(long length)
     {
@@ -122,23 +129,26 @@ public sealed class ChecksumVerifyingStream : WrappingStream
             return;
         }
 
-        ThrowIfChecksumMismatch();
+        ThrowIfVerifiedChecksumMismatch();
         var pendingByteSpan = new ReadOnlySpan<byte>(ref pendingByte);
         base.Write(pendingByteSpan);
         _pendingByte = null;
     }
 
-    private void ThrowIfChecksumMismatch()
+    private void ThrowIfVerifiedChecksumMismatch()
     {
         Span<byte> sha1Checksum = stackalloc byte[_sha1.HashLengthInBytes];
 
         _sha1.GetCurrentHash(sha1Checksum);
 
-        if (!sha1Checksum.SequenceEqual(_expectedSha1Checksum.Span))
+        if (!sha1Checksum.SequenceEqual(_expectedSha1.Span))
         {
             VerificationFailed = true;
 
-            throw new FileSystemClientException("Checksum verification failed", FileSystemErrorCode.IntegrityFailure);
+            if (ExpectedChecksumVerified)
+            {
+                throw new FileSystemClientException("Checksum verification failed", FileSystemErrorCode.IntegrityFailure);
+            }
         }
     }
 }

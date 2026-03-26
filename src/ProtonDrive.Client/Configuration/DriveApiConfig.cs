@@ -17,6 +17,8 @@ public class DriveApiConfig
     public TimeSpan RevisionUpdateTimeout { get; internal set; }
     public int DefaultNumberOfRetries { get; internal set; }
     public int DriveApiNumberOfRetries { get; internal set; }
+    public int FileTransferNumberOfRetries { get; internal set; }
+    public TimeSpan FileTransferDelayBetweenRetries { get; internal set; }
     public TimeSpan EventsPollingInterval { get; internal set; }
     public TimeSpan ForeignVolumeEventsPollingInterval { get; internal set; }
     public TimeSpan EventsThrottleInterval { get; internal set; }

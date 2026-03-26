@@ -31,7 +31,7 @@ internal sealed class RemotePhotoRevisionCreationProcess : RemoteRevisionCreatio
 
     public override Stream GetContentStream() => throw new NotSupportedException();
 
-    public override async Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+    public override async Task WriteContentAsync(Stream source, FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
     {
         var destination = base.GetContentStream();
 

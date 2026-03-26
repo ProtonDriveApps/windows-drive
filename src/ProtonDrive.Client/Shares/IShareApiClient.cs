@@ -19,7 +19,7 @@ public interface IShareApiClient
 
     [Get("/v2/sharedwithme")]
     [BearerAuthorizationHeader]
-    Task<SharedWithMeItemListResponse> GetSharedWithMeItemsAsync([Query] string? anchorId, CancellationToken cancellationToken);
+    Task<SharedWithMeItemListResponse> GetSharedWithMeItemsAsync([Query, AliasAs("AnchorID")] string? anchorId, CancellationToken cancellationToken);
 
     [Delete("/v2/shares/{id}/members/{memberId}")]
     [BearerAuthorizationHeader]

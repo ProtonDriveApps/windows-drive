@@ -46,8 +46,8 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
     private readonly IRevisionManifestCreator _revisionManifestCreator;
     private readonly IBlockVerifierFactory _blockVerifierFactory;
     private readonly IFeatureFlagProvider _featureFlagProvider;
-    private readonly ILoggerFactory _loggerFactory;
     private readonly Action<Exception> _reportBlockVerificationOrDecryptionFailure;
+    private readonly ILoggerFactory _loggerFactory;
     private readonly ILogger<RemoteFileSystemClient> _logger;
 
     internal RemoteFileSystemClient(
@@ -67,8 +67,8 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         IRevisionManifestCreator revisionManifestCreator,
         IBlockVerifierFactory blockVerifierFactory,
         IFeatureFlagProvider featureFlagProvider,
-        ILoggerFactory loggerFactory,
-        Action<Exception> reportBlockVerificationOrDecryptionFailure)
+        Action<Exception> reportBlockVerificationOrDecryptionFailure,
+        ILoggerFactory loggerFactory)
         : base(fileSystemClientParameters, linkApiClient, remoteNodeService, fileContentTypeProvider)
     {
         _config = config;
@@ -90,8 +90,8 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         _revisionManifestCreator = revisionManifestCreator;
         _blockVerifierFactory = blockVerifierFactory;
         _featureFlagProvider = featureFlagProvider;
-        _loggerFactory = loggerFactory;
         _reportBlockVerificationOrDecryptionFailure = reportBlockVerificationOrDecryptionFailure;
+        _loggerFactory = loggerFactory;
 
         _logger = _loggerFactory.CreateLogger<RemoteFileSystemClient>();
 
@@ -354,7 +354,12 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
                 _reportBlockVerificationOrDecryptionFailure),
             info.Id);
 
-        return new RemoteFileRevision(stream, remoteFile.CreationTime, remoteFile.ModificationTime, remoteFile.ExtendedAttributes);
+        return new RemoteFileRevision(
+            stream,
+            remoteFile.CreationTime,
+            remoteFile.ModificationTime,
+            remoteFile.ExtendedAttributes,
+            remoteFile.ActiveRevision?.ChecksumVerified);
     }
 
     public async Task<IDestinationRevision<string>> CreateRevisionAsync(

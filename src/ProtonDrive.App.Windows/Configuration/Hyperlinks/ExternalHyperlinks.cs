@@ -43,5 +43,7 @@ internal sealed class ExternalHyperlinks : IExternalHyperlinks
 
     public IExternalHyperlink HowToUseSecurityKey => GetHyperlink(_urlConfig.HowToUseSecurityKey);
 
-    private IExternalHyperlink GetHyperlink(string url) => new ExternalHyperlink(_urlOpener, url);
+    public IExternalHyperlink ManageAlbums => GetHyperlink(_urlConfig.ManageAlbums);
+
+    private ExternalHyperlink GetHyperlink(string url) => new(_urlOpener, url);
 }

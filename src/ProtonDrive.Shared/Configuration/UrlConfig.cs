@@ -19,4 +19,5 @@ public sealed class UrlConfig
     public string HowToUseSecurityKey { get; internal set; } = string.Empty;
     public string HowToImportPhotosFromGoogle { get; internal set; } = string.Empty;
     public string HowPhotoImportWorks { get; internal set; } = string.Empty;
+    public string ManageAlbums { get; internal set; } = string.Empty;
 }

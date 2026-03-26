@@ -18,6 +18,8 @@ public class RevisionHeader
     [JsonPropertyName("SignatureEmail")]
     public string? SignatureEmailAddress { get; set; }
 
+    public bool ChecksumVerified { get; init; }
+
     public string ManifestSignature { get; set; } = string.Empty;
 
     public RevisionState State { get; set; }

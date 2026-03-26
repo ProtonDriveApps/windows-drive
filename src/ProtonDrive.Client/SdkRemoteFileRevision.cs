@@ -1,34 +1,43 @@
+using System.Security.Cryptography;
+using Microsoft.Extensions.Logging;
 using Proton.Drive.Sdk.Nodes.Download;
+using ProtonDrive.Client.Configuration;
 using ProtonDrive.Client.Contracts;
 using ProtonDrive.Client.Sdk;
-using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Sync.Shared.FileSystem;
 
 namespace ProtonDrive.Client;
 
 internal sealed class SdkRemoteFileRevision : ISourceRevision
 {
-    private const int NumberOfRetries = 10;
-    private static readonly TimeSpan DelayBeforeRetry = TimeSpan.FromMinutes(1).RandomizedWithDeviation(0.2);
     private static readonly Action<long, long> NullProgressCallback = (_, _) => { };
 
+    private readonly DriveApiConfig _apiConfig;
     private readonly FileDownloader _fileDownloader;
     private readonly ExtendedAttributes? _extendedAttributes;
+    private readonly bool? _checksumVerified;
     private readonly Action<Exception> _reportIntegrityFailure;
+    private readonly ILogger<SdkRemoteFileRevision> _logger;
 
     public SdkRemoteFileRevision(
+        DriveApiConfig apiConfig,
         FileDownloader fileDownloader,
         DateTime creationTimeUtc,
         DateTime lastWriteTimeUtc,
         ExtendedAttributes? extendedAttributes,
+        bool? checksumVerified,
         long sizeOnStorage,
-        Action<Exception> reportIntegrityFailure)
+        Action<Exception> reportIntegrityFailure,
+        ILogger<SdkRemoteFileRevision> logger)
     {
+        _apiConfig = apiConfig;
         _fileDownloader = fileDownloader;
         CreationTimeUtc = creationTimeUtc;
         LastWriteTimeUtc = lastWriteTimeUtc;
         _extendedAttributes = extendedAttributes;
+        _checksumVerified = checksumVerified;
         _reportIntegrityFailure = reportIntegrityFailure;
+        _logger = logger;
 
         Size = _extendedAttributes?.Common?.Size ?? sizeOnStorage;
     }
@@ -50,28 +59,32 @@ internal sealed class SdkRemoteFileRevision : ISourceRevision
         return Task.CompletedTask;
     }
 
-    public Task<ReadOnlyMemory<byte>?> GetSha1Async(CancellationToken cancellationToken)
+    public Task<FileContentChecksum> GetContentChecksumAsync(CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        return Task.FromResult(GetSha1());
+        return Task.FromResult(GetChecksum());
 
-        ReadOnlyMemory<byte>? GetSha1()
+        FileContentChecksum GetChecksum()
         {
             var hexSha1 = _extendedAttributes?.Common?.Digests?.Sha1;
 
             if (string.IsNullOrEmpty(hexSha1))
             {
-                return null;
+                return FileContentChecksum.Empty;
             }
 
             try
             {
-                return Convert.FromHexString(hexSha1);
+                var sha1 = Convert.FromHexString(hexSha1);
+
+                return sha1.Length == SHA1.HashSizeInBytes
+                    ? new FileContentChecksum { Sha1 = sha1, Sha1Verified = _checksumVerified ?? false }
+                    : FileContentChecksum.Empty;
             }
             catch (FormatException)
             {
-                return null;
+                return FileContentChecksum.Empty;
             }
         }
     }
@@ -80,16 +93,17 @@ internal sealed class SdkRemoteFileRevision : ISourceRevision
     {
         DownloadController? controller = null;
 
-        // On resuming paused download, Drive SDK can seek the destination stream
-        var numberOfRetries = destination.CanSeek ? NumberOfRetries : 0;
-
         try
         {
             controller = _fileDownloader.DownloadToStream(destination, NullProgressCallback, cancellationToken);
 
             await using (controller.ConfigureAwait(false))
             {
-                await controller.ExecuteWithRetryAsync(numberOfRetries, DelayBeforeRetry, cancellationToken).ConfigureAwait(false);
+                await controller.ExecuteWithRetryAsync(
+                    _apiConfig.FileTransferNumberOfRetries,
+                    _apiConfig.FileTransferDelayBetweenRetries,
+                    _logger,
+                    cancellationToken).ConfigureAwait(false);
 
                 await controller.Completion.ConfigureAwait(false);
             }

@@ -67,28 +67,64 @@ internal class UpdateLogging<TId, TAltId>
 
         if (_logger.IsEnabled(LogLevel.Debug))
         {
-            _logger.LogInformation(
-                "Detected {OperationType} {Type} \"{Root}\"/\"{Path}\"/{Id} {AltId} at parent {ParentId} {ParentAltId}",
-                operation.Type,
-                model.Type,
-                root,
-                path,
-                node.Id,
-                node.AltId,
-                node.Parent!.Id,
-                node.Parent.AltId);
+            if (model.Type is NodeType.File)
+            {
+                _logger.LogInformation(
+                    "Detected {OperationType} {Type} \"{Root}\"/\"{Path}\"/{Id} {AltId} at parent {ParentId} {ParentAltId}, ContentVersion={ContentVersion}, LastWriteTime={LastWriteTime:O}, Size={Size}",
+                    operation.Type,
+                    model.Type,
+                    root,
+                    path,
+                    node.Id,
+                    node.AltId,
+                    node.Parent!.Id,
+                    node.Parent.AltId,
+                    model.ContentVersion,
+                    model.LastWriteTime,
+                    model.Size);
+            }
+            else
+            {
+                _logger.LogInformation(
+                    "Detected {OperationType} {Type} \"{Root}\"/\"{Path}\"/{Id} {AltId} at parent {ParentId} {ParentAltId}",
+                    operation.Type,
+                    model.Type,
+                    root,
+                    path,
+                    node.Id,
+                    node.AltId,
+                    node.Parent!.Id,
+                    node.Parent.AltId);
+            }
         }
         else
         {
-            _logger.LogInformation(
-                "Detected {OperationType} {Type} \"{Root}\"/{Id} {AltId} at parent {ParentId} {ParentAltId}",
-                operation.Type,
-                model.Type,
-                root,
-                node.Id,
-                node.AltId,
-                node.Parent!.Id,
-                node.Parent.AltId);
+            if (model.Type is NodeType.File)
+            {
+                _logger.LogInformation(
+                    "Detected {OperationType} {Type} \"{Root}\"/{Id} {AltId} at parent {ParentId} {ParentAltId}, ContentVersion={ContentVersion}, Size={Size} KiB",
+                    operation.Type,
+                    model.Type,
+                    root,
+                    node.Id,
+                    node.AltId,
+                    node.Parent!.Id,
+                    node.Parent.AltId,
+                    model.ContentVersion,
+                    (model.Size + 1023) / 1024);
+            }
+            else
+            {
+                _logger.LogInformation(
+                    "Detected {OperationType} {Type} \"{Root}\"/{Id} {AltId} at parent {ParentId} {ParentAltId}",
+                    operation.Type,
+                    model.Type,
+                    root,
+                    node.Id,
+                    node.AltId,
+                    node.Parent!.Id,
+                    node.Parent.AltId);
+            }
         }
     }
 
@@ -114,13 +150,14 @@ internal class UpdateLogging<TId, TAltId>
         else
         {
             _logger.LogInformation(
-                "Detected {OperationType} {Type} \"{Root}\"/{Id} {AltId}, ContentVersion={ContentVersion}",
+                "Detected {OperationType} {Type} \"{Root}\"/{Id} {AltId}, ContentVersion={ContentVersion}, Size={Size} KiB",
                 operation.Type,
                 node.Type,
                 root,
                 node.Id,
                 node.AltId,
-                model.ContentVersion);
+                model.ContentVersion,
+                (model.Size + 1023) / 1024);
         }
     }
 

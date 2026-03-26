@@ -954,6 +954,10 @@ Filer optager kun lokal plads, når du åbner dem eller vælger altid beholde de
   <data name="Main_Photos_Folders_Items_Label">
     <value>Element(er)</value>
   </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Administrer albums</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
     <value>_Åbn mappe</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>

@@ -54,7 +54,7 @@ internal sealed class ExecutionStep<TId, TAltId>
     }
 
     private static async Task<NodeInfo<TAltId>> FinalizeAsync(
-        ReadOnlyMemory<byte>? expectedSha1,
+        FileContentChecksum expectedChecksum,
         IDestinationRevision<TAltId> destinationRevision,
         UpdateDetectionSwitch updateDetection,
         CancellationToken cancellationToken)
@@ -67,7 +67,7 @@ internal sealed class ExecutionStep<TId, TAltId>
         // file transfer is finished and the result is applied to the Adapter Tree.
         await updateDetection.PostponeAsync(cancellationToken).ConfigureAwait(false);
 
-        return await destinationRevision.FinishAsync(expectedSha1, cancellationToken).ConfigureAwait(false);
+        return await destinationRevision.FinishAsync(expectedChecksum, cancellationToken).ConfigureAwait(false);
     }
 
     private async Task<NodeInfo<TAltId>> CreateFolderAsync(
@@ -141,15 +141,15 @@ internal sealed class ExecutionStep<TId, TAltId>
     {
         if (!destinationRevision.ImmediateHydrationRequired)
         {
-            return await FinalizeAsync(expectedSha1: null, destinationRevision, updateDetection, cancellationToken).ConfigureAwait(false);
+            return await FinalizeAsync(FileContentChecksum.Empty, destinationRevision, updateDetection, cancellationToken).ConfigureAwait(false);
         }
 
         // Invoking progress callback changes sync activity stage from Preparation into Execution
         progressCallback.Invoke(Progress.Zero);
 
-        var sha1 = destinationRevision.ChecksumVerificationEnabled
-            ? await sourceRevision.GetSha1Async(cancellationToken).ConfigureAwait(false)
-            : null;
+        var expectedChecksum = destinationRevision.ChecksumVerificationEnabled
+            ? await sourceRevision.GetContentChecksumAsync(cancellationToken).ConfigureAwait(false)
+            : FileContentChecksum.Empty;
 
         var transferAbortionToken = sourceRevision.AbortionToken;
         using var linkedTokenSource = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken, transferAbortionToken);
@@ -157,9 +157,9 @@ internal sealed class ExecutionStep<TId, TAltId>
 
         try
         {
-            await sourceRevision.CopyContentToAsync(destinationRevision, sha1, linkedCancellationToken).ConfigureAwait(false);
+            await sourceRevision.CopyContentToAsync(destinationRevision, expectedChecksum, linkedCancellationToken).ConfigureAwait(false);
 
-            return await FinalizeAsync(sha1, destinationRevision, updateDetection, linkedCancellationToken).ConfigureAwait(false);
+            return await FinalizeAsync(expectedChecksum, destinationRevision, updateDetection, linkedCancellationToken).ConfigureAwait(false);
         }
         catch (OperationCanceledException) when (!cancellationToken.IsCancellationRequested && linkedCancellationToken.IsCancellationRequested)
         {

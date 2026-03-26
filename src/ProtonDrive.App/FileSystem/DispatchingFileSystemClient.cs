@@ -211,14 +211,14 @@ internal sealed class DispatchingFileSystemClient<TId> : IFileSystemClient<TId>
             return _origin.GetContentStream();
         }
 
-        public Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+        public Task WriteContentAsync(Stream source, FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
         {
-            return _origin.WriteContentAsync(source, expectedSha1, cancellationToken);
+            return _origin.WriteContentAsync(source, expectedChecksum, cancellationToken);
         }
 
-        public async Task<NodeInfo<TId>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+        public async Task<NodeInfo<TId>> FinishAsync(FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
         {
-            var result = await _origin.FinishAsync(expectedSha1, cancellationToken).ConfigureAwait(false);
+            var result = await _origin.FinishAsync(expectedChecksum, cancellationToken).ConfigureAwait(false);
 
             return _owner.AddRoot(result, _root);
         }
@@ -257,7 +257,7 @@ internal sealed class DispatchingFileSystemClient<TId> : IFileSystemClient<TId>
 
         public NodeInfo<TId> FileInfo { get; }
         public bool ChecksumVerificationEnabled => _origin.ChecksumVerificationEnabled;
-        public Stream GetHydrationStream(ReadOnlyMemory<byte>? expectedSha1) => _origin.GetHydrationStream(expectedSha1);
+        public Stream GetHydrationStream(FileContentChecksum expectedChecksum) => _origin.GetHydrationStream(expectedChecksum);
 
         public NodeInfo<TId> UpdateFileSize() => _origin.UpdateFileSize().Copy().WithRoot(_rootInfo);
     }

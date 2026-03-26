@@ -17,7 +17,7 @@ namespace ProtonDrive.Client;
 
 internal sealed class RemoteFileSystemClientFactory : IRemoteFileSystemClientFactory
 {
-    private readonly DriveApiConfig _driveApi;
+    private readonly DriveApiConfig _driveApiConfig;
     private readonly IFeatureFlagProvider _featureFlagProvider;
     private readonly IFileContentTypeProvider _fileContentTypeProvider;
     private readonly IClientInstanceIdentityProvider _clientInstanceIdentityProvider;
@@ -39,7 +39,7 @@ internal sealed class RemoteFileSystemClientFactory : IRemoteFileSystemClientFac
     private readonly Action<Exception> _reportIntegrityFailure;
 
     public RemoteFileSystemClientFactory(
-        DriveApiConfig driveApi,
+        DriveApiConfig driveApiConfig,
         IFeatureFlagProvider featureFlagProvider,
         IFileContentTypeProvider fileContentTypeProvider,
         IClientInstanceIdentityProvider clientInstanceIdentityProvider,
@@ -59,7 +59,7 @@ internal sealed class RemoteFileSystemClientFactory : IRemoteFileSystemClientFac
         IMetricsRecorder metricsRecorder,
         ILoggerFactory loggerFactory)
     {
-        _driveApi = driveApi;
+        _driveApiConfig = driveApiConfig;
         _featureFlagProvider = featureFlagProvider;
         _fileContentTypeProvider = fileContentTypeProvider;
         _clientInstanceIdentityProvider = clientInstanceIdentityProvider;
@@ -98,7 +98,7 @@ internal sealed class RemoteFileSystemClientFactory : IRemoteFileSystemClientFac
     private RemoteFileSystemClient CreateLegacyClient(FileSystemClientParameters parameters)
     {
         return new RemoteFileSystemClient(
-            _driveApi,
+            _driveApiConfig,
             parameters,
             _fileContentTypeProvider,
             _clientInstanceIdentityProvider,
@@ -114,20 +114,22 @@ internal sealed class RemoteFileSystemClientFactory : IRemoteFileSystemClientFac
             _revisionManifestCreator,
             _blockVerifierFactory,
             _featureFlagProvider,
-            _loggerFactory,
-            _reportIntegrityFailure);
+            _reportIntegrityFailure,
+            _loggerFactory);
     }
 
     private SdkFileSystemClient CreateSdkClient(FileSystemClientParameters parameters)
     {
         return new SdkFileSystemClient(
             parameters,
+            _driveApiConfig,
             _sdkClientFactory.GetOrCreateClient(),
             _fileContentTypeProvider,
             _remoteNodeService,
             _linkApiClient,
             _featureFlagProvider,
             _recordMetric,
-            _reportIntegrityFailure);
+            _reportIntegrityFailure,
+            _loggerFactory);
     }
 }

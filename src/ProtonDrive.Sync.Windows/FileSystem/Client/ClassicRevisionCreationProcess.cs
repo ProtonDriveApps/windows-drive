@@ -70,13 +70,13 @@ internal class ClassicRevisionCreationProcess : IDestinationRevision<long>
         }
     }
 
-    public Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+    public Task WriteContentAsync(Stream source, FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
     {
         var destination = GetContentStream();
         return CopyFileContentAsync(destination, source, cancellationToken);
     }
 
-    public async Task<NodeInfo<long>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+    public async Task<NodeInfo<long>> FinishAsync(FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
     {
         _succeeded = true;
         try
@@ -88,7 +88,7 @@ internal class ClassicRevisionCreationProcess : IDestinationRevision<long>
                 await _contentWritingStream.FlushAsync(cancellationToken).ConfigureAwait(false);
             }
 
-            return await FinishRevisionCreationAsync(expectedSha1, cancellationToken).ConfigureAwait(false);
+            return await FinishRevisionCreationAsync(expectedChecksum, cancellationToken).ConfigureAwait(false);
         }
         catch
         {
@@ -128,7 +128,7 @@ internal class ClassicRevisionCreationProcess : IDestinationRevision<long>
         await destination.FlushAsync(cancellationToken).ConfigureAwait(false);
     }
 
-    private async Task<NodeInfo<long>> FinishRevisionCreationAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+    private async Task<NodeInfo<long>> FinishRevisionCreationAsync(FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
     {
         if (_contentWritingStream != null && _contentWritingStream.Position != _contentWritingStream.Length)
         {
@@ -139,7 +139,7 @@ internal class ClassicRevisionCreationProcess : IDestinationRevision<long>
         _file.SetLastWriteTime(_finalInfo);
         _file.SetAttributes(_finalInfo);
 
-        await VerifyChecksum(expectedSha1, cancellationToken).ConfigureAwait(false);
+        await VerifyChecksumAsync(expectedChecksum, cancellationToken).ConfigureAwait(false);
 
         if (!string.Equals(Path.GetFileName(_file.FullPath), _finalInfo.Name, StringComparison.Ordinal))
         {
@@ -185,32 +185,38 @@ internal class ClassicRevisionCreationProcess : IDestinationRevision<long>
         return _file.ToNodeInfo(parentId: _finalInfo.ParentId, refresh: true);
     }
 
-    private async Task VerifyChecksum(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+    private async Task VerifyChecksumAsync(FileContentChecksum expectedChecksum, CancellationToken cancellationToken)
     {
-        if (!ChecksumVerificationEnabled || expectedSha1 == null)
+        if (!ChecksumVerificationEnabled || expectedChecksum.Sha1 == null)
         {
-            RecordVerificationResult(ChecksumVerificationResult.Skipped);
+            RecordVerificationResult(ChecksumVerificationResult.Skipped, expectedChecksumVerified: false);
             return;
         }
 
-        var actualSha1 = await FileInfo.GetContentSha1Async(cancellationToken).ConfigureAwait(false);
+        var actualChecksum = await FileInfo.GetContentChecksumAsync(cancellationToken).ConfigureAwait(false);
 
-        if (!actualSha1.Span.SequenceEqual(expectedSha1.Value.Span))
+        if (!actualChecksum.Sha1!.Value.Span.SequenceEqual(expectedChecksum.Sha1.Value.Span))
         {
-            RecordVerificationResult(ChecksumVerificationResult.Failure);
+            RecordVerificationResult(ChecksumVerificationResult.Failure, expectedChecksum.Sha1Verified);
 
-            throw new FileSystemClientException<long>("Downloaded file SHA1 differs from expected", FileSystemErrorCode.IntegrityFailure, 0);
+            if (expectedChecksum.Sha1Verified)
+            {
+                throw new FileSystemClientException<long>("Downloaded file SHA1 differs from expected", FileSystemErrorCode.IntegrityFailure, 0);
+            }
+
+            return;
         }
 
-        RecordVerificationResult(ChecksumVerificationResult.Success);
+        RecordVerificationResult(ChecksumVerificationResult.Success, expectedChecksum.Sha1Verified);
     }
 
-    private void RecordVerificationResult(ChecksumVerificationResult result)
+    private void RecordVerificationResult(ChecksumVerificationResult result, bool expectedChecksumVerified)
     {
         _recordMetric.Invoke(new DownloadChecksumVerificationAttemptEvent
         {
             Result = result,
             FileSize = _contentWritingStream?.Length ?? 0,
+            ChecksumVerified = expectedChecksumVerified,
         });
     }
 }

@@ -55,10 +55,10 @@ internal sealed class PhotoFileUploader : IPhotoFileUploader
         IDestinationRevision<string> destinationRevision,
         CancellationToken cancellationToken)
     {
-        var sha1 = await sourceRevision.GetSha1Async(cancellationToken).ConfigureAwait(false);
+        var expectedChecksum = await sourceRevision.GetContentChecksumAsync(cancellationToken).ConfigureAwait(false);
 
-        await destinationRevision.WriteContentAsync(sourceRevision.GetContentStream(), sha1, cancellationToken).ConfigureAwait(false);
+        await destinationRevision.WriteContentAsync(sourceRevision.GetContentStream(), expectedChecksum, cancellationToken).ConfigureAwait(false);
 
-        return await destinationRevision.FinishAsync(sha1, cancellationToken).ConfigureAwait(false);
+        return await destinationRevision.FinishAsync(expectedChecksum, cancellationToken).ConfigureAwait(false);
     }
 }

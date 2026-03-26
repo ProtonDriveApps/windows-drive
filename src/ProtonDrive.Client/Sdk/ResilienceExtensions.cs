@@ -1,4 +1,5 @@
-﻿using Proton.Drive.Sdk.Nodes.Download;
+﻿using Microsoft.Extensions.Logging;
+using Proton.Drive.Sdk.Nodes.Download;
 using Proton.Drive.Sdk.Nodes.Upload;
 using ProtonDrive.Shared.Extensions;
 
@@ -6,7 +7,7 @@ namespace ProtonDrive.Client.Sdk;
 
 internal static class ResilienceExtensions
 {
-    public static async ValueTask ExecuteWithRetryAsync(this UploadController controller, int numberOfRetries, TimeSpan delay, CancellationToken cancellationToken)
+    public static async ValueTask ExecuteWithRetryAsync(this UploadController controller, int numberOfRetries, TimeSpan delay, ILogger logger, CancellationToken cancellationToken)
     {
         for (var attempt = 1; attempt <= 1 + numberOfRetries; attempt++)
         {
@@ -23,6 +24,10 @@ internal static class ResilienceExtensions
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {
+                if (controller.IsPaused)
+                {
+                    logger.LogWarning("Drive SDK paused file upload: {ErrorMessage}", ex.CombinedMessage());
+                }
             }
 
             if (!controller.IsPaused)
@@ -32,7 +37,7 @@ internal static class ResilienceExtensions
         }
     }
 
-    public static async ValueTask ExecuteWithRetryAsync(this DownloadController controller, int numberOfRetries, TimeSpan delay, CancellationToken cancellationToken)
+    public static async ValueTask ExecuteWithRetryAsync(this DownloadController controller, int numberOfRetries, TimeSpan delay, ILogger logger, CancellationToken cancellationToken)
     {
         for (var attempt = 1; attempt <= 1 + numberOfRetries; attempt++)
         {
@@ -49,6 +54,10 @@ internal static class ResilienceExtensions
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {
+                if (controller.IsPaused)
+                {
+                    logger.LogWarning("Drive SDK paused file download: {ErrorMessage}", ex.CombinedMessage());
+                }
             }
 
             if (!controller.IsPaused)

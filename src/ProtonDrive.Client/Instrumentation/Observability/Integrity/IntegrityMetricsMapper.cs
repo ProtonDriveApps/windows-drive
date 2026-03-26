@@ -133,6 +133,7 @@ internal sealed class IntegrityMetricsMapper(IntegrityMetricsCollector metricsCo
         {
             { IntegrityMetrics.ResultKeyName, tags.Result },
             { IntegrityMetrics.FileSizeKeyName, tags.FileSize },
+            { IntegrityMetrics.ChecksumVerifiedKeyName, tags.ChecksumVerified },
         };
 
         return new DownloadChecksumVerificationAttemptsMetric(value, labels);

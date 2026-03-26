@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.Metrics;
 using Proton.Drive.Sdk.Telemetry;
+using Proton.Sdk;
 
 namespace ProtonDrive.Client.Sdk.Metrics;
 
@@ -60,16 +61,45 @@ internal sealed class UploadMetrics
             new KeyValuePair<string, object?>(SdkMetrics.VolumeTypeKeyName, MapVolumeType(uploadEvent.VolumeType)),
             new KeyValuePair<string, object?>(SdkMetrics.AttemptStatusKeyName, MapStatus(uploadEvent.Error)));
 
-        if (uploadEvent.Error is not null)
+        if (uploadEvent.Error is null)
         {
-            _failures.Add(
-                1,
-                new KeyValuePair<string, object?>(SdkMetrics.VolumeTypeKeyName, MapVolumeType(uploadEvent.VolumeType)),
-                new KeyValuePair<string, object?>(SdkMetrics.FailureTypeKeyName, MapErrorType(uploadEvent.Error.Value)));
-
-            _failuresFileSize.Record(uploadEvent.ExpectedSize);
-            _failuresTransferSize.Record(uploadEvent.UploadedSize);
+            return;
         }
+
+        if (ErrorIsWorthSkipping(uploadEvent.Error.Value, uploadEvent.OriginalError))
+        {
+            return;
+        }
+
+        _failures.Add(
+            1,
+            new KeyValuePair<string, object?>(SdkMetrics.VolumeTypeKeyName, MapVolumeType(uploadEvent.VolumeType)),
+            new KeyValuePair<string, object?>(SdkMetrics.FailureTypeKeyName, MapErrorType(uploadEvent.Error.Value)));
+
+        _failuresFileSize.Record(uploadEvent.ApproximateExpectedSize);
+        _failuresTransferSize.Record(uploadEvent.ApproximateUploadedSize);
+    }
+
+    private static bool ErrorIsWorthSkipping(UploadError uploadError, Exception? originalError)
+    {
+        if (uploadError is not UploadError.HttpClientSideError)
+        {
+            return false;
+        }
+
+        var exception = originalError;
+
+        while (exception != null)
+        {
+            if (exception is ProtonApiException { Code: Proton.Sdk.Api.ResponseCode.TooManyChildren })
+            {
+                return true;
+            }
+
+            exception = exception.InnerException;
+        }
+
+        return false;
     }
 
     private static string MapVolumeType(VolumeType volumeType)

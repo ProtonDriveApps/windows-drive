@@ -389,7 +389,7 @@ internal static class NodeInfoExtensions
         return name;
     }
 
-    public static async Task<ReadOnlyMemory<byte>> GetContentSha1Async(this NodeInfo<long> info, CancellationToken cancellationToken)
+    public static async Task<FileContentChecksum> GetContentChecksumAsync(this NodeInfo<long> info, CancellationToken cancellationToken)
     {
         const int fileBufferSize = 80 * 1024;
 
@@ -405,7 +405,9 @@ internal static class NodeInfoExtensions
 
             await using (fileStream.ConfigureAwait(false))
             {
-                return await SHA1.HashDataAsync(fileStream, cancellationToken).ConfigureAwait(false);
+                var sha1 = await SHA1.HashDataAsync(fileStream, cancellationToken).ConfigureAwait(false);
+
+                return new FileContentChecksum { Sha1 = sha1 };
             }
         }
         catch (Exception ex) when (ExceptionMapping.TryMapException(ex, info.Id, out var mappedException))

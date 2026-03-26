@@ -5,7 +5,7 @@ public interface IFileHydrationDemand<TId>
 {
     NodeInfo<TId> FileInfo { get; }
     bool ChecksumVerificationEnabled { get; }
-    Stream GetHydrationStream(ReadOnlyMemory<byte>? expectedSha1);
+    Stream GetHydrationStream(FileContentChecksum expectedChecksum);
 
     NodeInfo<TId> UpdateFileSize();
 }

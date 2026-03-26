@@ -21,17 +21,18 @@ internal sealed class FileHydrationProcess<TId> : IFileHydrationDemand<TId>, IDi
 
     public NodeInfo<TId> FileInfo { get; private set; }
     public bool ChecksumVerificationEnabled { get; }
-    public bool ChecksumVerificationPerformed => _verifyingStream is not null;
-    public bool ChecksumVerificationFailed => _verifyingStream?.VerificationFailed == true;
+    internal bool ChecksumVerificationPerformed => _verifyingStream is not null;
+    internal bool ChecksumVerificationFailed => _verifyingStream?.VerificationFailed == true;
+    internal bool ExpectedChecksumVerified => _verifyingStream?.ExpectedChecksumVerified == true;
 
-    public Stream GetHydrationStream(ReadOnlyMemory<byte>? expectedSha1)
+    public Stream GetHydrationStream(FileContentChecksum expectedChecksum)
     {
-        if (expectedSha1 is null)
+        if (expectedChecksum.Sha1 is null)
         {
             return _stream;
         }
 
-        _verifyingStream = new ChecksumVerifyingStream(_stream, expectedSha1.Value);
+        _verifyingStream = new ChecksumVerifyingStream(_stream, expectedChecksum.Sha1.Value, expectedChecksum.Sha1Verified);
 
         return _verifyingStream;
     }

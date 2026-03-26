@@ -10,6 +10,6 @@ public interface IDestinationRevision<TId> : IAsyncDisposable
     bool CanGetContentStream { get; }
 
     Stream GetContentStream();
-    Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken);
-    Task<NodeInfo<TId>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken);
+    Task WriteContentAsync(Stream source, FileContentChecksum expectedChecksum, CancellationToken cancellationToken);
+    Task<NodeInfo<TId>> FinishAsync(FileContentChecksum expectedChecksum, CancellationToken cancellationToken);
 }

@@ -59,6 +59,7 @@ internal sealed class PhotosImportViewModel : ObservableObject, ISyncFoldersAwar
         _displayImportGooglePhotosDetailsCommand = new RelayCommand(DisplayImportGooglePhotosDetails, CanAddFolder);
         _addFolderCommand = new AsyncRelayCommand(AddFolderAsync, CanAddFolder);
         OpenFolderCommand = new AsyncRelayCommand<ImportFolderViewModel?>(OpenFolderAsync);
+        ManageAlbumsCommand = new RelayCommand<ImportFolderViewModel?>(ManageAlbums);
         _retryCommand = new AsyncRelayCommand<ImportFolderViewModel?>(RetryAsync, CanRetry);
         RemoveFolderCommand = new AsyncRelayCommand<ImportFolderViewModel?>(RemoveFolderAsync);
     }
@@ -80,6 +81,8 @@ internal sealed class PhotosImportViewModel : ObservableObject, ISyncFoldersAwar
     public ICommand OpenFolderCommand { get; }
 
     public ICommand RetryCommand => _retryCommand;
+
+    public ICommand ManageAlbumsCommand { get; }
 
     public ICommand RemoveFolderCommand { get; }
 
@@ -176,6 +179,16 @@ internal sealed class PhotosImportViewModel : ObservableObject, ISyncFoldersAwar
         Schedule(RefreshCommands);
     }
 
+    private static bool CanRetry(ImportFolderViewModel? folder)
+    {
+        if (folder?.SyncFolder?.MappingId is null)
+        {
+            return false;
+        }
+
+        return folder.ImportStatus is PhotoImportFolderStatus.Failed;
+    }
+
     private void OpenHowToImportPhotosFromGoogleUrl()
     {
         _externalHyperlinks.HowToImportPhotosFromGoogle.Open();
@@ -240,14 +253,9 @@ internal sealed class PhotosImportViewModel : ObservableObject, ISyncFoldersAwar
         await _localFolderService.OpenFolderAsync(folder.Path).ConfigureAwait(true);
     }
 
-    private bool CanRetry(ImportFolderViewModel? folder)
+    private void ManageAlbums(ImportFolderViewModel? folder)
     {
-        if (folder?.SyncFolder?.MappingId is null)
-        {
-            return false;
-        }
-
-        return folder.ImportStatus is PhotoImportFolderStatus.Failed;
+        _externalHyperlinks.ManageAlbums.Open();
     }
 
     private async Task RetryAsync(ImportFolderViewModel? folder, CancellationToken cancellationToken)

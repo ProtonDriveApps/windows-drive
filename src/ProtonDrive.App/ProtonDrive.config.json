@@ -16,6 +16,8 @@
     "RevisionUpdateTimeout": "00:01:30",
     "DefaultNumberOfRetries": 3,
     "DriveApiNumberOfRetries": 7,
+    "FileTransferNumberOfRetries": 5,
+    "FileTransferDelayBetweenRetries": "00:01:00",
     "EventsPollingInterval": "00:01:30",
     "ForeignVolumeEventsPollingInterval": "00:10:00",
     "EventsThrottleInterval": "00:00:20",
@@ -70,6 +72,7 @@
     "HowToUseSecurityKey": "https://proton.me/support/2fa-security-key",
     "HowToImportPhotosFromGoogle": "https://proton.me/support/how-to-import-from-google-photos",
     "HowPhotoImportWorks": "https://proton.me/support/how-photo-import-works",
+    "ManageAlbums": "https://drive.proton.me/photos/albums",
     "Trash": "https://drive.proton.me/trash",
     "Docs": "https://docs.proton.me"
   },

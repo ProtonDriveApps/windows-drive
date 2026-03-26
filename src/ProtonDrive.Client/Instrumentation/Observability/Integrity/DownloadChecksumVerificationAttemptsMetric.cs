@@ -7,7 +7,7 @@ public sealed record DownloadChecksumVerificationAttemptsMetric : ObservabilityM
     public DownloadChecksumVerificationAttemptsMetric(long value, IReadOnlyDictionary<string, string> labels)
         : base(
             "drive_download_verifier_attempts_total",
-            Version: 1,
+            Version: 2,
             DateTime.UtcNow.ToUnixTimeSeconds(),
             new ObservabilityMetricProperties(value, labels))
     {

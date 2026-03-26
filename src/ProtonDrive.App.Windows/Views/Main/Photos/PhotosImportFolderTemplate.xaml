@@ -6,6 +6,7 @@
     xmlns:import="clr-namespace:ProtonDrive.App.Photos.Import;assembly=ProtonDrive.App"
     xmlns:loc="clr-namespace:ProtonDrive.App.Windows.Resources"
     xmlns:local="clr-namespace:ProtonDrive.App.Windows.Views.Main.Photos"
+    xmlns:photos="clr-namespace:ProtonDrive.Sync.Shared.FileSystem.Photos;assembly=ProtonDrive.Sync.Shared"
     xmlns:shared="clr-namespace:ProtonDrive.App.Windows.Views.Shared">
     <DataTemplate
         x:Key="PhotoFolderTemplate"
@@ -19,6 +20,7 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
@@ -53,33 +55,6 @@
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     Margin="15,0,0,0" />
-
-                <Grid
-                    Grid.Column="2"
-                    ToolTip="{Binding ImportErrorCode, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}}"
-                    Visibility="{Binding ImportStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static import:PhotoImportFolderStatus.Failed}}"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Margin="10,0,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-                    <Image
-                        Source="{StaticResource Icon.Error}"
-                        Width="16"
-                        Height="16"
-                        VerticalAlignment="Center" />
-
-                    <TextBlock
-                        Grid.Column="1"
-                        Text="{Binding ImportErrorCode, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}}"
-                        FontSize="{StaticResource TextBlock.Small.FontSize}"
-                        Foreground="{StaticResource ErrorBrush}"
-                        TextTrimming="CharacterEllipsis"
-                        Margin="10,0,0,0" />
-                </Grid>
 
                 <Grid
                     Grid.Column="2"
@@ -192,21 +167,57 @@
 
                 <Grid
                     Grid.Column="4"
-                    Visibility="{Binding ImportStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static import:PhotoImportFolderStatus.Failed}}"
                     Margin="10,0,0,0">
-                    <Grid>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Grid
+                        Grid.Row="0"
+                        Visibility="{Binding ImportStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static import:PhotoImportFolderStatus.Failed}}">
+                        <Grid>
+                            <TextBlock
+                                AutomationProperties.AutomationId="PhotoImportFailedStatusTextBlock"
+                                TextTrimming="CharacterEllipsis"
+                                ToolTip="{Binding Path=ImportStatus, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center">
+                                <TextBlock.Text>
+                                    <MultiBinding StringFormat="{loc:Resource Main_Photos_Folders_ImportedItemsFormat}">
+                                        <Binding Path="NumberOfImportedFiles" />
+                                        <Binding Path="NumberOfFilesToImport" />
+                                    </MultiBinding>
+                                </TextBlock.Text>
+                            </TextBlock>
+                        </Grid>
+                    </Grid>
+
+                    <Grid
+                        Grid.Row="1"
+                        ToolTip="{Binding ImportErrorCode, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}}"
+                        Visibility="{Binding ImportStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static import:PhotoImportFolderStatus.Failed}}"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Image
+                            Source="{StaticResource Icon.Error}"
+                            Width="16"
+                            Height="16"
+                            VerticalAlignment="Center" />
+
                         <TextBlock
-                            AutomationProperties.AutomationId="PhotoImportFailedStatusTextBlock"
+                            Grid.Column="1"
+                            Text="{Binding ImportErrorCode, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}}"
+                            FontSize="{StaticResource TextBlock.Small.FontSize}"
+                            Foreground="{StaticResource ErrorBrush}"
                             TextTrimming="CharacterEllipsis"
-                            ToolTip="{Binding Path=ImportStatus, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}}"
-                            VerticalAlignment="Center">
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="{loc:Resource Main_Photos_Folders_ImportedItemsFormat}">
-                                    <Binding Path="NumberOfImportedFiles" />
-                                    <Binding Path="NumberOfFilesToImport" />
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
+                            Margin="5,0,0,0" />
                     </Grid>
                 </Grid>
 
@@ -232,7 +243,7 @@
 
                 <Button
                     AutomationProperties.AutomationId="RetryImportButton"
-                    Grid.Column="5"
+                    Grid.Column="6"
                     Content="{loc:Resource Main_Photos_Folders_Menu_Item_Retry}"
                     CommandParameter="{Binding .}"
                     Command="{Binding ElementName=ImportedFoldersItemsControl, Path=DataContext.RetryCommand}"
@@ -240,9 +251,20 @@
                     VerticalAlignment="Center"
                     Margin="20,0,0,0" />
 
+                <Button
+                    AutomationProperties.AutomationId="ManageAlbumsButton"
+                    Grid.Column="5"
+                    Content="{loc:Resource Main_Photos_Folders_Menu_Item_ManageAlbums}"
+                    CommandParameter="{Binding .}"
+                    Command="{Binding ElementName=ImportedFoldersItemsControl, Path=DataContext.ManageAlbumsCommand}"
+                    Style="{StaticResource HyperlinkButtonStyle}"
+                    Visibility="{Binding ImportErrorCode, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static photos:PhotoImportErrorCode.MaximumNumberOfAlbumsReached}}"
+                    VerticalAlignment="Center"
+                    Margin="20,0,0,0" />
+
                 <Menu
                     AutomationProperties.AutomationId="ImportedPhotoFolderMenu"
-                    Grid.Column="6"
+                    Grid.Column="7"
                     Background="Transparent"
                     KeyboardNavigation.DirectionalNavigation="Continue"
                     MinWidth="36"
@@ -277,6 +299,12 @@
                             Command="{Binding ElementName=ImportedFoldersItemsControl, Path=DataContext.RetryCommand}"
                             Header="{loc:Resource Main_Photos_Folders_Menu_Item_Retry}"
                             Visibility="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}" />
+
+                        <MenuItem
+                            AutomationProperties.AutomationId="ManageAlbumsMenuItem"
+                            CommandParameter="{Binding .}"
+                            Command="{Binding ElementName=ImportedFoldersItemsControl, Path=DataContext.ManageAlbumsCommand}"
+                            Header="{loc:Resource Main_Photos_Folders_Menu_Item_ManageAlbums}" />
 
                         <MenuItem
                             AutomationProperties.AutomationId="RemoveMenuItem"
