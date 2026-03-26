@@ -214,7 +214,7 @@
     <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
-    <value>Se șterge din Proton Drive</value>
+    <value>Se mută în gunoiul Proton Drive</value>
     <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
@@ -242,7 +242,7 @@
     <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
-    <value>Șters din Proton Drive</value>
+    <value>Mutat în gunoiul Proton Drive</value>
     <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
@@ -506,7 +506,7 @@ Dezactivați și reactivați sincronizarea pentru a o restabili și a șterge ac
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_About_Button_UpdateNow_HelpText">
-    <value>Este disponibilă o versiune nouă a Proton Drive. Actualizați-o acum.</value>
+    <value>Proton Drive are o versiune nouă. Actualizați-o acum.</value>
   </data>
   <data name="Main_About_Label_CurrentVersion">
     <value>Versiunea actuală</value>
@@ -733,16 +733,16 @@ Dezactivați și reactivați sincronizarea pentru a o restabili și a șterge ac
     <value>Se setează... (articole pregătite pentru sincronizare: {0})</value>
   </data>
   <data name="Main_Activity_TimeElapsed_AMomentAgo">
-    <value>acum un moment</value>
+    <value>de curând</value>
   </data>
   <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
-    <value>acum {0} zile</value>
+    <value>zile: {0}</value>
   </data>
   <data name="Main_Activity_TimeElapsed_HoursAgoFormat">
-    <value>acum {0} ore</value>
+    <value>ore: {0}</value>
   </data>
   <data name="Main_Activity_TimeElapsed_MinutesAgoFormat">
-    <value>acum {0} minute</value>
+    <value>minute: {0}</value>
   </data>
   <data name="Main_Activity_TimeElapsed_OneDayAgo">
     <value>acum o zi</value>
@@ -755,6 +755,12 @@ Dezactivați și reactivați sincronizarea pentru a o restabili și a șterge ac
   </data>
   <data name="Main_Activity_Title">
     <value>Activitate</value>
+  </data>
+  <data name="Main_MyComputer_Button_LearnMore">
+    <value>Detalii</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Folderele sincronizate de pe computere vor apărea în secțiunea „Computere” din aplicațiile Drive.</value>
   </data>
   <data name="Main_MyComputer_Device_Button_Rename">
     <value>_Redenumire</value>

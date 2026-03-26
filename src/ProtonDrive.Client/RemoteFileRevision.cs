@@ -1,9 +1,10 @@
-﻿using ProtonDrive.Client.Contracts;
+﻿using System.Security.Cryptography;
+using ProtonDrive.Client.Contracts;
 using ProtonDrive.Sync.Shared.FileSystem;
 
 namespace ProtonDrive.Client;
 
-internal sealed class RemoteFileRevision : IRevision
+internal sealed class RemoteFileRevision : ISourceRevision
 {
     private readonly Stream _contentStream;
     private readonly ExtendedAttributes? _extendedAttributes;
@@ -25,6 +26,34 @@ internal sealed class RemoteFileRevision : IRevision
     public Task CheckReadabilityAsync(CancellationToken cancellationToken)
     {
         return Task.CompletedTask;
+    }
+
+    public Task<ReadOnlyMemory<byte>?> GetSha1Async(CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+
+        return Task.FromResult(GetSha1());
+
+        ReadOnlyMemory<byte>? GetSha1()
+        {
+            var hexSha1 = _extendedAttributes?.Common?.Digests?.Sha1;
+
+            if (string.IsNullOrEmpty(hexSha1))
+            {
+                return null;
+            }
+
+            try
+            {
+                var sha1 = Convert.FromHexString(hexSha1);
+
+                return sha1.Length == SHA1.HashSizeInBytes ? sha1 : null;
+            }
+            catch (FormatException)
+            {
+                return null;
+            }
+        }
     }
 
     public Stream GetContentStream()

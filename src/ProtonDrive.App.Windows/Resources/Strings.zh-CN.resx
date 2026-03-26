@@ -214,7 +214,7 @@
     <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
-    <value>从 Proton Drive 删除</value>
+    <value>正在移至 Proton Drive 回收站</value>
     <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
@@ -242,7 +242,7 @@
     <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
-    <value>已从 Proton Drive 删除</value>
+    <value>已移至 Proton Drive 回收站</value>
     <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
@@ -349,10 +349,10 @@
     <value>出现什么问题了？</value>
   </data>
   <data name="BugReport_Text_Email_HelpText">
-    <value>电子邮箱地址（必填字段）</value>
+    <value>邮箱地址（必填字段）</value>
   </data>
   <data name="BugReport_Text_Email_Label">
-    <value>电子邮箱地址</value>
+    <value>邮箱地址(_E)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="BugReport_Text_IssueTitle_HelpText">
@@ -596,7 +596,7 @@
     <value>存储容量</value>
   </data>
   <data name="Main_Account_Storage_Warning_StorageExceeded">
-    <value>同步已停止。您的帐户已超出存储容量。</value>
+    <value>同步已停止，您的账户已超出存储容量限制。</value>
   </data>
   <data name="Main_Account_Storage_Warning_StorageLimit">
     <value>您的存储空间即将达到上限。</value>
@@ -755,6 +755,12 @@
   </data>
   <data name="Main_Activity_Title">
     <value>主界面</value>
+  </data>
+  <data name="Main_MyComputer_Button_LearnMore">
+    <value>了解详情</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>从您电脑同步的文件夹将显示在 Drive 应用的“电脑”分区中。</value>
   </data>
   <data name="Main_MyComputer_Device_Button_Rename">
     <value>重命名</value>
@@ -1159,7 +1165,7 @@
     <value>账户</value>
   </data>
   <data name="Main_Sidebar_NavigationMenu_Item_Account_HelpText">
-    <value>菜单项：帐户</value>
+    <value>菜单项：账户</value>
   </data>
   <data name="Main_Sidebar_NavigationMenu_Item_Activity">
     <value>主界面</value>
@@ -1497,7 +1503,7 @@
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Button_LearnMore">
-    <value>了解更多</value>
+    <value>了解详情</value>
   </data>
   <data name="SignIn_Button_SignIn">
     <value>登录</value>
@@ -1524,7 +1530,7 @@
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Text_SecondPassword">
-    <value>副密码</value>
+    <value>二级密码</value>
   </data>
   <data name="SignIn_Text_SecurityKey">
     <value>插入与您的 Proton Account 关联的安全密钥。</value>

@@ -500,7 +500,7 @@
                             <Style
                                 TargetType="ListViewItem"
                                 BasedOn="{StaticResource {x:Type ListViewItem}}">
-                                <Setter Property="AutomationProperties.AutomationId" Value="SharedWithMeItem" />
+                                <Setter Property="AutomationProperties.AutomationId" Value="SharedWithMeListViewItem" />
                                 <Setter Property="FocusVisualStyle" Value="{StaticResource ListItemFocusVisualStyle}" />
                             </Style>
                         </ListView.ItemContainerStyle>

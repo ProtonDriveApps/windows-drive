@@ -1,16 +1,18 @@
 ﻿using ProtonDrive.Shared;
 using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Shared.IO;
+using ProtonDrive.Shared.Metrics;
 using ProtonDrive.Sync.Shared.FileSystem;
 
 namespace ProtonDrive.Sync.Windows.FileSystem.Client;
 
-internal class ClassicRevisionCreationProcess : IRevisionCreationProcess<long>
+internal class ClassicRevisionCreationProcess : IDestinationRevision<long>
 {
     private readonly FileSystemFile _file;
     private readonly NodeInfo<long>? _initialInfo;
     private readonly NodeInfo<long> _finalInfo;
     private readonly Action<Progress>? _progressCallback;
+    private readonly Action<MetricEvent> _recordMetric;
 
     private Stream? _contentWritingStream;
     private bool _succeeded;
@@ -20,7 +22,9 @@ internal class ClassicRevisionCreationProcess : IRevisionCreationProcess<long>
         NodeInfo<long>? initialInfo,
         NodeInfo<long> fileInfo,
         NodeInfo<long> finalInfo,
-        Action<Progress>? progressCallback)
+        bool checksumVerificationEnabled,
+        Action<Progress>? progressCallback,
+        Action<MetricEvent> recordMetric)
     {
         Ensure.NotNullOrEmpty(finalInfo.Name, nameof(finalInfo), nameof(finalInfo.Name));
 
@@ -28,12 +32,15 @@ internal class ClassicRevisionCreationProcess : IRevisionCreationProcess<long>
         _initialInfo = initialInfo;
         FileInfo = fileInfo;
         _finalInfo = finalInfo;
+        ChecksumVerificationEnabled = checksumVerificationEnabled;
         _progressCallback = progressCallback;
+        _recordMetric = recordMetric;
     }
 
     public NodeInfo<long> FileInfo { get; }
     public NodeInfo<long> BackupInfo { get; set; } = NodeInfo<long>.Empty();
     public bool ImmediateHydrationRequired => true;
+    public bool ChecksumVerificationEnabled { get; }
     public bool CanGetContentStream => true;
 
     public Stream GetContentStream()
@@ -63,13 +70,13 @@ internal class ClassicRevisionCreationProcess : IRevisionCreationProcess<long>
         }
     }
 
-    public Task WriteContentAsync(Stream source, CancellationToken cancellationToken)
+    public Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
         var destination = GetContentStream();
         return CopyFileContentAsync(destination, source, cancellationToken);
     }
 
-    public async Task<NodeInfo<long>> FinishAsync(CancellationToken cancellationToken)
+    public async Task<NodeInfo<long>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
         _succeeded = true;
         try
@@ -81,7 +88,7 @@ internal class ClassicRevisionCreationProcess : IRevisionCreationProcess<long>
                 await _contentWritingStream.FlushAsync(cancellationToken).ConfigureAwait(false);
             }
 
-            return FinishRevisionCreation();
+            return await FinishRevisionCreationAsync(expectedSha1, cancellationToken).ConfigureAwait(false);
         }
         catch
         {
@@ -97,8 +104,8 @@ internal class ClassicRevisionCreationProcess : IRevisionCreationProcess<long>
             _file.TryDelete();
         }
 
-        _file.Dispose();
         _contentWritingStream?.Dispose();
+        _file.Dispose();
     }
 
     public ValueTask DisposeAsync()
@@ -121,7 +128,7 @@ internal class ClassicRevisionCreationProcess : IRevisionCreationProcess<long>
         await destination.FlushAsync(cancellationToken).ConfigureAwait(false);
     }
 
-    private NodeInfo<long> FinishRevisionCreation()
+    private async Task<NodeInfo<long>> FinishRevisionCreationAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
         if (_contentWritingStream != null && _contentWritingStream.Position != _contentWritingStream.Length)
         {
@@ -131,6 +138,8 @@ internal class ClassicRevisionCreationProcess : IRevisionCreationProcess<long>
 
         _file.SetLastWriteTime(_finalInfo);
         _file.SetAttributes(_finalInfo);
+
+        await VerifyChecksum(expectedSha1, cancellationToken).ConfigureAwait(false);
 
         if (!string.Equals(Path.GetFileName(_file.FullPath), _finalInfo.Name, StringComparison.Ordinal))
         {
@@ -174,5 +183,34 @@ internal class ClassicRevisionCreationProcess : IRevisionCreationProcess<long>
         }
 
         return _file.ToNodeInfo(parentId: _finalInfo.ParentId, refresh: true);
+    }
+
+    private async Task VerifyChecksum(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+    {
+        if (!ChecksumVerificationEnabled || expectedSha1 == null)
+        {
+            RecordVerificationResult(ChecksumVerificationResult.Skipped);
+            return;
+        }
+
+        var actualSha1 = await FileInfo.GetContentSha1Async(cancellationToken).ConfigureAwait(false);
+
+        if (!actualSha1.Span.SequenceEqual(expectedSha1.Value.Span))
+        {
+            RecordVerificationResult(ChecksumVerificationResult.Failure);
+
+            throw new FileSystemClientException<long>("Downloaded file SHA1 differs from expected", FileSystemErrorCode.IntegrityFailure, 0);
+        }
+
+        RecordVerificationResult(ChecksumVerificationResult.Success);
+    }
+
+    private void RecordVerificationResult(ChecksumVerificationResult result)
+    {
+        _recordMetric.Invoke(new DownloadChecksumVerificationAttemptEvent
+        {
+            Result = result,
+            FileSize = _contentWritingStream?.Length ?? 0,
+        });
     }
 }

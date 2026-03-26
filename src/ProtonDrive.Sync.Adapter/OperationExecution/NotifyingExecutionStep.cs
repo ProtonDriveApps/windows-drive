@@ -57,7 +57,7 @@ internal sealed class NotifyingExecutionStep<TId, TAltId>
         UpdateDetectionSwitch updateDetection,
         CancellationToken cancellationToken)
     {
-        IRevision sourceRevision;
+        ISourceRevision sourceRevision;
 
         try
         {
@@ -124,7 +124,7 @@ internal sealed class NotifyingExecutionStep<TId, TAltId>
         }
     }
 
-    private Task<IRevision> OpenFileForReading(AltIdentifiableFileSystemNodeModel<TId, TId> nodeModel, CancellationToken cancellationToken)
+    private Task<ISourceRevision> OpenFileForReading(AltIdentifiableFileSystemNodeModel<TId, TId> nodeModel, CancellationToken cancellationToken)
     {
         // ExecutableOperation.Model.AltId contains file ID on another adapter
         return _fileRevisionProvider.OpenFileForReadingAsync(nodeModel.AltId, nodeModel.ContentVersion, cancellationToken);

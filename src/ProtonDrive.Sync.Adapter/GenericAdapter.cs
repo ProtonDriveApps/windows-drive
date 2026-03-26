@@ -424,7 +424,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
         return _operationExecution.ExecuteAsync(operation, cancellationToken);
     }
 
-    public Task<IRevision> OpenFileForReadingAsync(TId id, long version, CancellationToken cancellationToken)
+    public Task<ISourceRevision> OpenFileForReadingAsync(TId id, long version, CancellationToken cancellationToken)
     {
         return _fileRevisionProvider.OpenFileForReadingAsync(id, version, cancellationToken);
     }
@@ -541,7 +541,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
 
         public void SetOrigin(IFileRevisionProvider<TId> value) => _origin = value;
 
-        public Task<IRevision> OpenFileForReadingAsync(TId id, long version, CancellationToken cancellationToken)
+        public Task<ISourceRevision> OpenFileForReadingAsync(TId id, long version, CancellationToken cancellationToken)
             => _origin?.OpenFileForReadingAsync(id, version, cancellationToken)
                ?? throw new InvalidOperationException($"Origin not set using {nameof(SetOrigin)}");
     }

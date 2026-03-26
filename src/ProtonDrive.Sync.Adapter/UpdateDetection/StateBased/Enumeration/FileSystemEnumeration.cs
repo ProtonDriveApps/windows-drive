@@ -20,12 +20,12 @@ internal class FileSystemEnumeration<TId, TAltId>
 
     public Task<NodeInfo<TAltId>> EnumerateNode(NodeInfo<TAltId> nodeInfo, CancellationToken cancellationToken)
     {
-        return _fileSystemClient.GetInfo(nodeInfo, cancellationToken);
+        return _fileSystemClient.GetInfoAsync(nodeInfo, cancellationToken);
     }
 
     public IAsyncEnumerable<NodeInfo<TAltId>> EnumerateChildren(NodeInfo<TAltId> nodeInfo, CancellationToken cancellationToken)
     {
-        return _fileSystemClient.Enumerate(nodeInfo, cancellationToken);
+        return _fileSystemClient.EnumerateAsync(nodeInfo, cancellationToken);
     }
 
     public NodeInfo<TAltId> ToNodeInfo(AdapterTreeNode<TId, TAltId> node)

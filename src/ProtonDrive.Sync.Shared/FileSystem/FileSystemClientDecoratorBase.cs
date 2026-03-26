@@ -22,22 +22,22 @@ public abstract class FileSystemClientDecoratorBase<TId> : IFileSystemClient<TId
         return _decoratedInstance.DisconnectAsync();
     }
 
-    public virtual Task<NodeInfo<TId>> GetInfo(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public virtual Task<NodeInfo<TId>> GetInfoAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
-        return _decoratedInstance.GetInfo(info, cancellationToken);
+        return _decoratedInstance.GetInfoAsync(info, cancellationToken);
     }
 
-    public virtual IAsyncEnumerable<NodeInfo<TId>> Enumerate(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public virtual IAsyncEnumerable<NodeInfo<TId>> EnumerateAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
-        return _decoratedInstance.Enumerate(info, cancellationToken);
+        return _decoratedInstance.EnumerateAsync(info, cancellationToken);
     }
 
-    public virtual Task<NodeInfo<TId>> CreateDirectory(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public virtual Task<NodeInfo<TId>> CreateDirectoryAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
-        return _decoratedInstance.CreateDirectory(info, cancellationToken);
+        return _decoratedInstance.CreateDirectoryAsync(info, cancellationToken);
     }
 
-    public virtual Task<IRevisionCreationProcess<TId>> CreateFile(
+    public virtual Task<IDestinationRevision<TId>> CreateFileAsync(
         NodeInfo<TId> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -45,15 +45,15 @@ public abstract class FileSystemClientDecoratorBase<TId> : IFileSystemClient<TId
         Action<Progress>? progressCallback,
         CancellationToken cancellationToken)
     {
-        return _decoratedInstance.CreateFile(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken);
+        return _decoratedInstance.CreateFileAsync(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken);
     }
 
-    public virtual Task<IRevision> OpenFileForReading(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public virtual Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
-        return _decoratedInstance.OpenFileForReading(info, cancellationToken);
+        return _decoratedInstance.OpenFileForReadingAsync(info, cancellationToken);
     }
 
-    public virtual Task<IRevisionCreationProcess<TId>> CreateRevision(
+    public virtual Task<IDestinationRevision<TId>> CreateRevisionAsync(
         NodeInfo<TId> info,
         long size,
         DateTime lastWriteTime,
@@ -63,7 +63,7 @@ public abstract class FileSystemClientDecoratorBase<TId> : IFileSystemClient<TId
         Action<Progress>? progressCallback,
         CancellationToken cancellationToken)
     {
-        return _decoratedInstance.CreateRevision(
+        return _decoratedInstance.CreateRevisionAsync(
             info,
             size,
             lastWriteTime,
@@ -79,24 +79,24 @@ public abstract class FileSystemClientDecoratorBase<TId> : IFileSystemClient<TId
         return _decoratedInstance.MoveAsync(sourceNodes, destinationInfo, cancellationToken);
     }
 
-    public virtual Task Move(NodeInfo<TId> info, NodeInfo<TId> destinationInfo, CancellationToken cancellationToken)
+    public virtual Task MoveAsync(NodeInfo<TId> info, NodeInfo<TId> destinationInfo, CancellationToken cancellationToken)
     {
-        return _decoratedInstance.Move(info, destinationInfo, cancellationToken);
+        return _decoratedInstance.MoveAsync(info, destinationInfo, cancellationToken);
     }
 
-    public virtual Task Delete(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public virtual Task DeleteAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
-        return _decoratedInstance.Delete(info, cancellationToken);
+        return _decoratedInstance.DeleteAsync(info, cancellationToken);
     }
 
-    public virtual Task DeletePermanently(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public virtual Task DeletePermanentlyAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
-        return _decoratedInstance.DeletePermanently(info, cancellationToken);
+        return _decoratedInstance.DeletePermanentlyAsync(info, cancellationToken);
     }
 
-    public virtual Task DeleteRevision(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public virtual Task DeleteRevisionAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
-        return _decoratedInstance.DeleteRevision(info, cancellationToken);
+        return _decoratedInstance.DeleteRevisionAsync(info, cancellationToken);
     }
 
     public virtual void SetInSyncState(NodeInfo<TId> info)

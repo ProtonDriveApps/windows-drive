@@ -173,7 +173,7 @@ internal sealed class LocalFileMetadataUpdater
         }
     }
 
-    private async Task<IRevision?> OpenFileForReadingAsync(FileConsistencyGuardFileModel file, CancellationToken cancellationToken)
+    private async Task<ISourceRevision?> OpenFileForReadingAsync(FileConsistencyGuardFileModel file, CancellationToken cancellationToken)
     {
         try
         {
@@ -194,7 +194,7 @@ internal sealed class LocalFileMetadataUpdater
         }
     }
 
-    private async Task<(string Hash, long TrailingZeroBytesLength)?> HashContentAsync(IRevision? revision, FileConsistencyGuardFileModel file, CancellationToken cancellationToken)
+    private async Task<(string Hash, long TrailingZeroBytesLength)?> HashContentAsync(ISourceRevision? revision, FileConsistencyGuardFileModel file, CancellationToken cancellationToken)
     {
         if (revision is null)
         {

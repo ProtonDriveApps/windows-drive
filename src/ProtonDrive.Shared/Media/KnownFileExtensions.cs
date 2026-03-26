@@ -108,6 +108,7 @@ public sealed class KnownFileExtensions
         ".mpeg",
         ".mpg",
         ".mpg4",
+        ".mts",
         ".mxu",
         ".ogv",
         ".pyv",

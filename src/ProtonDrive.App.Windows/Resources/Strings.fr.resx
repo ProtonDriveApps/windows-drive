@@ -214,7 +214,7 @@
     <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
-    <value>Suppression de Proton Drive</value>
+    <value>Déplacement vers la corbeille de Proton Drive</value>
     <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
@@ -242,7 +242,7 @@
     <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
-    <value>Supprimé de Proton Drive</value>
+    <value>Déplacé vers la corbeille de Proton Drive</value>
     <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
@@ -755,6 +755,12 @@ Désactivez et réactivez sa synchronisation pour le restaurer et effacer cette 
   </data>
   <data name="Main_Activity_Title">
     <value>Activité</value>
+  </data>
+  <data name="Main_MyComputer_Button_LearnMore">
+    <value>En savoir plus</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Les dossiers synchronisés depuis vos ordinateurs apparaîtront dans la section « Ordinateurs » de votre application Drive.</value>
   </data>
   <data name="Main_MyComputer_Device_Button_Rename">
     <value>_Renommer</value>

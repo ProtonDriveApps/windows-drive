@@ -229,7 +229,7 @@ internal sealed class HostDeviceFolderMappingFoldersSetupStep
             .WithName(name)
             .WithParentId(parentId);
 
-        var folder = await fileSystemClient.CreateDirectory(folderInfo, cancellationToken).ConfigureAwait(false);
+        var folder = await fileSystemClient.CreateDirectoryAsync(folderInfo, cancellationToken).ConfigureAwait(false);
 
         return folder.Id!;
     }

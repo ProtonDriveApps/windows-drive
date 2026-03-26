@@ -10,6 +10,7 @@ namespace ProtonDrive.Sync.Windows.FileSystem.Client.CloudFiles;
 
 internal sealed class CloudFilesDataTransferStream : Stream
 {
+    // CloudFiles API requires data buffers to be aligned to 4KiB boundaries except for the final chunk, which can be of any length.
     private const int CloudFilesAlignment = 4_096;
 
     private static readonly Action<int> NoValidationAction = _ => { };
@@ -96,7 +97,7 @@ internal sealed class CloudFilesDataTransferStream : Stream
         var exceedsFileSize = newPositionAfterWrite > _length;
         if (exceedsFileSize)
         {
-            throw new FileSystemClientException("Attempted to write too many bytes", FileSystemErrorCode.Unknown);
+            throw new FileSystemClientException("Attempted to write too many bytes", FileSystemErrorCode.IntegrityFailure);
         }
 
         _writeAligner.InvokeWithLengthAlignment(_writeChunkAction, this, buffer);
@@ -152,7 +153,7 @@ internal sealed class CloudFilesDataTransferStream : Stream
             try
             {
                 _logger.LogDebug(
-                    "TRANSFER_DATA for TransferKey={TransferKey}, RequestKey={RequestKey}, Offset={_position}, Length={Count}",
+                    "TRANSFER_DATA for TransferKey={TransferKey}, RequestKey={RequestKey}, Offset={Offset}, Length={Length}",
                     _operation.TransferKey.GetHashCode(),
                     _operation.RequestKey.GetHashCode(),
                     _transferPosition,
@@ -163,7 +164,7 @@ internal sealed class CloudFilesDataTransferStream : Stream
                 if (result.Failed)
                 {
                     _logger.LogWarning(
-                        "TRANSFER_DATA for TransferKey={TransferKey}, RequestKey={RequestKey}, Offset={_position}, Length={Count} failed ({HResult})",
+                        "TRANSFER_DATA for TransferKey={TransferKey}, RequestKey={RequestKey}, Offset={Offset}, Length={Length} failed ({HResult})",
                         _operation.TransferKey.GetHashCode(),
                         _operation.RequestKey.GetHashCode(),
                         _transferPosition,
@@ -198,7 +199,7 @@ internal sealed class CloudFilesDataTransferStream : Stream
         };
 
         _logger.LogDebug(
-            "ACK_DATA for TransferKey={TransferKey}, RequestKey={RequestKey}, Offset={_position}, Length={Count}",
+            "ACK_DATA for TransferKey={TransferKey}, RequestKey={RequestKey}, Offset={Offset}, Length={Length}",
             _operation.TransferKey.GetHashCode(),
             _operation.RequestKey.GetHashCode(),
             _transferPosition,
@@ -209,7 +210,7 @@ internal sealed class CloudFilesDataTransferStream : Stream
         if (result.Failed)
         {
             _logger.LogWarning(
-                "TRANSFER_DATA for TransferKey={TransferKey}, RequestKey={RequestKey}, Offset={_position}, Length={Count} failed ({HResult})",
+                "TRANSFER_DATA for TransferKey={TransferKey}, RequestKey={RequestKey}, Offset={Offset}, Length={Length} failed ({HResult})",
                 _operation.TransferKey.GetHashCode(),
                 _operation.RequestKey.GetHashCode(),
                 _transferPosition,

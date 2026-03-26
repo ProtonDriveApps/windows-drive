@@ -41,6 +41,7 @@ using ProtonDrive.Client.Volumes;
 using ProtonDrive.Client.Volumes.Events;
 using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Localization;
+using ProtonDrive.Shared.Metrics;
 using ProtonDrive.Shared.Net.Http.TlsPinning;
 using ProtonDrive.Shared.Offline;
 using ProtonDrive.Shared.Repository;
@@ -81,6 +82,8 @@ public static class ApiClientConfigurator
         services.AddSingleton<ISdkClientFactory, SdkClientFactory>();
 
         services.AddSingleton<SdkMetrics>();
+        services.AddSingleton<IMetricsRecorder>(provider => provider.GetRequiredService<SdkMetrics>());
+
         services.AddSingleton<UploadMetrics>();
         services.AddSingleton<DownloadMetrics>();
         services.AddSingleton<IntegrityMetrics>();

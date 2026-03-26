@@ -136,7 +136,7 @@ public enum FileSystemErrorCode
     Partial,
 
     /// <summary>
-    /// The file system failed an integrity verification while writing file contents.
+    /// The file system failed an integrity verification while reading or writing file contents.
     /// </summary>
     IntegrityFailure,
 

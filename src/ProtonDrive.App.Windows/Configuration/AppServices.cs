@@ -56,6 +56,7 @@ using ProtonDrive.Shared.Security.Cryptography;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Shared.FileSystem;
 using ProtonDrive.Sync.Shared.FileSystem.Photos;
+using ProtonDrive.Sync.Windows.FileSystem;
 using ProtonDrive.Sync.Windows.FileSystem.Client;
 using ProtonDrive.Sync.Windows.FileSystem.Photos;
 using ProtonDrive.Sync.Windows.Security.Cryptography;
@@ -118,7 +119,8 @@ internal static class AppServices
                     new SafeSyncFolderStructureProtectorDecorator(
                         new LoggingSyncFolderStructureProtectorDecorator(
                             provider.GetRequiredService<ILogger<LoggingSyncFolderStructureProtectorDecorator>>(),
-                            new NtfsPermissionsBasedSyncFolderStructureProtector())))
+                            new NtfsPermissionsBasedSyncFolderStructureProtector(
+                                provider.GetRequiredService<ILogger<NtfsPermissionsBasedSyncFolderStructureProtector>>()))))
             .AddSingleton<IShellSyncFolderRegistry, Win32ShellSyncFolderRegistry>()
             .AddSingleton<WinRegistryLanguageRepository>()
             .AddSingleton<IRepository<LanguageSettings>, WinRegistryLanguageRepository>()

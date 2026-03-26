@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Adapter.NodeCopying;
 using ProtonDrive.Sync.Adapter.Shared;
@@ -83,6 +84,7 @@ internal sealed class OperationExecutionPipeline<TId, TAltId> : IOperationExecut
         CancellationToken cancellationToken)
     {
         LogStartedOperationExecution(operation);
+        var startTimestamp = Stopwatch.GetTimestamp();
 
         var (preconditionsResult, nodeInfo, destinationInfo) = await Schedule(() => Prepare(operation), cancellationToken).ConfigureAwait(false);
 
@@ -104,7 +106,7 @@ internal sealed class OperationExecutionPipeline<TId, TAltId> : IOperationExecut
 
         var result = await ScheduleAndCommit(
                 () => finalNodeInfo != null
-                    ? HandleSuccess(operation, nodeInfo!, destinationInfo, finalNodeInfo)
+                    ? HandleSuccess(operation, nodeInfo!, destinationInfo, finalNodeInfo, startTimestamp)
                     : HandleFailure(operation, nodeInfo!, destinationInfo, exception!),
                 cancellationToken)
             .ConfigureAwait(false);
@@ -171,9 +173,10 @@ internal sealed class OperationExecutionPipeline<TId, TAltId> : IOperationExecut
         ExecutableOperation<TId> operation,
         NodeInfo<TAltId> nodeInfo,
         NodeInfo<TAltId>? destinationInfo,
-        NodeInfo<TAltId> finalNodeInfo)
+        NodeInfo<TAltId> finalNodeInfo,
+        long startTimestamp)
     {
-        _logging.LogSuccess(operation, operation.Type is OperationType.Create ? finalNodeInfo : nodeInfo, destinationInfo);
+        _logging.LogSuccess(operation, operation.Type is OperationType.Create ? finalNodeInfo : nodeInfo, destinationInfo, Stopwatch.GetElapsedTime(startTimestamp));
 
         _accessRateLimiter.HandleSuccess(operation);
 

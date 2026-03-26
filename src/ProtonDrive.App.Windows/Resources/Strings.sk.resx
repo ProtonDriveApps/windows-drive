@@ -214,7 +214,7 @@
     <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
-    <value>Mazanie z Proton Drive</value>
+    <value>Presúvanie do Koša Proton Drive</value>
     <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
@@ -242,7 +242,7 @@
     <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
-    <value>Vymazané z Proton Drive</value>
+    <value>Presunuté do Koša Proton Drive</value>
     <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
@@ -755,6 +755,12 @@ Vypnutím a opätovným zapnutím jeho synchronizácie ho obnovíte a odstránit
   </data>
   <data name="Main_Activity_Title">
     <value>Aktivita</value>
+  </data>
+  <data name="Main_MyComputer_Button_LearnMore">
+    <value>Zistiť viac</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Priečinky synchronizované z vašich počítačov sa zobrazia v sekcii „Počítače“ v aplikáciách vášho Drive.</value>
   </data>
   <data name="Main_MyComputer_Device_Button_Rename">
     <value>P_remenovať</value>

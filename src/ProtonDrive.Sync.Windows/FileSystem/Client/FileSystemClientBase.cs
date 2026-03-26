@@ -3,21 +3,21 @@ using ProtonDrive.Sync.Shared.FileSystem;
 
 namespace ProtonDrive.Sync.Windows.FileSystem.Client;
 
-internal abstract class BaseFileSystemClient
+internal abstract class FileSystemClientBase
 {
-    public Task Delete(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task DeleteAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
         // We cancel awaiting to move to the Recycle Bin, but the request continues
-        return Delete(info, (fsObject, ct) => RecycleBin.MoveToRecycleBinAsync(fsObject.FullPath).WaitAsync(ct), cancellationToken);
+        return DeleteAsync(info, (fsObject, ct) => RecycleBin.MoveToRecycleBinAsync(fsObject.FullPath).WaitAsync(ct), cancellationToken);
     }
 
-    public Task DeletePermanently(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task DeletePermanentlyAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        return Delete(info, (fsObject, _) => DeleteFileOrFolder(fsObject), cancellationToken);
+        return DeleteAsync(info, (fsObject, _) => DeleteFileOrFolder(fsObject), cancellationToken);
 
         Task DeleteFileOrFolder(FileSystemObject fsObject)
         {
@@ -27,7 +27,7 @@ internal abstract class BaseFileSystemClient
         }
     }
 
-    private async Task Delete(
+    private static async Task DeleteAsync(
         NodeInfo<long> info,
         Func<FileSystemObject, CancellationToken, Task> deletionFunction,
         CancellationToken cancellationToken)

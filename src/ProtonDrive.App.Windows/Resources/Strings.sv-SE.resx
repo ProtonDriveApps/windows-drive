@@ -214,7 +214,7 @@
     <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
-    <value>Tar bort på Proton Drive</value>
+    <value>Flyttar till Protons Drive papperskorg</value>
     <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
@@ -242,7 +242,7 @@
     <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
-    <value>Borttagen från Proton Drive</value>
+    <value>Flyttades till Protons Drive papperskorg</value>
     <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
@@ -755,6 +755,12 @@ Slå av/på dess synkronisering igen för att återställa den och rensa detta f
   </data>
   <data name="Main_Activity_Title">
     <value>Aktivitet</value>
+  </data>
+  <data name="Main_MyComputer_Button_LearnMore">
+    <value>Lär dig mer</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Mappar synkroniserade från dina datorer kommer visas i sektionen “Datorer“ i dina Drive-appar.</value>
   </data>
   <data name="Main_MyComputer_Device_Button_Rename">
     <value>_Ändra namn</value>

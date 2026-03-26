@@ -18,11 +18,11 @@ internal sealed class ProtectingFolderFileSystemClientDecorator : FileSystemClie
         _concurrentFolderStructureProtector = new ConcurrentFolderStructureProtector<long>(_folderStructureProtector);
     }
 
-    public override async Task<NodeInfo<long>> CreateDirectory(NodeInfo<long> info, CancellationToken cancellationToken)
+    public override async Task<NodeInfo<long>> CreateDirectoryAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         await using ((await UnprotectParentFolderAsync(info, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false))
         {
-            var resultInfo = await base.CreateDirectory(info, cancellationToken).ConfigureAwait(false);
+            var resultInfo = await base.CreateDirectoryAsync(info, cancellationToken).ConfigureAwait(false);
 
             // CreateDirectory does not fill the Path, therefore we cannot use resultInfo for protecting folder
             ProtectFolder(info);
@@ -31,7 +31,7 @@ internal sealed class ProtectingFolderFileSystemClientDecorator : FileSystemClie
         }
     }
 
-    public override async Task<IRevisionCreationProcess<long>> CreateFile(
+    public override async Task<IDestinationRevision<long>> CreateFileAsync(
         NodeInfo<long> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -43,7 +43,7 @@ internal sealed class ProtectingFolderFileSystemClientDecorator : FileSystemClie
 
         try
         {
-            var revisionCreationProcess = await base.CreateFile(
+            var revisionCreationProcess = await base.CreateFileAsync(
                 info,
                 tempFileName,
                 thumbnailProvider,
@@ -61,7 +61,7 @@ internal sealed class ProtectingFolderFileSystemClientDecorator : FileSystemClie
         }
     }
 
-    public override async Task<IRevisionCreationProcess<long>> CreateRevision(
+    public override async Task<IDestinationRevision<long>> CreateRevisionAsync(
         NodeInfo<long> info,
         long size,
         DateTime lastWriteTime,
@@ -79,7 +79,7 @@ internal sealed class ProtectingFolderFileSystemClientDecorator : FileSystemClie
 
             try
             {
-                var revisionCreationProcess = await base.CreateRevision(
+                var revisionCreationProcess = await base.CreateRevisionAsync(
                     info,
                     size,
                     lastWriteTime,
@@ -105,16 +105,16 @@ internal sealed class ProtectingFolderFileSystemClientDecorator : FileSystemClie
         }
     }
 
-    public override async Task Move(NodeInfo<long> info, NodeInfo<long> newInfo, CancellationToken cancellationToken)
+    public override async Task MoveAsync(NodeInfo<long> info, NodeInfo<long> newInfo, CancellationToken cancellationToken)
     {
         await using ((await UnprotectParentFolderAsync(info, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false))
         await using ((await UnprotectParentFolderAsync(newInfo, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false))
         {
-            await base.Move(info, newInfo, cancellationToken).ConfigureAwait(false);
+            await base.MoveAsync(info, newInfo, cancellationToken).ConfigureAwait(false);
         }
     }
 
-    public override async Task Delete(NodeInfo<long> info, CancellationToken cancellationToken)
+    public override async Task DeleteAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         await using ((await UnprotectParentFolderAsync(info, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false))
         {
@@ -122,7 +122,7 @@ internal sealed class ProtectingFolderFileSystemClientDecorator : FileSystemClie
 
             try
             {
-                await base.Delete(info, cancellationToken).ConfigureAwait(false);
+                await base.DeleteAsync(info, cancellationToken).ConfigureAwait(false);
             }
             catch
             {
@@ -134,7 +134,7 @@ internal sealed class ProtectingFolderFileSystemClientDecorator : FileSystemClie
         }
     }
 
-    public override async Task DeletePermanently(NodeInfo<long> info, CancellationToken cancellationToken)
+    public override async Task DeletePermanentlyAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         await using ((await UnprotectParentFolderAsync(info, cancellationToken).ConfigureAwait(false)).ConfigureAwait(false))
         {
@@ -142,7 +142,7 @@ internal sealed class ProtectingFolderFileSystemClientDecorator : FileSystemClie
 
             try
             {
-                await base.DeletePermanently(info, cancellationToken).ConfigureAwait(false);
+                await base.DeletePermanentlyAsync(info, cancellationToken).ConfigureAwait(false);
             }
             catch
             {
@@ -158,7 +158,7 @@ internal sealed class ProtectingFolderFileSystemClientDecorator : FileSystemClie
     {
         var parentPath = info.GetParentFolderPath();
 
-        if (string.IsNullOrEmpty(parentPath) || info.ParentId == default)
+        if (string.IsNullOrEmpty(parentPath) || info.ParentId == 0)
         {
             return Task.FromResult(AsyncDisposable.Empty);
         }
@@ -218,15 +218,15 @@ internal sealed class ProtectingFolderFileSystemClientDecorator : FileSystemClie
         _folderStructureProtector.UnprotectFile(info.Path, FileProtectionType.ReadOnly);
     }
 
-    private sealed class ProtectingRevisionCreationProcess : IRevisionCreationProcess<long>
+    private sealed class ProtectingRevisionCreationProcess : IDestinationRevision<long>
     {
         private readonly ProtectingFolderFileSystemClientDecorator _fileProtector;
-        private readonly IRevisionCreationProcess<long> _decoratedInstance;
+        private readonly IDestinationRevision<long> _decoratedInstance;
         private readonly IAsyncDisposable _parentFolderProtectionHolder;
 
         public ProtectingRevisionCreationProcess(
             ProtectingFolderFileSystemClientDecorator fileProtector,
-            IRevisionCreationProcess<long> decoratedInstance,
+            IDestinationRevision<long> decoratedInstance,
             IAsyncDisposable parentFolderProtectionHolder)
         {
             _fileProtector = fileProtector;
@@ -243,6 +243,7 @@ internal sealed class ProtectingFolderFileSystemClientDecorator : FileSystemClie
         }
 
         public bool ImmediateHydrationRequired => _decoratedInstance.ImmediateHydrationRequired;
+        public bool ChecksumVerificationEnabled => _decoratedInstance.ChecksumVerificationEnabled;
         public bool CanGetContentStream => _decoratedInstance.CanGetContentStream;
 
         public Stream GetContentStream()
@@ -250,14 +251,14 @@ internal sealed class ProtectingFolderFileSystemClientDecorator : FileSystemClie
             return _decoratedInstance.GetContentStream();
         }
 
-        public Task WriteContentAsync(Stream source, CancellationToken cancellationToken)
+        public Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
         {
-            return _decoratedInstance.WriteContentAsync(source, cancellationToken);
+            return _decoratedInstance.WriteContentAsync(source, expectedSha1, cancellationToken);
         }
 
-        public Task<NodeInfo<long>> FinishAsync(CancellationToken cancellationToken)
+        public Task<NodeInfo<long>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
         {
-            return _decoratedInstance.FinishAsync(cancellationToken);
+            return _decoratedInstance.FinishAsync(expectedSha1, cancellationToken);
         }
 
         public async ValueTask DisposeAsync()

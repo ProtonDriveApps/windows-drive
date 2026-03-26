@@ -1,34 +1,45 @@
 ﻿using Proton.Drive.Sdk.Nodes.Upload;
+using ProtonDrive.Client.Sdk;
 using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Shared.IO;
+using ProtonDrive.Shared.Metrics;
 using ProtonDrive.Sync.Shared.FileSystem;
 
 namespace ProtonDrive.Client.FileUploading;
 
-internal sealed class SdkRemoteRevisionCreationProcess : IRevisionCreationProcess<string>
+internal sealed class SdkRemoteRevisionCreationProcess : IDestinationRevision<string>
 {
+    private const int NumberOfRetries = 10;
+    private static readonly TimeSpan DelayBeforeRetry = TimeSpan.FromMinutes(1).RandomizedWithDeviation(0.2);
+
     private readonly FileUploader _fileUploader;
     private readonly IThumbnailProvider _thumbnailProvider;
     private readonly Action<Progress>? _progressCallback;
+    private readonly Action<MetricEvent> _recordMetricEvent;
     private readonly Action<Exception> _reportIntegrityFailure;
 
     public SdkRemoteRevisionCreationProcess(
         FileUploader fileUploader,
         NodeInfo<string> fileInfo,
+        bool checksumVerificationEnabled,
         IThumbnailProvider thumbnailProvider,
         Action<Progress>? progressCallback,
+        Action<MetricEvent> recordMetricEvent,
         Action<Exception> reportIntegrityFailure)
     {
-        FileInfo = fileInfo;
         _fileUploader = fileUploader;
+        FileInfo = fileInfo;
+        ChecksumVerificationEnabled = checksumVerificationEnabled;
         _thumbnailProvider = thumbnailProvider;
         _progressCallback = progressCallback;
+        _recordMetricEvent = recordMetricEvent;
         _reportIntegrityFailure = reportIntegrityFailure;
     }
 
     public NodeInfo<string> FileInfo { get; private set; }
     public NodeInfo<string> BackupInfo { get; set; } = NodeInfo<string>.Empty();
     public bool ImmediateHydrationRequired => true;
+    public bool ChecksumVerificationEnabled { get; }
     public bool CanGetContentStream => false;
 
     public Stream GetContentStream()
@@ -36,9 +47,13 @@ internal sealed class SdkRemoteRevisionCreationProcess : IRevisionCreationProces
         throw new NotSupportedException();
     }
 
-    public async Task WriteContentAsync(Stream contentStream, CancellationToken cancellationToken)
+    public async Task WriteContentAsync(Stream contentStream, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
         var thumbnails = await _thumbnailProvider.GetThumbnailsAsync(cancellationToken).ConfigureAwait(false);
+
+        Func<ReadOnlyMemory<byte>>? expectedSha1Provider = ChecksumVerificationEnabled && expectedSha1 is not null ? () => expectedSha1.Value : null;
+
+        RecordChecksumVerificationAttempt(expectedSha1Provider);
 
         try
         {
@@ -46,14 +61,20 @@ internal sealed class SdkRemoteRevisionCreationProcess : IRevisionCreationProces
                 contentStream,
                 thumbnails,
                 (progress, total) => _progressCallback?.Invoke(new Progress(progress, total)),
+                expectedSha1Provider,
                 cancellationToken);
 
-            var (fileNodeUid, fileRevisionUid) = await controller.Completion.ConfigureAwait(false);
+            await using (controller.ConfigureAwait(false))
+            {
+                await controller.ExecuteWithRetryAsync(NumberOfRetries, DelayBeforeRetry, cancellationToken).ConfigureAwait(false);
 
-            // NOTE: Sha1Digest and SizeOnStorage are not available when using SDK
-            FileInfo = FileInfo.Copy()
-                .WithId(fileNodeUid.ToString().Split('~')[1])
-                .WithRevisionId(fileRevisionUid.ToString().Split('~')[2]);
+                var (fileNodeUid, fileRevisionUid) = await controller.Completion.ConfigureAwait(false);
+
+                // NOTE: Sha1Digest and SizeOnStorage are not available when using SDK
+                FileInfo = FileInfo.Copy()
+                    .WithId(fileNodeUid.ToString().Split('~')[1])
+                    .WithRevisionId(fileRevisionUid.ToString().Split('~')[2]);
+            }
         }
         catch (Exception ex) when (ExceptionMapping.TryMapSdkClientException(ex, FileInfo.Id, includeObjectId: false, out var mappedException))
         {
@@ -66,7 +87,7 @@ internal sealed class SdkRemoteRevisionCreationProcess : IRevisionCreationProces
         }
     }
 
-    public Task<NodeInfo<string>> FinishAsync(CancellationToken cancellationToken)
+    public Task<NodeInfo<string>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
         return Task.FromResult(FileInfo);
     }
@@ -76,5 +97,15 @@ internal sealed class SdkRemoteRevisionCreationProcess : IRevisionCreationProces
         _fileUploader.Dispose();
 
         return ValueTask.CompletedTask;
+    }
+
+    private void RecordChecksumVerificationAttempt(Func<ReadOnlyMemory<byte>>? expectedSha1Provider)
+    {
+        var sha1Provided = expectedSha1Provider != null;
+
+        _recordMetricEvent.Invoke(new UploadChecksumVerificationAttemptEvent
+        {
+            Sha1Provided = sha1Provided,
+        });
     }
 }

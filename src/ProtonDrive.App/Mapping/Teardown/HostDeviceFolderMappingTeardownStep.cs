@@ -78,7 +78,7 @@ internal sealed class HostDeviceFolderMappingTeardownStep
 
         try
         {
-            await fileSystemClient.Delete(folderInfo, cancellationToken).ConfigureAwait(false);
+            await fileSystemClient.DeleteAsync(folderInfo, cancellationToken).ConfigureAwait(false);
         }
         catch (FileSystemClientException<string> ex) when (ex.ErrorCode == FileSystemErrorCode.ObjectNotFound)
         {

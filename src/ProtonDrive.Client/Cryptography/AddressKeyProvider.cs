@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.Extensions.Caching.Memory;
@@ -89,9 +90,10 @@ internal sealed class AddressKeyProvider : IAddressKeyProvider
                         .ThrowOnFailure()
                         .ConfigureAwait(false);
 
-                    var publicKeys = new List<PgpPublicKey>(publicKeysResponse.Address.Keys.Count);
+                    var publicKeys = new List<PgpPublicKey>(publicKeysResponse.Address.Keys.Count + (publicKeysResponse.UnverifiedAddress?.Keys.Count ?? 0));
                     publicKeys.AddRange(
                         publicKeysResponse.Address.Keys
+                            .Union(publicKeysResponse.UnverifiedAddress?.Keys ?? ImmutableList<PublicKeyEntry>.Empty)
                             .Where(keyEntry => keyEntry.Flags.HasFlag(PublicKeyFlags.IsNotCompromised))
                             .Select(entry =>
                             {

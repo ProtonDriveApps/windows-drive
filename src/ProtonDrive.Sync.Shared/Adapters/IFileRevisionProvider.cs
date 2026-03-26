@@ -15,7 +15,7 @@ public interface IFileRevisionProvider<in TId>
     /// <param name="id">File node identity value on the adapter of the replica the file resides on</param>
     /// <param name="version">File content version</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests</param>
-    /// <returns>The <see cref="IRevision"/></returns>
+    /// <returns>The <see cref="ISourceRevision"/></returns>
     /// <exception cref="FileRevisionProviderException"></exception>
-    Task<IRevision> OpenFileForReadingAsync(TId id, long version, CancellationToken cancellationToken);
+    Task<ISourceRevision> OpenFileForReadingAsync(TId id, long version, CancellationToken cancellationToken);
 }

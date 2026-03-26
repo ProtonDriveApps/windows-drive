@@ -36,7 +36,7 @@ internal sealed class FallbackFileRevisionProviderDecorator<TId, TAltId> : IFile
         _decoratedInstance = decoratedInstance;
     }
 
-    public async Task<IRevision> OpenFileForReadingAsync(TId id, long version, CancellationToken cancellationToken)
+    public async Task<ISourceRevision> OpenFileForReadingAsync(TId id, long version, CancellationToken cancellationToken)
     {
         try
         {
@@ -61,7 +61,7 @@ internal sealed class FallbackFileRevisionProviderDecorator<TId, TAltId> : IFile
         return value is null || value.Equals(default);
     }
 
-    private async Task<IRevision?> OpenFallbackFileForReadingAsync(TId id, CancellationToken cancellationToken)
+    private async Task<ISourceRevision?> OpenFallbackFileForReadingAsync(TId id, CancellationToken cancellationToken)
     {
         var fallbackNodeModel = await Schedule(() => GetFallbackNodeModelOrDefault(id), cancellationToken).ConfigureAwait(false);
 

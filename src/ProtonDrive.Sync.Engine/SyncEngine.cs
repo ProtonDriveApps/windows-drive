@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using ProtonDrive.Shared;
 using ProtonDrive.Shared.Repository;
@@ -223,6 +224,7 @@ public class SyncEngine<TId> : IInitializable, IExecutionStatisticsProvider
         try
         {
             _logger.LogInformation("Started synchronization");
+            var startTimestamp = Stopwatch.GetTimestamp();
 
             await _remoteConsolidation.Execute(cancellationToken).ConfigureAwait(false);
 
@@ -234,7 +236,7 @@ public class SyncEngine<TId> : IInitializable, IExecutionStatisticsProvider
 
             _hasChangesToSync = await Schedule(GetHasChangesToSync, cancellationToken).ConfigureAwait(false);
 
-            _logger.LogInformation("Finished synchronization");
+            _logger.LogInformation("Finished synchronization in {ElapsedTime}", Stopwatch.GetElapsedTime(startTimestamp));
         }
         catch (OperationCanceledException)
         {

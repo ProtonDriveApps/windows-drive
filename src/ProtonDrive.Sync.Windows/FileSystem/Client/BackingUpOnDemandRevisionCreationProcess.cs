@@ -3,7 +3,7 @@ using ProtonDrive.Sync.Shared.FileSystem;
 
 namespace ProtonDrive.Sync.Windows.FileSystem.Client;
 
-internal sealed class BackingUpOnDemandRevisionCreationProcess : IRevisionCreationProcess<long>
+internal sealed class BackingUpOnDemandRevisionCreationProcess : IDestinationRevision<long>
 {
     private readonly FileSystemFile _file;
 
@@ -18,7 +18,7 @@ internal sealed class BackingUpOnDemandRevisionCreationProcess : IRevisionCreati
     public NodeInfo<long> BackupInfo { get; set; } = NodeInfo<long>.Empty();
 
     public bool ImmediateHydrationRequired => false;
-
+    public bool ChecksumVerificationEnabled => false;
     public bool CanGetContentStream => false;
 
     public Stream GetContentStream()
@@ -26,12 +26,12 @@ internal sealed class BackingUpOnDemandRevisionCreationProcess : IRevisionCreati
         throw new NotSupportedException();
     }
 
-    public Task WriteContentAsync(Stream source, CancellationToken cancellationToken)
+    public Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }
 
-    public Task<NodeInfo<long>> FinishAsync(CancellationToken cancellationToken)
+    public Task<NodeInfo<long>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
         Ensure.IsFalse(BackupInfo.IsEmpty, $"{nameof(BackupInfo)} is required", nameof(BackupInfo));
 

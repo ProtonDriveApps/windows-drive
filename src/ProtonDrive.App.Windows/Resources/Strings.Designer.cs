@@ -304,7 +304,7 @@ namespace ProtonDrive.App.Windows.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting from Proton Drive.
+        ///   Looks up a localized string similar to Moving to Proton Drive Trash.
         /// </summary>
         internal static string Activity_Remote_InProgress_SyncActivityType_Value_Delete {
             get {
@@ -367,7 +367,7 @@ namespace ProtonDrive.App.Windows.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleted from Proton Drive.
+        ///   Looks up a localized string similar to Moved to Proton Drive Trash.
         /// </summary>
         internal static string Activity_Remote_Succeeded_SyncActivityType_Value_Delete {
             get {
@@ -1840,6 +1840,24 @@ namespace ProtonDrive.App.Windows.Resources {
         internal static string Main_Activity_Title {
             get {
                 return ResourceManager.GetString("Main_Activity_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Learn more.
+        /// </summary>
+        internal static string Main_MyComputer_Button_LearnMore {
+            get {
+                return ResourceManager.GetString("Main_MyComputer_Button_LearnMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Folders synced from your computers will appear in the &quot;Computers&quot; section across your Drive apps..
+        /// </summary>
+        internal static string Main_MyComputer_Description {
+            get {
+                return ResourceManager.GetString("Main_MyComputer_Description", resourceCulture);
             }
         }
         

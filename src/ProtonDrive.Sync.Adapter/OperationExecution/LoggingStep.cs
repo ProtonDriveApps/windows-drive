@@ -21,7 +21,8 @@ internal class LoggingStep<TId, TAltId>
     public void LogSuccess(
         ExecutableOperation<TId> operation,
         NodeInfo<TAltId> nodeInfo,
-        NodeInfo<TAltId>? destinationInfo)
+        NodeInfo<TAltId>? destinationInfo,
+        TimeSpan elapsedTime)
     {
         var model = operation.Model;
         var type = nodeInfo.IsDirectory() ? NodeType.Directory : NodeType.File;
@@ -30,25 +31,27 @@ internal class LoggingStep<TId, TAltId>
         {
             case OperationType.Create:
                 _logger.LogInformation(
-                    "Executed {OperationType} {Type} \"{Root}\"/{Id} {ExternalId} at parent {ParentId} {ParentExternalId}",
+                    "Executed {OperationType} {Type} \"{Root}\"/{Id} {ExternalId} at parent {ParentId} {ParentExternalId} in {ElapsedTime}",
                     operation.Type,
                     type,
                     nodeInfo.Root?.Id,
                     model.Id,
                     nodeInfo.GetCompoundId(),
                     model.ParentId,
-                    nodeInfo.GetCompoundParentId());
+                    nodeInfo.GetCompoundParentId(),
+                    elapsedTime);
                 break;
 
             case OperationType.Edit:
                 _logger.LogInformation(
-                    "Executed {OperationType} {Type} \"{Root}\"/{Id} {ExternalId}, ContentVersion={ContentVersion}",
+                    "Executed {OperationType} {Type} \"{Root}\"/{Id} {ExternalId}, ContentVersion={ContentVersion}, in {ElapsedTime}",
                     operation.Type,
                     type,
                     nodeInfo.Root?.Id,
                     model.Id,
                     nodeInfo.GetCompoundId(),
-                    model.ContentVersion);
+                    model.ContentVersion,
+                    elapsedTime);
                 break;
 
             case OperationType.Move:
@@ -57,17 +60,18 @@ internal class LoggingStep<TId, TAltId>
                 if (rename)
                 {
                     _logger.LogInformation(
-                        "Executed {OperationType} {Type} \"{Root}\"/{Id} {ExternalId}",
+                        "Executed {OperationType} {Type} \"{Root}\"/{Id} {ExternalId} in {ElapsedTime}",
                         "Rename",
                         type,
                         nodeInfo.Root?.Id,
                         model.Id,
-                        nodeInfo.GetCompoundId());
+                        nodeInfo.GetCompoundId(),
+                        elapsedTime);
                 }
                 else
                 {
                     _logger.LogInformation(
-                        "Executed {OperationType} {Type} \"{Root}\"/{Id} {ExternalId} to parent \"{DestinationRoot}\"/{DestinationParentId} {DestinationParentExternalId}",
+                        "Executed {OperationType} {Type} \"{Root}\"/{Id} {ExternalId} to parent \"{DestinationRoot}\"/{DestinationParentId} {DestinationParentExternalId}  in {ElapsedTime}",
                         operation.Type,
                         type,
                         nodeInfo.Root?.Id,
@@ -75,21 +79,23 @@ internal class LoggingStep<TId, TAltId>
                         nodeInfo.GetCompoundId(),
                         destinationInfo.Root?.Id,
                         model.ParentId,
-                        destinationInfo.GetCompoundParentId());
+                        destinationInfo.GetCompoundParentId(),
+                        elapsedTime);
                 }
 
                 break;
 
             case OperationType.Delete:
                 _logger.LogInformation(
-                    "Executed {OperationType} {Type} \"{Root}\"/{Id} {ExternalId} at parent {ParentId} {ParentExternalId}",
+                    "Executed {OperationType} {Type} \"{Root}\"/{Id} {ExternalId} at parent {ParentId} {ParentExternalId} in {ElapsedTime}",
                     operation.Type,
                     type,
                     nodeInfo.Root?.Id,
                     model.Id,
                     nodeInfo.GetCompoundId(),
                     model.ParentId,
-                    nodeInfo.GetCompoundParentId());
+                    nodeInfo.GetCompoundParentId(),
+                    elapsedTime);
                 break;
 
             default:

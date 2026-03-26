@@ -22,7 +22,7 @@ internal sealed class PhotoFileUploader : IPhotoFileUploader
     public async Task<NodeInfo<string>> UploadFileAsync(string filePath, string parentLinkId, string? mainPhotoLinkId, CancellationToken cancellationToken)
     {
         var nodeInfo = NodeInfo<long>.File().WithPath(filePath);
-        var sourceRevision = await _localFileSystemClient.OpenFileForReading(nodeInfo, cancellationToken).ConfigureAwait(false);
+        var sourceRevision = await _localFileSystemClient.OpenFileForReadingAsync(nodeInfo, cancellationToken).ConfigureAwait(false);
 
         await using (sourceRevision.ConfigureAwait(false))
         {
@@ -34,7 +34,7 @@ internal sealed class PhotoFileUploader : IPhotoFileUploader
                 .WithSize(sourceRevision.Size)
                 .WithLastWriteTimeUtc(sourceRevision.LastWriteTimeUtc);
 
-            var destinationRevision = await _remoteFileSystemClient.CreateFile(
+            var destinationRevision = await _remoteFileSystemClient.CreateFileAsync(
                 remoteNodeInfo,
                 tempFileName: null,
                 sourceRevision,
@@ -50,13 +50,15 @@ internal sealed class PhotoFileUploader : IPhotoFileUploader
         }
     }
 
-    private async Task<NodeInfo<string>> FinishRevisionCreationAsync(
-        IRevision sourceRevision,
-        IRevisionCreationProcess<string> destinationRevision,
+    private static async Task<NodeInfo<string>> FinishRevisionCreationAsync(
+        ISourceRevision sourceRevision,
+        IDestinationRevision<string> destinationRevision,
         CancellationToken cancellationToken)
     {
-        await destinationRevision.WriteContentAsync(sourceRevision.GetContentStream(), cancellationToken).ConfigureAwait(false);
+        var sha1 = await sourceRevision.GetSha1Async(cancellationToken).ConfigureAwait(false);
 
-        return await destinationRevision.FinishAsync(cancellationToken).ConfigureAwait(false);
+        await destinationRevision.WriteContentAsync(sourceRevision.GetContentStream(), sha1, cancellationToken).ConfigureAwait(false);
+
+        return await destinationRevision.FinishAsync(sha1, cancellationToken).ConfigureAwait(false);
     }
 }

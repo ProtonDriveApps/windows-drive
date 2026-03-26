@@ -41,7 +41,7 @@ internal sealed class FileRevisionProvider<TId, TAltId> : IFileRevisionProvider<
         _minDelayBeforeFileUpload = minDelayBeforeFileUpload;
     }
 
-    public async Task<IRevision> OpenFileForReadingAsync(TId id, long contentVersion, CancellationToken cancellationToken)
+    public async Task<ISourceRevision> OpenFileForReadingAsync(TId id, long contentVersion, CancellationToken cancellationToken)
     {
         var (fileInfo, initialNodeModel) = await Schedule(() => Prepare(id, contentVersion), cancellationToken).ConfigureAwait(false);
 
@@ -57,7 +57,7 @@ internal sealed class FileRevisionProvider<TId, TAltId> : IFileRevisionProvider<
 
         try
         {
-            return await _fileSystemClient.OpenFileForReading(fileInfo, cancellationToken).ConfigureAwait(false);
+            return await _fileSystemClient.OpenFileForReadingAsync(fileInfo, cancellationToken).ConfigureAwait(false);
         }
         catch (FileSystemClientException ex)
         {

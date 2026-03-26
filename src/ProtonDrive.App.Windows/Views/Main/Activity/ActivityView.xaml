@@ -63,7 +63,8 @@
                 <TextBlock
                     Text="{Binding SynchronizedAt, Converter={x:Static converters:DateTimeToFormattedTimeElapsedConverter.Instance}}"
                     Foreground="{StaticResource GrayBrush}"
-                    TextTrimming="CharacterEllipsis" />
+                    TextTrimming="CharacterEllipsis"
+                    ToolTip="{Binding SynchronizedAt, Converter={x:Static converters:DateTimeToFormattedTimeConverter.Instance}}" />
             </DataTemplate>
 
             <DataTemplate

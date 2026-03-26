@@ -4,7 +4,8 @@ public interface IFileHydrationDemand<TId>
     where TId : IEquatable<TId>
 {
     NodeInfo<TId> FileInfo { get; }
-    Stream HydrationStream { get; }
+    bool ChecksumVerificationEnabled { get; }
+    Stream GetHydrationStream(ReadOnlyMemory<byte>? expectedSha1);
 
     NodeInfo<TId> UpdateFileSize();
 }

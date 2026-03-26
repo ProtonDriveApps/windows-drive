@@ -4,7 +4,7 @@ public abstract class UniqueItemCountersBase<T>
 {
     private readonly HashSet<T> _successes = [];
     private readonly HashSet<T> _failures = [];
-    private readonly object _lock = new();
+    private readonly Lock _lock = new();
 
     public void IncrementSuccesses(T key)
     {

@@ -44,14 +44,24 @@ internal sealed class IntegrityMetricsMapper(IntegrityMetricsCollector metricsCo
             metrics.Add(GetVerificationFailuresMetric(value, tags));
         }
 
-        foreach (var (tags, value) in measurementsSnapshot.BlockVerificationFailures)
+        foreach (var (tags, value) in measurementsSnapshot.UploadBlockVerificationFailures)
         {
             if (tags is { RetryHelped: "no" })
             {
                 _volumeTypesOfFailuresImpactedUsers.Add("unknown");
             }
 
-            metrics.Add(GetBlockVerificationFailuresMetric(value, tags));
+            metrics.Add(GetUploadBlockVerificationFailuresMetric(value, tags));
+        }
+
+        foreach (var (tags, value) in measurementsSnapshot.UploadChecksumVerificationAttempts)
+        {
+            metrics.Add(GetUploadChecksumVerificationAttemptsMetric(value, tags));
+        }
+
+        foreach (var (tags, value) in measurementsSnapshot.DownloadChecksumVerificationAttempts)
+        {
+            metrics.Add(GetDownloadChecksumVerificationAttemptsMetric(value, tags));
         }
 
         return metrics.ToImmutableList();
@@ -97,14 +107,35 @@ internal sealed class IntegrityMetricsMapper(IntegrityMetricsCollector metricsCo
         return new VerificationFailuresMetric(value, labels);
     }
 
-    private static BlockVerificationFailuresMetric GetBlockVerificationFailuresMetric(int value, BlockVerificationFailureTags tags)
+    private static UploadBlockVerificationFailuresMetric GetUploadBlockVerificationFailuresMetric(int value, UploadBlockVerificationFailureTags tags)
     {
         var labels = new Dictionary<string, string>
         {
             { IntegrityMetrics.RetryHelpedKeyName, tags.RetryHelped },
         };
 
-        return new BlockVerificationFailuresMetric(value, labels);
+        return new UploadBlockVerificationFailuresMetric(value, labels);
+    }
+
+    private static UploadChecksumVerificationAttemptsMetric GetUploadChecksumVerificationAttemptsMetric(int value, UploadChecksumVerificationAttemptTags tags)
+    {
+        var labels = new Dictionary<string, string>
+        {
+            { IntegrityMetrics.Sha1ProvidedKeyName, tags.Sha1Provided },
+        };
+
+        return new UploadChecksumVerificationAttemptsMetric(value, labels);
+    }
+
+    private static DownloadChecksumVerificationAttemptsMetric GetDownloadChecksumVerificationAttemptsMetric(int value, DownloadChecksumVerificationAttemptTags tags)
+    {
+        var labels = new Dictionary<string, string>
+        {
+            { IntegrityMetrics.ResultKeyName, tags.Result },
+            { IntegrityMetrics.FileSizeKeyName, tags.FileSize },
+        };
+
+        return new DownloadChecksumVerificationAttemptsMetric(value, labels);
     }
 
     private static IntegrityFailuresImpactedUserMetric GetFailuresImpactedUserMetric(int value, FailuresImpactedUserTags tags)

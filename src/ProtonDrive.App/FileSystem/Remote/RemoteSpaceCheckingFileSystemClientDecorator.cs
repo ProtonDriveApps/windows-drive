@@ -20,7 +20,7 @@ internal sealed class RemoteSpaceCheckingFileSystemClientDecorator : FileSystemC
         _storageReservationHandler = storageReservationHandler;
     }
 
-    public override async Task<IRevisionCreationProcess<string>> CreateFile(
+    public override async Task<IDestinationRevision<string>> CreateFileAsync(
         NodeInfo<string> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -32,7 +32,7 @@ internal sealed class RemoteSpaceCheckingFileSystemClientDecorator : FileSystemC
 
         try
         {
-            var creationProcess = await base.CreateFile(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken)
+            var creationProcess = await base.CreateFileAsync(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken)
                 .ConfigureAwait(false);
 
             return new StorageReservingRevisionCreationProcessDecorator(creationProcess, storageReservation, _userService);
@@ -44,7 +44,7 @@ internal sealed class RemoteSpaceCheckingFileSystemClientDecorator : FileSystemC
         }
     }
 
-    public override async Task<IRevisionCreationProcess<string>> CreateRevision(
+    public override async Task<IDestinationRevision<string>> CreateRevisionAsync(
         NodeInfo<string> info,
         long size,
         DateTime lastWriteTime,
@@ -58,7 +58,7 @@ internal sealed class RemoteSpaceCheckingFileSystemClientDecorator : FileSystemC
 
         try
         {
-            var creationProcess = await base.CreateRevision(
+            var creationProcess = await base.CreateRevisionAsync(
                     info,
                     size,
                     lastWriteTime,
@@ -100,7 +100,10 @@ internal sealed class RemoteSpaceCheckingFileSystemClientDecorator : FileSystemC
 
             if (!_storageReservationHandler.TryReserve(estimatedEncryptedFileSize, availableSpace, out var reservation))
             {
-                throw new FileSystemClientException<string>("Not enough free space to upload the file.", FileSystemErrorCode.FreeSpaceExceeded, fileId);
+                throw new FileSystemClientException<string>(
+                    $"Not enough free space to upload the file (available {availableSpace / 1024 / 1024} MiB < requested {estimatedEncryptedFileSize / 1024 / 1024} MiB)",
+                    FileSystemErrorCode.FreeSpaceExceeded,
+                    fileId);
             }
 
             return reservation;

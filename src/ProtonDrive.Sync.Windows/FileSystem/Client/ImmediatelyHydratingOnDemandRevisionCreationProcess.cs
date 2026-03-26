@@ -1,4 +1,5 @@
 ﻿using ProtonDrive.Shared.IO;
+using ProtonDrive.Shared.Metrics;
 using ProtonDrive.Sync.Shared.FileSystem;
 using Vanara.PInvoke;
 
@@ -11,8 +12,10 @@ internal sealed class ImmediatelyHydratingOnDemandRevisionCreationProcess : Clas
         NodeInfo<long> initialInfo,
         NodeInfo<long> fileInfo,
         NodeInfo<long> finalInfo,
-        Action<Progress>? progressCallback)
-        : base(file, initialInfo, fileInfo, finalInfo, progressCallback)
+        bool checksumVerificationEnabled,
+        Action<Progress>? progressCallback,
+        Action<MetricEvent> recordMetricEvent)
+        : base(file, initialInfo, fileInfo, finalInfo, checksumVerificationEnabled, progressCallback, recordMetricEvent)
     {
     }
 

@@ -18,12 +18,12 @@ internal sealed class OfflineFileSystemClient<TId> : IFileSystemClient<TId>
         return Task.CompletedTask;
     }
 
-    public Task<NodeInfo<TId>> CreateDirectory(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public Task<NodeInfo<TId>> CreateDirectoryAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
         throw new FileSystemClientException(ExceptionMessage, FileSystemErrorCode.Offline);
     }
 
-    public Task<IRevisionCreationProcess<TId>> CreateFile(
+    public Task<IDestinationRevision<TId>> CreateFileAsync(
         NodeInfo<TId> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -34,12 +34,12 @@ internal sealed class OfflineFileSystemClient<TId> : IFileSystemClient<TId>
         throw new FileSystemClientException(ExceptionMessage, FileSystemErrorCode.Offline);
     }
 
-    public IAsyncEnumerable<NodeInfo<TId>> Enumerate(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public IAsyncEnumerable<NodeInfo<TId>> EnumerateAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
         throw new FileSystemClientException(ExceptionMessage, FileSystemErrorCode.Offline);
     }
 
-    public Task<NodeInfo<TId>> GetInfo(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public Task<NodeInfo<TId>> GetInfoAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
         throw new FileSystemClientException(ExceptionMessage, FileSystemErrorCode.Offline);
     }
@@ -49,17 +49,17 @@ internal sealed class OfflineFileSystemClient<TId> : IFileSystemClient<TId>
         throw new FileSystemClientException(ExceptionMessage, FileSystemErrorCode.Offline);
     }
 
-    public Task Move(NodeInfo<TId> info, NodeInfo<TId> destinationInfo, CancellationToken cancellationToken)
+    public Task MoveAsync(NodeInfo<TId> info, NodeInfo<TId> destinationInfo, CancellationToken cancellationToken)
     {
         throw new FileSystemClientException(ExceptionMessage, FileSystemErrorCode.Offline);
     }
 
-    public Task<IRevision> OpenFileForReading(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
         throw new FileSystemClientException(ExceptionMessage, FileSystemErrorCode.Offline);
     }
 
-    public Task<IRevisionCreationProcess<TId>> CreateRevision(
+    public Task<IDestinationRevision<TId>> CreateRevisionAsync(
         NodeInfo<TId> info,
         long size,
         DateTime lastWriteTime,
@@ -72,17 +72,17 @@ internal sealed class OfflineFileSystemClient<TId> : IFileSystemClient<TId>
         throw new FileSystemClientException(ExceptionMessage, FileSystemErrorCode.Offline);
     }
 
-    public Task Delete(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public Task DeleteAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
         throw new FileSystemClientException(ExceptionMessage, FileSystemErrorCode.Offline);
     }
 
-    public Task DeletePermanently(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public Task DeletePermanentlyAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
         throw new FileSystemClientException(ExceptionMessage, FileSystemErrorCode.Offline);
     }
 
-    public Task DeleteRevision(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public Task DeleteRevisionAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
         throw new FileSystemClientException(ExceptionMessage, FileSystemErrorCode.Offline);
     }

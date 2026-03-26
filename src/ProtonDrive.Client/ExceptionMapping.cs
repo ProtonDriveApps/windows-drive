@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Net;
 using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text.Json;
@@ -42,17 +43,21 @@ internal static class ExceptionMapping
             BlockVerificationFailedException => CreateFileSystemClientException(FileSystemErrorCode.IntegrityFailure),
 
             // Proton SDK exceptions
+            TooManyRequestsException ex => CreateFileSystemClientException(FileSystemErrorCode.RateLimited),
             ProtonApiException ex => CreateFileSystemClientException(ToErrorCode(ex.Code)),
 
             // Proton Drive SDK exceptions
             NodeKeyAndSessionKeyMismatchException => CreateFileSystemClientException(FileSystemErrorCode.IntegrityFailure),
             SessionKeyAndDataPacketMismatchException => CreateFileSystemClientException(FileSystemErrorCode.IntegrityFailure),
+            DataIntegrityException => CreateFileSystemClientException(FileSystemErrorCode.IntegrityFailure),
             IntegrityException => CreateFileSystemClientException(FileSystemErrorCode.IntegrityFailure),
+            CompletedDownloadManifestVerificationException => CreateFileSystemClientException(FileSystemErrorCode.IntegrityFailure),
             NodeMetadataDecryptionException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
             FileContentsDecryptionException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
             NodeWithSameNameExistsException => CreateFileSystemClientException(FileSystemErrorCode.DuplicateName),
             RevisionDraftConflictException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
             InvalidNodeTypeException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
+            UploadContentReadingException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
             ProtonDriveException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
 
             // Proton SDK and Proton Drive SDK lets some HTTP client exceptions to bubble up
@@ -87,14 +92,23 @@ internal static class ExceptionMapping
     {
         mappedException = exception switch
         {
-            BrokenCircuitException ex => new ApiException(ResponseCode.Offline, "API not available", ex),
+            HttpRequestException { HttpRequestError: HttpRequestError.NameResolutionError or HttpRequestError.ConnectionError or HttpRequestError.ProxyTunnelError } ex => new ApiException(httpStatusCode: default, ResponseCode.NetworkError, ex.Message, ex),
+            HttpRequestException { HttpRequestError: HttpRequestError.InvalidResponse or HttpRequestError.ResponseEnded } ex => new ApiException(httpStatusCode: default, ResponseCode.ServerError, ex.Message, ex),
+            HttpRequestException { StatusCode: HttpStatusCode.RequestTimeout } ex => new ApiException(ex.StatusCode.Value, ResponseCode.ServerError, ex.Message, ex),
+            HttpRequestException { StatusCode: >= HttpStatusCode.InternalServerError and < (HttpStatusCode)600 } ex => new ApiException(ex.StatusCode.Value, ResponseCode.ServerError, ex.Message, ex),
             HttpRequestException { StatusCode: not null } ex => new ApiException(ex.StatusCode.Value, (ResponseCode)ex.StatusCode.Value, ex.Message, ex),
             HttpRequestException { InnerException: SocketException socketException } ex => new ApiException(ToResponseCode(socketException), socketException.Message, ex),
             HttpRequestException ex => new ApiException(ResponseCode.Unknown, ex.InnerException?.Message ?? ex.Message, ex),
+
+            HttpIOException { HttpRequestError: HttpRequestError.NameResolutionError or HttpRequestError.ConnectionError or HttpRequestError.ProxyTunnelError } ex => new ApiException(httpStatusCode: default, ResponseCode.NetworkError, ex.Message, ex),
+            HttpIOException { HttpRequestError: HttpRequestError.InvalidResponse or HttpRequestError.ResponseEnded } ex => new ApiException(httpStatusCode: default, ResponseCode.ServerError, ex.Message, ex),
+            HttpIOException ex => new ApiException(ResponseCode.Unknown, "API request failed", ex),
+
             TimeoutException ex => new ApiException(ResponseCode.Timeout, "API request timed out", ex),
             TaskCanceledException { InnerException: TimeoutException } ex => new ApiException(ResponseCode.Timeout, "API request timed out", ex),
-            NotSupportedException ex => new ApiException(ResponseCode.Unknown, "API request failed", ex),
             JsonException ex => new ApiException(ResponseCode.Unknown, "Failed to deserialize JSON content", ex),
+            BrokenCircuitException ex => new ApiException(ResponseCode.Offline, "API not available", ex),
+            NotSupportedException ex => new ApiException(ResponseCode.Unknown, "API request failed", ex),
 
             _ => null,
         };
@@ -110,6 +124,7 @@ internal static class ExceptionMapping
             FileContentsDecryptionException or
             NodeKeyAndSessionKeyMismatchException or
             SessionKeyAndDataPacketMismatchException or
+            DataIntegrityException or
             IntegrityException;
     }
 
@@ -134,6 +149,7 @@ internal static class ExceptionMapping
         ResponseCode.NetworkError => FileSystemErrorCode.NetworkError,
         ResponseCode.ServerError => FileSystemErrorCode.ServerError,
         ResponseCode.MainPhotoAlreadyInAlbum => FileSystemErrorCode.MainPhotoAlreadyInAlbum,
+        >= (ResponseCode)500 and < (ResponseCode)600 => FileSystemErrorCode.ServerError,
         _ => FileSystemErrorCode.Unknown,
     };
 

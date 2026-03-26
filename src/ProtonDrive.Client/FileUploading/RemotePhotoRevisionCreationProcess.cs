@@ -12,6 +12,7 @@ internal sealed class RemotePhotoRevisionCreationProcess : RemoteRevisionCreatio
 
     public RemotePhotoRevisionCreationProcess(
         NodeInfo<string> fileInfo,
+        bool checksumVerificationEnabled,
         Stream contentStream,
         IReadOnlyCollection<UploadedBlock> uploadedBlocks,
         int blockSize,
@@ -19,7 +20,7 @@ internal sealed class RemotePhotoRevisionCreationProcess : RemoteRevisionCreatio
         DateTime lastWriteTimeUtc,
         IRevisionSealer revisionSealer,
         ILogger<RemotePhotoRevisionCreationProcess> logger)
-        : base(fileInfo, contentStream, uploadedBlocks, blockSize, revisionSealer)
+        : base(fileInfo, checksumVerificationEnabled, contentStream, uploadedBlocks, blockSize, revisionSealer)
     {
         _creationTimeUtc = creationTimeUtc;
         _lastWriteTimeUtc = lastWriteTimeUtc;
@@ -30,7 +31,7 @@ internal sealed class RemotePhotoRevisionCreationProcess : RemoteRevisionCreatio
 
     public override Stream GetContentStream() => throw new NotSupportedException();
 
-    public override async Task WriteContentAsync(Stream source, CancellationToken cancellationToken)
+    public override async Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
         var destination = base.GetContentStream();
 

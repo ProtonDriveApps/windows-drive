@@ -5,7 +5,9 @@ using ProtonDrive.Client.MediaTypes;
 using ProtonDrive.Client.RemoteNodes;
 using ProtonDrive.Shared;
 using ProtonDrive.Shared.Extensions;
+using ProtonDrive.Shared.Features;
 using ProtonDrive.Shared.IO;
+using ProtonDrive.Shared.Metrics;
 using ProtonDrive.Sync.Shared.FileSystem;
 
 namespace ProtonDrive.Client;
@@ -17,6 +19,8 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
 {
     private readonly ProtonDriveClient _sdkClient;
     private readonly IFileContentTypeProvider _fileContentTypeProvider;
+    private readonly IFeatureFlagProvider _featureFlagProvider;
+    private readonly Action<MetricEvent> _recordMetricEvent;
     private readonly Action<Exception> _reportIntegrityFailure;
 
     private readonly string _volumeId;
@@ -29,11 +33,15 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
         IFileContentTypeProvider fileContentTypeProvider,
         IRemoteNodeService remoteNodeService,
         ILinkApiClient linkApiClient,
+        IFeatureFlagProvider featureFlagProvider,
+        Action<MetricEvent> recordMetricEvent,
         Action<Exception> reportIntegrityFailure)
     : base(parameters, linkApiClient, remoteNodeService, fileContentTypeProvider)
     {
         _sdkClient = sdkClient;
         _fileContentTypeProvider = fileContentTypeProvider;
+        _featureFlagProvider = featureFlagProvider;
+        _recordMetricEvent = recordMetricEvent;
         _reportIntegrityFailure = reportIntegrityFailure;
 
         _volumeId = parameters.VolumeId;
@@ -51,22 +59,22 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
         return Task.CompletedTask;
     }
 
-    public Task<NodeInfo<string>> GetInfo(NodeInfo<string> info, CancellationToken cancellationToken)
+    public Task<NodeInfo<string>> GetInfoAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         throw new NotSupportedException("SDK client implementation is not yet available");
     }
 
-    public IAsyncEnumerable<NodeInfo<string>> Enumerate(NodeInfo<string> info, CancellationToken cancellationToken)
+    public IAsyncEnumerable<NodeInfo<string>> EnumerateAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         throw new NotSupportedException("SDK client implementation is not yet available");
     }
 
-    public Task<NodeInfo<string>> CreateDirectory(NodeInfo<string> info, CancellationToken cancellationToken)
+    public Task<NodeInfo<string>> CreateDirectoryAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         throw new NotSupportedException("SDK client implementation is not yet available");
     }
 
-    public async Task<IRevisionCreationProcess<string>> CreateFile(
+    public async Task<IDestinationRevision<string>> CreateFileAsync(
         NodeInfo<string> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -104,11 +112,15 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
 
         try
         {
+            var checksumVerificationEnabled = await _featureFlagProvider.UploadChecksumVerificationIsEnabledAsync(cancellationToken).ConfigureAwait(false);
+
             return new SdkRemoteRevisionCreationProcess(
                 fileUploader,
                 info,
+                checksumVerificationEnabled,
                 thumbnailProvider,
                 progressCallback,
+                _recordMetricEvent,
                 _reportIntegrityFailure);
         }
         catch
@@ -118,7 +130,7 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
         }
     }
 
-    public async Task<IRevision> OpenFileForReading(NodeInfo<string> info, CancellationToken cancellationToken)
+    public async Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         EnsureId(info.Id);
 
@@ -158,7 +170,7 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
         }
     }
 
-    public async Task<IRevisionCreationProcess<string>> CreateRevision(
+    public async Task<IDestinationRevision<string>> CreateRevisionAsync(
         NodeInfo<string> info,
         long size,
         DateTime lastWriteTime,
@@ -206,11 +218,15 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
                 .WithSize(size)
                 .WithLastWriteTimeUtc(lastWriteTime);
 
+            var checksumVerificationEnabled = await _featureFlagProvider.UploadChecksumVerificationIsEnabledAsync(cancellationToken).ConfigureAwait(false);
+
             return new SdkRemoteRevisionCreationProcess(
                 fileUploader,
                 nodeInfo,
+                checksumVerificationEnabled,
                 thumbnailProvider,
                 progressCallback,
+                _recordMetricEvent,
                 _reportIntegrityFailure);
         }
         catch
@@ -225,22 +241,22 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
         throw new NotSupportedException("SDK client implementation is not yet available");
     }
 
-    public Task Move(NodeInfo<string> info, NodeInfo<string> destinationInfo, CancellationToken cancellationToken)
+    public Task MoveAsync(NodeInfo<string> info, NodeInfo<string> destinationInfo, CancellationToken cancellationToken)
     {
         throw new NotSupportedException("SDK client implementation is not yet available");
     }
 
-    public Task Delete(NodeInfo<string> info, CancellationToken cancellationToken)
+    public Task DeleteAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         throw new NotSupportedException("SDK client implementation is not yet available");
     }
 
-    public Task DeletePermanently(NodeInfo<string> info, CancellationToken cancellationToken)
+    public Task DeletePermanentlyAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         throw new NotSupportedException("SDK client implementation is not yet available");
     }
 
-    public Task DeleteRevision(NodeInfo<string> info, CancellationToken cancellationToken)
+    public Task DeleteRevisionAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }

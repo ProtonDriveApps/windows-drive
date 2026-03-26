@@ -1,18 +1,21 @@
-﻿using ProtonDrive.Client.Sdk.Metrics;
+﻿using System.Diagnostics.CodeAnalysis;
+using ProtonDrive.Client.Sdk.Metrics;
 
 namespace ProtonDrive.Client.Instrumentation.Observability.Shared;
 
 internal sealed record FailureTags(string VolumeType, string Type)
 {
-    public static FailureTags? TryParse(ReadOnlySpan<KeyValuePair<string, object?>> tags)
+    public static bool TryParse(ReadOnlySpan<KeyValuePair<string, object?>> tags, [NotNullWhen(true)] out FailureTags? value)
     {
         if (tags.Length == 2 &&
             tags[0].Key == SdkMetrics.VolumeTypeKeyName && tags[0].Value is string volumeType &&
             tags[1].Key == SdkMetrics.FailureTypeKeyName && tags[1].Value is string type)
         {
-            return new FailureTags(volumeType, type);
+            value = new FailureTags(volumeType, type);
+            return true;
         }
 
-        return null;
+        value = null;
+        return false;
     }
 }

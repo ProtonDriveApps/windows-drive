@@ -1,4 +1,5 @@
-﻿using Microsoft.Web.WebView2.Wpf;
+﻿using Microsoft.Extensions.Logging;
+using Microsoft.Web.WebView2.Wpf;
 using ProtonDrive.App.Windows.Dialogs.HumanVerification;
 using ProtonDrive.App.Windows.Services;
 using ProtonDrive.App.Windows.Views;
@@ -6,7 +7,7 @@ using ProtonDrive.Shared.Configuration;
 
 namespace ProtonDrive.App.Windows.Dialogs;
 
-internal sealed class DialogService(AppConfig appConfig, App app) : IDialogService
+internal sealed class DialogService(AppConfig appConfig, App app, ILoggerFactory loggerFactory) : IDialogService
 {
     public ConfirmationResult ShowConfirmationDialog(ConfirmationDialogViewModelBase dataContext)
     {
@@ -55,7 +56,7 @@ internal sealed class DialogService(AppConfig appConfig, App app) : IDialogServi
             UserDataFolder = appConfig.WebView2DataPath,
         };
 
-        var dialog = new HumanVerificationDialogWindow(properties)
+        var dialog = new HumanVerificationDialogWindow(properties, loggerFactory.CreateLogger<HumanVerificationDialogWindow>())
         {
             DataContext = dataContext,
             Owner = app.GetActiveWindow(),

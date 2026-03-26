@@ -214,7 +214,7 @@
     <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
-    <value>Выдаленне з Proton Drive</value>
+    <value>Перамяшчэнне ў сметніцу Proton Drive</value>
     <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
@@ -242,7 +242,7 @@
     <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
-    <value>Выдалена з Proton Drive</value>
+    <value>Перамяшчэнне ў сметніцу Proton Drive</value>
     <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
@@ -755,6 +755,12 @@
   </data>
   <data name="Main_Activity_Title">
     <value>Актыўнасць</value>
+  </data>
+  <data name="Main_MyComputer_Button_LearnMore">
+    <value>Даведацца больш</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Папкі, якія сінхранізаваны з вашых камп'ютараў, з'явяцца ў раздзеле "Камп'ютары" ва ўсіх праграмах Drive.</value>
   </data>
   <data name="Main_MyComputer_Device_Button_Rename">
     <value>_Перайменаваць</value>

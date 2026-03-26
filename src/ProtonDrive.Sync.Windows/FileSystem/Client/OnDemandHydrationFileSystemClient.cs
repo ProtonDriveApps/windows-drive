@@ -2,7 +2,9 @@
 using Microsoft.Extensions.Logging;
 using ProtonDrive.Shared;
 using ProtonDrive.Shared.Extensions;
+using ProtonDrive.Shared.Features;
 using ProtonDrive.Shared.IO;
+using ProtonDrive.Shared.Metrics;
 using ProtonDrive.Sync.Shared.FileSystem;
 using ProtonDrive.Sync.Windows.FileSystem.Client.CloudFiles;
 using ProtonDrive.Sync.Windows.FileSystem.Photos;
@@ -10,7 +12,7 @@ using static Vanara.PInvoke.CldApi;
 
 namespace ProtonDrive.Sync.Windows.FileSystem.Client;
 
-internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, IFileSystemClient<long>
+internal sealed class OnDemandHydrationFileSystemClient : FileSystemClientBase, IFileSystemClient<long>
 {
     private static readonly EnumerationOptions EnumerationOptions = new()
     {
@@ -19,9 +21,11 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
         BufferSize = 16_384,
     };
 
+    private readonly IFeatureFlagProvider _featureFlagProvider;
     private readonly IThumbnailGenerator _thumbnailGenerator;
     private readonly IFileMetadataGenerator _fileMetadataGenerator;
     private readonly IPhotoTagsGenerator _photoTagsGenerator;
+    private readonly Action<MetricEvent> _recordMetric;
     private readonly ILoggerFactory _loggerFactory;
     private string? _currentConnectionRootPath;
     private int _numberOfConnections;
@@ -30,14 +34,18 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
     private SyncRootCallbackDispatcher? _syncRootCallbackDispatcher;
 
     public OnDemandHydrationFileSystemClient(
+        IFeatureFlagProvider featureFlagProvider,
         IThumbnailGenerator thumbnailGenerator,
         IFileMetadataGenerator fileMetadataGenerator,
         IPhotoTagsGenerator photoTagsGenerator,
+        Action<MetricEvent> recordMetric,
         ILoggerFactory loggerFactory)
     {
+        _featureFlagProvider = featureFlagProvider;
         _thumbnailGenerator = thumbnailGenerator;
         _fileMetadataGenerator = fileMetadataGenerator;
         _photoTagsGenerator = photoTagsGenerator;
+        _recordMetric = recordMetric;
         _loggerFactory = loggerFactory;
     }
 
@@ -62,7 +70,10 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
             {
                 _syncRootCallbackDispatcher = new SyncRootCallbackDispatcher(
                     fileHydrationDemandHandler,
+                    _featureFlagProvider,
+                    _recordMetric,
                     _loggerFactory.CreateLogger<SyncRootCallbackDispatcher>());
+
                 _syncRootConnection = SyncRoot.Connect(syncRootPath, _syncRootCallbackDispatcher);
                 _currentConnectionRootPath = syncRootPath;
             }
@@ -111,7 +122,7 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
         }
     }
 
-    public Task<NodeInfo<long>> GetInfo(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task<NodeInfo<long>> GetInfoAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
@@ -120,7 +131,7 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
         return Task.FromResult(result);
     }
 
-    public IAsyncEnumerable<NodeInfo<long>> Enumerate(NodeInfo<long> info, CancellationToken cancellationToken)
+    public IAsyncEnumerable<NodeInfo<long>> EnumerateAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
@@ -133,7 +144,7 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
         return entries.Select(x => x.ToNodeInfo(parentId)).ToAsyncEnumerable();
     }
 
-    public Task<NodeInfo<long>> CreateDirectory(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task<NodeInfo<long>> CreateDirectoryAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         Ensure.NotNullOrEmpty(info.Path, nameof(info), nameof(info.Path));
 
@@ -168,7 +179,7 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
         return Task.FromResult(directory.ToNodeInfo(parentDirectory.ObjectId, refresh: false));
     }
 
-    public Task<IRevisionCreationProcess<long>> CreateFile(
+    public Task<IDestinationRevision<long>> CreateFileAsync(
         NodeInfo<long> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -191,7 +202,7 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
         {
             var result = new OnDemandFileCreationProcess(info, parentDirectory);
 
-            return Task.FromResult<IRevisionCreationProcess<long>>(result);
+            return Task.FromResult<IDestinationRevision<long>>(result);
         }
         catch
         {
@@ -200,7 +211,7 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
         }
     }
 
-    public Task<IRevision> OpenFileForReading(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         Ensure.NotNullOrEmpty(info.Path, nameof(info), nameof(info.Path));
 
@@ -216,7 +227,7 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
 
         try
         {
-            return Task.FromResult((IRevision)new FileRevision(fileForReadingData, _thumbnailGenerator, _fileMetadataGenerator, _photoTagsGenerator));
+            return Task.FromResult((ISourceRevision)new LocalFileRevision(fileForReadingData, _thumbnailGenerator, _fileMetadataGenerator, _photoTagsGenerator));
         }
         catch
         {
@@ -225,7 +236,7 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
         }
     }
 
-    public Task<IRevisionCreationProcess<long>> CreateRevision(
+    public async Task<IDestinationRevision<long>> CreateRevisionAsync(
         NodeInfo<long> info,
         long size,
         DateTime lastWriteTime,
@@ -275,13 +286,13 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
             // (including classic files, that are not yet converted into placeholders).
             var isHydrationRequired = !file.Attributes.IsDehydrationRequested() && (file.Attributes.IsPinned() || !placeholderState.HasFlag(PlaceholderState.Partial));
 
-            IRevisionCreationProcess<long> revisionCreationProcess;
+            IDestinationRevision<long> revisionCreationProcess;
 
             if (isHydrationRequired)
             {
                 var tempInfo = info.Copy().WithAttributes(newAttributes).ToTempFileInfo(tempFileName);
-
                 var tempFile = tempInfo.CreateTemporaryFile(file);
+                var checksumVerificationEnabled = await _featureFlagProvider.DownloadChecksumVerificationIsEnabledAsync(cancellationToken).ConfigureAwait(false);
 
                 try
                 {
@@ -292,11 +303,13 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
                         info,
                         fileInfo,
                         fileInfo.Copy().WithName(info.Name).WithPath(info.Path).WithAttributes(newAttributes).WithLastWriteTimeUtc(lastWriteTime),
-                        progressCallback);
+                        checksumVerificationEnabled,
+                        progressCallback,
+                        _recordMetric);
 
                     file.Dispose();
 
-                    return Task.FromResult(revisionCreationProcess);
+                    return revisionCreationProcess;
                 }
                 catch
                 {
@@ -310,7 +323,7 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
                 ? new BackingUpOnDemandRevisionCreationProcess(newInfo, file)
                 : new OnDemandRevisionCreationProcess(newInfo, file);
 
-            return Task.FromResult(revisionCreationProcess);
+            return revisionCreationProcess;
         }
         catch
         {
@@ -319,7 +332,7 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
         }
     }
 
-    public Task Move(NodeInfo<long> info, NodeInfo<long> destinationInfo, CancellationToken cancellationToken)
+    public Task MoveAsync(NodeInfo<long> info, NodeInfo<long> destinationInfo, CancellationToken cancellationToken)
     {
         Ensure.NotNullOrEmpty(info.Path, nameof(info), nameof(info.Path));
         Ensure.IsFalse(
@@ -359,7 +372,7 @@ internal sealed class OnDemandHydrationFileSystemClient : BaseFileSystemClient, 
         throw new NotSupportedException();
     }
 
-    public Task DeleteRevision(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task DeleteRevisionAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }

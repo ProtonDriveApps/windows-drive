@@ -1,13 +1,18 @@
-﻿using System.IO;
+﻿using System.Diagnostics;
+using System.IO;
 using System.Security.AccessControl;
 using System.Security.Principal;
+using Microsoft.Extensions.Logging;
 using ProtonDrive.App.SystemIntegration;
+using ProtonDrive.Shared.Logging;
 using ProtonDrive.Sync.Windows.FileSystem;
 
 namespace ProtonDrive.App.Windows.SystemIntegration;
 
 internal sealed class NtfsPermissionsBasedSyncFolderStructureProtector : ISyncFolderStructureProtector
 {
+    private static readonly TimeSpan ActionDurationWarningThreshold = TimeSpan.FromSeconds(2);
+
     private static readonly EnumerationOptions EnumerationOptions = new()
     {
         RecurseSubdirectories = false,
@@ -61,6 +66,13 @@ internal sealed class NtfsPermissionsBasedSyncFolderStructureProtector : ISyncFo
             ]
         },
     };
+
+    private readonly ILogger<NtfsPermissionsBasedSyncFolderStructureProtector> _logger;
+
+    public NtfsPermissionsBasedSyncFolderStructureProtector(ILogger<NtfsPermissionsBasedSyncFolderStructureProtector> logger)
+    {
+        _logger = logger;
+    }
 
     public bool ProtectFolder(string folderPath, FolderProtectionType protectionType)
     {
@@ -122,7 +134,7 @@ internal sealed class NtfsPermissionsBasedSyncFolderStructureProtector : ISyncFo
         return true;
     }
 
-    private static void RemoveBranchProtection(string folderPath, FolderProtectionType folderProtectionType, FileProtectionType fileProtectionType)
+    private void RemoveBranchProtection(string folderPath, FolderProtectionType folderProtectionType, FileProtectionType fileProtectionType)
     {
         using var folder = FileSystemDirectory.Open(folderPath, FileSystemFileAccess.Read);
 
@@ -145,7 +157,7 @@ internal sealed class NtfsPermissionsBasedSyncFolderStructureProtector : ISyncFo
         RemoveDirectorySecurity(folderPath, FolderRights[folderProtectionType], AccessControlType.Deny);
     }
 
-    private static void AddDirectorySecurity(string path, IEnumerable<FileSystemRights> rights, AccessControlType controlType)
+    private void AddDirectorySecurity(string path, IEnumerable<FileSystemRights> rights, AccessControlType controlType)
     {
         var directoryInfo = new DirectoryInfo(path);
 
@@ -164,7 +176,7 @@ internal sealed class NtfsPermissionsBasedSyncFolderStructureProtector : ISyncFo
         SetAccessControl(directoryInfo, directorySecurity);
     }
 
-    private static void RemoveDirectorySecurity(string path, IEnumerable<FileSystemRights> rights, AccessControlType controlType)
+    private void RemoveDirectorySecurity(string path, IEnumerable<FileSystemRights> rights, AccessControlType controlType)
     {
         var directoryInfo = new DirectoryInfo(path);
         var directorySecurity = GetAccessControl(directoryInfo);
@@ -177,7 +189,7 @@ internal sealed class NtfsPermissionsBasedSyncFolderStructureProtector : ISyncFo
         SetAccessControl(directoryInfo, directorySecurity);
     }
 
-    private static void AddFileSecurity(string path, IEnumerable<FileSystemRights> rights, AccessControlType controlType)
+    private void AddFileSecurity(string path, IEnumerable<FileSystemRights> rights, AccessControlType controlType)
     {
         var fileInfo = new FileInfo(path);
 
@@ -196,7 +208,7 @@ internal sealed class NtfsPermissionsBasedSyncFolderStructureProtector : ISyncFo
         SetAccessControl(fileInfo, fileSecurity);
     }
 
-    private static void RemoveFileSecurity(string path, IEnumerable<FileSystemRights> rights, AccessControlType controlType)
+    private void RemoveFileSecurity(string path, IEnumerable<FileSystemRights> rights, AccessControlType controlType)
     {
         var fileInfo = new FileInfo(path);
         var fileSecurity = GetAccessControl(fileInfo);
@@ -209,11 +221,17 @@ internal sealed class NtfsPermissionsBasedSyncFolderStructureProtector : ISyncFo
         SetAccessControl(fileInfo, fileSecurity);
     }
 
-    private static DirectorySecurity GetAccessControl(DirectoryInfo directoryInfo)
+    private DirectorySecurity GetAccessControl(DirectoryInfo directoryInfo)
     {
         try
         {
-            return directoryInfo.GetAccessControl();
+            var startTimestamp = LogStartAndGetTimestamp("Obtaining", directoryInfo.FullName);
+
+            var result = directoryInfo.GetAccessControl();
+
+            LogSuccess("Obtained", startTimestamp, directoryInfo.FullName);
+
+            return result;
         }
         catch (UnauthorizedAccessException ex)
         {
@@ -221,11 +239,15 @@ internal sealed class NtfsPermissionsBasedSyncFolderStructureProtector : ISyncFo
         }
     }
 
-    private static void SetAccessControl(DirectoryInfo directoryInfo, DirectorySecurity directorySecurity)
+    private void SetAccessControl(DirectoryInfo directoryInfo, DirectorySecurity directorySecurity)
     {
         try
         {
+            var startTimestamp = LogStartAndGetTimestamp("Updating", directoryInfo.FullName);
+
             directoryInfo.SetAccessControl(directorySecurity);
+
+            LogSuccess("Updated", startTimestamp, directoryInfo.FullName);
         }
         catch (UnauthorizedAccessException ex)
         {
@@ -233,7 +255,7 @@ internal sealed class NtfsPermissionsBasedSyncFolderStructureProtector : ISyncFo
         }
     }
 
-    private static FileSecurity GetAccessControl(FileInfo fileInfo)
+    private FileSecurity GetAccessControl(FileInfo fileInfo)
     {
         try
         {
@@ -245,7 +267,7 @@ internal sealed class NtfsPermissionsBasedSyncFolderStructureProtector : ISyncFo
         }
     }
 
-    private static void SetAccessControl(FileInfo fileInfo, FileSecurity fileSecurity)
+    private void SetAccessControl(FileInfo fileInfo, FileSecurity fileSecurity)
     {
         try
         {
@@ -254,6 +276,27 @@ internal sealed class NtfsPermissionsBasedSyncFolderStructureProtector : ISyncFo
         catch (UnauthorizedAccessException ex)
         {
             throw new UnauthorizedAccessException("Unable to set file access control", ex);
+        }
+    }
+
+    private long LogStartAndGetTimestamp(string action, string path)
+    {
+        _logger.LogDebug("{Action} folder \"{Path}\" protection", action, path);
+        return Stopwatch.GetTimestamp();
+    }
+
+    private void LogSuccess(string action, long startTimestamp, string path)
+    {
+        var elapsed = Stopwatch.GetElapsedTime(startTimestamp);
+
+        if (elapsed < ActionDurationWarningThreshold)
+        {
+            _logger.LogDebug("{Action} folder \"{Path}\" protection in {ElapsedTime}", action, path, elapsed);
+        }
+        else
+        {
+            var pathForLogging = _logger.GetSensitiveValueForLogging(path);
+            _logger.LogWarning("{Action} folder \"{Path}\" protection in {ElapsedTime}", action, pathForLogging, elapsed);
         }
     }
 }

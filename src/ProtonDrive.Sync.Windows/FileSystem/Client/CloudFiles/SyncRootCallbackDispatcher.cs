@@ -3,7 +3,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Runtime.InteropServices;
 using Microsoft.Extensions.Logging;
 using ProtonDrive.Shared.Extensions;
+using ProtonDrive.Shared.Features;
 using ProtonDrive.Shared.Logging;
+using ProtonDrive.Shared.Metrics;
 using ProtonDrive.Sync.Shared.FileSystem;
 using Vanara.PInvoke;
 using static Vanara.PInvoke.CldApi;
@@ -15,18 +17,25 @@ internal sealed class SyncRootCallbackDispatcher : IAsyncDisposable
 {
     private static readonly TimeSpan WaitTimeout = TimeSpan.FromSeconds(5);
 
+    private readonly IFileHydrationDemandHandler<long> _fileHydrationDemandHandler;
+    private readonly IFeatureFlagProvider _featureFlagProvider;
+    private readonly Action<MetricEvent> _recordMetric;
+    private readonly ILogger<SyncRootCallbackDispatcher> _logger;
+
     private readonly CancellationTokenSource? _commonCancellationTokenSource = new();
     private readonly SemaphoreSlim _disposalSemaphore = new(1, 1);
     private readonly ConcurrentDictionary<CF_TRANSFER_KEY, CancellationTokenSource> _cancellationTokenSources = [];
     private readonly ConcurrentDictionary<CF_TRANSFER_KEY, Task> _transferTasks = [];
-    private readonly IFileHydrationDemandHandler<long> _fileHydrationDemandHandler;
-    private readonly ILogger<SyncRootCallbackDispatcher> _logger;
 
     public SyncRootCallbackDispatcher(
         IFileHydrationDemandHandler<long> fileHydrationDemandHandler,
+        IFeatureFlagProvider featureFlagProvider,
+        Action<MetricEvent> recordMetric,
         ILogger<SyncRootCallbackDispatcher> logger)
     {
         _fileHydrationDemandHandler = fileHydrationDemandHandler;
+        _featureFlagProvider = featureFlagProvider;
+        _recordMetric = recordMetric;
         _logger = logger;
 
         CallbackTable =
@@ -294,6 +303,8 @@ internal sealed class SyncRootCallbackDispatcher : IAsyncDisposable
     {
         try
         {
+            var checksumVerificationEnabled = await _featureFlagProvider.DownloadChecksumVerificationIsEnabledAsync(cancellationToken).ConfigureAwait(false);
+
             var dataTransferStream = new CloudFilesDataTransferStream(
                 fileInfo.Id,
                 connectionKey,
@@ -303,9 +314,9 @@ internal sealed class SyncRootCallbackDispatcher : IAsyncDisposable
                 requiredLength,
                 _logger);
 
-            using var hydrationProcess = new FileHydrationProcess<long>(fileInfo, dataTransferStream, UpdateFileSize);
+            using var hydrationProcess = new FileHydrationProcess<long>(fileInfo, checksumVerificationEnabled, dataTransferStream, UpdateFileSize);
 
-            await _fileHydrationDemandHandler.HandleAsync(hydrationProcess, cancellationToken).ConfigureAwait(false);
+            await HandleHydrationAsync(hydrationProcess).ConfigureAwait(false);
         }
         catch (OperationCanceledException)
         {
@@ -325,6 +336,23 @@ internal sealed class SyncRootCallbackDispatcher : IAsyncDisposable
             }
 
             _transferTasks.TryRemove(transferKey, out _);
+        }
+
+        return;
+
+        async Task HandleHydrationAsync(FileHydrationProcess<long> hydrationProcess)
+        {
+            try
+            {
+                await _fileHydrationDemandHandler.HandleAsync(hydrationProcess, cancellationToken).ConfigureAwait(false);
+
+                RecordVerificationSuccess(hydrationProcess);
+            }
+            catch (FileSystemClientException ex) when (ex.ErrorCode is FileSystemErrorCode.IntegrityFailure)
+            {
+                RecordVerificationFailure(hydrationProcess);
+                throw;
+            }
         }
 
         NodeInfo<long> UpdateFileSize(long newSize)
@@ -422,5 +450,28 @@ internal sealed class SyncRootCallbackDispatcher : IAsyncDisposable
         {
             AbortTransfer(connectionKey, transferKey, requestKey, ex, requiredFileOffset, requiredLength, localFileId);
         }
+    }
+
+    private void RecordVerificationSuccess(FileHydrationProcess<long> hydrationProcess)
+    {
+        _recordMetric.Invoke(new DownloadChecksumVerificationAttemptEvent
+        {
+            Result = hydrationProcess.ChecksumVerificationPerformed ? ChecksumVerificationResult.Success : ChecksumVerificationResult.Skipped,
+            FileSize = hydrationProcess.FileInfo.Size,
+        });
+    }
+
+    private void RecordVerificationFailure(FileHydrationProcess<long> hydrationProcess)
+    {
+        if (!hydrationProcess.ChecksumVerificationFailed)
+        {
+            return;
+        }
+
+        _recordMetric.Invoke(new DownloadChecksumVerificationAttemptEvent
+        {
+            Result = ChecksumVerificationResult.Failure,
+            FileSize = hydrationProcess.FileInfo.Size,
+        });
     }
 }

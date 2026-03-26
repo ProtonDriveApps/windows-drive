@@ -80,12 +80,12 @@ internal sealed class DownloadMetricsCollector
 
     private void OnMeasurementRecorded(Instrument instrument, int measurement, ReadOnlySpan<KeyValuePair<string, object?>> tags, object? state)
     {
-        if (instrument == _attemptsInstrument && AttemptTags.TryParse(tags) is { } attemptsKey)
+        if (instrument == _attemptsInstrument && AttemptTags.TryParse(tags, out var attemptsKey))
         {
             _attempts.RecordMeasurement(attemptsKey, measurement);
         }
 
-        if (instrument == _failuresInstrument && FailureTags.TryParse(tags) is { } failuresKey)
+        if (instrument == _failuresInstrument && FailureTags.TryParse(tags, out var failuresKey))
         {
             _failures.RecordMeasurement(failuresKey, measurement);
         }

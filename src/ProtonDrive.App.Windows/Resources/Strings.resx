@@ -398,6 +398,12 @@
   <data name="Main_MyComputer_Title" xml:space="preserve">
     <value>My computer</value>
   </data>
+  <data name="Main_MyComputer_Button_LearnMore" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
+  <data name="Main_MyComputer_Description" xml:space="preserve">
+    <value>Folders synced from your computers will appear in the "Computers" section across your Drive apps.</value>
+  </data>
   <data name="Main_MyComputer_Device_Label" xml:space="preserve">
     <value>This device</value>
   </data>
@@ -1586,7 +1592,7 @@ Contents of files will be downloaded on demand only.</value>  </data>
     <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete" xml:space="preserve">
-    <value>Deleting from Proton Drive</value>
+    <value>Moving to Proton Drive Trash</value>
     <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download" xml:space="preserve">
@@ -1614,7 +1620,7 @@ Contents of files will be downloaded on demand only.</value>  </data>
     <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete" xml:space="preserve">
-    <value>Deleted from Proton Drive</value>
+    <value>Moved to Proton Drive Trash</value>
     <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download" xml:space="preserve">

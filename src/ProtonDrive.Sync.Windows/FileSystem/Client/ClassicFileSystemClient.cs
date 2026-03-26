@@ -1,6 +1,8 @@
 ﻿using ProtonDrive.Shared;
 using ProtonDrive.Shared.Extensions;
+using ProtonDrive.Shared.Features;
 using ProtonDrive.Shared.IO;
+using ProtonDrive.Shared.Metrics;
 using ProtonDrive.Sync.Shared.FileSystem;
 using ProtonDrive.Sync.Windows.FileSystem.Photos;
 
@@ -9,7 +11,7 @@ namespace ProtonDrive.Sync.Windows.FileSystem.Client;
 /// <summary>
 /// Classic local File System Client for Windows.
 /// </summary>
-internal sealed class ClassicFileSystemClient : BaseFileSystemClient, IFileSystemClient<long>
+internal sealed class ClassicFileSystemClient : FileSystemClientBase, IFileSystemClient<long>
 {
     private static readonly EnumerationOptions EnumerationOptions = new()
     {
@@ -25,18 +27,24 @@ internal sealed class ClassicFileSystemClient : BaseFileSystemClient, IFileSyste
         BufferSize = 1_024,
     };
 
+    private readonly IFeatureFlagProvider _featureFlagProvider;
     private readonly IThumbnailGenerator _thumbnailGenerator;
     private readonly IFileMetadataGenerator _fileMetadataGenerator;
     private readonly IPhotoTagsGenerator _photoTagsGenerator;
+    private readonly Action<MetricEvent> _recordMetricEvent;
 
     public ClassicFileSystemClient(
+        IFeatureFlagProvider featureFlagProvider,
         IThumbnailGenerator thumbnailGenerator,
         IFileMetadataGenerator fileMetadataGenerator,
-        IPhotoTagsGenerator photoTagsGenerator)
+        IPhotoTagsGenerator photoTagsGenerator,
+        Action<MetricEvent> recordMetricEvent)
     {
+        _featureFlagProvider = featureFlagProvider;
         _thumbnailGenerator = thumbnailGenerator;
         _fileMetadataGenerator = fileMetadataGenerator;
         _photoTagsGenerator = photoTagsGenerator;
+        _recordMetricEvent = recordMetricEvent;
     }
 
     public void Connect(string syncRootPath, IFileHydrationDemandHandler<long> fileHydrationDemandHandler)
@@ -49,7 +57,7 @@ internal sealed class ClassicFileSystemClient : BaseFileSystemClient, IFileSyste
         return Task.CompletedTask;
     }
 
-    public Task<NodeInfo<long>> GetInfo(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task<NodeInfo<long>> GetInfoAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
@@ -81,7 +89,7 @@ internal sealed class ClassicFileSystemClient : BaseFileSystemClient, IFileSyste
         return Task.FromResult(ToNodeInfo(fsEntry).WithParentId(parentDirectory.ObjectId));
     }
 
-    public IAsyncEnumerable<NodeInfo<long>> Enumerate(NodeInfo<long> info, CancellationToken cancellationToken)
+    public IAsyncEnumerable<NodeInfo<long>> EnumerateAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
@@ -100,7 +108,7 @@ internal sealed class ClassicFileSystemClient : BaseFileSystemClient, IFileSyste
             .ToAsyncEnumerable();
     }
 
-    public Task<IRevision> OpenFileForReading(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         Ensure.NotNullOrEmpty(info.Path, nameof(info), nameof(info.Path));
 
@@ -118,7 +126,7 @@ internal sealed class ClassicFileSystemClient : BaseFileSystemClient, IFileSyste
             CheckIdentity(file, info);
             CheckMetadata(file, info);
 
-            return Task.FromResult((IRevision)new FileRevision(file, _thumbnailGenerator, _fileMetadataGenerator, _photoTagsGenerator));
+            return Task.FromResult((ISourceRevision)new LocalFileRevision(file, _thumbnailGenerator, _fileMetadataGenerator, _photoTagsGenerator));
         }
         catch
         {
@@ -127,7 +135,7 @@ internal sealed class ClassicFileSystemClient : BaseFileSystemClient, IFileSyste
         }
     }
 
-    public Task<NodeInfo<long>> CreateDirectory(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task<NodeInfo<long>> CreateDirectoryAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         Ensure.NotNullOrEmpty(info.Path, nameof(info), nameof(info.Path));
 
@@ -151,7 +159,7 @@ internal sealed class ClassicFileSystemClient : BaseFileSystemClient, IFileSyste
         return Task.FromResult(directory.ToNodeInfo(parentDirectory.ObjectId, refresh: true));
     }
 
-    public Task<IRevisionCreationProcess<long>> CreateFile(
+    public async Task<IDestinationRevision<long>> CreateFileAsync(
         NodeInfo<long> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -200,7 +208,7 @@ internal sealed class ClassicFileSystemClient : BaseFileSystemClient, IFileSyste
             tempInfo,
             FileMode.CreateNew,
             FileSystemFileAccess.ReadWrite | FileSystemFileAccess.Delete,
-            FileShare.None,
+            FileShare.Read,
             info.Attributes | tempFileAttributes);
 
         try
@@ -209,15 +217,16 @@ internal sealed class ClassicFileSystemClient : BaseFileSystemClient, IFileSyste
 
             tempInfo = file.ToNodeInfo(parentDirectory.ObjectId, refresh: false).WithPath(tempInfo.Path);
             var finalInfo = info.Copy().WithParentId(parentDirectory.ObjectId);
+            var checksumVerificationEnabled = await _featureFlagProvider.DownloadChecksumVerificationIsEnabledAsync(cancellationToken).ConfigureAwait(false);
 
-            IRevisionCreationProcess<long> revisionCreationProcess = new ClassicRevisionCreationProcess(
+            return new ClassicRevisionCreationProcess(
                 file,
                 initialInfo: null,
                 tempInfo,
                 finalInfo,
-                progressCallback);
-
-            return Task.FromResult(revisionCreationProcess);
+                checksumVerificationEnabled,
+                progressCallback,
+                _recordMetricEvent);
         }
         catch
         {
@@ -227,7 +236,7 @@ internal sealed class ClassicFileSystemClient : BaseFileSystemClient, IFileSyste
         }
     }
 
-    public Task<IRevisionCreationProcess<long>> CreateRevision(
+    public async Task<IDestinationRevision<long>> CreateRevisionAsync(
         NodeInfo<long> info,
         long size,
         DateTime lastWriteTime,
@@ -276,14 +285,16 @@ internal sealed class ClassicFileSystemClient : BaseFileSystemClient, IFileSyste
 
             var fileInfo = file.ToNodeInfo(parentId: 0, refresh: false).WithSize(0).WithPath(file.FullPath);
 
-            IRevisionCreationProcess<long> revisionCreationProcess = new ClassicRevisionCreationProcess(
+            var checksumVerificationEnabled = await _featureFlagProvider.DownloadChecksumVerificationIsEnabledAsync(cancellationToken).ConfigureAwait(false);
+
+            return new ClassicRevisionCreationProcess(
                 file,
                 info,
                 fileInfo,
-                fileInfo.Copy().WithName(info.Name).WithPath(info.Path).WithAttributes(fileAttributes).WithLastWriteTimeUtc(lastWriteTime),
-                progressCallback);
-
-            return Task.FromResult(revisionCreationProcess);
+                fileInfo.Copy().WithName(info.Name).WithPath(info.Path).WithAttributes(fileAttributes).WithSize(size).WithLastWriteTimeUtc(lastWriteTime),
+                checksumVerificationEnabled,
+                progressCallback,
+                _recordMetricEvent);
         }
         catch
         {
@@ -293,7 +304,7 @@ internal sealed class ClassicFileSystemClient : BaseFileSystemClient, IFileSyste
         }
     }
 
-    public Task Move(NodeInfo<long> info, NodeInfo<long> destinationInfo, CancellationToken cancellationToken)
+    public Task MoveAsync(NodeInfo<long> info, NodeInfo<long> destinationInfo, CancellationToken cancellationToken)
     {
         Ensure.NotNullOrEmpty(info.Path, nameof(info), nameof(info.Path));
         Ensure.IsFalse(
@@ -337,7 +348,7 @@ internal sealed class ClassicFileSystemClient : BaseFileSystemClient, IFileSyste
         throw new NotSupportedException();
     }
 
-    public Task DeleteRevision(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task DeleteRevisionAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }

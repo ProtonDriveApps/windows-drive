@@ -2,7 +2,7 @@
 
 namespace ProtonDrive.Client.Contracts;
 
-public sealed class Digests
+public sealed class FileContentDigests
 {
     /// <summary>
     /// SHA-1 hash of the file content, in lowercase hexadecimal format.

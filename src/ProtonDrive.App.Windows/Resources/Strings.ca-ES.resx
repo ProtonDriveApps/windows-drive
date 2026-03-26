@@ -214,7 +214,7 @@
     <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
-    <value>S'età eliminant de Proton Drive</value>
+    <value>S'està movent a la Paperera de Proton Drive</value>
     <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
@@ -242,7 +242,7 @@
     <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
-    <value>Eliminat de Proton Drive</value>
+    <value>S'ha mogut a la Paperera de Proton Drive</value>
     <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
@@ -756,6 +756,12 @@ Desactiveu i torneu a activar la sincronització per restaurar-lo i esborrar aqu
   <data name="Main_Activity_Title">
     <value>Activitat</value>
   </data>
+  <data name="Main_MyComputer_Button_LearnMore">
+    <value>Més informació</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Les carpetes sincronitzades des dels vostres ordinadors apareixeran a la secció "Ordinadors" de les vostres aplicacions de Drive.</value>
+  </data>
   <data name="Main_MyComputer_Device_Button_Rename">
     <value>_Canvia el nom</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -963,7 +969,7 @@ desactivar l'optimització d'emmagatzematge en qualsevol moment.</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Photos_Folders_NoItemsFound_Label">
-    <value>Sense fotos/vídeos</value>
+    <value>No s'han trobat fotos/vídeos</value>
   </data>
   <data name="Main_Photos_Folders_WaitingToImport">
     <value>S'està esperant a importar...</value>
@@ -1314,7 +1320,7 @@ El contingut dels fitxers es descarregarà només sota demanda.</value>
     <value>La carpeta de sincronització s'ha anul·lat inesperadament. Configureu una nova carpeta de sincronització.</value>
   </data>
   <data name="MappingErrorCode_Value_PhotoImportFailed">
-    <value>S'ha produït un error en la importació de fotos.</value>
+    <value>Ha fallat la importació de la fotografia.</value>
   </data>
   <data name="MappingErrorCode_Value_PhotosDisabled">
     <value>Proton Fotos no està disponible</value>

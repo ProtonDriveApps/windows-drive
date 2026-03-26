@@ -106,7 +106,7 @@ internal sealed class HostDeviceFolderMappingFolderValidationStep
 
             try
             {
-                folderInfo = await remoteFileSystemClient.GetInfo(folderInfo, cancellationToken).ConfigureAwait(false);
+                folderInfo = await remoteFileSystemClient.GetInfoAsync(folderInfo, cancellationToken).ConfigureAwait(false);
             }
             catch (FileSystemClientException<string> ex) when (ex.ErrorCode is FileSystemErrorCode.ObjectNotFound)
             {

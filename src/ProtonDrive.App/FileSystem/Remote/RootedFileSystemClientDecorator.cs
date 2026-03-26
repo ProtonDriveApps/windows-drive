@@ -18,11 +18,11 @@ internal sealed class RootedFileSystemClientDecorator : FileSystemClientDecorato
         }
     }
 
-    public override async Task<NodeInfo<string>> GetInfo(NodeInfo<string> info, CancellationToken cancellationToken)
+    public override async Task<NodeInfo<string>> GetInfoAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         if (!IsRoot(info))
         {
-            return await base.GetInfo(info, cancellationToken).ConfigureAwait(false);
+            return await base.GetInfoAsync(info, cancellationToken).ConfigureAwait(false);
         }
 
         if (!string.IsNullOrEmpty(info.Path))

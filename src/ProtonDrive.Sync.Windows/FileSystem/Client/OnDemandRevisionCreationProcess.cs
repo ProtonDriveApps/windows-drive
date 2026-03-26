@@ -4,7 +4,7 @@ using static Vanara.PInvoke.CldApi;
 
 namespace ProtonDrive.Sync.Windows.FileSystem.Client;
 
-internal sealed class OnDemandRevisionCreationProcess : IRevisionCreationProcess<long>
+internal sealed class OnDemandRevisionCreationProcess : IDestinationRevision<long>
 {
     private readonly FileSystemFile _file;
 
@@ -19,7 +19,7 @@ internal sealed class OnDemandRevisionCreationProcess : IRevisionCreationProcess
     public NodeInfo<long> BackupInfo { get; set; } = NodeInfo<long>.Empty();
 
     public bool ImmediateHydrationRequired => false;
-
+    public bool ChecksumVerificationEnabled => false;
     public bool CanGetContentStream => false;
 
     public Stream GetContentStream()
@@ -27,12 +27,12 @@ internal sealed class OnDemandRevisionCreationProcess : IRevisionCreationProcess
         throw new NotSupportedException();
     }
 
-    public Task WriteContentAsync(Stream source, CancellationToken cancellationToken)
+    public Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }
 
-    public Task<NodeInfo<long>> FinishAsync(CancellationToken cancellationToken)
+    public Task<NodeInfo<long>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
         using var placeholderCreationInfo = FileInfo.ToPlaceholderCreationInfo();
 
@@ -46,7 +46,7 @@ internal sealed class OnDemandRevisionCreationProcess : IRevisionCreationProcess
             CF_UPDATE_FLAGS.CF_UPDATE_FLAG_DEHYDRATE | CF_UPDATE_FLAGS.CF_UPDATE_FLAG_MARK_IN_SYNC);
 
         // Parent identity is not checked or obtained, therefore, we do not include it into the result
-        return Task.FromResult(_file.ToNodeInfo(parentId: default, refresh: true));
+        return Task.FromResult(_file.ToNodeInfo(parentId: 0, refresh: true));
     }
 
     public void Dispose()

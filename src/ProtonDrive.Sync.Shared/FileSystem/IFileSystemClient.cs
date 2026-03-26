@@ -38,7 +38,7 @@ public interface IFileSystemClient<TId>
     /// <see cref="FileSystemErrorCode.SharingViolation">The parent directory is already open in not compatible sharing mode.</see>
     /// <see cref="FileSystemErrorCode.UnauthorizedAccess">Access has been denied.</see>
     /// </exception>
-    Task<NodeInfo<TId>> GetInfo(NodeInfo<TId> info, CancellationToken cancellationToken);
+    Task<NodeInfo<TId>> GetInfoAsync(NodeInfo<TId> info, CancellationToken cancellationToken);
 
     /// <summary>
     /// Returns an enumerable collection of file system object information in the specified directory.
@@ -64,7 +64,7 @@ public interface IFileSystemClient<TId>
     /// <see cref="FileSystemErrorCode.SharingViolation">The directory is already open in not compatible sharing mode.</see>
     /// <see cref="FileSystemErrorCode.UnauthorizedAccess">Access has been denied.</see>
     /// </exception>
-    IAsyncEnumerable<NodeInfo<TId>> Enumerate(NodeInfo<TId> info, CancellationToken cancellationToken);
+    IAsyncEnumerable<NodeInfo<TId>> EnumerateAsync(NodeInfo<TId> info, CancellationToken cancellationToken);
 
     /// <summary>
     /// Creates a new directory.
@@ -91,7 +91,7 @@ public interface IFileSystemClient<TId>
     /// <see cref="FileSystemErrorCode.SharingViolation">The parent directory or new directory is already open in not compatible sharing mode.</see>
     /// <see cref="FileSystemErrorCode.UnauthorizedAccess">Access has been denied.</see>
     /// </exception>
-    Task<NodeInfo<TId>> CreateDirectory(NodeInfo<TId> info, CancellationToken cancellationToken);
+    Task<NodeInfo<TId>> CreateDirectoryAsync(NodeInfo<TId> info, CancellationToken cancellationToken);
 
     /// <summary>
     /// Creates a new file.
@@ -103,7 +103,7 @@ public interface IFileSystemClient<TId>
     /// <param name="fileMetadataProvider">An object that will provide the file metadata if available.</param>
     /// <param name="progressCallback">TODO</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
-    /// <returns>The <see cref="IRevisionCreationProcess{TId}"/> used for writing the file content and finishing
+    /// <returns>The <see cref="IDestinationRevision{TId}"/> used for writing the file content and finishing
     /// the file creation.</returns>
     /// <remarks>
     /// The expected content of the <paramref name="info"/> argument:
@@ -125,7 +125,7 @@ public interface IFileSystemClient<TId>
     /// <see cref="FileSystemErrorCode.UnauthorizedAccess">Access has been denied.</see>
     /// <see cref="FileSystemErrorCode.FreeSpaceExceeded">The file cannot be created due to the lack of free space.</see>
     /// </exception>
-    Task<IRevisionCreationProcess<TId>> CreateFile(
+    Task<IDestinationRevision<TId>> CreateFileAsync(
         NodeInfo<TId> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -138,7 +138,7 @@ public interface IFileSystemClient<TId>
     /// </summary>
     /// <param name="info">The file information.</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
-    /// <returns>The <see cref="IRevision"/> for reading the file content, thumbnail, and other properties.</returns>
+    /// <returns>The <see cref="ISourceRevision"/> for reading the file content, thumbnail, and other properties.</returns>
     /// <remarks>
     /// The expected content of the <paramref name="info"/> argument:
     /// <list type="bullet">
@@ -159,7 +159,7 @@ public interface IFileSystemClient<TId>
     /// <see cref="FileSystemErrorCode.SharingViolation">The file is already open in not compatible sharing mode.</see>
     /// <see cref="FileSystemErrorCode.UnauthorizedAccess">Access has been denied.</see>
     /// </exception>
-    Task<IRevision> OpenFileForReading(NodeInfo<TId> info, CancellationToken cancellationToken);
+    Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<TId> info, CancellationToken cancellationToken);
 
     /// <summary>
     /// Opens the specified file for writing.
@@ -173,7 +173,7 @@ public interface IFileSystemClient<TId>
     /// <param name="fileMetadataProvider">An object that will provide the file metadata if available.</param>
     /// <param name="progressCallback">TODO</param>
     /// <param name="cancellationToken">The token to monitor for cancellation requests.</param>
-    /// <returns>The <see cref="IRevisionCreationProcess{TId}"/> used for writing the file content.</returns>
+    /// <returns>The <see cref="IDestinationRevision{TId}"/> used for writing the file content.</returns>
     /// <remarks>
     /// The expected content of the <paramref name="info"/> argument:
     /// <list type="bullet">
@@ -194,7 +194,7 @@ public interface IFileSystemClient<TId>
     /// <see cref="FileSystemErrorCode.SharingViolation">The file is already open in not compatible sharing mode.</see>
     /// <see cref="FileSystemErrorCode.UnauthorizedAccess">Access has been denied.</see>
     /// </exception>
-    Task<IRevisionCreationProcess<TId>> CreateRevision(
+    Task<IDestinationRevision<TId>> CreateRevisionAsync(
         NodeInfo<TId> info,
         long size,
         DateTime lastWriteTime,
@@ -240,7 +240,7 @@ public interface IFileSystemClient<TId>
     /// <see cref="FileSystemErrorCode.SharingViolation">The file system object or the new parent directory is already open in not compatible sharing mode.</see>
     /// <see cref="FileSystemErrorCode.UnauthorizedAccess">Access has been denied.</see>
     /// </exception>
-    Task Move(NodeInfo<TId> info, NodeInfo<TId> destinationInfo, CancellationToken cancellationToken);
+    Task MoveAsync(NodeInfo<TId> info, NodeInfo<TId> destinationInfo, CancellationToken cancellationToken);
 
     /// <summary>
     /// Moves the file system objects to the new parent directory.
@@ -277,7 +277,7 @@ public interface IFileSystemClient<TId>
     /// <see cref="FileSystemErrorCode.SharingViolation">The file system object is already open in not compatible sharing mode.</see>
     /// <see cref="FileSystemErrorCode.UnauthorizedAccess">Access has been denied.</see>
     /// </exception>
-    Task Delete(NodeInfo<TId> info, CancellationToken cancellationToken);
+    Task DeleteAsync(NodeInfo<TId> info, CancellationToken cancellationToken);
 
     /// <summary>
     /// Permanently deletes the specified file system object. Directories are deleted recursively including all descendants.
@@ -306,7 +306,7 @@ public interface IFileSystemClient<TId>
     /// <see cref="FileSystemErrorCode.SharingViolation">The file system object is already open in not compatible sharing mode.</see>
     /// <see cref="FileSystemErrorCode.UnauthorizedAccess">Access has been denied.</see>
     /// </exception>
-    Task DeletePermanently(NodeInfo<TId> info, CancellationToken cancellationToken);
+    Task DeletePermanentlyAsync(NodeInfo<TId> info, CancellationToken cancellationToken);
 
     /// <summary>
     /// Deletes the specified file revision. Not supported on local file systems.
@@ -329,9 +329,27 @@ public interface IFileSystemClient<TId>
     /// <see cref="FileSystemErrorCode.MetadataMismatch">The file system object metadata (type, name) differs from the expected.</see>
     /// <see cref="FileSystemErrorCode.UnauthorizedAccess">Access has been denied.</see>
     /// </exception>
-    Task DeleteRevision(NodeInfo<TId> info, CancellationToken cancellationToken);
+    Task DeleteRevisionAsync(NodeInfo<TId> info, CancellationToken cancellationToken);
 
+    /// <summary>
+    /// Sets the specified file to be in sync under its root on-demand sync folder.
+    /// </summary>
+    /// <param name="info">The node information to update to the in-sync state.</param>
     void SetInSyncState(NodeInfo<TId> info);
 
+    /// <summary>
+    /// Asynchronously ensures that the file represented by the specified node is fully hydrated and available for access.
+    /// </summary>
+    /// <remarks>
+    /// Hydration may involve downloading or restoring file contents from a remote source or storage provider.
+    /// This method is thread-safe and can be called concurrently for different nodes.
+    /// </remarks>
+    /// <param name="info">The node information identifying the file to hydrate. </param>
+    /// <param name="cancellationToken">A cancellation token that can be used to cancel the hydration operation.</param>
+    /// <returns>A task that represents the asynchronous hydration operation.</returns>
+    /// <exception cref="FileSystemClientException{TId}">File system client specific exception has occurred.
+    /// Expected specific <see cref="FileSystemClientException.ErrorCode"/> values:
+    /// <see cref="FileSystemErrorCode.IntegrityFailure">The file data integrity verification failed.</see>
+    /// </exception>
     Task HydrateFileAsync(NodeInfo<TId> info, CancellationToken cancellationToken);
 }

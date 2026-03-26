@@ -15,7 +15,7 @@ internal sealed class ProtectingFileFileSystemClientDecorator : FileSystemClient
         _folderStructureProtector = folderStructureProtector;
     }
 
-    public override async Task<IRevisionCreationProcess<long>> CreateFile(
+    public override async Task<IDestinationRevision<long>> CreateFileAsync(
         NodeInfo<long> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -23,13 +23,13 @@ internal sealed class ProtectingFileFileSystemClientDecorator : FileSystemClient
         Action<Progress>? progressCallback,
         CancellationToken cancellationToken)
     {
-        var revisionCreationProcess = await base.CreateFile(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken)
+        var revisionCreationProcess = await base.CreateFileAsync(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken)
             .ConfigureAwait(false);
 
         return new ProtectingRevisionCreationProcess(this, revisionCreationProcess);
     }
 
-    public override async Task<IRevisionCreationProcess<long>> CreateRevision(
+    public override async Task<IDestinationRevision<long>> CreateRevisionAsync(
         NodeInfo<long> info,
         long size,
         DateTime lastWriteTime,
@@ -43,7 +43,7 @@ internal sealed class ProtectingFileFileSystemClientDecorator : FileSystemClient
 
         try
         {
-            var revisionCreationProcess = await base.CreateRevision(
+            var revisionCreationProcess = await base.CreateRevisionAsync(
                 info,
                 size,
                 lastWriteTime,
@@ -76,12 +76,12 @@ internal sealed class ProtectingFileFileSystemClientDecorator : FileSystemClient
         _folderStructureProtector.UnprotectFile(info.Path, FileProtectionType.ReadOnly);
     }
 
-    private sealed class ProtectingRevisionCreationProcess : IRevisionCreationProcess<long>
+    private sealed class ProtectingRevisionCreationProcess : IDestinationRevision<long>
     {
         private readonly ProtectingFileFileSystemClientDecorator _fileProtector;
-        private readonly IRevisionCreationProcess<long> _decoratedInstance;
+        private readonly IDestinationRevision<long> _decoratedInstance;
 
-        public ProtectingRevisionCreationProcess(ProtectingFileFileSystemClientDecorator fileProtector, IRevisionCreationProcess<long> decoratedInstance)
+        public ProtectingRevisionCreationProcess(ProtectingFileFileSystemClientDecorator fileProtector, IDestinationRevision<long> decoratedInstance)
         {
             _fileProtector = fileProtector;
             _decoratedInstance = decoratedInstance;
@@ -96,6 +96,7 @@ internal sealed class ProtectingFileFileSystemClientDecorator : FileSystemClient
         }
 
         public bool ImmediateHydrationRequired => _decoratedInstance.ImmediateHydrationRequired;
+        public bool ChecksumVerificationEnabled => _decoratedInstance.ChecksumVerificationEnabled;
         public bool CanGetContentStream => _decoratedInstance.CanGetContentStream;
 
         public Stream GetContentStream()
@@ -103,14 +104,14 @@ internal sealed class ProtectingFileFileSystemClientDecorator : FileSystemClient
             return _decoratedInstance.GetContentStream();
         }
 
-        public Task WriteContentAsync(Stream source, CancellationToken cancellationToken)
+        public Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
         {
-            return _decoratedInstance.WriteContentAsync(source, cancellationToken);
+            return _decoratedInstance.WriteContentAsync(source, expectedSha1, cancellationToken);
         }
 
-        public Task<NodeInfo<long>> FinishAsync(CancellationToken cancellationToken)
+        public Task<NodeInfo<long>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
         {
-            return _decoratedInstance.FinishAsync(cancellationToken);
+            return _decoratedInstance.FinishAsync(expectedSha1, cancellationToken);
         }
 
         public ValueTask DisposeAsync()

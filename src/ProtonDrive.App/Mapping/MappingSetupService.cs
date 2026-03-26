@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using MoreLinq;
 using ProtonDrive.App.Onboarding;
@@ -257,6 +258,7 @@ internal sealed class MappingSetupService
         }
 
         _logger.LogInformation("Starting sync folder mappings setup");
+        var startTimestamp = Stopwatch.GetTimestamp();
 
         await SetStateAsync(MappingSetupStatus.SettingUp).ConfigureAwait(false);
 
@@ -284,7 +286,12 @@ internal sealed class MappingSetupService
             return;
         }
 
-        _logger.LogInformation("Sync folder mappings setup has succeeded: {Succeeded}/{Total}", successfullySetupMappings, mappings.Active.Count);
+        _logger.LogInformation(
+            "Sync folder mappings setup has succeeded: {Succeeded}/{Total} in {ElapsedTime}",
+            successfullySetupMappings,
+            mappings.Active.Count,
+            Stopwatch.GetElapsedTime(startTimestamp));
+
         await SetSuccessAsync().ConfigureAwait(false);
     }
 

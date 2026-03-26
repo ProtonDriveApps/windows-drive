@@ -44,6 +44,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
@@ -53,9 +54,22 @@
                         Text="{loc:Resource Main_MyComputer_Title}"
                         Style="{StaticResource Heading1Style}" />
 
+                    <Grid
+                        Grid.Row="1"
+                        Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Text="{loc:Resource Main_MyComputer_Description}"
+                            Foreground="{StaticResource GrayBrush}" />
+                    </Grid>
+
                     <TextBlock
                         AutomationProperties.HeadingLevel="Level2"
-                        Grid.Row="1"
+                        Grid.Row="2"
                         Text="{loc:Resource Main_MyComputer_Device_Label}"
                         FontWeight="SemiBold"
                         Margin="0,24,0,0" />
@@ -64,7 +78,7 @@
                         AutomationProperties.AutomationId="EditDeviceNameButton"
                         AutomationProperties.HelpText="{loc:Resource Main_MyComputer_Device_HelpText}"
                         AutomationProperties.Name="RenameDeviceButton"
-                        Grid.Row="2"
+                        Grid.Row="3"
                         Command="{Binding EditDeviceNameCommand}"
                         Style="{StaticResource SectionButtonStyle}"
                         VerticalContentAlignment="Center"
@@ -200,12 +214,12 @@
                     </Button>
 
                     <myComputer:FolderListView
-                        Grid.Row="3"
+                        Grid.Row="4"
                         DataContext="{Binding Folders}" />
 
                     <ItemsControl
                         AutomationProperties.AutomationId="ForeignDevicesItemsControl"
-                        Grid.Row="4"
+                        Grid.Row="5"
                         ItemsSource="{Binding ForeignDevices}"
                         Visibility="{Binding ForeignDevices.Count, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={StaticResource IntZero}}"
                         Margin="0,24,0,0">

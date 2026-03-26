@@ -1,4 +1,5 @@
 ﻿using System.Runtime.InteropServices.ComTypes;
+using System.Security.Cryptography;
 using ProtonDrive.Shared;
 using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Shared.IO;
@@ -72,7 +73,7 @@ internal static class NodeInfoExtensions
 
     public static FileSystemFile OpenAsFile(this NodeInfo<long> info, FileSystemFileAccess access, FileShare share)
     {
-        return OpenAsFile(info, FileMode.Open, access, share);
+        return info.OpenAsFile(FileMode.Open, access, share);
     }
 
     public static FileSystemFile OpenAsFile(
@@ -194,7 +195,7 @@ internal static class NodeInfoExtensions
         var tempFile = info.OpenAsFile(
             FileMode.CreateNew,
             FileSystemFileAccess.ReadWrite | FileSystemFileAccess.Delete,
-            FileShare.None,
+            FileShare.Read,
             info.Attributes | FileAttributes.Hidden,
             templateFile: templateFile);
 
@@ -386,5 +387,30 @@ internal static class NodeInfoExtensions
         }
 
         return name;
+    }
+
+    public static async Task<ReadOnlyMemory<byte>> GetContentSha1Async(this NodeInfo<long> info, CancellationToken cancellationToken)
+    {
+        const int fileBufferSize = 80 * 1024;
+
+        try
+        {
+            var fileStream = new FileStream(
+                info.Path,
+                FileMode.Open,
+                FileAccess.Read,
+                FileShare.ReadWrite | FileShare.Delete,
+                fileBufferSize,
+                FileOptions.SequentialScan | FileOptions.Asynchronous);
+
+            await using (fileStream.ConfigureAwait(false))
+            {
+                return await SHA1.HashDataAsync(fileStream, cancellationToken).ConfigureAwait(false);
+            }
+        }
+        catch (Exception ex) when (ExceptionMapping.TryMapException(ex, info.Id, out var mappedException))
+        {
+            throw mappedException;
+        }
     }
 }

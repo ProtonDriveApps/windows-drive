@@ -214,7 +214,7 @@
     <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
-    <value>Smazání z Proton Drive</value>
+    <value>Přesouvání do koše Proton Drive</value>
     <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
@@ -242,7 +242,7 @@
     <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
-    <value>Smazáno z Proton Drive</value>
+    <value>Přeunuto do koše Proton Drive</value>
     <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
@@ -755,6 +755,12 @@ Vypnutím a opětovným zapnutím synchronizace soubor obnovíte a tuto chybu od
   </data>
   <data name="Main_Activity_Title">
     <value>Aktivita</value>
+  </data>
+  <data name="Main_MyComputer_Button_LearnMore">
+    <value>Více informací</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Složky synchronizované z vašich počítačů se zobrazí v sekci "Počítače" ve všech aplikacích Drive.</value>
   </data>
   <data name="Main_MyComputer_Device_Button_Rename">
     <value>_Přejmenovat</value>

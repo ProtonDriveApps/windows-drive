@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Engine.Shared;
 using ProtonDrive.Sync.Engine.Shared.Trees.Propagation;
@@ -114,6 +115,7 @@ internal class TreePropagationPipeline<TId>
     public async Task Execute(CancellationToken cancellationToken)
     {
         _logger.LogInformation("Started propagation");
+        var startTimestamp = Stopwatch.GetTimestamp();
 
         StartFileTransfer(cancellationToken);
 
@@ -128,7 +130,7 @@ internal class TreePropagationPipeline<TId>
 
         await ExecuteSecondPass(cancellationToken).ConfigureAwait(false);
 
-        _logger.LogInformation("Finished propagation");
+        _logger.LogInformation("Finished propagation in {ElapsedTime}", Stopwatch.GetElapsedTime(startTimestamp));
     }
 
     private static UpdateStatus OptionallySkippingDirectoryDeletionFilter(

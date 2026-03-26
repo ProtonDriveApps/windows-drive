@@ -38,7 +38,7 @@ internal sealed class HybridRemoteFileSystemClient : IFileSystemClient<string>
             _sdkClient.DisconnectAsync()).ConfigureAwait(false);
     }
 
-    public async Task<IRevisionCreationProcess<string>> CreateFile(
+    public async Task<IDestinationRevision<string>> CreateFileAsync(
         NodeInfo<string> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -48,10 +48,10 @@ internal sealed class HybridRemoteFileSystemClient : IFileSystemClient<string>
     {
         var client = await GetClientForMainUploadAsync(cancellationToken).ConfigureAwait(false);
 
-        return await client.CreateFile(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken).ConfigureAwait(false);
+        return await client.CreateFileAsync(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken).ConfigureAwait(false);
     }
 
-    public async Task<IRevisionCreationProcess<string>> CreateRevision(
+    public async Task<IDestinationRevision<string>> CreateRevisionAsync(
         NodeInfo<string> info,
         long size,
         DateTime lastWriteTime,
@@ -63,7 +63,7 @@ internal sealed class HybridRemoteFileSystemClient : IFileSystemClient<string>
     {
         var client = await GetClientForMainUploadAsync(cancellationToken).ConfigureAwait(false);
 
-        return await client.CreateRevision(
+        return await client.CreateRevisionAsync(
             info,
             size,
             lastWriteTime,
@@ -74,26 +74,26 @@ internal sealed class HybridRemoteFileSystemClient : IFileSystemClient<string>
             cancellationToken).ConfigureAwait(false);
     }
 
-    public async Task<IRevision> OpenFileForReading(NodeInfo<string> info, CancellationToken cancellationToken)
+    public async Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         var client = await GetClientForMainDownloadAsync(cancellationToken).ConfigureAwait(false);
 
-        return await client.OpenFileForReading(info, cancellationToken).ConfigureAwait(false);
+        return await client.OpenFileForReadingAsync(info, cancellationToken).ConfigureAwait(false);
     }
 
-    public Task<NodeInfo<string>> GetInfo(NodeInfo<string> info, CancellationToken cancellationToken)
+    public Task<NodeInfo<string>> GetInfoAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
-        return _legacyClient.GetInfo(info, cancellationToken);
+        return _legacyClient.GetInfoAsync(info, cancellationToken);
     }
 
-    public IAsyncEnumerable<NodeInfo<string>> Enumerate(NodeInfo<string> info, CancellationToken cancellationToken)
+    public IAsyncEnumerable<NodeInfo<string>> EnumerateAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
-        return _legacyClient.Enumerate(info, cancellationToken);
+        return _legacyClient.EnumerateAsync(info, cancellationToken);
     }
 
-    public Task<NodeInfo<string>> CreateDirectory(NodeInfo<string> info, CancellationToken cancellationToken)
+    public Task<NodeInfo<string>> CreateDirectoryAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
-        return _legacyClient.CreateDirectory(info, cancellationToken);
+        return _legacyClient.CreateDirectoryAsync(info, cancellationToken);
     }
 
     public Task MoveAsync(IReadOnlyList<NodeInfo<string>> sourceNodes, NodeInfo<string> destinationInfo, CancellationToken cancellationToken)
@@ -101,24 +101,24 @@ internal sealed class HybridRemoteFileSystemClient : IFileSystemClient<string>
         return _legacyClient.MoveAsync(sourceNodes, destinationInfo, cancellationToken);
     }
 
-    public Task Move(NodeInfo<string> info, NodeInfo<string> destinationInfo, CancellationToken cancellationToken)
+    public Task MoveAsync(NodeInfo<string> info, NodeInfo<string> destinationInfo, CancellationToken cancellationToken)
     {
-        return _legacyClient.Move(info, destinationInfo, cancellationToken);
+        return _legacyClient.MoveAsync(info, destinationInfo, cancellationToken);
     }
 
-    public Task Delete(NodeInfo<string> info, CancellationToken cancellationToken)
+    public Task DeleteAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
-        return _legacyClient.Delete(info, cancellationToken);
+        return _legacyClient.DeleteAsync(info, cancellationToken);
     }
 
-    public Task DeletePermanently(NodeInfo<string> info, CancellationToken cancellationToken)
+    public Task DeletePermanentlyAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
-        return _legacyClient.DeletePermanently(info, cancellationToken);
+        return _legacyClient.DeletePermanentlyAsync(info, cancellationToken);
     }
 
-    public Task DeleteRevision(NodeInfo<string> info, CancellationToken cancellationToken)
+    public Task DeleteRevisionAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
-        return _legacyClient.DeleteRevision(info, cancellationToken);
+        return _legacyClient.DeleteRevisionAsync(info, cancellationToken);
     }
 
     public void SetInSyncState(NodeInfo<string> info)

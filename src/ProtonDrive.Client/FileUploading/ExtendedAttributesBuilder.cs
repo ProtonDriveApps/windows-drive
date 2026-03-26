@@ -109,7 +109,7 @@ internal sealed class ExtendedAttributesBuilder : IExtendedAttributesBuilder
             Size = Size,
             LastWriteTime = LastWriteTime,
             BlockSizes = BlockSizes,
-            Digests = new Digests { Sha1 = Sha1Digest },
+            Digests = new FileContentDigests { Sha1 = Sha1Digest },
         };
     }
 }

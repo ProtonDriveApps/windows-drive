@@ -18,11 +18,11 @@ internal sealed class TransferAbortionCapableFileSystemClientDecorator<TAltId> :
         _abortionStrategy = abortionStrategy;
     }
 
-    public override async Task<IRevision> OpenFileForReading(NodeInfo<TAltId> info, CancellationToken cancellationToken)
+    public override async Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<TAltId> info, CancellationToken cancellationToken)
     {
         if (info.Root is null)
         {
-            return await base.OpenFileForReading(info, cancellationToken).ConfigureAwait(false);
+            return await base.OpenFileForReadingAsync(info, cancellationToken).ConfigureAwait(false);
         }
 
         var id = (LooseCompoundAltIdentity<TAltId>)(info.Root.VolumeId, info.Id);
@@ -30,7 +30,7 @@ internal sealed class TransferAbortionCapableFileSystemClientDecorator<TAltId> :
 
         try
         {
-            var revisionToDecorate = await base.OpenFileForReading(info, cancellationToken).ConfigureAwait(false);
+            var revisionToDecorate = await base.OpenFileForReadingAsync(info, cancellationToken).ConfigureAwait(false);
 
             return new AbortionCapableRevisionDecorator(revisionToDecorate, id, _abortionStrategy, abortionToken);
         }
@@ -41,12 +41,12 @@ internal sealed class TransferAbortionCapableFileSystemClientDecorator<TAltId> :
         }
     }
 
-    private sealed class AbortionCapableRevisionDecorator : IRevision
+    private sealed class AbortionCapableRevisionDecorator : ISourceRevision
     {
-        private readonly IRevision _decoratedInstance;
+        private readonly ISourceRevision _decoratedInstance;
 
         public AbortionCapableRevisionDecorator(
-            IRevision instanceToDecorate,
+            ISourceRevision instanceToDecorate,
             LooseCompoundAltIdentity<TAltId> id,
             IFileTransferAbortionStrategy<TAltId> abortionStrategy,
             CancellationToken abortionToken)
@@ -83,13 +83,15 @@ internal sealed class TransferAbortionCapableFileSystemClientDecorator<TAltId> :
 
         public void Dispose()
         {
-            _decoratedInstance.Dispose();
-
             AbortionStrategy.HandleFileClosed(Id);
+
+            _decoratedInstance.Dispose();
         }
 
         public ValueTask DisposeAsync()
         {
+            AbortionStrategy.HandleFileClosed(Id);
+
             return _decoratedInstance.DisposeAsync();
         }
 
@@ -97,6 +99,8 @@ internal sealed class TransferAbortionCapableFileSystemClientDecorator<TAltId> :
         {
             return _decoratedInstance.CheckReadabilityAsync(cancellationToken);
         }
+
+        public Task<ReadOnlyMemory<byte>?> GetSha1Async(CancellationToken cancellationToken) => _decoratedInstance.GetSha1Async(cancellationToken);
 
         public Stream GetContentStream()
         {

@@ -76,7 +76,7 @@ internal sealed class LocalTrash<TId> : SpecialFolder<TId>, ILocalTrash<TId>, ID
         {
             var trashFolder = await GetOrCreate(cancellationToken).ConfigureAwait(false);
 
-            await foreach (var child in _fileSystemClient.Enumerate(trashFolder, cancellationToken))
+            await foreach (var child in _fileSystemClient.EnumerateAsync(trashFolder, cancellationToken))
             {
                 var node = child.Copy()
                     /* Enumerate does not fill the Path */
@@ -99,7 +99,7 @@ internal sealed class LocalTrash<TId> : SpecialFolder<TId>, ILocalTrash<TId>, ID
 
         try
         {
-            await _fileSystemClient.DeletePermanently(info, cancellationToken).ConfigureAwait(false);
+            await _fileSystemClient.DeletePermanentlyAsync(info, cancellationToken).ConfigureAwait(false);
 
             _logger.LogInformation("Deleted locally trashed {NodeType} \"{Name}\" with external Id={Id}", ToType(info.Attributes), nameToLog, info.Id);
         }

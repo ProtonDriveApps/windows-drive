@@ -22,7 +22,7 @@ internal sealed class LocalSpaceCheckingFileSystemClientDecorator<TId> : FileSys
         _fileSystemClient = fileSystemClient;
     }
 
-    public override Task<IRevisionCreationProcess<TId>> CreateFile(
+    public override Task<IDestinationRevision<TId>> CreateFileAsync(
         NodeInfo<TId> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -32,10 +32,10 @@ internal sealed class LocalSpaceCheckingFileSystemClientDecorator<TId> : FileSys
     {
         ThrowIfNotEnoughAvailableSpace(info, _rootDirectoryPath);
 
-        return _fileSystemClient.CreateFile(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken);
+        return _fileSystemClient.CreateFileAsync(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken);
     }
 
-    public override Task<IRevisionCreationProcess<TId>> CreateRevision(
+    public override Task<IDestinationRevision<TId>> CreateRevisionAsync(
         NodeInfo<TId> info,
         long size,
         DateTime lastWriteTime,
@@ -47,7 +47,7 @@ internal sealed class LocalSpaceCheckingFileSystemClientDecorator<TId> : FileSys
     {
         ThrowIfNotEnoughAvailableSpace(info, size, _rootDirectoryPath);
 
-        return _fileSystemClient.CreateRevision(
+        return _fileSystemClient.CreateRevisionAsync(
             info,
             size,
             lastWriteTime,

@@ -4,5 +4,7 @@ internal sealed class IntegrityMetricsSnapshot
 {
     public required IReadOnlyDictionary<DecryptionFailureTags, int> DecryptionFailures { get; init; }
     public required IReadOnlyDictionary<VerificationFailureTags, int> VerificationFailures { get; init; }
-    public required IReadOnlyDictionary<BlockVerificationFailureTags, int> BlockVerificationFailures { get; init; }
+    public required IReadOnlyDictionary<UploadBlockVerificationFailureTags, int> UploadBlockVerificationFailures { get; init; }
+    public required IReadOnlyDictionary<UploadChecksumVerificationAttemptTags, int> UploadChecksumVerificationAttempts { get; init; }
+    public required IReadOnlyDictionary<DownloadChecksumVerificationAttemptTags, int> DownloadChecksumVerificationAttempts { get; init; }
 }

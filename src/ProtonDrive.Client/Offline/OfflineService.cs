@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.CircuitBreaker;
+using Polly.Fallback;
 using ProtonDrive.Client.Configuration;
 using ProtonDrive.Shared.Net.Http;
 using ProtonDrive.Shared.Offline;
@@ -18,8 +19,10 @@ internal sealed class OfflineService : IOfflineService, IOfflinePolicyProvider, 
     private readonly TooManyRequestsBlockedEndpoints _blockedEndpoints;
     private readonly Lazy<IEnumerable<IOfflineStateAware>> _offlineStateAware;
     private readonly ILogger<OfflineService> _logger;
-    private readonly AsyncCircuitBreakerPolicy<HttpResponseMessage> _circuitBreakerPolicy;
-    private readonly AsyncPolicy<HttpResponseMessage> _offlinePolicy;
+
+    private readonly CircuitBreakerManualControl _manualControl = new();
+    private readonly CircuitBreakerStateProvider _stateProvider = new();
+    private readonly ResiliencePipeline<HttpResponseMessage> _resiliencyPipeline;
 
     private readonly ISchedulerTimer _timer;
 
@@ -38,23 +41,35 @@ internal sealed class OfflineService : IOfflineService, IOfflinePolicyProvider, 
         _offlineStateAware = offlineStateAware;
         _logger = logger;
 
-        _circuitBreakerPolicy = Policy
-            .Handle<Exception>(IsNotOperationCanceledException)
-            .OrResult<HttpResponseMessage>(IsWorthBreaking)
-            .CircuitBreakerAsync(
-                config.ConsecutiveErrorsBeforeSwitchingOffline,
-                config.DelayBeforeSwitchingOnline,
-                OnBreak,
-                OnReset,
-                OnHalfOpen);
+        var circuitBreakerOptions = new CircuitBreakerStrategyOptions<HttpResponseMessage>
+        {
+            ShouldHandle = new PredicateBuilder<HttpResponseMessage>()
+                .Handle<Exception>(IsNotOperationCanceledException)
+                .HandleResult(IsWorthBreaking),
+            SamplingDuration = TimeSpan.FromMinutes(7),
+            MinimumThroughput = 20,
+            FailureRatio = 0.4,
+            BreakDuration = config.DelayBeforeSwitchingOnline,
+            ManualControl = _manualControl,
+            OnOpened = OnOpened,
+            OnClosed = OnClosed,
+            OnHalfOpened = OnHalfOpen,
+        };
 
-        _offlinePolicy = _circuitBreakerPolicy.WrapAsync(Policy
-            .HandleResult<HttpResponseMessage>(IsClientError)
-            .FallbackAsync(FallbackAction, (_, _) => Task.CompletedTask));
+        var fallbackOptions = new FallbackStrategyOptions<HttpResponseMessage>
+        {
+            ShouldHandle = new PredicateBuilder<HttpResponseMessage>().HandleResult(IsClientError),
+            FallbackAction = FallbackAction,
+        };
+
+        _resiliencyPipeline = new ResiliencePipelineBuilder<HttpResponseMessage>()
+            .AddCircuitBreaker(circuitBreakerOptions)
+            .AddFallback(fallbackOptions)
+            .Build();
 
         _timer = scheduler.CreateTimer();
         _timer.Interval = config.DelayBeforeSwitchingOnline + TimerDelayAfterSwitchingOnline;
-        _timer.Tick += TimerOnTick;
+        _timer.Tick += OnTimerTick;
     }
 
     public void ForceOnline()
@@ -68,14 +83,14 @@ internal sealed class OfflineService : IOfflineService, IOfflinePolicyProvider, 
         // Clearing HTTP endpoints blocked because of too many requests
         _blockedEndpoints.Clear();
 
-        if (_circuitBreakerPolicy.CircuitState == CircuitState.Open)
+        if (_stateProvider.CircuitState == CircuitState.Open)
         {
             _logger.LogInformation("Resetting the offline state");
-            _circuitBreakerPolicy.Reset();
+            _ = _manualControl.CloseAsync();
         }
     }
 
-    public AsyncPolicy<HttpResponseMessage> GetPolicy() => _offlinePolicy;
+    public ResiliencePipeline<HttpResponseMessage> GetPolicy() => _resiliencyPipeline;
 
     public void Dispose()
     {
@@ -114,41 +129,52 @@ internal sealed class OfflineService : IOfflineService, IOfflinePolicyProvider, 
         };
     }
 
-    private async Task<HttpResponseMessage> FallbackAction(DelegateResult<HttpResponseMessage> result, Context context, CancellationToken cancellationToken)
+    private async ValueTask<Outcome<HttpResponseMessage>> FallbackAction(FallbackActionArguments<HttpResponseMessage> args)
     {
-        var response = result.Result;
-        var apiResponse = await response.TryReadFromJsonAsync<ApiResponse?>(cancellationToken).ConfigureAwait(false);
+        var response = args.Outcome.Result;
+        if (response == null)
+        {
+            return args.Outcome;
+        }
+
+        var apiResponse = await response.TryReadFromJsonAsync<ApiResponse?>(CancellationToken.None).ConfigureAwait(false);
 
         if (IsAppUpdateRequired(apiResponse))
         {
             HandleAppUpdateRequired();
         }
 
-        return response;
+        return args.Outcome;
     }
 
-    private void OnBreak(DelegateResult<HttpResponseMessage> arg1, TimeSpan arg2)
+    private ValueTask OnOpened(OnCircuitOpenedArguments<HttpResponseMessage> args)
     {
         _logger.LogInformation("Service offline: API requests cannot flow.");
 
         _timer.Start();
         OnStateChanged(OfflineStatus.Offline);
+
+        return ValueTask.CompletedTask;
     }
 
-    private void OnHalfOpen()
+    private ValueTask OnHalfOpen(OnCircuitHalfOpenedArguments args)
     {
         _logger.LogInformation("Service offline: Single API request can flow to see if it is online");
 
         _timer.Stop();
         OnStateChanged(OfflineStatus.Testing);
+
+        return ValueTask.CompletedTask;
     }
 
-    private void OnReset()
+    private ValueTask OnClosed(OnCircuitClosedArguments<HttpResponseMessage> args)
     {
         _logger.LogInformation("Service online: API requests flow normally.");
 
         _timer.Stop();
         OnStateChanged(OfflineStatus.Online);
+
+        return ValueTask.CompletedTask;
     }
 
     private void OnStateChanged(OfflineStatus status)
@@ -159,18 +185,18 @@ internal sealed class OfflineService : IOfflineService, IOfflinePolicyProvider, 
         }
     }
 
-    private void TimerOnTick(object? sender, EventArgs e)
+    private void OnTimerTick(object? sender, EventArgs e)
     {
         /* The Polly circuit breaker doesn't have a timer inside. It handles its state
          * when the request passes through or when its state is requested. To raise OnHalfOpen
          * event in a timely fashion, we are requesting policy state soon after the circuit
          * should have been switched to half-open state. */
-        _ = _circuitBreakerPolicy.CircuitState;
+        _ = _stateProvider.CircuitState;
     }
 
     private void HandleAppUpdateRequired()
     {
-        _circuitBreakerPolicy.Isolate();
+        _manualControl.IsolateAsync();
 
         if (!_appUpdateRequired)
         {

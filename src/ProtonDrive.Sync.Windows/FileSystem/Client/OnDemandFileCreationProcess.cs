@@ -2,7 +2,7 @@
 
 namespace ProtonDrive.Sync.Windows.FileSystem.Client;
 
-internal sealed class OnDemandFileCreationProcess : IRevisionCreationProcess<long>
+internal sealed class OnDemandFileCreationProcess : IDestinationRevision<long>
 {
     private readonly FileSystemDirectory _parentDirectory;
 
@@ -17,7 +17,7 @@ internal sealed class OnDemandFileCreationProcess : IRevisionCreationProcess<lon
     public NodeInfo<long> BackupInfo { get; set; } = NodeInfo<long>.Empty();
 
     public bool ImmediateHydrationRequired => false;
-
+    public bool ChecksumVerificationEnabled => false;
     public bool CanGetContentStream => false;
 
     public Stream GetContentStream()
@@ -25,12 +25,12 @@ internal sealed class OnDemandFileCreationProcess : IRevisionCreationProcess<lon
         throw new NotSupportedException();
     }
 
-    public Task WriteContentAsync(Stream source, CancellationToken cancellationToken)
+    public Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }
 
-    public Task<NodeInfo<long>> FinishAsync(CancellationToken cancellationToken)
+    public Task<NodeInfo<long>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
         return Task.FromResult(FileInfo.CreatePlaceholderFile(_parentDirectory));
     }

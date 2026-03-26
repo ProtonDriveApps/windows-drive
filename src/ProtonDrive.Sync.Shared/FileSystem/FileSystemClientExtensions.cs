@@ -22,6 +22,6 @@ public static class FileSystemClientExtensions
             .WithName(newName)
             .WithPath(newPath);
 
-        return origin.Move(info, newInfo, cancellationToken);
+        return origin.MoveAsync(info, newInfo, cancellationToken);
     }
 }

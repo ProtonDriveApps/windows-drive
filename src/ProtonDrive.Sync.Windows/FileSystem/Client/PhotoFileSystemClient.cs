@@ -26,12 +26,12 @@ internal sealed class PhotoFileSystemClient : IPhotoFileSystemClient<long>
         throw new NotSupportedException();
     }
 
-    public Task<NodeInfo<long>> GetInfo(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task<NodeInfo<long>> GetInfoAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }
 
-    public IAsyncEnumerable<NodeInfo<long>> Enumerate(NodeInfo<long> info, CancellationToken cancellationToken)
+    public IAsyncEnumerable<NodeInfo<long>> EnumerateAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }
@@ -101,12 +101,12 @@ internal sealed class PhotoFileSystemClient : IPhotoFileSystemClient<long>
             .SelectMany(node => EnumeratePhotoFilesAsync(NodeInfo<long>.Directory().WithPath(node.Path), cancellationToken));
     }
 
-    public Task<NodeInfo<long>> CreateDirectory(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task<NodeInfo<long>> CreateDirectoryAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }
 
-    public Task<IRevisionCreationProcess<long>> CreateFile(
+    public Task<IDestinationRevision<long>> CreateFileAsync(
         NodeInfo<long> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -117,12 +117,12 @@ internal sealed class PhotoFileSystemClient : IPhotoFileSystemClient<long>
         throw new NotSupportedException();
     }
 
-    public Task<IRevision> OpenFileForReading(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
-        return _fileSystemClient.OpenFileForReading(info, cancellationToken);
+        return _fileSystemClient.OpenFileForReadingAsync(info, cancellationToken);
     }
 
-    public Task<IRevisionCreationProcess<long>> CreateRevision(
+    public Task<IDestinationRevision<long>> CreateRevisionAsync(
         NodeInfo<long> info,
         long size,
         DateTime lastWriteTime,
@@ -140,22 +140,22 @@ internal sealed class PhotoFileSystemClient : IPhotoFileSystemClient<long>
         throw new NotSupportedException();
     }
 
-    public Task Move(NodeInfo<long> info, NodeInfo<long> destinationInfo, CancellationToken cancellationToken)
+    public Task MoveAsync(NodeInfo<long> info, NodeInfo<long> destinationInfo, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }
 
-    public Task Delete(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task DeleteAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }
 
-    public Task DeletePermanently(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task DeletePermanentlyAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }
 
-    public Task DeleteRevision(NodeInfo<long> info, CancellationToken cancellationToken)
+    public Task DeleteRevisionAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         throw new NotSupportedException();
     }

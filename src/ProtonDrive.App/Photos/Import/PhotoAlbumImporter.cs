@@ -332,7 +332,7 @@ internal sealed class PhotoAlbumImporter
 
                 if (!fileHashCache.TryGetValue(photoImportInfo.File.Path, out var fileHashes))
                 {
-                    var source = await _localFileSystemClient.OpenFileForReading(NodeInfo<long>.File().WithPath(photoImportInfo.File.Path), cancellationToken)
+                    var source = await _localFileSystemClient.OpenFileForReadingAsync(NodeInfo<long>.File().WithPath(photoImportInfo.File.Path), cancellationToken)
                         .ConfigureAwait(false);
 
                     await using (source.ConfigureAwait(false))

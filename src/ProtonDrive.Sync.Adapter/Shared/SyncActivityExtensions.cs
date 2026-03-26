@@ -68,7 +68,7 @@ public static class SyncActivityExtensions
             this ExecutableOperation<TId> operation,
             NodeInfo<TAltId> nodeInfo,
             NodeInfo<TAltId>? destinationInfo,
-            IRevision? sourceRevision = null,
+            ISourceRevision? sourceRevision = null,
             SyncActivityStage stage = SyncActivityStage.Execution)
         where TId : IEquatable<TId>
         where TAltId : IEquatable<TAltId>

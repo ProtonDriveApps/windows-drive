@@ -9,6 +9,7 @@ using ProtonDrive.Client.Sdk;
 using ProtonDrive.Client.Volumes;
 using ProtonDrive.Shared.Devices;
 using ProtonDrive.Shared.Features;
+using ProtonDrive.Shared.Metrics;
 using ProtonDrive.Shared.Reporting;
 using ProtonDrive.Sync.Shared.FileSystem;
 
@@ -34,6 +35,7 @@ internal sealed class RemoteFileSystemClientFactory : IRemoteFileSystemClientFac
     private readonly IBlockVerifierFactory _blockVerifierFactory;
     private readonly ILoggerFactory _loggerFactory;
 
+    private readonly Action<MetricEvent> _recordMetric;
     private readonly Action<Exception> _reportIntegrityFailure;
 
     public RemoteFileSystemClientFactory(
@@ -53,8 +55,9 @@ internal sealed class RemoteFileSystemClientFactory : IRemoteFileSystemClientFac
         IRevisionSealerFactory revisionSealerFactory,
         IRevisionManifestCreator revisionManifestCreator,
         IBlockVerifierFactory blockVerifierFactory,
-        ILoggerFactory loggerFactory,
-        IErrorReporting errorReporting)
+        IErrorReporting errorReporting,
+        IMetricsRecorder metricsRecorder,
+        ILoggerFactory loggerFactory)
     {
         _driveApi = driveApi;
         _featureFlagProvider = featureFlagProvider;
@@ -74,6 +77,7 @@ internal sealed class RemoteFileSystemClientFactory : IRemoteFileSystemClientFac
         _blockVerifierFactory = blockVerifierFactory;
         _loggerFactory = loggerFactory;
 
+        _recordMetric = metricsRecorder.Record;
         _reportIntegrityFailure = errorReporting.CaptureException;
     }
 
@@ -109,6 +113,7 @@ internal sealed class RemoteFileSystemClientFactory : IRemoteFileSystemClientFac
             _revisionSealerFactory,
             _revisionManifestCreator,
             _blockVerifierFactory,
+            _featureFlagProvider,
             _loggerFactory,
             _reportIntegrityFailure);
     }
@@ -121,6 +126,8 @@ internal sealed class RemoteFileSystemClientFactory : IRemoteFileSystemClientFac
             _fileContentTypeProvider,
             _remoteNodeService,
             _linkApiClient,
+            _featureFlagProvider,
+            _recordMetric,
             _reportIntegrityFailure);
     }
 }

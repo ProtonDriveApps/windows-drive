@@ -3,12 +3,12 @@ using Microsoft.Extensions.Logging;
 
 namespace ProtonDrive.Shared.Diagnostics;
 
-public abstract class BaseSystemProcess : IOsProcess
+public abstract class SystemProcessBase : IOsProcess
 {
     private readonly ILogger _logger;
     private bool _disposed;
 
-    protected BaseSystemProcess(ILogger logger, Process process)
+    protected SystemProcessBase(ILogger logger, Process process)
     {
         _logger = logger;
         Process = process;

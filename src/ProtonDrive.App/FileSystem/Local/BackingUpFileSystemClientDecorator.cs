@@ -24,7 +24,7 @@ internal sealed class BackingUpFileSystemClientDecorator<TId> : FileSystemClient
         _backupNameFactory = backupNameFactory;
     }
 
-    public override async Task<IRevisionCreationProcess<TId>> CreateRevision(
+    public override async Task<IDestinationRevision<TId>> CreateRevisionAsync(
         NodeInfo<TId> info,
         long size,
         DateTime lastWriteTime,
@@ -37,7 +37,7 @@ internal sealed class BackingUpFileSystemClientDecorator<TId> : FileSystemClient
         // Archive attribute indicates the file should be backed up before overwriting
         var backup = info.Attributes.HasFlag(FileAttributes.Archive);
 
-        var result = await base.CreateRevision(
+        var result = await base.CreateRevisionAsync(
             info,
             size,
             lastWriteTime,
@@ -50,7 +50,7 @@ internal sealed class BackingUpFileSystemClientDecorator<TId> : FileSystemClient
         return backup ? CreateRevisionWithBackup(info, result) : result;
     }
 
-    private IRevisionCreationProcess<TId> CreateRevisionWithBackup(NodeInfo<TId> info, IRevisionCreationProcess<TId> revisionCreationProcess)
+    private IDestinationRevision<TId> CreateRevisionWithBackup(NodeInfo<TId> info, IDestinationRevision<TId> revisionCreationProcess)
     {
         Ensure.NotNullOrEmpty(info.Name, nameof(info), nameof(info.Name));
         Ensure.NotNullOrEmpty(info.Path, nameof(info), nameof(info.Path));
@@ -72,12 +72,12 @@ internal sealed class BackingUpFileSystemClientDecorator<TId> : FileSystemClient
         }
     }
 
-    private class BackingUpFileWriteProcess : IRevisionCreationProcess<TId>
+    private class BackingUpFileWriteProcess : IDestinationRevision<TId>
     {
-        private readonly IRevisionCreationProcess<TId> _decoratedInstance;
+        private readonly IDestinationRevision<TId> _decoratedInstance;
         private readonly Action _setBackupInfo;
 
-        public BackingUpFileWriteProcess(IRevisionCreationProcess<TId> instanceToDecorate, Action setBackupInfo)
+        public BackingUpFileWriteProcess(IDestinationRevision<TId> instanceToDecorate, Action setBackupInfo)
         {
             _decoratedInstance = instanceToDecorate;
             _setBackupInfo = setBackupInfo;
@@ -92,6 +92,7 @@ internal sealed class BackingUpFileSystemClientDecorator<TId> : FileSystemClient
         }
 
         public bool ImmediateHydrationRequired => _decoratedInstance.ImmediateHydrationRequired;
+        public bool ChecksumVerificationEnabled => _decoratedInstance.ChecksumVerificationEnabled;
         public bool CanGetContentStream => _decoratedInstance.CanGetContentStream;
 
         public Stream GetContentStream()
@@ -99,16 +100,16 @@ internal sealed class BackingUpFileSystemClientDecorator<TId> : FileSystemClient
             return _decoratedInstance.GetContentStream();
         }
 
-        public Task WriteContentAsync(Stream source, CancellationToken cancellationToken)
+        public Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
         {
-            return _decoratedInstance.WriteContentAsync(source, cancellationToken);
+            return _decoratedInstance.WriteContentAsync(source, expectedSha1, cancellationToken);
         }
 
-        public Task<NodeInfo<TId>> FinishAsync(CancellationToken cancellationToken)
+        public Task<NodeInfo<TId>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
         {
             _setBackupInfo.Invoke();
 
-            return _decoratedInstance.FinishAsync(cancellationToken);
+            return _decoratedInstance.FinishAsync(expectedSha1, cancellationToken);
         }
 
         public ValueTask DisposeAsync() => _decoratedInstance.DisposeAsync();

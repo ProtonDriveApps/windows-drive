@@ -214,7 +214,7 @@
     <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
-    <value>Sletter fra Proton Drive</value>
+    <value>Flytter til papirkurv i Proton Drive</value>
     <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
@@ -242,7 +242,7 @@
     <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
-    <value>Slettet fra Proton Drive</value>
+    <value>Flyttet til papirkurv i Proton Drive</value>
     <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
@@ -755,6 +755,12 @@ Slå synkroniseringen fra og til igen for at gendanne den og fjerne denne fejl.<
   </data>
   <data name="Main_Activity_Title">
     <value>Aktivitet</value>
+  </data>
+  <data name="Main_MyComputer_Button_LearnMore">
+    <value>Få mere at vide</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Mapper synkroniseret fra dine computere vises i sektionen "Computere" på tværs af dine drev-apps.</value>
   </data>
   <data name="Main_MyComputer_Device_Button_Rename">
     <value>_Omdøb</value>

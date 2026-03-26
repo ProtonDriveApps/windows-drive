@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Adapter.Trees.Adapter;
 using ProtonDrive.Sync.Adapter.Trees.Dirty;
@@ -61,6 +62,7 @@ internal sealed class StateBasedUpdateDetection<TId, TAltId> : IExecutionStatist
     {
         cancellationToken.ThrowIfCancellationRequested();
         _executionStatistics.ClearFailures();
+        var startTimestamp = Stopwatch.GetTimestamp();
 
         try
         {
@@ -81,7 +83,7 @@ internal sealed class StateBasedUpdateDetection<TId, TAltId> : IExecutionStatist
         }
         finally
         {
-            _logger.LogInformation("Finished state-based update detection");
+            _logger.LogInformation("Finished state-based update detection in {ElapsedTime}", Stopwatch.GetElapsedTime(startTimestamp));
         }
     }
 

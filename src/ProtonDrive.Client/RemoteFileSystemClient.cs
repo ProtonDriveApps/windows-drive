@@ -14,6 +14,7 @@ using ProtonDrive.Client.Volumes;
 using ProtonDrive.Shared;
 using ProtonDrive.Shared.Devices;
 using ProtonDrive.Shared.Extensions;
+using ProtonDrive.Shared.Features;
 using ProtonDrive.Shared.IO;
 using ProtonDrive.Sync.Shared.FileSystem;
 using FileCreationParameters = ProtonDrive.Client.Contracts.FileCreationParameters;
@@ -44,6 +45,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
     private readonly IRevisionSealerFactory _revisionSealerFactory;
     private readonly IRevisionManifestCreator _revisionManifestCreator;
     private readonly IBlockVerifierFactory _blockVerifierFactory;
+    private readonly IFeatureFlagProvider _featureFlagProvider;
     private readonly ILoggerFactory _loggerFactory;
     private readonly Action<Exception> _reportBlockVerificationOrDecryptionFailure;
     private readonly ILogger<RemoteFileSystemClient> _logger;
@@ -64,6 +66,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         IRevisionSealerFactory revisionSealerFactory,
         IRevisionManifestCreator revisionManifestCreator,
         IBlockVerifierFactory blockVerifierFactory,
+        IFeatureFlagProvider featureFlagProvider,
         ILoggerFactory loggerFactory,
         Action<Exception> reportBlockVerificationOrDecryptionFailure)
         : base(fileSystemClientParameters, linkApiClient, remoteNodeService, fileContentTypeProvider)
@@ -86,6 +89,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         _revisionSealerFactory = revisionSealerFactory;
         _revisionManifestCreator = revisionManifestCreator;
         _blockVerifierFactory = blockVerifierFactory;
+        _featureFlagProvider = featureFlagProvider;
         _loggerFactory = loggerFactory;
         _reportBlockVerificationOrDecryptionFailure = reportBlockVerificationOrDecryptionFailure;
 
@@ -112,7 +116,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         return Task.CompletedTask;
     }
 
-    public async Task<NodeInfo<string>> GetInfo(NodeInfo<string> info, CancellationToken cancellationToken = default)
+    public async Task<NodeInfo<string>> GetInfoAsync(NodeInfo<string> info, CancellationToken cancellationToken = default)
     {
         EnsureId(info.Id);
 
@@ -123,7 +127,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         return node.ToNodeInfo();
     }
 
-    public async IAsyncEnumerable<NodeInfo<string>> Enumerate(NodeInfo<string> info, [EnumeratorCancellation] CancellationToken cancellationToken)
+    public async IAsyncEnumerable<NodeInfo<string>> EnumerateAsync(NodeInfo<string> info, [EnumeratorCancellation] CancellationToken cancellationToken)
     {
         // Shared with me item
         if (_linkId is not null && _linkName is not null)
@@ -169,7 +173,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         while (childListResponse.Links.Count >= FolderChildListingPageSize);
     }
 
-    public async Task<NodeInfo<string>> CreateDirectory(NodeInfo<string> info, CancellationToken cancellationToken)
+    public async Task<NodeInfo<string>> CreateDirectoryAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         EnsureParentId(info.ParentId);
         Ensure.NotNullOrEmpty(info.Name, nameof(info), nameof(info.Name));
@@ -203,7 +207,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         return info.WithId(response.FolderId.Value);
     }
 
-    public async Task<IRevisionCreationProcess<string>> CreateFile(
+    public async Task<IDestinationRevision<string>> CreateFileAsync(
         NodeInfo<string> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -273,6 +277,8 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
 
         var nodeInfoWithIds = info.WithId(response.FileRevisionId.LinkId).WithRevisionId(response.FileRevisionId.Value);
 
+        var checksumVerificationEnabled = await _featureFlagProvider.UploadChecksumVerificationIsEnabledAsync(cancellationToken).ConfigureAwait(false);
+
         if (_isPhotoClient)
         {
             revisionSealer = _revisionSealerFactory.CreatePhotoSealer(
@@ -284,6 +290,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
 
             return new RemotePhotoRevisionCreationProcess(
                 nodeInfoWithIds,
+                checksumVerificationEnabled,
                 stream,
                 stream.UploadedBlocks,
                 stream.BlockSize,
@@ -301,6 +308,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
 
         return new RemoteRevisionCreationProcess(
             nodeInfoWithIds,
+            checksumVerificationEnabled,
             stream,
             stream.UploadedBlocks,
             stream.BlockSize,
@@ -319,7 +327,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         }
     }
 
-    public async Task<IRevision> OpenFileForReading(NodeInfo<string> info, CancellationToken cancellationToken)
+    public async Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         EnsureId(info.Id);
 
@@ -349,7 +357,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         return new RemoteFileRevision(stream, remoteFile.CreationTime, remoteFile.ModificationTime, remoteFile.ExtendedAttributes);
     }
 
-    public async Task<IRevisionCreationProcess<string>> CreateRevision(
+    public async Task<IDestinationRevision<string>> CreateRevisionAsync(
         NodeInfo<string> info,
         long size,
         DateTime lastWriteTime,
@@ -422,8 +430,11 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
             .WithSize(size)
             .WithLastWriteTimeUtc(lastWriteTime);
 
+        var checksumVerificationEnabled = await _featureFlagProvider.UploadChecksumVerificationIsEnabledAsync(cancellationToken).ConfigureAwait(false);
+
         return new RemoteRevisionCreationProcess(
             nodeInfoWithIds,
+            checksumVerificationEnabled,
             stream,
             stream.UploadedBlocks,
             stream.BlockSize,
@@ -517,7 +528,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
             .ConfigureAwait(false);
     }
 
-    public async Task Move(NodeInfo<string> info, NodeInfo<string> destinationInfo, CancellationToken cancellationToken)
+    public async Task MoveAsync(NodeInfo<string> info, NodeInfo<string> destinationInfo, CancellationToken cancellationToken)
     {
         _logger.LogDebug("Moving file with ID {FileID} to {DestinationName}", info.Id, destinationInfo.Name);
 
@@ -650,7 +661,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         static string GetNodeMediaType(RemoteNode node) => node is RemoteFile file ? file.MediaType : string.Empty;
     }
 
-    public async Task Delete(NodeInfo<string> info, CancellationToken cancellationToken)
+    public async Task DeleteAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         EnsureId(info.Id);
 
@@ -663,7 +674,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         await DeleteAsync(remoteNode, _folderApiClient.MoveChildrenToTrashAsync, cancellationToken).ConfigureAwait(false);
     }
 
-    public async Task DeletePermanently(NodeInfo<string> info, CancellationToken cancellationToken)
+    public async Task DeletePermanentlyAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         EnsureId(info.Id);
 
@@ -676,7 +687,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         await DeleteAsync(remoteNode, _folderApiClient.DeleteChildrenAsync, cancellationToken).ConfigureAwait(false);
     }
 
-    public async Task DeleteRevision(NodeInfo<string> info, CancellationToken cancellationToken)
+    public async Task DeleteRevisionAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         EnsureId(info.Id);
         Ensure.NotNullOrEmpty(info.RevisionId, nameof(info), nameof(info.RevisionId));

@@ -26,16 +26,16 @@ internal class RootedFileSystemClientDecorator : FileSystemClientDecoratorBase<l
         base.Connect(path, fileHydrationDemandHandler);
     }
 
-    public override async Task<NodeInfo<long>> GetInfo(NodeInfo<long> info, CancellationToken cancellationToken)
+    public override async Task<NodeInfo<long>> GetInfoAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         if (!IsRoot(info))
         {
-            return ToRelative(await base.GetInfo(ToAbsolute(info), cancellationToken).ConfigureAwait(false));
+            return ToRelative(await base.GetInfoAsync(ToAbsolute(info), cancellationToken).ConfigureAwait(false));
         }
 
         if (!string.IsNullOrEmpty(info.Path))
         {
-            throw new ArgumentException($"The root folder path must be empty", nameof(info));
+            throw new ArgumentException("The root folder path must be empty", nameof(info));
         }
 
         // The request about the root node always succeeds, the response is crafted from known data.
@@ -44,25 +44,25 @@ internal class RootedFileSystemClientDecorator : FileSystemClientDecoratorBase<l
             .WithName(string.Empty);
     }
 
-    public override IAsyncEnumerable<NodeInfo<long>> Enumerate(NodeInfo<long> info, CancellationToken cancellationToken)
-        => base.Enumerate(ToAbsolute(info), cancellationToken).Select(ToRelative);
+    public override IAsyncEnumerable<NodeInfo<long>> EnumerateAsync(NodeInfo<long> info, CancellationToken cancellationToken)
+        => base.EnumerateAsync(ToAbsolute(info), cancellationToken).Select(ToRelative);
 
-    public override Task<IRevision> OpenFileForReading(NodeInfo<long> info, CancellationToken cancellationToken)
-        => base.OpenFileForReading(ToAbsolute(info), cancellationToken);
+    public override Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<long> info, CancellationToken cancellationToken)
+        => base.OpenFileForReadingAsync(ToAbsolute(info), cancellationToken);
 
-    public override Task<NodeInfo<long>> CreateDirectory(NodeInfo<long> info, CancellationToken cancellationToken)
-        => base.CreateDirectory(ToAbsolute(info), cancellationToken);
+    public override Task<NodeInfo<long>> CreateDirectoryAsync(NodeInfo<long> info, CancellationToken cancellationToken)
+        => base.CreateDirectoryAsync(ToAbsolute(info), cancellationToken);
 
-    public override Task<IRevisionCreationProcess<long>> CreateFile(
+    public override Task<IDestinationRevision<long>> CreateFileAsync(
         NodeInfo<long> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
         IFileMetadataProvider fileMetadataProvider,
         Action<Progress>? progressCallback,
         CancellationToken cancellationToken)
-        => base.CreateFile(ToAbsolute(info), tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken);
+        => base.CreateFileAsync(ToAbsolute(info), tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken);
 
-    public override async Task<IRevisionCreationProcess<long>> CreateRevision(
+    public override async Task<IDestinationRevision<long>> CreateRevisionAsync(
         NodeInfo<long> info,
         long size,
         DateTime lastWriteTime,
@@ -72,7 +72,7 @@ internal class RootedFileSystemClientDecorator : FileSystemClientDecoratorBase<l
         Action<Progress>? progressCallback,
         CancellationToken cancellationToken)
         => new RootedFileWriteProcess(
-            await base.CreateRevision(
+            await base.CreateRevisionAsync(
                     ToAbsolute(info),
                     size,
                     lastWriteTime,
@@ -84,21 +84,21 @@ internal class RootedFileSystemClientDecorator : FileSystemClientDecoratorBase<l
                 .ConfigureAwait(false),
             this);
 
-    public override Task Move(NodeInfo<long> info, NodeInfo<long> newInfo, CancellationToken cancellationToken)
+    public override Task MoveAsync(NodeInfo<long> info, NodeInfo<long> newInfo, CancellationToken cancellationToken)
     {
         var nodeInfo = ToAbsolute(info);
 
-        return base.Move(nodeInfo, ToAbsoluteDestination(nodeInfo, newInfo), cancellationToken);
+        return base.MoveAsync(nodeInfo, ToAbsoluteDestination(nodeInfo, newInfo), cancellationToken);
     }
 
-    public override Task Delete(NodeInfo<long> info, CancellationToken cancellationToken)
-        => base.Delete(ToAbsolute(info), cancellationToken);
+    public override Task DeleteAsync(NodeInfo<long> info, CancellationToken cancellationToken)
+        => base.DeleteAsync(ToAbsolute(info), cancellationToken);
 
-    public override Task DeletePermanently(NodeInfo<long> info, CancellationToken cancellationToken)
-        => base.DeletePermanently(ToAbsolute(info), cancellationToken);
+    public override Task DeletePermanentlyAsync(NodeInfo<long> info, CancellationToken cancellationToken)
+        => base.DeletePermanentlyAsync(ToAbsolute(info), cancellationToken);
 
-    public override Task DeleteRevision(NodeInfo<long> info, CancellationToken cancellationToken)
-        => base.DeleteRevision(ToAbsolute(info), cancellationToken);
+    public override Task DeleteRevisionAsync(NodeInfo<long> info, CancellationToken cancellationToken)
+        => base.DeleteRevisionAsync(ToAbsolute(info), cancellationToken);
 
     public override void SetInSyncState(NodeInfo<long> info)
         => base.SetInSyncState(ToAbsolute(info));
@@ -108,7 +108,7 @@ internal class RootedFileSystemClientDecorator : FileSystemClientDecoratorBase<l
 
     private static bool IsDefault(long value)
     {
-        return value.Equals(default);
+        return value.Equals(0);
     }
 
     private bool IsRoot(NodeInfo<long> info)
@@ -189,12 +189,12 @@ internal class RootedFileSystemClientDecorator : FileSystemClientDecoratorBase<l
         return relativePath != path ? relativePath : string.Empty;
     }
 
-    private class RootedFileWriteProcess : IRevisionCreationProcess<long>
+    private class RootedFileWriteProcess : IDestinationRevision<long>
     {
-        private readonly IRevisionCreationProcess<long> _decoratedInstance;
+        private readonly IDestinationRevision<long> _decoratedInstance;
         private readonly RootedFileSystemClientDecorator _converter;
 
-        public RootedFileWriteProcess(IRevisionCreationProcess<long> instanceToDecorate, RootedFileSystemClientDecorator converter)
+        public RootedFileWriteProcess(IDestinationRevision<long> instanceToDecorate, RootedFileSystemClientDecorator converter)
         {
             _decoratedInstance = instanceToDecorate;
             _converter = converter;
@@ -209,6 +209,7 @@ internal class RootedFileSystemClientDecorator : FileSystemClientDecoratorBase<l
         }
 
         public bool ImmediateHydrationRequired => _decoratedInstance.ImmediateHydrationRequired;
+        public bool ChecksumVerificationEnabled => _decoratedInstance.ChecksumVerificationEnabled;
         public bool CanGetContentStream => _decoratedInstance.CanGetContentStream;
 
         public Stream GetContentStream()
@@ -216,14 +217,14 @@ internal class RootedFileSystemClientDecorator : FileSystemClientDecoratorBase<l
             return _decoratedInstance.GetContentStream();
         }
 
-        public Task WriteContentAsync(Stream source, CancellationToken cancellationToken)
+        public Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
         {
-            return _decoratedInstance.WriteContentAsync(source, cancellationToken);
+            return _decoratedInstance.WriteContentAsync(source, expectedSha1, cancellationToken);
         }
 
-        public Task<NodeInfo<long>> FinishAsync(CancellationToken cancellationToken)
+        public Task<NodeInfo<long>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
         {
-            return _decoratedInstance.FinishAsync(cancellationToken);
+            return _decoratedInstance.FinishAsync(expectedSha1, cancellationToken);
         }
 
         public ValueTask DisposeAsync() => _decoratedInstance.DisposeAsync();

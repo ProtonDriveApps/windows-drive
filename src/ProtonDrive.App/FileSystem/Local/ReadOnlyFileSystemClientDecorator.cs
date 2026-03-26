@@ -11,7 +11,7 @@ internal class ReadOnlyFileSystemClientDecorator : FileSystemClientDecoratorBase
     {
     }
 
-    public override Task<IRevisionCreationProcess<long>> CreateFile(
+    public override Task<IDestinationRevision<long>> CreateFileAsync(
         NodeInfo<long> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -21,10 +21,10 @@ internal class ReadOnlyFileSystemClientDecorator : FileSystemClientDecoratorBase
     {
         var readOnlyInfo = ToReadOnly(info);
 
-        return base.CreateFile(readOnlyInfo, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken);
+        return base.CreateFileAsync(readOnlyInfo, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken);
     }
 
-    public override Task<IRevisionCreationProcess<long>> CreateRevision(
+    public override Task<IDestinationRevision<long>> CreateRevisionAsync(
         NodeInfo<long> info,
         long size,
         DateTime lastWriteTime,
@@ -36,7 +36,7 @@ internal class ReadOnlyFileSystemClientDecorator : FileSystemClientDecoratorBase
     {
         var readOnlyInfo = ToReadOnly(info);
 
-        return base.CreateRevision(
+        return base.CreateRevisionAsync(
             readOnlyInfo,
             size,
             lastWriteTime,
@@ -47,18 +47,18 @@ internal class ReadOnlyFileSystemClientDecorator : FileSystemClientDecoratorBase
             cancellationToken);
     }
 
-    public override Task Delete(NodeInfo<long> info, CancellationToken cancellationToken)
+    public override Task DeleteAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         var readOnlyInfo = ToReadOnly(info);
 
-        return base.Delete(readOnlyInfo, cancellationToken);
+        return base.DeleteAsync(readOnlyInfo, cancellationToken);
     }
 
-    public override Task DeletePermanently(NodeInfo<long> info, CancellationToken cancellationToken)
+    public override Task DeletePermanentlyAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         var readOnlyInfo = ToReadOnly(info);
 
-        return base.DeletePermanently(readOnlyInfo, cancellationToken);
+        return base.DeletePermanentlyAsync(readOnlyInfo, cancellationToken);
     }
 
     private NodeInfo<long> ToReadOnly(NodeInfo<long> nodeInfo)

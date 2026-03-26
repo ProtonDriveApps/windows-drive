@@ -274,7 +274,11 @@ public static class Program
 
     private static void OnUninstallingApp()
     {
-        var localFolderStructureProtector = new SafeSyncFolderStructureProtectorDecorator(new NtfsPermissionsBasedSyncFolderStructureProtector());
+        var localFolderStructureProtector =
+            new SafeSyncFolderStructureProtectorDecorator(
+                new NtfsPermissionsBasedSyncFolderStructureProtector(
+                    NullLogger<NtfsPermissionsBasedSyncFolderStructureProtector>.Instance));
+
         var placeholderConverter = new PlaceholderToRegularItemConverter(NullLogger<PlaceholderToRegularItemConverter>.Instance);
         var readOnlyFileAttributeRemover = new ReadOnlyFileAttributeRemover(NullLogger<ReadOnlyFileAttributeRemover>.Instance);
 

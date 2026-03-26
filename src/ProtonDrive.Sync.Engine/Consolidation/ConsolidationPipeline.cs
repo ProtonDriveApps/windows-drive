@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Engine.Shared.Trees.Synced;
 using ProtonDrive.Sync.Engine.Shared.Trees.Update;
@@ -45,6 +46,7 @@ internal class ConsolidationPipeline<TId>
         cancellationToken.ThrowIfCancellationRequested();
 
         _logger.LogInformation("Started {Replica} consolidation", _replica);
+        var startTimestamp = Stopwatch.GetTimestamp();
 
         foreach (var detectedUpdate in _detectedUpdates)
         {
@@ -55,7 +57,7 @@ internal class ConsolidationPipeline<TId>
             cancellationToken.ThrowIfCancellationRequested();
         }
 
-        _logger.LogInformation("Finished {Replica} consolidation", _replica);
+        _logger.LogInformation("Finished {Replica} consolidation in {ElapsedTime}", _replica, Stopwatch.GetElapsedTime(startTimestamp));
     }
 
     private void Execute(Operation<FileSystemNodeModel<TId>> detectedUpdate)

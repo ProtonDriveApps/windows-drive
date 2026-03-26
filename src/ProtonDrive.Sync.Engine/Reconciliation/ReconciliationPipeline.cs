@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Engine.Consolidation;
 using ProtonDrive.Sync.Engine.Shared;
@@ -62,6 +63,7 @@ internal class ReconciliationPipeline<TId>
     public async Task Execute(CancellationToken cancellationToken)
     {
         _logger.LogInformation("Started reconciliation");
+        var startTimestamp = Stopwatch.GetTimestamp();
 
         await Schedule(() => ClearPropagationTree(cancellationToken)).ConfigureAwait(false);
 
@@ -69,7 +71,7 @@ internal class ReconciliationPipeline<TId>
 
         await Schedule(() => MergeLocalUpdates(cancellationToken)).ConfigureAwait(false);
 
-        _logger.LogInformation("Finished reconciliation");
+        _logger.LogInformation("Finished reconciliation in {ElapsedTime}", Stopwatch.GetElapsedTime(startTimestamp));
     }
 
     private void ClearPropagationTree(CancellationToken cancellationToken)

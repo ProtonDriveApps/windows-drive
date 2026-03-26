@@ -50,7 +50,7 @@ internal class SpecialFolder<TId> : ISpecialFolder<TId>
 
         try
         {
-            var folder = await _fileSystemClient.GetInfo(folderInfo, cancellationToken).ConfigureAwait(false);
+            var folder = await _fileSystemClient.GetInfoAsync(folderInfo, cancellationToken).ConfigureAwait(false);
 
             // GetInfo does not fill the Path
             return folder.Copy().WithPath(folderInfo.Path);
@@ -65,7 +65,7 @@ internal class SpecialFolder<TId> : ISpecialFolder<TId>
     {
         try
         {
-            var folderInfo = await _fileSystemClient.CreateDirectory(info, cancellationToken).ConfigureAwait(false);
+            var folderInfo = await _fileSystemClient.CreateDirectoryAsync(info, cancellationToken).ConfigureAwait(false);
 
             // CreateDirectory does not fill the Path
             folderInfo = folderInfo.Copy().WithPath(info.Path);

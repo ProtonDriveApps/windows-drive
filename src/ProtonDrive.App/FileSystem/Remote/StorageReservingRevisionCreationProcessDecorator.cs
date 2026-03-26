@@ -3,16 +3,16 @@ using ProtonDrive.Sync.Shared.FileSystem;
 
 namespace ProtonDrive.App.FileSystem.Remote;
 
-internal class StorageReservingRevisionCreationProcessDecorator : IRevisionCreationProcess<string>
+internal class StorageReservingRevisionCreationProcessDecorator : IDestinationRevision<string>
 {
     private static readonly SemaphoreSlim UsedSpaceUpdateSemaphore = new(1, 1);
 
-    private readonly IRevisionCreationProcess<string> _decoratedInstance;
+    private readonly IDestinationRevision<string> _decoratedInstance;
     private readonly IDisposable _storageReservation;
     private readonly IUserService _userService;
 
     public StorageReservingRevisionCreationProcessDecorator(
-        IRevisionCreationProcess<string> decoratedInstance,
+        IDestinationRevision<string> decoratedInstance,
         IDisposable storageReservation,
         IUserService userService)
     {
@@ -30,6 +30,7 @@ internal class StorageReservingRevisionCreationProcessDecorator : IRevisionCreat
     }
 
     public bool ImmediateHydrationRequired => _decoratedInstance.ImmediateHydrationRequired;
+    public bool ChecksumVerificationEnabled => _decoratedInstance.ChecksumVerificationEnabled;
     public bool CanGetContentStream => _decoratedInstance.CanGetContentStream;
 
     public Stream GetContentStream()
@@ -37,14 +38,14 @@ internal class StorageReservingRevisionCreationProcessDecorator : IRevisionCreat
         return _decoratedInstance.GetContentStream();
     }
 
-    public Task WriteContentAsync(Stream source, CancellationToken cancellationToken)
+    public Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
-        return _decoratedInstance.WriteContentAsync(source, cancellationToken);
+        return _decoratedInstance.WriteContentAsync(source, expectedSha1, cancellationToken);
     }
 
-    public async Task<NodeInfo<string>> FinishAsync(CancellationToken cancellationToken)
+    public async Task<NodeInfo<string>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
-        var fileInfo = await _decoratedInstance.FinishAsync(cancellationToken).ConfigureAwait(false);
+        var fileInfo = await _decoratedInstance.FinishAsync(expectedSha1, cancellationToken).ConfigureAwait(false);
 
         if (fileInfo.SizeOnStorage is not null)
         {

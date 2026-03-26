@@ -11,6 +11,7 @@
     xmlns:windows="clr-namespace:ProtonDrive.App.Windows.Toolkit.Windows"
     xmlns:wpf="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
     Title="{loc:Resource Main_Window_Title}"
+    Loaded="OnLoaded"
     ResizeMode="CanResize"
     Style="{StaticResource DialogStyle}"
     WindowStartupLocation="CenterScreen"

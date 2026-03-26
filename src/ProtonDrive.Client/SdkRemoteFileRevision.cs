@@ -1,11 +1,15 @@
 using Proton.Drive.Sdk.Nodes.Download;
 using ProtonDrive.Client.Contracts;
+using ProtonDrive.Client.Sdk;
+using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Sync.Shared.FileSystem;
 
 namespace ProtonDrive.Client;
 
-internal sealed class SdkRemoteFileRevision : IRevision
+internal sealed class SdkRemoteFileRevision : ISourceRevision
 {
+    private const int NumberOfRetries = 10;
+    private static readonly TimeSpan DelayBeforeRetry = TimeSpan.FromMinutes(1).RandomizedWithDeviation(0.2);
     private static readonly Action<long, long> NullProgressCallback = (_, _) => { };
 
     private readonly FileDownloader _fileDownloader;
@@ -45,13 +49,50 @@ internal sealed class SdkRemoteFileRevision : IRevision
         return Task.CompletedTask;
     }
 
+    public Task<ReadOnlyMemory<byte>?> GetSha1Async(CancellationToken cancellationToken)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+
+        return Task.FromResult(GetSha1());
+
+        ReadOnlyMemory<byte>? GetSha1()
+        {
+            var hexSha1 = _extendedAttributes?.Common?.Digests?.Sha1;
+
+            if (string.IsNullOrEmpty(hexSha1))
+            {
+                return null;
+            }
+
+            try
+            {
+                return Convert.FromHexString(hexSha1);
+            }
+            catch (FormatException)
+            {
+                return null;
+            }
+        }
+    }
+
     public async Task CopyContentToAsync(Stream destination, CancellationToken cancellationToken)
     {
+        DownloadController? controller = null;
+
         try
         {
-            var controller = _fileDownloader.DownloadToStream(destination, NullProgressCallback, cancellationToken);
+            controller = _fileDownloader.DownloadToStream(destination, NullProgressCallback, cancellationToken);
 
-            await controller.Completion.ConfigureAwait(false);
+            await using (controller.ConfigureAwait(false))
+            {
+                await controller.ExecuteWithRetryAsync(NumberOfRetries, DelayBeforeRetry, cancellationToken).ConfigureAwait(false);
+
+                await controller.Completion.ConfigureAwait(false);
+            }
+        }
+        catch (DataIntegrityException) when (controller?.GetIsDownloadCompleteWithVerificationIssue() == true)
+        {
+            // Content download succeeded, but the revision manifest signature verification produced non-successful result
         }
         catch (Exception ex) when (ExceptionMapping.TryMapSdkClientException(ex, id: null, includeObjectId: false, out var mappedException))
         {

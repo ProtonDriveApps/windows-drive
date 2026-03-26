@@ -19,7 +19,6 @@
     "EventsPollingInterval": "00:01:30",
     "ForeignVolumeEventsPollingInterval": "00:10:00",
     "EventsThrottleInterval": "00:00:20",
-    "ConsecutiveErrorsBeforeSwitchingOffline": 6,
     "DelayBeforeSwitchingOnline": "00:01:00",
     "FeaturesUpdateInterval": "00:10:00"
   },

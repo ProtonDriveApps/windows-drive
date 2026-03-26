@@ -4,5 +4,5 @@ namespace ProtonDrive.Client.Offline;
 
 internal interface IOfflinePolicyProvider
 {
-    AsyncPolicy<HttpResponseMessage> GetPolicy();
+    ResiliencePipeline<HttpResponseMessage> GetPolicy();
 }

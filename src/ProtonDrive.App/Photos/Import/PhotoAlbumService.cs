@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using ProtonDrive.Client.FileUploading;
 using ProtonDrive.Sync.Shared.FileSystem;
 using ProtonDrive.Sync.Shared.FileSystem.Photos;
 
@@ -24,7 +23,7 @@ internal sealed class PhotoAlbumService : IPhotoAlbumService
                 .WithName(albumName)
                 .WithParentId(parentLinkId);
 
-            var album = await _remoteFileSystemClient.CreateDirectory(albumInfo, cancellationToken).ConfigureAwait(false);
+            var album = await _remoteFileSystemClient.CreateDirectoryAsync(albumInfo, cancellationToken).ConfigureAwait(false);
 
             if (string.IsNullOrEmpty(album.Id))
             {
@@ -37,7 +36,10 @@ internal sealed class PhotoAlbumService : IPhotoAlbumService
         }
         catch (FileSystemClientException exception) when (exception.ErrorCode is FileSystemErrorCode.TooManyChildren)
         {
-            throw new PhotoAlbumCreationException("Album creation failed: limit reached", exception, PhotoImportErrorCode.MaximumNumberOfAlbumsReached);
+            throw new PhotoAlbumCreationException(
+                $"Creation of Album with name '{albumName}' failed: limit reached",
+                exception,
+                PhotoImportErrorCode.MaximumNumberOfAlbumsReached);
         }
     }
 

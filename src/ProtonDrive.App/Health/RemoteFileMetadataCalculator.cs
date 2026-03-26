@@ -228,7 +228,7 @@ internal sealed class RemoteFileMetadataCalculator
         }
     }
 
-    private async Task<IRevision?> OpenFileForReadingAsync(FileConsistencyGuardFileModel file, CancellationToken cancellationToken)
+    private async Task<ISourceRevision?> OpenFileForReadingAsync(FileConsistencyGuardFileModel file, CancellationToken cancellationToken)
     {
         try
         {
@@ -241,7 +241,7 @@ internal sealed class RemoteFileMetadataCalculator
         }
     }
 
-    private async Task<(string Hash, long PlainSize)?> HashContentAsync(IRevision? fileRevision, FileConsistencyGuardFileModel file, CancellationToken cancellationToken)
+    private async Task<(string Hash, long PlainSize)?> HashContentAsync(ISourceRevision? fileRevision, FileConsistencyGuardFileModel file, CancellationToken cancellationToken)
     {
         if (fileRevision is null)
         {

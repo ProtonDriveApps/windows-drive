@@ -3,7 +3,7 @@ using ProtonDrive.Sync.Windows.FileSystem.Photos;
 
 namespace ProtonDrive.Sync.Windows.FileSystem.Client;
 
-internal sealed class FileRevision : IRevision
+internal sealed class LocalFileRevision : ISourceRevision
 {
     private static readonly byte[] ReadabilityCheckBuffer = new byte[1];
 
@@ -14,7 +14,7 @@ internal sealed class FileRevision : IRevision
 
     private Stream? _stream;
 
-    public FileRevision(
+    public LocalFileRevision(
         FileSystemFile file,
         IThumbnailGenerator thumbnailGenerator,
         IFileMetadataGenerator fileMetadataGenerator,
@@ -41,6 +41,13 @@ internal sealed class FileRevision : IRevision
 
         _ = await stream.ReadAsync(ReadabilityCheckBuffer, cancellationToken).ConfigureAwait(false);
         stream.Seek(0, SeekOrigin.Begin);
+    }
+
+    public async Task<ReadOnlyMemory<byte>?> GetSha1Async(CancellationToken cancellationToken)
+    {
+        var fileInfo = NodeInfo<long>.File().WithPath(_file.FullPath).WithId(_file.ObjectId);
+
+        return await fileInfo.GetContentSha1Async(cancellationToken).ConfigureAwait(false);
     }
 
     public Stream GetContentStream()
@@ -103,8 +110,8 @@ internal sealed class FileRevision : IRevision
 
     public void Dispose()
     {
-        _file.Dispose();
         _stream?.Dispose();
+        _file.Dispose();
     }
 
     public ValueTask DisposeAsync()

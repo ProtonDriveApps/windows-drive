@@ -43,11 +43,11 @@ internal sealed class PermanentDeletionFallbackFileSystemClientDecorator<TId> : 
         await base.DisconnectAsync().ConfigureAwait(false);
     }
 
-    public override async Task Delete(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public override async Task DeleteAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
         try
         {
-            await base.Delete(info, cancellationToken).ConfigureAwait(false);
+            await base.DeleteAsync(info, cancellationToken).ConfigureAwait(false);
         }
         catch (FileSystemClientException ex)
         {
@@ -66,7 +66,7 @@ internal sealed class PermanentDeletionFallbackFileSystemClientDecorator<TId> : 
         {
             return info.IsDirectory()
                 ? DeleteDirectoryPermanently(info, cancellationToken)
-                : DeletePermanently(info, cancellationToken);
+                : DeletePermanentlyAsync(info, cancellationToken);
         }
     }
 
@@ -85,7 +85,7 @@ internal sealed class PermanentDeletionFallbackFileSystemClientDecorator<TId> : 
         try
         {
             // Move to the trash folder instead of deleting in-place
-            await Move(info, destinationInfo, cancellationToken).ConfigureAwait(false);
+            await MoveAsync(info, destinationInfo, cancellationToken).ConfigureAwait(false);
 
             var pathToLog = _logger.GetSensitiveValueForLogging(info.Path);
             _logger.LogInformation("Moved \"{Path}\" folder with external Id={Id} to the trash", pathToLog, info.Id);

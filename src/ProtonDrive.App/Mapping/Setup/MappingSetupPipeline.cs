@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Settings;
 
 namespace ProtonDrive.App.Mapping.Setup;
@@ -28,6 +29,7 @@ internal sealed class MappingSetupPipeline : IMappingSetupPipeline
         CancellationToken cancellationToken)
     {
         _logger.LogInformation("Setting up sync folder mapping {Id} ({Type})", mapping.Id, mapping.Type);
+        var startTimestamp = Stopwatch.GetTimestamp();
 
         var result = await SetUpMappingAsync(mapping, otherLocalSyncFolders, cancellationToken).ConfigureAwait(false);
 
@@ -38,7 +40,7 @@ internal sealed class MappingSetupPipeline : IMappingSetupPipeline
             return result;
         }
 
-        _logger.LogInformation("Setting up sync folder mapping {Id} ({Type}) succeeded", mapping.Id, mapping.Type);
+        _logger.LogInformation("Setting up sync folder mapping {Id} ({Type}) succeeded in {ElapsedTime}", mapping.Id, mapping.Type, Stopwatch.GetElapsedTime(startTimestamp));
 
         // Setup succeeded, mapping is complete
         mapping.Status = MappingStatus.Complete;

@@ -7,7 +7,7 @@ using ProtonDrive.Sync.Shared.FileSystem;
 
 namespace ProtonDrive.Client.FileUploading;
 
-internal class RemoteRevisionCreationProcess : IRevisionCreationProcess<string>
+internal class RemoteRevisionCreationProcess : IDestinationRevision<string>
 {
     private readonly HashingStream _destinationStream;
     private readonly IReadOnlyCollection<UploadedBlock> _uploadedBlocks;
@@ -16,6 +16,7 @@ internal class RemoteRevisionCreationProcess : IRevisionCreationProcess<string>
 
     public RemoteRevisionCreationProcess(
         NodeInfo<string> fileInfo,
+        bool checksumVerificationEnabled,
         Stream destinationStream,
         IReadOnlyCollection<UploadedBlock> uploadedBlocks,
         int blockSize,
@@ -24,6 +25,7 @@ internal class RemoteRevisionCreationProcess : IRevisionCreationProcess<string>
         Ensure.NotNull(fileInfo.Id, nameof(fileInfo), nameof(fileInfo.Id));
 
         FileInfo = fileInfo;
+        ChecksumVerificationEnabled = checksumVerificationEnabled;
 
         _destinationStream = new HashingStream(
             new SafeRemoteFileStream(destinationStream, FileInfo.Id),
@@ -38,6 +40,7 @@ internal class RemoteRevisionCreationProcess : IRevisionCreationProcess<string>
     public NodeInfo<string> FileInfo { get; }
     public NodeInfo<string> BackupInfo { get; set; } = NodeInfo<string>.Empty();
     public bool ImmediateHydrationRequired => true;
+    public bool ChecksumVerificationEnabled { get; }
     public virtual bool CanGetContentStream => true;
 
     public virtual Stream GetContentStream()
@@ -48,7 +51,7 @@ internal class RemoteRevisionCreationProcess : IRevisionCreationProcess<string>
         return _destinationStream;
     }
 
-    public virtual async Task WriteContentAsync(Stream source, CancellationToken cancellationToken)
+    public virtual async Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
         var destination = GetContentStream();
 
@@ -63,11 +66,11 @@ internal class RemoteRevisionCreationProcess : IRevisionCreationProcess<string>
         await destination.FlushAsync(cancellationToken).ConfigureAwait(false);
     }
 
-    public async Task<NodeInfo<string>> FinishAsync(CancellationToken cancellationToken)
+    public async Task<NodeInfo<string>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
     {
         try
         {
-            ValidateUpload();
+            ValidateUpload(expectedSha1);
 
             var revisionSealingParameters = GetRevisionSealingParameters();
 
@@ -92,11 +95,11 @@ internal class RemoteRevisionCreationProcess : IRevisionCreationProcess<string>
         return new RevisionSealingParameters
         {
             Blocks = _uploadedBlocks,
-            Sha1Digest = GetSha1Digest(),
+            Sha1Digest = Convert.ToHexStringLower(GetContentSha1()),
         };
     }
 
-    private void ValidateUpload()
+    private void ValidateUpload(ReadOnlyMemory<byte>? expectedSha1)
     {
         var expectedNumberOfContentBlocks = (FileInfo.Size + _blockSize - 1) / _blockSize;
 
@@ -117,12 +120,17 @@ internal class RemoteRevisionCreationProcess : IRevisionCreationProcess<string>
         {
             throw new FileSystemClientException("The number of uploaded blocks does not equal the expected number", FileSystemErrorCode.IntegrityFailure);
         }
+
+        if (ChecksumVerificationEnabled && expectedSha1?.Span.SequenceEqual(GetContentSha1()) == false)
+        {
+            throw new FileSystemClientException("The uploaded file checksum does not match the expected checksum", FileSystemErrorCode.IntegrityFailure);
+        }
     }
 
-    private string GetSha1Digest()
+    private byte[] GetContentSha1()
     {
-        Span<byte> digestSpan = stackalloc byte[SHA1.HashSizeInBytes];
-        _destinationStream.GetCurrentHash(digestSpan);
-        return Convert.ToHexStringLower(digestSpan);
+        var sha1 = new byte[SHA1.HashSizeInBytes];
+        _destinationStream.GetCurrentHash(sha1.AsSpan());
+        return sha1;
     }
 }

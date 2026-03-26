@@ -1,6 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Polly;
-using Polly.Extensions.Http;
 using ProtonDrive.Client.Authentication;
 using ProtonDrive.Client.Cryptography.TimeProvision;
 using ProtonDrive.Client.Offline;
@@ -33,35 +31,21 @@ public static class HttpClientConfigurator
     {
         builder
             .AddHttpMessageHandler<HumanVerificationHandler>()
-            .AddHttpMessageHandler<TooManyRequestsHandler>()
             .AddHttpMessageHandler<ChunkedTransferEncodingHandler>()
-            .AddHttpMessageHandler<AuthorizationHandler>();
+            .AddHttpMessageHandler<AuthorizationHandler>()
+            .AddHttpMessageHandler(provider => new RetryHandler(numberOfRetriesSelector.Invoke(provider.GetRequiredService<DriveApiConfig>())))
+            ;
 
         if (useOfflinePolicy)
         {
-            // We add the offline handler before the retry policy handler, so that it does not see the retries.
-            // This way, it does not enable the offline mode before all retries are finished.
+            // We add the offline handler after the retry handler, so that it does see the retries.
+            // We add the offline handler before the too many requests handler, so that it can see the responses.
             builder.AddHttpMessageHandler<OfflineHandler>();
         }
 
         return builder
-            .AddPolicyHandler((provider, requestMessage) => GetRetryPolicy(provider, requestMessage, numberOfRetriesSelector))
+            .AddHttpMessageHandler<TooManyRequestsHandler>()
             .AddHttpMessageHandler<CryptographyTimeProvisionHandler>()
             .AddTimeoutHandler(provider => timeoutSelector.Invoke(provider.GetRequiredService<DriveApiConfig>()));
-    }
-
-    private static IAsyncPolicy<HttpResponseMessage> GetRetryPolicy(IServiceProvider provider, HttpRequestMessage requestMessage, Func<DriveApiConfig, int> numberOfRetriesSelector)
-    {
-        if (requestMessage.GetRetryIsDisabled())
-        {
-            return Policy.NoOpAsync<HttpResponseMessage>();
-        }
-
-        return HttpPolicyExtensions
-            .HandleTransientHttpError()
-            .Or<TimeoutException>() // Thrown by TimeoutHandler if the inner call times out
-            .WaitAndRetryAsync(
-                numberOfRetriesSelector.Invoke(provider.GetRequiredService<DriveApiConfig>()),
-                retryCount => TimeSpan.FromSeconds(Math.Pow(2.5, retryCount) / 4));
     }
 }

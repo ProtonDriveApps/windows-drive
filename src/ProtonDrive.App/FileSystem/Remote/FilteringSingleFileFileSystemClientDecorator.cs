@@ -10,22 +10,22 @@ internal sealed class FilteringSingleFileFileSystemClientDecorator : FileSystemC
     {
     }
 
-    public override Task<NodeInfo<string>> CreateDirectory(NodeInfo<string> info, CancellationToken cancellationToken)
+    public override Task<NodeInfo<string>> CreateDirectoryAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         throw GetException();
     }
 
-    public override Task Delete(NodeInfo<string> info, CancellationToken cancellationToken)
+    public override Task DeleteAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         throw GetException();
     }
 
-    public override Task DeletePermanently(NodeInfo<string> info, CancellationToken cancellationToken)
+    public override Task DeletePermanentlyAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
         throw GetException();
     }
 
-    public override Task<IRevisionCreationProcess<string>> CreateFile(
+    public override Task<IDestinationRevision<string>> CreateFileAsync(
         NodeInfo<string> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -36,7 +36,7 @@ internal sealed class FilteringSingleFileFileSystemClientDecorator : FileSystemC
         throw GetException();
     }
 
-    public override Task Move(NodeInfo<string> info, NodeInfo<string> destinationInfo, CancellationToken cancellationToken)
+    public override Task MoveAsync(NodeInfo<string> info, NodeInfo<string> destinationInfo, CancellationToken cancellationToken)
     {
         throw GetException();
     }

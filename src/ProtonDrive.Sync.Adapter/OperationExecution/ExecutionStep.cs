@@ -25,7 +25,7 @@ internal sealed class ExecutionStep<TId, TAltId>
     public async Task<NodeInfo<TAltId>> ExecuteFileTransferAsync(
         ExecutableOperation<TId> operation,
         NodeInfo<TAltId> nodeInfo,
-        IRevision sourceRevision,
+        ISourceRevision sourceRevision,
         UpdateDetectionSwitch updateDetection,
         Action<Progress> progressCallback,
         CancellationToken cancellationToken)
@@ -54,7 +54,8 @@ internal sealed class ExecutionStep<TId, TAltId>
     }
 
     private static async Task<NodeInfo<TAltId>> FinalizeAsync(
-        IRevisionCreationProcess<TAltId> destinationRevision,
+        ReadOnlyMemory<byte>? expectedSha1,
+        IDestinationRevision<TAltId> destinationRevision,
         UpdateDetectionSwitch updateDetection,
         CancellationToken cancellationToken)
     {
@@ -66,20 +67,20 @@ internal sealed class ExecutionStep<TId, TAltId>
         // file transfer is finished and the result is applied to the Adapter Tree.
         await updateDetection.PostponeAsync(cancellationToken).ConfigureAwait(false);
 
-        return await destinationRevision.FinishAsync(cancellationToken).ConfigureAwait(false);
+        return await destinationRevision.FinishAsync(expectedSha1, cancellationToken).ConfigureAwait(false);
     }
 
     private async Task<NodeInfo<TAltId>> CreateFolderAsync(
         NodeInfo<TAltId> nodeInfo,
         CancellationToken cancellationToken)
     {
-        return await _fileSystemClient.CreateDirectory(nodeInfo, cancellationToken).ConfigureAwait(false);
+        return await _fileSystemClient.CreateDirectoryAsync(nodeInfo, cancellationToken).ConfigureAwait(false);
     }
 
     private async Task<NodeInfo<TAltId>> CreateFileAsync(
         NodeInfo<TAltId> nodeInfo,
         FileSystemNodeModel<TId> nodeModel,
-        IRevision sourceRevision,
+        ISourceRevision sourceRevision,
         UpdateDetectionSwitch updateDetection,
         Action<Progress> progressCallback,
         CancellationToken cancellationToken)
@@ -88,7 +89,7 @@ internal sealed class ExecutionStep<TId, TAltId>
             .WithLastWriteTimeUtc(sourceRevision.LastWriteTimeUtc)
             .WithSize(sourceRevision.Size);
 
-        var destinationRevision = await _fileSystemClient.CreateFile(
+        var destinationRevision = await _fileSystemClient.CreateFileAsync(
             nodeInfo,
             GetTempFileName(nodeModel),
             sourceRevision,
@@ -106,14 +107,14 @@ internal sealed class ExecutionStep<TId, TAltId>
     private async Task<NodeInfo<TAltId>> EditAsync(
         NodeInfo<TAltId> nodeInfo,
         AltIdentifiableFileSystemNodeModel<TId, TId> nodeModel,
-        IRevision sourceRevision,
+        ISourceRevision sourceRevision,
         UpdateDetectionSwitch updateDetection,
         Action<Progress> progressCallback,
         CancellationToken cancellationToken)
     {
         Ensure.NotNullOrEmpty(nodeInfo.Name, nameof(nodeInfo), nameof(nodeInfo.Name));
 
-        var destinationRevision = await _fileSystemClient.CreateRevision(
+        var destinationRevision = await _fileSystemClient.CreateRevisionAsync(
                 nodeInfo,
                 sourceRevision.Size,
                 sourceRevision.LastWriteTimeUtc,
@@ -132,23 +133,27 @@ internal sealed class ExecutionStep<TId, TAltId>
     }
 
     private async Task<NodeInfo<TAltId>> FinishRevisionCreation(
-        IRevision sourceRevision,
-        IRevisionCreationProcess<TAltId> destinationRevision,
+        ISourceRevision sourceRevision,
+        IDestinationRevision<TAltId> destinationRevision,
         UpdateDetectionSwitch updateDetection,
         Action<Progress> progressCallback,
         CancellationToken cancellationToken)
     {
         if (!destinationRevision.ImmediateHydrationRequired)
         {
-            return await FinalizeAsync(destinationRevision, updateDetection, cancellationToken).ConfigureAwait(false);
+            return await FinalizeAsync(expectedSha1: null, destinationRevision, updateDetection, cancellationToken).ConfigureAwait(false);
         }
 
         // Invoking progress callback changes sync activity stage from Preparation into Execution
         progressCallback.Invoke(Progress.Zero);
 
-        await sourceRevision.CopyContentToAsync(destinationRevision, cancellationToken).ConfigureAwait(false);
+        var sha1 = destinationRevision.ChecksumVerificationEnabled
+            ? await sourceRevision.GetSha1Async(cancellationToken).ConfigureAwait(false)
+            : null;
 
-        return await FinalizeAsync(destinationRevision, updateDetection, cancellationToken).ConfigureAwait(false);
+        await sourceRevision.CopyContentToAsync(destinationRevision, sha1, cancellationToken).ConfigureAwait(false);
+
+        return await FinalizeAsync(sha1, destinationRevision, updateDetection, cancellationToken).ConfigureAwait(false);
     }
 
     private async Task<NodeInfo<TAltId>> MoveAsync(
@@ -158,7 +163,7 @@ internal sealed class ExecutionStep<TId, TAltId>
     {
         Ensure.NotNull(destinationInfo, nameof(destinationInfo));
 
-        await _fileSystemClient.Move(nodeInfo, destinationInfo, cancellationToken).ConfigureAwait(false);
+        await _fileSystemClient.MoveAsync(nodeInfo, destinationInfo, cancellationToken).ConfigureAwait(false);
 
         return destinationInfo;
     }
@@ -167,7 +172,7 @@ internal sealed class ExecutionStep<TId, TAltId>
         NodeInfo<TAltId> nodeInfo,
         CancellationToken cancellationToken)
     {
-        await _fileSystemClient.Delete(nodeInfo, cancellationToken).ConfigureAwait(false);
+        await _fileSystemClient.DeleteAsync(nodeInfo, cancellationToken).ConfigureAwait(false);
 
         return nodeInfo;
     }

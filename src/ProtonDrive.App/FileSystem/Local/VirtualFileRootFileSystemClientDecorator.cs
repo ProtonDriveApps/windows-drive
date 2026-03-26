@@ -20,29 +20,29 @@ internal sealed class VirtualFileRootFileSystemClientDecorator : FileSystemClien
         base.Connect(_rootFileName, fileHydrationDemandHandler);
     }
 
-    public override Task<NodeInfo<long>> GetInfo(NodeInfo<long> info, CancellationToken cancellationToken)
+    public override Task<NodeInfo<long>> GetInfoAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         ValidateFile(info);
 
-        return base.GetInfo(info, cancellationToken);
+        return base.GetInfoAsync(info, cancellationToken);
     }
 
-    public override IAsyncEnumerable<NodeInfo<long>> Enumerate(NodeInfo<long> info, CancellationToken cancellationToken)
+    public override IAsyncEnumerable<NodeInfo<long>> EnumerateAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         if (!IsRoot(info))
         {
             throw new FileSystemClientException("Unexpected folder in the file root", FileSystemErrorCode.ObjectNotFound);
         }
 
-        return base.Enumerate(info, cancellationToken).Where(x => x.IsFile() && x.Name.Equals(_rootFileName, StringComparison.Ordinal));
+        return base.EnumerateAsync(info, cancellationToken).Where(x => x.IsFile() && x.Name.Equals(_rootFileName, StringComparison.Ordinal));
     }
 
-    public override Task<NodeInfo<long>> CreateDirectory(NodeInfo<long> info, CancellationToken cancellationToken)
+    public override Task<NodeInfo<long>> CreateDirectoryAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         throw GetException();
     }
 
-    public override Task<IRevisionCreationProcess<long>> CreateFile(
+    public override Task<IDestinationRevision<long>> CreateFileAsync(
         NodeInfo<long> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -52,17 +52,17 @@ internal sealed class VirtualFileRootFileSystemClientDecorator : FileSystemClien
     {
         ValidateFile(info);
 
-        return base.CreateFile(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken);
+        return base.CreateFileAsync(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken);
     }
 
-    public override Task<IRevision> OpenFileForReading(NodeInfo<long> info, CancellationToken cancellationToken)
+    public override Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         ValidateFile(info);
 
-        return base.OpenFileForReading(info, cancellationToken);
+        return base.OpenFileForReadingAsync(info, cancellationToken);
     }
 
-    public override Task<IRevisionCreationProcess<long>> CreateRevision(
+    public override Task<IDestinationRevision<long>> CreateRevisionAsync(
         NodeInfo<long> info,
         long size,
         DateTime lastWriteTime,
@@ -74,25 +74,25 @@ internal sealed class VirtualFileRootFileSystemClientDecorator : FileSystemClien
     {
         ValidateFile(info);
 
-        return base.CreateRevision(info, size, lastWriteTime, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken);
+        return base.CreateRevisionAsync(info, size, lastWriteTime, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken);
     }
 
-    public override Task Move(NodeInfo<long> info, NodeInfo<long> destinationInfo, CancellationToken cancellationToken)
+    public override Task MoveAsync(NodeInfo<long> info, NodeInfo<long> destinationInfo, CancellationToken cancellationToken)
     {
         throw GetException();
     }
 
-    public override Task Delete(NodeInfo<long> info, CancellationToken cancellationToken)
+    public override Task DeleteAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         throw GetException();
     }
 
-    public override Task DeletePermanently(NodeInfo<long> info, CancellationToken cancellationToken)
+    public override Task DeletePermanentlyAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         throw GetException();
     }
 
-    public override Task DeleteRevision(NodeInfo<long> info, CancellationToken cancellationToken)
+    public override Task DeleteRevisionAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
         throw GetException();
     }
@@ -111,7 +111,7 @@ internal sealed class VirtualFileRootFileSystemClientDecorator : FileSystemClien
         return base.HydrateFileAsync(info, cancellationToken);
     }
 
-    private static bool IsDefault(long value) => value.Equals(default);
+    private static bool IsDefault(long value) => value.Equals(0);
 
     private bool IsRoot(NodeInfo<long> info)
     {

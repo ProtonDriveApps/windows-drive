@@ -17,7 +17,7 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
         _logger = logger;
     }
 
-    public override Task<NodeInfo<TId>> GetInfo(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public override Task<NodeInfo<TId>> GetInfoAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
         _logger.LogDebug(
             "Getting info about \"{Root}\"/\"{Path}\"/{ParentId}/{Id}",
@@ -26,10 +26,10 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
             info.ParentId,
             info.Id);
 
-        return base.GetInfo(info, cancellationToken);
+        return base.GetInfoAsync(info, cancellationToken);
     }
 
-    public override IAsyncEnumerable<NodeInfo<TId>> Enumerate(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public override IAsyncEnumerable<NodeInfo<TId>> EnumerateAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
         _logger.LogDebug(
             "Enumerating \"{Root}\"/\"{Path}\"/{ParentId}/{Id}",
@@ -38,10 +38,10 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
             info.ParentId,
             info.Id);
 
-        return base.Enumerate(info, cancellationToken);
+        return base.EnumerateAsync(info, cancellationToken);
     }
 
-    public override async Task<IRevision> OpenFileForReading(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public override async Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
         _logger.LogDebug(
             "Opening the file for reading \"{Root}\"/\"{Path}\"/{ParentId}/{Id}",
@@ -50,7 +50,7 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
             info.ParentId,
             info.Id);
 
-        var revision = await base.OpenFileForReading(info, cancellationToken).ConfigureAwait(false);
+        var revision = await base.OpenFileForReadingAsync(info, cancellationToken).ConfigureAwait(false);
 
         _logger.LogDebug(
             "Opening the file for reading \"{Root}\"/\"{Path}\"/{ParentId}/{Id} completed",
@@ -62,18 +62,18 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
         return revision;
     }
 
-    public override Task<NodeInfo<TId>> CreateDirectory(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public override Task<NodeInfo<TId>> CreateDirectoryAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
         _logger.LogDebug(
-            "Creating a directory \"{Root}\"/\"{Path}\"/{ParentId}/-",
+            "Creating directory \"{Root}\"/\"{Path}\"/{ParentId}/-",
             info.Root?.Id,
             info.Path,
             info.ParentId);
 
-        return base.CreateDirectory(info, cancellationToken);
+        return base.CreateDirectoryAsync(info, cancellationToken);
     }
 
-    public override async Task<IRevisionCreationProcess<TId>> CreateFile(
+    public override async Task<IDestinationRevision<TId>> CreateFileAsync(
         NodeInfo<TId> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -82,26 +82,39 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
         CancellationToken cancellationToken)
     {
         _logger.LogDebug(
-            "Creating a file \"{Root}\"/\"{Path}\"/{ParentId}/-, TempFileName=\"{TempFileName}\"",
+            "Creating file \"{Root}\"/\"{Path}\"/{ParentId}/-, TempFileName=\"{TempFileName}\"",
             info.Root?.Id,
             info.Path,
             info.ParentId,
             tempFileName ?? string.Empty);
 
-        var result = await base.CreateFile(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken)
-            .ConfigureAwait(false);
+        try
+        {
+            var revisionCreationProcess = await base.CreateFileAsync(
+                info,
+                tempFileName,
+                thumbnailProvider,
+                fileMetadataProvider,
+                progressCallback,
+                cancellationToken).ConfigureAwait(false);
 
-        _logger.LogDebug(
-            "Creating a file \"{Root}\"/\"{Path}\"/{ParentId}/-, TempFileName=\"{TempFileName}\" completed, ready for transferring data",
-            info.Root?.Id,
-            info.Path,
-            info.ParentId,
-            tempFileName ?? string.Empty);
+            _logger.LogDebug(
+                "Creating file \"{Root}\"/\"{Path}\"/{ParentId}/-, TempFileName=\"{TempFileName}\" completed, ready for transferring data",
+                info.Root?.Id,
+                info.Path,
+                info.ParentId,
+                tempFileName ?? string.Empty);
 
-        return result;
+            return new LoggingRevisionCreationProcess(_logger, revisionCreationProcess);
+        }
+        catch (Exception ex) when (IsWorthLoggingStackTrace(ex))
+        {
+            _logger.LogWarning(ex, "Creating file failed with exception");
+            throw;
+        }
     }
 
-    public override async Task<IRevisionCreationProcess<TId>> CreateRevision(
+    public override async Task<IDestinationRevision<TId>> CreateRevisionAsync(
         NodeInfo<TId> info,
         long size,
         DateTime lastWriteTime,
@@ -112,28 +125,43 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
         CancellationToken cancellationToken)
     {
         _logger.LogDebug(
-            "Creating a revision \"{Root}\"/\"{Path}\"/{ParentId}/{Id}, TempFileName=\"{tempFileName}\"",
+            "Creating file revision \"{Root}\"/\"{Path}\"/{ParentId}/{Id}, TempFileName=\"{tempFileName}\"",
             info.Root?.Id,
             info.Path,
             info.ParentId,
             info.Id,
             tempFileName ?? string.Empty);
 
-        var result = await base.CreateRevision(info, size, lastWriteTime, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken)
-            .ConfigureAwait(false);
+        try
+        {
+            var revisionCreationProcess = await base.CreateRevisionAsync(
+                info,
+                size,
+                lastWriteTime,
+                tempFileName,
+                thumbnailProvider,
+                fileMetadataProvider,
+                progressCallback,
+                cancellationToken).ConfigureAwait(false);
 
-        _logger.LogDebug(
-            "Creating a revision \"{Root}\"/\"{Path}\"/{ParentId}/{Id}, TempFileName=\"{tempFileName}\" completed, ready for transferring data",
-            info.Root?.Id,
-            info.Path,
-            info.ParentId,
-            info.Id,
-            tempFileName ?? string.Empty);
+            _logger.LogDebug(
+                "Creating file revision \"{Root}\"/\"{Path}\"/{ParentId}/{Id}, TempFileName=\"{tempFileName}\" completed, ready for transferring data",
+                info.Root?.Id,
+                info.Path,
+                info.ParentId,
+                info.Id,
+                tempFileName ?? string.Empty);
 
-        return result;
+            return new LoggingRevisionCreationProcess(_logger, revisionCreationProcess);
+        }
+        catch (Exception ex) when (IsWorthLoggingStackTrace(ex))
+        {
+            _logger.LogWarning(ex, "Creating file revision failed with exception");
+            throw;
+        }
     }
 
-    public override Task Move(NodeInfo<TId> info, NodeInfo<TId> newInfo, CancellationToken cancellationToken)
+    public override async Task MoveAsync(NodeInfo<TId> info, NodeInfo<TId> newInfo, CancellationToken cancellationToken)
     {
         _logger.LogDebug(
             "Moving \"{Root}\"/\"{Path}\"/{ParentId}/{Id} to \"{DestPath}\"/{DestParentId}/-",
@@ -144,10 +172,18 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
             !string.IsNullOrEmpty(newInfo.Path) ? newInfo.Path : newInfo.Name,
             newInfo.ParentId);
 
-        return base.Move(info, newInfo, cancellationToken);
+        try
+        {
+            await base.MoveAsync(info, newInfo, cancellationToken).ConfigureAwait(false);
+        }
+        catch (Exception ex) when (IsWorthLoggingStackTrace(ex))
+        {
+            _logger.LogWarning(ex, "Moving failed with exception");
+            throw;
+        }
     }
 
-    public override Task Delete(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public override async Task DeleteAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
         _logger.LogDebug(
             "Deleting \"{Root}\"/\"{Path}\"/{ParentId}/{Id}",
@@ -156,10 +192,18 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
             info.ParentId,
             info.Id);
 
-        return base.Delete(info, cancellationToken);
+        try
+        {
+            await base.DeleteAsync(info, cancellationToken).ConfigureAwait(false);
+        }
+        catch (Exception ex) when (IsWorthLoggingStackTrace(ex))
+        {
+            _logger.LogWarning(ex, "Deleting failed with exception");
+            throw;
+        }
     }
 
-    public override Task DeletePermanently(NodeInfo<TId> info, CancellationToken cancellationToken)
+    public override async Task DeletePermanentlyAsync(NodeInfo<TId> info, CancellationToken cancellationToken)
     {
         _logger.LogDebug(
             "Permanently deleting \"{Root}\"/\"{Path}\"/{ParentId}/{Id}",
@@ -168,7 +212,15 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
             info.ParentId,
             info.Id);
 
-        return base.DeletePermanently(info, cancellationToken);
+        try
+        {
+            await base.DeletePermanentlyAsync(info, cancellationToken).ConfigureAwait(false);
+        }
+        catch (Exception ex) when (IsWorthLoggingStackTrace(ex))
+        {
+            _logger.LogWarning(ex, "Permanently deleting failed with exception");
+            throw;
+        }
     }
 
     public override void SetInSyncState(NodeInfo<TId> info)
@@ -193,5 +245,79 @@ internal sealed class LoggingFileSystemClientDecorator<TId> : FileSystemClientDe
             info.Id);
 
         return base.HydrateFileAsync(info, cancellationToken);
+    }
+
+    private static bool IsWorthLoggingStackTrace(Exception ex)
+    {
+        return ex is not OperationCanceledException &&
+            (ex is not FileSystemClientException clientException || clientException.ErrorCode is FileSystemErrorCode.Unknown);
+    }
+
+    private sealed class LoggingRevisionCreationProcess : IDestinationRevision<TId>
+    {
+        private readonly ILogger<LoggingFileSystemClientDecorator<TId>> _logger;
+        private readonly IDestinationRevision<TId> _decoratedInstance;
+
+        public LoggingRevisionCreationProcess(ILogger<LoggingFileSystemClientDecorator<TId>> logger, IDestinationRevision<TId> decoratedInstance)
+        {
+            _logger = logger;
+            _decoratedInstance = decoratedInstance;
+        }
+
+        public NodeInfo<TId> FileInfo => _decoratedInstance.FileInfo;
+
+        public NodeInfo<TId> BackupInfo
+        {
+            get => _decoratedInstance.BackupInfo;
+            set => _decoratedInstance.BackupInfo = value;
+        }
+
+        public bool ImmediateHydrationRequired => _decoratedInstance.ImmediateHydrationRequired;
+        public bool ChecksumVerificationEnabled => _decoratedInstance.ChecksumVerificationEnabled;
+        public bool CanGetContentStream => _decoratedInstance.CanGetContentStream;
+
+        public Stream GetContentStream()
+        {
+            try
+            {
+                return _decoratedInstance.GetContentStream();
+            }
+            catch (Exception ex) when (IsWorthLoggingStackTrace(ex))
+            {
+                _logger.LogWarning(ex, "Getting file revision content stream failed with exception");
+                throw;
+            }
+        }
+
+        public async Task WriteContentAsync(Stream source, ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+        {
+            try
+            {
+                await _decoratedInstance.WriteContentAsync(source, expectedSha1, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception ex) when (IsWorthLoggingStackTrace(ex))
+            {
+                _logger.LogWarning(ex, "Writing file revision content failed with exception");
+                throw;
+            }
+        }
+
+        public async Task<NodeInfo<TId>> FinishAsync(ReadOnlyMemory<byte>? expectedSha1, CancellationToken cancellationToken)
+        {
+            try
+            {
+                return await _decoratedInstance.FinishAsync(expectedSha1, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception ex) when (IsWorthLoggingStackTrace(ex))
+            {
+                _logger.LogWarning(ex, "Finishing file revision creation failed with exception");
+                throw;
+            }
+        }
+
+        public ValueTask DisposeAsync()
+        {
+            return _decoratedInstance.DisposeAsync();
+        }
     }
 }

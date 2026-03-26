@@ -52,6 +52,7 @@ internal sealed class HydrationDemandHandler<TId, TAltId> : IFileHydrationDemand
 
         var fileNameToLog = _logger.GetSensitiveValueForLogging(hydrationDemand.FileInfo.Name);
         LogRequest();
+        var startTimestamp = Stopwatch.GetTimestamp();
 
         var nodeModel = await Schedule(() => Prepare(hydrationDemand), cancellationToken).ConfigureAwait(false);
 
@@ -61,9 +62,9 @@ internal sealed class HydrationDemandHandler<TId, TAltId> : IFileHydrationDemand
         {
             _syncActivity.OnProgress(syncActivityItem, Progress.Zero);
 
-            var source = await OpenFileForReadingAsync(nodeModel, cancellationToken).ConfigureAwait(false);
+            var sourceRevision = await OpenFileForReadingAsync(nodeModel, cancellationToken).ConfigureAwait(false);
 
-            await using (source.ConfigureAwait(false))
+            await using (sourceRevision.ConfigureAwait(false))
             {
                 syncActivityItem = syncActivityItem with
                 {
@@ -72,22 +73,28 @@ internal sealed class HydrationDemandHandler<TId, TAltId> : IFileHydrationDemand
 
                 _syncActivity.OnProgress(syncActivityItem, Progress.Zero);
 
-                var destination = new WriteOnlyProgressReportingStream(hydrationDemand.HydrationStream, NotifyProgressChanged);
+                var expectedSha1Checksum = hydrationDemand.ChecksumVerificationEnabled
+                    ? await sourceRevision.GetSha1Async(cancellationToken).ConfigureAwait(false)
+                    : null;
 
-                await using (destination.ConfigureAwait(false))
+                var hydrationStream = hydrationDemand.GetHydrationStream(expectedSha1Checksum);
+                var destinationStream = new WriteOnlyProgressReportingStream(hydrationStream, NotifyProgressChanged);
+
+                await using (destinationStream.ConfigureAwait(false))
                 {
-                    // Hydration stream length equals to the placeholder file size
-                    var initialLength = destination.Length;
+                    var initialPlaceholderSize = destinationStream.Length;
 
-                    await HydrateFileAsync(destination, source, cancellationToken).ConfigureAwait(false);
+                    await HydrateFileAsync(destinationStream, sourceRevision, cancellationToken).ConfigureAwait(false);
 
-                    if (destination.Position < destination.Length)
+                    var actualHydrationLength = destinationStream.Position;
+
+                    // When the file size extended attribute is missing, the initial placeholder size is likely to be too large and requires correction
+                    if (actualHydrationLength < initialPlaceholderSize)
                     {
-                        // It was less data hydrated than the placeholder file size
-                        destination.SetLength(destination.Position);
+                        destinationStream.SetLength(actualHydrationLength);
                     }
 
-                    var sizeMismatch = destination.Length - initialLength;
+                    var sizeMismatch = destinationStream.Length - initialPlaceholderSize;
                     if (sizeMismatch != 0)
                     {
                         LogSizeMismatch(nodeModel.Id, sizeMismatch);
@@ -99,7 +106,7 @@ internal sealed class HydrationDemandHandler<TId, TAltId> : IFileHydrationDemand
 
             _syncActivity.OnChanged(syncActivityItem, SyncActivityItemStatus.Succeeded);
 
-            LogSuccess(nodeModel.Id);
+            LogSuccess(nodeModel.Id, Stopwatch.GetElapsedTime(startTimestamp));
         }
         catch (Exception ex)
         {
@@ -143,14 +150,15 @@ internal sealed class HydrationDemandHandler<TId, TAltId> : IFileHydrationDemand
                 hydrationDemand.FileInfo.GetCompoundId());
         }
 
-        void LogSuccess(TId nodeId)
+        void LogSuccess(TId nodeId, TimeSpan elapsedTime)
         {
             _logger.LogInformation(
-                "On-demand hydration of \"{FileName}\" with Id=\"{Root}\"/{Id} {ExternalId} succeeded",
+                "On-demand hydration of \"{FileName}\" with Id=\"{Root}\"/{Id} {ExternalId} succeeded in {ElapsedTime}",
                 fileNameToLog,
-                nodeId,
                 hydrationDemand.FileInfo.Root?.Id,
-                hydrationDemand.FileInfo.GetCompoundId());
+                nodeId,
+                hydrationDemand.FileInfo.GetCompoundId(),
+                elapsedTime);
         }
 
         void LogSizeMismatch(TId nodeId, long mismatch)
@@ -215,7 +223,7 @@ internal sealed class HydrationDemandHandler<TId, TAltId> : IFileHydrationDemand
         return _fileSizeCorrector.UpdateSizeAsync(nodeModel, hydrationDemand, cancellationToken);
     }
 
-    private async Task<IRevision> OpenFileForReadingAsync(AdapterTreeNodeModel<TId, TAltId> nodeModel, CancellationToken cancellationToken)
+    private async Task<ISourceRevision> OpenFileForReadingAsync(AdapterTreeNodeModel<TId, TAltId> nodeModel, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
 
@@ -230,7 +238,7 @@ internal sealed class HydrationDemandHandler<TId, TAltId> : IFileHydrationDemand
         return await _fileRevisionProvider.OpenFileForReadingAsync(mappedNodeId.Value, nodeModel.ContentVersion, cancellationToken).ConfigureAwait(false);
     }
 
-    private Task HydrateFileAsync(Stream destination, IRevision source, CancellationToken cancellationToken)
+    private Task HydrateFileAsync(Stream destination, ISourceRevision source, CancellationToken cancellationToken)
     {
         return source.CopyContentToAsync(destination, cancellationToken);
     }

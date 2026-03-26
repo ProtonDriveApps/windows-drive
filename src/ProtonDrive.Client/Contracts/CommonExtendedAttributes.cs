@@ -12,5 +12,5 @@ public sealed class CommonExtendedAttributes
     public IEnumerable<int>? BlockSizes { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public Digests? Digests { get; set; }
+    public FileContentDigests? Digests { get; set; }
 }
