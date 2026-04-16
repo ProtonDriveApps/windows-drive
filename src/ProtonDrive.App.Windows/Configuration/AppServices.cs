@@ -174,8 +174,6 @@ internal static class AppServices
             .AddSingleton<IUserStateAware>(provider => provider.GetRequiredService<NotificationBadgeProvider>())
             .AddSingleton<ISyncFoldersAware>(provider => provider.GetRequiredService<NotificationBadgeProvider>())
             .AddSingleton<IFeatureFlagsAware>(provider => provider.GetRequiredService<NotificationBadgeProvider>())
-            .AddSingleton<IStorageOptimizationOnboardingStateAware>(provider => provider.GetRequiredService<NotificationBadgeProvider>())
-            .AddSingleton<IPhotosFeatureStateAware>(provider => provider.GetRequiredService<NotificationBadgeProvider>())
 
             .AddSingleton<MainViewModel>()
             .AddSingleton<IApplicationPages>(provider => provider.GetRequiredService<MainViewModel>())
@@ -246,7 +244,6 @@ internal static class AppServices
             .AddSingleton<ISyncStateAware>(provider => provider.GetRequiredService<SyncStateViewModel>())
             .AddSingleton<ISyncActivityAware>(provider => provider.GetRequiredService<SyncStateViewModel>())
             .AddSingleton<ISyncStatisticsAware>(provider => provider.GetRequiredService<SyncStateViewModel>())
-            .AddSingleton<IFeatureFlagsAware>(provider => provider.GetRequiredService<SyncStateViewModel>())
             .AddSingleton<SystemTrayViewModel>()
 
             .AddTransient<OfferViewModel>()

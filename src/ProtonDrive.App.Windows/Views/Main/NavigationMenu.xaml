@@ -45,7 +45,6 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
                 <Image
@@ -70,14 +69,6 @@
                     Content="{Binding NotificationBadges.MyComputerNotificationBadge}"
                     ContentTemplate="{StaticResource NotificationBadgeTemplate}"
                     Visibility="{Binding NotificationBadges.MyComputerNotificationBadge, Converter={x:Static conv:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={x:Null}}"
-                    VerticalAlignment="Center"
-                    Margin="8,0,0,0" />
-
-                <ContentControl
-                    Grid.Column="3"
-                    Content="{Binding NotificationBadges.MyComputerNewFeatureBadge}"
-                    ContentTemplate="{StaticResource NewFeatureBadgeTemplate}"
-                    Visibility="{Binding NotificationBadges.MyComputerNewFeatureBadge, Converter={x:Static conv:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={x:Null}}"
                     VerticalAlignment="Center"
                     Margin="8,0,0,0" />
             </Grid>
@@ -117,9 +108,9 @@
 
                 <ContentControl
                     Grid.Column="2"
-                    Content="{Binding NotificationBadges.PhotosNewFeatureBadge}"
-                    ContentTemplate="{StaticResource NewFeatureBadgeTemplate}"
-                    Visibility="{Binding NotificationBadges.PhotosNewFeatureBadge, Converter={x:Static conv:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={x:Null}}"
+                    Content="{Binding NotificationBadges.PhotosNotificationBadge}"
+                    ContentTemplate="{StaticResource NotificationBadgeTemplate}"
+                    Visibility="{Binding NotificationBadges.PhotosNotificationBadge, Converter={x:Static conv:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={x:Null}}"
                     VerticalAlignment="Center"
                     Margin="8,0,0,0" />
             </Grid>

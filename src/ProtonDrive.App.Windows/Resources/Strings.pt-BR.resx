@@ -1538,7 +1538,7 @@ O conteúdo dos arquivos será baixado sob demanda.</value>
     <value>Segunda senha</value>
   </data>
   <data name="SignIn_Text_SecurityKey">
-    <value>Insira uma chave de segurança vinculada à sua Proton Account.</value>
+    <value>Insira uma chave de segurança vinculada à sua conta da Proton.</value>
   </data>
   <data name="SignIn_Text_SecurityKeyNotSupported">
     <value>Seu sistema não suporta chave de segurança</value>

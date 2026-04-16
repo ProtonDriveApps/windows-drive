@@ -1,4 +1,4 @@
-﻿using System.Net;
+using System.Net;
 using System.Net.Http.Headers;
 using System.Reflection;
 using System.Text.Json;
@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Proton.Cryptography.Pgp;
 using Proton.Drive.Sdk;
 using Proton.Sdk.Telemetry;
+using ProtonDrive.Client.Albums;
 using ProtonDrive.Client.Authentication;
 using ProtonDrive.Client.Authentication.Sessions;
 using ProtonDrive.Client.Authentication.Srp;
@@ -28,6 +29,7 @@ using ProtonDrive.Client.MediaTypes;
 using ProtonDrive.Client.Notifications;
 using ProtonDrive.Client.Notifications.Contracts;
 using ProtonDrive.Client.Offline;
+using ProtonDrive.Client.Photos;
 using ProtonDrive.Client.RemoteNodes;
 using ProtonDrive.Client.Repository;
 using ProtonDrive.Client.Sdk;
@@ -79,7 +81,11 @@ public static class ApiClientConfigurator
 
         services.AddSingleton<ITelemetry, SdkDiagnostics>();
         services.AddSingleton<SdkFeatureFlagProvider>();
-        services.AddSingleton<ISdkClientFactory, SdkClientFactory>();
+        services.AddSingleton<SdkClientFactory>();
+        services.AddSingleton<ISdkClientFactory>(sp => sp.GetRequiredService<SdkClientFactory>());
+        services.AddSingleton<ISdkPhotosClientFactory>(sp => sp.GetRequiredService<SdkClientFactory>());
+        services.AddSingleton<ISdkPhotosTransferClient, SdkPhotosTransferClient>();
+        services.AddSingleton<ISdkPhotosUploadClient, SdkPhotosUploadClient>();
 
         services.AddSingleton<SdkMetrics>();
         services.AddSingleton<IMetricsRecorder>(provider => provider.GetRequiredService<SdkMetrics>());
@@ -258,6 +264,7 @@ public static class ApiClientConfigurator
         services.AddSingleton(provider => new Func<IAddressKeyProvider>(provider.GetRequiredService<IAddressKeyProvider>));
         services.AddSingleton<ICryptographyService, CryptographyService>();
         services.AddSingleton<IRemoteNodeService, RemoteNodeService>();
+        services.AddSingleton<IAlbumNodeService, AlbumNodeService>();
         services.AddSingleton<IRemoteFileMetadataProvider, RemoteFileMetadataProvider>();
 
         services.AddSingleton<IBugReportClient, BugReportClient>();

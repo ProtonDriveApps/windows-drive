@@ -103,7 +103,7 @@
     }
   },
   "FeatureManagement": {
-    "UpgradeStorageOnboardingStepEnabled": false
+    "UpgradeStorageOnboardingStepEnabled": true
   },
   "Serilog": {
     "Using": [ "Serilog.Sinks.Async", "Serilog.Sinks.File" ],

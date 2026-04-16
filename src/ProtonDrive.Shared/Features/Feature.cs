@@ -15,8 +15,6 @@ public enum Feature
     DriveWindowsFileConsistencyGuardDownloadWave2,
     DriveWindowsFileConsistencyGuardSanitization,
     DriveWindowsForceMigrationToVolumeEvents,
-    DriveWindowsRemoteNodeRenamingDisabled,
-    DriveWindowsStorageOptimizationNewFeatureBadge,
     DriveWindowsStorageOptimizationDisabled,
     DriveWindowsPhotoImport,
     DriveWindowsOffers,

@@ -1,4 +1,4 @@
-﻿using System.Security;
+using System.Security;
 using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Settings;
 using ProtonDrive.Client.FileUploading;
@@ -84,7 +84,7 @@ internal sealed class PhotoImportEngine : IPhotoImportEngine
         var importPipeline = new PhotoImportPipeline(
             parameters,
             localFileSystemClient,
-            _photoFileImporterFactory.Create(localFileSystemClient, _remoteFileSystemClient),
+            _photoFileImporterFactory.Create(localFileSystemClient, _remoteFileSystemClient, _volumeId),
             _photoAlbumService,
             _duplicateService,
             _photoAlbumNameProvider,

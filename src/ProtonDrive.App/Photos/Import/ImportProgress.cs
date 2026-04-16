@@ -27,9 +27,9 @@ internal sealed class ImportProgress
         _callbacks.OnProgressChanged?.Invoke(Interlocked.Add(ref _numberOfImportedFiles, numberOfImportedFiles), _numberOfFilesToImport);
     }
 
-    public void RaiseAlbumCreated(PhotoImportFolderCurrentPosition photoImportFolderCurrentPosition)
+    public void RaiseAlbumSelected(PhotoImportFolderCurrentPosition photoImportFolderCurrentPosition)
     {
-        _callbacks.OnAlbumCreated?.Invoke(photoImportFolderCurrentPosition);
+        _callbacks.OnAlbumSelected?.Invoke(photoImportFolderCurrentPosition);
     }
 
     public void RaiseFileUploaded(string filePath)

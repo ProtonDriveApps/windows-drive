@@ -308,25 +308,25 @@
     <value>正在同步...</value>
   </data>
   <data name="BugReport_Button_Cancel">
-    <value>_取消</value>
+    <value>取消(_C)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="BugReport_Button_Cancel_HelpText">
     <value>取消您的报告</value>
   </data>
   <data name="BugReport_Button_Report">
-    <value>_报告</value>
+    <value>报告(_R)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="BugReport_Button_Report_HelpText">
     <value>发送您的报告</value>
   </data>
   <data name="BugReport_Button_ShowLogs">
-    <value>显示_日志</value>
+    <value>显示日志(_L)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="BugReport_CheckBox_IncludeLogs">
-    <value>包含应用日志</value>
+    <value>包含应用日志(_I)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="BugReport_CheckBox_IncludeLogs_Tooltip">
@@ -336,7 +336,7 @@
     <value>描述：出了什么问题？您执行的具体步骤是什么？（至少 10 个字符）</value>
   </data>
   <data name="BugReport_Text_Description_Label">
-    <value>描述</value>
+    <value>描述(_D)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="BugReport_Text_Description_Label_Requirement">
@@ -352,14 +352,14 @@
     <value>邮箱地址（必填字段）</value>
   </data>
   <data name="BugReport_Text_Email_Label">
-    <value>邮箱地址(_E)</value>
+    <value>邮箱(_E)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="BugReport_Text_IssueTitle_HelpText">
     <value>问题标题（必填字段）</value>
   </data>
   <data name="BugReport_Text_IssueTitle_Label">
-    <value>标题</value>
+    <value>标题(_T)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="BugReport_Text_IssueTitle_Watermark">
@@ -372,7 +372,7 @@
     <value>确定</value>
   </data>
   <data name="Dialog_Button_Save">
-    <value>保存</value>
+    <value>保存(_S)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="FileSystemErrorCode_Value_Cancelled">
@@ -494,15 +494,15 @@
     <value>有可用更新</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
-    <value>隐私政策</value>
+    <value>隐私政策(_P)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_About_Button_TermsOfService">
-    <value>_服务条款</value>
+    <value>服务条款(_T)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_About_Button_UpdateNow">
-    <value>立即更新</value>
+    <value>立即更新(_U)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_About_Button_UpdateNow_HelpText">
@@ -524,7 +524,7 @@
     <value>关于</value>
   </data>
   <data name="Main_Account_Account_Button_ManageAccount">
-    <value>管理账户</value>
+    <value>管理账户(_A)</value>
   </data>
   <data name="Main_Account_Account_HelpText">
     <value>管理您的账户</value>
@@ -539,7 +539,7 @@
     <value>安全</value>
   </data>
   <data name="Main_Account_Password_Button_ChangePassword">
-    <value>更改</value>
+    <value>更改(_C)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Account_Password_Description">
@@ -552,7 +552,7 @@
     <value>密码</value>
   </data>
   <data name="Main_Account_Plan_Button_SeePlans">
-    <value>查看计划</value>
+    <value>查看计划(_P)</value>
   </data>
   <data name="Main_Account_Plan_Description">
     <value>获得更多存储空间</value>
@@ -561,7 +561,7 @@
     <value>查看其他 Proton Drive 计划</value>
   </data>
   <data name="Main_Account_SessionManagement_Button_Manage">
-    <value>管理</value>
+    <value>管理(_M)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Account_SessionManagement_Description">
@@ -580,7 +580,7 @@
     <value>从 Proton Drive 登出</value>
   </data>
   <data name="Main_Account_SignOut_Title">
-    <value>登出账户</value>
+    <value>登出账户(_S)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Account_Storage_Button_UpgradePlan">
@@ -605,7 +605,7 @@
     <value>账户</value>
   </data>
   <data name="Main_Activity_Button_PauseSync">
-    <value>暂停同步</value>
+    <value>暂停同步(_P)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Activity_Button_Rename">
@@ -615,7 +615,7 @@
     <value>重命名此项目以解决同步问题</value>
   </data>
   <data name="Main_Activity_Button_ResumeSync">
-    <value>恢复同步</value>
+    <value>恢复同步(_R)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Activity_Button_Retry">
@@ -763,7 +763,7 @@
     <value>从您电脑同步的文件夹将显示在 Drive 应用的“电脑”分区中。</value>
   </data>
   <data name="Main_MyComputer_Device_Button_Rename">
-    <value>重命名</value>
+    <value>重命名(_R)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_MyComputer_Device_HelpText">
@@ -785,7 +785,7 @@
     <value>重命名您的设备</value>
   </data>
   <data name="Main_MyComputer_Folders_AddFolders_Button_AddMore">
-    <value>添加更多文件夹 (_A)</value>
+    <value>添加更多文件夹(_A)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_MyComputer_Folders_AddFolders_Description">
@@ -825,7 +825,7 @@
     <value>无法添加 1 个文件夹</value>
   </data>
   <data name="Main_MyComputer_Folders_Button_Add">
-    <value>添加文件夹</value>
+    <value>添加文件夹(_A)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst">
@@ -855,11 +855,11 @@
     <value>正在从此设备同步文件夹</value>
   </data>
   <data name="Main_MyComputer_Folders_Menu_Item_OpenFolder">
-    <value>打开文件夹</value>
+    <value>打开文件夹(_O)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder">
-    <value>删除文件夹</value>
+    <value>删除文件夹(_R)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm">
@@ -910,7 +910,7 @@
     <value>关闭我电脑的集成功能</value>
   </data>
   <data name="Main_MyComputer_Onboarding_Page1_Button_Next">
-    <value>下一页 (_N)</value>
+    <value>下一页(_N)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_MyComputer_Onboarding_Page1_Description">
@@ -921,7 +921,7 @@
     <value>优化存储空间</value>
   </data>
   <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted">
-    <value>立即体验</value>
+    <value>立即体验(_S)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_MyComputer_Onboarding_Page2_Point_1">
@@ -960,15 +960,15 @@
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
-    <value>打开文件夹 (_O)</value>
+    <value>打开文件夹(_O)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Photos_Folders_Menu_Item_Remove">
-    <value>移除 (_R)</value>
+    <value>移除(_R)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Photos_Folders_Menu_Item_Retry">
-    <value>重试 (_R)</value>
+    <value>重试(_R)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Photos_Folders_NoItemsFound_Label">
@@ -1023,7 +1023,7 @@
     <value>上传照片功能暂时无法使用</value>
   </data>
   <data name="Main_Settings_AccountRootFolder_Button_Change">
-    <value>更改</value>
+    <value>更改(_C)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Settings_AccountRootFolder_HelpText">
@@ -1106,18 +1106,18 @@
     <value>尚未分享任何内容</value>
   </data>
   <data name="Main_SharedWithMe_Menu_Item_OpenFolder">
-    <value>打开文件夹</value>
+    <value>打开文件夹(_O)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_SharedWithMe_Menu_Item_RemoveMe">
-    <value>将我移除</value>
+    <value>将我移除(_R)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_SharedWithMe_Onboarding_Button_Close_HelpText">
     <value>取消与我共享的待办信息</value>
   </data>
   <data name="Main_SharedWithMe_Onboarding_Button_GetStarted">
-    <value>立即体验</value>
+    <value>立即体验(_S)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_SharedWithMe_Onboarding_Description">
@@ -1232,7 +1232,7 @@
     <value>要继续使用 Proton Drive，您需要更新到最新版本</value>
   </data>
   <data name="Main_Sidebar_Offer_Button_GetDeal">
-    <value>获取优惠</value>
+    <value>获取优惠(_D)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Sidebar_Storage_Button_GetMoreStorage">
@@ -1356,7 +1356,7 @@
     <value>好的</value>
   </data>
   <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
-    <value>更改</value>
+    <value>更改(_C)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder_HelpText">
@@ -1375,15 +1375,15 @@
     <value>您的 Proton Drive 文件夹</value>
   </data>
   <data name="Onboarding_Button_Continue">
-    <value>继续 (_C)</value>
+    <value>继续(_C)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Onboarding_Button_FinishSetup">
-    <value>完成设置</value>
+    <value>完成设置(_F)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders">
-    <value>添加更多文件夹 (_A)</value>
+    <value>添加更多文件夹(_A)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText">
@@ -1396,11 +1396,11 @@
     <value>备份您的文件夹</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Button_NotNow">
-    <value>暂不</value>
+    <value>暂不(_N)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Button_Upgrade">
-    <value>升级</value>
+    <value>升级(_U)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Calendar">
@@ -1491,33 +1491,33 @@
     <value>正在登录...</value>
   </data>
   <data name="SignIn_Button_Authenticate">
-    <value>身份验证</value>
+    <value>身份验证(_A)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Button_Back">
-    <value>返回</value>
+    <value>返回(_B)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Button_CreateAccount">
-    <value>创建账户</value>
+    <value>创建账户(_C)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Button_ForgotPassword">
-    <value>忘记您的密码啦？</value>
+    <value>忘记您的密码啦？(_F)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Button_LearnMore">
     <value>了解详情</value>
   </data>
   <data name="SignIn_Button_SignIn">
-    <value>登录</value>
+    <value>登录(_S)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Button_SignInAsAnotherUser">
     <value>或选择其他用户登录</value>
   </data>
   <data name="SignIn_Button_Unlock">
-    <value>解锁</value>
+    <value>解锁(_U)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Message_SigningIn">
@@ -1530,7 +1530,7 @@
     <value>未设定双因素身份验证。</value>
   </data>
   <data name="SignIn_Text_Password">
-    <value>密码</value>
+    <value>密码(_P)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Text_SecondPassword">
@@ -1543,7 +1543,7 @@
     <value>您的系统不支持安全密钥</value>
   </data>
   <data name="SignIn_Text_Username">
-    <value>电子邮件或用户名</value>
+    <value>邮箱或用户名(_U)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Text_Username_HelpText">
@@ -1648,25 +1648,25 @@
     <value>正在终止...</value>
   </data>
   <data name="SystemTray_Menu_Item_Exit">
-    <value>退出</value>
+    <value>退出(_X)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_OpenInBrowser">
-    <value>在浏览器中打开</value>
+    <value>在浏览器中打开(_B)</value>
   </data>
   <data name="SystemTray_Menu_Item_OpenLocalFolder">
-    <value>打开本地文件夹</value>
+    <value>打开本地文件夹(_F)</value>
   </data>
   <data name="SystemTray_Menu_Item_OpenProtonDrive">
-    <value>打开 Proton Drive (_O)</value>
+    <value>打开 Proton Drive(_O)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSync">
-    <value>暂停同步</value>
+    <value>暂停同步(_P)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_SignIn">
-    <value>登录</value>
+    <value>登录(_S)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="ToggleSwitch_Off">

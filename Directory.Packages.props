@@ -33,7 +33,7 @@
     <PackageVersion Include="morelinq" Version="4.4.0" />
     <PackageVersion Include="Polly.Core" Version="8.6.6" />
     <PackageVersion Include="Proton.Cryptography" Version="0.24.0" />
-    <PackageVersion Include="Proton.Drive.Sdk" Version="0.11.2" />
+    <PackageVersion Include="Proton.Drive.Sdk" Version="0.13.1" />
     <PackageVersion Include="ProtonDrive.BlockVerification" Version="1.1.0" />
     <PackageVersion Include="Refit.HttpClientFactory" Version="9.0.2" />
     <PackageVersion Include="Roslynator.Analyzers" Version="4.15.0" />

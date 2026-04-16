@@ -163,17 +163,39 @@ internal sealed class NtfsPermissionsBasedSyncFolderStructureProtector : ISyncFo
 
         var directorySecurity = GetAccessControl(directoryInfo);
 
+        var existingRules = directorySecurity
+            .GetAccessRules(includeExplicit: true, includeInherited: false, targetType: typeof(SecurityIdentifier));
+
+        var modified = false;
+
         foreach (var right in rights)
         {
+            var alreadyExists = existingRules
+                .OfType<FileSystemAccessRule>()
+                .Any(r => r.IdentityReference.Equals(EveryoneUser)
+                        && r.FileSystemRights.HasFlag(right)
+                        && r.AccessControlType == controlType
+                        && r.InheritanceFlags == InheritanceFlags.None);
+
+            if (alreadyExists)
+            {
+                continue;
+            }
+
             directorySecurity.AddAccessRule(new FileSystemAccessRule(
                 EveryoneUser,
                 right,
                 InheritanceFlags.None,
-                PropagationFlags.NoPropagateInherit,
+                PropagationFlags.None,
                 controlType));
+
+            modified = true;
         }
 
-        SetAccessControl(directoryInfo, directorySecurity);
+        if (modified)
+        {
+            SetAccessControl(directoryInfo, directorySecurity);
+        }
     }
 
     private void RemoveDirectorySecurity(string path, IEnumerable<FileSystemRights> rights, AccessControlType controlType)
@@ -195,17 +217,39 @@ internal sealed class NtfsPermissionsBasedSyncFolderStructureProtector : ISyncFo
 
         var fileSecurity = GetAccessControl(fileInfo);
 
+        var existingRules = fileSecurity
+            .GetAccessRules(includeExplicit: true, includeInherited: false, targetType: typeof(SecurityIdentifier));
+
+        var modified = false;
+
         foreach (var right in rights)
         {
+            var alreadyExists = existingRules
+                .OfType<FileSystemAccessRule>()
+                .Any(r => r.IdentityReference.Equals(EveryoneUser)
+                        && r.FileSystemRights.HasFlag(right)
+                        && r.AccessControlType == controlType
+                        && r.InheritanceFlags == InheritanceFlags.None);
+
+            if (alreadyExists)
+            {
+                continue;
+            }
+
             fileSecurity.AddAccessRule(new FileSystemAccessRule(
                 EveryoneUser,
                 right,
                 InheritanceFlags.None,
-                PropagationFlags.NoPropagateInherit,
+                PropagationFlags.None,
                 controlType));
+
+            modified = true;
         }
 
-        SetAccessControl(fileInfo, fileSecurity);
+        if (modified)
+        {
+            SetAccessControl(fileInfo, fileSecurity);
+        }
     }
 
     private void RemoveFileSecurity(string path, IEnumerable<FileSystemRights> rights, AccessControlType controlType)

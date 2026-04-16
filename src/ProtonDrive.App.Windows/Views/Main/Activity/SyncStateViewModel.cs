@@ -12,7 +12,6 @@ using ProtonDrive.App.Windows.Services;
 using ProtonDrive.App.Windows.SystemIntegration;
 using ProtonDrive.Shared;
 using ProtonDrive.Shared.Configuration;
-using ProtonDrive.Shared.Features;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Shared.ExecutionStatistics;
 using ProtonDrive.Sync.Shared.SyncActivity;
@@ -20,7 +19,7 @@ using ProtonDrive.Sync.Shared.SyncActivity;
 namespace ProtonDrive.App.Windows.Views.Main.Activity;
 
 internal sealed class SyncStateViewModel
-    : PageViewModel, ISessionStateAware, ISyncStateAware, ISyncActivityAware, ISyncStatisticsAware, IFeatureFlagsAware, IDisposable
+    : PageViewModel, ISessionStateAware, ISyncStateAware, ISyncActivityAware, ISyncStatisticsAware, IDisposable
 {
     public const int MaxNumberOfVisibleItems = 100;
 
@@ -48,7 +47,6 @@ internal sealed class SyncStateViewModel
     private int _latestSyncPassNumber;
     private int? _numberOfInitializedItems;
     private DateTime? _syncInitializationStartTime;
-    private bool _isRemoteNodeRenamingDisabled;
 
     public SyncStateViewModel(
         ISyncService syncService,
@@ -70,7 +68,7 @@ internal sealed class SyncStateViewModel
         _delayBeforeDisplayingSyncInitializationProgress = appConfig.DelayBeforeDisplayingSyncInitializationProgress;
 
         _retrySyncCommand = new AsyncRelayCommand(RetrySyncAsync, CanRetrySync);
-        _fixItemNameCommand = new RelayCommand<SyncActivityItemViewModel>(OpenRenameItemDialog, CanOpenRenameItemDialog);
+        _fixItemNameCommand = new RelayCommand<SyncActivityItemViewModel>(OpenRenameItemDialog);
 
         SyncActivityItems = GetItems();
         FailedItems = GetFailedItems();
@@ -114,18 +112,6 @@ internal sealed class SyncStateViewModel
     {
         get => _numberOfInitializedItems;
         private set => SetProperty(ref _numberOfInitializedItems, value);
-    }
-
-    public bool IsRemoteNodeRenamingDisabled
-    {
-        get => _isRemoteNodeRenamingDisabled;
-        private set
-        {
-            if (SetProperty(ref _isRemoteNodeRenamingDisabled, value))
-            {
-                _fixItemNameCommand.NotifyCanExecuteChanged();
-            }
-        }
     }
 
     public ICommand RetrySyncCommand => _retrySyncCommand;
@@ -288,13 +274,6 @@ internal sealed class SyncStateViewModel
             });
     }
 
-    void IFeatureFlagsAware.OnFeatureFlagsChanged(IReadOnlyDictionary<Feature, bool> features)
-    {
-        _scheduler.Schedule(
-            () =>
-                IsRemoteNodeRenamingDisabled = features[Feature.DriveWindowsRemoteNodeRenamingDisabled]);
-    }
-
     private static bool ItemSyncHasFailed(object item)
     {
         return item is SyncActivityItemViewModel { Status: SyncActivityItemStatus.Failed or SyncActivityItemStatus.Warning };
@@ -367,14 +346,9 @@ internal sealed class SyncStateViewModel
         }
     }
 
-    private bool CanOpenRenameItemDialog(SyncActivityItemViewModel? parameter)
-    {
-        return !IsRemoteNodeRenamingDisabled;
-    }
-
     private void OpenRenameItemDialog(SyncActivityItemViewModel? item)
     {
-        if (item is null || IsRemoteNodeRenamingDisabled)
+        if (item is null)
         {
             return;
         }

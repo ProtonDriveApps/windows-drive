@@ -83,7 +83,7 @@ internal sealed class PhotoAlbumImporter
         return exception.IsFileAccessException() || exception.IsDriveClientException() || exception is FileSystemClientException;
     }
 
-    private bool TryGetExistingAlbumLinkId(string albumFolderPath, [MaybeNullWhen(false)] out string albumLinkId)
+    private bool TryGetPreviouslyUsedAlbumLinkId(string albumFolderPath, [MaybeNullWhen(false)] out string albumLinkId)
     {
         if (_parameters.FolderCurrentPosition is not { } currentPosition)
         {
@@ -166,9 +166,9 @@ internal sealed class PhotoAlbumImporter
 
     private async Task<string> CreateOrResumeAlbumAsync(string albumFolderPath, CancellationToken cancellationToken)
     {
-        if (TryGetExistingAlbumLinkId(albumFolderPath, out var albumLinkId))
+        if (TryGetPreviouslyUsedAlbumLinkId(albumFolderPath, out var previouslyUsedAlbumLinkId))
         {
-            return albumLinkId;
+            return previouslyUsedAlbumLinkId;
         }
 
         var rootFolderPath = _parameters.FolderPath.AsSpan();
@@ -185,11 +185,27 @@ internal sealed class PhotoAlbumImporter
 
         var albumName = _albumNameProvider.GetAlbumNameFromPath(rootFolderPath, relativePath);
 
-        albumLinkId = await _photoAlbumService.CreateAlbumAsync(albumName, _parameters.ParentLinkId, cancellationToken).ConfigureAwait(false);
+        var albumLinkId = await GetAlbumLinkIdAsync(albumFolderPath, albumName, cancellationToken).ConfigureAwait(false);
 
-        _progress.RaiseAlbumCreated(new PhotoImportFolderCurrentPosition { AlbumLinkId = albumLinkId, RelativePath = relativePath });
+        _progress.RaiseAlbumSelected(new PhotoImportFolderCurrentPosition { AlbumLinkId = albumLinkId, RelativePath = relativePath });
 
         return albumLinkId;
+    }
+
+    private async Task<string> GetAlbumLinkIdAsync(string albumFolderPath, string albumName, CancellationToken cancellationToken)
+    {
+        var duplicateAlbumLinkId = await _photoAlbumService.FindDuplicateAlbumAsync(_parameters.VolumeId, _parameters.ShareId, albumName, cancellationToken)
+            .ConfigureAwait(false);
+
+        if (duplicateAlbumLinkId is not null)
+        {
+            var albumFolderPathToLog = _logger.GetSensitiveValueForLogging(albumFolderPath);
+            _logger.LogInformation("Existing album found: Folder \"{Path}\", Album ID {AlbumLinkId}", albumFolderPathToLog, duplicateAlbumLinkId);
+
+            return duplicateAlbumLinkId;
+        }
+
+        return await _photoAlbumService.CreateAlbumAsync(albumName, _parameters.ParentLinkId, cancellationToken).ConfigureAwait(false);
     }
 
     private async Task<IReadOnlyList<NodeInfo<string>>> ImportPhotoGroupAsync(PhotoGroup photoGroup, CancellationToken cancellationToken)

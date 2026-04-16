@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace ProtonDrive.Client;
+namespace ProtonDrive.Client.Albums.Contracts;
 
 public sealed class LinkIdListParameter
 {

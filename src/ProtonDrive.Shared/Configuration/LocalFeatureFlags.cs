@@ -5,6 +5,7 @@ public sealed class LocalFeatureFlags
     public bool UpgradeStorageOnboardingStepEnabled { get; internal set; }
     public bool? OffersEnabled { get; internal set; }
     public bool? DriveSdkEnabled { get; internal set; }
+    public bool? DrivePhotosSdkEnabled { get; internal set; }
     public bool? DriveCryptoEncryptBlocksWithPgpAeadEnabled { get; internal set; }
     public bool FileConsistencyGuardRemoteApplicabilityForceEnabled { get; internal set; }
     public bool? FileConsistencyGuardEnabled { get; set; }

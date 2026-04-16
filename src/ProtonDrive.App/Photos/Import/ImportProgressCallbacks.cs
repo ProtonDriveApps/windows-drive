@@ -4,7 +4,7 @@ internal sealed class ImportProgressCallbacks
 {
     public Action<int, int>? OnProgressChanged { get; init; }
 
-    public Action<PhotoImportFolderCurrentPosition>? OnAlbumCreated { get; init; }
+    public Action<PhotoImportFolderCurrentPosition>? OnAlbumSelected { get; init; }
 
     public Action<string, Exception?>? OnPhotoFileActivityChanged { get; init; }
 }

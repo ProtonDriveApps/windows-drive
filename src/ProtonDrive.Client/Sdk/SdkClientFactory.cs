@@ -1,11 +1,11 @@
-﻿using Proton.Drive.Sdk;
+using Proton.Drive.Sdk;
 using Proton.Sdk.Telemetry;
 using ProtonDrive.Client.Authentication;
 using ProtonDrive.Shared.Devices;
 
 namespace ProtonDrive.Client.Sdk;
 
-internal sealed class SdkClientFactory : ISdkClientFactory, IDisposable
+internal sealed class SdkClientFactory : ISdkClientFactory, ISdkPhotosClientFactory, IDisposable
 {
     private readonly IHttpClientFactory _httpClientFactory;
     private readonly IAccountClient _accountClient;
@@ -13,7 +13,8 @@ internal sealed class SdkClientFactory : ISdkClientFactory, IDisposable
     private readonly SdkFeatureFlagProvider _sdkFeatureFlagProvider;
     private readonly ITelemetry _sdkDiagnostics;
 
-    private DisposableProtonDriveClient? _sdkClient;
+    private DisposableSdkClient<ProtonDriveClient>? _sdkClient;
+    private DisposableSdkClient<ProtonPhotosClient>? _sdkPhotosClient;
     private bool _sessionStarted;
 
     public SdkClientFactory(
@@ -37,26 +38,69 @@ internal sealed class SdkClientFactory : ISdkClientFactory, IDisposable
     {
         if (_sessionStarted)
         {
-            _sdkClient?.Dispose();
-            _sdkClient = null;
-            _sessionStarted = false;
+            InvalidateSessionClients();
         }
 
         return (_sdkClient ??= CreateClient()).Instance;
     }
 
+    public ProtonPhotosClient GetOrCreatePhotosClient()
+    {
+        if (_sessionStarted)
+        {
+            InvalidateSessionClients();
+        }
+
+        return (_sdkPhotosClient ??= CreatePhotosClient()).Instance;
+    }
+
     public void Dispose()
     {
         _sdkClient?.Dispose();
+        _sdkPhotosClient?.Dispose();
     }
 
-    private DisposableProtonDriveClient CreateClient()
+    private DisposableSdkClient<ProtonDriveClient> CreateClient()
     {
-        return new DisposableProtonDriveClient(
-            _httpClientFactory,
-            _accountClient,
-            _clientInstanceIdentityProvider,
-            _sdkFeatureFlagProvider,
-            _sdkDiagnostics);
+        return new DisposableSdkClient<ProtonDriveClient>((entityRepo, secretRepo) =>
+            new ProtonDriveClient(
+                new SdkHttpClientFactoryDecorator(_httpClientFactory),
+                _accountClient,
+                entityRepo,
+                secretRepo,
+                _sdkFeatureFlagProvider,
+                _sdkDiagnostics,
+                GetClientOptions()));
+    }
+
+    private DisposableSdkClient<ProtonPhotosClient> CreatePhotosClient()
+    {
+        return new DisposableSdkClient<ProtonPhotosClient>((entityRepo, secretRepo) =>
+            new ProtonPhotosClient(
+                new SdkHttpClientFactoryDecorator(_httpClientFactory),
+                _accountClient,
+                entityRepo,
+                secretRepo,
+                _sdkFeatureFlagProvider,
+                _sdkDiagnostics,
+                GetClientOptions()));
+    }
+
+    private ProtonDriveClientOptions GetClientOptions()
+    {
+        return new ProtonDriveClientOptions
+        {
+            BindingsLanguage = "csharp",
+            Uid = _clientInstanceIdentityProvider.GetClientInstanceId(),
+        };
+    }
+
+    private void InvalidateSessionClients()
+    {
+        _sdkClient?.Dispose();
+        _sdkPhotosClient?.Dispose();
+        _sdkClient = null;
+        _sdkPhotosClient = null;
+        _sessionStarted = false;
     }
 }

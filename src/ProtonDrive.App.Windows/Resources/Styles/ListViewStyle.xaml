@@ -352,27 +352,44 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListBoxItem">
-                    <Border
-                        x:Name="Border"
-                        Background="{TemplateBinding Background}"
-                        BorderBrush="{TemplateBinding BorderBrush}"
-                        BorderThickness="{TemplateBinding BorderThickness}"
-                        CornerRadius="2"
-                        SnapsToDevicePixels="true"
-                        Padding="2">
-                        <GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                        <VisualStateManager.VisualStateGroups>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Normal" />
-                                <VisualState x:Name="Disabled" />
-                            </VisualStateGroup>
-                            <VisualStateGroup x:Name="SelectionStates">
-                                <VisualState x:Name="Unselected" />
-                                <VisualState x:Name="Selected" />
-                                <VisualState x:Name="SelectedUnfocused" />
-                            </VisualStateGroup>
-                        </VisualStateManager.VisualStateGroups>
-                    </Border>
+                    <Grid>
+                        <Border
+                            x:Name="Border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="2"
+                            SnapsToDevicePixels="true"
+                            Padding="2"
+                            Margin="2,0,0,0">
+                            <GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal" />
+                                    <VisualState x:Name="Disabled" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected" />
+                                    <VisualState x:Name="Selected" />
+                                    <VisualState x:Name="SelectedUnfocused" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </Border>
+                        <Border
+                            x:Name="SelectionIndicator"
+                            Background="{StaticResource PrimaryColorBrush}"
+                            CornerRadius="2"
+                            Visibility="Collapsed"
+                            Width="3"
+                            Height="16"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="SelectionIndicator" Property="Visibility" Value="Visible" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

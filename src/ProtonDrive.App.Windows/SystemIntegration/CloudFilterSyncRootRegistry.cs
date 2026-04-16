@@ -299,7 +299,7 @@ internal class CloudFilterSyncRootRegistry : IOnDemandSyncRootRegistry, ISession
             /* ProviderId and ShowSiblingsAsGroup are not filled by a call to StorageProviderSyncRootManager.GetSyncRootInformationForFolder.
              * If provided folder is not an on-demand root folder, but parent is, parent folder is returned in the Path property.
              *
-             * We don't check version to prevent updating registration with each app update. Version is set to app version.
+             * We don't check version to prevent updating registration with each app update. Version is set to app version during registration.
              */
 
             if (actualInfo.Id == rootInfo.Id &&
@@ -334,6 +334,11 @@ internal class CloudFilterSyncRootRegistry : IOnDemandSyncRootRegistry, ISession
             if (VerifySyncRootFlag(rootInfo.Path.Path) is var verdict2 and not OnDemandSyncRootVerificationVerdict.Valid)
             {
                 return (verdict2, ConflictingRootInfo: null);
+            }
+
+            if (ValidateActualSyncRootInfo(actualInfo) is var verdict3 and not OnDemandSyncRootVerificationVerdict.Valid)
+            {
+                return (verdict3, ConflictingRootInfo: null);
             }
 
             return (OnDemandSyncRootVerificationVerdict.Invalid, ConflictingRootInfo: null);
@@ -450,13 +455,13 @@ internal class CloudFilterSyncRootRegistry : IOnDemandSyncRootRegistry, ISession
         {
             // StorageFolder.GetFolderFromPathAsync sometimes throws ArgumentException claiming that
             // an item cannot be found at the specified path.
-            _logger.LogWarning("Failed to create sync root info \"{RootId}\": {ErrorMessage}", rootId, ex.Message);
+            _logger.LogError("Failed to create sync root info \"{RootId}\": {ErrorMessage}", rootId, ex.Message);
             return null;
         }
         catch (Exception ex) when (ex.IsFileAccessException() || ex is TypeInitializationException || ex is COMException)
         {
             ex.TryGetRelevantFormattedErrorCode(out var errorCode);
-            _logger.LogWarning("Failed to create sync root info \"{RootId}\": {ErrorCode} {ErrorMessage}", rootId, errorCode, ex.Message);
+            _logger.LogError("Failed to create sync root info \"{RootId}\": {ErrorCode} {ErrorMessage}", rootId, errorCode, ex.Message);
             return null;
         }
     }
@@ -668,13 +673,26 @@ internal class CloudFilterSyncRootRegistry : IOnDemandSyncRootRegistry, ISession
 
         if (placeholderState is PlaceholderState.Invalid)
         {
+            _logger.LogError("Root folder placeholder state is {PlaceholderState}", placeholderState);
             return OnDemandSyncRootVerificationVerdict.VerificationFailed;
         }
 
         if (!placeholderState.HasFlag(PlaceholderState.SyncRoot))
         {
-            _logger.LogWarning("Root folder placeholder state is {PlaceholderState}", placeholderState);
+            _logger.LogError("Root folder placeholder state is {PlaceholderState}", placeholderState);
             return OnDemandSyncRootVerificationVerdict.MissingSyncRootFlag;
+        }
+
+        return OnDemandSyncRootVerificationVerdict.Valid;
+    }
+
+    private OnDemandSyncRootVerificationVerdict ValidateActualSyncRootInfo(StorageProviderSyncRootInfo actualInfo)
+    {
+        if (actualInfo.HydrationPolicyModifier is StorageProviderHydrationPolicyModifier.None &&
+            actualInfo.InSyncPolicy is StorageProviderInSyncPolicy.Default)
+        {
+            _logger.LogError("On-demand sync root state is invalid");
+            return OnDemandSyncRootVerificationVerdict.VerificationFailed;
         }
 
         return OnDemandSyncRootVerificationVerdict.Valid;

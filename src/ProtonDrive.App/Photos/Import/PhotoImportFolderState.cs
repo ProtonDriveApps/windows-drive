@@ -1,5 +1,4 @@
-﻿using ProtonDrive.Client.FileUploading;
-using ProtonDrive.Sync.Shared.FileSystem.Photos;
+﻿using ProtonDrive.Sync.Shared.FileSystem.Photos;
 
 namespace ProtonDrive.App.Photos.Import;
 

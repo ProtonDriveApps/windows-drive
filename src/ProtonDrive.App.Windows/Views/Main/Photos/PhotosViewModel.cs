@@ -1,4 +1,4 @@
-﻿using ProtonDrive.App.Onboarding;
+using ProtonDrive.App.Onboarding;
 
 namespace ProtonDrive.App.Windows.Views.Main.Photos;
 

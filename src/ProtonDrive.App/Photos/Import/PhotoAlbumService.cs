@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using ProtonDrive.App.Photos.Albums;
 using ProtonDrive.Sync.Shared.FileSystem;
 using ProtonDrive.Sync.Shared.FileSystem.Photos;
 
@@ -7,11 +8,16 @@ namespace ProtonDrive.App.Photos.Import;
 internal sealed class PhotoAlbumService : IPhotoAlbumService
 {
     private readonly IFileSystemClient<string> _remoteFileSystemClient;
+    private readonly IPhotoAlbumDuplicateService _photoAlbumDuplicationService;
     private readonly ILogger<PhotoAlbumService> _logger;
 
-    public PhotoAlbumService(IFileSystemClient<string> remoteFileSystemClient, ILogger<PhotoAlbumService> logger)
+    public PhotoAlbumService(
+        IFileSystemClient<string> remoteFileSystemClient,
+        IPhotoAlbumDuplicateService photoAlbumDuplicationService,
+        ILogger<PhotoAlbumService> logger)
     {
         _remoteFileSystemClient = remoteFileSystemClient;
+        _photoAlbumDuplicationService = photoAlbumDuplicationService;
         _logger = logger;
     }
 
@@ -53,5 +59,10 @@ internal sealed class PhotoAlbumService : IPhotoAlbumService
         await _remoteFileSystemClient.MoveAsync(files, albumNode, cancellationToken).ConfigureAwait(false);
 
         _logger.LogInformation("Finished adding batch of {Count} photo files to album with ID {AlbumId}", files.Count, albumLinkId);
+    }
+
+    public ValueTask<string?> FindDuplicateAlbumAsync(string volumeId, string shareId, string albumName, CancellationToken cancellationToken)
+    {
+        return _photoAlbumDuplicationService.FindDuplicateAlbumIdAsync(volumeId, shareId, albumName, cancellationToken);
     }
 }

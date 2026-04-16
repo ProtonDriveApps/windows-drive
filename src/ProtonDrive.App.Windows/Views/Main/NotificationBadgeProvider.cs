@@ -3,8 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using ProtonDrive.App.Account;
 using ProtonDrive.App.Mapping;
 using ProtonDrive.App.Mapping.SyncFolders;
-using ProtonDrive.App.Onboarding;
-using ProtonDrive.App.Photos;
 using ProtonDrive.App.Update;
 using ProtonDrive.App.Windows.Resources;
 using ProtonDrive.App.Windows.Views.Shared.Notification;
@@ -14,13 +12,12 @@ using ProtonDrive.Shared.Threading;
 namespace ProtonDrive.App.Windows.Views.Main;
 
 internal sealed class NotificationBadgeProvider
-    : ObservableObject, IUserStateAware, ISyncFoldersAware, IFeatureFlagsAware, IStorageOptimizationOnboardingStateAware, IPhotosFeatureStateAware
+    : ObservableObject, IUserStateAware, ISyncFoldersAware, IFeatureFlagsAware
 {
     private readonly IScheduler _scheduler;
     private readonly NotificationBadge _newVersionNotificationBadge;
     private readonly NotificationBadge _syncFoldersFailureNotificationBadge;
     private readonly NotificationBadge _sharedWithMeFeatureDisabledNotificationBadge;
-    private readonly NotificationBadge _storageOptimizationOnboardingNotificationBadge;
     private readonly NotificationBadge _updateRequiredNotificationBadge;
     private readonly NotificationBadge _warningLevel1QuotaNotificationBadge;
     private readonly NotificationBadge _warningLevel2QuotaNotificationBadge;
@@ -29,16 +26,13 @@ internal sealed class NotificationBadgeProvider
 
     private NotificationBadge? _settingsNotificationBadge;
     private NotificationBadge? _myComputerNotificationBadge;
-    private NotificationBadge? _myComputerNewFeatureBadge;
-    private NotificationBadge? _photosNewFeatureBadge;
+    private NotificationBadge? _photosNotificationBadge;
     private NotificationBadge? _sharedWithMeNotificationBadge;
     private NotificationBadge? _updateNotificationBadge;
     private NotificationBadge? _quotaNotificationBadge;
 
     private UserState? _user;
     private bool _sharingFeatureIsDisabled;
-    private bool _isStorageOptimizationFeatureBadgeEnabled;
-    private bool _isStorageOptimizationOnboarding;
 
     public NotificationBadgeProvider(
         IUpdateService updateService,
@@ -81,11 +75,6 @@ internal sealed class NotificationBadgeProvider
             "!",
             Strings.Main_Sidebar_Notification_ExceedingQuota_Description,
             NotificationBadgeSeverity.Warning);
-
-        _storageOptimizationOnboardingNotificationBadge = new NotificationBadge(
-            "New",
-            Strings.Main_Sidebar_Notification_GetStarted_Description,
-            NotificationBadgeSeverity.Info);
     }
 
     public NotificationBadge? MyComputerNotificationBadge
@@ -94,22 +83,16 @@ internal sealed class NotificationBadgeProvider
         private set => SetProperty(ref _myComputerNotificationBadge, value);
     }
 
-    public NotificationBadge? MyComputerNewFeatureBadge
-    {
-        get => _myComputerNewFeatureBadge;
-        private set => SetProperty(ref _myComputerNewFeatureBadge, value);
-    }
-
     public NotificationBadge? SharedWithMeNotificationBadge
     {
         get => _sharedWithMeNotificationBadge;
         private set => SetProperty(ref _sharedWithMeNotificationBadge, value);
     }
 
-    public NotificationBadge? PhotosNewFeatureBadge
+    public NotificationBadge? PhotosNotificationBadge
     {
-        get => _photosNewFeatureBadge;
-        private set => SetProperty(ref _photosNewFeatureBadge, value);
+        get => _photosNotificationBadge;
+        private set => SetProperty(ref _photosNotificationBadge, value);
     }
 
     public NotificationBadge? SettingsNotificationBadge
@@ -143,43 +126,13 @@ internal sealed class NotificationBadgeProvider
 
     void IFeatureFlagsAware.OnFeatureFlagsChanged(IReadOnlyDictionary<Feature, bool> features)
     {
-        _isStorageOptimizationFeatureBadgeEnabled =
-            features[Feature.DriveWindowsStorageOptimizationNewFeatureBadge] &&
-            !features[Feature.DriveWindowsStorageOptimizationDisabled];
-
         Schedule(() => RefreshSharedWithMeNotificationBadge(features));
-        Schedule(RefreshStorageOptimizationOnboardingBadge);
-    }
-
-    void IStorageOptimizationOnboardingStateAware.StorageOptimizationOnboardingStateChanged(StorageOptimizationOnboardingStep step)
-    {
-        _isStorageOptimizationOnboarding = step is not StorageOptimizationOnboardingStep.None;
-        Schedule(RefreshStorageOptimizationOnboardingBadge);
-    }
-
-    void IPhotosFeatureStateAware.OnPhotosFeatureStateChanged(PhotosFeatureState value)
-    {
-        Schedule(() => RefreshPhotosOnboardingBadge(value));
     }
 
     private void RefreshSharedWithMeNotificationBadge(IReadOnlyDictionary<Feature, bool> features)
     {
         _sharingFeatureIsDisabled = features[Feature.DriveSharingDisabled] || features[Feature.DriveSharingEditingDisabled];
         SharedWithMeNotificationBadge = GetSharedWithMeNotificationBadge();
-    }
-
-    private void RefreshPhotosOnboardingBadge(PhotosFeatureState value)
-    {
-        PhotosNewFeatureBadge = value.Status is PhotosFeatureStatus.Onboarding
-            ? new NotificationBadge("New", Strings.Main_Sidebar_Notification_GetStarted_Description, NotificationBadgeSeverity.Info)
-            : null;
-    }
-
-    private void RefreshStorageOptimizationOnboardingBadge()
-    {
-        MyComputerNewFeatureBadge = _isStorageOptimizationFeatureBadgeEnabled && _isStorageOptimizationOnboarding
-            ? _storageOptimizationOnboardingNotificationBadge
-            : null;
     }
 
     private NotificationBadge? GetSharedWithMeNotificationBadge()

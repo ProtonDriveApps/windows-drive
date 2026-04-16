@@ -256,7 +256,7 @@ internal sealed class PhotoImportService : IStartableService, IStoppableService,
         return new ImportProgressCallbacks
         {
             OnProgressChanged = (numberOfImportedFiles, numberOfFilesToImport) => OnProgressChanged(photoImportFolder, numberOfImportedFiles, numberOfFilesToImport),
-            OnAlbumCreated = folderCurrentPosition => OnAlbumCreate(photoImportFolder, folderCurrentPosition),
+            OnAlbumSelected = folderCurrentPosition => OnAlbumSelected(photoImportFolder, folderCurrentPosition),
             OnPhotoFileActivityChanged = OnPhotoFileActivityChanged,
         };
     }
@@ -276,7 +276,7 @@ internal sealed class PhotoImportService : IStartableService, IStoppableService,
         OnPhotoImportFolderUpdated(photoImportFolder);
     }
 
-    private void OnAlbumCreate(PhotoImportFolderState photoImportFolder, PhotoImportFolderCurrentPosition folderCurrentPosition)
+    private void OnAlbumSelected(PhotoImportFolderState photoImportFolder, PhotoImportFolderCurrentPosition folderCurrentPosition)
     {
         photoImportFolder.CurrentPosition = folderCurrentPosition;
 

@@ -955,7 +955,7 @@ Dosyaların bu aygıtta yalnızca onları açtığınızda ya da her zaman bulun
     <value>öge(ler)</value>
   </data>
   <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
-    <value>_albümleri yönet</value>
+    <value>_Albüm yönetimi</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Photos_Folders_Menu_Item_OpenFolder">

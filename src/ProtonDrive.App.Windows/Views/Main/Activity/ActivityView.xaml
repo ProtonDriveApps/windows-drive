@@ -70,7 +70,7 @@
             <DataTemplate
                 x:Key="FailedActivityItemActionsCellTemplate"
                 DataType="activity:SyncActivityItemViewModel">
-                <Grid Visibility="{Binding DataContext.IsRemoteNodeRenamingDisabled, RelativeSource={RelativeSource AncestorType=ListView}, Converter={x:Static converters:BooleanToVisibilityConverter.TrueIsCollapsed}}">
+                <Grid>
                     <Button
                         Content="{loc:Resource Main_Activity_Button_Rename}"
                         CommandParameter="{Binding .}"

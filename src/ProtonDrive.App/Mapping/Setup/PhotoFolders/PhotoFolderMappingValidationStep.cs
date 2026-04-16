@@ -1,19 +1,24 @@
-﻿using ProtonDrive.App.Settings;
+﻿using ProtonDrive.App.Photos.Import;
+using ProtonDrive.App.Settings;
 using ProtonDrive.Shared;
+using ProtonDrive.Shared.Repository;
 
 namespace ProtonDrive.App.Mapping.Setup.PhotoFolders;
 
 internal sealed class PhotoFolderMappingValidationStep
 {
+    private readonly IRepository<PhotoImportSettings> _importRepository;
     private readonly IPhotosFeatureStateValidator _photosFeatureStateValidator;
     private readonly ILocalFolderValidationStep _localFolderValidation;
     private readonly IRemotePhotoVolumeValidator _remotePhotoVolumeValidator;
 
     public PhotoFolderMappingValidationStep(
+        IRepository<PhotoImportSettings> importRepository,
         IPhotosFeatureStateValidator photosFeatureStateValidator,
         ILocalFolderValidationStep localFolderValidation,
         IRemotePhotoVolumeValidator remotePhotoVolumeValidator)
     {
+        _importRepository = importRepository;
         _photosFeatureStateValidator = photosFeatureStateValidator;
         _localFolderValidation = localFolderValidation;
         _remotePhotoVolumeValidator = remotePhotoVolumeValidator;
@@ -27,10 +32,23 @@ internal sealed class PhotoFolderMappingValidationStep
         Ensure.IsTrue(mapping.IsPhotoFolderMapping(), "Mapping type has unexpected value", nameof(mapping));
 
         return
+            ValidateImportFolderStatus(mapping) ??
             ValidatePhotosFeatureState() ??
             await ValidateLocalFolderAsync(mapping, otherLocalSyncFolders, cancellationToken).ConfigureAwait(false) ??
             await ValidateRemoteFolderAsync(mapping.Remote, cancellationToken).ConfigureAwait(false) ??
             MappingErrorCode.None;
+    }
+
+    private MappingErrorCode? ValidateImportFolderStatus(RemoteToLocalMapping mapping)
+    {
+        var photoImportFolders = _importRepository.Get()?.Folders ?? [];
+        var photoImportFolderStatus = photoImportFolders.FirstOrDefault(x => x.MappingId == mapping.Id)?.Status;
+
+        return photoImportFolderStatus switch
+        {
+            PhotoImportFolderStatus.Succeeded => MappingErrorCode.None, // We skip validation of already imported folders
+            _ => null,
+        };
     }
 
     private MappingErrorCode? ValidatePhotosFeatureState()

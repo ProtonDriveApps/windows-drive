@@ -242,7 +242,7 @@
     <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
-    <value>Перамяшчэнне ў сметніцу Proton Drive</value>
+    <value>Перамешчана ў сметніцу Proton Drive</value>
     <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
   <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
@@ -957,7 +957,7 @@
     <value>элемент(аў)</value>
   </data>
   <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
-    <value>Manage _albums</value>
+    <value>Кіраванне _альбомамі</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
@@ -1049,7 +1049,7 @@
     <value>Перазапусціць зараз</value>
   </data>
   <data name="Main_Settings_Language_Message_PleaseRestart">
-    <value>Перазапусціце праграму, каб ужыць змены мовы</value>
+    <value>Перазапусціце праграму, каб прымяніць змены мовы</value>
   </data>
   <data name="Main_Settings_Language_Title">
     <value>Мова</value>

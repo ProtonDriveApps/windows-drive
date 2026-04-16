@@ -81,8 +81,8 @@ internal sealed class SdkRemoteRevisionCreationProcess : IDestinationRevision<st
 
                 // NOTE: Sha1Digest and SizeOnStorage are not available when using SDK
                 FileInfo = FileInfo.Copy()
-                    .WithId(fileNodeUid.ToString().Split('~')[1])
-                    .WithRevisionId(fileRevisionUid.ToString().Split('~')[2]);
+                    .WithId(fileNodeUid.ToLinkId())
+                    .WithRevisionId(fileRevisionUid.ToRevisionId());
             }
         }
         catch (Exception ex) when (ExceptionMapping.TryMapSdkClientException(ex, FileInfo.Id, includeObjectId: false, out var mappedException))

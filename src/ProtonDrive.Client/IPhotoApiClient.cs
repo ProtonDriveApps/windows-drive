@@ -6,6 +6,14 @@ namespace ProtonDrive.Client;
 
 public interface IPhotoApiClient
 {
+    [Post("/v2/volumes/{volumeId}/links")]
+    [BearerAuthorizationHeader]
+    public Task<LinkResponseListV2> GetLinksDetailsAsync(string volumeId, LinkIdListParameter parameters, CancellationToken cancellationToken);
+
+    [Get("/photos/volumes/{volumeId}/albums")]
+    [BearerAuthorizationHeader]
+    public Task<AlbumResponseList> GetAlbumsAsync(string volumeId, [Query, AliasAs("AnchorID")] string? anchorId, CancellationToken cancellationToken);
+
     [Post("/photos/volumes/{volumeId}/albums")]
     [BearerAuthorizationHeader]
     public Task<AlbumCreationResponse> CreateAlbumAsync(string volumeId, AlbumCreationParameters parameters, CancellationToken cancellationToken);

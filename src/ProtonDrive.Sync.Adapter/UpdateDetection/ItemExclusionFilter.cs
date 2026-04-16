@@ -1,11 +1,11 @@
-﻿using ProtonDrive.Shared.IO;
+﻿using System.Collections.Frozen;
+using ProtonDrive.Shared.IO;
 
 namespace ProtonDrive.Sync.Adapter.UpdateDetection;
 
 internal sealed class ItemExclusionFilter : IItemExclusionFilter
 {
-    private readonly IReadOnlyCollection<string> _specialFolderNames;
-    private readonly IReadOnlySet<string> _fileExtensionsToIgnore = new[]
+    private static readonly FrozenSet<string> FileExtensionsToIgnore = new[]
     {
         ".crdownload",
         ".download",
@@ -14,7 +14,15 @@ internal sealed class ItemExclusionFilter : IItemExclusionFilter
         ".temp",
         ".tmp",
         ".~tmp",
-    }.ToHashSet(StringComparer.OrdinalIgnoreCase);
+    }.ToFrozenSet(StringComparer.OrdinalIgnoreCase);
+
+    private static readonly FrozenSet<string> FolderNamesToIgnore = new[]
+    {
+        ".tmp.driveupload",     // Used by Google Drive
+        ".tmp.drivedownload",   // Used by Google Drive
+    }.ToFrozenSet(StringComparer.OrdinalIgnoreCase);
+
+    private readonly IReadOnlyCollection<string> _specialFolderNames;
 
     public ItemExclusionFilter(IReadOnlyCollection<string> specialFolderNames)
     {
@@ -29,7 +37,7 @@ internal sealed class ItemExclusionFilter : IItemExclusionFilter
 
         bool ShouldBeIgnoredOnSyncRoot()
         {
-            // Special folders on the replica root are ignored
+            // Special Proton Drive folders on the replica root are ignored
             return _specialFolderNames.Contains(name, StringComparer.OrdinalIgnoreCase);
         }
     }
@@ -44,6 +52,7 @@ internal sealed class ItemExclusionFilter : IItemExclusionFilter
                || IsProtectedSystemFolder()
                || IsMicrosoftOrLibreOfficeTemporaryFile()
                || IsWellKnownTemporaryFile()
+               || IsWellKnownTemporaryFolder()
             ;
 
         bool IsSystemFile()
@@ -69,7 +78,13 @@ internal sealed class ItemExclusionFilter : IItemExclusionFilter
         bool IsWellKnownTemporaryFile()
         {
             return !attributes.HasFlag(FileAttributes.Directory)
-                   && _fileExtensionsToIgnore.Contains(Path.GetExtension(name));
+                   && FileExtensionsToIgnore.Contains(Path.GetExtension(name));
+        }
+
+        bool IsWellKnownTemporaryFolder()
+        {
+            return attributes.HasFlag(FileAttributes.Directory)
+                && FolderNamesToIgnore.Contains(name);
         }
     }
 }

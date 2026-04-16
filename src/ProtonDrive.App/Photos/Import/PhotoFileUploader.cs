@@ -1,4 +1,3 @@
-﻿using Microsoft.Extensions.Logging;
 using ProtonDrive.Sync.Shared.FileSystem;
 
 namespace ProtonDrive.App.Photos.Import;
@@ -7,16 +6,13 @@ internal sealed class PhotoFileUploader : IPhotoFileUploader
 {
     private readonly IPhotoFileSystemClient<long> _localFileSystemClient;
     private readonly IFileSystemClient<string> _remoteFileSystemClient;
-    private readonly ILogger<PhotoFileUploader> _logger;
 
     public PhotoFileUploader(
         IPhotoFileSystemClient<long> localFileSystemClient,
-        IFileSystemClient<string> remoteFileSystemClient,
-        ILogger<PhotoFileUploader> logger)
+        IFileSystemClient<string> remoteFileSystemClient)
     {
         _localFileSystemClient = localFileSystemClient;
         _remoteFileSystemClient = remoteFileSystemClient;
-        _logger = logger;
     }
 
     public async Task<NodeInfo<string>> UploadFileAsync(string filePath, string parentLinkId, string? mainPhotoLinkId, CancellationToken cancellationToken)
