@@ -16,6 +16,9 @@ using Shell32 = ProtonDrive.App.Windows.Interop.Shell32;
 
 namespace ProtonDrive.App.Windows.Services;
 
+/// <summary>
+/// Provides thumbnail generation for image files using Windows API
+/// </summary>
 // ReSharper disable InconsistentNaming
 internal class Win32ThumbnailGenerator : IThumbnailGenerator
 {
@@ -29,14 +32,21 @@ internal class Win32ThumbnailGenerator : IThumbnailGenerator
     private static readonly DedicatedThreadTaskScheduler TaskScheduler = new();
 
     private readonly IClock _clock;
-    private readonly ILogger<IThumbnailGenerator> _logger;
     private readonly IErrorReporting _errorReporting;
+    private readonly ILogger<IThumbnailGenerator> _logger;
 
-    public Win32ThumbnailGenerator(IClock clock, ILogger<IThumbnailGenerator> logger, IErrorReporting errorReporting)
+    private readonly Win32ThumbnailGenerationValidator _generationValidator;
+
+    public Win32ThumbnailGenerator(
+        IClock clock,
+        IErrorReporting errorReporting,
+        ILogger<IThumbnailGenerator> logger)
     {
         _clock = clock;
         _logger = logger;
         _errorReporting = errorReporting;
+
+        _generationValidator = new Win32ThumbnailGenerationValidator(errorReporting, logger);
     }
 
     public async Task<ReadOnlyMemory<byte>?> TryGenerateThumbnailAsync(
@@ -46,19 +56,20 @@ internal class Win32ThumbnailGenerator : IThumbnailGenerator
         CancellationToken cancellationToken)
     {
         var extension = Path.GetExtension(filePath);
-        var fileExtensionToLog = extension[^Math.Min(extension.Length, 5)..];
+        var fileExtensionToLog = extension[^Math.Min(extension.Length, 5)..].ToLowerInvariant();
 
         if (!KnownFileExtensions.ImageExtensions.Contains(extension) && !KnownFileExtensions.VideoExtensions.Contains(extension))
         {
-            _logger.LogInformation(
-                "Thumbnail generation skipped: File extension \"{Extension}\" not supported",
+            _logger.LogDebug(
+                "Thumbnail generation (Win32) skipped: File extension \"{Extension}\" not supported",
                 fileExtensionToLog);
-            return null;
+
+            throw new ThumbnailGenerationException(ThumbnailGenerationErrorCode.ExtensionNotSupported, $"File extension \"{fileExtensionToLog}\" not supported");
         }
 
         if (!File.Exists(filePath))
         {
-            _logger.LogWarning("Thumbnail generation failed: File not found");
+            _logger.LogWarning("Thumbnail generation (Win32) failed: File not found");
             return null;
         }
 
@@ -66,16 +77,11 @@ internal class Win32ThumbnailGenerator : IThumbnailGenerator
 
         try
         {
-            var isHdPreview = IsRequestingHdPreview(numberOfPixelsOnLargestSide);
+            var isHdPreview = ThumbnailGenerationExtensions.IsRequestingHdPreview(numberOfPixelsOnLargestSide);
 
-            if (isHdPreview)
+            if (isHdPreview && !_generationValidator.IsHdPreviewAllowed(filePath))
             {
-                var validator = new Win32ThumbnailGenerationValidator(filePath, extension, _logger, _errorReporting);
-
-                if (!validator.IsHdPreviewAllowed())
-                {
-                    return null;
-                }
+                return null;
             }
 
             (hBitmap, var hResult) = await GetNativeBitmapHandleAsync(filePath, numberOfPixelsOnLargestSide, cancellationToken).ConfigureAwait(false);
@@ -83,7 +89,7 @@ internal class Win32ThumbnailGenerator : IThumbnailGenerator
             if (hBitmap == IntPtr.Zero)
             {
                 ReportError(fileExtensionToLog, numberOfPixelsOnLargestSide, "Failed to get bitmap handle", hResult);
-                return null;
+                throw new ThumbnailGenerationException(ThumbnailGenerationErrorCode.Failed, "Failed to get bitmap handle");
             }
 
             var bitmap = Imaging.CreateBitmapSourceFromHBitmap(hBitmap, IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
@@ -100,11 +106,11 @@ internal class Win32ThumbnailGenerator : IThumbnailGenerator
 
             if (thumbnailBytes.Length > maxNumberOfBytes)
             {
-                throw new ThumbnailGenerationException($"Could not generate thumbnail of less than {maxNumberOfBytes} bytes");
+                throw new ThumbnailGenerationException(ThumbnailGenerationErrorCode.Failed, $"Could not compress thumbnail into less than {maxNumberOfBytes} bytes");
             }
 
             _logger.LogDebug(
-                "{ThumbnailType} generation succeeded for file \"{FileName}\": {Width}x{Height} pixels, {Size} bytes",
+                "{ThumbnailType} generation (Win32) succeeded for file \"{FileName}\": {Width}x{Height} pixels, {Size} bytes",
                 isHdPreview ? "HD preview" : "Thumbnail",
                 Path.GetFileName(filePath),
                 bitmap.PixelWidth,
@@ -114,43 +120,41 @@ internal class Win32ThumbnailGenerator : IThumbnailGenerator
             if (thumbnailBytes.Length == 0)
             {
                 _logger.LogWarning(
-                    "{ThumbnailType} generation failed for file \"{FileName}\": Empty thumbnail",
+                    "{ThumbnailType} generation (Win32) failed for file \"{FileName}\": Empty thumbnail",
                     isHdPreview ? "HD preview" : "Thumbnail",
                     fileExtensionToLog);
                 ReportError(fileExtensionToLog, numberOfPixelsOnLargestSide, "Empty thumbnail");
-                return null;
+                throw new ThumbnailGenerationException(ThumbnailGenerationErrorCode.Failed, "Empty thumbnail");
             }
 
             return thumbnailBytes;
         }
         catch (FileNotFoundException)
         {
-            _logger.LogWarning("Thumbnail generation failed: File not found");
+            _logger.LogWarning("Thumbnail generation (Win32) failed: File not found");
             return null;
         }
-        catch (Exception ex) when (ex is not OperationCanceledException)
+        catch (ThumbnailGenerationException exception)
         {
-            var exceptionType = ex.GetType().Name;
-
-            _logger.LogError(
-                ex,
-                "Thumbnail generation failed for file extension \"{Extension}\": {ExceptionType}: {HResult}",
+            ReportError(fileExtensionToLog, numberOfPixelsOnLargestSide, exception.Message);
+            throw;
+        }
+        catch (Exception exception) when (exception is not OperationCanceledException)
+        {
+            var exceptionType = exception.GetType().Name;
+            _logger.LogWarning(
+                "Thumbnail generation (Win32) failed for file extension \"{Extension}\": {ExceptionType}: {HResult}",
                 fileExtensionToLog,
                 exceptionType,
-                ex.HResult);
+                exception.HResult);
 
-            ReportError(fileExtensionToLog, numberOfPixelsOnLargestSide, exceptionType, new HResult(ex.HResult));
-            return null;
+            ReportError(fileExtensionToLog, numberOfPixelsOnLargestSide, exceptionType, new HResult(exception.HResult));
+            throw new ThumbnailGenerationException(ThumbnailGenerationErrorCode.Failed, "Thumbnail generation failed", exception);
         }
         finally
         {
             Gdi32.DeleteObject(hBitmap);
         }
-    }
-
-    private static bool IsRequestingHdPreview(int numberOfPixelsOnLargestSide)
-    {
-        return numberOfPixelsOnLargestSide > IThumbnailProvider.MaxThumbnailNumberOfPixelsOnLargestSide;
     }
 
     private static Task<TResult> Schedule<TResult>(Func<TResult> work, CancellationToken cancellationToken)
@@ -214,7 +218,7 @@ internal class Win32ThumbnailGenerator : IThumbnailGenerator
 
         if (result.Failed || thumbnail is null)
         {
-            _logger.LogWarning("Thumbnail generation of max {Size}px failed: 0x{ErrorCode:x8}", numberOfPixelsOnLargestSide, result.AsInt32);
+            _logger.LogWarning("Thumbnail generation (Win32) of max {Size}px failed: 0x{ErrorCode:x8}", numberOfPixelsOnLargestSide, result.AsInt32);
 
             return (IntPtr.Zero, result);
         }
@@ -230,8 +234,9 @@ internal class Win32ThumbnailGenerator : IThumbnailGenerator
     private void ReportError(string fileExtensionToReport, int requestedSize, string details, HResult? hresult = null)
     {
         var errorMessage =
-            $"Thumbnail generation with size {requestedSize} " +
+            $"Thumbnail generation (Win32) with size {requestedSize} " +
             $"failed for \"{fileExtensionToReport}\": {(hresult.HasValue ? $"(0x{hresult.Value.AsUInt32:x8}) {details}" : details)}";
+
         _errorReporting.CaptureError(errorMessage);
     }
 }

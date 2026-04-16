@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
-using ProtonDrive.App.Windows.Services;
+using ProtonDrive.Sync.Shared.FileSystem;
 
 namespace ProtonDrive.App.Windows.Interop;
 

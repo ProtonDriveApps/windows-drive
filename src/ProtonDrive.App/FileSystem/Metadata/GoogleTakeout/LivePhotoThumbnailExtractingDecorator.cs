@@ -5,13 +5,13 @@ namespace ProtonDrive.App.FileSystem.Metadata.GoogleTakeout;
 
 public sealed class LivePhotoThumbnailExtractingDecorator : IThumbnailGenerator
 {
-    private readonly IThumbnailGenerator _decoratedInstance;
     private readonly ILivePhotoFileDetector _livePhotoFileDetector;
+    private readonly IThumbnailGenerator _decoratedInstance;
 
-    public LivePhotoThumbnailExtractingDecorator(IThumbnailGenerator instanceToDecorate, ILivePhotoFileDetector livePhotoFileDetector)
+    public LivePhotoThumbnailExtractingDecorator(ILivePhotoFileDetector livePhotoFileDetector, IThumbnailGenerator instanceToDecorate)
     {
-        _decoratedInstance = instanceToDecorate;
         _livePhotoFileDetector = livePhotoFileDetector;
+        _decoratedInstance = instanceToDecorate;
     }
 
     public async Task<ReadOnlyMemory<byte>?> TryGenerateThumbnailAsync(

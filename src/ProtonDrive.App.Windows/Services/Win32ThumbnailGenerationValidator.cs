@@ -12,111 +12,82 @@ namespace ProtonDrive.App.Windows.Services;
 
 internal sealed class Win32ThumbnailGenerationValidator
 {
-    private const int MinHdPreviewNumberOfPixelsOnLargestSide = IThumbnailProvider.MaxThumbnailNumberOfPixelsOnLargestSide + 1;
-
-    private readonly string _filePath;
-    private readonly string _extension;
-    private readonly ILogger _logger;
     private readonly IErrorReporting _errorReporting;
+    private readonly ILogger<IThumbnailGenerator> _logger;
 
-    public Win32ThumbnailGenerationValidator(string filePath, string extension, ILogger logger, IErrorReporting errorReporting)
+    public Win32ThumbnailGenerationValidator(IErrorReporting errorReporting, ILogger<IThumbnailGenerator> logger)
     {
-        _filePath = filePath;
-        _extension = extension;
-        _logger = logger;
         _errorReporting = errorReporting;
+        _logger = logger;
     }
 
-    public bool IsHdPreviewAllowed()
+    public bool IsHdPreviewAllowed(string filePath)
     {
+        var extension = Path.GetExtension(filePath);
+
         // We skip large thumbnail generation for vector graphics images, because we cannot obtain image dimensions without generating the thumbnail
-        if (!KnownFileExtensions.ImageExtensions.Contains(_extension) || KnownFileExtensions.VectorImageExtensions.Contains(_extension))
+        if (!KnownFileExtensions.RasterImageExtensions.Contains(extension))
         {
             _logger.LogInformation(
                 "HD preview generation skipped: File extension \"{Extension}\" not supported",
-                _extension[^Math.Min(_extension.Length, 5)..]);
+                extension[^Math.Min(extension.Length, 5)..].ToLowerInvariant());
             return false;
         }
 
-        if (!TryGetNumberOfPixelsOnLargestSide(out var imageNumberOfPixelsOnLargestSide))
-        {
-            return false;
-        }
+        var imageNumberOfPixelsOnLargestSide = GetNumberOfPixelsOnLargestSide(filePath);
 
-        if (KnownFileExtensions.JpegExtensions.Contains(_extension) || KnownFileExtensions.WebPImageExtensions.Contains(_extension))
-        {
-            if (imageNumberOfPixelsOnLargestSide <= IThumbnailProvider.MaxHdPreviewNumberOfPixelsOnLargestSide)
-            {
-                _logger.LogInformation(
-                    "HD preview generation skipped: JPEG or WebP image too small (largest side smaller or equal than {RequiredSize})",
-                    IThumbnailProvider.MaxHdPreviewNumberOfPixelsOnLargestSide);
-
-                return false;
-            }
-
-            return true;
-        }
-
-        if (imageNumberOfPixelsOnLargestSide < MinHdPreviewNumberOfPixelsOnLargestSide)
-        {
-            _logger.LogInformation(
-                "HD preview generation skipped: Non JPEG or WebP image too small (largest side smaller than {RequiredSize})",
-                MinHdPreviewNumberOfPixelsOnLargestSide);
-
-            return false;
-        }
-
-        return true;
+        return ThumbnailGenerationExtensions.IsHdPreviewAllowed(imageNumberOfPixelsOnLargestSide, extension);
     }
 
-    private bool TryGetNumberOfPixelsOnLargestSide(out int numberOfPixelsOnLargestSide)
+    private int GetNumberOfPixelsOnLargestSide(string filePath)
     {
         try
         {
-            using var stream = File.OpenRead(_filePath);
+            using var stream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite | FileShare.Delete);
             var decoder = BitmapDecoder.Create(stream, BitmapCreateOptions.IgnoreColorProfile | BitmapCreateOptions.DelayCreation, BitmapCacheOption.None);
-            numberOfPixelsOnLargestSide = Math.Max(decoder.Frames[0].PixelWidth, decoder.Frames[0].PixelHeight);
-            return true;
+
+            return Math.Max(decoder.Frames[0].PixelWidth, decoder.Frames[0].PixelHeight);
         }
         catch (Exception ex) when (ex is ArgumentException or COMException or FileFormatException or InvalidOperationException or NotSupportedException)
         {
+            var (fileName, extension) = GetValuesForLogging(filePath);
+
             _logger.LogWarning(
-                "HD preview generation for file \"{File}\" with extension \"{Extension}\" failed: File format not supported : {ErrorCode}",
-                GetFileNameForLogging(),
-                GetFileExtensionForLogging(),
+                "HD preview generation (Win32) for file \"{File}\" with extension \"{Extension}\" failed: File format not supported : {ErrorCode}",
+                fileName,
+                extension,
                 ex.GetRelevantFormattedErrorCode());
 
-            ReportError(ex);
+            ReportError(ex, extension);
+            throw new ThumbnailGenerationException(ThumbnailGenerationErrorCode.Failed);
         }
         catch (Exception ex) when (ex.IsFileAccessException())
         {
+            var (fileName, extension) = GetValuesForLogging(filePath);
+
             _logger.LogWarning(
-                "HD preview generation for file \"{File}\" with extension \"{Extension}\" failed: {ExceptionType} : {ErrorCode}",
-                GetFileNameForLogging(),
-                GetFileExtensionForLogging(),
+                "HD preview generation (Win32) for file \"{File}\" with extension \"{Extension}\" failed: {ExceptionType} : {ErrorCode}",
+                fileName,
+                extension,
                 ex.GetType().Name,
                 ex.GetRelevantFormattedErrorCode());
 
-            ReportError(ex);
+            ReportError(ex, extension);
+            throw new ThumbnailGenerationException(ThumbnailGenerationErrorCode.Failed);
         }
-
-        numberOfPixelsOnLargestSide = 0;
-        return false;
     }
 
-    private void ReportError(Exception ex)
+    private void ReportError(Exception ex, string extension)
     {
-        var errorMessage = $"Thumbnail generation failed for \"{GetFileExtensionForLogging()}\": ({ex.GetRelevantFormattedErrorCode()}) Failed to determine media size";
+        var errorMessage = $"Thumbnail generation (Win32) failed for \"{extension}\": ({ex.GetRelevantFormattedErrorCode()}) Failed to determine media size";
         _errorReporting.CaptureError(errorMessage);
     }
 
-    private string GetFileNameForLogging()
+    private (string FileNameForLogging, string FileExtensionForLogging) GetValuesForLogging(string filePath)
     {
-        return _logger.GetSensitiveValueForLogging(Path.GetFileName(_filePath));
-    }
+        var fileName = Path.GetFileName(filePath);
+        var extension = Path.GetExtension(fileName);
 
-    private string GetFileExtensionForLogging()
-    {
-        return _extension[^Math.Min(_extension.Length, 5)..];
+        return (_logger.GetSensitiveValueForLogging(fileName), extension[^Math.Min(extension.Length, 5)..].ToLowerInvariant());
     }
 }

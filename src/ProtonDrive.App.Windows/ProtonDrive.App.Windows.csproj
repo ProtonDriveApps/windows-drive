@@ -41,6 +41,7 @@
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" />
     <PackageReference Include="morelinq" />
     <PackageReference Include="System.Drawing.Common" />
+    <PackageReference Include="SkiaSharp" />
   </ItemGroup>
 
   <ItemGroup>

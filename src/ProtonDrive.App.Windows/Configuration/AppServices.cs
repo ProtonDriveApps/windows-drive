@@ -50,13 +50,11 @@ using ProtonDrive.Shared.Features;
 using ProtonDrive.Shared.HumanVerification;
 using ProtonDrive.Shared.Localization;
 using ProtonDrive.Shared.Offline;
-using ProtonDrive.Shared.Reporting;
 using ProtonDrive.Shared.Repository;
 using ProtonDrive.Shared.Security.Cryptography;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Shared.FileSystem;
 using ProtonDrive.Sync.Shared.FileSystem.Photos;
-using ProtonDrive.Sync.Windows.FileSystem;
 using ProtonDrive.Sync.Windows.FileSystem.Client;
 using ProtonDrive.Sync.Windows.FileSystem.Photos;
 using ProtonDrive.Sync.Windows.Security.Cryptography;
@@ -276,16 +274,19 @@ internal static class AppServices
                         provider.GetRequiredService<ILivePhotoFileDetector>()))
 
             .AddSingleton<Win32ThumbnailGenerator>()
+            .AddSingleton<SkiaThumbnailGenerator>()
             .AddSingleton<IThumbnailGenerator>(
                 provider =>
                     new LivePhotoThumbnailExtractingDecorator(
-                        new Win32ThumbnailGenerator(
-                            provider.GetRequiredService<Shared.IClock>(),
-                            provider.GetRequiredService<ILogger<IThumbnailGenerator>>(),
-                            provider.GetRequiredService<IErrorReporting>()),
-                        provider.GetRequiredService<ILivePhotoFileDetector>()))
-
+                        provider.GetRequiredService<ILivePhotoFileDetector>(),
+                        new DispatchingThumbnailGenerator(
+                        [
+                            provider.GetRequiredService<Win32ThumbnailGenerator>(),
+                            provider.GetRequiredService<SkiaThumbnailGenerator>(),
+                        ],
+                        provider.GetRequiredService<ILogger<IThumbnailGenerator>>())))
             .AddSingleton<IPhotoTagsGenerator, PhotoTagsGenerator>()
+
             .AddSingleton<ILocalFileSystemClientFactory, LocalFileSystemClientFactory>()
             .AddSingleton<ILocalEventLogClientFactory, LocalEventLogClientFactory>()
 

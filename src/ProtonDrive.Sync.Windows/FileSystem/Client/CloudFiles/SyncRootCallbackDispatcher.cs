@@ -208,7 +208,7 @@ internal sealed class SyncRootCallbackDispatcher : IAsyncDisposable
     [SuppressMessage("Roslynator", "RCS1242:Do not pass non-read-only struct by read-only reference.", Justification = "Imposed by 3rd party library")]
     private void FetchData(in CF_CALLBACK_INFO callbackInfo, in CF_CALLBACK_PARAMETERS callbackParameters)
     {
-        var processInfo = (callbackInfo.ProcessInfo != IntPtr.Zero) ? (CF_PROCESS_INFO?)Marshal.PtrToStructure<CF_PROCESS_INFO>(callbackInfo.ProcessInfo) : null;
+        var processInfo = callbackInfo.ProcessInfo.Value;
         var processName = _logger.GetSensitiveValueForLogging(Path.GetFileName(processInfo?.ImagePath) ?? "<Unknown>");
 
         var connectionKey = callbackInfo.ConnectionKey;

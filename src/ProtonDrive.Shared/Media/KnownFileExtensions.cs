@@ -136,11 +136,15 @@ public sealed class KnownFileExtensions
         ".wvx",
     }.ToFrozenSet(StringComparer.OrdinalIgnoreCase);
 
-    public static readonly FrozenSet<string> ImageExtensions =
+    public static readonly FrozenSet<string> RasterImageExtensions =
         JpegExtensions
             .Concat(WebPImageExtensions)
             .Concat(OtherImageExtensions)
             .Concat(RawImageExtensions)
+            .ToFrozenSet(StringComparer.OrdinalIgnoreCase);
+
+    public static readonly FrozenSet<string> ImageExtensions =
+        RasterImageExtensions
             .Concat(VectorImageExtensions)
             .ToFrozenSet(StringComparer.OrdinalIgnoreCase);
 }
