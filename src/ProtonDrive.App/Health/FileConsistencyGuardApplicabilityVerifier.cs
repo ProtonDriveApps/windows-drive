@@ -43,11 +43,12 @@ internal sealed class FileConsistencyGuardApplicabilityVerifier
     {
         _logger.LogInformation("File consistency guard: Verifying applicability");
 
-        var verdict = VerifyLocalAdapterDatabaseCreationTime();
+        var verdict = await VerifyRemotelyWithCachingAsync(clientInstanceId, cancellationToken).ConfigureAwait(false);
 
-        if (verdict is ApplicabilityVerdict.Applicable)
+        if (verdict is not ApplicabilityVerdict.Applicable && _localFeatureFlags.FileConsistencyGuardRemoteApplicabilityForceEnabled)
         {
-            verdict = await VerifyRemotelyWithCachingAsync(clientInstanceId, cancellationToken).ConfigureAwait(false);
+            verdict = ApplicabilityVerdict.Applicable;
+            _logger.LogWarning("File consistency guard: Applicability overridden locally");
         }
 
         if (verdict is not ApplicabilityVerdict.CheckFailed)
@@ -55,10 +56,18 @@ internal sealed class FileConsistencyGuardApplicabilityVerifier
             _logger.LogInformation("File consistency guard: {ApplicabilityVerdict}", verdict);
         }
 
-        if (verdict is not ApplicabilityVerdict.Applicable && _localFeatureFlags.FileConsistencyGuardRemoteApplicabilityForceEnabled)
+        return verdict;
+    }
+
+    public ApplicabilityVerdict VerifyLocally()
+    {
+        _logger.LogInformation("File consistency guard: Verifying applicability locally");
+
+        var verdict = VerifyLocalAdapterDatabaseCreationTime();
+
+        if (verdict is not ApplicabilityVerdict.CheckFailed)
         {
-            verdict = ApplicabilityVerdict.Applicable;
-            _logger.LogWarning("File consistency guard: Applicability overridden locally");
+            _logger.LogInformation("File consistency guard: {ApplicabilityVerdict} locally", verdict);
         }
 
         return verdict;

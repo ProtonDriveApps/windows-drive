@@ -535,7 +535,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
 
     public async Task MoveAsync(NodeInfo<string> info, NodeInfo<string> destinationInfo, CancellationToken cancellationToken)
     {
-        _logger.LogDebug("Moving file with ID {FileID} to {DestinationName}", info.Id, destinationInfo.Name);
+        _logger.LogDebug("Moving file with ID {FileID} to \"{DestinationName}\"", info.Id, destinationInfo.Name);
 
         EnsureId(info.Id);
         Ensure.IsFalse(

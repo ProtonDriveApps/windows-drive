@@ -99,11 +99,17 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
-                if (await FeatureIsEnabledAsync(cancellationToken).ConfigureAwait(false) &&
-                    await VerifyApplicabilityAsync(cancellationToken).ConfigureAwait(false))
+                if (!await FeatureIsEnabledAsync(cancellationToken).ConfigureAwait(false) ||
+                    !await VerifyApplicabilityAsync(cancellationToken).ConfigureAwait(false))
                 {
-                    await ReportStartAsync(cancellationToken).ConfigureAwait(false);
+                    await Task.Delay(_retryInterval, cancellationToken).ConfigureAwait(false);
+                    continue;
+                }
 
+                await ReportStartAsync(cancellationToken).ConfigureAwait(false);
+
+                if (IsLocallyApplicable())
+                {
                     try
                     {
                         _database.Open();
@@ -122,9 +128,9 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
                     {
                         _database.Close();
                     }
-
-                    await ReportCompletionAsync(cancellationToken).ConfigureAwait(false);
                 }
+
+                await ReportCompletionAsync(cancellationToken).ConfigureAwait(false);
 
                 await Task.Delay(_retryInterval, cancellationToken).ConfigureAwait(false);
             }
@@ -154,6 +160,23 @@ internal sealed class FileConsistencyGuard : IFileConsistencyGuard
         {
             ApplicabilityVerdict.NotApplicable => FileConsistencyGuardStatus.NotApplicable,
             ApplicabilityVerdict.Applicable => FileConsistencyGuardStatus.Applicable,
+            ApplicabilityVerdict.CheckFailed => Status,
+            _ => throw new InvalidEnumArgumentException(),
+        };
+
+        SetStatus(status);
+
+        return status is FileConsistencyGuardStatus.Applicable;
+    }
+
+    private bool IsLocallyApplicable()
+    {
+        var verdict = _applicabilityVerifier.VerifyLocally();
+
+        var status = verdict switch
+        {
+            ApplicabilityVerdict.NotApplicable => FileConsistencyGuardStatus.Completed,
+            ApplicabilityVerdict.Applicable => Status,
             ApplicabilityVerdict.CheckFailed => Status,
             _ => throw new InvalidEnumArgumentException(),
         };

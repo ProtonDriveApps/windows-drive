@@ -1,6 +1,6 @@
 ﻿namespace ProtonDrive.Shared;
 
-public interface IRateLimiter<TKey>
+public interface IRateLimiter<in TKey>
     where TKey : notnull
 {
     bool CanExecute(TKey key);

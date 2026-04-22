@@ -1,6 +1,5 @@
 ﻿using System.Diagnostics.Metrics;
 using Proton.Drive.Sdk.Telemetry;
-using Proton.Sdk;
 
 namespace ProtonDrive.Client.Sdk.Metrics;
 
@@ -66,7 +65,7 @@ internal sealed class UploadMetrics
             return;
         }
 
-        if (ErrorIsWorthSkipping(uploadEvent.Error.Value, uploadEvent.OriginalError))
+        if (uploadEvent.ErrorCanBeIgnored())
         {
             return;
         }
@@ -78,28 +77,6 @@ internal sealed class UploadMetrics
 
         _failuresFileSize.Record(uploadEvent.ApproximateExpectedSize);
         _failuresTransferSize.Record(uploadEvent.ApproximateUploadedSize);
-    }
-
-    private static bool ErrorIsWorthSkipping(UploadError uploadError, Exception? originalError)
-    {
-        if (uploadError is not UploadError.HttpClientSideError)
-        {
-            return false;
-        }
-
-        var exception = originalError;
-
-        while (exception != null)
-        {
-            if (exception is ProtonApiException { Code: Proton.Sdk.Api.ResponseCode.TooManyChildren })
-            {
-                return true;
-            }
-
-            exception = exception.InnerException;
-        }
-
-        return false;
     }
 
     private static string MapVolumeType(VolumeType volumeType)

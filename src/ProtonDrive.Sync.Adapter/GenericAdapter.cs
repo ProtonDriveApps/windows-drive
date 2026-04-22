@@ -332,6 +332,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
                 StateMaintenanceTree,
                 syncRoots,
                 fileSystemClient,
+                _accessRateLimiter,
                 new FailureStep<TId, TAltId>(
                     loggerFactory.CreateLogger<FailureStep<TId, TAltId>>(),
                     FileSystemTree));

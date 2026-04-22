@@ -34,6 +34,7 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
     private readonly StateMaintenanceTree<TId> _stateMaintenanceTree;
     private readonly IReadOnlyDictionary<TId, RootInfo<TAltId>> _syncRoots;
     private readonly IFileSystemClient<TAltId> _fileSystemClient;
+    private readonly IFileSystemAccessRateLimiter<TId> _accessRateLimiter;
     private readonly FailureStep<TId, TAltId> _failureStep;
 
     private readonly ConcurrentQueue<TId> _syncedNodeIds = new();
@@ -56,6 +57,7 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
         StateMaintenanceTree<TId> stateMaintenanceTree,
         IReadOnlyDictionary<TId, RootInfo<TAltId>> syncRoots,
         IFileSystemClient<TAltId> fileSystemClient,
+        IFileSystemAccessRateLimiter<TId> accessRateLimiter,
         FailureStep<TId, TAltId> failureStep)
     {
         _logger = logger;
@@ -65,6 +67,7 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
         _stateMaintenanceTree = stateMaintenanceTree;
         _syncRoots = syncRoots;
         _fileSystemClient = fileSystemClient;
+        _accessRateLimiter = accessRateLimiter;
         _failureStep = failureStep;
 
         _quickFileSyncStateHandling =
@@ -128,7 +131,7 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        await foreach (var nodeModel in CandidatesForStateUpdate(cancellationToken))
+        await foreach (var nodeModel in CandidatesForStateUpdate(cancellationToken).ConfigureAwait(false))
         {
             var result = nodeModel.IsHydrationPending()
                 ? await HandleFileSyncStateAsync(nodeModel.Id, isHydration: true, cancellationToken).ConfigureAwait(false)
@@ -147,9 +150,7 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
     {
         return _stateMaintenanceTreeTraversal
             .ExcludeStartingNode()
-            .DepthFirst(_stateMaintenanceTree.Root, cancellationToken)
-            .WherePreOrder()
-            .SelectNode()
+            .PreOrder(_stateMaintenanceTree.Root, cancellationToken)
             .Select(n => n.Model)
             .Where(m => m.IsCandidateForSyncStateUpdate());
     }
@@ -183,10 +184,10 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
             return (null, null, ExecutionResultCode.DirtyNode);
         }
 
-        var syncRoot = _syncRoots[node.GetSyncRoot().Id];
-        if (!syncRoot.IsEnabled)
+        var root = node.GetRoot(_syncRoots);
+        if (!root.IsEnabled)
         {
-            _logger.LogDebug("Adapter Tree node with Id={Id} is in a disabled root with Id={RootId}", nodeId, syncRoot.Id);
+            _logger.LogDebug("Adapter Tree node with Id={Id} is in a disabled root with Id={RootId}", nodeId, root.Id);
 
             return (null, null, ExecutionResultCode.Offline);
         }
@@ -194,6 +195,27 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
         if (node.IsNodeOrBranchDeleted())
         {
             _logger.LogDebug("Adapter Tree node with Id={Id} or branch is deleted, skipping sync state update", nodeId);
+
+            return (null, null, ExecutionResultCode.DirtyBranch);
+        }
+
+        if (node.IsBranchDirty())
+        {
+            _logger.LogDebug("Adapter Tree node with Id={Id} or branch is dirty, skipping sync state update", nodeId);
+
+            return (null, null, ExecutionResultCode.DirtyBranch);
+        }
+
+        if (node.Model.IsLostOrDeleted())
+        {
+            _logger.LogDebug("Adapter Tree node with Id={Id} is lost, skipping sync state update", nodeId);
+
+            return (null, null, ExecutionResultCode.DirtyBranch);
+        }
+
+        if (node.Model.HasDirtyAttributes())
+        {
+            _logger.LogDebug("Adapter Tree node with Id={Id} is dirty, skipping sync state update", nodeId);
 
             return (null, null, ExecutionResultCode.DirtyNode);
         }
@@ -203,6 +225,11 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
             _logger.LogDebug("Adapter Tree node with Id={Id} has diverged, skipping sync state update", nodeId);
 
             return (null, null, ExecutionResultCode.DirtyNode);
+        }
+
+        if (isHydration && !_accessRateLimiter.CanExecuteHydration(node.Model, out var resultCode))
+        {
+            return (null, null, resultCode);
         }
 
         var nodeInfo = node.ToNodeInfo(_syncRoots);
@@ -219,12 +246,12 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
 
     private async Task<(NodeInfo<TAltId>? NodeInfo, Exception? Exception)> ExecuteAsync(
         NodeInfo<TAltId> nodeInfo,
-        bool isHydrationPending,
+        bool isHydration,
         CancellationToken cancellationToken)
     {
         try
         {
-            if (isHydrationPending)
+            if (isHydration)
             {
                 await _fileSystemClient.HydrateFileAsync(nodeInfo, cancellationToken).ConfigureAwait(false);
             }
@@ -256,6 +283,8 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
                 model.Id,
                 nodeInfo.GetCompoundId(),
                 model.ContentVersion);
+
+            _accessRateLimiter.HandleHydrationSuccess(model);
         }
         else
         {
@@ -272,21 +301,39 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
         return ExecutionResultCode.Success;
     }
 
-    private ExecutionResultCode Failure(FileSystemNodeModel<TId> model, NodeInfo<TAltId> nodeInfo, Exception exception)
+    private ExecutionResultCode Failure(AdapterTreeNodeModel<TId, TAltId> model, NodeInfo<TAltId> nodeInfo, Exception exception)
     {
         var type = nodeInfo.IsDirectory() ? NodeType.Directory : NodeType.File;
         var pathToLog = _logger.GetSensitiveValueForLogging(nodeInfo.Path);
 
-        _logger.LogWarning(
-            "Updating state of {Type} \"{Path}\" with Id=\"{Root}\"/{Id} {ExternalId}, ContentVersion={ContentVersion} failed: {ErrorCode} {ErrorMessage}",
-            type,
-            pathToLog,
-            nodeInfo.Root?.Id,
-            model.Id,
-            nodeInfo.GetCompoundId(),
-            model.ContentVersion,
-            exception.GetRelevantFormattedErrorCode(),
-            exception.CombinedMessage());
+        if (model.IsHydrationPending())
+        {
+            _logger.LogWarning(
+                "Hydrating {Type} \"{Path}\" with Id=\"{Root}\"/{Id} {ExternalId}, ContentVersion={ContentVersion} failed: {ErrorCode} {ErrorMessage}",
+                type,
+                pathToLog,
+                nodeInfo.Root?.Id,
+                model.Id,
+                nodeInfo.GetCompoundId(),
+                model.ContentVersion,
+                exception.GetRelevantFormattedErrorCode(),
+                exception.CombinedMessage());
+
+            _accessRateLimiter.HandleHydrationFailure(model);
+        }
+        else
+        {
+            _logger.LogWarning(
+                "Updating state of {Type} \"{Path}\" with Id=\"{Root}\"/{Id} {ExternalId}, ContentVersion={ContentVersion} failed: {ErrorCode} {ErrorMessage}",
+                type,
+                pathToLog,
+                nodeInfo.Root?.Id,
+                model.Id,
+                nodeInfo.GetCompoundId(),
+                model.ContentVersion,
+                exception.GetRelevantFormattedErrorCode(),
+                exception.CombinedMessage());
+        }
 
         return _failureStep.Execute(exception, nodeInfo, destinationInfo: null);
     }

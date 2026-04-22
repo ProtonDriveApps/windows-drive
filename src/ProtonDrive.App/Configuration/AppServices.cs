@@ -23,6 +23,7 @@ using ProtonDrive.App.Instrumentation.Telemetry;
 using ProtonDrive.App.Instrumentation.Telemetry.FileIntegrity;
 using ProtonDrive.App.Instrumentation.Telemetry.MappingSetup;
 using ProtonDrive.App.Instrumentation.Telemetry.Synchronization;
+using ProtonDrive.App.Instrumentation.Telemetry.ThumbnailGeneration;
 using ProtonDrive.App.InterProcessCommunication;
 using ProtonDrive.App.Mapping;
 using ProtonDrive.App.Mapping.Setup;
@@ -459,6 +460,10 @@ public static class AppServices
                 .AddSingleton<TelemetryService>()
                 .AddSingleton<IRemoteSettingsAware>(provider => provider.GetRequiredService<TelemetryService>())
                 .AddSingleton<IUserStateAware>(provider => provider.GetRequiredService<TelemetryService>())
+
+                .AddSingleton<IThumbnailGenerationMetricsCollector, ThumbnailGenerationMetricsCollector>()
+                .AddSingleton<ThumbnailGenerationReportingService>()
+                .AddSingleton<IRemoteSettingsAware>(provider => provider.GetRequiredService<ThumbnailGenerationReportingService>())
 
                 .AddSingleton<AttemptRetryMonitors>()
 

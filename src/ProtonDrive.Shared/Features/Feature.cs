@@ -16,7 +16,6 @@ public enum Feature
     DriveWindowsFileConsistencyGuardSanitization,
     DriveWindowsForceMigrationToVolumeEvents,
     DriveWindowsStorageOptimizationDisabled,
-    DriveWindowsPhotoImport,
     DriveWindowsOffers,
     DriveWindowsOffersSystemNotificationPopup,
     DriveWindowsSdkUploadMain,

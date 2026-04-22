@@ -42,6 +42,7 @@
   "PeriodicObservabilityReportInterval": "00:00:10",
   "PeriodicFailuresImpactedUsersReportInterval": "00:05:00",
   "PeriodicTransferPerformanceReportInterval": "00:01:00",
+  "PeriodicThumbnailGenerationReportInterval": "00:00:30",
   "MaxInactivityPeriodBetweenFileTransfers": "00:00:10",
   "ActivityQueryInterval": "06:00:00",
   "FolderNames": {

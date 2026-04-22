@@ -8,6 +8,7 @@ using ProtonDrive.App.Configuration;
 using ProtonDrive.App.Devices;
 using ProtonDrive.App.EarlyAccess;
 using ProtonDrive.App.FileSystem.Metadata.GoogleTakeout;
+using ProtonDrive.App.Instrumentation.Telemetry.ThumbnailGeneration;
 using ProtonDrive.App.InterProcessCommunication;
 using ProtonDrive.App.Localization;
 using ProtonDrive.App.Mapping;
@@ -278,8 +279,14 @@ internal static class AppServices
                         provider.GetRequiredService<ILivePhotoFileDetector>(),
                         new DispatchingThumbnailGenerator(
                         [
-                            provider.GetRequiredService<Win32ThumbnailGenerator>(),
-                            provider.GetRequiredService<SkiaThumbnailGenerator>(),
+                            new TelemetryThumbnailGeneratorDecorator(
+                                provider.GetRequiredService<Win32ThumbnailGenerator>(),
+                                ThumbnailGenerationMethod.Win32,
+                                provider.GetRequiredService<IThumbnailGenerationMetricsCollector>()),
+                            new TelemetryThumbnailGeneratorDecorator(
+                                provider.GetRequiredService<SkiaThumbnailGenerator>(),
+                                ThumbnailGenerationMethod.Skia,
+                                provider.GetRequiredService<IThumbnailGenerationMetricsCollector>()),
                         ],
                         provider.GetRequiredService<ILogger<IThumbnailGenerator>>())))
             .AddSingleton<IPhotoTagsGenerator, PhotoTagsGenerator>()

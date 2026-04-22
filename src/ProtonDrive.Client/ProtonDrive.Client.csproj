@@ -20,15 +20,12 @@
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="CommunityToolkit.HighPerformance" />
     <PackageReference Include="CommunityToolkit.Mvvm" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
-    <PackageReference Include="Microsoft.Extensions.Http" />
     <PackageReference Include="Microsoft.Extensions.Http.Polly" />
     <PackageReference Include="Polly.Core" />
     <PackageReference Include="Proton.Cryptography" />
     <PackageReference Include="Proton.Drive.Sdk" />
     <PackageReference Include="Refit.HttpClientFactory" />
     <PackageReference Include="System.Linq.Async" />
-    <PackageReference Include="System.Net.Http.Json" />
   </ItemGroup>
 
   <ItemGroup>

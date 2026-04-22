@@ -18,7 +18,7 @@ namespace ProtonDrive.Client;
 
 internal static class ExceptionMapping
 {
-    public static bool TryMapSdkClientException(Exception exception, string? id, bool includeObjectId, [MaybeNullWhen(false)] out Exception mappedException)
+    public static bool TryMapSdkClientException(Exception exception, string? id, bool includeObjectId, [MaybeNullWhen(false)] out FileSystemClientException mappedException)
     {
         mappedException = null;
 
@@ -31,7 +31,7 @@ internal static class ExceptionMapping
         return TryMapHttpClientException(exception, out var apiException) && TryMapException(apiException, id, includeObjectId, out mappedException);
     }
 
-    public static bool TryMapException(Exception exception, string? id, bool includeObjectId, [MaybeNullWhen(false)] out Exception mappedException)
+    public static bool TryMapException(Exception exception, string? id, bool includeObjectId, [MaybeNullWhen(false)] out FileSystemClientException mappedException)
     {
         mappedException = exception switch
         {

@@ -17,15 +17,29 @@ internal sealed class SdkDiagnostics(SdkMetrics metrics, IErrorReporting errorRe
     public void RecordMetric(IMetricEvent metricEvent)
     {
         metrics.Record(metricEvent);
-        ReportUnknownFileTransferError(metricEvent);
+        ReportFileTransferError(metricEvent);
     }
 
-    private void ReportUnknownFileTransferError(IMetricEvent metricEvent)
+    private void ReportFileTransferError(IMetricEvent metricEvent)
     {
         switch (metricEvent)
         {
             case UploadEvent { Error: UploadError.Unknown } uploadEvent:
                 errorReporting.CaptureError($"Drive SDK upload Unknown error: {uploadEvent.OriginalError?.CombinedMessage()}");
+                break;
+
+            case UploadEvent { Error: UploadError.HttpClientSideError } uploadEvent:
+
+                if (uploadEvent.ErrorCanBeIgnored() || uploadEvent.OriginalError is null)
+                {
+                    return;
+                }
+
+                var errorCode = ExceptionMapping.TryMapException(uploadEvent.OriginalError, null, false, out var mappedException)
+                    ? $" ({mappedException.ErrorCode})"
+                    : string.Empty;
+
+                errorReporting.CaptureError($"Drive SDK upload HTTP client error:{errorCode} {uploadEvent.OriginalError.CombinedMessage()}");
                 break;
 
             case DownloadEvent { Error: DownloadError.Unknown } downloadEvent:

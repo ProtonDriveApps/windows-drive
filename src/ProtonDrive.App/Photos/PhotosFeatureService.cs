@@ -20,7 +20,6 @@ internal sealed class PhotosFeatureService : IStartableService, IStoppableServic
     private VolumeState _photoVolumeState = VolumeState.Idle;
     private OnboardingStatus _onboardingStatus = OnboardingStatus.NotStarted;
     private bool _featureIsReadOnly;
-    private bool _importFeatureIsRemotelyEnabled;
     private bool _isStopping;
 
     public PhotosFeatureService(Lazy<IEnumerable<IPhotosFeatureStateAware>> photosFeatureStateAware, ILogger<PhotosFeatureService> logger)
@@ -70,7 +69,6 @@ internal sealed class PhotosFeatureService : IStartableService, IStoppableServic
 
     void IFeatureFlagsAware.OnFeatureFlagsChanged(IReadOnlyDictionary<Feature, bool> features)
     {
-        _importFeatureIsRemotelyEnabled = features[Feature.DriveWindowsPhotoImport];
         _featureIsReadOnly = features[Feature.DrivePhotosUploadDisabled] || features[Feature.DriveAlbumsDisabled];
         ScheduleExternalStateChangeHandling();
     }
@@ -95,12 +93,6 @@ internal sealed class PhotosFeatureService : IStartableService, IStoppableServic
     {
         if (_isStopping)
         {
-            return;
-        }
-
-        if (!_importFeatureIsRemotelyEnabled && _onboardingStatus is not OnboardingStatus.Completed)
-        {
-            SetState(PhotosFeatureStatus.Hidden);
             return;
         }
 

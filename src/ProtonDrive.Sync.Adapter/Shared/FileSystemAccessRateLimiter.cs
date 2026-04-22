@@ -18,7 +18,7 @@ internal sealed class FileSystemAccessRateLimiter<TId> : IFileSystemAccessRateLi
     {
         _itemRetryRateLimiter = new RateLimiter<TId>(clock, _minDelay, maxRetryDelay);
         _parentRetryRateLimiter = new RateLimiter<TId>(clock, _minDelay, maxRetryDelay);
-        _fileRevisionUploadRateLimiter = maxRevisionCreationDelay != default
+        _fileRevisionUploadRateLimiter = maxRevisionCreationDelay != TimeSpan.Zero
             ? new RateLimiterWithRecovery<TId>(clock, _minDelay, maxRevisionCreationDelay)
             : new NullRateLimiter<TId>();
     }

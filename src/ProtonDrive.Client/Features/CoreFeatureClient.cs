@@ -17,17 +17,15 @@ internal sealed class CoreFeatureClient : ICoreFeatureClient
 
     public async Task<bool?> IsFeatureEnabledAsync(string featureCode, CancellationToken cancellationToken)
     {
-        var parameters = new CoreFeatureListParameters { Code = featureCode };
-
         try
         {
-            var response = await _apiClient.GetFeaturesAsync(parameters, cancellationToken).ThrowOnFailure().ConfigureAwait(false);
+            var response = await _apiClient.GetFeatureAsync(featureCode, cancellationToken).ThrowOnFailure().ConfigureAwait(false);
 
-            var feature = response.Features.FirstOrDefault();
+            var feature = response.Feature;
 
             LogFeatureStatus(feature, featureCode);
 
-            return feature?.Value == 1;
+            return feature.Value == 1;
         }
         catch (Exception ex) when (ex.IsDriveClientException())
         {

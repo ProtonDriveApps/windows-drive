@@ -2,7 +2,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>$(DefaultTargetFramework)-windows10.0.17763.0</TargetFramework>
-    <WindowsSdkPackageVersion>10.0.17763.41</WindowsSdkPackageVersion>
+    <WindowsSdkPackageVersion>10.0.17763.56</WindowsSdkPackageVersion>
     <UseWPF>true</UseWPF>
     <StartupObject>ProtonDrive.App.Windows.Program</StartupObject>
     <ApplicationIcon>../../assets/ProtonDrive.ico</ApplicationIcon>
@@ -40,7 +40,6 @@
     <PackageReference Include="Microsoft.Web.WebView2" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" />
     <PackageReference Include="morelinq" />
-    <PackageReference Include="System.Drawing.Common" />
     <PackageReference Include="SkiaSharp" />
   </ItemGroup>
 
