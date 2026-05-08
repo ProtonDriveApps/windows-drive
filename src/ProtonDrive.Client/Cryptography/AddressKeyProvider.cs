@@ -123,6 +123,7 @@ internal sealed class AddressKeyProvider : IAddressKeyProvider
     public void ClearUserAddressesCache()
     {
         _cache.Remove(UserAddressesCacheKey);
+        _logger.LogInformation("Cached user addresses invalidated");
     }
 
     private static Address GetDefaultAddress(IEnumerable<Address> addresses)
@@ -151,58 +152,49 @@ internal sealed class AddressKeyProvider : IAddressKeyProvider
                 var activeUserKeys = user.Keys.Where(x => x.IsActive).ToList();
                 if (activeUserKeys.Count == 0)
                 {
-                    throw new CryptographicException("No active user key was found.");
+                    throw new CryptographicException("No active user key was found");
                 }
+
+                var userPrivateKeys = activeUserKeys.Select(UnlockUserPrivateKey).ToList();
 
                 foreach (var address in addresses.OrderBy(x => x.Order))
                 {
                     var emailAddressToLog = _logger.GetSensitiveValueForLogging(address.EmailAddress);
 
                     _logger.LogInformation(
-                        "User address \"{EmailAddress}\", {Status}, active keys: {NumberOfActiveKeys}, inactive keys: {NumberOfInactiveKeys}, ID={Id}",
+                        "User address \"{EmailAddress}\", {Status}, active keys: {NumberOfActiveKeys}, inactive keys: {NumberOfInactiveKeys}, ID: \"{Id}\"",
                         emailAddressToLog,
                         address.Status,
                         address.Keys.Count(k => k.IsActive),
                         address.Keys.Count(k => !k.IsActive),
                         address.Id);
 
-                    int? primaryKeyIndex = null;
+                    int? firstPrimaryKeyIndex = null;
 
                     var addressKeys = new List<AddressKey>(address.Keys.Count);
                     addressKeys.AddRange(
                         address.Keys.Where(k => k.IsActive).Select(
-                            (key, index) =>
+                            (addressKey, index) =>
                             {
-                                if (key.IsPrimary)
+                                if (addressKey.IsPrimary && firstPrimaryKeyIndex is null)
                                 {
-                                    primaryKeyIndex = index;
+                                    firstPrimaryKeyIndex = index;
+
+                                    _logger.LogInformation(
+                                        "User active and primary address key for \"{EmailAddress}\", ID: \"{KeyId}\", Index: {Index}, Version: {Version}",
+                                        emailAddressToLog,
+                                        addressKey.Id,
+                                        index,
+                                        addressKey.Version);
                                 }
 
-                                var isLegacyScheme = string.IsNullOrEmpty(key.Token) || string.IsNullOrEmpty(key.Signature);
+                                var privateKeyIsUnlocked = TryUnlockAddressPrivateKey(addressKey, userPrivateKeys, out var addressPrivateKey);
 
-                                var passphrase = !isLegacyScheme
-                                    ? GetPassphrase(key.Id, key.Token!, key.Signature!, activeUserKeys)
-                                    : GetLegacyPassphrase(key.Id);
-
-                                Span<byte> privateKeyBytes = stackalloc byte[key.PrivateKey.Length];
-
-                                Encoding.ASCII.GetBytes(key.PrivateKey, privateKeyBytes);
-
-                                PgpPrivateKey privateKey;
-                                bool privateKeyIsUnlocked;
-
-                                try
-                                {
-                                    privateKey = PgpPrivateKey.ImportAndUnlock(privateKeyBytes, passphrase.Span, PgpEncoding.AsciiArmor);
-                                    privateKeyIsUnlocked = true;
-                                }
-                                catch
-                                {
-                                    privateKey = PgpPrivateKey.Import(privateKeyBytes, PgpEncoding.AsciiArmor);
-                                    privateKeyIsUnlocked = false;
-                                }
-
-                                return new AddressKey(key.Id, privateKey, (key.Flags & AddressKeyFlags.IsAllowedForEncryption) > 0, privateKeyIsUnlocked);
+                                return new AddressKey(
+                                    addressKey.Id,
+                                    addressPrivateKey,
+                                    IsAllowedForEncryption: (addressKey.Flags & AddressKeyFlags.IsAllowedForEncryption) > 0,
+                                    privateKeyIsUnlocked);
                             }));
 
                     _cache.Set(
@@ -214,9 +206,9 @@ internal sealed class AddressKeyProvider : IAddressKeyProvider
                         continue;
                     }
 
-                    if (primaryKeyIndex is null)
+                    if (firstPrimaryKeyIndex is null)
                     {
-                        _logger.LogError("User address \"{EmailAddress}\" with ID {AddressID} has no primary key", emailAddressToLog, address.Id);
+                        _logger.LogError("User address \"{EmailAddress}\" with ID \"{AddressID}\" has no primary key", emailAddressToLog, address.Id);
                         continue;
                     }
 
@@ -225,7 +217,7 @@ internal sealed class AddressKeyProvider : IAddressKeyProvider
                         address.EmailAddress,
                         address.Status,
                         addressKeys.AsReadOnly(),
-                        primaryKeyIndex.Value);
+                        firstPrimaryKeyIndex.Value);
 
                     userAddresses.Add(address.Id, value);
                 }
@@ -236,16 +228,39 @@ internal sealed class AddressKeyProvider : IAddressKeyProvider
             cancellationToken).ConfigureAwait(false);
     }
 
-    private ReadOnlyMemory<byte> GetPassphrase(string addressKeyId, string token, string signature, IReadOnlyCollection<UserKey> userKeys)
+    private bool TryUnlockAddressPrivateKey(AddressKeyDto addressKey, List<PgpPrivateKey> userPrivateKeys, out PgpPrivateKey addressPrivateKey)
     {
-        var userPrivateKeys = userKeys.Select(userKey =>
-        {
-            var userPrivateKeyPassphrase = _keyPassphraseProvider.GetPassphrase(userKey.Id);
-            Span<byte> privateKeyBytes = stackalloc byte[userKey.PrivateKey.Length];
-            Encoding.ASCII.GetBytes(userKey.PrivateKey, privateKeyBytes);
-            return PgpPrivateKey.ImportAndUnlock(privateKeyBytes, userPrivateKeyPassphrase.Span, PgpEncoding.AsciiArmor);
-        }).ToList();
+        Span<byte> privateKeyBytes = stackalloc byte[addressKey.PrivateKey.Length];
 
+        Encoding.ASCII.GetBytes(addressKey.PrivateKey, privateKeyBytes);
+
+        var isLegacyScheme = string.IsNullOrEmpty(addressKey.Token) || string.IsNullOrEmpty(addressKey.Signature);
+
+        var passphrases = !isLegacyScheme
+            ? [GetPassphrase(addressKey.Id, addressKey.Token!, addressKey.Signature!, userPrivateKeys)]
+            : GetLegacyPassphrases(addressKey.Id);
+
+        foreach (var passphrase in passphrases)
+        {
+            try
+            {
+                addressPrivateKey = PgpPrivateKey.ImportAndUnlock(privateKeyBytes, passphrase.Span, PgpEncoding.AsciiArmor);
+                return true;
+            }
+            catch (CryptographicException)
+            {
+                // Try next passphrase
+            }
+        }
+
+        _logger.LogWarning("Failed to unlock address private key with ID \"{AddressKeyId}\"", addressKey.Id);
+
+        addressPrivateKey = PgpPrivateKey.Import(privateKeyBytes, PgpEncoding.AsciiArmor);
+        return false;
+    }
+
+    private ReadOnlyMemory<byte> GetPassphrase(string addressKeyId, string token, string signature, IReadOnlyList<PgpPrivateKey> userPrivateKeys)
+    {
         try
         {
             Span<byte> tokenSpan = stackalloc byte[Encoding.UTF8.GetMaxByteCount(token.Length)];
@@ -270,9 +285,52 @@ internal sealed class AddressKeyProvider : IAddressKeyProvider
         }
     }
 
-    private ReadOnlyMemory<byte> GetLegacyPassphrase(string addressKeyId)
+    private IReadOnlyCollection<ReadOnlyMemory<byte>> GetLegacyPassphrases(string addressKeyId)
     {
-        return _keyPassphraseProvider.GetPassphrase(addressKeyId);
+        var passphrases = _keyPassphraseProvider.GetPassphrases();
+
+        return passphrases.TryGetValue(addressKeyId, out var passphrase)
+            ? [passphrase]
+            : [.. passphrases.Values];
+    }
+
+    private PgpPrivateKey UnlockUserPrivateKey(UserKey userKey)
+    {
+        var passphrases = _keyPassphraseProvider.GetPassphrases();
+
+        Span<byte> privateKeyBytes = stackalloc byte[userKey.PrivateKey.Length];
+        Encoding.ASCII.GetBytes(userKey.PrivateKey, privateKeyBytes);
+
+        if (passphrases.TryGetValue(userKey.Id, out var matchingPassphrase))
+        {
+            try
+            {
+                return PgpPrivateKey.ImportAndUnlock(privateKeyBytes, matchingPassphrase.Span, PgpEncoding.AsciiArmor);
+            }
+            catch (CryptographicException)
+            {
+                // Fallback below: if key/passphrase mapping changed, try other passphrases
+            }
+        }
+
+        foreach (var (keyId, passphrase) in passphrases)
+        {
+            if (keyId == userKey.Id)
+            {
+                continue;
+            }
+
+            try
+            {
+                return PgpPrivateKey.ImportAndUnlock(privateKeyBytes, passphrase.Span, PgpEncoding.AsciiArmor);
+            }
+            catch (CryptographicException)
+            {
+                // Try next passphrase
+            }
+        }
+
+        throw new KeyPassphraseUnavailableException($"No usable passphrase found for user key with ID \"{userKey.Id}\"");
     }
 
     private void LogIfSignatureIsInvalid(PgpVerificationStatus verdict, string addressKeyId)
@@ -283,7 +341,7 @@ internal sealed class AddressKeyProvider : IAddressKeyProvider
         }
 
         // TODO: pass the verification failure as result for marking nodes as suspicious.
-        _logger.LogWarning("Signature problem on passphrase of address key with ID {Id}: {Code}", addressKeyId, verdict);
+        _logger.LogWarning("Signature problem on passphrase of address key with ID \"{AddressKeyId}\": {Code}", addressKeyId, verdict);
     }
 
     private record struct PublicKeysCacheKey(string EmailAddress);

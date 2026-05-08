@@ -91,6 +91,7 @@ internal sealed class UserService : IUserService, IDisposable
 
         if (user is not null)
         {
+            _userClient.ClearCache();
             _cachedUser = user;
         }
 

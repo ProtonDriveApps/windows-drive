@@ -1,16 +1,19 @@
-﻿using ProtonDrive.Client.Contracts;
+﻿using Microsoft.Extensions.Logging;
+using ProtonDrive.Client.Contracts;
 
 namespace ProtonDrive.Client.Authentication;
 
 internal class UserClient : IUserClient
 {
     private readonly IUserApiClient _apiClient;
+    private readonly ILogger<UserClient> _logger;
 
     private User? _cachedUser;
 
-    public UserClient(IUserApiClient apiClient)
+    public UserClient(IUserApiClient apiClient, ILogger<UserClient> logger)
     {
         _apiClient = apiClient;
+        _logger = logger;
     }
 
     public async Task<User> GetUserAsync(CancellationToken cancellationToken)
@@ -27,5 +30,6 @@ internal class UserClient : IUserClient
     public void ClearCache()
     {
         _cachedUser = null;
+        _logger.LogInformation("Cached user invalidated");
     }
 }

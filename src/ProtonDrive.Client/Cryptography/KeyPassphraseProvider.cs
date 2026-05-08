@@ -63,13 +63,8 @@ internal class KeyPassphraseProvider : IKeyPassphraseProvider
         Passphrases = ImmutableDictionary<string, ReadOnlyMemory<byte>>.Empty;
     }
 
-    public ReadOnlyMemory<byte> GetPassphrase(string keyId)
+    public IReadOnlyDictionary<string, ReadOnlyMemory<byte>> GetPassphrases()
     {
-        if (!Passphrases.TryGetValue(keyId, out var passphrase))
-        {
-            throw new KeyPassphraseUnavailableException($"No salt found for key ID={keyId}");
-        }
-
-        return passphrase;
+        return Passphrases;
     }
 }

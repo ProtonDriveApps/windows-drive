@@ -7,5 +7,5 @@ internal interface IKeyPassphraseProvider
     bool ContainsAtLeastOnePassphrase { get; }
     Task CalculatePassphrasesAsync(SecureString password, CancellationToken cancellationToken);
     void ClearPassphrases();
-    ReadOnlyMemory<byte> GetPassphrase(string keyId);
+    IReadOnlyDictionary<string, ReadOnlyMemory<byte>> GetPassphrases();
 }

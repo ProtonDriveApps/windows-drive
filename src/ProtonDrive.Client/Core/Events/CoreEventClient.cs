@@ -55,7 +55,7 @@ internal sealed class CoreEventClient : ICoreEventClient, ICoreEventProvider
             return new CoreEvents(await RefreshAsync(cancellationToken).ConfigureAwait(false));
         }
 
-        return new CoreEvents(ToResumeToken(eventsResponse))
+        var coreEvents = new CoreEvents(ToResumeToken(eventsResponse))
         {
             HasAddressChanged = eventsResponse.AddressEvents.Any(),
             HasSettingsChanged = eventsResponse.UserSettings is not null,
@@ -65,6 +65,14 @@ internal sealed class CoreEventClient : ICoreEventClient, ICoreEventProvider
             UsedSpace = eventsResponse.SplitStorageUsedSpace,
             DriveUsedSpace = eventsResponse.User?.ProductUsedSpace.Drive,
         };
+
+        _logger.LogInformation(
+            "Received core events, user property changed: {UserHasChanged}, address changed: {HasAddressChanged}, settings changed: {HasSettingsChanged}",
+            coreEvents.User is not null,
+            coreEvents.HasAddressChanged,
+            coreEvents.HasSettingsChanged);
+
+        return coreEvents;
     }
 
     private async Task<CoreEventResumeToken> RefreshAsync(CancellationToken cancellationToken)
@@ -96,7 +104,7 @@ internal sealed class CoreEventClient : ICoreEventClient, ICoreEventProvider
 
         _logger.LogWarning("Failed to get latest core event: {ErrorCode} {ErrorMessage}", response.Code, response.Error);
 
-        return default;
+        return null;
     }
 
     private async Task<CoreEventListResponse> GetEventsAsync(string anchorId, CancellationToken cancellationToken)
