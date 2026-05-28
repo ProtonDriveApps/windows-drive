@@ -1424,6 +1424,9 @@ De inhoud van bestanden wordt alleen op aanvraag gedownload.</value>
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
     <value>Importeren mislukt. Het album bestaat niet.</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Importeren mislukt. De map bestaat niet.</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Importeren mislukt. Maximum aantal albums bereikt.</value>
   </data>

@@ -1,59 +1,39 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using ProtonDrive.App.Mapping;
-using ProtonDrive.App.Mapping.SyncFolders;
 using ProtonDrive.App.Photos.Import;
-using ProtonDrive.App.Windows.Views.Shared;
-using ProtonDrive.Shared;
 using ProtonDrive.Sync.Shared.FileSystem.Photos;
 
 namespace ProtonDrive.App.Windows.Views.Main.Photos;
 
-internal sealed class ImportFolderViewModel : ObservableObject, IMappingStatusViewModel
+internal sealed class ImportFolderViewModel : ObservableObject
 {
-    private MappingSetupStatus _status;
-    private MappingErrorCode _errorCode = MappingErrorCode.None;
     private PhotoImportFolderStatus _importStatus;
     private int? _numberOfFilesToImport;
     private int _numberOfImportedFiles;
-    private string? _errorMessage;
-    private bool _importIsCompleted;
     private bool _noPhotosFound;
     private PhotoImportErrorCode? _importErrorCode;
 
-    public ImportFolderViewModel(string name, SyncFolder syncFolder)
+    public ImportFolderViewModel(string name, PhotoImportFolderState folder)
     {
-        Path = syncFolder.LocalPath;
         Name = name;
-        SyncFolder = syncFolder;
-        Status = syncFolder.Status;
+        Path = folder.Path;
+        ImportFolder = folder;
+        Update();
     }
 
     public ImportFolderViewModel(string path, string name, SyncFolderValidationResult validationResult)
     {
-        Path = path;
         Name = name;
+        Path = path;
         ValidationResult = validationResult;
         ImportStatus = PhotoImportFolderStatus.ValidationFailed;
     }
 
-    public SyncFolder? SyncFolder { get; }
-    public PhotoImportFolderState? ImportFolder { get; private set; }
+    public PhotoImportFolderState? ImportFolder { get; }
 
     public string Path { get; }
     public string Name { get; }
     public SyncFolderValidationResult ValidationResult { get; }
-
-    public MappingSetupStatus Status
-    {
-        get => _status;
-        private set => SetProperty(ref _status, value);
-    }
-
-    public MappingErrorCode ErrorCode
-    {
-        get => _errorCode;
-        private set => SetProperty(ref _errorCode, value);
-    }
 
     public PhotoImportErrorCode? ImportErrorCode
     {
@@ -61,18 +41,10 @@ internal sealed class ImportFolderViewModel : ObservableObject, IMappingStatusVi
         private set => SetProperty(ref _importErrorCode, value);
     }
 
-    public MappingErrorRenderingMode RenderingMode => MappingErrorRenderingMode.IconAndText;
-
     public PhotoImportFolderStatus ImportStatus
     {
         get => _importStatus;
         set => SetProperty(ref _importStatus, value);
-    }
-
-    public string? ErrorMessage
-    {
-        get => _errorMessage;
-        private set => SetProperty(ref _errorMessage, value);
     }
 
     public int? NumberOfFilesToImport
@@ -87,49 +59,20 @@ internal sealed class ImportFolderViewModel : ObservableObject, IMappingStatusVi
         set => SetProperty(ref _numberOfImportedFiles, value);
     }
 
-    public bool ImportIsCompleted
-    {
-        get => _importIsCompleted;
-        private set => SetProperty(ref _importIsCompleted, value);
-    }
-
     public bool NoPhotosFound
     {
         get => _noPhotosFound;
         private set => SetProperty(ref _noPhotosFound, value);
     }
 
-    public void Update(PhotoImportFolderState photoImportFolder)
-    {
-        Ensure.IsTrue(photoImportFolder.MappingId == SyncFolder?.MappingId, "Folder mapping does not match", nameof(photoImportFolder));
-
-        ImportFolder = photoImportFolder;
-        Update();
-    }
-
     public void Update()
     {
-        Status = SyncFolder?.Status ?? MappingSetupStatus.None;
-        ErrorCode = SyncFolder?.ErrorCode ?? MappingErrorCode.None;
+        ImportStatus = ImportFolder?.Status ?? PhotoImportFolderStatus.NotStarted;
+        ImportErrorCode = ImportStatus is PhotoImportFolderStatus.Failed ? ImportFolder?.ErrorCode ?? PhotoImportErrorCode.Unknown : null;
 
         NumberOfFilesToImport = ImportFolder?.NumberOfFilesToImport;
         NumberOfImportedFiles = ImportFolder?.NumberOfImportedFiles ?? 0;
 
-        ImportIsCompleted = ImportStatus is PhotoImportFolderStatus.Succeeded or PhotoImportFolderStatus.Failed;
-
         NoPhotosFound = ImportStatus is PhotoImportFolderStatus.Succeeded && NumberOfFilesToImport == 0 && NumberOfImportedFiles == 0;
-
-        if (ImportIsCompleted)
-        {
-            ImportStatus = ImportFolder?.Status ?? PhotoImportFolderStatus.NotStarted;
-        }
-        else
-        {
-            ImportStatus = Status is MappingSetupStatus.Failed
-                ? PhotoImportFolderStatus.SetupFailed
-                : (ImportFolder?.Status ?? PhotoImportFolderStatus.NotStarted);
-        }
-
-        ImportErrorCode = ImportStatus is PhotoImportFolderStatus.Failed ? ImportFolder?.ErrorCode ?? PhotoImportErrorCode.Unknown : null;
     }
 }

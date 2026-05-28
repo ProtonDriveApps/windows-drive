@@ -65,11 +65,6 @@ internal sealed class UploadMetrics
             return;
         }
 
-        if (uploadEvent.ErrorCanBeIgnored())
-        {
-            return;
-        }
-
         _failures.Add(
             1,
             new KeyValuePair<string, object?>(SdkMetrics.VolumeTypeKeyName, MapVolumeType(uploadEvent.VolumeType)),

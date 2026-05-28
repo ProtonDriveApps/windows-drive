@@ -59,8 +59,14 @@ internal static class MappingExtensions
         return replica.RootFolderId != 0;
     }
 
-    public static bool IsPhotoFolderMapping(this RemoteToLocalMapping mapping)
+    /// <summary>
+    /// Checks whether the folder mapping type is defined.
+    /// Previously, more types of folder mappings were used, that might be read from the settings. Mappings with undefined type can be safely ignored.
+    /// </summary>
+    /// <param name="mapping">Sync folder mapping.</param>
+    /// <returns>True if folder mapping type is defined; false otherwise.</returns>
+    public static bool TypeIsDefined(this RemoteToLocalMapping mapping)
     {
-        return mapping.Type is MappingType.PhotoImport or MappingType.PhotoBackup;
+        return Enum.IsDefined(mapping.Type);
     }
 }

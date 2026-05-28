@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using ProtonDrive.App.Settings;
+using ProtonDrive.App.Volumes;
 using ProtonDrive.Client.FileUploading;
 using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Sync.Shared.FileSystem;
@@ -41,17 +41,16 @@ internal sealed class PhotoImportEngineFactory : IPhotoImportEngineFactory
         _loggerFactory = loggerFactory;
     }
 
-    public IPhotoImportEngine CreateEngine(RemoteToLocalMapping mapping, PhotoImportFolderCurrentPosition? currentPosition)
+    public IPhotoImportEngine CreateEngine(PhotoImportFolderState folder, VolumeInfo photoVolume)
     {
-        var volumeId = mapping.Remote.VolumeId ?? throw new ArgumentNullException(nameof(mapping), "Volume ID is required");
-        var shareId = mapping.Remote.ShareId ?? throw new ArgumentNullException(nameof(mapping), "Share ID is required");
-        var remoteFileSystemClient = _remoteFileSystemClientFactory.CreateClient(new FileSystemClientParameters(volumeId, shareId, IsPhotoClient: true));
+        var remoteFileSystemClient = _remoteFileSystemClientFactory.CreateClient(
+            new FileSystemClientParameters(photoVolume.Id, photoVolume.RootShareId, IsPhotoClient: true));
 
         var photoAlbumService = _photoAlbumServiceFactory.CreatePhotoAlbumService(remoteFileSystemClient);
 
         return new PhotoImportEngine(
-            mapping,
-            currentPosition,
+            folder,
+            photoVolume,
             remoteFileSystemClient,
             _localFileSystemClientFactory,
             _photoFileImporterFactory,

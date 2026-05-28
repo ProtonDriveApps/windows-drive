@@ -1425,6 +1425,9 @@
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
     <value>Импорт не удался. Альбом не существует.</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Import failed. The folder does not exist.</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Импорт не удался. Достигнуто максимальное количество альбомов.</value>
   </data>

@@ -1,7 +1,9 @@
 using System.Diagnostics;
 using System.IO;
+using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Instrumentation.Telemetry.ThumbnailGeneration;
 using ProtonDrive.Client.Contracts;
+using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Sync.Shared.FileSystem;
 
 namespace ProtonDrive.App.Windows.Services;
@@ -11,15 +13,18 @@ internal sealed class TelemetryThumbnailGeneratorDecorator : IThumbnailGenerator
     private readonly IThumbnailGenerator _decoratedInstance;
     private readonly ThumbnailGenerationMethod _method;
     private readonly IThumbnailGenerationMetricsCollector _metricsCollector;
+    private readonly ILogger<TelemetryThumbnailGeneratorDecorator> _logger;
 
     public TelemetryThumbnailGeneratorDecorator(
         IThumbnailGenerator instanceToDecorate,
         ThumbnailGenerationMethod method,
-        IThumbnailGenerationMetricsCollector metricsCollector)
+        IThumbnailGenerationMetricsCollector metricsCollector,
+        ILogger<TelemetryThumbnailGeneratorDecorator> logger)
     {
         _decoratedInstance = instanceToDecorate;
         _method = method;
         _metricsCollector = metricsCollector;
+        _logger = logger;
     }
 
     public async Task<ReadOnlyMemory<byte>?> TryGenerateThumbnailAsync(
@@ -28,13 +33,13 @@ internal sealed class TelemetryThumbnailGeneratorDecorator : IThumbnailGenerator
         int maxNumberOfBytes,
         CancellationToken cancellationToken)
     {
-        var fileInfo = new FileInfo(filePath);
-
-        var fileSize = fileInfo.Length;
         var type = ThumbnailGenerationExtensions.IsRequestingHdPreview(numberOfPixelsOnLargestSide)
             ? ThumbnailType.HdPreview
             : ThumbnailType.Preview;
+
         var fileExtension = Path.GetExtension(filePath).ToLowerInvariant();
+
+        var fileSize = GetFileSizeInBytes(filePath, fileExtension);
 
         var started = Stopwatch.GetTimestamp();
 
@@ -71,6 +76,25 @@ internal sealed class TelemetryThumbnailGeneratorDecorator : IThumbnailGenerator
                 Stopwatch.GetElapsedTime(started));
 
             throw;
+        }
+    }
+
+    private long? GetFileSizeInBytes(string filePath, string fileExtension)
+    {
+        try
+        {
+            var fileInfo = new FileInfo(filePath);
+
+            return fileInfo.Length;
+        }
+        catch (Exception ex) when (ex.IsFileAccessException())
+        {
+            _logger.LogWarning(
+                "Reading size of file with extension \"{Extension}\" for thumbnail metrics failed: {ExceptionType}",
+                fileExtension[^Math.Min(fileExtension.Length, 5)..].ToLowerInvariant(),
+                ex.GetType().Name);
+
+            return null;
         }
     }
 }

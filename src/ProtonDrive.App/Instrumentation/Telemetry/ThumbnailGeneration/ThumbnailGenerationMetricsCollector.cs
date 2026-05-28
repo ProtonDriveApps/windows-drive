@@ -24,7 +24,7 @@ internal sealed class ThumbnailGenerationMetricsCollector : IThumbnailGeneration
         ThumbnailGenerationMethod method,
         ThumbnailType type,
         string fileExtension,
-        long fileSizeInBytes,
+        long? fileSizeInBytes,
         TimeSpan duration)
     {
         if (!_isEnabled)
@@ -59,8 +59,9 @@ internal sealed class ThumbnailGenerationMetricsCollector : IThumbnailGeneration
         return statistics;
     }
 
-    private static ThumbnailGenerationFileSizeRange GetFileSizeRange(long fileSizeInBytes) => fileSizeInBytes switch
+    private static ThumbnailGenerationFileSizeRange GetFileSizeRange(long? fileSizeInBytes) => fileSizeInBytes switch
     {
+        null => ThumbnailGenerationFileSizeRange.NotAvailable,
         < 100L * 1024 => ThumbnailGenerationFileSizeRange.LessThan100KiB,
         < 1024L * 1024 => ThumbnailGenerationFileSizeRange.LessThan1MiB,
         < 10L * 1024 * 1024 => ThumbnailGenerationFileSizeRange.LessThan10MiB,

@@ -1425,6 +1425,9 @@ Obsah souborů bude stažen jen na vyžádání.</value>
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
     <value>Import selhal. Album neexistuje.</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Import selhal. Složka neexistuje.</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Import selhal. Bylo dosaženo maximálního počtu alb.</value>
   </data>

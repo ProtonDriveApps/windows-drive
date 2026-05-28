@@ -132,7 +132,15 @@ internal sealed partial class NamedPipeBasedIpcServer : IStartableService, IStop
 
             await using (messageReadStream.ConfigureAwait(false))
             {
-                message = await JsonSerializer.DeserializeAsync<IpcMessage>(messageReadStream, JsonSerializerOptions, cancellationToken).ConfigureAwait(false);
+                try
+                {
+                    message = await JsonSerializer.DeserializeAsync<IpcMessage>(messageReadStream, JsonSerializerOptions, cancellationToken).ConfigureAwait(false);
+                }
+                catch (JsonException ex)
+                {
+                    _logger.LogWarning("IPC: Message deserialization failed: {ErrorMessage}", ex.Message);
+                    return;
+                }
             }
 
             _logger.LogDebug("IPC: Received message of type {Type}, Parameters=\"{Parameters}\"", message?.Type, message?.Parameters);

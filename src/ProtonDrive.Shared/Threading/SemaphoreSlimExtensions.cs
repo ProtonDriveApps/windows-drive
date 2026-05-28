@@ -8,6 +8,12 @@ public static class SemaphoreSlimExtensions
         return new DisposableLock(semaphore);
     }
 
+    public static IDisposable Lock(this SemaphoreSlim semaphore)
+    {
+        semaphore.Wait();
+        return new DisposableLock(semaphore);
+    }
+
     private class DisposableLock : IDisposable
     {
         private SemaphoreSlim? _semaphore;

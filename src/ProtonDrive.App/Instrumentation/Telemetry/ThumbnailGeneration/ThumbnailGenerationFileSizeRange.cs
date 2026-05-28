@@ -2,6 +2,7 @@
 
 public enum ThumbnailGenerationFileSizeRange
 {
+    NotAvailable,
     LessThan100KiB,
     LessThan1MiB,
     LessThan10MiB,

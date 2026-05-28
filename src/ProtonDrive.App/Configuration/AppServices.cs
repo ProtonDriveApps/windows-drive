@@ -30,7 +30,6 @@ using ProtonDrive.App.Mapping.Setup;
 using ProtonDrive.App.Mapping.Setup.CloudFiles;
 using ProtonDrive.App.Mapping.Setup.ForeignDevices;
 using ProtonDrive.App.Mapping.Setup.HostDeviceFolders;
-using ProtonDrive.App.Mapping.Setup.PhotoFolders;
 using ProtonDrive.App.Mapping.Setup.SharedWithMe.SharedWithMeItem;
 using ProtonDrive.App.Mapping.Setup.SharedWithMe.SharedWithMeRootFolder;
 using ProtonDrive.App.Mapping.SyncFolders;
@@ -148,6 +147,7 @@ public static class AppServices
                             provider.GetRequiredService<IRepositoryFactory>()
                                 .GetCachingRepository<PhotoImportSettings>("PhotoImportSettings.json")))
                 .AddSingleton<IRepository<PhotoImportSettings>>(provider => provider.GetRequiredService<ClearingOnAccountSwitchingRepositoryDecorator<PhotoImportSettings>>())
+                .AddSingleton<IAccountSwitchingHandler>(provider => provider.GetRequiredService<ClearingOnAccountSwitchingRepositoryDecorator<PhotoImportSettings>>())
 
                 .AddSingleton(
                     provider =>
@@ -266,7 +266,11 @@ public static class AppServices
                 .AddSingleton<IMappingsAware>(provider => provider.GetRequiredService<SyncFolderProvider>())
                 .AddSingleton<IMappingStateAware>(provider => provider.GetRequiredService<SyncFolderProvider>())
 
-                .AddSingleton<IPhotoFolderService, PhotoFolderService>()
+                .AddSingleton<PhotoImportFolderService>()
+                .AddSingleton<IPhotoImportFolderService>(provider => provider.GetRequiredService<PhotoImportFolderService>())
+                .AddSingleton<IStartableService>(provider => provider.GetRequiredService<PhotoImportFolderService>())
+                .AddSingleton<IStoppableService>(provider => provider.GetRequiredService<PhotoImportFolderService>())
+                .AddSingleton<IAccountSwitchingAware>(provider => provider.GetRequiredService<PhotoImportFolderService>())
 
                 .AddSingleton<MappingRegistry>()
                 .AddSingleton<IMappingRegistry>(provider => provider.GetRequiredService<MappingRegistry>())
@@ -295,10 +299,6 @@ public static class AppServices
                 .AddSingleton<HostDeviceFolderMappingFoldersSetupStep>()
                 .AddSingleton<HostDeviceFolderMappingSetupFinalizationStep>()
 
-                .AddSingleton<PhotoFolderMappingValidationStep>()
-                .AddSingleton<PhotoFolderMappingSetupStep>()
-                .AddSingleton<PhotoFolderMappingSetupFinalizationStep>()
-
                 .AddSingleton<ForeignDeviceMappingFolderValidationStep>()
                 .AddSingleton<ForeignDeviceMappingFoldersSetupStep>()
                 .AddSingleton<ForeignDeviceMappingSetupFinalizationStep>()
@@ -318,18 +318,6 @@ public static class AppServices
 
                 .AddSingleton<LocalFolderSetupAssistant>()
                 .AddSingleton<ILocalFolderSetupAssistant>(provider => provider.GetRequiredService<LocalFolderSetupAssistant>())
-
-                .AddSingleton<PhotosFeatureStateValidator>()
-                .AddSingleton<IPhotosFeatureStateValidator>(provider => provider.GetRequiredService<PhotosFeatureStateValidator>())
-                .AddSingleton<IPhotosFeatureStateAware>(provider => provider.GetRequiredService<PhotosFeatureStateValidator>())
-
-                .AddSingleton<RemotePhotoVolumeValidator>()
-                .AddSingleton<IRemotePhotoVolumeValidator>(provider => provider.GetRequiredService<RemotePhotoVolumeValidator>())
-                .AddSingleton<IPhotoVolumeStateAware>(provider => provider.GetRequiredService<RemotePhotoVolumeValidator>())
-
-                .AddSingleton<RemotePhotoVolumeSetupAssistant>()
-                .AddSingleton<IRemotePhotoVolumeSetupAssistant>(provider => provider.GetRequiredService<RemotePhotoVolumeSetupAssistant>())
-                .AddSingleton<IPhotoVolumeStateAware>(provider => provider.GetRequiredService<RemotePhotoVolumeSetupAssistant>())
 
                 .AddSingleton<IMappingTeardownPipeline, MappingTeardownPipeline>()
                 .AddSingleton<CloudFilesMappingTeardownStep>()
@@ -380,10 +368,9 @@ public static class AppServices
                 .AddSingleton<PhotoAlbumServiceFactory>()
 
                 .AddSingleton<PhotoImportService>()
-                .AddSingleton<IStartableService>(provider => provider.GetRequiredService<PhotoImportService>())
                 .AddSingleton<IStoppableService>(provider => provider.GetRequiredService<PhotoImportService>())
-                .AddSingleton<IAccountSwitchingAware>(provider => provider.GetRequiredService<PhotoImportService>())
-                .AddSingleton<IMappingsSetupStateAware>(provider => provider.GetRequiredService<PhotoImportService>())
+                .AddSingleton<IPhotoVolumeStateAware>(provider => provider.GetRequiredService<PhotoImportService>())
+                .AddSingleton<IPhotoImportFoldersAware>(provider => provider.GetRequiredService<PhotoImportService>())
 
                 .AddSingleton<SyncService>()
                 .AddSingleton<ISyncService>(provider => provider.GetRequiredService<SyncService>())
@@ -467,14 +454,19 @@ public static class AppServices
 
                 .AddSingleton<AttemptRetryMonitors>()
 
-                .AddSingleton<UploadSuccessMeter>()
-                .AddSingleton<ISyncActivityAware>(provider => provider.GetRequiredService<UploadSuccessMeter>())
-                .AddSingleton<IMappingsAware>(provider => provider.GetRequiredService<UploadSuccessMeter>())
-                .AddSingleton<IPhotoImportActivityAware>(provider => provider.GetRequiredService<UploadSuccessMeter>())
+                .AddSingleton<LegacyUploadSuccessMeter>()
+                .AddSingleton<ISyncActivityAware>(provider => provider.GetRequiredService<LegacyUploadSuccessMeter>())
+                .AddSingleton<IMappingsAware>(provider => provider.GetRequiredService<LegacyUploadSuccessMeter>())
+                .AddSingleton<IFeatureFlagsAware>(provider => provider.GetRequiredService<LegacyUploadSuccessMeter>())
 
-                .AddSingleton<DownloadSuccessMeter>()
-                .AddSingleton<ISyncActivityAware>(provider => provider.GetRequiredService<DownloadSuccessMeter>())
-                .AddSingleton<IMappingsAware>(provider => provider.GetRequiredService<DownloadSuccessMeter>())
+                .AddSingleton<LegacyPhotoUploadSuccessMeter>()
+                .AddSingleton<IPhotoImportActivityAware>(provider => provider.GetRequiredService<LegacyPhotoUploadSuccessMeter>())
+                .AddSingleton<IFeatureFlagsAware>(provider => provider.GetRequiredService<LegacyPhotoUploadSuccessMeter>())
+
+                .AddSingleton<LegacyDownloadSuccessMeter>()
+                .AddSingleton<ISyncActivityAware>(provider => provider.GetRequiredService<LegacyDownloadSuccessMeter>())
+                .AddSingleton<IMappingsAware>(provider => provider.GetRequiredService<LegacyDownloadSuccessMeter>())
+                .AddSingleton<IFeatureFlagsAware>(provider => provider.GetRequiredService<LegacyDownloadSuccessMeter>())
 
                 .AddSingleton<FileIntegrityStatistics>()
                 .AddSingleton<IStartableService>(provider => provider.GetRequiredService<FileIntegrityStatistics>())
@@ -486,7 +478,7 @@ public static class AppServices
                 .AddSingleton<IAccountSwitchingAware>(provider => provider.GetRequiredService<TransferPerformanceMeter>())
                 .AddSingleton<IFeatureFlagsAware>(provider => provider.GetRequiredService<TransferPerformanceMeter>())
 
-                .AddSingleton<GenericFileTransferMetricsFactory>()
+                .AddSingleton<GenericLegacyFileTransferMetricsFactory>()
                 .AddSingleton<GenericTransferPerformanceMetricsFactory>()
 
                 .AddSingleton<ObservabilityService>()
@@ -501,7 +493,6 @@ public static class AppServices
                 .AddSingleton<MappingSetupStatistics>()
                 .AddSingleton<IMappingStateAware>(provider => provider.GetRequiredService<MappingSetupStatistics>())
                 .AddSingleton<IMappingsAware>(provider => provider.GetRequiredService<MappingSetupStatistics>())
-                .AddSingleton<IPhotoImportFoldersAware>(provider => provider.GetRequiredService<MappingSetupStatistics>())
 
                 .AddSingleton<SyncStatistics>()
                 .AddSingleton<ISyncStateAware>(provider => provider.GetRequiredService<SyncStatistics>())

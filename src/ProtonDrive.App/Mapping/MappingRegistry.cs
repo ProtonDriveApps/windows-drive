@@ -99,6 +99,11 @@ internal sealed class MappingRegistry : IStartableService, IStoppableService, IM
 
         foreach (var mapping in settings.Mappings)
         {
+            if (!mapping.TypeIsDefined())
+            {
+                continue;
+            }
+
             switch (mapping.Status)
             {
                 case MappingStatus.New:
@@ -226,6 +231,11 @@ internal sealed class MappingRegistry : IStartableService, IStoppableService, IM
 
         using (await _semaphore.LockAsync(cancellationToken).ConfigureAwait(false))
         {
+            if (_stopping)
+            {
+                return;
+            }
+
             action.Invoke();
         }
     }

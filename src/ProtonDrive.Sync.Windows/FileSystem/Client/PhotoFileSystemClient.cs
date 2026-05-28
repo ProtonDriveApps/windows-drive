@@ -28,7 +28,7 @@ internal sealed class PhotoFileSystemClient : IPhotoFileSystemClient<long>
 
     public Task<NodeInfo<long>> GetInfoAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
-        throw new NotSupportedException();
+        return _fileSystemClient.GetInfoAsync(info, cancellationToken);
     }
 
     public IAsyncEnumerable<NodeInfo<long>> EnumerateAsync(NodeInfo<long> info, CancellationToken cancellationToken)

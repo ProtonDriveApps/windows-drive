@@ -3,16 +3,16 @@ using ProtonDrive.Client.Instrumentation.Observability;
 
 namespace ProtonDrive.App.Instrumentation.Observability;
 
-internal sealed class GenericFileTransferMetricsFactory
+internal sealed class GenericLegacyFileTransferMetricsFactory
 {
     private readonly AttemptRetryMonitors _attemptRetryMonitors;
 
-    public GenericFileTransferMetricsFactory(AttemptRetryMonitors attemptRetryMonitors)
+    public GenericLegacyFileTransferMetricsFactory(AttemptRetryMonitors attemptRetryMonitors)
     {
         _attemptRetryMonitors = attemptRetryMonitors;
     }
 
-    public ImmutableList<ObservabilityMetric> GetFileUploadMetrics()
+    public ImmutableList<ObservabilityMetric> GetLegacyFileUploadMetrics()
     {
         var shareTypes = Enum.GetValues(typeof(AttemptRetryShareType));
 
@@ -24,29 +24,29 @@ internal sealed class GenericFileTransferMetricsFactory
 
             if (counters.FirstAttemptSuccesses > 0)
             {
-                uploadMetrics.Add(GetUploadMetric(counters.FirstAttemptSuccesses, isSuccess: true, isRetry: false, shareType));
+                uploadMetrics.Add(GetLegacyUploadMetric(counters.FirstAttemptSuccesses, isSuccess: true, isRetry: false, shareType));
             }
 
             if (counters.FirstAttemptFailures > 0)
             {
-                uploadMetrics.Add(GetUploadMetric(counters.FirstAttemptFailures, isSuccess: false, isRetry: false, shareType));
+                uploadMetrics.Add(GetLegacyUploadMetric(counters.FirstAttemptFailures, isSuccess: false, isRetry: false, shareType));
             }
 
             if (counters.RetrySuccesses > 0)
             {
-                uploadMetrics.Add(GetUploadMetric(counters.RetrySuccesses, isSuccess: true, isRetry: true, shareType));
+                uploadMetrics.Add(GetLegacyUploadMetric(counters.RetrySuccesses, isSuccess: true, isRetry: true, shareType));
             }
 
             if (counters.RetryFailures > 0)
             {
-                uploadMetrics.Add(GetUploadMetric(counters.RetryFailures, isSuccess: false, isRetry: true, shareType));
+                uploadMetrics.Add(GetLegacyUploadMetric(counters.RetryFailures, isSuccess: false, isRetry: true, shareType));
             }
         }
 
         return uploadMetrics.ToImmutableList();
     }
 
-    public ImmutableList<ObservabilityMetric> GetFileDownloadMetrics()
+    public ImmutableList<ObservabilityMetric> GetLegacyFileDownloadMetrics()
     {
         var shareTypes = Enum.GetValues(typeof(AttemptRetryShareType));
 
@@ -58,29 +58,34 @@ internal sealed class GenericFileTransferMetricsFactory
 
             if (counters.FirstAttemptSuccesses > 0)
             {
-                downloadsMetrics.Add(GetDownloadMetric(counters.FirstAttemptSuccesses, isSuccess: true, isRetry: false, shareType));
+                downloadsMetrics.Add(GetLegacyDownloadMetric(counters.FirstAttemptSuccesses, isSuccess: true, isRetry: false, shareType));
             }
 
             if (counters.FirstAttemptFailures > 0)
             {
-                downloadsMetrics.Add(GetDownloadMetric(counters.FirstAttemptFailures, isSuccess: false, isRetry: false, shareType));
+                downloadsMetrics.Add(GetLegacyDownloadMetric(counters.FirstAttemptFailures, isSuccess: false, isRetry: false, shareType));
             }
 
             if (counters.RetrySuccesses > 0)
             {
-                downloadsMetrics.Add(GetDownloadMetric(counters.RetrySuccesses, isSuccess: true, isRetry: true, shareType));
+                downloadsMetrics.Add(GetLegacyDownloadMetric(counters.RetrySuccesses, isSuccess: true, isRetry: true, shareType));
             }
 
             if (counters.RetryFailures > 0)
             {
-                downloadsMetrics.Add(GetDownloadMetric(counters.RetryFailures, isSuccess: false, isRetry: true, shareType));
+                downloadsMetrics.Add(GetLegacyDownloadMetric(counters.RetryFailures, isSuccess: false, isRetry: true, shareType));
             }
         }
 
         return downloadsMetrics.ToImmutableList();
     }
 
-    private static UploadSuccessRateMetric GetUploadMetric(int counter, bool isSuccess, bool isRetry, AttemptRetryShareType shareType)
+    public void Clear()
+    {
+        _attemptRetryMonitors.Clear();
+    }
+
+    private static LegacyUploadSuccessRateMetric GetLegacyUploadMetric(int counter, bool isSuccess, bool isRetry, AttemptRetryShareType shareType)
     {
         var shareTypeLabel = shareType switch
         {
@@ -100,10 +105,10 @@ internal sealed class GenericFileTransferMetricsFactory
         };
 
         var properties = new ObservabilityMetricProperties(Value: counter, labels);
-        return new UploadSuccessRateMetric(properties);
+        return new LegacyUploadSuccessRateMetric(properties);
     }
 
-    private static DownloadSuccessRateMetric GetDownloadMetric(int counter, bool isSuccess, bool isRetry, AttemptRetryShareType shareType)
+    private static LegacyDownloadSuccessRateMetric GetLegacyDownloadMetric(int counter, bool isSuccess, bool isRetry, AttemptRetryShareType shareType)
     {
         var shareTypeLabel = shareType switch
         {
@@ -121,6 +126,6 @@ internal sealed class GenericFileTransferMetricsFactory
         };
 
         var properties = new ObservabilityMetricProperties(Value: counter, labels);
-        return new DownloadSuccessRateMetric(properties);
+        return new LegacyDownloadSuccessRateMetric(properties);
     }
 }

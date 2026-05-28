@@ -32,13 +32,7 @@ public enum PhotoImportFolderStatus
 
     /// <summary>
     /// Folder validation failed.
-    /// Value is generated in the view model, it does not appear in the <see cref="PhotoImportFolderStatus"/>.
+    /// Value is generated in the view model, it does not appear in the <see cref="PhotoImportFolderState"/>.
     /// </summary>
     ValidationFailed = 5,
-
-    /// <summary>
-    /// Folder setup failed.
-    /// Value is generated in the view model, it does not appear in the <see cref="PhotoImportFolderStatus"/>.
-    /// </summary>
-    SetupFailed = 6,
 }

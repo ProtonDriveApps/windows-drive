@@ -4,13 +4,18 @@ namespace ProtonDrive.App.Photos.Import;
 
 public sealed class PhotoImportFolderState
 {
-    public PhotoImportFolderState(int mappingId, string path)
+    public PhotoImportFolderState(int id, string path)
     {
-        MappingId = mappingId;
+        Id = id;
         Path = path;
     }
 
-    public int MappingId { get; init; }
+    public int Id { get; init; }
+
+    /// <summary>
+    /// For deserialization compatibility with older versions, where MappingId contained identity value
+    /// </summary>
+    public int MappingId { init { Id = value; } }
 
     public string Path { get; init; }
 

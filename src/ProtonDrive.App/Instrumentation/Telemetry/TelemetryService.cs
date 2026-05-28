@@ -140,6 +140,8 @@ internal sealed class TelemetryService : IRemoteSettingsAware, IUserStateAware
             return; // Task already started
         }
 
+        Clear();
+
         _timerTask = ReportStatisticsAsync(_cancellationHandle.Token);
     }
 
@@ -212,5 +214,13 @@ internal sealed class TelemetryService : IRemoteSettingsAware, IUserStateAware
         {
             /* Do nothing */
         }
+    }
+
+    private void Clear()
+    {
+        _syncStatistics.Reset();
+        _sharedWithMeItemCounters.Reset();
+        _openedDocumentsCounters.Reset();
+        _errorCounter.Reset();
     }
 }

@@ -23,8 +23,6 @@ internal sealed class MappingSetupService
     [
         MappingType.CloudFiles,
         MappingType.HostDeviceFolder,
-        MappingType.PhotoImport,
-        MappingType.PhotoBackup,
         MappingType.ForeignDevice,
         MappingType.SharedWithMeRootFolder,
         MappingType.SharedWithMeItem,

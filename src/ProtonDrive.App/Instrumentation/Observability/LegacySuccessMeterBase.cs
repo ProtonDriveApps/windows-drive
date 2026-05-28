@@ -7,13 +7,13 @@ using ProtonDrive.Sync.Shared.SyncActivity;
 
 namespace ProtonDrive.App.Instrumentation.Observability;
 
-internal abstract class SuccessMeterBase : ISyncActivityAware, IMappingsAware, IPhotoImportActivityAware
+internal abstract class LegacySuccessMeterBase : ISyncActivityAware, IMappingsAware, IPhotoImportActivityAware
 {
     private readonly IReadOnlyDictionary<AttemptRetryShareType, AttemptRetryMonitor<long>> _attemptRetryMonitor;
 
     private IReadOnlyDictionary<int, MappingType> _mappingTypeById = new Dictionary<int, MappingType>();
 
-    protected SuccessMeterBase(IReadOnlyDictionary<AttemptRetryShareType, AttemptRetryMonitor<long>> attemptRetryMonitor)
+    protected LegacySuccessMeterBase(IReadOnlyDictionary<AttemptRetryShareType, AttemptRetryMonitor<long>> attemptRetryMonitor)
     {
         _attemptRetryMonitor = attemptRetryMonitor;
     }
@@ -84,7 +84,6 @@ internal abstract class SuccessMeterBase : ISyncActivityAware, IMappingsAware, I
             MappingType.ForeignDevice => AttemptRetryShareType.Device,
             MappingType.HostDeviceFolder => AttemptRetryShareType.Device,
             MappingType.SharedWithMeItem => AttemptRetryShareType.Standard,
-            MappingType.PhotoImport => AttemptRetryShareType.Photo,
             _ => throw new ArgumentOutOfRangeException(nameof(mappingType), mappingType, message: null),
         };
     }

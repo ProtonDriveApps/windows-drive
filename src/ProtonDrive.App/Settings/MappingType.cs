@@ -37,14 +37,4 @@ public enum MappingType
     /// <para>Local folder is the subfolder of the account root folder.</para>
     /// </summary>
     SharedWithMeRootFolder = 102,
-
-    /// <summary>
-    /// Maps local folder, that the user added to import photos from, to remote Photo volume.
-    /// </summary>
-    PhotoImport = 5,
-
-    /// <summary>
-    /// Maps local folder, that the user added to back up photos from, to remote Photo volume.
-    /// </summary>
-    PhotoBackup = 6,
 }

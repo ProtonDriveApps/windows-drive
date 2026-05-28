@@ -2,5 +2,5 @@
 
 internal interface IPhotoAlbumNameProvider
 {
-    string GetAlbumNameFromPath(ReadOnlySpan<char> rootFolderPath, ReadOnlySpan<char> relativeFolderPath);
+    string GetAlbumNameFromPath(string folderPath, ReadOnlySpan<char> rootFolderPath, ReadOnlySpan<char> relativeFolderPath);
 }

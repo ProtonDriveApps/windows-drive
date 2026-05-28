@@ -3,6 +3,7 @@
 public enum PhotoImportErrorCode
 {
     Unknown,
+    FolderDoesNotExist,
     AlbumDoesNotExist,
     MaximumNumberOfAlbumsReached,
     MaximumNumberOfPhotosPerAlbumReached,

@@ -1423,6 +1423,9 @@ Dosyaların içeriği yalnızca istek yapıldığında indirilir.</value>
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
     <value>İçe aktarılamadı. Albüm bulunamadı.</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>İçe aktarılamadı. Klasör bulunamadı.</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>İçe aktarılamadı. Olabilecek en fazla albüm sayısı sınırına ulaşıldı.</value>
   </data>

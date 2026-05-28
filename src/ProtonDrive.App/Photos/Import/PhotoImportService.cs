@@ -1,13 +1,13 @@
 ﻿using System.Collections.Concurrent;
+using System.Collections.Immutable;
 using Microsoft.Extensions.Logging;
-using ProtonDrive.App.Account;
-using ProtonDrive.App.Mapping;
 using ProtonDrive.App.Mapping.SyncFolders;
 using ProtonDrive.App.Services;
-using ProtonDrive.App.Settings;
+using ProtonDrive.App.Volumes;
 using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Shared.IO;
 using ProtonDrive.Shared.Logging;
+using ProtonDrive.Shared.Telemetry;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Shared.FileSystem;
 using ProtonDrive.Sync.Shared.FileSystem.Photos;
@@ -16,66 +16,44 @@ using ProtonDrive.Sync.Shared.Trees.FileSystem;
 
 namespace ProtonDrive.App.Photos.Import;
 
-internal sealed class PhotoImportService : IStartableService, IStoppableService, IAccountSwitchingAware, IMappingsSetupStateAware
+internal sealed class PhotoImportService : IStoppableService, IPhotoVolumeStateAware, IPhotoImportFoldersAware
 {
-    private readonly Lazy<IEnumerable<IPhotoImportFoldersAware>> _photoImportFoldersAware;
     private readonly Lazy<IEnumerable<IPhotoImportActivityAware>> _photoImportActivityAware;
-    private readonly IPhotoFolderService _photoFolderService;
+    private readonly IPhotoImportFolderService _photoFolderService;
     private readonly IPhotoImportEngineFactory _photoImportEngineFactory;
+    private readonly IErrorCounter _errorCounter;
     private readonly ILogger<PhotoImportService> _logger;
 
     private readonly CoalescingAction _photoImport;
-    private readonly SemaphoreSlim _currentMappingSemaphore = new(1);
+    private readonly SemaphoreSlim _currentFolderSemaphore = new(1, 1);
     private readonly StringIdMapper _stringIdMapper = new();
 
     private volatile bool _stopping;
-    private PhotoImportSettings _settings = new([]);
-    private MappingsSetupState _mappingsSetupState = MappingsSetupState.None;
-    private RemoteToLocalMapping? _currentMapping;
+    private volatile VolumeState _photoVolumeState = VolumeState.Idle;
+    private volatile ImmutableList<PhotoImportFolderState> _folders = [];
+    private volatile PhotoImportFolderState? _currentFolder;
 
     public PhotoImportService(
-        Lazy<IEnumerable<IPhotoImportFoldersAware>> photoImportFoldersAware,
         Lazy<IEnumerable<IPhotoImportActivityAware>> photoImportActivityAware,
-        IPhotoFolderService photoFolderService,
+        IPhotoImportFolderService photoFolderService,
         IPhotoImportEngineFactory photoImportEngineFactory,
+        IErrorCounter errorCounter,
         ILogger<PhotoImportService> logger)
     {
-        _photoImportFoldersAware = photoImportFoldersAware;
         _photoImportActivityAware = photoImportActivityAware;
         _photoFolderService = photoFolderService;
         _photoImportEngineFactory = photoImportEngineFactory;
+        _errorCounter = errorCounter;
         _logger = logger;
 
         _photoImport = _logger.GetCoalescingActionWithExceptionsLoggingAndCancellationHandling(ImportAsync, nameof(PhotoImportService));
     }
 
-    Task IStartableService.StartAsync(CancellationToken cancellationToken)
+    void IPhotoVolumeStateAware.OnPhotoVolumeStateChanged(VolumeState value)
     {
-        LoadSettings();
+        _photoVolumeState = value;
 
-        return Task.CompletedTask;
-    }
-
-    void IAccountSwitchingAware.OnAccountSwitched()
-    {
-        LoadSettings();
-    }
-
-    void IMappingsSetupStateAware.OnMappingsSetupStateChanged(MappingsSetupState value)
-    {
-        if (_stopping)
-        {
-            return;
-        }
-
-        if (value.Status is MappingSetupStatus.SettingUp)
-        {
-            return;
-        }
-
-        _mappingsSetupState = value;
-
-        if (value.Status is MappingSetupStatus.Succeeded or MappingSetupStatus.PartiallySucceeded)
+        if (value.Status is VolumeStatus.Ready)
         {
             _photoImport.Run();
         }
@@ -85,23 +63,51 @@ internal sealed class PhotoImportService : IStartableService, IStoppableService,
         }
     }
 
-    async Task IMappingsSetupStateAware.OnMappingsSettingUpAsync()
+    void IPhotoImportFoldersAware.OnPhotoImportFolderChanged(SyncFolderChangeType changeType, PhotoImportFolderState folder)
     {
-        using (await _currentMappingSemaphore.LockAsync(CancellationToken.None).ConfigureAwait(false))
+        if (_stopping)
         {
-            var mapping = _currentMapping;
+            return;
+        }
 
-            // If currently being imported mapping has been deleted or is not set up, we cancel Photo import
-            if (mapping is not null && (mapping.Status is not MappingStatus.Complete || !mapping.HasSetupSucceeded))
-            {
-                _photoImport.Cancel();
-            }
+        switch (changeType)
+        {
+            case SyncFolderChangeType.Added:
+                _folders = _folders.Add(folder);
+
+                if (_photoVolumeState.Status is VolumeStatus.Ready)
+                {
+                    _photoImport.Run();
+                }
+
+                break;
+
+            case SyncFolderChangeType.Updated:
+                if (folder == _currentFolder)
+                {
+                    break;
+                }
+
+                if (_photoVolumeState.Status is VolumeStatus.Ready)
+                {
+                    _photoImport.Run();
+                }
+
+                break;
+
+            case SyncFolderChangeType.Removed:
+                _folders = _folders.Remove(folder);
+                StopImportingFolder(folder);
+                break;
+
+            default:
+                throw new ArgumentOutOfRangeException(nameof(changeType), changeType, null);
         }
     }
 
     async Task IStoppableService.StopAsync(CancellationToken cancellationToken)
     {
-        _logger.LogInformation($"{nameof(PhotoImportService)} is stopping");
+        _logger.LogDebug($"{nameof(PhotoImportService)} is stopping");
         _stopping = true;
         _photoImport.Cancel();
 
@@ -115,116 +121,94 @@ internal sealed class PhotoImportService : IStartableService, IStoppableService,
         return _photoImport.WaitForCompletionAsync();
     }
 
+    private void StopImportingFolder(PhotoImportFolderState folder)
+    {
+        using (_currentFolderSemaphore.Lock())
+        {
+            if (folder == _currentFolder)
+            {
+                _photoImport.Cancel();
+            }
+        }
+    }
+
     private async Task ImportAsync(CancellationToken cancellationToken)
     {
-        var mappingsSetupState = _mappingsSetupState;
+        var photoVolumeState = _photoVolumeState;
 
-        if (mappingsSetupState.Status is not MappingSetupStatus.Succeeded and not MappingSetupStatus.PartiallySucceeded)
+        if (photoVolumeState.Status is not VolumeStatus.Ready)
         {
-            _logger.LogInformation("Photo import skipped, mapping setup state is {MappingSetupStatus}", mappingsSetupState.Status);
+            _logger.LogInformation("Photo import skipped, photo volume state is {VolumeStatus}", photoVolumeState.Status);
             return;
         }
 
-        var mappings = mappingsSetupState.Mappings
-            .Where(x => x.Type is MappingType.PhotoImport)
-            .ToList();
-
-        RemoveUntrackedImportFolders([.. mappings.Select(m => m.Id)]);
-
-        foreach (var mapping in mappings)
+        if (photoVolumeState.Volume is null)
         {
-            // Importing one folder at a time
-            await ImportFolderAsync(mapping, cancellationToken).ConfigureAwait(false);
+            _logger.LogWarning("Photo import skipped, photo volume not available");
+            return;
         }
-    }
 
-    private void RemoveUntrackedImportFolders(HashSet<int> trackedMappingIds)
-    {
-        var untrackedFolderMappingIds = _settings.Folders.Select(x => x.MappingId).Where(x => !trackedMappingIds.Contains(x)).ToList();
-        var savingRequired = false;
+        var folders = _folders;
 
-        foreach (var untrackedMappingId in untrackedFolderMappingIds)
+        foreach (var folder in folders)
         {
-            var folderToRemove = _settings.Folders.FirstOrDefault(x => x.MappingId == untrackedMappingId);
-            if (folderToRemove is null)
+            try
             {
-                continue;
+                using (await _currentFolderSemaphore.LockAsync(cancellationToken).ConfigureAwait(false))
+                {
+                    if (folders != _folders)
+                    {
+                        // List of folders has changed, skipping remaining
+                        return;
+                    }
+
+                    _currentFolder = folder;
+                }
+
+                if (folder.Status
+                    is not PhotoImportFolderStatus.NotStarted
+                    and not PhotoImportFolderStatus.Importing
+                    and not PhotoImportFolderStatus.Interrupted)
+                {
+                    continue;
+                }
+
+                await ImportFolderAsync(folder, photoVolumeState.Volume, cancellationToken).ConfigureAwait(false);
             }
-
-            _settings.Folders.Remove(folderToRemove);
-            OnPhotoImportFolderRemoved(folderToRemove);
-            savingRequired = true;
-        }
-
-        if (savingRequired)
-        {
-            SaveSettings();
+            finally
+            {
+                _currentFolder = null;
+            }
         }
     }
 
-    private async Task ImportFolderAsync(RemoteToLocalMapping mapping, CancellationToken cancellationToken)
-    {
-        if (mapping.Status is not MappingStatus.Complete || !mapping.HasSetupSucceeded)
-        {
-            return;
-        }
-
-        var photoImportFolder = _settings.Folders.FirstOrDefault(x => x.MappingId == mapping.Id);
-
-        if (photoImportFolder is null)
-        {
-            photoImportFolder = new PhotoImportFolderState(mapping.Id, mapping.Local.Path);
-            _settings.Folders.Add(photoImportFolder);
-            OnPhotoImportFolderAdded(photoImportFolder);
-        }
-
-        if (photoImportFolder.Status
-            is not PhotoImportFolderStatus.NotStarted
-            and not PhotoImportFolderStatus.Importing
-            and not PhotoImportFolderStatus.Interrupted)
-        {
-            return;
-        }
-
-        using (await _currentMappingSemaphore.LockAsync(cancellationToken).ConfigureAwait(false))
-        {
-            _currentMapping = mapping;
-        }
-
-        try
-        {
-            await ImportFolderAsync(mapping, photoImportFolder, cancellationToken).ConfigureAwait(false);
-        }
-        finally
-        {
-            _currentMapping = null;
-        }
-    }
-
-    private async Task ImportFolderAsync(RemoteToLocalMapping mapping, PhotoImportFolderState photoImportFolder, CancellationToken cancellationToken)
+    private async Task ImportFolderAsync(PhotoImportFolderState folder, VolumeInfo photoVolume, CancellationToken cancellationToken)
     {
         try
         {
             _logger.LogInformation(
-                "Photo import started: mapping {MappingID}, folder \"{Path}\"",
-                photoImportFolder.MappingId,
-                _logger.GetSensitiveValueForLogging(mapping.Local.Path));
+                "Photo import started: folder {FolderID} \"{Path}\"",
+                folder.Id,
+                _logger.GetSensitiveValueForLogging(folder.Path));
 
-            OnStarted(photoImportFolder);
+            OnStarted(folder);
 
-            var engine = _photoImportEngineFactory.CreateEngine(mapping, photoImportFolder.CurrentPosition);
-            var callbacks = GetProgressCallbacks(photoImportFolder);
+            // A delay makes the folder status change noticeable in the UI even if the folder import immediately completes
+            await Task.Delay(TimeSpan.FromMilliseconds(600), cancellationToken).ConfigureAwait(false);
+
+            var engine = _photoImportEngineFactory.CreateEngine(folder, photoVolume);
+            var callbacks = GetProgressCallbacks(folder);
 
             await engine.ImportAsync(callbacks, cancellationToken).ConfigureAwait(false);
 
             _logger.LogInformation("Photo import succeeded");
-            OnSucceeded(photoImportFolder);
+            OnSucceeded(folder);
         }
         catch (OperationCanceledException)
         {
             // TODO: Avoid log-and-throw (antipattern)
             _logger.LogInformation("Photo import interrupted");
-            OnInterrupted(photoImportFolder);
+            OnInterrupted(folder);
             throw;
         }
         catch (Exception exception) when (exception is PhotoImportException)
@@ -243,11 +227,13 @@ internal sealed class PhotoImportService : IStartableService, IStoppableService,
         {
             _logger.LogWarning("Photo import failed: {ErrorMessage}", exception.CombinedMessage());
 
-            photoImportFolder.ErrorCode = exception is PhotoImportException photoImportException
+            folder.ErrorCode = exception is PhotoImportException photoImportException
                 ? photoImportException.ErrorCode
                 : PhotoImportErrorCode.Unknown;
 
-            OnFailed(photoImportFolder);
+            _errorCounter.Add(ErrorScope.PhotoImport, exception);
+
+            OnFailed(folder);
         }
     }
 
@@ -273,14 +259,14 @@ internal sealed class PhotoImportService : IStartableService, IStoppableService,
         photoImportFolder.NumberOfImportedFiles = numberOfImportedFiles;
         photoImportFolder.NumberOfFilesToImport = numberOfFilesToImport;
 
-        OnPhotoImportFolderUpdated(photoImportFolder);
+        SaveAndNotify(photoImportFolder);
     }
 
     private void OnAlbumSelected(PhotoImportFolderState photoImportFolder, PhotoImportFolderCurrentPosition folderCurrentPosition)
     {
         photoImportFolder.CurrentPosition = folderCurrentPosition;
 
-        SaveSettings();
+        SaveAndNotify(photoImportFolder);
     }
 
     private void OnInterrupted(PhotoImportFolderState photoImportFolder)
@@ -304,53 +290,9 @@ internal sealed class PhotoImportService : IStartableService, IStoppableService,
         SaveAndNotify(photoImportFolder);
     }
 
-    private void SaveAndNotify(PhotoImportFolderState photoImportFolder)
+    private void SaveAndNotify(PhotoImportFolderState folder)
     {
-        SaveSettings();
-        OnPhotoImportFolderUpdated(photoImportFolder);
-    }
-
-    private void OnPhotoImportFolderAdded(PhotoImportFolderState folder)
-    {
-        OnPhotoImportFolderChanged(SyncFolderChangeType.Added, folder);
-    }
-
-    private void OnPhotoImportFolderUpdated(PhotoImportFolderState folder)
-    {
-        OnPhotoImportFolderChanged(SyncFolderChangeType.Updated, folder);
-    }
-
-    private void OnPhotoImportFolderRemoved(PhotoImportFolderState folder)
-    {
-        OnPhotoImportFolderChanged(SyncFolderChangeType.Removed, folder);
-    }
-
-    private void OnPhotoImportFolderChanged(SyncFolderChangeType changeType, PhotoImportFolderState folder)
-    {
-        foreach (var photoImportFoldersAware in _photoImportFoldersAware.Value)
-        {
-            photoImportFoldersAware.OnPhotoImportFolderChanged(changeType, folder);
-        }
-    }
-
-    private void LoadSettings()
-    {
-        foreach (var folder in _settings.Folders)
-        {
-            OnPhotoImportFolderRemoved(folder);
-        }
-
-        _settings = _photoFolderService.GetSettings();
-
-        foreach (var folder in _settings.Folders)
-        {
-            OnPhotoImportFolderAdded(folder);
-        }
-    }
-
-    private void SaveSettings()
-    {
-        _photoFolderService.SetSettings(_settings);
+        _ = _photoFolderService.UpdateFolderAsync(folder, CancellationToken.None);
     }
 
     private void OnPhotoFileActivityChanged(string filePath, Exception? exception = null)

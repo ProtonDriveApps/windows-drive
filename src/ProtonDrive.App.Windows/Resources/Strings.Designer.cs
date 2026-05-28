@@ -3769,6 +3769,15 @@ namespace ProtonDrive.App.Windows.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Import failed. The folder does not exist..
+        /// </summary>
+        internal static string PhotoImportErrorCode_Value_FolderDoesNotExist {
+            get {
+                return ResourceManager.GetString("PhotoImportErrorCode_Value_FolderDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import failed. Maximum number of albums reached..
         /// </summary>
         internal static string PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached {

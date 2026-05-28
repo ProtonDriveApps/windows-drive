@@ -1425,6 +1425,9 @@ El contingut dels fitxers es descarregarà només sota demanda.</value>
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
     <value>Ha fallat la importació. L'àlbum no existeix.</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>S'ha produït un error en la importació. La carpeta no existeix.</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Ha fallat la importació. S'ha arribat al nombre màxim d'àlbums.</value>
   </data>

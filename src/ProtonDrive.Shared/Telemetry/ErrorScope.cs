@@ -36,4 +36,14 @@ public enum ErrorScope
     /// Error occurred while handling a file by the file consistency guard
     /// </summary>
     DataIntegrityItemOperation,
+
+    /// <summary>
+    /// Error occurred while importing photos
+    /// </summary>
+    PhotoImport,
+
+    /// <summary>
+    /// Error occurred while importing an item during a photo import (extracting metadata etc.)
+    /// </summary>
+    PhotoImportItemOperation,
 }

@@ -41,7 +41,7 @@ internal sealed class LocalFolderValidationStep : ILocalFolderValidationStep
         var shouldFolderExist =
             mapping.Status is MappingStatus.Complete
             || mapping.Local.RootFolderId != 0
-            || mapping.Type is MappingType.HostDeviceFolder or MappingType.PhotoImport or MappingType.PhotoBackup;
+            || mapping.Type is MappingType.HostDeviceFolder;
 
         if (!shouldFolderExist)
         {

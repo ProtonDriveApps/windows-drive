@@ -55,7 +55,7 @@
                         VerticalAlignment="Center" />
 
                     <TextBlock
-                        AutomationProperties.AutomationId="NameText"
+                        AutomationProperties.AutomationId="ItemNameText"
                         Grid.Column="1"
                         Text="{Binding Name}"
                         TextTrimming="CharacterEllipsis"

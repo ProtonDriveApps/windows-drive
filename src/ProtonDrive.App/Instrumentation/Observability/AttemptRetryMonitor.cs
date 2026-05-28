@@ -69,4 +69,16 @@ internal sealed class AttemptRetryMonitor<TId>
             return counters;
         }
     }
+
+    public void Clear()
+    {
+        lock (_lock)
+        {
+            _statusByItemId.Clear();
+            _firstTrySuccesses = 0;
+            _firstTryFailures = 0;
+            _retriedSuccesses = 0;
+            _retriedFailures = 0;
+        }
+    }
 }

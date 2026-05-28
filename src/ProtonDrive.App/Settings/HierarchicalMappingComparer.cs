@@ -2,15 +2,13 @@
 
 internal sealed class HierarchicalMappingComparer : IComparer<RemoteToLocalMapping>
 {
-    private readonly IDictionary<MappingType, int> _mappingTypeHierarchy = new Dictionary<MappingType, int>
+    private readonly Dictionary<MappingType, int> _mappingTypeHierarchy = new()
     {
         { MappingType.HostDeviceFolder, 1 },
-        { MappingType.PhotoImport, 2 },
-        { MappingType.PhotoBackup, 3 },
-        { MappingType.CloudFiles, 4 },
-        { MappingType.ForeignDevice, 5 },
-        { MappingType.SharedWithMeRootFolder, 6 },
-        { MappingType.SharedWithMeItem, 7 },
+        { MappingType.CloudFiles, 2 },
+        { MappingType.ForeignDevice, 3 },
+        { MappingType.SharedWithMeRootFolder, 4 },
+        { MappingType.SharedWithMeItem, 5 },
     };
 
     public static HierarchicalMappingComparer Instance { get; } = new();

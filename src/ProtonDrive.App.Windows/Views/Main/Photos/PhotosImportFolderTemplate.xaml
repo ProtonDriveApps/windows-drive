@@ -6,8 +6,7 @@
     xmlns:import="clr-namespace:ProtonDrive.App.Photos.Import;assembly=ProtonDrive.App"
     xmlns:loc="clr-namespace:ProtonDrive.App.Windows.Resources"
     xmlns:local="clr-namespace:ProtonDrive.App.Windows.Views.Main.Photos"
-    xmlns:photos="clr-namespace:ProtonDrive.Sync.Shared.FileSystem.Photos;assembly=ProtonDrive.Sync.Shared"
-    xmlns:shared="clr-namespace:ProtonDrive.App.Windows.Views.Shared">
+    xmlns:photos="clr-namespace:ProtonDrive.Sync.Shared.FileSystem.Photos;assembly=ProtonDrive.Sync.Shared">
     <DataTemplate
         x:Key="PhotoFolderTemplate"
         DataType="{x:Type local:ImportFolderViewModel}">
@@ -48,13 +47,6 @@
                         Text="{loc:Resource Main_Photos_Folders_Items_Label}"
                         Foreground="{StaticResource GrayBrush}" />
                 </TextBlock>
-
-                <shared:MappingStatusView
-                    Grid.Column="2"
-                    Visibility="{Binding ImportIsCompleted, Converter={x:Static converters:BooleanToVisibilityConverter.TrueIsCollapsed}}"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Center"
-                    Margin="15,0,0,0" />
 
                 <Grid
                     Grid.Column="2"
@@ -218,26 +210,6 @@
                             Foreground="{StaticResource ErrorBrush}"
                             TextTrimming="CharacterEllipsis"
                             Margin="5,0,0,0" />
-                    </Grid>
-                </Grid>
-
-                <Grid
-                    Grid.Column="4"
-                    Visibility="{Binding ImportStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static import:PhotoImportFolderStatus.SetupFailed}}"
-                    Margin="10,0,0,0">
-                    <Grid>
-                        <TextBlock
-                            AutomationProperties.AutomationId="PhotoImportSetupFailedStatusTextBlock"
-                            TextTrimming="CharacterEllipsis"
-                            ToolTip="{Binding Path=ImportStatus, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}}"
-                            VerticalAlignment="Center">
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="{loc:Resource Main_Photos_Folders_ImportedItemsFormat}">
-                                    <Binding Path="NumberOfImportedFiles" />
-                                    <Binding Path="NumberOfFilesToImport" />
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
                     </Grid>
                 </Grid>
 

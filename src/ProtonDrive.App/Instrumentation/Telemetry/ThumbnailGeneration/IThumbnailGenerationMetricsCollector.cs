@@ -13,7 +13,7 @@ public interface IThumbnailGenerationMetricsCollector
         ThumbnailGenerationMethod method,
         ThumbnailType type,
         string fileExtension,
-        long fileSizeInBytes,
+        long? fileSizeInBytes,
         TimeSpan duration);
 
     IReadOnlyCollection<ThumbnailGenerationStatistics> GetAndReset();

@@ -1,15 +1,19 @@
 ﻿using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using ProtonDrive.Shared.Extensions;
+using ProtonDrive.Shared.Logging;
+using ProtonDrive.Shared.Telemetry;
 
 namespace ProtonDrive.App.FileSystem.Metadata.GoogleTakeout;
 
 internal sealed class GoogleTakeoutMetadataExtractor : IGoogleTakeoutMetadataExtractor
 {
+    private readonly IErrorCounter _errorCounter;
     private readonly ILogger<GoogleTakeoutMetadataExtractor> _logger;
 
-    public GoogleTakeoutMetadataExtractor(ILogger<GoogleTakeoutMetadataExtractor> logger)
+    public GoogleTakeoutMetadataExtractor(IErrorCounter errorCounter, ILogger<GoogleTakeoutMetadataExtractor> logger)
     {
+        _errorCounter = errorCounter;
         _logger = logger;
     }
 
@@ -18,10 +22,23 @@ internal sealed class GoogleTakeoutMetadataExtractor : IGoogleTakeoutMetadataExt
         var fileName = Path.GetFileName(filePath);
         var folderName = Path.GetDirectoryName(filePath) ?? throw new ArgumentException("File path denotes a root directory", nameof(filePath));
 
-        return (from metadataFileName in GoogleTakeoutMetadataFileNameGenerator.GetFileNameCandidates(fileName)
-                select Path.Combine(folderName, metadataFileName) into metadataFilePath
-                where File.Exists(metadataFilePath)
-                select TryExtractMetadata(metadataFilePath)).FirstOrDefault();
+        var metadataFilePathResult = (from metadataFileName in GoogleTakeoutMetadataFileNameGenerator.GetFileNameCandidates(fileName)
+                                      select Path.Combine(folderName, metadataFileName) into metadataFilePath
+                                      where File.Exists(metadataFilePath)
+                                      select metadataFilePath).FirstOrDefault();
+
+        if (metadataFilePathResult is null && GoogleTakeoutPaths.IsFromGoogleTakeoutImport(filePath))
+        {
+            _logger.LogWarning("No supplemental metadata file found for {FileName}", _logger.GetSensitiveValueForLogging(filePath));
+
+            _errorCounter.Add(
+                ErrorScope.PhotoImportItemOperation,
+                new FileMetadataExtractionException(
+                    $"Missing Google Takeout metadata file: {FileMetadataExtractionErrorCode.MissingGoogleTakeoutMetadataFile}",
+                    FileMetadataExtractionErrorCode.MissingGoogleTakeoutMetadataFile));
+        }
+
+        return metadataFilePathResult is not null ? TryExtractMetadata(metadataFilePathResult) : null;
     }
 
     private GoogleTakeoutMetadata? TryExtractMetadata(string metadataFilePath)

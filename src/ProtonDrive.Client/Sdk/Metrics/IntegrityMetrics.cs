@@ -6,12 +6,6 @@ namespace ProtonDrive.Client.Sdk.Metrics;
 
 internal sealed class IntegrityMetrics
 {
-    private enum BooleanMapping
-    {
-        YesNo,
-        TrueFalse,
-    }
-
     public const string MeterName = "Proton.Drive.SDK.GenericIntegrity";
     public const string DecryptionErrorsMetricName = "proton.drive.sdk.generic.integrity.decryption_errors";
     public const string VerificationErrorsMetricName = "proton.drive.sdk.generic.integrity.verification_errors";
@@ -27,6 +21,7 @@ internal sealed class IntegrityMetrics
     public const string ResultKeyName = "result";
     public const string FileSizeKeyName = "fileSize";
     public const string ChecksumVerifiedKeyName = "checksumVerified";
+    public const string NodeUidKeyName = "uid";
 
     private const long KiB = 1024L;
     private const long MiB = 1024L * 1024;
@@ -86,13 +81,20 @@ internal sealed class IntegrityMetrics
             description: "Count of file download checksum verification attempts");
     }
 
+    private enum BooleanMapping
+    {
+        YesNo,
+        TrueFalse,
+    }
+
     public void Record(DecryptionErrorEvent metricEvent)
     {
         _decryptionErrors.Add(
             1,
             GetTag(SdkMetrics.VolumeTypeKeyName, MapVolumeType(metricEvent.VolumeType)),
             GetTag(FieldKeyName, MapField(metricEvent.Field)),
-            GetTag(FromBefore2024KeyName, MapBoolean(metricEvent.FromBefore2024, BooleanMapping.YesNo)));
+            GetTag(FromBefore2024KeyName, MapBoolean(metricEvent.FromBefore2024, BooleanMapping.YesNo)),
+            GetTag(NodeUidKeyName, metricEvent.Uid.ToString()));
     }
 
     public void Record(VerificationErrorEvent metricEvent)

@@ -129,12 +129,6 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
 
         _syncActivity = new SyncActivity<TId>();
 
-        var operationExecutionStep = new NotifyingExecutionStep<TId, TAltId>(
-            new ExecutionStep<TId, TAltId>(fileSystemClient, tempFileNameFactory),
-            _syncActivity,
-            _externalFileRevisionProvider,
-            errorCounter);
-
         var updateDetectionSequencer = new UpdateDetectionSequencer();
         var fileVersionMapping = new FileVersionMapping<TId, TAltId>();
         _accessRateLimiter = new FileSystemAccessRateLimiter<TId>(clock, maxFileAccessRetryInterval, maxFileRevisionCreationInterval);
@@ -145,34 +139,6 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
             DirtyTree,
             syncRoots,
             _detectedUpdates);
-
-        _operationExecution =
-            new OperationExecutionPipeline<TId, TAltId>(
-                loggerFactory.CreateLogger<OperationExecutionPipeline<TId, TAltId>>(),
-                executionScheduler,
-                SyncScheduler,
-                copiedNodes,
-                updateDetectionSequencer,
-                _accessRateLimiter,
-                preconditionsValidationStep,
-                new PreparationStep<TId, TAltId>(
-                    FileSystemTree,
-                    syncRoots),
-                operationExecutionStep,
-                new OperationExecution.SuccessStep<TId, TAltId>(
-                    loggerFactory.CreateLogger<OperationExecution.SuccessStep<TId, TAltId>>(),
-                    FileSystemTree,
-                    syncRoots,
-                    fileVersionMapping),
-                new FailureStep<TId, TAltId>(
-                    loggerFactory.CreateLogger<FailureStep<TId, TAltId>>(),
-                    FileSystemTree),
-                new NameConflictStep<TId, TAltId>(
-                    loggerFactory.CreateLogger<NameConflictStep<TId, TAltId>>(),
-                    FileSystemTree,
-                    preconditionsValidationStep),
-                new LoggingStep<TId, TAltId>(
-                    loggerFactory.CreateLogger<OperationExecutionPipeline<TId, TAltId>>()));
 
         var contentVersionSequence =
             new PersistentIdentitySource<long>(
@@ -191,11 +157,54 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
                 loggerFactory.CreateLogger<NodeUpdateDetection<TId, TAltId>>(),
                 FileSystemTree));
 
+        var exclusionFilter = new ItemExclusionFilter(specialFolderNames);
+
+        var operationExecutionPreparationStep = new PreparationStep<TId, TAltId>(
+            FileSystemTree,
+            syncRoots);
+
+        var operationExecutionStep = new NotifyingExecutionStep<TId, TAltId>(
+            new ExecutionStep<TId, TAltId>(fileSystemClient, tempFileNameFactory),
+            _syncActivity,
+            _externalFileRevisionProvider,
+            errorCounter);
+
+        var operationExecutionSuccessStep = new OperationExecution.SuccessStep<TId, TAltId>(
+            loggerFactory.CreateLogger<OperationExecution.SuccessStep<TId, TAltId>>(),
+            FileSystemTree,
+            _dirtyNodes,
+            idSource,
+            syncRoots,
+            copiedNodes,
+            nodeUpdateDetection,
+            exclusionFilter,
+            fileVersionMapping);
+
+        _operationExecution =
+            new OperationExecutionPipeline<TId, TAltId>(
+                loggerFactory.CreateLogger<OperationExecutionPipeline<TId, TAltId>>(),
+                executionScheduler,
+                SyncScheduler,
+                copiedNodes,
+                updateDetectionSequencer,
+                _accessRateLimiter,
+                preconditionsValidationStep,
+                operationExecutionPreparationStep,
+                operationExecutionStep,
+                operationExecutionSuccessStep,
+                new FailureStep<TId, TAltId>(
+                    loggerFactory.CreateLogger<FailureStep<TId, TAltId>>(),
+                    FileSystemTree),
+                new NameConflictStep<TId, TAltId>(
+                    loggerFactory.CreateLogger<NameConflictStep<TId, TAltId>>(),
+                    FileSystemTree,
+                    preconditionsValidationStep),
+                new LoggingStep<TId, TAltId>(
+                    loggerFactory.CreateLogger<OperationExecutionPipeline<TId, TAltId>>()));
+
         var fileSystemEnumeration = new FileSystemEnumeration<TId, TAltId>(
             fileSystemClient,
             syncRoots);
-
-        var exclusionFilter = new ItemExclusionFilter(specialFolderNames);
 
         _manualUpdateTrigger = new PseudoUpdateTrigger<TId, TAltId>(
             SyncScheduler,
@@ -363,14 +372,8 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
             new OnDemandHydration.FileSizeCorrection.PreconditionsValidationStep<TId, TAltId>(
                 loggerFactory.CreateLogger<OnDemandHydration.FileSizeCorrection.PreconditionsValidationStep<TId, TAltId>>(),
                 FileSystemTree),
-            new PreparationStep<TId, TAltId>(
-                FileSystemTree,
-                syncRoots),
-            new OperationExecution.SuccessStep<TId, TAltId>(
-                loggerFactory.CreateLogger<OperationExecution.SuccessStep<TId, TAltId>>(),
-                FileSystemTree,
-                syncRoots,
-                fileVersionMapping));
+            operationExecutionPreparationStep,
+            operationExecutionSuccessStep);
 
         _fileHydrationDemandHandler = new HydrationDemandHandler<TId, TAltId>(
             loggerFactory.CreateLogger<HydrationDemandHandler<TId, TAltId>>(),

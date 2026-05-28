@@ -58,8 +58,6 @@ internal sealed class MappingTeardownPipeline : IMappingTeardownPipeline
             MappingType.ForeignDevice => _foreignDeviceMappingStep.TearDownAsync(mapping, cancellationToken),
             MappingType.SharedWithMeRootFolder => _sharedWithMeRootFolderMappingStep.TearDownAsync(mapping, cancellationToken),
             MappingType.SharedWithMeItem => _sharedWithMeItemMappingStep.TearDownAsync(mapping, cancellationToken),
-            MappingType.PhotoImport => Task.FromResult(MappingErrorCode.None),  // Does not have a teardown step
-            MappingType.PhotoBackup => Task.FromResult(MappingErrorCode.None),  // Does not have a teardown step
             _ => throw new InvalidEnumArgumentException(nameof(mapping.Type), (int)mapping.Type, typeof(MappingType)),
         };
     }

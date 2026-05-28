@@ -110,7 +110,7 @@ internal sealed class WinRtFileMetadataExtractor : IFileMetadataGenerator
         {
             return await function.Invoke().ConfigureAwait(false);
         }
-        catch (Exception ex) when (ex.IsFileAccessException() || ex is COMException)
+        catch (Exception ex) when (ex.IsFileAccessException() || ex is COMException or ArgumentException)
         {
             _logger.LogWarning(
                 "Metadata extraction failed: {FailureNote}: {ErrorCode} {ErrorMessage}",

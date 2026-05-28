@@ -1425,6 +1425,9 @@ Innholdet i filer vil kun bli lastet ned på forespørsel.</value>
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
     <value>Importen var ikke vellykket. Albumet finnes ikke.</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Importen var ikke vellykket. Mappen finnes ikke.</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Importen var ikke vellykket. Maksimalt antall album er nådd.</value>
   </data>

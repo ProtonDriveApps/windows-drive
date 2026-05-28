@@ -1425,6 +1425,9 @@ Obsah súborov sa bude sťahovať len na požiadanie.</value>
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
     <value>Import zlyhal. Album neexistuje.</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Import zlyhal. Priečinok neexistuje.</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Import zlyhal. Bol dosiahnutý maximálny počet albumov.</value>
   </data>

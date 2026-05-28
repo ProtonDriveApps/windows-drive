@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.Metrics;
+﻿using System.Collections.Concurrent;
+using System.Diagnostics.Metrics;
 using ProtonDrive.Client.Sdk.Metrics;
 using ProtonDrive.Shared.Diagnostics.Metrics;
 
@@ -6,6 +7,8 @@ namespace ProtonDrive.Client.Instrumentation.Observability.Integrity;
 
 internal sealed class IntegrityMetricsCollector
 {
+    private readonly ConcurrentDictionary<string, byte> _reportedDecryptionFailuresByNodeUid = new();
+
     private readonly AggregatingCollector<int, DecryptionFailureTags> _decryptionFailures = new();
     private readonly AggregatingCollector<int, VerificationFailureTags> _verificationFailures = new();
     private readonly AggregatingCollector<int, UploadBlockVerificationFailureTags> _uploadBlockVerificationFailures = new();
@@ -35,6 +38,7 @@ internal sealed class IntegrityMetricsCollector
 
     public void Start()
     {
+        _reportedDecryptionFailuresByNodeUid.Clear();
         _decryptionFailures.Clear();
         _verificationFailures.Clear();
         _uploadBlockVerificationFailures.Clear();
@@ -86,7 +90,9 @@ internal sealed class IntegrityMetricsCollector
 
     private void OnMeasurementRecorded(Instrument instrument, int measurement, ReadOnlySpan<KeyValuePair<string, object?>> tags, object? state)
     {
-        if (instrument == _decryptionFailuresInstrument && DecryptionFailureTags.TryParse(tags, out var decryptionFailureKey))
+        if (instrument == _decryptionFailuresInstrument
+            && DecryptionFailureTags.TryParse(tags, out var decryptionFailureKey, out var uid)
+            && _reportedDecryptionFailuresByNodeUid.TryAdd(uid, 0))
         {
             _decryptionFailures.RecordMeasurement(decryptionFailureKey, measurement);
         }

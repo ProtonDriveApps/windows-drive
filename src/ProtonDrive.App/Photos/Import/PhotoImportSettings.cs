@@ -1,3 +1,3 @@
 ﻿namespace ProtonDrive.App.Photos.Import;
 
-public sealed record PhotoImportSettings(IList<PhotoImportFolderState> Folders);
+public sealed record PhotoImportSettings(IReadOnlyCollection<PhotoImportFolderState> Folders);

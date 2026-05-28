@@ -1,35 +1,80 @@
 ﻿using Microsoft.Extensions.Logging;
+using ProtonDrive.Sync.Adapter.NodeCopying;
 using ProtonDrive.Sync.Adapter.Shared;
 using ProtonDrive.Sync.Adapter.Trees.Adapter;
 using ProtonDrive.Sync.Adapter.UpdateDetection;
+using ProtonDrive.Sync.Shared;
 using ProtonDrive.Sync.Shared.FileSystem;
 using ProtonDrive.Sync.Shared.Trees.FileSystem;
 using ProtonDrive.Sync.Shared.Trees.Operations;
 
 namespace ProtonDrive.Sync.Adapter.OperationExecution;
 
-internal class SuccessStep<TId, TAltId>
+internal sealed class SuccessStep<TId, TAltId> : Shared.SuccessStep<TId, TAltId>
     where TId : IEquatable<TId>
     where TAltId : IEquatable<TAltId>
 {
     private readonly ILogger<SuccessStep<TId, TAltId>> _logger;
     private readonly AdapterTree<TId, TAltId> _adapterTree;
-    private readonly IReadOnlyDictionary<TId, RootInfo<TAltId>> _syncRoots;
     private readonly FileVersionMapping<TId, TAltId> _fileVersionMapping;
 
     public SuccessStep(
         ILogger<SuccessStep<TId, TAltId>> logger,
         AdapterTree<TId, TAltId> adapterTree,
+        IDirtyNodes<TId, TAltId> dirtyNodes,
+        IIdentitySource<TId> idSource,
         IReadOnlyDictionary<TId, RootInfo<TAltId>> syncRoots,
+        ICopiedNodes<TId, TAltId> copiedNodes,
+        NodeUpdateDetection<TId, TAltId> nodeUpdateDetection,
+        IItemExclusionFilter itemExclusionFilter,
         FileVersionMapping<TId, TAltId> fileVersionMapping)
+        : base(logger, adapterTree, dirtyNodes, idSource, nodeUpdateDetection, syncRoots, copiedNodes, itemExclusionFilter)
     {
         _logger = logger;
         _adapterTree = adapterTree;
-        _syncRoots = syncRoots;
         _fileVersionMapping = fileVersionMapping;
     }
 
     public void Execute(ExecutableOperation<TId> operation, NodeInfo<TAltId> finalNodeInfo)
+    {
+        switch (operation.Type)
+        {
+            case OperationType.Create:
+                ExecuteCreate(operation, finalNodeInfo);
+                break;
+            default:
+                ExecuteOperation(operation, finalNodeInfo);
+                break;
+        }
+    }
+
+    private static bool IsFileTransfer(Operation<AdapterTreeNodeModel<TId, TAltId>> operation)
+    {
+        return operation is { Type: OperationType.Create, Model.Type: NodeType.File } ||
+            operation.Type == OperationType.Edit;
+    }
+
+    private void ExecuteCreate(ExecutableOperation<TId> operation, NodeInfo<TAltId> finalNodeInfo)
+    {
+        // It could happen, that update detection has already processed events of the new file system object
+        var existingNode = ExistingNode(finalNodeInfo.GetCompoundId(), operation.Model.Type);
+        if (existingNode is not null)
+        {
+            // We do not expect the existing node to have a correct Id value, so we delete it and create a new one
+            _logger.LogWarning(
+                "Adapter Tree node with Id={Id} {AltId} type={Type} doesn't match the expected, marking it as deleted",
+                existingNode.Id,
+                existingNode.AltId,
+                existingNode.Type);
+
+            MarkAsDeleted(existingNode);
+            RemoveAltId(existingNode);
+        }
+
+        ExecuteOperation(operation, finalNodeInfo);
+    }
+
+    private void ExecuteOperation(ExecutableOperation<TId> operation, NodeInfo<TAltId> finalNodeInfo)
     {
         var mappedOperation = ToAdapterTreeOperation(operation, finalNodeInfo);
 
@@ -64,11 +109,6 @@ internal class SuccessStep<TId, TAltId>
         return nodeInfo.PlaceholderState.GetStateUpdateFlags(nodeInfo.Attributes, GetRoot(nodeForObtainingRoot));
     }
 
-    private RootInfo<TAltId> GetRoot(AdapterTreeNode<TId, TAltId> node)
-    {
-        return node.GetRoot(_syncRoots);
-    }
-
     private void ExecuteOnTree(Operation<AdapterTreeNodeModel<TId, TAltId>> operation)
     {
         _adapterTree.Operations.LogAndExecute(_logger, operation);
@@ -80,11 +120,5 @@ internal class SuccessStep<TId, TAltId>
         {
             _fileVersionMapping.Add(operation.Model);
         }
-    }
-
-    private bool IsFileTransfer(Operation<AdapterTreeNodeModel<TId, TAltId>> operation)
-    {
-        return (operation.Type == OperationType.Create && operation.Model.Type == NodeType.File) ||
-               operation.Type == OperationType.Edit;
     }
 }

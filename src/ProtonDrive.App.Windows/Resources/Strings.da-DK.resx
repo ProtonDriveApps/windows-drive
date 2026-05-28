@@ -1423,6 +1423,9 @@ Indholdet af filerne downloades kun efter behov.</value>
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
     <value>Import mislykkedes. Albummet eksisterer ikke.</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Import mislykkedes. Mappen eksisterer ikke.</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Import mislykkedes. Maksimalt antal albums er nået.</value>
   </data>

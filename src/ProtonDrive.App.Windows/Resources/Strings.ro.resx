@@ -1423,6 +1423,9 @@ Conținutul fișierelor va fi descărcat numai la cerere.</value>
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
     <value>Importarea a eșuat. Albumul nu există.</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Importarea a eșuat. Folderul nu există.</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Importarea a eșuat. Numărul maxim de albume a fost atins.</value>
   </data>

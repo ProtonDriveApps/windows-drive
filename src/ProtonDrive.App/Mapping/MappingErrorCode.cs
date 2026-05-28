@@ -28,7 +28,4 @@ public enum MappingErrorCode
     InsufficientLocalFreeSpace,
     InsufficientDeviceQuota,
     SharingDisabled,
-    PhotosNotReady,
-    PhotosDisabled,
-    PhotoImportFailed,
 }

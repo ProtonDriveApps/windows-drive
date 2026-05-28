@@ -1,4 +1,5 @@
 using Proton.Drive.Sdk.Nodes;
+using Proton.Drive.Sdk.Nodes.Upload;
 using ProtonDrive.Client.FileUploading;
 using ProtonDrive.Client.MediaTypes;
 using ProtonDrive.Shared.Features;
@@ -58,13 +59,14 @@ internal sealed class SdkPhotosUploadClient : ISdkPhotosUploadClient
         var sha1Digest = checksum.Sha1 is { } sha1Bytes ? Convert.ToHexStringLower(sha1Bytes.Span) : null;
 
         var contentStream = sourceRevision.GetContentStream();
+        var size = sourceRevision.Size;
 
         try
         {
             var fileLinkId = await _sdkPhotosTransferClient.UploadAsync(
                 filename,
                 mediaType,
-                sourceRevision.Size,
+                size,
                 metadata,
                 contentStream,
                 thumbnails,
@@ -75,6 +77,11 @@ internal sealed class SdkPhotosUploadClient : ISdkPhotosUploadClient
                 .WithId(fileLinkId)
                 .WithName(filename)
                 .WithSha1Digest(sha1Digest);
+        }
+        catch (ContentSizeMismatchIntegrityException exception)
+        {
+            var message = $"Failed to import photo due to file size mismatch: source {contentStream.Length} bytes, expected {size} bytes.";
+            throw new PhotoFileSizeMismatchException(message, exception);
         }
         catch (Exception ex) when (ExceptionMapping.TryMapSdkClientException(ex, id: null, includeObjectId: false, out var mappedException))
         {

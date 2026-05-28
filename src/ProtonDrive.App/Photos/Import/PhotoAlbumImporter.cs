@@ -183,7 +183,7 @@ internal sealed class PhotoAlbumImporter
             ? currentFolderPath[(rootFolderPath.Length + 1)..]
             : ReadOnlySpan<char>.Empty).ToString();
 
-        var albumName = _albumNameProvider.GetAlbumNameFromPath(rootFolderPath, relativePath);
+        var albumName = _albumNameProvider.GetAlbumNameFromPath(albumFolderPath, rootFolderPath, relativePath);
 
         var albumLinkId = await GetAlbumLinkIdAsync(albumFolderPath, albumName, cancellationToken).ConfigureAwait(false);
 

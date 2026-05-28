@@ -1,11 +1,9 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.IO;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Microsoft.Win32;
 using ProtonDrive.App.Account;
 using ProtonDrive.App.Mapping;
@@ -20,39 +18,33 @@ using ProtonDrive.Shared.Threading;
 
 namespace ProtonDrive.App.Windows.Views.Main.Photos;
 
-internal sealed class PhotosImportViewModel : ObservableObject, ISyncFoldersAware, IAccountSwitchingAware, IPhotoImportFoldersAware, IPhotosFeatureStateAware
+internal sealed class PhotosImportViewModel : ObservableObject, IAccountSwitchingAware, IPhotoImportFoldersAware, IPhotosFeatureStateAware
 {
-    private readonly IPhotoFolderService _photoFolderService;
+    private readonly IPhotoImportFolderService _photoImportFolderService;
     private readonly IExternalHyperlinks _externalHyperlinks;
     private readonly IFileSystemDisplayNameAndIconProvider _fileSystemDisplayNameAndIconProvider;
     private readonly ILocalFolderService _localFolderService;
     private readonly IScheduler _scheduler;
-    private readonly ILogger<PhotosImportViewModel> _logger;
 
-    private readonly HashSet<PhotoImportFolderState> _photoImportFolders = [];
     private readonly AsyncRelayCommand _addFolderCommand;
     private readonly RelayCommand _displayImportGooglePhotosDetailsCommand;
     private readonly AsyncRelayCommand<ImportFolderViewModel?> _retryCommand;
 
-    private bool _isDisplayingImportGooglePhotosDetails;
     private string? _lastSelectedParentFolderPath;
-    private bool _uploadingIsNotAvailable;
     private bool _isEnabled;
 
     public PhotosImportViewModel(
-        IPhotoFolderService photoFolderService,
+        IPhotoImportFolderService photoImportFolderService,
         IExternalHyperlinks externalHyperlinks,
         IFileSystemDisplayNameAndIconProvider fileSystemDisplayNameAndIconProvider,
         ILocalFolderService localFolderService,
-        [FromKeyedServices("Dispatcher")] IScheduler scheduler,
-        ILogger<PhotosImportViewModel> logger)
+        [FromKeyedServices("Dispatcher")] IScheduler scheduler)
     {
-        _photoFolderService = photoFolderService;
+        _photoImportFolderService = photoImportFolderService;
         _externalHyperlinks = externalHyperlinks;
         _fileSystemDisplayNameAndIconProvider = fileSystemDisplayNameAndIconProvider;
         _localFolderService = localFolderService;
         _scheduler = scheduler;
-        _logger = logger;
 
         OpenHowToImportPhotosFromGoogleUrlCommand = new RelayCommand(OpenHowToImportPhotosFromGoogleUrl);
         OpenHowPhotoImportWorksUrlCommand = new RelayCommand(OpenHowImportWorksUrl);
@@ -66,8 +58,8 @@ internal sealed class PhotosImportViewModel : ObservableObject, ISyncFoldersAwar
 
     public bool IsDisplayingImportGooglePhotosDetails
     {
-        get => _isDisplayingImportGooglePhotosDetails;
-        set => SetProperty(ref _isDisplayingImportGooglePhotosDetails, value);
+        get;
+        set => SetProperty(ref field, value);
     }
 
     public ICommand OpenHowToImportPhotosFromGoogleUrlCommand { get; }
@@ -90,50 +82,8 @@ internal sealed class PhotosImportViewModel : ObservableObject, ISyncFoldersAwar
 
     public bool UploadingIsNotAvailable
     {
-        get => _uploadingIsNotAvailable;
-        private set => SetProperty(ref _uploadingIsNotAvailable, value);
-    }
-
-    void ISyncFoldersAware.OnSyncFolderChanged(SyncFolderChangeType changeType, SyncFolder folder)
-    {
-        if (folder.Type is not SyncFolderType.PhotoImport)
-        {
-            return;
-        }
-
-        Schedule(HandleSyncFolderChange);
-
-        return;
-
-        void HandleSyncFolderChange()
-        {
-            switch (changeType)
-            {
-                case SyncFolderChangeType.Added:
-                    var folderName = _fileSystemDisplayNameAndIconProvider.GetDisplayNameWithoutAccess(folder.LocalPath) ?? string.Empty;
-                    var folderViewModel = new ImportFolderViewModel(folderName, folder);
-                    var photoImportFolder = _photoImportFolders.FirstOrDefault(x => x.MappingId == folder.MappingId);
-                    if (photoImportFolder is not null)
-                    {
-                        folderViewModel.Update(photoImportFolder);
-                    }
-
-                    Folders.Insert(0, folderViewModel);
-                    break;
-
-                case SyncFolderChangeType.Updated:
-                    var item = Folders.FirstOrDefault(x => x.SyncFolder?.Equals(folder) ?? false);
-                    item?.Update();
-                    break;
-
-                case SyncFolderChangeType.Removed:
-                    Folders.RemoveFirst(x => x.SyncFolder?.Equals(folder) ?? false);
-                    break;
-
-                default:
-                    throw new InvalidEnumArgumentException(nameof(changeType), (int)changeType, typeof(SyncFolderChangeType));
-            }
-        }
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     void IPhotoImportFoldersAware.OnPhotoImportFolderChanged(SyncFolderChangeType changeType, PhotoImportFolderState folder)
@@ -147,17 +97,18 @@ internal sealed class PhotosImportViewModel : ObservableObject, ISyncFoldersAwar
             switch (changeType)
             {
                 case SyncFolderChangeType.Added:
-                    _photoImportFolders.Add(folder);
-                    Folders.FirstOrDefault(x => x.SyncFolder?.MappingId == folder.MappingId)?.Update(folder);
+                    var folderName = _fileSystemDisplayNameAndIconProvider.GetDisplayNameWithoutAccess(folder.Path) ?? string.Empty;
+                    var folderViewModel = new ImportFolderViewModel(folderName, folder);
+                    Folders.Insert(0, folderViewModel);
                     break;
 
                 case SyncFolderChangeType.Updated:
-                    Folders.FirstOrDefault(x => x.SyncFolder?.MappingId == folder.MappingId)?.Update(folder);
+                    Folders.FirstOrDefault(x => x.ImportFolder == folder)?.Update();
                     _retryCommand.NotifyCanExecuteChanged();
                     break;
 
                 case SyncFolderChangeType.Removed:
-                    _photoImportFolders.Remove(folder);
+                    Folders.RemoveFirst(x => x.ImportFolder == folder);
                     break;
 
                 default:
@@ -181,12 +132,7 @@ internal sealed class PhotosImportViewModel : ObservableObject, ISyncFoldersAwar
 
     private static bool CanRetry(ImportFolderViewModel? folder)
     {
-        if (folder?.SyncFolder?.MappingId is null)
-        {
-            return false;
-        }
-
-        return folder.ImportStatus is PhotoImportFolderStatus.Failed;
+        return folder?.ImportStatus is PhotoImportFolderStatus.Failed;
     }
 
     private void OpenHowToImportPhotosFromGoogleUrl()
@@ -226,11 +172,11 @@ internal sealed class PhotosImportViewModel : ObservableObject, ISyncFoldersAwar
             return;
         }
 
-        var validationResult = _photoFolderService.ValidateFolder(folderPath);
+        var validationResult = _photoImportFolderService.ValidateFolder(folderPath);
 
         if (validationResult is SyncFolderValidationResult.Succeeded)
         {
-            await _photoFolderService.AddImportFolderAsync(folderPath, cancellationToken).ConfigureAwait(true);
+            await _photoImportFolderService.AddFolderAsync(folderPath, cancellationToken).ConfigureAwait(true);
         }
         else
         {
@@ -260,14 +206,12 @@ internal sealed class PhotosImportViewModel : ObservableObject, ISyncFoldersAwar
 
     private async Task RetryAsync(ImportFolderViewModel? folder, CancellationToken cancellationToken)
     {
-        if (folder?.SyncFolder?.MappingId is null)
+        if (folder?.ImportFolder is null)
         {
             return;
         }
 
-        await _photoFolderService.ResetImportFolderStatusAsync(folder.SyncFolder.MappingId, cancellationToken).ConfigureAwait(true);
-
-        _logger.LogInformation("Requested retry to import folder with mapping \"{ID}\"", folder.SyncFolder.MappingId);
+        await _photoImportFolderService.RetryImportAsync(folder.ImportFolder, cancellationToken).ConfigureAwait(true);
     }
 
     private async Task RemoveFolderAsync(ImportFolderViewModel? folder, CancellationToken cancellationToken)
@@ -277,9 +221,9 @@ internal sealed class PhotosImportViewModel : ObservableObject, ISyncFoldersAwar
             return;
         }
 
-        if (folder.SyncFolder is not null)
+        if (folder.ImportFolder is not null)
         {
-            await _photoFolderService.RemoveFolderAsync(folder.SyncFolder, cancellationToken).ConfigureAwait(true);
+            await _photoImportFolderService.RemoveFolderAsync(folder.ImportFolder, cancellationToken).ConfigureAwait(true);
         }
         else
         {
@@ -294,7 +238,7 @@ internal sealed class PhotosImportViewModel : ObservableObject, ISyncFoldersAwar
 
     private void HandleAccountSwitched()
     {
-        foreach (var folder in Folders.Where(x => x.SyncFolder is null).ToList())
+        foreach (var folder in Folders.Where(x => x.ImportFolder is null).ToList())
         {
             Folders.Remove(folder);
         }

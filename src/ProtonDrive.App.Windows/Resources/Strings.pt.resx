@@ -1425,6 +1425,9 @@ O conteúdo do ficheiro será transferido apenas a pedido.</value>
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
     <value>Erro com a importação. O álbum não existe.</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Import failed. The folder does not exist.</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Erro com a importação. O número máximo de álbuns foi atingido.</value>
   </data>

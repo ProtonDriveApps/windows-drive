@@ -1425,6 +1425,9 @@ Konten berkas hanya akan diunduh apabila diminta.</value>
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
     <value>Impor gagal. Album tidak ada.</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Import failed. The folder does not exist.</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Impor gagal. Jumlah maksimum album telah tercapai.</value>
   </data>

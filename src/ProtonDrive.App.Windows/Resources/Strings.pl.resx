@@ -1425,6 +1425,9 @@ Zawartość plików będzie pobierana na żądanie.</value>
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
     <value>Importowanie nie powiodło się. Album nie istnieje.</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Import failed. The folder does not exist.</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Importowanie nie powiodło się. Osiągnięto maksymalną liczbę albumów.</value>
   </data>

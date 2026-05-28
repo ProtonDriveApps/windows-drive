@@ -1,6 +1,5 @@
-using System.Security;
 using Microsoft.Extensions.Logging;
-using ProtonDrive.App.Settings;
+using ProtonDrive.App.Volumes;
 using ProtonDrive.Client.FileUploading;
 using ProtonDrive.Shared.Logging;
 using ProtonDrive.Sync.Shared.FileSystem;
@@ -12,10 +11,8 @@ internal sealed class PhotoImportEngine : IPhotoImportEngine
 {
     private const int DuplicationCheckBatchSize = 150; // Maximum batch size allowed by the duplication check API
 
-    private readonly string _volumeId;
-    private readonly string _shareId;
-    private readonly string _rootLinkId;
-    private readonly string _folderPath;
+    private readonly PhotoImportFolderState _folder;
+    private readonly VolumeInfo _photoVolume;
     private readonly PhotoImportFolderCurrentPosition? _folderCurrentPosition;
     private readonly IFileSystemClient<string> _remoteFileSystemClient;
     private readonly ILocalFileSystemClientFactory _localFileSystemClientFactory;
@@ -28,8 +25,8 @@ internal sealed class PhotoImportEngine : IPhotoImportEngine
     private readonly ILogger<PhotoImportEngine> _logger;
 
     public PhotoImportEngine(
-        RemoteToLocalMapping mapping,
-        PhotoImportFolderCurrentPosition? folderCurrentPosition,
+        PhotoImportFolderState folder,
+        VolumeInfo photoVolume,
         IFileSystemClient<string> remoteFileSystemClient,
         ILocalFileSystemClientFactory localFileSystemClientFactory,
         PhotoFileImporterFactory photoFileImporterFactory,
@@ -40,11 +37,9 @@ internal sealed class PhotoImportEngine : IPhotoImportEngine
         int maxNumberOfConcurrentFileTransfers,
         ILogger<PhotoImportEngine> logger)
     {
-        _volumeId = mapping.Remote.VolumeId ?? throw new ArgumentNullException(nameof(mapping), "Volume ID is required");
-        _shareId = mapping.Remote.ShareId ?? throw new ArgumentNullException(nameof(mapping), "Share ID is required");
-        _rootLinkId = mapping.Remote.RootLinkId ?? throw new ArgumentNullException(nameof(mapping), "Root link ID is required");
-        _folderPath = mapping.Local.Path;
-        _folderCurrentPosition = folderCurrentPosition;
+        _folder = folder;
+        _photoVolume = photoVolume;
+        _folderCurrentPosition = _folder.CurrentPosition;
         _remoteFileSystemClient = remoteFileSystemClient;
         _localFileSystemClientFactory = localFileSystemClientFactory;
         _photoFileImporterFactory = photoFileImporterFactory;
@@ -59,10 +54,10 @@ internal sealed class PhotoImportEngine : IPhotoImportEngine
     public Task ImportAsync(ImportProgressCallbacks callbacks, CancellationToken cancellationToken)
     {
         var parameters = new PhotoImportPipelineParameters(
-            _volumeId,
-            _shareId,
-            _rootLinkId,
-            _folderPath,
+            _photoVolume.Id,
+            _photoVolume.RootShareId,
+            _photoVolume.RootLinkId,
+            _folder.Path,
             _folderCurrentPosition,
             _maxNumberOfConcurrentFileTransfers,
             DuplicationCheckBatchSize);
@@ -73,18 +68,20 @@ internal sealed class PhotoImportEngine : IPhotoImportEngine
     private async Task ImportInternalAsync(PhotoImportPipelineParameters parameters, ImportProgressCallbacks callbacks, CancellationToken cancellationToken)
     {
         var localFileSystemClient = _localFileSystemClientFactory.CreatePhotoClient();
-        var rootInfo = NodeInfo<long>.Directory().WithPath(parameters.FolderPath);
+        var rootFolder = NodeInfo<long>.Directory().WithPath(parameters.FolderPath);
         var progress = new ImportProgress(callbacks);
+
+        await ValidateFolderAsync(() => localFileSystemClient.GetInfoAsync(rootFolder, cancellationToken)).ConfigureAwait(false);
 
         // First pass: enumerate the folder to count how many files need to be imported.
         // This allows us to display progress without loading all file paths into memory.
-        var countingTask = CountFilesToImportAsync(localFileSystemClient.EnumerateAllPhotoFilesAsync(rootInfo, cancellationToken), progress, cancellationToken);
+        var countingTask = CountFilesToImportAsync(localFileSystemClient.EnumerateAllPhotoFilesAsync(rootFolder, cancellationToken), progress, cancellationToken);
         await countingTask.ConfigureAwait(false);
 
         var importPipeline = new PhotoImportPipeline(
             parameters,
             localFileSystemClient,
-            _photoFileImporterFactory.Create(localFileSystemClient, _remoteFileSystemClient, _volumeId),
+            _photoFileImporterFactory.Create(localFileSystemClient, _remoteFileSystemClient, _photoVolume.Id),
             _photoAlbumService,
             _duplicateService,
             _photoAlbumNameProvider,
@@ -95,6 +92,26 @@ internal sealed class PhotoImportEngine : IPhotoImportEngine
         // Second pass: enumerate the folder again to perform the actual import.
         // This approach minimizes memory usage by avoiding storing all file paths at once.
         await importPipeline.ExecuteAsync(cancellationToken).ConfigureAwait(false);
+    }
+
+    private async Task ValidateFolderAsync(Func<Task<NodeInfo<long>>> getInfoTask)
+    {
+        try
+        {
+            await getInfoTask.Invoke().ConfigureAwait(false);
+        }
+        catch (FileSystemClientException ex)
+        {
+            if (ex.ErrorCode is FileSystemErrorCode.DirectoryNotFound or FileSystemErrorCode.PathNotFound)
+            {
+                throw new PhotoImportException(
+                    $"Folder \"{_logger.GetSensitiveValueForLogging(_folder.Path)}\" does not exist",
+                    PhotoImportErrorCode.FolderDoesNotExist,
+                    ex);
+            }
+
+            throw new PhotoImportException($"Folder \"{_logger.GetSensitiveValueForLogging(_folder.Path)}\" validation failed", ex);
+        }
     }
 
     private async Task CountFilesToImportAsync(
@@ -111,9 +128,9 @@ internal sealed class PhotoImportEngine : IPhotoImportEngine
                 progress.RaiseFileToImportFound();
             }
         }
-        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or SecurityException)
+        catch (FileSystemClientException ex)
         {
-            throw new PhotoImportException($"Photo import counting failed on folder \"{_logger.GetSensitiveValueForLogging(_folderPath)}\"", ex);
+            throw new PhotoImportException($"Photos counting failed on folder \"{_logger.GetSensitiveValueForLogging(_folder.Path)}\"", ex);
         }
     }
 }

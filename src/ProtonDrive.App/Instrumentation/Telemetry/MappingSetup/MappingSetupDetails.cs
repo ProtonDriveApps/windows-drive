@@ -21,7 +21,6 @@ public sealed record MappingSetupDetails
         SetupStatus = mappingSetupStatus;
         SyncType = type switch
         {
-            MappingType.PhotoImport => MappingSyncType.None,
             MappingType.SharedWithMeItem when isReadOnly => MappingSyncType.OneWayToLocal,
             _ => MappingSyncType.TwoWay,
         };

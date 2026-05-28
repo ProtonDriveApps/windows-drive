@@ -1,8 +1,8 @@
-﻿using ProtonDrive.App.Settings;
+﻿using ProtonDrive.App.Volumes;
 
 namespace ProtonDrive.App.Photos.Import;
 
 internal interface IPhotoImportEngineFactory
 {
-    IPhotoImportEngine CreateEngine(RemoteToLocalMapping mapping, PhotoImportFolderCurrentPosition? currentPosition);
+    IPhotoImportEngine CreateEngine(PhotoImportFolderState folder, VolumeInfo photoVolume);
 }

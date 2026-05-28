@@ -136,14 +136,14 @@ internal sealed class OperationExecutionPipeline<TId, TAltId> : IOperationExecut
 
         var (nodeInfo, destinationInfo) = _preparation.Execute(operation);
 
-        if (_accessRateLimiter.CanExecute(operation, out var resultCode))
+        if (!_accessRateLimiter.CanExecute(operation, out var resultCode))
         {
-            return (null, nodeInfo, destinationInfo);
+            _execution.NotifySkipped(operation);
+
+            return (ExecutionResult<TId>.Failure(resultCode), null, null);
         }
 
-        _execution.NotifySkipped(operation);
-
-        return (ExecutionResult<TId>.Failure(resultCode), null, null);
+        return (null, nodeInfo, destinationInfo);
     }
 
     private async Task<(NodeInfo<TAltId>? Value, Exception? Exception)> Execute(

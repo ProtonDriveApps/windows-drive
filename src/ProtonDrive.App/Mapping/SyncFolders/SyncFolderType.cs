@@ -7,6 +7,4 @@ public enum SyncFolderType
     ForeignDevice,
     SharedWithMeRoot,
     SharedWithMeItem,
-    PhotoImport,
-    PhotoBackup,
 }

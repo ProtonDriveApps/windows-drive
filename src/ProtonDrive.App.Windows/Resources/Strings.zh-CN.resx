@@ -1424,6 +1424,9 @@
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
     <value>导入失败，相册不存在。</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>导入失败，该文件夹不存在。</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>导入失败，已达到最大相册数量。</value>
   </data>

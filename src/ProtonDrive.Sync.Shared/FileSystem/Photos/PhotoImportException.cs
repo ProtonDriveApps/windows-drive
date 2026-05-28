@@ -1,6 +1,9 @@
-﻿namespace ProtonDrive.Sync.Shared.FileSystem.Photos;
+﻿using System.Diagnostics.CodeAnalysis;
+using ProtonDrive.Shared.Extensions;
 
-public class PhotoImportException : Exception
+namespace ProtonDrive.Sync.Shared.FileSystem.Photos;
+
+public class PhotoImportException : Exception, IFormattedErrorCodeProvider
 {
     public PhotoImportException()
     {
@@ -11,16 +14,28 @@ public class PhotoImportException : Exception
     {
     }
 
-    public PhotoImportException(string message, Exception exception)
-        : base(message, exception)
+    public PhotoImportException(string message, Exception innerException)
+        : base(message, innerException)
     {
-        if (exception is IFileSystemErrorCodeProvider errorCodeProvider)
+        if (innerException is IFileSystemErrorCodeProvider errorCodeProvider)
         {
             ErrorCode = GetPhotoImportErrorCode(errorCodeProvider.ErrorCode);
         }
     }
 
+    public PhotoImportException(string message, PhotoImportErrorCode errorCode, Exception innerException)
+        : base(message, innerException)
+    {
+        ErrorCode = errorCode;
+    }
+
     public PhotoImportErrorCode ErrorCode { get; protected set; }
+
+    public virtual bool TryGetRelevantFormattedErrorCode([MaybeNullWhen(false)] out string formattedErrorCode)
+    {
+        formattedErrorCode = $"{ErrorCode}";
+        return true;
+    }
 
     private static PhotoImportErrorCode GetPhotoImportErrorCode(FileSystemErrorCode errorCode)
     {

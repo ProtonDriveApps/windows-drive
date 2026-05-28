@@ -49,8 +49,6 @@ public sealed class SyncFolder
             MappingType.ForeignDevice => SyncFolderType.ForeignDevice,
             MappingType.SharedWithMeRootFolder => SyncFolderType.SharedWithMeRoot,
             MappingType.SharedWithMeItem => SyncFolderType.SharedWithMeItem,
-            MappingType.PhotoImport => SyncFolderType.PhotoImport,
-            MappingType.PhotoBackup => SyncFolderType.PhotoBackup,
             _ => throw new ArgumentOutOfRangeException(nameof(mappingType)),
         };
     }

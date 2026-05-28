@@ -698,6 +698,9 @@ disable storage optimization at any time.</value>
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist" xml:space="preserve">
     <value>Import failed. The album does not exist.</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist" xml:space="preserve">
+    <value>Import failed. The folder does not exist.</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached" xml:space="preserve">
     <value>Import failed. Maximum number of albums reached.</value>
   </data>

@@ -1,13 +1,11 @@
 ﻿using System.Collections.Concurrent;
 using ProtonDrive.App.Mapping;
-using ProtonDrive.App.Mapping.SyncFolders;
-using ProtonDrive.App.Photos.Import;
 using ProtonDrive.App.Settings;
 using ProtonDrive.Shared.Extensions;
 
 namespace ProtonDrive.App.Instrumentation.Telemetry.MappingSetup;
 
-internal sealed class MappingSetupStatistics : IMappingsAware, IMappingStateAware, IPhotoImportFoldersAware
+internal sealed class MappingSetupStatistics : IMappingsAware, IMappingStateAware
 {
     private readonly ConcurrentDictionary<int, MappingSetupDetails> _mappingStatisticsById = new();
 
@@ -61,40 +59,6 @@ internal sealed class MappingSetupStatistics : IMappingsAware, IMappingStateAwar
 
         _mappingStatisticsById.TryUpdate(
             mapping.Id,
-            mappingSetupDetails,
-            existingItem);
-    }
-
-    void IPhotoImportFoldersAware.OnPhotoImportFolderChanged(SyncFolderChangeType changeType, PhotoImportFolderState folder)
-    {
-        if (changeType is not SyncFolderChangeType.Updated)
-        {
-            return;
-        }
-
-        if (!_mappingStatisticsById.TryGetValue(folder.MappingId, out var existingItem))
-        {
-            return;
-        }
-
-        var setupStatus = folder.Status switch
-        {
-            PhotoImportFolderStatus.Succeeded => MappingSetupStatus.Succeeded,
-            PhotoImportFolderStatus.Importing or PhotoImportFolderStatus.Interrupted => MappingSetupStatus.PartiallySucceeded,
-            PhotoImportFolderStatus.Failed or PhotoImportFolderStatus.SetupFailed or PhotoImportFolderStatus.ValidationFailed => MappingSetupStatus.Failed,
-            _ => existingItem.SetupStatus,
-        };
-
-        var mappingSetupDetails = new MappingSetupDetails(
-            existingItem.Type,
-            existingItem.LinkType,
-            existingItem.SyncMethod,
-            existingItem.Status,
-            setupStatus,
-            isReadOnly: true);
-
-        _mappingStatisticsById.TryUpdate(
-            folder.MappingId,
             mappingSetupDetails,
             existingItem);
     }

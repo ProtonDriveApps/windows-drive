@@ -1425,6 +1425,9 @@ Le contenu des fichiers sera téléchargé à la demande uniquement.</value>
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
     <value>L'importation n'a pas abouti. L'album n'existe pas.</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>L'importation n'a pas abouti. Le dossier n'existe pas.</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>L'importation n'a pas abouti. Le nombre maximum d'albums a été atteint.</value>
   </data>

@@ -1422,6 +1422,9 @@ Der Inhalt der Dateien wird nur bei Bedarf heruntergeladen.</value>
   <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
     <value>Fehler beim Importieren. Das Album existiert nicht.</value>
   </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Import fehlgeschlagen. Der Ordner existiert nicht.</value>
+  </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Fehler beim Importieren. Maximale Anzahl an Alben erreicht.</value>
   </data>

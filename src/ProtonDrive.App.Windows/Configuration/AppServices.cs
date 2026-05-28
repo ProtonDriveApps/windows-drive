@@ -53,6 +53,7 @@ using ProtonDrive.Shared.Localization;
 using ProtonDrive.Shared.Offline;
 using ProtonDrive.Shared.Repository;
 using ProtonDrive.Shared.Security.Cryptography;
+using ProtonDrive.Shared.Telemetry;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Shared.FileSystem;
 using ProtonDrive.Sync.Shared.FileSystem.Photos;
@@ -113,13 +114,12 @@ internal static class AppServices
             .AddSingleton<IExternalHyperlinks, ExternalHyperlinks>()
             .AddSingleton<IClipboard, SystemClipboard>()
             .AddSingleton<IDataProtectionProvider, DataProtectionProvider>()
-            .AddSingleton<ISyncFolderStructureProtector>(
-                provider =>
-                    new SafeSyncFolderStructureProtectorDecorator(
-                        new LoggingSyncFolderStructureProtectorDecorator(
-                            provider.GetRequiredService<ILogger<LoggingSyncFolderStructureProtectorDecorator>>(),
-                            new NtfsPermissionsBasedSyncFolderStructureProtector(
-                                provider.GetRequiredService<ILogger<NtfsPermissionsBasedSyncFolderStructureProtector>>()))))
+            .AddSingleton<ISyncFolderStructureProtector>(provider =>
+                new SafeSyncFolderStructureProtectorDecorator(
+                    new LoggingSyncFolderStructureProtectorDecorator(
+                        provider.GetRequiredService<ILogger<LoggingSyncFolderStructureProtectorDecorator>>(),
+                        new NtfsPermissionsBasedSyncFolderStructureProtector(
+                            provider.GetRequiredService<ILogger<NtfsPermissionsBasedSyncFolderStructureProtector>>()))))
             .AddSingleton<IShellSyncFolderRegistry, Win32ShellSyncFolderRegistry>()
             .AddSingleton<WinRegistryLanguageRepository>()
             .AddSingleton<IRepository<LanguageSettings>, WinRegistryLanguageRepository>()
@@ -206,10 +206,12 @@ internal static class AppServices
             .AddSingleton<Func<RemoveOnDemandFolderConfirmationViewModel>>(provider => provider.GetRequiredService<RemoveOnDemandFolderConfirmationViewModel>)
 
             .AddTransient<StorageOptimizationTurnedOffNotificationViewModel>()
-            .AddSingleton<Func<StorageOptimizationTurnedOffNotificationViewModel>>(provider => provider.GetRequiredService<StorageOptimizationTurnedOffNotificationViewModel>)
+            .AddSingleton<Func<StorageOptimizationTurnedOffNotificationViewModel>>(provider =>
+                provider.GetRequiredService<StorageOptimizationTurnedOffNotificationViewModel>)
 
             .AddTransient<StorageOptimizationUnavailableNotificationViewModel>()
-            .AddSingleton<Func<StorageOptimizationUnavailableNotificationViewModel>>(provider => provider.GetRequiredService<StorageOptimizationUnavailableNotificationViewModel>)
+            .AddSingleton<Func<StorageOptimizationUnavailableNotificationViewModel>>(provider =>
+                provider.GetRequiredService<StorageOptimizationUnavailableNotificationViewModel>)
 
             .AddSingleton<SharedWithMeViewModel>()
             .AddSingleton<ISharedWithMeOnboardingStateAware>(provider => provider.GetRequiredService<SharedWithMeViewModel>())
@@ -222,7 +224,6 @@ internal static class AppServices
 
             .AddSingleton<PhotosViewModel>()
             .AddSingleton<PhotosImportViewModel>()
-            .AddSingleton<ISyncFoldersAware>(provider => provider.GetRequiredService<PhotosImportViewModel>())
             .AddSingleton<IPhotoImportFoldersAware>(provider => provider.GetRequiredService<PhotosImportViewModel>())
             .AddSingleton<IAccountSwitchingAware>(provider => provider.GetRequiredService<PhotosImportViewModel>())
             .AddSingleton<IPhotosFeatureStateAware>(provider => provider.GetRequiredService<PhotosImportViewModel>())
@@ -250,43 +251,45 @@ internal static class AppServices
             .AddTransient<OfferViewModel>()
             .AddSingleton<Func<OfferViewModel>>(provider => provider.GetRequiredService<OfferViewModel>)
 
-            .AddSingleton(
-                provider => new NamedPipeBasedIpcServer(
-                    NamedPipeBasedIpcServer.PipeName,
-                    provider.GetRequiredService<Lazy<IEnumerable<IIpcMessageHandler>>>(),
-                    provider.GetRequiredService<ILogger<NamedPipeBasedIpcServer>>()))
+            .AddSingleton(provider => new NamedPipeBasedIpcServer(
+                NamedPipeBasedIpcServer.PipeName,
+                provider.GetRequiredService<Lazy<IEnumerable<IIpcMessageHandler>>>(),
+                provider.GetRequiredService<ILogger<NamedPipeBasedIpcServer>>()))
             .AddSingleton<IStartableService>(provider => provider.GetRequiredService<NamedPipeBasedIpcServer>())
             .AddSingleton<IStoppableService>(provider => provider.GetRequiredService<NamedPipeBasedIpcServer>())
 
             .AddSingleton<ILivePhotoFileDetector, LivePhotoFileDetector>()
             .AddSingleton<WinRtFileMetadataExtractor>()
             .AddSingleton<QuickTimeFileMetadataExtractor>()
-            .AddSingleton<IFileMetadataGenerator>(
-                provider =>
+            .AddSingleton<IFileMetadataGenerator>(provider =>
+                new TelemetryFileMetadataGeneratorDecorator(
                     new LivePhotoMetadataExtractingDecorator(
                         new GoogleTakeoutMetadataExtractingDecorator(
                             new QuickTimeFileMetadataExtractingDecorator(
                                 provider.GetRequiredService<WinRtFileMetadataExtractor>(),
                                 provider.GetRequiredService<QuickTimeFileMetadataExtractor>()),
                             provider.GetRequiredService<IGoogleTakeoutMetadataExtractor>()),
-                        provider.GetRequiredService<ILivePhotoFileDetector>()))
+                        provider.GetRequiredService<ILivePhotoFileDetector>()),
+                    provider.GetRequiredService<IErrorCounter>(),
+                    provider.GetRequiredService<ILogger<TelemetryFileMetadataGeneratorDecorator>>()))
 
             .AddSingleton<Win32ThumbnailGenerator>()
             .AddSingleton<SkiaThumbnailGenerator>()
-            .AddSingleton<IThumbnailGenerator>(
-                provider =>
-                    new LivePhotoThumbnailExtractingDecorator(
-                        provider.GetRequiredService<ILivePhotoFileDetector>(),
-                        new DispatchingThumbnailGenerator(
+            .AddSingleton<IThumbnailGenerator>(provider =>
+                new LivePhotoThumbnailExtractingDecorator(
+                    provider.GetRequiredService<ILivePhotoFileDetector>(),
+                    new DispatchingThumbnailGenerator(
                         [
                             new TelemetryThumbnailGeneratorDecorator(
                                 provider.GetRequiredService<Win32ThumbnailGenerator>(),
                                 ThumbnailGenerationMethod.Win32,
-                                provider.GetRequiredService<IThumbnailGenerationMetricsCollector>()),
+                                provider.GetRequiredService<IThumbnailGenerationMetricsCollector>(),
+                                provider.GetRequiredService<ILogger<TelemetryThumbnailGeneratorDecorator>>()),
                             new TelemetryThumbnailGeneratorDecorator(
                                 provider.GetRequiredService<SkiaThumbnailGenerator>(),
                                 ThumbnailGenerationMethod.Skia,
-                                provider.GetRequiredService<IThumbnailGenerationMetricsCollector>()),
+                                provider.GetRequiredService<IThumbnailGenerationMetricsCollector>(),
+                                provider.GetRequiredService<ILogger<TelemetryThumbnailGeneratorDecorator>>()),
                         ],
                         provider.GetRequiredService<ILogger<IThumbnailGenerator>>())))
             .AddSingleton<IPhotoTagsGenerator, PhotoTagsGenerator>()
