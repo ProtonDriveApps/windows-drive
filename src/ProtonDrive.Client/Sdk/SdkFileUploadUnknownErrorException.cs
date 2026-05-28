@@ -15,13 +15,14 @@ internal sealed class SdkFileUploadUnknownErrorException : SdkFileTransferExcept
     }
 
     private SdkFileUploadUnknownErrorException()
+        : base(DefaultMessage)
     {
     }
 
-    public static SdkFileUploadUnknownErrorException CreateInstance(Exception? innerException)
+    public static SdkFileUploadUnknownErrorException Create(Exception? innerException)
     {
         return innerException is not null
-            ? new SdkFileUploadUnknownErrorException(DefaultMessage, innerException)
-            : new SdkFileUploadUnknownErrorException(DefaultMessage);
+            ? new SdkFileUploadUnknownErrorException(innerException.Message, innerException)
+            : new SdkFileUploadUnknownErrorException();
     }
 }

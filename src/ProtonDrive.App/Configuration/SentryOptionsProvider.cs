@@ -32,6 +32,8 @@ internal sealed class SentryOptionsProvider
             IsGlobalModeEnabled = true, // Enabling this option is recommended for client applications only. It ensures all threads use the same global scope.
         };
 
+        options.DisableDuplicateEventDetection();
+
 #if DEBUG
         options.Environment = "debug";
 #endif

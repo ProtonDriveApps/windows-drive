@@ -122,19 +122,37 @@ internal sealed class HostDeviceFolderMappingFoldersSetupStep
         _logger.LogInformation("Creating host device folder for sync folder mapping {Id} ({Type})", mapping.Id, mapping.Type);
 
         var folderName = GetFolderNameFromRootFolderPath(mapping.Local.Path);
-        var folder = await CreateDeviceFolderAsync(hostDevice, folderName, cancellationToken).ConfigureAwait(false);
-        if (folder is null)
+
+        try
         {
-            return MappingErrorCode.DriveAccessFailed;
+            var folder = await CreateDeviceFolderAsync(hostDevice, folderName, cancellationToken).ConfigureAwait(false);
+
+            if (folder is null)
+            {
+                return MappingErrorCode.DriveAccessFailed;
+            }
+
+            replica.VolumeId = hostDevice.DataItem.VolumeId;
+            replica.ShareId = hostDevice.DataItem.ShareId;
+            replica.RootLinkId = folder.Value.Id;
+            replica.RootItemName = folder.Value.Name;
+            replica.InternalVolumeId = _volumeIdentityProvider.GetRemoteVolumeId(replica.VolumeId);
+
+            return null;
         }
+        catch (FileSystemClientException<string> ex)
+        {
+            var nameToLog = _logger.GetSensitiveValueForLogging(folderName);
 
-        replica.VolumeId = hostDevice.DataItem.VolumeId;
-        replica.ShareId = hostDevice.DataItem.ShareId;
-        replica.RootLinkId = folder.Value.Id;
-        replica.RootItemName = folder.Value.Name;
-        replica.InternalVolumeId = _volumeIdentityProvider.GetRemoteVolumeId(replica.VolumeId);
+            _logger.LogWarning(
+                "Creating host device folder \"{FolderName}\" failed: {ErrorMessage}",
+                nameToLog,
+                ex.CombinedMessage());
 
-        return null;
+            return ex.ErrorCode is FileSystemErrorCode.ObjectNotFound
+                ? MappingErrorCode.DriveHostDeviceDiverged
+                : MappingErrorCode.DriveAccessFailed;
+        }
     }
 
     private async Task<(string Id, string Name)?> CreateDeviceFolderAsync(
@@ -146,30 +164,19 @@ internal sealed class HostDeviceFolderMappingFoldersSetupStep
 
         var nameToLog = _logger.GetSensitiveValueForLogging(name);
 
-        try
+        var result = await CreateUniqueDeviceFolderAsync(device, name, cancellationToken).ConfigureAwait(false);
+
+        if (result is null)
         {
-            var result = await CreateUniqueDeviceFolderAsync(device, name, cancellationToken).ConfigureAwait(false);
-
-            if (result is null)
-            {
-                _logger.LogError("Creating host device folder \"{FolderName}\" failed: Unable to generate unique name", nameToLog);
-                return result;
-            }
-
-            nameToLog = _logger.GetSensitiveValueForLogging(result.Value.Name);
-            _logger.LogInformation("Created host device folder \"{FolderName}\" with ID {Id}", nameToLog, result.Value.Id);
-
+            _logger.LogError("Creating host device folder \"{FolderName}\" failed: Unable to generate unique name", nameToLog);
             return result;
         }
-        catch (FileSystemClientException<string> ex)
-        {
-            _logger.LogWarning(
-                "Creating host device folder \"{FolderName}\" failed: {ErrorMessage}",
-                nameToLog,
-                ex.CombinedMessage());
 
-            return null;
-        }
+        nameToLog = _logger.GetSensitiveValueForLogging(result.Value.Name);
+
+        _logger.LogInformation("Created host device folder \"{FolderName}\" with ID {Id}", nameToLog, result.Value.Id);
+
+        return result;
     }
 
     private async Task<(string Id, string Name)?> CreateUniqueDeviceFolderAsync(

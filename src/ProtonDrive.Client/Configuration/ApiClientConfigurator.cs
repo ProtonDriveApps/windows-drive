@@ -80,6 +80,7 @@ public static class ApiClientConfigurator
         services.AddSingleton<IFileContentTypeProvider, FileContentTypeProvider>();
 
         services.AddSingleton<ITelemetry, SdkDiagnostics>();
+        services.AddSingleton<SdkErrorReporting>();
         services.AddSingleton<SdkFeatureFlagProvider>();
         services.AddSingleton<SdkClientFactory>();
         services.AddSingleton<ISdkClientFactory>(sp => sp.GetRequiredService<SdkClientFactory>());

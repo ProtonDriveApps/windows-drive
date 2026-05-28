@@ -1426,7 +1426,7 @@ El contenido de los archivos se descargará solo cuando lo necesites.</value>
     <value>Error con la importación. El álbum no existe.</value>
   </data>
   <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
-    <value>Se ha producido un error en la importación. La carpeta no existe.</value>
+    <value>Import failed. The folder does not exist.</value>
   </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Error con la importación. Se ha alcanzado el número máximo de álbumes.</value>

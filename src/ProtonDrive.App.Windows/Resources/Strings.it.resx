@@ -1426,7 +1426,7 @@ I contenuti dei file verranno scaricati sono se necessari.</value>
     <value>Importazione non riuscita. L'album non esiste.</value>
   </data>
   <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
-    <value>Importazione non riuscita. La cartella non esiste.</value>
+    <value>Import failed. The folder does not exist.</value>
   </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Importazione non riuscita. Numero massimo di album raggiunto.</value>

@@ -110,6 +110,11 @@ internal class AppUpdates : IAppUpdates
         var installerPath = FilePath(release);
         var installerArguments = useSilentMode ? release.File.SilentArguments : release.File.Arguments;
 
+        if (!CommandLineArgumentsValidator.Validate(installerArguments))
+        {
+            throw new AppUpdateInvalidArgumentsException("Command line arguments contain unsupported characters");
+        }
+
         const string commandInterpreterPath = "cmd.exe";
 
         var commandBuilder = new StringBuilder(

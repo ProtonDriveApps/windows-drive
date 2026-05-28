@@ -66,13 +66,6 @@ internal sealed class PhotoRevisionSealer : RevisionSealer
         var captureTime = (_extendedAttributesBuilder.CaptureTime ?? photoRevisionSealingParameters.DefaultCaptureTimeUtc).ToUnixTimeSeconds();
         var photoTags = await _fileMetadataProvider.GetPhotoTagsAsync(cancellationToken).ConfigureAwait(false);
 
-        // While capture time or file creation time can have values before the Unix epoch (1970-01-01),
-        // the backend requires the Unix time value to be greater than 0.
-        if (captureTime <= 0)
-        {
-            captureTime = 1;
-        }
-
         parameters.PhotoDetails = new PhotoRevisionDetails(captureTime, contentHash, photoRevisionSealingParameters.MainPhotoLinkId, photoTags);
         return parameters;
     }

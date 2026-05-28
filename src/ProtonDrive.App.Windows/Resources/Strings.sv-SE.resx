@@ -1426,7 +1426,7 @@ Innehållet i filer kommer endast att laddas ner på begäran.</value>
     <value>Import misslyckades. Albumet finns inte.</value>
   </data>
   <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
-    <value>Import failed. The folder does not exist.</value>
+    <value>Import misslyckades. Mappen finns inte.</value>
   </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Importen misslyckades. Maxantalet album har uppnåtts.</value>

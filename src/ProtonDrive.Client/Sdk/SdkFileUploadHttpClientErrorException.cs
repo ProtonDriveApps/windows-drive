@@ -17,12 +17,16 @@ internal sealed class SdkFileUploadHttpClientErrorException : SdkFileTransferExc
     }
 
     private SdkFileUploadHttpClientErrorException()
+        : base(DefaultMessage)
     {
     }
 
-    public static SdkFileUploadHttpClientErrorException CreateInstance(Exception innerException, FileSystemErrorCode? errorCode)
+    public static SdkFileUploadHttpClientErrorException Create(Exception innerException, FileSystemErrorCode? errorCode)
     {
-        var message = errorCode is not null ? $"{DefaultMessage}: {errorCode}" : DefaultMessage;
+        var message = errorCode is not null
+            ? $"({errorCode}) {innerException.Message}"
+            : innerException.Message;
+
         return new SdkFileUploadHttpClientErrorException(message, innerException);
     }
 }

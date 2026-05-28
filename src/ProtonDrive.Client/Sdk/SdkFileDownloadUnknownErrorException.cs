@@ -15,13 +15,14 @@ internal sealed class SdkFileDownloadUnknownErrorException : SdkFileTransferExce
     }
 
     private SdkFileDownloadUnknownErrorException()
+        : base(DefaultMessage)
     {
     }
 
-    public static SdkFileDownloadUnknownErrorException CreateInstance(Exception? innerException)
+    public static SdkFileDownloadUnknownErrorException Create(Exception? innerException)
     {
         return innerException is not null
-            ? new SdkFileDownloadUnknownErrorException(DefaultMessage, innerException)
-            : new SdkFileDownloadUnknownErrorException(DefaultMessage);
+            ? new SdkFileDownloadUnknownErrorException(innerException.Message, innerException)
+            : new SdkFileDownloadUnknownErrorException();
     }
 }
