@@ -1,18 +1,17 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Account;
+using ProtonDrive.App.Notifications.Contracts;
 using ProtonDrive.App.Services;
 using ProtonDrive.App.Settings.Remote;
 using ProtonDrive.Client.Contracts;
 using ProtonDrive.Client.Features;
-using ProtonDrive.Client.Notifications;
-using ProtonDrive.Client.Notifications.Contracts;
 using ProtonDrive.Shared;
 using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Shared.Features;
 using ProtonDrive.Shared.Logging;
 using ProtonDrive.Shared.Threading;
-using ClientNotification = ProtonDrive.Client.Notifications.Contracts.Notification;
+using ClientNotification = ProtonDrive.App.Notifications.Contracts.Notification;
 
 namespace ProtonDrive.App.Notifications.Offers;
 

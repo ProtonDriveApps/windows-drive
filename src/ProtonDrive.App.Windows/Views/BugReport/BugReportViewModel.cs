@@ -5,10 +5,10 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Reporting;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.App.Windows.Views.Shared;
 using ProtonDrive.Client.BugReport;
 using ProtonDrive.Shared.Configuration;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 
 namespace ProtonDrive.App.Windows.Views.BugReport;
 
@@ -23,11 +23,6 @@ internal sealed class BugReportViewModel : ObservableObject, ICloseable, IDialog
     private readonly string? _username;
 
     private string? _emailAddress;
-    private string? _description;
-    private string? _title;
-    private string? _errorMessage;
-    private bool _reportSuccessfullySent;
-    private bool _isBusy;
     private bool _includeLogs;
 
     public BugReportViewModel(
@@ -66,10 +61,10 @@ internal sealed class BugReportViewModel : ObservableObject, ICloseable, IDialog
 
     public string? Description
     {
-        get => _description;
+        get;
         set
         {
-            if (SetProperty(ref _description, value))
+            if (SetProperty(ref field, value))
             {
                 _reportBugCommand.NotifyCanExecuteChanged();
             }
@@ -78,10 +73,10 @@ internal sealed class BugReportViewModel : ObservableObject, ICloseable, IDialog
 
     public string? Title
     {
-        get => _title;
+        get;
         set
         {
-            if (SetProperty(ref _title, value))
+            if (SetProperty(ref field, value))
             {
                 _reportBugCommand.NotifyCanExecuteChanged();
             }
@@ -96,22 +91,22 @@ internal sealed class BugReportViewModel : ObservableObject, ICloseable, IDialog
 
     public bool ReportSuccessfullySent
     {
-        get => _reportSuccessfullySent;
-        set => SetProperty(ref _reportSuccessfullySent, value);
+        get;
+        set => SetProperty(ref field, value);
     }
 
     public string? ErrorMessage
     {
-        get => _errorMessage;
-        set => SetProperty(ref _errorMessage, value);
+        get;
+        set => SetProperty(ref field, value);
     }
 
     public bool IsBusy
     {
-        get => _isBusy;
+        get;
         set
         {
-            if (SetProperty(ref _isBusy, value))
+            if (SetProperty(ref field, value))
             {
                 _reportBugCommand.NotifyCanExecuteChanged();
             }
@@ -129,7 +124,7 @@ internal sealed class BugReportViewModel : ObservableObject, ICloseable, IDialog
 
     private void ClearErrorMessage()
     {
-        ErrorMessage = default;
+        ErrorMessage = null;
     }
 
     private async Task OpenLogsFolderAsync()

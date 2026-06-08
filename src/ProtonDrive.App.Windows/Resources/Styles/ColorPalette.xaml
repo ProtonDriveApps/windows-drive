@@ -16,6 +16,7 @@
     <Color x:Key="YellowColor.Light">#E1C24E</Color>
     <Color x:Key="OrangeColor.Light">#FFF0D9</Color>
     <Color x:Key="GreenColor">#1EA885</Color>
+    <Color x:Key="LightBlueColor">#1AA7FF</Color>
     <Color x:Key="WhiteColor">#FFFFFF</Color>
 
     <Color x:Key="BlackTextColor">#0C0C14</Color>

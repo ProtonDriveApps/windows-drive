@@ -18,6 +18,7 @@ internal sealed class UploadMetrics
         { UploadError.IntegrityError, "integrity_error" },
         { UploadError.RateLimited, "rate_limited" },
         { UploadError.HttpClientSideError, "4xx" },
+        { UploadError.ValidationError, "validation_error" },
         { UploadError.Unknown, "unknown" },
     };
 

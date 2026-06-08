@@ -490,8 +490,11 @@ Slå synkroniseringen av og på igjen for å gjenopprette den og fjerne denne fe
   <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
     <value>Kunne ikke se etter oppdatering</value>
   </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Update required</value>
+  </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Oppdateringer tilgjengelig</value>
+    <value>Update available</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Personvernerklæring</value>
@@ -1426,7 +1429,7 @@ Innholdet i filer vil kun bli lastet ned på forespørsel.</value>
     <value>Importen var ikke vellykket. Albumet finnes ikke.</value>
   </data>
   <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
-    <value>Import failed. The folder does not exist.</value>
+    <value>Importen var ikke vellykket. Mappen finnes ikke.</value>
   </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Importen var ikke vellykket. Maksimalt antall album er nådd.</value>

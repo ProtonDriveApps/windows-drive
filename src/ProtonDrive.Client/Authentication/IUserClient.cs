@@ -8,5 +8,9 @@ public interface IUserClient
 
     User? GetCachedUser();
 
+    void SetCachedUser(User user);
+
+    void UpdateCachedUserQuota(long? usedSpaceOrNull, long? driveUsedSpaceOrNull);
+
     void ClearCache();
 }

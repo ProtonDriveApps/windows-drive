@@ -1,4 +1,6 @@
-﻿namespace ProtonDrive.Sync.Shared.FileSystem;
+﻿using ProtonDrive.Sync.Shared.FileSystem.Photos;
+
+namespace ProtonDrive.Sync.Shared.FileSystem;
 
 public interface IFileMetadataProvider
 {

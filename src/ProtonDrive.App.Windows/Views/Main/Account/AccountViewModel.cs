@@ -15,15 +15,7 @@ internal sealed class AccountViewModel : PageViewModel, IUserStateAware, ISessio
     private readonly DispatcherScheduler _scheduler;
     private readonly AsyncRelayCommand _signOutCommand;
 
-    private string? _planDisplayName = string.Empty;
-    private UserType _userType;
-    private long? _usedSpace;
-    private long? _maxSpace;
-    private UserQuotaStatus _userQuotaStatus;
     private SessionState _sessionState = SessionState.None;
-    private string _username = string.Empty;
-    private string _userEmailAddress = string.Empty;
-    private string _userInitials = string.Empty;
 
     public AccountViewModel(IExternalHyperlinks externalHyperlinks, IStatefulSessionService sessionService, DispatcherScheduler scheduler)
     {
@@ -46,52 +38,52 @@ internal sealed class AccountViewModel : PageViewModel, IUserStateAware, ISessio
     public ICommand ManagePlanCommand { get; }
     public ICommand SignOutCommand => _signOutCommand;
 
-    public string Username
+    public string? Username
     {
-        get => _username;
-        private set => SetProperty(ref _username, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
-    public string UserEmailAddress
+    public string? UserEmailAddress
     {
-        get => _userEmailAddress;
-        private set => SetProperty(ref _userEmailAddress, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
-    public string UserInitials
+    public string? UserInitials
     {
-        get => _userInitials;
-        private set => SetProperty(ref _userInitials, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     public UserType UserType
     {
-        get => _userType;
-        private set => SetProperty(ref _userType, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     public string? PlanDisplayName
     {
-        get => _planDisplayName;
-        private set => SetProperty(ref _planDisplayName, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     public long? UsedSpace
     {
-        get => _usedSpace;
-        private set => SetProperty(ref _usedSpace, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     public long? MaxSpace
     {
-        get => _maxSpace;
-        private set => SetProperty(ref _maxSpace, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     public UserQuotaStatus UserQuotaStatus
     {
-        get => _userQuotaStatus;
-        private set => SetProperty(ref _userQuotaStatus, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     public void OnUserStateChanged(UserState userState)

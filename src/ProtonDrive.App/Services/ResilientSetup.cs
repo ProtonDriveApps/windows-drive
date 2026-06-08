@@ -3,6 +3,7 @@ using ProtonDrive.App.Account;
 using ProtonDrive.App.Authentication;
 using ProtonDrive.App.Devices;
 using ProtonDrive.App.Mapping;
+using ProtonDrive.App.Photos.Volume;
 using ProtonDrive.App.Settings.Remote;
 using ProtonDrive.App.Sync;
 using ProtonDrive.App.Volumes;

@@ -139,7 +139,7 @@
     <value>已登录</value>
   </data>
   <data name="AccountErrorCode_Value_AccountSwitchingFailed">
-    <value>切换账户失败。请重启应用程序。</value>
+    <value>切换账户失败，请重启应用。</value>
   </data>
   <data name="AccountErrorCode_Value_Delinquent">
     <value>账户有未付发票。请前往控制面板付款或告知您的管理员。</value>
@@ -490,6 +490,9 @@
   <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
     <value>检查更新失败</value>
   </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>需要更新</value>
+  </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
     <value>有可用更新</value>
   </data>
@@ -552,7 +555,7 @@
     <value>密码</value>
   </data>
   <data name="Main_Account_Plan_Button_SeePlans">
-    <value>查看计划(_P)</value>
+    <value>查看套餐(_P)</value>
   </data>
   <data name="Main_Account_Plan_Description">
     <value>获得更多存储空间</value>

@@ -8,11 +8,6 @@ namespace ProtonDrive.Client;
 
 internal abstract class RemoteFileSystemClientBase
 {
-    private const int BufferSize = (1 << 22 /* 4M */) + (1 << 18 /* 256K */);
-    private const int MaxNumberOfBuffers = 40;
-
-    private readonly BlockingArrayMemoryPool<byte> _bufferPool = new(BufferSize, MaxNumberOfBuffers);
-
     private readonly ILinkApiClient _linkApiClient;
     private readonly IRemoteNodeService _remoteNodeService;
     private readonly IFileContentTypeProvider _fileContentTypeProvider;
@@ -273,10 +268,5 @@ internal abstract class RemoteFileSystemClientBase
         // In previous versions, the size on storage was stored on the adapter and used for metadata check.
         // For compatibility, we compare both the plain file size and size on storage.
         return remoteFile.PlainSize == info.Size || remoteFile.SizeOnStorage == info.Size;
-    }
-
-    protected BlockingArrayMemoryPool<byte> GetBufferPool()
-    {
-        return _bufferPool;
     }
 }

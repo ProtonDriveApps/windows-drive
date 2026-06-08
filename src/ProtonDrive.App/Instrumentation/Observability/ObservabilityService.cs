@@ -18,7 +18,6 @@ internal sealed class ObservabilityService : IUserStateAware, IRemoteSettingsAwa
 {
     private readonly IClock _clock;
     private readonly IObservabilityApiClient _observabilityApiClient;
-    private readonly GenericLegacyFileTransferMetricsFactory _genericLegacyFileTransferMetricsFactory;
     private readonly GenericTransferPerformanceMetricsFactory _genericTransferPerformanceMetricsFactory;
     private readonly IMetricsService _driveClientMetricsService;
     private readonly ILogger<ObservabilityService> _logger;
@@ -37,14 +36,12 @@ internal sealed class ObservabilityService : IUserStateAware, IRemoteSettingsAwa
         AppConfig appConfig,
         IClock clock,
         IObservabilityApiClient observabilityApiClient,
-        GenericLegacyFileTransferMetricsFactory genericLegacyFileTransferMetricsFactory,
         GenericTransferPerformanceMetricsFactory genericTransferPerformanceMetricsFactory,
         IMetricsService driveClientMetricsService,
         ILogger<ObservabilityService> logger)
     {
         _clock = clock;
         _observabilityApiClient = observabilityApiClient;
-        _genericLegacyFileTransferMetricsFactory = genericLegacyFileTransferMetricsFactory;
         _genericTransferPerformanceMetricsFactory = genericTransferPerformanceMetricsFactory;
         _driveClientMetricsService = driveClientMetricsService;
         _logger = logger;
@@ -146,14 +143,10 @@ internal sealed class ObservabilityService : IUserStateAware, IRemoteSettingsAwa
 
     private ObservabilityMetrics GetMetrics()
     {
-        var uploadMetrics = _genericLegacyFileTransferMetricsFactory.GetLegacyFileUploadMetrics();
-        var downloadMetrics = _genericLegacyFileTransferMetricsFactory.GetLegacyFileDownloadMetrics();
         var driveClientMetrics = _driveClientMetricsService.GetMetrics(_userHasAPaidPlan);
         var performanceMetrics = GetTransferPerformanceMetrics();
 
         var metrics = Enumerable.Empty<ObservabilityMetric>()
-            .Concat(uploadMetrics)
-            .Concat(downloadMetrics)
             .Concat(performanceMetrics)
             .Concat(driveClientMetrics)
             .ToList();
@@ -163,7 +156,6 @@ internal sealed class ObservabilityService : IUserStateAware, IRemoteSettingsAwa
 
     private void Clear()
     {
-        _genericLegacyFileTransferMetricsFactory.Clear();
         _genericTransferPerformanceMetricsFactory.Clear();
     }
 

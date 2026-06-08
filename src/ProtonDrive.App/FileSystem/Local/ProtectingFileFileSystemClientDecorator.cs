@@ -1,7 +1,7 @@
-﻿using ProtonDrive.App.SystemIntegration;
-using ProtonDrive.Shared;
+﻿using ProtonDrive.Shared;
 using ProtonDrive.Shared.IO;
 using ProtonDrive.Sync.Shared.FileSystem;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 
 namespace ProtonDrive.App.FileSystem.Local;
 

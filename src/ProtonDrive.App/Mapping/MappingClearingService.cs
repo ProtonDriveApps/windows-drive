@@ -1,7 +1,8 @@
 ﻿using MoreLinq.Extensions;
 using ProtonDrive.App.Account;
 using ProtonDrive.App.Settings;
-using ProtonDrive.App.SystemIntegration;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
+using ProtonDrive.Sync.Shared.FileSystem.OnDemand;
 
 namespace ProtonDrive.App.Mapping;
 

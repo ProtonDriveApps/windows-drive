@@ -2,6 +2,7 @@
 using System.Collections.Immutable;
 using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Mapping.SyncFolders;
+using ProtonDrive.App.Photos.Volume;
 using ProtonDrive.App.Services;
 using ProtonDrive.App.Volumes;
 using ProtonDrive.Shared.Extensions;

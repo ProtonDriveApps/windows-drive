@@ -531,7 +531,10 @@ disable storage optimization at any time.</value>
     <value>Downloading an update...</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable" xml:space="preserve">
-    <value>Updates available</value>
+    <value>Update available</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired" xml:space="preserve">
+    <value>Update required</value>
   </data>
   <data name="Main_About_Button_UpdateNow" xml:space="preserve">
     <value>_Update now</value>

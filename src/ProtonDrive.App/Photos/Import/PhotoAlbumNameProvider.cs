@@ -2,9 +2,9 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.Logging;
-using ProtonDrive.App.FileSystem.Metadata.GoogleTakeout;
 using ProtonDrive.Shared.IO;
 using ProtonDrive.Shared.Logging;
+using ProtonDrive.Sync.Shared.FileSystem.Metadata.GoogleTakeout;
 
 namespace ProtonDrive.App.Photos.Import;
 

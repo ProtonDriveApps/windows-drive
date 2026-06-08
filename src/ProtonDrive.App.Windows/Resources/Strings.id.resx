@@ -490,8 +490,11 @@ Nonaktifkan dan aktifkan kembali sinkronisasi berkas ini untuk memulihkan berkas
   <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
     <value>Pembaruan gagal diperiksa</value>
   </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Update required</value>
+  </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Pembaruan tersedia</value>
+    <value>Update available</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Kebijakan privasi</value>

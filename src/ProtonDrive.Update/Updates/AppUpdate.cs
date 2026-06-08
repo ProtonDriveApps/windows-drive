@@ -4,14 +4,14 @@ namespace ProtonDrive.Update.Updates;
 
 /// <summary>
 /// Represents app update state and an interface to update related operations.
-/// Operations are performed by <see cref="AppUpdates"/>.
+/// Operations are performed by <see cref="AppUpdater"/>.
 /// </summary>
 internal class AppUpdate : IAppUpdate
 {
     private readonly InternalState _state;
 
-    public AppUpdate(double rolloutEligibilityThreshold, AppUpdates appUpdates)
-        : this(new InternalState(rolloutEligibilityThreshold, appUpdates, [], Release.EmptyRelease()))
+    public AppUpdate(double rolloutEligibilityThreshold, AppUpdater appUpdater)
+        : this(new InternalState(rolloutEligibilityThreshold, appUpdater, [], Release.EmptyRelease()))
     {
     }
 
@@ -24,7 +24,7 @@ internal class AppUpdate : IAppUpdate
 
     public bool IsReady => _state.Ready;
 
-    public string FilePath => _state.NewRelease.IsNew ? _state.AppUpdates.FilePath(_state.NewRelease) : string.Empty;
+    public string FilePath => _state.NewRelease.IsNew ? _state.AppUpdater.FilePath(_state.NewRelease) : string.Empty;
 
     public string? FileArguments => _state.NewRelease.IsNew ? _state.NewRelease.File.Arguments : null;
 
@@ -35,14 +35,14 @@ internal class AppUpdate : IAppUpdate
 
     public async Task<IAppUpdate> GetLatestAsync(bool earlyAccess, bool manual = false)
     {
-        var releases = await _state.AppUpdates.GetReleaseHistoryAsync().ConfigureAwait(false);
+        var releases = await _state.AppUpdater.GetReleaseHistoryAsync().ConfigureAwait(false);
 
         return WithReleases(releases, earlyAccess, manual);
     }
 
     public IAppUpdate GetCachedLatest(bool earlyAccess, bool manual)
     {
-        var releases = _state.AppUpdates.GetCachedReleaseHistory();
+        var releases = _state.AppUpdater.GetCachedReleaseHistory();
 
         return WithReleases(releases, earlyAccess, manual);
     }
@@ -51,7 +51,7 @@ internal class AppUpdate : IAppUpdate
     {
         if (IsAvailable && !IsReady)
         {
-            await _state.AppUpdates.DownloadAsync(_state.NewRelease).ConfigureAwait(false);
+            await _state.AppUpdater.DownloadAsync(_state.NewRelease).ConfigureAwait(false);
         }
 
         return this;
@@ -64,7 +64,7 @@ internal class AppUpdate : IAppUpdate
             throw new AppUpdateException("There is no new release to validate");
         }
 
-        var valid = await _state.AppUpdates.ValidateAsync(_state.NewRelease).ConfigureAwait(false);
+        var valid = await _state.AppUpdater.ValidateAsync(_state.NewRelease).ConfigureAwait(false);
 
         return WithReady(valid);
     }
@@ -81,7 +81,7 @@ internal class AppUpdate : IAppUpdate
             throw new AppUpdateException($"Automatic update to release {_state.NewRelease.Version} is disabled");
         }
 
-        _state.AppUpdates.StartUpdating(_state.NewRelease, forceNonSilent: !auto);
+        _state.AppUpdater.StartUpdating(_state.NewRelease, forceNonSilent: !auto);
 
         return this;
     }

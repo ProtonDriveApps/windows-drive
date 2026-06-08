@@ -1,6 +1,6 @@
-﻿using ProtonDrive.App.SystemIntegration;
-using ProtonDrive.Shared.Extensions;
+﻿using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Shared.IO;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 
 namespace ProtonDrive.App.Mapping;
 

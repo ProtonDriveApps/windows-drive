@@ -7,9 +7,9 @@ namespace ProtonDrive.Update.Updates;
 /// </summary>
 internal class AppUpdatesAutoCleanup
 {
-    private readonly IAppUpdates _origin;
+    private readonly IAppUpdateCleanup _origin;
 
-    public AppUpdatesAutoCleanup(IAppUpdates origin, AppUpdateConfig config)
+    public AppUpdatesAutoCleanup(IAppUpdateCleanup origin, AppUpdateConfig config)
     {
         _origin = origin;
 

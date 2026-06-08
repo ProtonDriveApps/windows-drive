@@ -3,60 +3,61 @@ using System.Text.Json.Serialization;
 
 namespace ProtonDrive.Client.Contracts;
 
-public sealed class User
+public sealed record User
 {
-    private IImmutableList<UserKey>? _keys;
-    private long? _usedDriveSpace;
-    private long? _maxDriveSpace;
+    private readonly long? _usedDriveSpace;
+    private readonly long? _maxDriveSpace;
 
     [JsonPropertyName("ID")]
-    public string Id { get; set; } = string.Empty;
+    public required string Id { get; init; }
 
-    public UserType Type { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public long UsedSpace { get; set; }
+    public string? Name { get; init; }
+
+    public string? DisplayName { get; init; }
+
+    [JsonPropertyName("Email")]
+    public required string EmailAddress { get; init; }
+
+    public required UserType Type { get; init; }
+
+    public long UsedSpace { get; init; }
 
     [JsonPropertyName("UsedDriveSpace")]
     public long SplitStorageUsedSpace
     {
         get => _usedDriveSpace ?? UsedSpace;
-        set => _usedDriveSpace = value;
+        init => _usedDriveSpace = value;
     }
 
-    public ProductUsedSpace ProductUsedSpace { get; set; } = ProductUsedSpace.Empty;
+    public ProductUsedSpace ProductUsedSpace { get; init; } = ProductUsedSpace.Empty;
 
-    public long MaxSpace { get; set; }
+    public long MaxSpace { get; init; }
 
     public long MaxDriveSpace
     {
         get => _maxDriveSpace ?? MaxSpace;
-        set => _maxDriveSpace = value;
+        init => _maxDriveSpace = value;
     }
 
     [JsonPropertyName("Private")]
     [JsonConverter(typeof(BooleanToIntegerJsonConverter))]
-    public bool IsPrivate { get; set; }
+    public bool IsPrivate { get; init; }
 
     [JsonPropertyName("Subscribed")]
-    public int SubscriptionTier { get; set; }
+    public int SubscriptionTier { get; init; }
 
-    public int Services { get; set; }
+    public int Services { get; init; }
 
     [JsonPropertyName("Delinquent")]
-    public DelinquentState DelinquentState { get; set; }
-
-    [JsonPropertyName("Email")]
-    public string EmailAddress { get; set; } = string.Empty;
-
-    public string DisplayName { get; set; } = string.Empty;
+    public DelinquentState DelinquentState { get; init; }
 
     public IImmutableList<UserKey> Keys
     {
-        get => _keys ??= ImmutableList<UserKey>.Empty;
-        set => _keys = value;
+        get => field ??= ImmutableList<UserKey>.Empty;
+        init;
     }
 
-    public string? Currency { get; init; }
+    public required string Currency { get; init; }
 
     public bool IsDelinquent => DelinquentState is DelinquentState.Delinquent or DelinquentState.NotReceived;
 

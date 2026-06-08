@@ -490,8 +490,11 @@ Desactiveu i torneu a activar la sincronització per restaurar-lo i esborrar aqu
   <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
     <value>No s'han pogut comprovar les actualitzacions.</value>
   </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Es requereix una actualització</value>
+  </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Hi ha actualitzacions disponibles</value>
+    <value>Hi ha una actualització disponible</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Política de privacitat</value>

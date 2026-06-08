@@ -406,7 +406,7 @@
     <value>Le fichier a été ignoré car il a été modifié trop récemment. L'application tentera à nouveau automatiquement.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
-    <value>Les photos en directe ne peuvent pas être importé.</value>
+    <value>Les Live Photos ne peuvent pas être importées.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MetadataMismatch">
     <value>Le fichier ou le dossier ne correspond pas.</value>
@@ -490,8 +490,11 @@ Désactivez et réactivez sa synchronisation pour le restaurer et effacer cette 
   <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
     <value>La vérification de mise à jour n'a pas abouti.</value>
   </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Mise à jour nécessaire</value>
+  </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Mises à jour disponibles</value>
+    <value>Mise à jour disponible</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Politique de confidentialité</value>
@@ -760,7 +763,7 @@ Désactivez et réactivez sa synchronisation pour le restaurer et effacer cette 
     <value>En savoir plus</value>
   </data>
   <data name="Main_MyComputer_Description">
-    <value>Les dossiers synchronisés depuis vos ordinateurs apparaîtront dans la section « Ordinateurs » de votre application Drive.</value>
+    <value>Les dossiers synchronisés depuis vos ordinateurs apparaîtront dans la section « Ordinateurs » de vos applications Drive.</value>
   </data>
   <data name="Main_MyComputer_Device_Button_Rename">
     <value>_Renommer</value>

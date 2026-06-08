@@ -490,6 +490,9 @@ Desactive y active la sincronización nuevamente para restaurarlo y eliminar est
   <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
     <value>Error al buscar actualizaciones</value>
   </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Actualización requerida</value>
+  </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
     <value>Actualización disponible</value>
   </data>

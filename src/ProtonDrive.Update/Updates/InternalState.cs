@@ -7,16 +7,16 @@ namespace ProtonDrive.Update.Updates;
 /// </summary>
 internal class InternalState
 {
-    public InternalState(double rolloutEligibilityThreshold, AppUpdates appUpdates, IReadOnlyList<Release> releases, Release newRelease)
+    public InternalState(double rolloutEligibilityThreshold, AppUpdater appUpdater, IReadOnlyList<Release> releases, Release newRelease)
     {
         RolloutEligibilityThreshold = rolloutEligibilityThreshold;
-        AppUpdates = appUpdates;
+        AppUpdater = appUpdater;
         Releases = releases;
         NewRelease = newRelease;
     }
 
     public double RolloutEligibilityThreshold { get; }
-    public AppUpdates AppUpdates { get; set; }
+    public AppUpdater AppUpdater { get; set; }
     public bool EarlyAccess { get; set; }
     public IReadOnlyList<Release> Releases { get; set; }
     public Release NewRelease { get; set; }

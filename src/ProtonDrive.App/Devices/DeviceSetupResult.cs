@@ -10,4 +10,5 @@ public sealed record DeviceSetupResult(Device? Device, ResponseCode? ErrorCode)
     }
 
     public static DeviceSetupResult Failure => new(Device: null, ErrorCode: ResponseCode.Unknown);
+    public static DeviceSetupResult DeviceNotFound => new(Device: null, ErrorCode: ResponseCode.DoesNotExist);
 }

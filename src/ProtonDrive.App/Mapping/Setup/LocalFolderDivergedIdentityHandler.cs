@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Settings;
-using ProtonDrive.App.SystemIntegration;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 
 namespace ProtonDrive.App.Mapping.Setup;
 

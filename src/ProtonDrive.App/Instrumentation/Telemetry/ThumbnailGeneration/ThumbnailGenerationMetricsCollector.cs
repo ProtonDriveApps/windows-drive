@@ -1,5 +1,6 @@
 using System.Collections.Concurrent;
-using ProtonDrive.Client.Contracts;
+using ProtonDrive.Sync.Shared.Diagnostics.Metrics.Thumbnails;
+using ProtonDrive.Sync.Shared.FileSystem.Thumbnails;
 
 namespace ProtonDrive.App.Instrumentation.Telemetry.ThumbnailGeneration;
 

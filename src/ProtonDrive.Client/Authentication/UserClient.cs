@@ -7,6 +7,7 @@ internal class UserClient : IUserClient
 {
     private readonly IUserApiClient _apiClient;
     private readonly ILogger<UserClient> _logger;
+    private readonly Lock _cacheLock = new();
 
     private User? _cachedUser;
 
@@ -20,16 +21,65 @@ internal class UserClient : IUserClient
     {
         var result = await _apiClient.GetUserAsync(cancellationToken).ThrowOnFailure().ConfigureAwait(false);
 
-        _cachedUser = result.User;
+        lock (_cacheLock)
+        {
+            _cachedUser = result.User;
+        }
 
         return result.User;
     }
 
-    public User? GetCachedUser() => _cachedUser;
+    public User? GetCachedUser()
+    {
+        lock (_cacheLock)
+        {
+            return _cachedUser;
+        }
+    }
+
+    public void SetCachedUser(User user)
+    {
+        lock (_cacheLock)
+        {
+            _cachedUser = user;
+        }
+
+        _logger.LogInformation("Cached user updated");
+    }
+
+    public void UpdateCachedUserQuota(long? usedSpaceOrNull, long? driveUsedSpaceOrNull)
+    {
+        if (_cachedUser is null)
+        {
+            return;
+        }
+
+        lock (_cacheLock)
+        {
+            if (_cachedUser is null)
+            {
+                return;
+            }
+
+            if (usedSpaceOrNull is { } usedSpace && _cachedUser.SplitStorageUsedSpace != usedSpace)
+            {
+                _cachedUser = _cachedUser with { SplitStorageUsedSpace = usedSpace };
+            }
+
+            if (driveUsedSpaceOrNull is { } driveUsedSpace && _cachedUser.ProductUsedSpace.Drive != driveUsedSpace)
+            {
+                _cachedUser = _cachedUser with { ProductUsedSpace = _cachedUser.ProductUsedSpace with { Drive = driveUsedSpace } };
+            }
+        }
+    }
 
     public void ClearCache()
     {
-        _cachedUser = null;
+        lock (_cacheLock)
+        {
+            _cachedUser = null;
+        }
+
         _logger.LogInformation("Cached user invalidated");
     }
 }

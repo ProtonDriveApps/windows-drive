@@ -17,10 +17,6 @@ internal interface IVolumeApiClient
     [BearerAuthorizationHeader]
     Task<VolumeCreationResponse> CreateMainVolumeAsync(VolumeCreationParameters parameters, CancellationToken cancellationToken);
 
-    [Post("/volumes/{volumeId}/thumbnails")]
-    [BearerAuthorizationHeader]
-    Task<ThumbnailListResponse> GetThumbnailsAsync(string volumeId, ThumbnailQueryParameters parameters, CancellationToken cancellationToken);
-
     [Post("/photos/volumes")]
     [BearerAuthorizationHeader]
     Task<VolumeCreationResponse> CreatePhotoVolumeAsync(PhotoVolumeCreationParameters parameters, CancellationToken cancellationToken);

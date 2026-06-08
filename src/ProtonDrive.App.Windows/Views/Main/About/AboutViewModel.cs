@@ -17,13 +17,7 @@ internal sealed class AboutViewModel : PageViewModel
     private readonly IUpdateService _updateService;
     private readonly DispatcherScheduler _scheduler;
     private readonly IExternalHyperlinks _externalHyperlinks;
-
     private readonly RelayCommand _updateCommand;
-
-    private DateTime? _releaseDate;
-    private UpdateStatus _updateStatus;
-    private Version _newVersion = new();
-    private IReadOnlyList<ReleaseNoteViewModel> _releaseNotes = [];
 
     public AboutViewModel(
         AppConfig config,
@@ -37,12 +31,14 @@ internal sealed class AboutViewModel : PageViewModel
         _scheduler = scheduler;
         _externalHyperlinks = externalHyperlinks;
 
+        CurrentVersion = config.AppVersion;
+        ReleaseNotes = [];
+        NewVersion = new Version();
+
         OpenPrivacyPolicyCommand = new RelayCommand(OpenPrivacyPolicy);
         OpenTermsAndConditionsCommand = new RelayCommand(OpenTermsAndConditions);
 
         updateService.StateChanged += OnUpdateServiceStateChanged;
-
-        CurrentVersion = config.AppVersion;
 
         _updateCommand = new RelayCommand(Update, CanUpdate);
     }
@@ -57,8 +53,8 @@ internal sealed class AboutViewModel : PageViewModel
 
     public IReadOnlyList<ReleaseNoteViewModel> ReleaseNotes
     {
-        get => _releaseNotes;
-        private set => SetProperty(ref _releaseNotes, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     public string CopyrightMessage
@@ -76,26 +72,32 @@ internal sealed class AboutViewModel : PageViewModel
 
     public DateTime? ReleaseDate
     {
-        get => _releaseDate;
-        private set => SetProperty(ref _releaseDate, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
-    public UpdateStatus UpdateStatus
+    public AppUpdateStatus AppUpdateStatus
     {
-        get => _updateStatus;
+        get;
         private set
         {
-            if (SetProperty(ref _updateStatus, value))
+            if (SetProperty(ref field, value))
             {
                 _scheduler.Schedule(() => _updateCommand.NotifyCanExecuteChanged());
             }
         }
     }
 
+    public bool UpdateRequired
+    {
+        get;
+        private set => SetProperty(ref field, value);
+    }
+
     public Version NewVersion
     {
-        get => _newVersion;
-        private set => SetProperty(ref _newVersion, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     internal override void OnActivated()
@@ -103,29 +105,6 @@ internal sealed class AboutViewModel : PageViewModel
         base.OnActivated();
 
         _updateService.StartCheckingForUpdate();
-    }
-
-    private void HandleUpdating(IAppUpdateState state)
-    {
-        if (state.Status == AppUpdateStatus.Updating)
-        {
-            _app.ExitAsync();
-        }
-    }
-
-    private static UpdateStatus ToUpdateStatus(IAppUpdateState state)
-    {
-        return state.Status switch
-        {
-            AppUpdateStatus.None => UpdateStatus.UpToDate,
-            AppUpdateStatus.Checking => UpdateStatus.Checking,
-            AppUpdateStatus.CheckFailed => UpdateStatus.CheckFailed,
-            AppUpdateStatus.Downloading => UpdateStatus.Downloading,
-            AppUpdateStatus.DownloadFailed => UpdateStatus.DownloadFailed,
-            AppUpdateStatus.Ready => UpdateStatus.Available,
-            AppUpdateStatus.Updating => UpdateStatus.Available,
-            _ => throw new NotSupportedException(),
-        };
     }
 
     private static IEnumerable<ReleaseNoteViewModel> GetReleaseNotes(IAppUpdateState state)
@@ -151,6 +130,25 @@ internal sealed class AboutViewModel : PageViewModel
             });
     }
 
+    private AppUpdateStatus ToAppUpdateStatus(UpdateState state)
+    {
+        UpdateRequired = state.UpdateRequired;
+
+        return state.Status switch
+        {
+            AppUpdateStatus.Updating => AppUpdateStatus.Ready,
+            _ => state.Status,
+        };
+    }
+
+    private void HandleUpdating(UpdateState state)
+    {
+        if (state.Status == AppUpdateStatus.Updating)
+        {
+            _app.ExitAsync();
+        }
+    }
+
     private void OpenPrivacyPolicy()
     {
         _externalHyperlinks.PrivacyPolicy.Open();
@@ -173,22 +171,25 @@ internal sealed class AboutViewModel : PageViewModel
 
     private bool CanUpdate()
     {
-        return UpdateStatus == UpdateStatus.Available;
+        return AppUpdateStatus is AppUpdateStatus.Ready;
     }
 
     private void OnUpdateServiceStateChanged(object? sender, UpdateState state)
     {
-        UpdateStatus = ToUpdateStatus(state);
+        _scheduler.Schedule(() =>
+        {
+            AppUpdateStatus = ToAppUpdateStatus(state);
 
-        HandleReleaseDate(state);
-        HandleNewVersion(state);
-        HandleUpdating(state);
-        HandleReleaseNotes(state);
+            HandleReleaseDate(state);
+            HandleNewVersion(state);
+            HandleUpdating(state);
+            HandleReleaseNotes(state);
+        });
     }
 
-    private void HandleReleaseDate(IAppUpdateState state)
+    private void HandleReleaseDate(UpdateState state)
     {
-        if (ReleaseDate != default)
+        if (ReleaseDate != null)
         {
             return;
         }
@@ -202,19 +203,18 @@ internal sealed class AboutViewModel : PageViewModel
 
     private void HandleReleaseNotes(IAppUpdateState state)
     {
-        _scheduler.Schedule(
-            () =>
-            {
-                var releaseNotes = GetReleaseNotes(state);
-                ReleaseNotes = releaseNotes.ToList();
-            });
+        _scheduler.Schedule(() =>
+        {
+            var releaseNotes = GetReleaseNotes(state);
+            ReleaseNotes = releaseNotes.ToList();
+        });
     }
 
-    private void HandleNewVersion(IAppUpdateState state)
+    private void HandleNewVersion(UpdateState state)
     {
         if (state.Status == AppUpdateStatus.Ready)
         {
-            NewVersion = state.ReleaseHistory.First().Version;
+            NewVersion = state.ReleaseHistory[0].Version;
         }
     }
 }

@@ -490,8 +490,11 @@ Disattiva e riattiva la sincronizzazione per ripristinarla ed eliminare questo e
   <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
     <value>Impossibile cercare gli aggiornamenti</value>
   </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Update required</value>
+  </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Aggiornamenti disponibili</value>
+    <value>Update available</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Informativa sulla privacy</value>
@@ -1426,7 +1429,7 @@ I contenuti dei file verranno scaricati sono se necessari.</value>
     <value>Importazione non riuscita. L'album non esiste.</value>
   </data>
   <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
-    <value>Import failed. The folder does not exist.</value>
+    <value>Importazione non riuscita. La cartella non esiste.</value>
   </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Importazione non riuscita. Numero massimo di album raggiunto.</value>

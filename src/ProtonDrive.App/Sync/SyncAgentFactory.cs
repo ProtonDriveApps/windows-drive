@@ -5,7 +5,6 @@ using ProtonDrive.App.FileSystem.Remote;
 using ProtonDrive.App.Health;
 using ProtonDrive.App.Mapping;
 using ProtonDrive.App.Settings;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.DataAccess;
 using ProtonDrive.DataAccess.Databases;
 using ProtonDrive.Shared;
@@ -17,6 +16,7 @@ using ProtonDrive.Sync.Agent.Health;
 using ProtonDrive.Sync.Engine;
 using ProtonDrive.Sync.Shared;
 using ProtonDrive.Sync.Shared.FileSystem;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 
 namespace ProtonDrive.App.Sync;
 

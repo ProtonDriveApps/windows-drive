@@ -5,6 +5,7 @@ using ProtonDrive.Client.Instrumentation.Telemetry;
 using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Shared.Threading;
+using ProtonDrive.Sync.Shared.Diagnostics.Metrics.Thumbnails;
 
 namespace ProtonDrive.App.Instrumentation.Telemetry.ThumbnailGeneration;
 
@@ -85,7 +86,7 @@ internal sealed class ThumbnailGenerationReportingService : IRemoteSettingsAware
                         continue;
                     }
 
-                    var events = ThumbailGenerationReportFactory.CreateReport(statistics).ToList();
+                    var events = ThumbnailGenerationReportFactory.CreateReport(statistics).ToList();
 
                     await _telemetryApiClient
                         .SendEventsAsync(new TelemetryEvents(events), cancellationToken)

@@ -288,7 +288,7 @@ internal sealed class RemoteEventLogClient : IEventLogClient<string>, IDisposabl
         if (numberOfEvents > 0 || result.ResumeToken.HasMoreData)
         {
             _logger.LogInformation(
-                "{NumberOfEvents} remote event(s) received on {VolumeOrShare} with ID={VolumeOrShareId}",
+                "{NumberOfEvents} remote event(s) received on {VolumeOrShare} with ID \"{VolumeOrShareId}\"",
                 numberOfEvents,
                 _volumeOrShare,
                 _volumeOrShareId);

@@ -66,11 +66,19 @@ internal sealed class CoreEventClient : ICoreEventClient, ICoreEventProvider
             DriveUsedSpace = eventsResponse.User?.ProductUsedSpace.Drive,
         };
 
-        _logger.LogInformation(
-            "Received core events, user property changed: {UserHasChanged}, address changed: {HasAddressChanged}, settings changed: {HasSettingsChanged}",
-            coreEvents.User is not null,
-            coreEvents.HasAddressChanged,
-            coreEvents.HasSettingsChanged);
+        var worthLogging =
+            coreEvents.User is not null ||
+            coreEvents.HasAddressChanged ||
+            coreEvents.HasSettingsChanged;
+
+        if (worthLogging)
+        {
+            _logger.LogInformation(
+                "Received core events, changed: user: {UserHasChanged}, address: {AddressHasChanged}, settings: {SettingsHasChanged}",
+                coreEvents.User is not null,
+                coreEvents.HasAddressChanged,
+                coreEvents.HasSettingsChanged);
+        }
 
         return coreEvents;
     }

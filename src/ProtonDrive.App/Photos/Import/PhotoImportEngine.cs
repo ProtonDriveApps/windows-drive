@@ -3,6 +3,7 @@ using ProtonDrive.App.Volumes;
 using ProtonDrive.Client.FileUploading;
 using ProtonDrive.Shared.Logging;
 using ProtonDrive.Sync.Shared.FileSystem;
+using ProtonDrive.Sync.Shared.FileSystem.Metadata.LivePhoto;
 using ProtonDrive.Sync.Shared.FileSystem.Photos;
 
 namespace ProtonDrive.App.Photos.Import;
@@ -14,7 +15,6 @@ internal sealed class PhotoImportEngine : IPhotoImportEngine
     private readonly PhotoImportFolderState _folder;
     private readonly VolumeInfo _photoVolume;
     private readonly PhotoImportFolderCurrentPosition? _folderCurrentPosition;
-    private readonly IFileSystemClient<string> _remoteFileSystemClient;
     private readonly ILocalFileSystemClientFactory _localFileSystemClientFactory;
     private readonly PhotoFileImporterFactory _photoFileImporterFactory;
     private readonly IPhotoAlbumService _photoAlbumService;
@@ -27,7 +27,6 @@ internal sealed class PhotoImportEngine : IPhotoImportEngine
     public PhotoImportEngine(
         PhotoImportFolderState folder,
         VolumeInfo photoVolume,
-        IFileSystemClient<string> remoteFileSystemClient,
         ILocalFileSystemClientFactory localFileSystemClientFactory,
         PhotoFileImporterFactory photoFileImporterFactory,
         IPhotoAlbumService photoAlbumService,
@@ -40,7 +39,6 @@ internal sealed class PhotoImportEngine : IPhotoImportEngine
         _folder = folder;
         _photoVolume = photoVolume;
         _folderCurrentPosition = _folder.CurrentPosition;
-        _remoteFileSystemClient = remoteFileSystemClient;
         _localFileSystemClientFactory = localFileSystemClientFactory;
         _photoFileImporterFactory = photoFileImporterFactory;
         _photoAlbumService = photoAlbumService;
@@ -81,7 +79,7 @@ internal sealed class PhotoImportEngine : IPhotoImportEngine
         var importPipeline = new PhotoImportPipeline(
             parameters,
             localFileSystemClient,
-            _photoFileImporterFactory.Create(localFileSystemClient, _remoteFileSystemClient, _photoVolume.Id),
+            _photoFileImporterFactory.Create(localFileSystemClient, _photoVolume.Id),
             _photoAlbumService,
             _duplicateService,
             _photoAlbumNameProvider,

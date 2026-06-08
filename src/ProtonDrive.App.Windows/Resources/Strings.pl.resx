@@ -490,8 +490,11 @@ Włącz ponownie synchronizację, aby go przywrócić i usunąć błąd.</value>
   <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
     <value>Nie udało się sprawdzić aktualizacji</value>
   </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Update required</value>
+  </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Dostępna jest aktualizacja</value>
+    <value>Update available</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Polityka prywatności</value>

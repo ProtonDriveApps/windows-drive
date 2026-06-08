@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Onboarding;
+using ProtonDrive.App.Photos.Volume;
 using ProtonDrive.App.Services;
 using ProtonDrive.App.Volumes;
 using ProtonDrive.Shared.Features;

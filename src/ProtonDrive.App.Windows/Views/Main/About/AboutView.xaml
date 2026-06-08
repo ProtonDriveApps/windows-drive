@@ -9,6 +9,7 @@
     xmlns:loc="clr-namespace:ProtonDrive.App.Windows.Resources"
     xmlns:local="clr-namespace:ProtonDrive.App.Windows.Views.Main.About"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:update="clr-namespace:ProtonDrive.Update;assembly=ProtonDrive.Update"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance local:AboutViewModel}">
     <UserControl.Resources>
@@ -50,7 +51,7 @@
                             Foreground="{StaticResource Text.DarkTheme.Brush}" />
 
                         <Border
-                            BorderBrush="{StaticResource PendingBrush}"
+                            BorderBrush="{StaticResource LightBlueBrush}"
                             BorderThickness="1"
                             CornerRadius="3"
                             Visibility="{Binding IsNewVersion, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}"
@@ -58,7 +59,7 @@
                             Margin="7,0,0,0">
                             <TextBlock
                                 Text="{loc:Resource Main_About_ReleaseHistory_Label_New}"
-                                Foreground="{StaticResource PendingBrush}" />
+                                Foreground="{StaticResource LightBlueBrush}" />
                         </Border>
                     </StackPanel>
 
@@ -139,7 +140,7 @@
                     <StackPanel
                         Grid.Row="2"
                         Orientation="Horizontal"
-                        Visibility="{Binding UpdateStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static local:UpdateStatus.UpToDate}}"
+                        Visibility="{Binding AppUpdateStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static update:AppUpdateStatus.UpToDate}}"
                         Margin="0,20,0,0">
                         <TextBlock
                             AutomationProperties.AutomationId="UpToDateTextBlock"
@@ -158,7 +159,7 @@
                     <StackPanel
                         Grid.Row="2"
                         Orientation="Horizontal"
-                        Visibility="{Binding UpdateStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static local:UpdateStatus.Checking}}"
+                        Visibility="{Binding AppUpdateStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static update:AppUpdateStatus.Checking}}"
                         VerticalAlignment="Center"
                         Margin="0,20,0,0">
                         <controls:ProgressRing
@@ -175,7 +176,7 @@
                     <StackPanel
                         Grid.Row="2"
                         Orientation="Horizontal"
-                        Visibility="{Binding UpdateStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static local:UpdateStatus.Downloading}}"
+                        Visibility="{Binding AppUpdateStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static update:AppUpdateStatus.Downloading}}"
                         VerticalAlignment="Center"
                         Margin="0,20,0,0">
                         <controls:ProgressRing
@@ -191,16 +192,33 @@
                     <StackPanel
                         Grid.Row="2"
                         Orientation="Horizontal"
-                        Visibility="{Binding UpdateStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static local:UpdateStatus.Available}}"
+                        Visibility="{Binding AppUpdateStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static update:AppUpdateStatus.Ready}}"
                         Margin="0,15,0,0">
                         <TextBlock
                             AutomationProperties.AutomationId="UpdatesAvailableTextBlock"
                             Text="{loc:Resource Main_About_AppUpdateStatus_Value_UpdatesAvailable}"
                             Foreground="{StaticResource GrayBrush}"
+                            Visibility="{Binding UpdateRequired, Converter={x:Static converters:BooleanToVisibilityConverter.TrueIsCollapsed}}"
+                            VerticalAlignment="Center" />
+
+                        <TextBlock
+                            AutomationProperties.AutomationId="UpdatesRequiredTextBlock"
+                            Text="{loc:Resource Main_About_AppUpdateStatus_Value_UpdateRequired}"
+                            Foreground="{StaticResource ErrorBrush}"
+                            Visibility="{Binding UpdateRequired, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}"
                             VerticalAlignment="Center" />
 
                         <Image
                             Source="{StaticResource Icon.DownloadUpdates}"
+                            Visibility="{Binding UpdateRequired, Converter={x:Static converters:BooleanToVisibilityConverter.TrueIsCollapsed}}"
+                            Width="16"
+                            Height="16"
+                            VerticalAlignment="Center"
+                            Margin="15,0,0,0" />
+
+                        <Image
+                            Source="{StaticResource Icon.DownloadUpdatesWarning}"
+                            Visibility="{Binding UpdateRequired, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}"
                             Width="16"
                             Height="16"
                             VerticalAlignment="Center"
@@ -219,7 +237,7 @@
                     <StackPanel
                         Grid.Row="2"
                         Orientation="Horizontal"
-                        Visibility="{Binding UpdateStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static local:UpdateStatus.CheckFailed}}"
+                        Visibility="{Binding AppUpdateStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static update:AppUpdateStatus.CheckFailed}}"
                         Margin="0,20,0,0">
                         <Image
                             Source="{StaticResource Icon.Error}"

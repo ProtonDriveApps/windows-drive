@@ -7,13 +7,14 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.DependencyInjection;
 using ProtonDrive.App.Authentication;
 using ProtonDrive.App.Sync;
-using ProtonDrive.App.SystemIntegration;
+using ProtonDrive.App.Update;
 using ProtonDrive.App.Windows.Services;
 using ProtonDrive.App.Windows.SystemIntegration;
 using ProtonDrive.Shared;
 using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Shared.ExecutionStatistics;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 using ProtonDrive.Sync.Shared.SyncActivity;
 
 namespace ProtonDrive.App.Windows.Views.Main.Activity;
@@ -36,17 +37,16 @@ internal sealed class SyncStateViewModel
 
     private readonly AsyncRelayCommand _retrySyncCommand;
     private readonly RelayCommand<SyncActivityItemViewModel> _fixItemNameCommand;
+    private readonly RelayCommand _updateNowCommand;
     private readonly ISchedulerTimer _timer;
     private readonly TimeSpan _delayBeforeDisplayingSyncInitializationProgress;
 
     private SyncState _synchronizationState = SyncState.Terminated;
     private bool _isSyncInitialized;
-    private bool _isInitializingForTheFirstTime;
     private bool _isNewSession;
-    private bool _isDisplayingDetails;
     private int _latestSyncPassNumber;
-    private int? _numberOfInitializedItems;
     private DateTime? _syncInitializationStartTime;
+    private bool _updateIsReady;
 
     public SyncStateViewModel(
         ISyncService syncService,
@@ -56,6 +56,7 @@ internal sealed class SyncStateViewModel
         AppConfig appConfig,
         IDialogService dialogService,
         RenameRemoteNodeViewModel renameRemoteNodeDialogViewModel,
+        IUpdateService updateService,
         IClock clock)
     {
         _syncService = syncService;
@@ -69,6 +70,9 @@ internal sealed class SyncStateViewModel
 
         _retrySyncCommand = new AsyncRelayCommand(RetrySyncAsync, CanRetrySync);
         _fixItemNameCommand = new RelayCommand<SyncActivityItemViewModel>(OpenRenameItemDialog);
+        _updateNowCommand = new RelayCommand(updateService.StartUpdating, CanUpdate);
+
+        updateService.StateChanged += OnUpdateStateChanged;
 
         SyncActivityItems = GetItems();
         FailedItems = GetFailedItems();
@@ -81,16 +85,24 @@ internal sealed class SyncStateViewModel
 
     public SyncStatus SynchronizationStatus => _synchronizationState.Status;
 
+    public ICommand UpdateNowCommand => _updateNowCommand;
+
+    public bool UpdateIsRequired
+    {
+        get;
+        private set => SetProperty(ref field, value);
+    }
+
     public bool IsDisplayingDetails
     {
-        get => _isDisplayingDetails;
-        set => SetProperty(ref _isDisplayingDetails, value);
+        get;
+        set => SetProperty(ref field, value);
     }
 
     public bool IsInitializingForTheFirstTime
     {
-        get => _isInitializingForTheFirstTime;
-        private set => SetProperty(ref _isInitializingForTheFirstTime, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     public bool Paused
@@ -110,8 +122,8 @@ internal sealed class SyncStateViewModel
 
     public int? NumberOfInitializedItems
     {
-        get => _numberOfInitializedItems;
-        private set => SetProperty(ref _numberOfInitializedItems, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     public ICommand RetrySyncCommand => _retrySyncCommand;
@@ -277,6 +289,21 @@ internal sealed class SyncStateViewModel
     private static bool ItemSyncHasFailed(object item)
     {
         return item is SyncActivityItemViewModel { Status: SyncActivityItemStatus.Failed or SyncActivityItemStatus.Warning };
+    }
+
+    private bool CanUpdate()
+    {
+        return _updateIsReady;
+    }
+
+    private void OnUpdateStateChanged(object? sender, UpdateState e)
+    {
+        _scheduler.Schedule(() =>
+        {
+            UpdateIsRequired = e.UpdateRequired;
+            _updateIsReady = e.IsReady;
+            _updateNowCommand.NotifyCanExecuteChanged();
+        });
     }
 
     private void RemoveOutdatedFailedItems()

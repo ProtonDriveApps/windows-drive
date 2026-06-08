@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using ProtonDrive.App.Mapping.SyncFolders;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.App.Windows.SystemIntegration;
 using ProtonDrive.Client.Shares.SharedWithMe;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 
 namespace ProtonDrive.App.Windows.Views.Main.SharedWithMe;
 

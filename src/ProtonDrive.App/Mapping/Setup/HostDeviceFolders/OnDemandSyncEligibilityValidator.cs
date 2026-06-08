@@ -1,4 +1,4 @@
-﻿using ProtonDrive.App.SystemIntegration;
+﻿using ProtonDrive.Sync.Shared.FileSystem.Integration;
 
 namespace ProtonDrive.App.Mapping.Setup.HostDeviceFolders;
 

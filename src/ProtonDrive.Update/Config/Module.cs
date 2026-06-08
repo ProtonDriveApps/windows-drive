@@ -14,21 +14,21 @@ public static class Module
     {
         return services
             .AddSingleton(
-                sp => new AppUpdates(
+                sp => new AppUpdater(
                     sp.GetRequiredService<ILoggerFactory>(),
                     sp.GetRequiredService<AppUpdateConfig>(),
                     sp.GetRequiredService<IHttpClientFactory>(),
                     sp.GetRequiredService<IOsProcesses>()))
             .AddSingleton<AppUpdatesAutoCleanup>()
 
-            .AddSingleton<IAppUpdates>(
+            .AddSingleton<IAppUpdateCleanup>(
                 provider =>
-                    new CleanableOnceAppUpdates(
-                        new AsyncCleanableAppUpdates(
-                            new SafeAppUpdates(
-                                new LoggingAppUpdates(
-                                    provider.GetRequiredService<ILogger<LoggingAppUpdates>>(),
-                                    provider.GetRequiredService<AppUpdates>())))))
+                    new CleanableOnceAppUpdater(
+                        new AsyncCleanableAppUpdater(
+                            new SafeAppUpdater(
+                                new LoggingAppUpdater(
+                                    provider.GetRequiredService<ILogger<LoggingAppUpdater>>(),
+                                    provider.GetRequiredService<AppUpdater>())))))
 
             .AddSingleton<INotifyingAppUpdate>(
                 provider =>
@@ -45,7 +45,7 @@ public static class Module
                                     new NotifyingAppUpdate(
                                         new AppUpdate(
                                             provider.GetRequiredService<AppUpdateConfig>().RolloutEligibilityThreshold,
-                                            provider.GetRequiredService<AppUpdates>()),
+                                            provider.GetRequiredService<AppUpdater>()),
                                         provider.GetRequiredService<ILogger<NotifyingAppUpdate>>()))));
                 });
     }

@@ -26,7 +26,6 @@ internal sealed class UserService : IUserService, IDisposable
     private UserSubscriptionPlan _cachedSubscriptionPlan = UserSubscriptionPlan.Empty;
     private UserState _userState = UserState.Empty;
 
-    private User? _cachedUser;
     private Organization? _cachedOrganization;
     private UserSubscription? _cachedSubscription;
     private Plan? _cachedDefaultPlan;
@@ -91,8 +90,7 @@ internal sealed class UserService : IUserService, IDisposable
 
         if (user is not null)
         {
-            _userClient.ClearCache();
-            _cachedUser = user;
+            _userClient.SetCachedUser(user);
         }
 
         if (organization is not null)
@@ -105,16 +103,7 @@ internal sealed class UserService : IUserService, IDisposable
             _cachedSubscription = subscription;
         }
 
-        var cachedUser = _cachedUser;
-        if (usedSpace is not null && cachedUser is not null)
-        {
-            cachedUser.SplitStorageUsedSpace = usedSpace.Value;
-        }
-
-        if (driveUsedSpace is not null && cachedUser is not null)
-        {
-            cachedUser.ProductUsedSpace = cachedUser.ProductUsedSpace with { Drive = driveUsedSpace.Value };
-        }
+        _userClient.UpdateCachedUserQuota(usedSpace, driveUsedSpace);
 
         _userStateUpdate.RunAsync();
     }
@@ -171,7 +160,7 @@ internal sealed class UserService : IUserService, IDisposable
 
     private async Task UpdateUserStateAsync(CancellationToken cancellationToken)
     {
-        var user = _cachedUser;
+        var user = _userClient.GetCachedUser();
 
         if (user is null)
         {
@@ -183,8 +172,6 @@ internal sealed class UserService : IUserService, IDisposable
             {
                 return;
             }
-
-            _cachedUser = user;
         }
 
         await SafeGetPlanNameAsync(user, cancellationToken).ConfigureAwait(false);
@@ -344,7 +331,6 @@ internal sealed class UserService : IUserService, IDisposable
         _userClient.ClearCache();
         _userState = UserState.Empty;
         _cachedSubscriptionPlan = UserSubscriptionPlan.Empty;
-        _cachedUser = null;
         _cachedOrganization = null;
         _cachedSubscription = null;
         _cachedDefaultPlan = null;

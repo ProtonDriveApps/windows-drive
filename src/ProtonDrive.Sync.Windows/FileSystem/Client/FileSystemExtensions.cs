@@ -1,6 +1,6 @@
 ﻿using ProtonDrive.Shared.IO;
 using ProtonDrive.Sync.Shared.FileSystem;
-using ProtonDrive.Sync.Windows.FileSystem.CloudFiles;
+using ProtonDrive.Sync.Windows.FileSystem.OnDemand;
 using static Vanara.PInvoke.CldApi;
 
 namespace ProtonDrive.Sync.Windows.FileSystem.Client;

@@ -5,9 +5,7 @@ using ProtonDrive.Sync.Shared.FileSystem;
 namespace ProtonDrive.Client;
 
 /// <summary>
-/// A hybrid file system client that selectively uses SDK or legacy implementation
-/// based on feature flags for specific operations. Different operations can use
-/// different implementations simultaneously.
+/// A hybrid file system client that falls back to legacy implementation for functions not yet available in the SDK client.
 /// </summary>
 internal sealed class HybridRemoteFileSystemClient : IFileSystemClient<string>
 {
@@ -38,7 +36,7 @@ internal sealed class HybridRemoteFileSystemClient : IFileSystemClient<string>
             _sdkClient.DisconnectAsync()).ConfigureAwait(false);
     }
 
-    public async Task<IDestinationRevision<string>> CreateFileAsync(
+    public Task<IDestinationRevision<string>> CreateFileAsync(
         NodeInfo<string> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -46,12 +44,10 @@ internal sealed class HybridRemoteFileSystemClient : IFileSystemClient<string>
         Action<Progress>? progressCallback,
         CancellationToken cancellationToken)
     {
-        var client = await GetClientForMainUploadAsync(cancellationToken).ConfigureAwait(false);
-
-        return await client.CreateFileAsync(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken).ConfigureAwait(false);
+        return _sdkClient.CreateFileAsync(info, tempFileName, thumbnailProvider, fileMetadataProvider, progressCallback, cancellationToken);
     }
 
-    public async Task<IDestinationRevision<string>> CreateRevisionAsync(
+    public Task<IDestinationRevision<string>> CreateRevisionAsync(
         NodeInfo<string> info,
         long size,
         DateTime lastWriteTime,
@@ -61,9 +57,7 @@ internal sealed class HybridRemoteFileSystemClient : IFileSystemClient<string>
         Action<Progress>? progressCallback,
         CancellationToken cancellationToken)
     {
-        var client = await GetClientForMainUploadAsync(cancellationToken).ConfigureAwait(false);
-
-        return await client.CreateRevisionAsync(
+        return _sdkClient.CreateRevisionAsync(
             info,
             size,
             lastWriteTime,
@@ -71,14 +65,12 @@ internal sealed class HybridRemoteFileSystemClient : IFileSystemClient<string>
             thumbnailProvider,
             fileMetadataProvider,
             progressCallback,
-            cancellationToken).ConfigureAwait(false);
+            cancellationToken);
     }
 
-    public async Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<string> info, CancellationToken cancellationToken)
+    public Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
-        var client = await GetClientForMainDownloadAsync(cancellationToken).ConfigureAwait(false);
-
-        return await client.OpenFileForReadingAsync(info, cancellationToken).ConfigureAwait(false);
+        return _sdkClient.OpenFileForReadingAsync(info, cancellationToken);
     }
 
     public Task<NodeInfo<string>> GetInfoAsync(NodeInfo<string> info, CancellationToken cancellationToken)
@@ -123,25 +115,11 @@ internal sealed class HybridRemoteFileSystemClient : IFileSystemClient<string>
 
     public void SetInSyncState(NodeInfo<string> info)
     {
-        _legacyClient.SetInSyncState(info);
+        _sdkClient.SetInSyncState(info);
     }
 
     public Task HydrateFileAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
-        return _legacyClient.HydrateFileAsync(info, cancellationToken);
-    }
-
-    private async Task<IFileSystemClient<string>> GetClientForMainUploadAsync(CancellationToken cancellationToken)
-    {
-        return await _featureFlagProvider.IsEnabledAsync(Feature.DriveWindowsSdkUploadMain, cancellationToken).ConfigureAwait(false)
-            ? _sdkClient
-            : _legacyClient;
-    }
-
-    private async Task<IFileSystemClient<string>> GetClientForMainDownloadAsync(CancellationToken cancellationToken)
-    {
-        return await _featureFlagProvider.IsEnabledAsync(Feature.DriveWindowsSdkDownloadMain, cancellationToken).ConfigureAwait(false)
-            ? _sdkClient
-            : _legacyClient;
+        return _sdkClient.HydrateFileAsync(info, cancellationToken);
     }
 }

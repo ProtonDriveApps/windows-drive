@@ -4,21 +4,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>$(MSBuildProjectName).Tests</_Parameter1>
-    </AssemblyAttribute>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>DynamicProxyGenAssembly2</_Parameter1>
-    </AssemblyAttribute>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>ProtonDrive.App.Windows.Tests</_Parameter1>
-    </AssemblyAttribute>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>ProtonDrive.Sync.Adapter.Tests</_Parameter1>
-    </AssemblyAttribute>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" />
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" />
@@ -44,6 +29,13 @@
     <ProjectReference Include="..\ProtonDrive.Sync.Engine\ProtonDrive.Sync.Engine.csproj" />
     <ProjectReference Include="..\ProtonDrive.Sync.Shared\ProtonDrive.Sync.Shared.csproj" />
     <ProjectReference Include="..\ProtonDrive.Update\ProtonDrive.Update.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+    <InternalsVisibleTo Include="ProtonDrive.App.Windows.Tests" />
+    <InternalsVisibleTo Include="ProtonDrive.Sync.Adapter.Tests" />
   </ItemGroup>
 
   <ItemGroup>

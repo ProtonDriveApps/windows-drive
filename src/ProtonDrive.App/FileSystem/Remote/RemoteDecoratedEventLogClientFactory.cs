@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using Microsoft.Extensions.Logging;
+using ProtonDrive.App.Devices;
 using ProtonDrive.App.Mapping;
 using ProtonDrive.App.Settings;
-using ProtonDrive.Client;
 using ProtonDrive.Client.Configuration;
 using ProtonDrive.Client.Contracts;
 using ProtonDrive.Shared;
@@ -23,6 +23,7 @@ internal sealed class RemoteDecoratedEventLogClientFactory
     private readonly RemoteRootMapForDeletionDetectionFactory _rootMapForDeletionDetectionFactory;
     private readonly ISwitchingToVolumeEventsHandler _switchingToVolumeEventsHandler;
     private readonly IRootDeletionHandler _rootDeletionHandler;
+    private readonly IRemoteDeviceEventsAware _remoteDeviceEventsAware;
     private readonly ILoggerFactory _loggerFactory;
 
     public RemoteDecoratedEventLogClientFactory(
@@ -31,6 +32,7 @@ internal sealed class RemoteDecoratedEventLogClientFactory
         RemoteRootMapForDeletionDetectionFactory rootMapForDeletionDetectionFactory,
         ISwitchingToVolumeEventsHandler switchingToVolumeEventsHandler,
         IRootDeletionHandler rootDeletionHandler,
+        IRemoteDeviceEventsAware remoteDeviceEventsAware,
         ILoggerFactory loggerFactory)
     {
         _driveConfig = driveConfig;
@@ -38,6 +40,7 @@ internal sealed class RemoteDecoratedEventLogClientFactory
         _rootMapForDeletionDetectionFactory = rootMapForDeletionDetectionFactory;
         _switchingToVolumeEventsHandler = switchingToVolumeEventsHandler;
         _rootDeletionHandler = rootDeletionHandler;
+        _remoteDeviceEventsAware = remoteDeviceEventsAware;
         _loggerFactory = loggerFactory;
     }
 
@@ -169,11 +172,15 @@ internal sealed class RemoteDecoratedEventLogClientFactory
             scope: RootPropertyProvider.GetEventScope(internalVolumeId),
             undecoratedClient);
 
+        var remoteDeviceClientDecorator = new RemoteDeviceEventLogClientDecorator(
+            _remoteDeviceEventsAware,
+            scopedClient);
+
         return new LoggingEventLogClientDecorator<string>(
             _loggerFactory.CreateLogger<LoggingEventLogClientDecorator<string>>(),
             internalVolumeId,
             remoteVolumeId,
-            scopedClient);
+            remoteDeviceClientDecorator);
     }
 
     private IEventLogClient<string> CreateClientForSharedWithMeFolder(RemoteToLocalMapping mapping, IEventLogClient<string> dispatchingClient)

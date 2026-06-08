@@ -1,15 +1,14 @@
 ﻿using System.ComponentModel;
 using Microsoft.Extensions.Logging;
 using ProtonDrive.App.FileSystem.Local.SpecialFolders;
-using ProtonDrive.App.FileSystem.Remote;
 using ProtonDrive.App.Settings;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.Client.Contracts;
 using ProtonDrive.Shared;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Adapter;
 using ProtonDrive.Sync.Shared;
 using ProtonDrive.Sync.Shared.FileSystem;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 
 namespace ProtonDrive.App.FileSystem.Local;
 

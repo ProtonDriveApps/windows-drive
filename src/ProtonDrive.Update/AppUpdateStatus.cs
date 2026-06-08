@@ -5,7 +5,7 @@ public enum AppUpdateStatus
     /// <summary>
     /// No update is available
     /// </summary>
-    None,
+    UpToDate,
 
     /// <summary>
     /// Checking for an update

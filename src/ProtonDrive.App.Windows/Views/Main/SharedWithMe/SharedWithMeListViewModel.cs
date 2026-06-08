@@ -10,7 +10,6 @@ using ProtonDrive.App.Drive.Services.SharedWithMe;
 using ProtonDrive.App.Mapping;
 using ProtonDrive.App.Mapping.SyncFolders;
 using ProtonDrive.App.Sync;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.App.Windows.Extensions;
 using ProtonDrive.App.Windows.Toolkit.Threading;
 using ProtonDrive.App.Windows.Views.Shared.Sorting;
@@ -19,6 +18,7 @@ using ProtonDrive.Client.Contracts;
 using ProtonDrive.Client.Shares.SharedWithMe;
 using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Features;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 using ProtonDrive.Sync.Shared.SyncActivity;
 using SharedWithMeItem = ProtonDrive.Client.Shares.SharedWithMe.SharedWithMeItem;
 

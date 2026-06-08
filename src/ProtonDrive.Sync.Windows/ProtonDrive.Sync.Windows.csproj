@@ -1,32 +1,32 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>$(DefaultTargetFramework)-windows</TargetFramework>
+    <TargetFramework>$(DefaultTargetFramework)-windows10.0.17763.0</TargetFramework>
+    <WindowsSdkPackageVersion>10.0.17763.56</WindowsSdkPackageVersion>
+    <UseWPF>true</UseWPF>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>ProtonDrive.Sync.Adapter.Tests</_Parameter1>
-    </AssemblyAttribute>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>$(MSBuildProjectName).Tests</_Parameter1>
-    </AssemblyAttribute>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>DynamicProxyGenAssembly2</_Parameter1>
-    </AssemblyAttribute>
+    <ProjectReference Include="..\ProtonDrive.Shared\ProtonDrive.Shared.csproj" />
+    <ProjectReference Include="..\ProtonDrive.Sync.Shared\ProtonDrive.Sync.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MetadataExtractor" />
     <PackageReference Include="System.Linq.Async" />
-    <PackageReference Include="System.Security.Cryptography.ProtectedData" />
     <PackageReference Include="Vanara.PInvoke.CldApi" />
     <PackageReference Include="Vanara.PInvoke.Shell32" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProtonDrive.Shared\ProtonDrive.Shared.csproj" />
-    <ProjectReference Include="..\ProtonDrive.Sync.Shared\ProtonDrive.Sync.Shared.csproj" />
+    <InternalsVisibleTo Include="ProtonDrive.Sync.Adapter.Tests" />
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Add a custom global namespaces for the entire project -->
+    <Using Include="System.IO" />
   </ItemGroup>
 
 </Project>

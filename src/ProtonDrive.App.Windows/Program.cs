@@ -25,6 +25,9 @@ using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Localization;
 using ProtonDrive.Shared.Reporting;
 using ProtonDrive.Sync.Windows.FileSystem;
+using ProtonDrive.Sync.Windows.FileSystem.Integration;
+using ProtonDrive.Sync.Windows.FileSystem.OnDemand;
+using ProtonDrive.Sync.Windows.Shell;
 
 namespace ProtonDrive.App.Windows;
 

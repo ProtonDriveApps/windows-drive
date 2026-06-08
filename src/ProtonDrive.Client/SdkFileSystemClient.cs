@@ -108,7 +108,7 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
 
         var uploadMetadata = new FileUploadMetadata
         {
-            LastModificationTime = info.LastWriteTimeUtc,
+            LastModificationTime = info.LastWriteTimeUtc != default ? info.LastWriteTimeUtc : null,
             AdditionalMetadata = metadata.ConvertToAdditionalMetadataProperties(),
         };
 
@@ -288,12 +288,13 @@ internal sealed class SdkFileSystemClient : RemoteFileSystemClientBase, IFileSys
 
     public void SetInSyncState(NodeInfo<string> info)
     {
-        throw new NotSupportedException();
+        // Do nothing
     }
 
     public Task HydrateFileAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
-        throw new NotSupportedException();
+        // Do nothing
+        return Task.CompletedTask;
     }
 
     private static void CheckParentFolder(RemoteNode remoteNode)

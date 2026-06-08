@@ -5,11 +5,11 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ProtonDrive.App.Mapping;
 using ProtonDrive.App.Mapping.SyncFolders;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.App.Windows.SystemIntegration;
 using ProtonDrive.App.Windows.Views.Shared;
 using ProtonDrive.Client.Contracts;
 using ProtonDrive.Shared;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 using ProtonDrive.Sync.Shared.Trees.FileSystem;
 using SharedWithMeItem = ProtonDrive.Client.Shares.SharedWithMe.SharedWithMeItem;
 

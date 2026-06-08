@@ -67,6 +67,7 @@ internal sealed class SdkRemoteRevisionCreationProcess : IDestinationRevision<st
                 thumbnails,
                 (progress, total) => _progressCallback?.Invoke(new Progress(progress, total)),
                 expectedSha1Provider,
+                forPhotos: false,
                 cancellationToken);
 
             await using (controller.ConfigureAwait(false))

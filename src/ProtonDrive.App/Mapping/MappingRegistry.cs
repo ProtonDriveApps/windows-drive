@@ -84,12 +84,16 @@ internal sealed class MappingRegistry : IStartableService, IStoppableService, IM
 
     private void LoadData()
     {
-        _logger.LogDebug("Loading mappings");
+        _logger.LogDebug("Loading mappings...");
 
         LoadMappings();
         NotifyMappingsChanged();
 
-        _logger.LogInformation("Mappings loaded");
+        _logger.LogInformation(
+            "Mappings loaded: {NumberOfActiveMappings} active, {NumberOfDeletedMappings} deleted, latest ID {LatestId}",
+            _activeMappings.Count,
+            _deletedMappings.Count,
+            _latestId);
     }
 
     private void LoadMappings()

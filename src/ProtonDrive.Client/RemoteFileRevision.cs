@@ -1,6 +1,7 @@
 ﻿using System.Security.Cryptography;
 using ProtonDrive.Client.Contracts;
 using ProtonDrive.Sync.Shared.FileSystem;
+using ProtonDrive.Sync.Shared.FileSystem.Photos;
 
 namespace ProtonDrive.Client;
 

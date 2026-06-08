@@ -1,7 +1,8 @@
 ﻿using System.ComponentModel;
 using ProtonDrive.App.Settings;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.Shared.Configuration;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
+using ProtonDrive.Sync.Shared.FileSystem.OnDemand;
 
 namespace ProtonDrive.App.Mapping.Setup.CloudFiles;
 

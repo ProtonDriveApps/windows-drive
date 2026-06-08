@@ -246,8 +246,8 @@
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <Image
@@ -272,6 +272,7 @@
                     Content="{Binding NotificationBadges.UpdateNotificationBadge}"
                     ContentTemplate="{StaticResource NotificationBadgeTemplate}"
                     Visibility="{Binding NotificationBadges.UpdateNotificationBadge, Converter={x:Static conv:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={x:Null}}"
+                    HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     Margin="10,2,0,0" />
             </Grid>

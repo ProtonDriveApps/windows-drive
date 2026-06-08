@@ -490,8 +490,11 @@ Desative e volte a ativar a sincronização para o restaurar e eliminar este err
   <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
     <value>Erro ao procurar atualizações</value>
   </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Update required</value>
+  </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Atualizações disponíveis</value>
+    <value>Update available</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Política de privacidade</value>

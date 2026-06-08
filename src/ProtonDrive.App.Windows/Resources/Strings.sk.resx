@@ -490,8 +490,11 @@ Vypnutím a opätovným zapnutím jeho synchronizácie ho obnovíte a odstránit
   <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
     <value>Kontrola aktualizácie zlyhala</value>
   </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Update required</value>
+  </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Je dostupná aktualizácia</value>
+    <value>Update available</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Zásady ochrany osobných údajov</value>

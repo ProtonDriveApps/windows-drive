@@ -1,5 +1,5 @@
 ﻿using ProtonDrive.Sync.Shared.FileSystem;
-using ProtonDrive.Sync.Windows.FileSystem.Photos;
+using ProtonDrive.Sync.Shared.FileSystem.Photos;
 
 namespace ProtonDrive.Sync.Windows.FileSystem.Client;
 

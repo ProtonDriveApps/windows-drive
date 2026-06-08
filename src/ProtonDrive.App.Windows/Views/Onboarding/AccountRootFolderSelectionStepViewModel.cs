@@ -7,10 +7,10 @@ using ProtonDrive.App.Authentication;
 using ProtonDrive.App.Mapping;
 using ProtonDrive.App.Mapping.SyncFolders;
 using ProtonDrive.App.Onboarding;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.App.Windows.SystemIntegration;
 using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Threading;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 
 namespace ProtonDrive.App.Windows.Views.Onboarding;
 

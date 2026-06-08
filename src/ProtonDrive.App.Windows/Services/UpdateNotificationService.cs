@@ -66,11 +66,12 @@ internal sealed class UpdateNotificationService : IStartableService
     {
         if (state.IsReady)
         {
-            ShowNotificationIfNotYetShown(UpdateNotificationType.UpdateRequiredAndReady);
+            // Required updates will be installed automatically
+            return;
         }
 
-        // Suppress UpdateRequired notification while checking for update
-        else if (state.Status is not AppUpdateStatus.Checking)
+        // Only display a notification when the update can't make progress and the user needs the website download fallback.
+        if (state.Status is AppUpdateStatus.CheckFailed or AppUpdateStatus.DownloadFailed)
         {
             ShowNotificationIfNotYetShown(UpdateNotificationType.UpdateRequired);
         }
@@ -84,7 +85,7 @@ internal sealed class UpdateNotificationService : IStartableService
         {
             ShowNotification(UpdateNotificationType.UpdateReady);
         }
-        else if (status == AppUpdateStatus.None)
+        else if (status == AppUpdateStatus.UpToDate)
         {
             RemoveNotification();
         }
@@ -109,7 +110,6 @@ internal sealed class UpdateNotificationService : IStartableService
         {
             UpdateNotificationType.UpdateReady => GetUpdateNotification(),
             UpdateNotificationType.UpdateRequired => GetUpdateRequiredNotification(),
-            UpdateNotificationType.UpdateRequiredAndReady => GetUpdateRequiredAndReadyNotification(),
             _ => throw new ArgumentOutOfRangeException(nameof(type)),
         };
 
@@ -134,12 +134,6 @@ internal sealed class UpdateNotificationService : IStartableService
     {
         return GetBaseUpdateRequiredNotification()
             .AddButton("Download and install update", DownloadUpdateActionName);
-    }
-
-    private Notification GetUpdateRequiredAndReadyNotification()
-    {
-        return GetBaseUpdateRequiredNotification()
-            .AddButton("Update", UpdateActionName);
     }
 
     private Notification GetBaseUpdateRequiredNotification()

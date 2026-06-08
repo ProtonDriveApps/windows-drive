@@ -8,6 +8,7 @@ using ProtonDrive.Client;
 using ProtonDrive.Client.Devices;
 using ProtonDrive.Client.Volumes.Contracts;
 using ProtonDrive.Shared.Extensions;
+using ProtonDrive.Shared.Features;
 using ProtonDrive.Shared.Logging;
 using ProtonDrive.Shared.Offline;
 using ProtonDrive.Shared.Repository;
@@ -16,7 +17,7 @@ using VolumeState = ProtonDrive.App.Volumes.VolumeState;
 
 namespace ProtonDrive.App.Devices;
 
-internal sealed class DeviceService : IDeviceService, IStartableService, IStoppableService, IMainVolumeStateAware
+internal sealed class DeviceService : IDeviceService, IStartableService, IStoppableService, IMainVolumeStateAware, IRemoteDeviceEventsAware, IFeatureFlagsAware
 {
     private readonly IDeviceClient _deviceClient;
     private readonly IRepository<DeviceSettings> _settingsRepository;
@@ -33,6 +34,7 @@ internal sealed class DeviceService : IDeviceService, IStartableService, IStoppa
     private DeviceSettings _settings = new();
     private VolumeState _mainVolumeState = VolumeState.Idle;
     private volatile bool _stopping;
+    private volatile bool _deviceEventHandlingDisabled;
 
     public DeviceService(
         IDeviceClient deviceClient,
@@ -67,6 +69,11 @@ internal sealed class DeviceService : IDeviceService, IStartableService, IStoppa
     public Task<DeviceSetupResult> SetUpHostDeviceAsync(CancellationToken cancellationToken)
     {
         return Schedule(InternalSetUpHostDeviceAsync, DeviceSetupResult.Failure, cancellationToken);
+    }
+
+    public Task<DeviceSetupResult> GetHostDeviceAsync(CancellationToken cancellationToken)
+    {
+        return Schedule(InternalGetHostDeviceAsync, DeviceSetupResult.Failure, cancellationToken);
     }
 
     public Task RenameHostDeviceAsync(string name)
@@ -115,6 +122,45 @@ internal sealed class DeviceService : IDeviceService, IStartableService, IStoppa
         }
     }
 
+    void IRemoteDeviceEventsAware.OnDeviceCreated(string deviceLinkId)
+    {
+        if (_deviceEventHandlingDisabled)
+        {
+            return;
+        }
+
+        _logger.LogInformation("Remote event indicates that a new device could have been created. Scheduling refresh...");
+
+        _ = RefreshDevicesAsync();
+    }
+
+    void IRemoteDeviceEventsAware.OnDeviceDeleted(string deviceLinkId)
+    {
+        if (_deviceEventHandlingDisabled)
+        {
+            return;
+        }
+
+        var deletedDevice = _devices.FirstOrDefault(x => x.LinkId == deviceLinkId);
+
+        if (deletedDevice is null)
+        {
+            return;
+        }
+
+        _logger.LogInformation(
+            "Remote event indicates that {DeviceType} device with LinkID=\"{LinkId}\" was deleted. Scheduling refresh...",
+            deletedDevice.Type,
+            deviceLinkId);
+
+        _ = RefreshDevicesAsync();
+    }
+
+    void IFeatureFlagsAware.OnFeatureFlagsChanged(IReadOnlyDictionary<Feature, bool> features)
+    {
+        _deviceEventHandlingDisabled = features[Feature.DriveWindowsDeviceEventHandlingDisabled];
+    }
+
     internal Task WaitForCompletionAsync()
     {
         // Wait for all scheduled tasks to complete
@@ -130,10 +176,19 @@ internal sealed class DeviceService : IDeviceService, IStartableService, IStoppa
             IsSynchronizationEnabled = true,
         };
 
-    private async Task InternalSetUpDevicesAsync(CancellationToken cancellationToken)
+    private Task InternalSetUpDevicesAsync(CancellationToken cancellationToken)
     {
-        if (_mainVolumeState.Status is not VolumeStatus.Ready ||
-            _status is DeviceServiceStatus.Succeeded)
+        if (_status is DeviceServiceStatus.Succeeded)
+        {
+            return Task.CompletedTask;
+        }
+
+        return InternalRefreshAndSetStatusAsync(cancellationToken);
+    }
+
+    private async Task InternalRefreshAndSetStatusAsync(CancellationToken cancellationToken)
+    {
+        if (_mainVolumeState.Status is not VolumeStatus.Ready)
         {
             return;
         }
@@ -258,6 +313,23 @@ internal sealed class DeviceService : IDeviceService, IStartableService, IStoppa
         }
     }
 
+    private Task<DeviceSetupResult> InternalGetHostDeviceAsync(CancellationToken cancellationToken)
+    {
+        if (!TryGetRemoteHostDevice(out var hostDevice))
+        {
+            if (_status is not DeviceServiceStatus.Succeeded)
+            {
+                _logger.LogWarning("Device service status is {Status}", _status);
+                return Task.FromResult(DeviceSetupResult.Failure);
+            }
+
+            _logger.LogWarning("Host device not found");
+            return Task.FromResult(DeviceSetupResult.DeviceNotFound);
+        }
+
+        return Task.FromResult(new DeviceSetupResult(hostDevice));
+    }
+
     private async Task InternalRenameHostDeviceAsync(string name, CancellationToken cancellationToken)
     {
         if (!TryGetRemoteHostDevice(out var hostDevice))
@@ -365,6 +437,11 @@ internal sealed class DeviceService : IDeviceService, IStartableService, IStoppa
         _settingsRepository.Set(_settings);
     }
 
+    private Task RefreshDevicesAsync()
+    {
+        return Schedule(InternalRefreshAndSetStatusAsync);
+    }
+
     private void AddDevice(Device device)
     {
         _devices.Add(device);
@@ -397,7 +474,7 @@ internal sealed class DeviceService : IDeviceService, IStartableService, IStoppa
 
     private void OnDeviceChanged(DeviceChangeType changeType, Device device)
     {
-        _logger.LogInformation("Cached device {ChangeType}: Type={DeviceType}, Id={Id}", changeType, device.Type, device.Id);
+        _logger.LogInformation("Cached {DeviceType} device {ChangeType} with ID \"{Id}\"", device.Type, changeType, device.Id);
 
         foreach (var listener in _devicesAware.Value)
         {

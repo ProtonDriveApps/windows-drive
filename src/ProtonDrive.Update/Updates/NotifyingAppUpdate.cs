@@ -10,9 +10,9 @@ namespace ProtonDrive.Update.Updates;
 internal class NotifyingAppUpdate : INotifyingAppUpdate
 {
     private readonly CoalescingAction _checkForUpdate;
+    private readonly ILogger<NotifyingAppUpdate> _logger;
 
     private IAppUpdate _update;
-    private readonly ILogger<NotifyingAppUpdate> _logger;
     private AppUpdateStatus _status;
     private bool _earlyAccess;
     private bool _manual;
@@ -81,6 +81,7 @@ internal class NotifyingAppUpdate : INotifyingAppUpdate
             }
 
             _update.StartUpdating(true);
+
             return true;
         }
         catch (Exception ex)
@@ -136,7 +137,7 @@ internal class NotifyingAppUpdate : INotifyingAppUpdate
             }
         }
 
-        _status = _update.IsReady ? AppUpdateStatus.Ready : AppUpdateStatus.None;
+        _status = _update.IsReady ? AppUpdateStatus.Ready : AppUpdateStatus.UpToDate;
         OnStateChanged();
     }
 
@@ -150,7 +151,7 @@ internal class NotifyingAppUpdate : INotifyingAppUpdate
 
     private void HandleCancellation()
     {
-        _status = AppUpdateStatus.None;
+        _status = AppUpdateStatus.UpToDate;
         OnStateChanged();
     }
 
@@ -165,7 +166,7 @@ internal class NotifyingAppUpdate : INotifyingAppUpdate
                 _status = AppUpdateStatus.DownloadFailed;
                 break;
             default:
-                _status = AppUpdateStatus.None;
+                _status = AppUpdateStatus.UpToDate;
                 break;
         }
 

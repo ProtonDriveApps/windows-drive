@@ -490,8 +490,11 @@ Slå synkroniseringen fra og til igen for at gendanne den og fjerne denne fejl.<
   <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
     <value>Kunne ikke tjekke for opdateringer</value>
   </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Opdatering kræves</value>
+  </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Opdateringer tilgængelige</value>
+    <value>Opdatering tilgængelig</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Privatlivspolitik</value>

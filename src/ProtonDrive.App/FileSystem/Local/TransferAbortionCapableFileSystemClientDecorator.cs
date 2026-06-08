@@ -1,6 +1,7 @@
 ﻿using ProtonDrive.Shared.IO;
 using ProtonDrive.Sync.Adapter;
 using ProtonDrive.Sync.Shared.FileSystem;
+using ProtonDrive.Sync.Shared.FileSystem.Photos;
 using ProtonDrive.Sync.Shared.Trees;
 
 namespace ProtonDrive.App.FileSystem.Local;

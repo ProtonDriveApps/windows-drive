@@ -3,9 +3,9 @@ using CommunityToolkit.Mvvm.Input;
 using ProtonDrive.App.Authentication;
 using ProtonDrive.App.Mapping;
 using ProtonDrive.App.Mapping.SyncFolders;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.App.Windows.Configuration.Hyperlinks;
 using ProtonDrive.App.Windows.Toolkit.Threading;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 
 namespace ProtonDrive.App.Windows.Views.Shared;
 

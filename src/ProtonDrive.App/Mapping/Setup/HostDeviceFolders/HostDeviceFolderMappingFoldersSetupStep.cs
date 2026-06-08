@@ -2,12 +2,12 @@
 using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Devices;
 using ProtonDrive.App.Settings;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.Client;
 using ProtonDrive.Shared;
 using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Shared.Logging;
 using ProtonDrive.Sync.Shared.FileSystem;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 
 namespace ProtonDrive.App.Mapping.Setup.HostDeviceFolders;
 

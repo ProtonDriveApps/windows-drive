@@ -10,11 +10,11 @@ using ProtonDrive.App.Mapping;
 using ProtonDrive.App.Mapping.SyncFolders;
 using ProtonDrive.App.Photos;
 using ProtonDrive.App.Photos.Import;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.App.Windows.Configuration.Hyperlinks;
 using ProtonDrive.App.Windows.Extensions;
 using ProtonDrive.App.Windows.SystemIntegration;
 using ProtonDrive.Shared.Threading;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 
 namespace ProtonDrive.App.Windows.Views.Main.Photos;
 

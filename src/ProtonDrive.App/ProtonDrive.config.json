@@ -80,6 +80,7 @@
   "Update": {
     "UpdateUrl": "https://proton.me/download/drive/windows/x64/v1/version.json",
     "CheckInterval": "03:00:00",
+    "AutoUpdateRetryInterval": "01:30:00",
     "NotificationInterval": "1.00:00:00",
     "MinProgressDuration": "00:00:02",
     "CleanupDelay": "00:00:20",

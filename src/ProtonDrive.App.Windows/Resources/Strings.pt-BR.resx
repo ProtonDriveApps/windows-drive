@@ -490,8 +490,11 @@ Desative e ative novamente a sincronização para restaurá-lo e eliminar esse e
   <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
     <value>Não foi possível verificar atualizações</value>
   </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Update required</value>
+  </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Atualização disponível</value>
+    <value>Update available</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Política de privacidade</value>

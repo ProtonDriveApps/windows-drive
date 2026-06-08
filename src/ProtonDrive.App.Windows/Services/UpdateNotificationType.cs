@@ -5,5 +5,4 @@ internal enum UpdateNotificationType
     None,
     UpdateReady,
     UpdateRequired,
-    UpdateRequiredAndReady,
 }

@@ -1,23 +1,15 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
 using Proton.Cryptography.Pgp;
 using ProtonDrive.Client.Albums.Contracts;
-using ProtonDrive.Client.BlockVerification;
-using ProtonDrive.Client.Configuration;
 using ProtonDrive.Client.Contracts;
 using ProtonDrive.Client.Cryptography;
-using ProtonDrive.Client.FileUploading;
 using ProtonDrive.Client.MediaTypes;
 using ProtonDrive.Client.RemoteNodes;
-using ProtonDrive.Client.Volumes;
 using ProtonDrive.Shared;
-using ProtonDrive.Shared.Devices;
 using ProtonDrive.Shared.Extensions;
-using ProtonDrive.Shared.Features;
 using ProtonDrive.Shared.IO;
 using ProtonDrive.Sync.Shared.FileSystem;
-using FileCreationParameters = ProtonDrive.Client.Contracts.FileCreationParameters;
 
 namespace ProtonDrive.Client;
 
@@ -25,77 +17,44 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
 {
     private const int FolderChildListingPageSize = 150;
 
-    private readonly BlockingArrayMemoryPool<byte> _bufferPool;
-
-    private readonly DriveApiConfig _config;
     private readonly string _volumeId;
     private readonly string _shareId;
     private readonly string? _virtualParentId;
     private readonly string? _linkId;
     private readonly string? _linkName;
     private readonly bool _isPhotoClient;
-    private readonly IClientInstanceIdentityProvider _clientInstanceIdentityProvider;
     private readonly ILinkApiClient _linkApiClient;
     private readonly IFolderApiClient _folderApiClient;
     private readonly IFileApiClient _fileApiClient;
     private readonly IPhotoApiClient _photoApiClient;
-    private readonly IVolumeApiClient _volumeApiClient;
     private readonly ICryptographyService _cryptographyService;
-    private readonly IHttpClientFactory _httpClientFactory;
-    private readonly IRevisionSealerFactory _revisionSealerFactory;
-    private readonly IRevisionManifestCreator _revisionManifestCreator;
-    private readonly IBlockVerifierFactory _blockVerifierFactory;
-    private readonly IFeatureFlagProvider _featureFlagProvider;
-    private readonly Action<Exception> _reportBlockVerificationOrDecryptionFailure;
-    private readonly ILoggerFactory _loggerFactory;
     private readonly ILogger<RemoteFileSystemClient> _logger;
 
     internal RemoteFileSystemClient(
-        DriveApiConfig config,
         FileSystemClientParameters fileSystemClientParameters,
         IFileContentTypeProvider fileContentTypeProvider,
-        IClientInstanceIdentityProvider clientInstanceIdentityProvider,
         IRemoteNodeService remoteNodeService,
         ILinkApiClient linkApiClient,
         IFolderApiClient folderApiClient,
         IFileApiClient fileApiClient,
         IPhotoApiClient photoApiClient,
-        IVolumeApiClient volumeApiClient,
         ICryptographyService cryptographyService,
-        IHttpClientFactory httpClientFactory,
-        IRevisionSealerFactory revisionSealerFactory,
-        IRevisionManifestCreator revisionManifestCreator,
-        IBlockVerifierFactory blockVerifierFactory,
-        IFeatureFlagProvider featureFlagProvider,
-        Action<Exception> reportBlockVerificationOrDecryptionFailure,
         ILoggerFactory loggerFactory)
         : base(fileSystemClientParameters, linkApiClient, remoteNodeService, fileContentTypeProvider)
     {
-        _config = config;
         _volumeId = fileSystemClientParameters.VolumeId;
         _shareId = fileSystemClientParameters.ShareId;
         _virtualParentId = fileSystemClientParameters.VirtualParentId;
         _linkId = fileSystemClientParameters.LinkId;
         _linkName = fileSystemClientParameters.LinkName;
         _isPhotoClient = fileSystemClientParameters.IsPhotoClient;
-        _clientInstanceIdentityProvider = clientInstanceIdentityProvider;
         _linkApiClient = linkApiClient;
         _folderApiClient = folderApiClient;
         _fileApiClient = fileApiClient;
         _photoApiClient = photoApiClient;
-        _volumeApiClient = volumeApiClient;
         _cryptographyService = cryptographyService;
-        _httpClientFactory = httpClientFactory;
-        _revisionSealerFactory = revisionSealerFactory;
-        _revisionManifestCreator = revisionManifestCreator;
-        _blockVerifierFactory = blockVerifierFactory;
-        _featureFlagProvider = featureFlagProvider;
-        _reportBlockVerificationOrDecryptionFailure = reportBlockVerificationOrDecryptionFailure;
-        _loggerFactory = loggerFactory;
 
-        _logger = _loggerFactory.CreateLogger<RemoteFileSystemClient>();
-
-        _bufferPool = GetBufferPool();
+        _logger = loggerFactory.CreateLogger<RemoteFileSystemClient>();
     }
 
     private delegate Task<MultipleResponses<FolderChildrenDeletionResponse>> DeleteAsyncDelegate(
@@ -207,7 +166,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         return info.WithId(response.FolderId.Value);
     }
 
-    public async Task<IDestinationRevision<string>> CreateFileAsync(
+    public Task<IDestinationRevision<string>> CreateFileAsync(
         NodeInfo<string> info,
         string? tempFileName,
         IThumbnailProvider thumbnailProvider,
@@ -215,154 +174,15 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         Action<Progress>? progressCallback,
         CancellationToken cancellationToken)
     {
-        EnsureParentId(info.ParentId);
-        Ensure.NotNullOrEmpty(info.Name, nameof(info), nameof(info.Name));
-
-        cancellationToken.ThrowIfCancellationRequested();
-
-        var share = await GetShareAsync(cancellationToken).ConfigureAwait(false);
-
-        var (parameters, nodeKey, signatureAddress) = await CreateNodeCreationParametersAsync(
-            info,
-            () => new FileCreationParameters(),
-            share.RelevantMembershipAddressId,
-            cancellationToken).ConfigureAwait(false);
-
-        parameters.MediaType = GetMediaType(info);
-
-        var (keyPacket, sessionKey, sessionKeySignature) = _cryptographyService.GenerateFileContentKeyPacket(nodeKey.ToPublic(), nodeKey, info.Name);
-        parameters.ContentKeyPacket = keyPacket;
-        parameters.ContentKeyPacketSignature = sessionKeySignature;
-        parameters.ClientId = _clientInstanceIdentityProvider.GetClientInstanceId();
-
-        var (response, fileDraftExists) = await CreateFileAsync(parameters, cancellationToken).ConfigureAwait(false);
-
-        if (fileDraftExists)
-        {
-            (sessionKey, nodeKey) = await GetExistingKeysAsync(response.FileRevisionId.LinkId).ConfigureAwait(false);
-        }
-
-        var contentEncrypter = _cryptographyService.CreateFileBlockEncrypter(sessionKey, nodeKey.ToPublic(), signatureAddress);
-
-        var blockVerifier = await GetBlockVerifierAsync(response.FileRevisionId.LinkId, response.FileRevisionId.Value, nodeKey, cancellationToken)
-            .ConfigureAwait(false);
-
-        var fileIdentity = new FileIdentity(_volumeId, _shareId, response.FileRevisionId.LinkId, response.FileRevisionId.Value);
-
-        var stream = new RemoteFileWriteStream(
-            _fileApiClient,
-            _httpClientFactory,
-            _cryptographyService,
-            _bufferPool,
-            fileIdentity,
-            signatureAddress,
-            contentEncrypter,
-            thumbnailProvider,
-            blockVerifier,
-            _reportBlockVerificationOrDecryptionFailure,
-            progressCallback);
-
-        var extendedAttributesBuilder = new ExtendedAttributesBuilder(
-            _cryptographyService,
-            fileMetadataProvider,
-            _loggerFactory.CreateLogger<ExtendedAttributesBuilder>())
-        {
-            NodeKey = nodeKey.ToPublic(),
-            LastWriteTime = info.LastWriteTimeUtc,
-            Size = info.Size,
-            SignatureAddress = signatureAddress,
-        };
-
-        IRevisionSealer revisionSealer;
-
-        var nodeInfoWithIds = info.WithId(response.FileRevisionId.LinkId).WithRevisionId(response.FileRevisionId.Value);
-
-        var checksumVerificationEnabled = await _featureFlagProvider.UploadChecksumVerificationIsEnabledAsync(cancellationToken).ConfigureAwait(false);
-
-        if (_isPhotoClient)
-        {
-            revisionSealer = _revisionSealerFactory.CreatePhotoSealer(
-                new RevisionSealerParameters(_shareId, response.FileRevisionId.LinkId, response.FileRevisionId.Value, info.ParentId),
-                contentEncrypter,
-                signatureAddress,
-                extendedAttributesBuilder,
-                fileMetadataProvider);
-
-            return new RemotePhotoRevisionCreationProcess(
-                nodeInfoWithIds,
-                checksumVerificationEnabled,
-                stream,
-                stream.UploadedBlocks,
-                stream.BlockSize,
-                fileMetadataProvider.CreationTimeUtc,
-                fileMetadataProvider.LastWriteTimeUtc,
-                revisionSealer,
-                _loggerFactory.CreateLogger<RemotePhotoRevisionCreationProcess>());
-        }
-
-        revisionSealer = _revisionSealerFactory.CreateRegularSealer(
-                new RevisionSealerParameters(_shareId, response.FileRevisionId.LinkId, response.FileRevisionId.Value, info.ParentId),
-                contentEncrypter,
-                signatureAddress,
-                extendedAttributesBuilder);
-
-        return new RemoteRevisionCreationProcess(
-            nodeInfoWithIds,
-            checksumVerificationEnabled,
-            stream,
-            stream.UploadedBlocks,
-            stream.BlockSize,
-            revisionSealer);
-
-        async Task<(PgpSessionKey ContentSessionKey, PgpPrivateKey NodeKey)> GetExistingKeysAsync(string linkId)
-        {
-            var existingNode = await GetRemoteNodeAsync(linkId, draftAllowed: true, cancellationToken).ConfigureAwait(false);
-
-            if (existingNode is not RemoteFile existingFile)
-            {
-                throw new FileSystemClientException<string>($"Could not get session key for existing file with ID: {linkId}");
-            }
-
-            return (existingFile.ContentSessionKey, existingNode.PrivateKey);
-        }
+        throw new NotSupportedException();
     }
 
-    public async Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<string> info, CancellationToken cancellationToken)
+    public Task<ISourceRevision> OpenFileForReadingAsync(NodeInfo<string> info, CancellationToken cancellationToken)
     {
-        EnsureId(info.Id);
-
-        cancellationToken.ThrowIfCancellationRequested();
-
-        var remoteFile = ToRemoteFile(await GetRemoteNodeAsync(info.Id, cancellationToken).ConfigureAwait(false));
-
-        CheckMetadata(remoteFile, info);
-        CheckLink(remoteFile, info);
-
-        var stream = new SafeRemoteFileStream(
-            new RemoteFileReadStream(
-                _config,
-                _fileApiClient,
-                _volumeApiClient,
-                _httpClientFactory,
-                _cryptographyService,
-                _revisionManifestCreator,
-                _bufferPool,
-                _volumeId,
-                _shareId,
-                remoteFile,
-                _loggerFactory.CreateLogger<RemoteFileReadStream>(),
-                _reportBlockVerificationOrDecryptionFailure),
-            info.Id);
-
-        return new RemoteFileRevision(
-            stream,
-            remoteFile.CreationTime,
-            remoteFile.ModificationTime,
-            remoteFile.ExtendedAttributes,
-            remoteFile.ActiveRevision?.ChecksumVerified);
+        throw new NotSupportedException();
     }
 
-    public async Task<IDestinationRevision<string>> CreateRevisionAsync(
+    public Task<IDestinationRevision<string>> CreateRevisionAsync(
         NodeInfo<string> info,
         long size,
         DateTime lastWriteTime,
@@ -372,78 +192,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         Action<Progress>? progressCallback,
         CancellationToken cancellationToken)
     {
-        EnsureId(info.Id);
-
-        cancellationToken.ThrowIfCancellationRequested();
-
-        var share = await GetShareAsync(cancellationToken).ConfigureAwait(false);
-
-        var remoteFile = ToRemoteFile(await GetRemoteNodeAsync(info.Id, cancellationToken).ConfigureAwait(false));
-        CheckMetadata(remoteFile, info);
-        CheckLink(remoteFile, info);
-
-        var clientId = _clientInstanceIdentityProvider.GetClientInstanceId();
-        var revisionId = await CreateRevisionAsync(info.Id, remoteFile.ActiveRevision?.Id, clientId, cancellationToken).ConfigureAwait(false);
-
-        var nodeKey = remoteFile.PrivateKey;
-
-        var (contentEncrypter, signatureAddress) = await _cryptographyService.CreateFileBlockEncrypterAsync(
-            contentSessionKey: remoteFile.ContentSessionKey,
-            signaturePublicKey: nodeKey.ToPublic(),
-            share.RelevantMembershipAddressId,
-            cancellationToken).ConfigureAwait(false);
-
-        var blockVerifier = await GetBlockVerifierAsync(remoteFile.Id, revisionId, nodeKey, cancellationToken)
-            .ConfigureAwait(false);
-
-        var fileIdentity = new FileIdentity(_volumeId, _shareId, info.Id, revisionId);
-
-        var stream = new RemoteFileWriteStream(
-            _fileApiClient,
-            _httpClientFactory,
-            _cryptographyService,
-            _bufferPool,
-            fileIdentity,
-            signatureAddress,
-            contentEncrypter,
-            thumbnailProvider,
-            blockVerifier,
-            _reportBlockVerificationOrDecryptionFailure,
-            progressCallback);
-
-        var extendedAttributesBuilder = new ExtendedAttributesBuilder(
-            _cryptographyService,
-            fileMetadataProvider,
-            _loggerFactory.CreateLogger<ExtendedAttributesBuilder>())
-        {
-            NodeKey = nodeKey.ToPublic(),
-            LastWriteTime = lastWriteTime,
-            Size = size,
-            SignatureAddress = signatureAddress,
-        };
-
-        // Photos do not support revisions
-        var revisionSealer = _revisionSealerFactory.CreateRegularSealer(
-            new RevisionSealerParameters(_shareId, info.Id, revisionId),
-            contentEncrypter,
-            signatureAddress,
-            extendedAttributesBuilder);
-
-        var nodeInfoWithIds = info.Copy()
-            .WithRevisionId(revisionId)
-            .WithParentId(_linkId is null ? remoteFile.ParentId : _virtualParentId)
-            .WithSize(size)
-            .WithLastWriteTimeUtc(lastWriteTime);
-
-        var checksumVerificationEnabled = await _featureFlagProvider.UploadChecksumVerificationIsEnabledAsync(cancellationToken).ConfigureAwait(false);
-
-        return new RemoteRevisionCreationProcess(
-            nodeInfoWithIds,
-            checksumVerificationEnabled,
-            stream,
-            stream.UploadedBlocks,
-            stream.BlockSize,
-            revisionSealer);
+        throw new NotSupportedException();
     }
 
     public async Task MoveAsync(IReadOnlyList<NodeInfo<string>> sourceNodes, NodeInfo<string> destinationInfo, CancellationToken cancellationToken)
@@ -716,36 +465,6 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         return Task.CompletedTask;
     }
 
-    private static bool TryGetConflictingRevision<TResponse>(
-        ApiException<TResponse> apiException,
-        string clientId,
-        [MaybeNullWhen(false)] out string linkId,
-        [MaybeNullWhen(false)] out string draftRevisionId)
-        where TResponse : IRevisionCreationConflictResponse
-    {
-        if (apiException is not { ResponseCode: ResponseCode.AlreadyExists, Content: not null })
-        {
-            linkId = null;
-            draftRevisionId = null;
-            return false;
-        }
-
-        var response = apiException.Content;
-
-        if (response is not { Code: ResponseCode.AlreadyExists, Conflict: { } }
-            || response.Conflict.ClientId != clientId
-            || string.IsNullOrEmpty(response.Conflict?.DraftRevisionId))
-        {
-            linkId = null;
-            draftRevisionId = null;
-            return false;
-        }
-
-        linkId = response.Conflict.LinkId;
-        draftRevisionId = response.Conflict.DraftRevisionId;
-        return true;
-    }
-
     private async Task DeleteAsync(RemoteNode remoteNode, DeleteAsyncDelegate deleteFunction, CancellationToken cancellationToken)
     {
         // A volume root folder has no parent folder
@@ -837,63 +556,6 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         {
             /* If something goes wrong, we assume there is a problem with the parent folder */
 
-            throw mappedException;
-        }
-    }
-
-    private async Task<(FileCreationResponse Response, bool FileDraftExists)> CreateFileAsync(
-        FileCreationParameters parameters,
-        CancellationToken cancellationToken)
-    {
-        try
-        {
-            try
-            {
-                var result = await _fileApiClient.CreateFileAsync(_shareId, parameters, cancellationToken).ThrowOnFailure().ConfigureAwait(false);
-                return (result, false);
-            }
-            catch (ApiException<FileCreationResponse> ex) when (TryGetConflictingRevision(ex, parameters.ClientId, out var linkId, out var draftRevisionId))
-            {
-                var result = new FileCreationResponse
-                {
-                    FileRevisionId = new FileRevisionId
-                    {
-                        LinkId = linkId,
-                        Value = draftRevisionId,
-                    },
-                };
-                return (result, true);
-            }
-        }
-        catch (Exception ex) when (ExceptionMapping.TryMapException(ex, id: parameters.ParentLinkId, includeObjectId: true, out var mappedException))
-        {
-            /* If something goes wrong, we assume there is a problem with the parent folder */
-
-            throw mappedException;
-        }
-    }
-
-    private async Task<string> CreateRevisionAsync(string linkId, string? knownCurrentRevisionId, string clientId, CancellationToken cancellationToken)
-    {
-        try
-        {
-            try
-            {
-                var parameters = new FileRevisionCreationParameters
-                {
-                    ClientId = _clientInstanceIdentityProvider.GetClientInstanceId(),
-                    CurrentRevisionId = knownCurrentRevisionId,
-                };
-                var result = await _fileApiClient.CreateRevisionAsync(_shareId, linkId, parameters, cancellationToken).ThrowOnFailure().ConfigureAwait(false);
-                return result.RevisionId.Value;
-            }
-            catch (ApiException<RevisionCreationResponse> ex) when (TryGetConflictingRevision(ex, clientId, out _, out var draftRevisionId))
-            {
-                return draftRevisionId;
-            }
-        }
-        catch (Exception ex) when (ExceptionMapping.TryMapException(ex, linkId, includeObjectId: true, out var mappedException))
-        {
             throw mappedException;
         }
     }
@@ -1010,20 +672,6 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
         try
         {
             await _linkApiClient.RenameLinkAsync(_shareId, linkId, parameters, cancellationToken).ThrowOnFailure().ConfigureAwait(false);
-        }
-        catch (Exception ex) when (ExceptionMapping.TryMapException(ex, linkId, includeObjectId: true, out var mappedException))
-        {
-            throw mappedException;
-        }
-    }
-
-    private async Task<IBlockVerifier> GetBlockVerifierAsync(string linkId, string revisionId, PgpPrivateKey nodeKey, CancellationToken cancellationToken)
-    {
-        try
-        {
-            return await _blockVerifierFactory.CreateAsync(_shareId, linkId, revisionId, nodeKey, cancellationToken)
-                .WithApiFailureMapping()
-                .ConfigureAwait(false);
         }
         catch (Exception ex) when (ExceptionMapping.TryMapException(ex, linkId, includeObjectId: true, out var mappedException))
         {

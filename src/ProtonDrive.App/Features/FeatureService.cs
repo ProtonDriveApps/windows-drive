@@ -106,17 +106,6 @@ public sealed class FeatureService : IFeatureFlagProvider, IStartableService, IA
             yield return (Feature.DriveWindowsOffers, IsEnabled: localFeatureFlags.OffersEnabled.Value);
         }
 
-        if (localFeatureFlags.DriveSdkEnabled.HasValue)
-        {
-            yield return (Feature.DriveWindowsSdkDownloadMain, IsEnabled: localFeatureFlags.DriveSdkEnabled.Value);
-            yield return (Feature.DriveWindowsSdkUploadMain, IsEnabled: localFeatureFlags.DriveSdkEnabled.Value);
-        }
-
-        if (localFeatureFlags.DrivePhotosSdkEnabled.HasValue)
-        {
-            yield return (Feature.DriveWindowsSdkUploadPhoto, IsEnabled: localFeatureFlags.DrivePhotosSdkEnabled.Value);
-        }
-
         if (localFeatureFlags.DriveCryptoEncryptBlocksWithPgpAeadEnabled.HasValue)
         {
             yield return (Feature.DriveCryptoEncryptBlocksWithPgpAead, IsEnabled: localFeatureFlags.DriveCryptoEncryptBlocksWithPgpAeadEnabled.Value);

@@ -10,7 +10,6 @@ using ProtonDrive.Client.Albums;
 using ProtonDrive.Client.Authentication;
 using ProtonDrive.Client.Authentication.Sessions;
 using ProtonDrive.Client.Authentication.Srp;
-using ProtonDrive.Client.BlockVerification;
 using ProtonDrive.Client.BugReport;
 using ProtonDrive.Client.Contacts;
 using ProtonDrive.Client.Core.Events;
@@ -26,8 +25,6 @@ using ProtonDrive.Client.Instrumentation.Observability.Integrity;
 using ProtonDrive.Client.Instrumentation.Observability.Upload;
 using ProtonDrive.Client.Instrumentation.Telemetry;
 using ProtonDrive.Client.MediaTypes;
-using ProtonDrive.Client.Notifications;
-using ProtonDrive.Client.Notifications.Contracts;
 using ProtonDrive.Client.Offline;
 using ProtonDrive.Client.Photos;
 using ProtonDrive.Client.RemoteNodes;
@@ -41,7 +38,6 @@ using ProtonDrive.Client.Shares.SharedWithMe;
 using ProtonDrive.Client.TlsPinning.Reporting;
 using ProtonDrive.Client.Volumes;
 using ProtonDrive.Client.Volumes.Events;
-using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Localization;
 using ProtonDrive.Shared.Metrics;
 using ProtonDrive.Shared.Net.Http.TlsPinning;
@@ -107,10 +103,7 @@ public static class ApiClientConfigurator
         services.AddSingleton<IRemoteFileSystemClientFactory, RemoteFileSystemClientFactory>();
         services.AddSingleton<IRemoteEventLogClientFactory, RemoteEventLogClientFactory>();
 
-        services.AddSingleton<IRevisionManifestCreator, RevisionManifestCreator>();
         services.AddSingleton<IExtendedAttributesReader, ExtendedAttributesReader>();
-        services.AddSingleton<IRevisionSealerFactory, RevisionSealerFactory>();
-        services.AddBlockVerification(DriveHttpClientName + RefitHttpClientNameSuffix, DefaultRefitSettings);
 
         return services;
     }
@@ -280,18 +273,6 @@ public static class ApiClientConfigurator
         services.AddSingleton<IVolumeEventClient>(provider => provider.GetRequiredService<VolumeEventClient>());
         services.AddSingleton<ShareEventClient>();
         services.AddSingleton<IShareEventClient>(provider => provider.GetRequiredService<ShareEventClient>());
-
-        services.AddSingleton(
-            provider =>
-            {
-                var appConfig = provider.GetRequiredService<AppConfig>();
-                var filePath = Path.Combine(appConfig.AppFolderPath, "Resources\\Notifications", "Notifications.json");
-
-                return provider.GetRequiredService<IRepositoryFactory>()
-                    .GetCachingCollectionRepository<Notification>(filePath);
-            });
-
-        services.AddSingleton<INotificationClient, NotificationClient>();
 
         return services;
 

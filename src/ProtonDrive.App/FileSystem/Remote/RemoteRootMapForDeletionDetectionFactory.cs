@@ -1,12 +1,9 @@
-﻿using ProtonDrive.App.Devices;
-using ProtonDrive.App.Settings;
+﻿using ProtonDrive.App.Settings;
 
 namespace ProtonDrive.App.FileSystem.Remote;
 
-internal sealed class RemoteRootMapForDeletionDetectionFactory : IDevicesAware
+internal sealed class RemoteRootMapForDeletionDetectionFactory
 {
-    private Device? _hostDevice;
-
     public (int VolumeId, IReadOnlyDictionary<string, IReadOnlyCollection<int>> NodeIdToRootMap) Create(
         IReadOnlyCollection<RemoteToLocalMapping> mappings)
     {
@@ -18,35 +15,6 @@ internal sealed class RemoteRootMapForDeletionDetectionFactory : IDevicesAware
             .GroupBy(x => x.RootNodeId, x => x.RooId)
             .ToDictionary(g => g.Key, g => (IReadOnlyCollection<int>)[.. g]);
 
-        var hostDevice = _hostDevice;
-
-        if (hostDevice != null && internalVolumeId != 0)
-        {
-            var rootIds = mappings
-                .Where(m => m is { HasSetupSucceeded: true, Type: MappingType.HostDeviceFolder })
-                .Select(m => m.Id)
-                .ToList();
-
-            // Monitor deletion of the whole host device
-            nodeIdToRootMap.Add(hostDevice.LinkId, rootIds);
-        }
-
         return (internalVolumeId, nodeIdToRootMap);
-    }
-
-    void IDevicesAware.OnDeviceChanged(DeviceChangeType changeType, Device device)
-    {
-        if (device.Type is not DeviceType.Host)
-        {
-            return;
-        }
-
-        _hostDevice = changeType switch
-        {
-            DeviceChangeType.Added => device,
-            DeviceChangeType.Updated => device,
-            DeviceChangeType.Removed => null,
-            _ => throw new ArgumentOutOfRangeException(nameof(changeType), changeType, null),
-        };
     }
 }

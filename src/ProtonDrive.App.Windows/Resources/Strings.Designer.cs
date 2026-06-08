@@ -1061,7 +1061,16 @@ namespace ProtonDrive.App.Windows.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updates available.
+        ///   Looks up a localized string similar to Update required.
+        /// </summary>
+        internal static string Main_About_AppUpdateStatus_Value_UpdateRequired {
+            get {
+                return ResourceManager.GetString("Main_About_AppUpdateStatus_Value_UpdateRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update available.
         /// </summary>
         internal static string Main_About_AppUpdateStatus_Value_UpdatesAvailable {
             get {

@@ -3,12 +3,12 @@ using System.Windows.Input;
 using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.App.Windows.SystemIntegration;
 using ProtonDrive.App.Windows.Toolkit.Converters;
 using ProtonDrive.Shared.IO;
 using ProtonDrive.Sync.Shared;
 using ProtonDrive.Sync.Shared.FileSystem;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 using ProtonDrive.Sync.Shared.SyncActivity;
 using ProtonDrive.Sync.Shared.Trees.FileSystem;
 

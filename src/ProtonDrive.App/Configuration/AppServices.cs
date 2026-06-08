@@ -14,7 +14,6 @@ using ProtonDrive.App.Drive.Services.SharedWithMe;
 using ProtonDrive.App.EarlyAccess;
 using ProtonDrive.App.Features;
 using ProtonDrive.App.FileSystem.Local;
-using ProtonDrive.App.FileSystem.Metadata.GoogleTakeout;
 using ProtonDrive.App.FileSystem.Remote;
 using ProtonDrive.App.Health;
 using ProtonDrive.App.Instrumentation.Observability;
@@ -34,16 +33,17 @@ using ProtonDrive.App.Mapping.Setup.SharedWithMe.SharedWithMeItem;
 using ProtonDrive.App.Mapping.Setup.SharedWithMe.SharedWithMeRootFolder;
 using ProtonDrive.App.Mapping.SyncFolders;
 using ProtonDrive.App.Mapping.Teardown;
+using ProtonDrive.App.Notifications;
 using ProtonDrive.App.Notifications.Offers;
 using ProtonDrive.App.Onboarding;
 using ProtonDrive.App.Photos;
 using ProtonDrive.App.Photos.Import;
+using ProtonDrive.App.Photos.Volume;
 using ProtonDrive.App.Reporting;
 using ProtonDrive.App.Services;
 using ProtonDrive.App.Settings;
 using ProtonDrive.App.Settings.Remote;
 using ProtonDrive.App.Sync;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.App.Update;
 using ProtonDrive.App.Volumes;
 using ProtonDrive.Client.Configuration;
@@ -61,7 +61,11 @@ using ProtonDrive.Shared.Offline;
 using ProtonDrive.Shared.Reporting;
 using ProtonDrive.Shared.Repository;
 using ProtonDrive.Shared.Telemetry;
+using ProtonDrive.Sync.Shared.Diagnostics.Metrics.Thumbnails;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
+using ProtonDrive.Sync.Shared.FileSystem.Metadata.GoogleTakeout;
 using ProtonDrive.Update.Config;
+using ClientNotification = ProtonDrive.App.Notifications.Contracts.Notification;
 
 namespace ProtonDrive.App.Configuration;
 
@@ -248,6 +252,8 @@ public static class AppServices
                 .AddSingleton<IStartableService>(provider => provider.GetRequiredService<DeviceService>())
                 .AddSingleton<IStoppableService>(provider => provider.GetRequiredService<DeviceService>())
                 .AddSingleton<IMainVolumeStateAware>(provider => provider.GetRequiredService<DeviceService>())
+                .AddSingleton<IRemoteDeviceEventsAware>(provider => provider.GetRequiredService<DeviceService>())
+                .AddSingleton<IFeatureFlagsAware>(provider => provider.GetRequiredService<DeviceService>())
 
                 .AddSingleton<PhotosFeatureService>()
                 .AddSingleton<IStartableService>(provider => provider.GetRequiredService<PhotosFeatureService>())
@@ -416,7 +422,6 @@ public static class AppServices
                 .AddSingleton<FileConsistencyGuardApplicabilityVerifier>()
 
                 .AddSingleton<RemoteRootMapForDeletionDetectionFactory>()
-                .AddSingleton<IDevicesAware>(provider => provider.GetRequiredService<RemoteRootMapForDeletionDetectionFactory>())
 
                 .AddSingleton<IBugReportService, BugReportService>()
 
@@ -452,22 +457,6 @@ public static class AppServices
                 .AddSingleton<ThumbnailGenerationReportingService>()
                 .AddSingleton<IRemoteSettingsAware>(provider => provider.GetRequiredService<ThumbnailGenerationReportingService>())
 
-                .AddSingleton<AttemptRetryMonitors>()
-
-                .AddSingleton<LegacyUploadSuccessMeter>()
-                .AddSingleton<ISyncActivityAware>(provider => provider.GetRequiredService<LegacyUploadSuccessMeter>())
-                .AddSingleton<IMappingsAware>(provider => provider.GetRequiredService<LegacyUploadSuccessMeter>())
-                .AddSingleton<IFeatureFlagsAware>(provider => provider.GetRequiredService<LegacyUploadSuccessMeter>())
-
-                .AddSingleton<LegacyPhotoUploadSuccessMeter>()
-                .AddSingleton<IPhotoImportActivityAware>(provider => provider.GetRequiredService<LegacyPhotoUploadSuccessMeter>())
-                .AddSingleton<IFeatureFlagsAware>(provider => provider.GetRequiredService<LegacyPhotoUploadSuccessMeter>())
-
-                .AddSingleton<LegacyDownloadSuccessMeter>()
-                .AddSingleton<ISyncActivityAware>(provider => provider.GetRequiredService<LegacyDownloadSuccessMeter>())
-                .AddSingleton<IMappingsAware>(provider => provider.GetRequiredService<LegacyDownloadSuccessMeter>())
-                .AddSingleton<IFeatureFlagsAware>(provider => provider.GetRequiredService<LegacyDownloadSuccessMeter>())
-
                 .AddSingleton<FileIntegrityStatistics>()
                 .AddSingleton<IStartableService>(provider => provider.GetRequiredService<FileIntegrityStatistics>())
 
@@ -476,9 +465,7 @@ public static class AppServices
                 .AddSingleton<TransferPerformanceMeter>()
                 .AddSingleton<ISyncActivityAware>(provider => provider.GetRequiredService<TransferPerformanceMeter>())
                 .AddSingleton<IAccountSwitchingAware>(provider => provider.GetRequiredService<TransferPerformanceMeter>())
-                .AddSingleton<IFeatureFlagsAware>(provider => provider.GetRequiredService<TransferPerformanceMeter>())
 
-                .AddSingleton<GenericLegacyFileTransferMetricsFactory>()
                 .AddSingleton<GenericTransferPerformanceMetricsFactory>()
 
                 .AddSingleton<ObservabilityService>()
@@ -540,6 +527,9 @@ public static class AppServices
 
                 .AddSingleton<DocumentOpener>()
 
+                .AddSingleton<INotificationClient, NotificationClient>()
+                .AddNotificationResources()
+
                 .AddSingleton<OfferService>()
                 .AddSingleton<IStoppableService>(provider => provider.GetRequiredService<OfferService>())
                 .AddSingleton<IAccountStateAware>(provider => provider.GetRequiredService<OfferService>())
@@ -556,6 +546,21 @@ public static class AppServices
         provider.InitializeApiClients();
 
         provider.GetRequiredService<UserStateChangeHandler>();
+    }
+
+    private static IServiceCollection AddNotificationResources(this IServiceCollection services)
+    {
+        services.AddSingleton(
+            provider =>
+            {
+                var appConfig = provider.GetRequiredService<AppConfig>();
+                var filePath = Path.Combine(appConfig.AppFolderPath, "Resources\\Notifications", "Notifications.json");
+
+                return provider.GetRequiredService<IRepositoryFactory>()
+                    .GetCachingCollectionRepository<ClientNotification>(filePath);
+            });
+
+        return services;
     }
 
     private static IServiceCollection AddAppUpdateConfig(this IServiceCollection services)

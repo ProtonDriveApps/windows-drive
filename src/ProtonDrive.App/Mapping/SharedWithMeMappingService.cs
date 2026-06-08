@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Services;
 using ProtonDrive.App.Settings;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.Client.Contracts;
 using ProtonDrive.Shared;
 using ProtonDrive.Shared.Logging;
 using ProtonDrive.Shared.Threading;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 using SharedWithMeItem = ProtonDrive.Client.Shares.SharedWithMe.SharedWithMeItem;
 
 namespace ProtonDrive.App.Mapping;

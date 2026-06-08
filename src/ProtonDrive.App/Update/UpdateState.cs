@@ -2,14 +2,9 @@
 
 namespace ProtonDrive.App.Update;
 
-public sealed class UpdateState : IAppUpdateState
+public sealed class UpdateState(IAppUpdateState state) : IAppUpdateState
 {
-    private readonly IAppUpdateState _state;
-
-    public UpdateState(IAppUpdateState state)
-    {
-        _state = state;
-    }
+    private readonly IAppUpdateState _state = state;
 
     public bool UpdateRequired { get; init; }
 

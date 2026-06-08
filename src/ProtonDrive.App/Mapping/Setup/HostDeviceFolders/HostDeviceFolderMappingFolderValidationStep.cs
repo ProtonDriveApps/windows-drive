@@ -75,14 +75,13 @@ internal sealed class HostDeviceFolderMappingFolderValidationStep
 
         async Task<MappingErrorCode?> UnsafeValidateRemoteFolder()
         {
-            var (hostDevice, errorResponseCode) = await _deviceService.SetUpHostDeviceAsync(cancellationToken).ConfigureAwait(false);
+            var (hostDevice, errorResponseCode) = await _deviceService.GetHostDeviceAsync(cancellationToken).ConfigureAwait(false);
 
             if (hostDevice is null)
             {
-                _logger.LogInformation("Setting up host device failed");
-
                 return errorResponseCode switch
                 {
+                    ResponseCode.DoesNotExist => MappingErrorCode.DriveHostDeviceDiverged,
                     ResponseCode.InsufficientDeviceQuota => MappingErrorCode.InsufficientDeviceQuota,
                     _ => MappingErrorCode.DriveAccessFailed,
                 };

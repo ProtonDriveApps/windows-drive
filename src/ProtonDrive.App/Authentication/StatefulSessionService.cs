@@ -511,11 +511,11 @@ public class StatefulSessionService
         }
         else if (state.Status is SessionStatus.Started && state.SigningInStatus is not SigningInStatus.None)
         {
-            _logger.LogInformation("Session state changed to {SessionStatus}/{AuthenticationStatus}, user ID={UserId}", state.Status, state.SigningInStatus, state.UserId);
+            _logger.LogInformation("Session state changed to {SessionStatus}/{AuthenticationStatus}, user with ID \"{UserId}\"", state.Status, state.SigningInStatus, state.UserId);
         }
         else if (!string.IsNullOrEmpty(state.UserId))
         {
-            _logger.LogInformation("Session state changed to {SessionStatus}, user ID={UserId}", state.Status, state.UserId);
+            _logger.LogInformation("Session state changed to {SessionStatus}, user with ID \"{UserId}\"", state.Status, state.UserId);
         }
         else
         {

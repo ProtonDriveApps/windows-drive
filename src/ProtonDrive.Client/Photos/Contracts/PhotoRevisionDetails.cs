@@ -1,5 +1,5 @@
 ﻿using System.Text.Json.Serialization;
-using ProtonDrive.Sync.Shared.FileSystem;
+using ProtonDrive.Sync.Shared.FileSystem.Photos;
 
 namespace ProtonDrive.Client.Photos.Contracts;
 

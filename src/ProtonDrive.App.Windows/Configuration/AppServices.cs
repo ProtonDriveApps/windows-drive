@@ -7,8 +7,6 @@ using ProtonDrive.App.Authentication;
 using ProtonDrive.App.Configuration;
 using ProtonDrive.App.Devices;
 using ProtonDrive.App.EarlyAccess;
-using ProtonDrive.App.FileSystem.Metadata.GoogleTakeout;
-using ProtonDrive.App.Instrumentation.Telemetry.ThumbnailGeneration;
 using ProtonDrive.App.InterProcessCommunication;
 using ProtonDrive.App.Localization;
 using ProtonDrive.App.Mapping;
@@ -18,7 +16,6 @@ using ProtonDrive.App.Notifications.Offers;
 using ProtonDrive.App.Onboarding;
 using ProtonDrive.App.Photos;
 using ProtonDrive.App.Photos.Import;
-using ProtonDrive.App.Photos.LivePhoto;
 using ProtonDrive.App.Services;
 using ProtonDrive.App.Settings;
 using ProtonDrive.App.Sync;
@@ -53,12 +50,8 @@ using ProtonDrive.Shared.Localization;
 using ProtonDrive.Shared.Offline;
 using ProtonDrive.Shared.Repository;
 using ProtonDrive.Shared.Security.Cryptography;
-using ProtonDrive.Shared.Telemetry;
 using ProtonDrive.Shared.Threading;
-using ProtonDrive.Sync.Shared.FileSystem;
-using ProtonDrive.Sync.Shared.FileSystem.Photos;
-using ProtonDrive.Sync.Windows.FileSystem.Client;
-using ProtonDrive.Sync.Windows.FileSystem.Photos;
+using ProtonDrive.Sync.Windows.Configuration;
 using ProtonDrive.Sync.Windows.Security.Cryptography;
 
 namespace ProtonDrive.App.Windows.Configuration;
@@ -93,20 +86,15 @@ internal static class AppServices
     {
         services
             .AddAppServices()
+            .AddWindowsSyncServices()
 
             .AddSingleton(new DispatcherScheduler(Dispatcher.CurrentDispatcher))
-            .AddSingleton<IHumanVerifier, HumanVerifier>()
             .AddKeyedSingleton<IScheduler>("Dispatcher", (sp, _) => sp.GetRequiredService<DispatcherScheduler>())
 
+            .AddSingleton<IHumanVerifier, HumanVerifier>()
             .AddSingleton<IFileSystemDisplayNameAndIconProvider, Win32FileSystemDisplayNameAndIconProvider>()
-            .AddSingleton<IFileSystemItemTypeProvider>(_ => new CachingFileSystemItemTypeProvider(new Win32FileSystemItemTypeProvider()))
             .AddSingleton<IOperatingSystemIntegrationService, OperatingSystemIntegrationService>()
-            .AddSingleton<ILocalVolumeInfoProvider, VolumeInfoProvider>()
-            .AddSingleton<ILocalFolderService, LocalFolderService>()
             .AddSingleton<IKnownFolders, KnownFolders>()
-            .AddSingleton<IReadOnlyFileAttributeRemover, ReadOnlyFileAttributeRemover>()
-            .AddSingleton<IPlaceholderToRegularItemConverter, PlaceholderToRegularItemConverter>()
-            .AddSingleton<INonSyncablePathProvider, NonSyncablePathProvider>()
             .AddSingleton<INotificationService, SystemToastNotificationService>()
             .AddSingleton<IDialogService, DialogService>()
             .AddSingleton<IUrlOpener, UrlOpener>()
@@ -114,25 +102,13 @@ internal static class AppServices
             .AddSingleton<IExternalHyperlinks, ExternalHyperlinks>()
             .AddSingleton<IClipboard, SystemClipboard>()
             .AddSingleton<IDataProtectionProvider, DataProtectionProvider>()
-            .AddSingleton<ISyncFolderStructureProtector>(provider =>
-                new SafeSyncFolderStructureProtectorDecorator(
-                    new LoggingSyncFolderStructureProtectorDecorator(
-                        provider.GetRequiredService<ILogger<LoggingSyncFolderStructureProtectorDecorator>>(),
-                        new NtfsPermissionsBasedSyncFolderStructureProtector(
-                            provider.GetRequiredService<ILogger<NtfsPermissionsBasedSyncFolderStructureProtector>>()))))
-            .AddSingleton<IShellSyncFolderRegistry, Win32ShellSyncFolderRegistry>()
+
             .AddSingleton<WinRegistryLanguageRepository>()
             .AddSingleton<IRepository<LanguageSettings>, WinRegistryLanguageRepository>()
 
             .AddSingleton<LanguageService>()
             .AddSingleton<ILanguageService>(provider => provider.GetRequiredService<LanguageService>())
             .AddSingleton<ILanguageProvider>(provider => provider.GetRequiredService<LanguageService>())
-
-            .AddSingleton<CloudFilterSyncRootRegistry>()
-            .AddSingleton<IOnDemandSyncRootRegistry>(provider => provider.GetRequiredService<CloudFilterSyncRootRegistry>())
-            .AddSingleton<ISessionStateAware>(provider => provider.GetRequiredService<CloudFilterSyncRootRegistry>())
-
-            .AddSingleton<IFolderAppearanceCustomizer, Win32FolderAppearanceCustomizer>()
 
             .AddSingleton<UpdateNotificationService>()
             .AddSingleton<IStartableService>(provider => provider.GetRequiredService<UpdateNotificationService>())
@@ -246,6 +222,7 @@ internal static class AppServices
             .AddSingleton<ISyncStateAware>(provider => provider.GetRequiredService<SyncStateViewModel>())
             .AddSingleton<ISyncActivityAware>(provider => provider.GetRequiredService<SyncStateViewModel>())
             .AddSingleton<ISyncStatisticsAware>(provider => provider.GetRequiredService<SyncStateViewModel>())
+
             .AddSingleton<SystemTrayViewModel>()
 
             .AddTransient<OfferViewModel>()
@@ -257,47 +234,6 @@ internal static class AppServices
                 provider.GetRequiredService<ILogger<NamedPipeBasedIpcServer>>()))
             .AddSingleton<IStartableService>(provider => provider.GetRequiredService<NamedPipeBasedIpcServer>())
             .AddSingleton<IStoppableService>(provider => provider.GetRequiredService<NamedPipeBasedIpcServer>())
-
-            .AddSingleton<ILivePhotoFileDetector, LivePhotoFileDetector>()
-            .AddSingleton<WinRtFileMetadataExtractor>()
-            .AddSingleton<QuickTimeFileMetadataExtractor>()
-            .AddSingleton<IFileMetadataGenerator>(provider =>
-                new TelemetryFileMetadataGeneratorDecorator(
-                    new LivePhotoMetadataExtractingDecorator(
-                        new GoogleTakeoutMetadataExtractingDecorator(
-                            new QuickTimeFileMetadataExtractingDecorator(
-                                provider.GetRequiredService<WinRtFileMetadataExtractor>(),
-                                provider.GetRequiredService<QuickTimeFileMetadataExtractor>()),
-                            provider.GetRequiredService<IGoogleTakeoutMetadataExtractor>()),
-                        provider.GetRequiredService<ILivePhotoFileDetector>()),
-                    provider.GetRequiredService<IErrorCounter>(),
-                    provider.GetRequiredService<ILogger<TelemetryFileMetadataGeneratorDecorator>>()))
-
-            .AddSingleton<Win32ThumbnailGenerator>()
-            .AddSingleton<SkiaThumbnailGenerator>()
-            .AddSingleton<IThumbnailGenerator>(provider =>
-                new LivePhotoThumbnailExtractingDecorator(
-                    provider.GetRequiredService<ILivePhotoFileDetector>(),
-                    new DispatchingThumbnailGenerator(
-                        [
-                            new TelemetryThumbnailGeneratorDecorator(
-                                provider.GetRequiredService<Win32ThumbnailGenerator>(),
-                                ThumbnailGenerationMethod.Win32,
-                                provider.GetRequiredService<IThumbnailGenerationMetricsCollector>(),
-                                provider.GetRequiredService<ILogger<TelemetryThumbnailGeneratorDecorator>>()),
-                            new TelemetryThumbnailGeneratorDecorator(
-                                provider.GetRequiredService<SkiaThumbnailGenerator>(),
-                                ThumbnailGenerationMethod.Skia,
-                                provider.GetRequiredService<IThumbnailGenerationMetricsCollector>(),
-                                provider.GetRequiredService<ILogger<TelemetryThumbnailGeneratorDecorator>>()),
-                        ],
-                        provider.GetRequiredService<ILogger<IThumbnailGenerator>>())))
-            .AddSingleton<IPhotoTagsGenerator, PhotoTagsGenerator>()
-
-            .AddSingleton<ILocalFileSystemClientFactory, LocalFileSystemClientFactory>()
-            .AddSingleton<ILocalEventLogClientFactory, LocalEventLogClientFactory>()
-
-            .AddSingleton<IFileSystemIdentityProvider<long>, FileSystemIdentityProvider>()
 
             .AddSingleton<IFido2Authenticator, Win32Fido2Authenticator>()
             ;

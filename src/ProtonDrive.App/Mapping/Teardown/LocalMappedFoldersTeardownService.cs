@@ -1,10 +1,11 @@
 ﻿using System.ComponentModel;
 using ProtonDrive.App.Configuration;
 using ProtonDrive.App.Settings;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.Client.Contracts;
 using ProtonDrive.Shared.Repository;
 using ProtonDrive.Shared.Text.Serialization;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
+using ProtonDrive.Sync.Shared.FileSystem.OnDemand;
 
 namespace ProtonDrive.App.Mapping.Teardown;
 

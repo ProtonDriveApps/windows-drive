@@ -3,7 +3,7 @@ using ProtonDrive.App.Volumes;
 using ProtonDrive.Client.FileUploading;
 using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Sync.Shared.FileSystem;
-using ProtonDrive.Sync.Shared.FileSystem.Photos;
+using ProtonDrive.Sync.Shared.FileSystem.Metadata.LivePhoto;
 
 namespace ProtonDrive.App.Photos.Import;
 
@@ -51,7 +51,6 @@ internal sealed class PhotoImportEngineFactory : IPhotoImportEngineFactory
         return new PhotoImportEngine(
             folder,
             photoVolume,
-            remoteFileSystemClient,
             _localFileSystemClientFactory,
             _photoFileImporterFactory,
             photoAlbumService,

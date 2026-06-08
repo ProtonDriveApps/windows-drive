@@ -5,12 +5,13 @@ using ProtonDrive.Client.Configuration;
 using ProtonDrive.Client.Contracts;
 using ProtonDrive.Client.Sdk;
 using ProtonDrive.Sync.Shared.FileSystem;
+using ProtonDrive.Sync.Shared.FileSystem.Photos;
 
 namespace ProtonDrive.Client;
 
 internal sealed class SdkRemoteFileRevision : ISourceRevision
 {
-    private static readonly Action<long, long> NullProgressCallback = (_, _) => { };
+    private static readonly Action<long, long?> NullProgressCallback = (_, _) => { };
 
     private readonly DriveApiConfig _apiConfig;
     private readonly FileDownloader _fileDownloader;

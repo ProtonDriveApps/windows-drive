@@ -490,6 +490,9 @@ Geri yüklemek ve bu hatayı gidermek için eşitlemeyi kapatıp yeniden açın.
   <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
     <value>Güncelleme denetlenemedi</value>
   </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Güncelleme gerekli</value>
+  </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
     <value>Güncelleme yayınlanmış</value>
   </data>
@@ -1424,7 +1427,7 @@ Dosyaların içeriği yalnızca istek yapıldığında indirilir.</value>
     <value>İçe aktarılamadı. Albüm bulunamadı.</value>
   </data>
   <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
-    <value>İçe aktarma başarısız oldu. Klasör mevcut değil.</value>
+    <value>İçe aktarılamadı. Klasör bulunamadı.</value>
   </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>İçe aktarılamadı. Olabilecek en fazla albüm sayısı sınırına ulaşıldı.</value>

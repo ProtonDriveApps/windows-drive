@@ -6,8 +6,8 @@ using ProtonDrive.Shared.Features;
 using ProtonDrive.Shared.IO;
 using ProtonDrive.Shared.Metrics;
 using ProtonDrive.Sync.Shared.FileSystem;
+using ProtonDrive.Sync.Shared.FileSystem.Photos;
 using ProtonDrive.Sync.Windows.FileSystem.Client.CloudFiles;
-using ProtonDrive.Sync.Windows.FileSystem.Photos;
 using static Vanara.PInvoke.CldApi;
 
 namespace ProtonDrive.Sync.Windows.FileSystem.Client;

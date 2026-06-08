@@ -7,12 +7,12 @@ using Microsoft.Extensions.DependencyInjection;
 using ProtonDrive.App.Mapping;
 using ProtonDrive.App.Mapping.SyncFolders;
 using ProtonDrive.App.Settings;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.App.Windows.Extensions;
 using ProtonDrive.App.Windows.Services;
 using ProtonDrive.App.Windows.SystemIntegration;
 using ProtonDrive.Shared.Features;
 using ProtonDrive.Shared.Threading;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 
 namespace ProtonDrive.App.Windows.Views.Main.MyComputer;
 

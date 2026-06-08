@@ -3,14 +3,14 @@ using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Devices;
 using ProtonDrive.App.Services;
 using ProtonDrive.App.Settings;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.Shared.Logging;
 using ProtonDrive.Shared.Threading;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 
 namespace ProtonDrive.App.Mapping;
 
 /// <summary>
-/// Creates and maintains foreign device mappings
+/// Creates and maintains foreign device mappings and removes orphaned host device folder mappings.
 /// </summary>
 internal sealed class DeviceMappingMaintenanceService : IStoppableService, IDeviceServiceStateAware, IDevicesAware, IMappingsAware
 {
@@ -232,6 +232,11 @@ internal sealed class DeviceMappingMaintenanceService : IStoppableService, IDevi
             numberOfDeletedMappings++;
         }
 
+        if (_deviceServiceStatus is DeviceServiceStatus.Succeeded)
+        {
+            DeleteOrphanedHostDeviceFolderMappings(activeMappings, mappings);
+        }
+
         try
         {
             _mappingsModificationIsInProgress = true;
@@ -247,6 +252,26 @@ internal sealed class DeviceMappingMaintenanceService : IStoppableService, IDevi
             "Finished maintaining foreign device mappings: {NumberOfAddedMapping} added, {NumberOfDeletedMappings} deleted",
             numberOfAddedMappings,
             numberOfDeletedMappings);
+    }
+
+    private void DeleteOrphanedHostDeviceFolderMappings(IReadOnlyCollection<RemoteToLocalMapping> activeMappings, IUpdatableMappings mappings)
+    {
+        var hostDevice = _devices.FirstOrDefault(d => d.Type is DeviceType.Host && !string.IsNullOrEmpty(d.Id));
+
+        var orphanedMappings = activeMappings
+            .Where(m => m.Type is MappingType.HostDeviceFolder
+                && !string.IsNullOrEmpty(m.Remote.ShareId)
+                && (hostDevice is null || hostDevice.ShareId != m.Remote.ShareId));
+
+        foreach (var mapping in orphanedMappings)
+        {
+            _logger.LogInformation(
+                "Deleting host device folder mapping {Id}: Host device with Share ID \"{ShareId}\" no longer exists on remote",
+                mapping.Id,
+                mapping.Remote.ShareId);
+
+            mappings.Delete(mapping);
+        }
     }
 
     private string GetUniqueName(string name, HashSet<string> namesInUse, string parentPath)

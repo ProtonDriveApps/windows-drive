@@ -34,6 +34,11 @@
         Color="Orange" />
 
     <SolidColorBrush
+        x:Key="LightBlueBrush"
+        po:Freeze="True"
+        Color="{StaticResource LightBlueColor}" />
+
+    <SolidColorBrush
         x:Key="NeutralBrush"
         po:Freeze="True"
         Color="Gray" />

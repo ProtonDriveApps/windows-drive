@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Settings;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.Shared.Telemetry;
+using ProtonDrive.Sync.Shared.FileSystem.OnDemand;
 
 namespace ProtonDrive.App.Mapping.Setup.HostDeviceFolders;
 

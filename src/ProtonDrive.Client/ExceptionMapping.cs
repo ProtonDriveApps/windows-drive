@@ -11,7 +11,6 @@ using Proton.Drive.Sdk.Nodes.Upload;
 using Proton.Drive.Sdk.Nodes.Upload.Verification;
 using Proton.Sdk;
 using ProtonDrive.Client.Cryptography;
-using ProtonDrive.Client.FileUploading;
 using ProtonDrive.Sync.Shared.FileSystem;
 
 namespace ProtonDrive.Client;
@@ -40,10 +39,9 @@ internal static class ExceptionMapping
             KeyPassphraseUnavailableException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
             IOException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
             AggregateException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
-            BlockVerificationFailedException => CreateFileSystemClientException(FileSystemErrorCode.IntegrityFailure),
 
             // Proton SDK exceptions
-            TooManyRequestsException ex => CreateFileSystemClientException(FileSystemErrorCode.RateLimited),
+            TooManyRequestsException => CreateFileSystemClientException(FileSystemErrorCode.RateLimited),
             ProtonApiException ex => CreateFileSystemClientException(ToErrorCode(ex.Code)),
 
             // Proton Drive SDK exceptions
@@ -55,8 +53,10 @@ internal static class ExceptionMapping
             NodeMetadataDecryptionException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
             FileContentsDecryptionException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
             NodeWithSameNameExistsException => CreateFileSystemClientException(FileSystemErrorCode.DuplicateName),
+            NodeNotFoundException => CreateFileSystemClientException(FileSystemErrorCode.ObjectNotFound),
             RevisionDraftConflictException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
             InvalidNodeTypeException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
+            ValidationException ex => CreateFileSystemClientException(ToErrorCode(ex.Code ?? Proton.Sdk.Api.ResponseCode.CustomCode)),
             ProtonDriveException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
 
             // Proton SDK and Proton Drive SDK lets some HTTP client exceptions to bubble up

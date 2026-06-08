@@ -6,7 +6,7 @@
         x:Key="NotificationBadgeTemplate"
         DataType="notification:NotificationBadge">
         <Image
-            AutomationProperties.AutomationId="UpdatesAvailableBadge"
+            AutomationProperties.AutomationId="UpdateAvailableBadge"
             AutomationProperties.HelpText="{Binding Description}"
             RenderTransformOrigin="0.5,0.5"
             ToolTip="{Binding Description}"

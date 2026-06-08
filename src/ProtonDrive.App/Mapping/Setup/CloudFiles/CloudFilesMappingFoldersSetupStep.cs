@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Drive.Services;
 using ProtonDrive.App.Settings;
-using ProtonDrive.App.SystemIntegration;
 using ProtonDrive.App.Volumes;
 using ProtonDrive.Client;
 using ProtonDrive.Client.Contracts;
 using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Extensions;
+using ProtonDrive.Sync.Shared.FileSystem.Integration;
 
 namespace ProtonDrive.App.Mapping.Setup.CloudFiles;
 

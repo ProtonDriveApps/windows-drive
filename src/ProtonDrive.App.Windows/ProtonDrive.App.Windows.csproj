@@ -20,33 +20,23 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\.locale-state.metadata" />
-    <None Remove="Views\SignIn\Banner.No2FA.DarkTheme.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>$(MSBuildProjectName).Tests</_Parameter1>
-    </AssemblyAttribute>
-    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
-      <_Parameter1>DynamicProxyGenAssembly2</_Parameter1>
-    </AssemblyAttribute>
-  </ItemGroup>
-
-  <ItemGroup>
     <FrameworkReference Include="Microsoft.WindowsDesktop.App.WindowsForms" />
     <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" />
     <PackageReference Include="Microsoft.Web.WebView2" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" />
     <PackageReference Include="morelinq" />
-    <PackageReference Include="SkiaSharp" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ProtonDrive.App\ProtonDrive.App.csproj" />
     <ProjectReference Include="..\ProtonDrive.Native.Windows\ProtonDrive.Native.Windows.csproj" />
     <ProjectReference Include="..\ProtonDrive.Sync.Windows\ProtonDrive.Sync.Windows.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -77,6 +67,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\.locale-state.metadata" />
+    <None Remove="Views\SignIn\Banner.No2FA.DarkTheme.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Resources\Strings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -93,6 +88,12 @@
     <None Include="Resources\Icons\Logo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <TargetPath>Logo.png</TargetPath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\Notifications\Notifications.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

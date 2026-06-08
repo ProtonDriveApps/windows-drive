@@ -4,26 +4,24 @@ using ProtonDrive.Client.Contracts;
 
 namespace ProtonDrive.App.Account;
 
-public sealed record UserState
+public sealed partial record UserState
 {
     private const string StartOrSpaceLookbehindPattern = @"(?<=^|\s)";
     private const string StartOrSpaceLookaheadPattern = @"(?=$|\s)";
     private const string NamePattern = @"[^.,/#!$@%^&*;:{}=\-_`~()\s][^\s]*";
     private const string MatchPattern = StartOrSpaceLookbehindPattern + NamePattern + StartOrSpaceLookaheadPattern;
 
-    private static readonly Regex NameRegex = new(MatchPattern, RegexOptions.IgnoreCase | RegexOptions.Compiled);
-
-    private string? _initials;
+    private static readonly Regex NameRegex = GetNameRegex();
 
     public string Id { get; init; } = string.Empty;
 
+    public string? Name { get; init; }
+
+    public string? DisplayName { get; init; }
+
+    public string? EmailAddress { get; init; }
+
     public UserType Type { get; init; }
-
-    public string Name { get; init; } = string.Empty;
-
-    public string EmailAddress { get; init; } = string.Empty;
-
-    public string DisplayName { get; init; } = string.Empty;
 
     public string? SubscriptionPlanCode { get; init; }
 
@@ -63,7 +61,7 @@ public sealed record UserState
 
     public string? Currency { get; init; }
 
-    public string Initials => _initials ??= GetInitials();
+    public string Initials => field ??= GetInitials();
 
     public UserQuotaStatus UserQuotaStatus => MaxSpace == 0
         ? UserQuotaStatus.Regular
@@ -81,7 +79,7 @@ public sealed record UserState
 
     private string GetInitials()
     {
-        var matches = NameRegex.Matches(DisplayName);
+        var matches = NameRegex.Matches(DisplayName ?? string.Empty);
 
         switch (matches.Count)
         {
@@ -103,4 +101,7 @@ public sealed record UserState
             return rune.ToString().ToUpper();
         }
     }
+
+    [GeneratedRegex(MatchPattern, RegexOptions.IgnoreCase)]
+    private static partial Regex GetNameRegex();
 }

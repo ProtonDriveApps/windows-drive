@@ -24,13 +24,6 @@ internal sealed class NotificationBadgeProvider
     private readonly NotificationBadge _exceededQuotaNotificationBadge;
     private readonly Dictionary<SyncFolderType, HashSet<string>> _failedSyncFoldersByType = [];
 
-    private NotificationBadge? _settingsNotificationBadge;
-    private NotificationBadge? _myComputerNotificationBadge;
-    private NotificationBadge? _photosNotificationBadge;
-    private NotificationBadge? _sharedWithMeNotificationBadge;
-    private NotificationBadge? _updateNotificationBadge;
-    private NotificationBadge? _quotaNotificationBadge;
-
     private UserState? _user;
     private bool _sharingFeatureIsDisabled;
 
@@ -79,38 +72,38 @@ internal sealed class NotificationBadgeProvider
 
     public NotificationBadge? MyComputerNotificationBadge
     {
-        get => _myComputerNotificationBadge;
-        private set => SetProperty(ref _myComputerNotificationBadge, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     public NotificationBadge? SharedWithMeNotificationBadge
     {
-        get => _sharedWithMeNotificationBadge;
-        private set => SetProperty(ref _sharedWithMeNotificationBadge, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     public NotificationBadge? PhotosNotificationBadge
     {
-        get => _photosNotificationBadge;
-        private set => SetProperty(ref _photosNotificationBadge, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     public NotificationBadge? SettingsNotificationBadge
     {
-        get => _settingsNotificationBadge;
-        private set => SetProperty(ref _settingsNotificationBadge, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     public NotificationBadge? UpdateNotificationBadge
     {
-        get => _updateNotificationBadge;
-        private set => SetProperty(ref _updateNotificationBadge, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     public NotificationBadge? QuotaNotificationBadge
     {
-        get => _quotaNotificationBadge;
-        private set => SetProperty(ref _quotaNotificationBadge, value);
+        get;
+        private set => SetProperty(ref field, value);
     }
 
     void IUserStateAware.OnUserStateChanged(UserState value)

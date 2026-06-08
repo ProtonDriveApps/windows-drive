@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Mapping.Setup.HostDeviceFolders;
 using ProtonDrive.App.Settings;
-using ProtonDrive.App.SystemIntegration;
-using ProtonDrive.Client;
 using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Sync.Shared.FileSystem;
+using ProtonDrive.Sync.Shared.FileSystem.OnDemand;
+using ProtonDrive.Sync.Shared.Shell;
 
 namespace ProtonDrive.App.Mapping.Teardown;
 
@@ -79,6 +79,8 @@ internal sealed class HostDeviceFolderMappingTeardownStep
         try
         {
             await fileSystemClient.DeleteAsync(folderInfo, cancellationToken).ConfigureAwait(false);
+
+            _logger.LogInformation("Moved to trash remote host device folder with ID={Id}", id);
         }
         catch (FileSystemClientException<string> ex) when (ex.ErrorCode == FileSystemErrorCode.ObjectNotFound)
         {
@@ -90,11 +92,7 @@ internal sealed class HostDeviceFolderMappingTeardownStep
             _logger.LogWarning(
                 "Moving to trash remote host device folder failed: {ErrorMessage}",
                 ex.CombinedMessage());
-
-            return;
         }
-
-        _logger.LogInformation("Moved to trash remote host device folder with ID={Id}", id);
     }
 
     private bool TryConvertToRegularFolder(RemoteToLocalMapping mapping)

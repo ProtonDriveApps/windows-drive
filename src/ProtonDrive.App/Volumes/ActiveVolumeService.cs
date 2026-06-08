@@ -33,7 +33,7 @@ internal sealed class ActiveVolumeService : IActiveVolumeService
     {
         var volume = await _volumeClient.CreateMainVolumeAsync(cancellationToken).ConfigureAwait(false);
 
-        _logger.LogInformation("Created {Type} volume with ID={VolumeId}", volume.Type, volume.Id);
+        _logger.LogInformation("Created {Type} volume with ID \"{VolumeId}\"", volume.Type, volume.Id);
 
         return GetVolumeInfo(volume);
     }
@@ -50,7 +50,7 @@ internal sealed class ActiveVolumeService : IActiveVolumeService
     {
         var volume = await _volumeClient.CreatePhotoVolumeAsync(cancellationToken).ConfigureAwait(false);
 
-        _logger.LogInformation("Created {Type} volume with ID={VolumeId}", volume.Type, volume.Id);
+        _logger.LogInformation("Created {Type} volume with ID \"{VolumeId}\"", volume.Type, volume.Id);
 
         return GetVolumeInfo(volume);
     }
@@ -92,7 +92,7 @@ internal sealed class ActiveVolumeService : IActiveVolumeService
             return null;
         }
 
-        _logger.LogInformation("The user has active {Type} volume with ID={VolumeId}", volume.Type, volume.Id);
+        _logger.LogInformation("The user has active {Type} volume with ID \"{VolumeId}\", root share with ID \"{ShareId}\"", volume.Type, volume.Id, volume.Share.Id);
 
         return GetVolumeInfo(volume);
     }

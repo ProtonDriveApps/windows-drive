@@ -18,14 +18,20 @@ public class FileRepository<T> : IRepository<T>, IThrowsExpectedExceptions
 
     public T? Get()
     {
-        if (!File.Exists(_fileName))
+        try
+        {
+            using var reader = new FileStream(_fileName, FileMode.Open, FileAccess.Read);
+
+            return _serializer.Deserialize<T>(reader);
+        }
+        catch (FileNotFoundException)
         {
             return default;
         }
-
-        using var reader = new FileStream(_fileName, FileMode.Open, FileAccess.Read);
-
-        return _serializer.Deserialize<T>(reader);
+        catch (DirectoryNotFoundException)
+        {
+            return default;
+        }
     }
 
     public void Set(T? value)
@@ -37,7 +43,6 @@ public class FileRepository<T> : IRepository<T>, IThrowsExpectedExceptions
 
     public bool IsExpectedException(Exception ex)
     {
-        return ex.IsFileAccessException() ||
-               ex.IsExpectedExceptionOf(_serializer);
+        return ex.IsExpectedExceptionOf(_serializer);
     }
 }

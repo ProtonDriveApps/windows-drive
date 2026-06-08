@@ -19,6 +19,7 @@ internal sealed class DownloadMetrics
         { DownloadError.IntegrityError, "integrity_error" },
         { DownloadError.RateLimited, "rate_limited" },
         { DownloadError.HttpClientSideError, "4xx" },
+        { DownloadError.ValidationError, "validation_error" },
         { DownloadError.Unknown, "unknown" },
     };
 
@@ -61,16 +62,22 @@ internal sealed class DownloadMetrics
             new KeyValuePair<string, object?>(SdkMetrics.VolumeTypeKeyName, MapVolumeType(downloadEvent.VolumeType)),
             new KeyValuePair<string, object?>(SdkMetrics.AttemptStatusKeyName, MapStatus(downloadEvent.Error)));
 
-        if (downloadEvent.Error is not null)
+        if (downloadEvent.Error is null)
         {
-            _failures.Add(
-                1,
-                new KeyValuePair<string, object?>(SdkMetrics.VolumeTypeKeyName, MapVolumeType(downloadEvent.VolumeType)),
-                new KeyValuePair<string, object?>(SdkMetrics.FailureTypeKeyName, MapErrorType(downloadEvent.Error.Value)));
-
-            _failuresFileSize.Record(downloadEvent.ApproximateClaimedFileSize);
-            _failuresTransferSize.Record(downloadEvent.ApproximateDownloadedSize);
+            return;
         }
+
+        _failures.Add(
+            1,
+            new KeyValuePair<string, object?>(SdkMetrics.VolumeTypeKeyName, MapVolumeType(downloadEvent.VolumeType)),
+            new KeyValuePair<string, object?>(SdkMetrics.FailureTypeKeyName, MapErrorType(downloadEvent.Error.Value)));
+
+        if (downloadEvent.ApproximateClaimedFileSize is not null)
+        {
+            _failuresFileSize.Record(downloadEvent.ApproximateClaimedFileSize.Value);
+        }
+
+        _failuresTransferSize.Record(downloadEvent.ApproximateDownloadedSize);
     }
 
     private static string MapVolumeType(VolumeType volumeType)

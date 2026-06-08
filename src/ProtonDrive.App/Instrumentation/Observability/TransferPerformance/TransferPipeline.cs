@@ -3,5 +3,4 @@
 internal enum TransferPipeline
 {
     Default,
-    Legacy,
 }
