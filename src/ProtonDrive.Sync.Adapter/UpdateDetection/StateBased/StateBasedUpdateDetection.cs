@@ -4,6 +4,7 @@ using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Adapter.Trees.Adapter;
 using ProtonDrive.Sync.Adapter.Trees.Dirty;
 using ProtonDrive.Sync.Adapter.UpdateDetection.StateBased.Enumeration;
+using ProtonDrive.Sync.Shared;
 using ProtonDrive.Sync.Shared.Collections.Generic;
 using ProtonDrive.Sync.Shared.ExecutionStatistics;
 using ProtonDrive.Sync.Shared.FileSystem;
@@ -15,6 +16,7 @@ internal sealed class StateBasedUpdateDetection<TId, TAltId> : IExecutionStatist
     where TAltId : IEquatable<TAltId>
 {
     private readonly ILogger<StateBasedUpdateDetection<TId, TAltId>> _logger;
+    private readonly Replica _replica;
     private readonly IScheduler _executionScheduler;
     private readonly IScheduler _syncScheduler;
     private readonly IReadOnlyDictionary<TId, RootInfo<TAltId>> _syncRoots;
@@ -27,6 +29,7 @@ internal sealed class StateBasedUpdateDetection<TId, TAltId> : IExecutionStatist
 
     public StateBasedUpdateDetection(
         ILogger<StateBasedUpdateDetection<TId, TAltId>> logger,
+        Replica replica,
         IScheduler executionScheduler,
         IScheduler syncScheduler,
         AdapterTree<TId, TAltId> adapterTree,
@@ -38,6 +41,7 @@ internal sealed class StateBasedUpdateDetection<TId, TAltId> : IExecutionStatist
         ConcurrentExecutionStatistics executionStatistics)
     {
         _logger = logger;
+        _replica = replica;
         _executionScheduler = executionScheduler;
         _syncScheduler = syncScheduler;
         _syncRoots = syncRoots;
@@ -53,7 +57,7 @@ internal sealed class StateBasedUpdateDetection<TId, TAltId> : IExecutionStatist
 
     public async Task StartAsync(CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Starting state-based update detection");
+        _logger.LogInformation("Starting {Replica} state-based update detection", _replica);
 
         await DetectRootUpdates(cancellationToken).ConfigureAwait(false);
     }
@@ -83,7 +87,10 @@ internal sealed class StateBasedUpdateDetection<TId, TAltId> : IExecutionStatist
         }
         finally
         {
-            _logger.LogInformation("Finished state-based update detection in {ElapsedTime}", Stopwatch.GetElapsedTime(startTimestamp));
+            _logger.LogInformation(
+                "Finished {Replica} state-based update detection in {ElapsedTime}",
+                _replica,
+                Stopwatch.GetElapsedTime(startTimestamp));
         }
     }
 

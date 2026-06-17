@@ -7,6 +7,7 @@ using ProtonDrive.App.Services;
 using ProtonDrive.App.Settings;
 using ProtonDrive.App.Windows.Views.Offer;
 using ProtonDrive.Shared;
+using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Features;
 using ProtonDrive.Shared.Logging;
 using ProtonDrive.Shared.Repository;
@@ -21,8 +22,6 @@ internal sealed class OfferNotificationService : IStoppableService, IOnboardingS
     public const string NotificationId = "Offer";
     public const string GetDealActionName = "GetDeal";
 
-    private static readonly TimeSpan DelayBeforeShowingNotification = TimeSpan.FromSeconds(10);
-
     private readonly INotificationService _notificationService;
     private readonly IDialogService _dialogService;
     private readonly IApp _app;
@@ -33,6 +32,7 @@ internal sealed class OfferNotificationService : IStoppableService, IOnboardingS
     private readonly ILogger<OfferNotificationService> _logger;
 
     private readonly CoalescingAction _stateChangeHandler;
+    private readonly TimeSpan _delayBeforeShowingNotification;
 
     private OnboardingState _onboardingState = OnboardingState.Initial;
     private Offer? _offer;
@@ -40,6 +40,7 @@ internal sealed class OfferNotificationService : IStoppableService, IOnboardingS
     private bool _isStopping;
 
     public OfferNotificationService(
+        AppConfig appConfig,
         INotificationService notificationService,
         IDialogService dialogService,
         IApp app,
@@ -57,6 +58,7 @@ internal sealed class OfferNotificationService : IStoppableService, IOnboardingS
         _clock = clock;
         _scheduler = scheduler;
         _logger = logger;
+        _delayBeforeShowingNotification = appConfig.DelayBeforeShowingNotification;
 
         _stateChangeHandler = logger.GetCoalescingActionWithExceptionsLoggingAndCancellationHandling(HandleExternalStateChangeAsync, nameof(OfferNotificationService));
 
@@ -169,7 +171,7 @@ internal sealed class OfferNotificationService : IStoppableService, IOnboardingS
     {
         if (!HasNotificationBeenShown(offer.Id))
         {
-            await Task.Delay(DelayBeforeShowingNotification, cancellationToken).ConfigureAwait(false);
+            await Task.Delay(_delayBeforeShowingNotification, cancellationToken).ConfigureAwait(false);
 
             ShowNotification(offer);
         }

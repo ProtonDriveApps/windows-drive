@@ -491,10 +491,10 @@ Dezactivați și reactivați sincronizarea pentru a o restabili și a șterge ac
     <value>Verificarea actualizării a eșuat</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
-    <value>Update required</value>
+    <value>Necesită actualizare</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Update available</value>
+    <value>Actualizare disponibilă</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Politica de confidențialitate</value>
@@ -1357,6 +1357,15 @@ Conținutul fișierelor va fi descărcat numai la cerere.</value>
   <data name="MappingSetupStatus_Value_Succeeded">
     <value>OK</value>
   </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Adăugați spațiu</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Nu mai este spațiu</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Modificați planul pentru a obține mai mult spațiu și a putea încărca fișiere.</value>
+  </data>
   <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
     <value>Modifi_care</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1397,6 +1406,18 @@ Conținutul fișierelor va fi descărcat numai la cerere.</value>
   <data name="Onboarding_SyncFolderSelection_Title">
     <value>Conservare foldere</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Luați Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Luați _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Luați _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Button_NotNow">
     <value>_Nu acum</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1405,20 +1426,37 @@ Conținutul fișierelor va fi descărcat numai la cerere.</value>
     <value>_Modificare</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
-  <data name="Onboarding_UpgradeStorage_Label_Calendar">
-    <value>Calendar</value>
-  </data>
   <data name="Onboarding_UpgradeStorage_Label_Mail">
-    <value>Mail</value>
+    <value>Mail: e-mail personal și securizat</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>lună</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Cel mai popular</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Până la {0} utilizatori</value>
+    <comment>Only for number greater than 1.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
-    <value>Manager de parole</value>
+    <value>Pass: manager criptat de parole</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Funcții premium incluse</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Recommended">
     <value>Recomandat</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Recuperați versiunile anterioare ale fișierelor</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>spațiu de stocare</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Label_Vpn">
-    <value>VPN</value>
+    <value>VPN: ultra rapid și privat</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Title">
     <value>Obțineți mai mult spațiu de stocare</value>

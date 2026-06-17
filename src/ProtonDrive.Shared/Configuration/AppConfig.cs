@@ -30,6 +30,7 @@ public sealed class AppConfig
     public TimeSpan ContactsCacheInvalidationInterval { get; set; }
     public TimeSpan ContactsCacheGraceInterval { get; set; }
     public TimeSpan DelayBeforeDisplayingSyncInitializationProgress { get; internal set; }
+    public TimeSpan DelayBeforeShowingNotification { get; internal set; }
 
     public TimeSpan PeriodicTelemetryReportInterval { get; internal set; }
     public TimeSpan PeriodicObservabilityReportInterval { get; internal set; }

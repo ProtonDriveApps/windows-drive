@@ -1359,6 +1359,15 @@ Le contenu des fichiers sera téléchargé à la demande uniquement.</value>
   <data name="MappingSetupStatus_Value_Succeeded">
     <value>OK</value>
   </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Ajouter de l'espace de stockage</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>À court d'espace de stockage</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Mettez à niveau pour obtenir davantage d'espace de stockage et importer vos fichiers.</value>
+  </data>
   <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
     <value>_Modifier</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1399,6 +1408,18 @@ Le contenu des fichiers sera téléchargé à la demande uniquement.</value>
   <data name="Onboarding_SyncFolderSelection_Title">
     <value>Sauvegardez vos dossiers</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Obtenir Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Obtenir _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Obtenir _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Button_NotNow">
     <value>_Plus tard</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1407,20 +1428,37 @@ Le contenu des fichiers sera téléchargé à la demande uniquement.</value>
     <value>_Changer d'abonnement</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
-  <data name="Onboarding_UpgradeStorage_Label_Calendar">
-    <value>Calendrier</value>
-  </data>
   <data name="Onboarding_UpgradeStorage_Label_Mail">
-    <value>Messagerie</value>
+    <value>Mail : boite mail sécurisée et personnalisé</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>mois</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Le plus populaire</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Jusqu'à {0} utilisateurs</value>
+    <comment>Only for number greater than 1.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
-    <value>Gestionnaire de mots de passe</value>
+    <value>Pass : gestionnaire de mots de passe chiffré</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Fonctionnalités premium incluses</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Recommended">
     <value>Recommandé</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Récupérez les versions précédentes de vos fichiers</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>espace de stockage</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Label_Vpn">
-    <value>VPN</value>
+    <value>VPN : ultra rapide et privé</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Title">
     <value>Obtenir plus d'espace de stockage</value>

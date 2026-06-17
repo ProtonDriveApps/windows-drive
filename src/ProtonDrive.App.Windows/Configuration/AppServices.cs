@@ -119,6 +119,11 @@ internal static class AppServices
             .AddSingleton<IOffersAware>(provider => provider.GetRequiredService<OfferNotificationService>())
             .AddSingleton<IFeatureFlagsAware>(provider => provider.GetRequiredService<OfferNotificationService>())
 
+            .AddSingleton<UpgradeStorageNotificationService>()
+            .AddSingleton<IUserStateAware>(provider => provider.GetRequiredService<UpgradeStorageNotificationService>())
+            .AddSingleton<IOffersAware>(provider => provider.GetRequiredService<UpgradeStorageNotificationService>())
+            .AddSingleton<IAccountSwitchingAware>(provider => provider.GetRequiredService<UpgradeStorageNotificationService>())
+
             .AddSingleton<AppCommands>()
             .AddSingleton<ISessionStateAware>(provider => provider.GetRequiredService<AppCommands>())
             .AddSingleton<ISyncFoldersAware>(provider => provider.GetRequiredService<AppCommands>())
@@ -146,6 +151,7 @@ internal static class AppServices
             .AddSingleton<ISessionStateAware>(provider => provider.GetRequiredService<AccountRootFolderSelectionStepViewModel>())
             .AddSingleton<UpgradeStorageStepViewModel>()
             .AddSingleton<IUserStateAware>(provider => provider.GetRequiredService<UpgradeStorageStepViewModel>())
+            .AddSingleton<IOffersAware>(provider => provider.GetRequiredService<UpgradeStorageStepViewModel>())
 
             .AddSingleton<NotificationBadgeProvider>()
             .AddSingleton<IUserStateAware>(provider => provider.GetRequiredService<NotificationBadgeProvider>())

@@ -1359,6 +1359,15 @@ El contingut dels fitxers es descarregarà només sota demanda.</value>
   <data name="MappingSetupStatus_Value_Succeeded">
     <value>D'acord</value>
   </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Afegeix emmagatzematge</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>S'ha esgotat l'espai d'emmagatzematge</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Milloreu per obtenir més espai d'emmagatzematge i carregueu els fitxers.</value>
+  </data>
   <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
     <value>_Canvia</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1399,6 +1408,18 @@ El contingut dels fitxers es descarregarà només sota demanda.</value>
   <data name="Onboarding_SyncFolderSelection_Title">
     <value>Feu una còpia de seguretat de les carpetes</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Obtingueu Drive Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Obtingueu Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Obtingueu Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Button_NotNow">
     <value>_Ara no</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1407,20 +1428,37 @@ El contingut dels fitxers es descarregarà només sota demanda.</value>
     <value>_Millora</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
-  <data name="Onboarding_UpgradeStorage_Label_Calendar">
-    <value>Calendari</value>
-  </data>
   <data name="Onboarding_UpgradeStorage_Label_Mail">
-    <value>Correu</value>
+    <value>Mail: Correu electrònic personalitzat i segur</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>mes</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>El més popular</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Fins a {0} usuaris</value>
+    <comment>Only for number greater than 1.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
-    <value>Gestor de contrasenyes</value>
+    <value>Pass: Gestor de contrasenyes xifrat</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Característiques prèmium incloses</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Recommended">
     <value>Recomanat</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Recupereu versions anteriors dels fitxers</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>emmagatzematge</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Label_Vpn">
-    <value>VPN</value>
+    <value>VPN: Ultraràpida i privada</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Title">
     <value>Obtén més emmagatzematge</value>

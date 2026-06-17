@@ -22,7 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProtonDrive.Client\ProtonDrive.Client.csproj" />
-    <ProjectReference Include="..\ProtonDrive.DataAccess\ProtonDrive.DataAccess.csproj" />
+    <ProjectReference Include="..\ProtonDrive.Sync.DataAccess\ProtonDrive.Sync.DataAccess.csproj" />
     <ProjectReference Include="..\ProtonDrive.Shared\ProtonDrive.Shared.csproj" />
     <ProjectReference Include="..\ProtonDrive.Sync.Adapter\ProtonDrive.Sync.Adapter.csproj" />
     <ProjectReference Include="..\ProtonDrive.Sync.Agent\ProtonDrive.Sync.Agent.csproj" />

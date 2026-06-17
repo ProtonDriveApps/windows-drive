@@ -287,9 +287,8 @@ public static class AppServices
                 .AddSingleton<IMappingSetupService>(provider => provider.GetRequiredService<MappingSetupService>())
                 .AddSingleton<IStoppableService>(provider => provider.GetRequiredService<MappingSetupService>())
                 .AddSingleton<IMappingsAware>(provider => provider.GetRequiredService<MappingSetupService>())
-                .AddSingleton<IMainVolumeStateAware>(provider => provider.GetRequiredService<MappingSetupService>())
+                .AddSingleton<ISyncLifecycleStateAware>(provider => provider.GetRequiredService<MappingSetupService>())
                 .AddSingleton<ISyncStateAware>(provider => provider.GetRequiredService<MappingSetupService>())
-                .AddSingleton<IOnboardingStateAware>(provider => provider.GetRequiredService<MappingSetupService>())
                 .AddSingleton<IRootDeletionHandler>(provider => provider.GetRequiredService<MappingSetupService>())
 
                 .AddSingleton<IMappingSetupPipeline, MappingSetupPipeline>()
@@ -377,6 +376,13 @@ public static class AppServices
                 .AddSingleton<IStoppableService>(provider => provider.GetRequiredService<PhotoImportService>())
                 .AddSingleton<IPhotoVolumeStateAware>(provider => provider.GetRequiredService<PhotoImportService>())
                 .AddSingleton<IPhotoImportFoldersAware>(provider => provider.GetRequiredService<PhotoImportService>())
+
+                .AddSingleton<SyncLifecycleController>()
+                .AddSingleton<IOnboardingStateAware>(provider => provider.GetRequiredService<SyncLifecycleController>())
+
+                .AddSingleton<SyncLifecycleService>()
+                .AddSingleton<ISyncLifecycleService>(provider => provider.GetRequiredService<SyncLifecycleService>())
+                .AddSingleton<IMainVolumeStateAware>(provider => provider.GetRequiredService<SyncLifecycleService>())
 
                 .AddSingleton<SyncService>()
                 .AddSingleton<ISyncService>(provider => provider.GetRequiredService<SyncService>())
@@ -511,6 +517,7 @@ public static class AppServices
                 .AddSingleton(provider => new Lazy<IEnumerable<IAccountSwitchingHandler>>(provider.GetRequiredService<IEnumerable<IAccountSwitchingHandler>>))
                 .AddSingleton(provider => new Lazy<IEnumerable<ISyncFoldersAware>>(provider.GetRequiredService<IEnumerable<ISyncFoldersAware>>))
                 .AddSingleton(provider => new Lazy<IEnumerable<IPhotoImportFoldersAware>>(provider.GetRequiredService<IEnumerable<IPhotoImportFoldersAware>>))
+                .AddSingleton(provider => new Lazy<IEnumerable<ISyncLifecycleStateAware>>(provider.GetRequiredService<IEnumerable<ISyncLifecycleStateAware>>))
                 .AddSingleton(provider => new Lazy<IEnumerable<ISyncStateAware>>(provider.GetRequiredService<IEnumerable<ISyncStateAware>>))
                 .AddSingleton(provider => new Lazy<IEnumerable<ISyncStatisticsAware>>(provider.GetRequiredService<IEnumerable<ISyncStatisticsAware>>))
                 .AddSingleton(provider => new Lazy<IEnumerable<ISyncActivityAware>>(provider.GetRequiredService<IEnumerable<ISyncActivityAware>>))

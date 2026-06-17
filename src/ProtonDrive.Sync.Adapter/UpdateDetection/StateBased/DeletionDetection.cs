@@ -11,14 +11,15 @@ internal sealed class DeletionDetection<TId, TAltId>
     where TAltId : IEquatable<TAltId>
 {
     private readonly ILogger<DeletionDetection<TId, TAltId>> _logger;
+    private readonly Replica _replica;
     private readonly ITransactedScheduler _syncScheduler;
     private readonly IReadOnlyDictionary<TId, RootInfo<TAltId>> _syncRoots;
     private readonly NodeUpdateDetection<TId, TAltId> _nodeUpdateDetection;
-
     private readonly DirtyNodesTraversal<TId, TAltId> _dirtyNodesTraversal;
 
     public DeletionDetection(
         ILogger<DeletionDetection<TId, TAltId>> logger,
+        Replica replica,
         ITransactedScheduler syncScheduler,
         AdapterTree<TId, TAltId> adapterTree,
         DirtyTree<TId> dirtyTree,
@@ -26,6 +27,7 @@ internal sealed class DeletionDetection<TId, TAltId>
         NodeUpdateDetection<TId, TAltId> nodeUpdateDetection)
     {
         _logger = logger;
+        _replica = replica;
         _syncScheduler = syncScheduler;
         _syncRoots = syncRoots;
         _nodeUpdateDetection = nodeUpdateDetection;
@@ -55,14 +57,17 @@ internal sealed class DeletionDetection<TId, TAltId>
 
         if (HasBranchesToEnumerate(syncRoots, cancellationToken))
         {
-            _logger.LogInformation("There are dirty branches left on volume with Id={VolumeId}, skipping deletion of lost nodes", volumeId);
+            _logger.LogInformation(
+                "There are dirty branches left on {Replica} adapter on volume with Id={VolumeId}, skipping deletion of lost nodes",
+                _replica,
+                volumeId);
 
             return;
         }
 
-        _logger.LogDebug("There are no dirty branches left on volume with Id={VolumeId}, deleting lost nodes", volumeId);
+        _logger.LogDebug("There are no dirty branches left on {Replica} adapter on volume with Id={VolumeId}, deleting lost nodes", _replica, volumeId);
 
-        DeleteNodes(syncRoots, cancellationToken);
+        DeleteNodes(volumeId, syncRoots, cancellationToken);
     }
 
     private bool HasBranchesToEnumerate(IEnumerable<(TId NodeId, RootInfo<TAltId> Root)> syncRoots, CancellationToken cancellationToken)
@@ -77,7 +82,7 @@ internal sealed class DeletionDetection<TId, TAltId>
                 continue;
             }
 
-            _logger.LogInformation("The Adapter Tree node with Id={Id} has Status=({Status})", node.Id, node.Model.Status);
+            _logger.LogInformation("The {Replica} Adapter Tree node with Id={Id} has Status=({Status})", _replica, node.Id, node.Model.Status);
 
             return true;
         }
@@ -85,12 +90,46 @@ internal sealed class DeletionDetection<TId, TAltId>
         return false;
     }
 
-    private void DeleteNodes(IEnumerable<(TId NodeId, RootInfo<TAltId> Root)> syncRoots, CancellationToken cancellationToken)
+    private void DeleteNodes(int volumeId, IEnumerable<(TId NodeId, RootInfo<TAltId> Root)> syncRoots, CancellationToken cancellationToken)
     {
         var nodes = syncRoots.SelectMany(syncRoot => NodesToDelete(syncRoot.NodeId, cancellationToken));
+        var deletedNodeCount = 0;
+
         foreach (var node in nodes)
         {
             DetectNodeUpdate(node, null);
+            deletedNodeCount++;
+        }
+
+        if (deletedNodeCount == 0)
+        {
+            return;
+        }
+
+        LogDetectedDeletions(volumeId, deletedNodeCount);
+    }
+
+    private void LogDetectedDeletions(int volumeId, int deletedNodeCount)
+    {
+        const int bulkDeletionWarningMinimumCount = 100;
+
+        var isBulkDeletion = deletedNodeCount >= bulkDeletionWarningMinimumCount;
+
+        if (isBulkDeletion)
+        {
+            _logger.LogWarning(
+                "{Replica} adapter detected a bulk deletion on volume with Id={VolumeId}: {DeletedCount} deletions",
+                _replica,
+                volumeId,
+                deletedNodeCount);
+        }
+        else
+        {
+            _logger.LogInformation(
+                "{Replica} adapter detected {DeletedCount} lost or deleted node(s) on volume with Id={VolumeId}",
+                _replica,
+                deletedNodeCount,
+                volumeId);
         }
     }
 

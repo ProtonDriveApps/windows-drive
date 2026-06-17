@@ -1354,6 +1354,15 @@
   <data name="MappingSetupStatus_Value_Succeeded">
     <value>OK</value>
   </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Add Storage</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Out of storage space</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Upgrade to get more storage space and upload your files.</value>
+  </data>
   <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
     <value>_Változtatás</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1394,6 +1403,18 @@
   <data name="Onboarding_SyncFolderSelection_Title">
     <value>Biztonsági mentés a mappákról</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Get Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Get _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Get _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Button_NotNow">
     <value>_Nem most</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1402,20 +1423,37 @@
     <value>_Frissítés</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
-  <data name="Onboarding_UpgradeStorage_Label_Calendar">
-    <value>Naptár</value>
-  </data>
   <data name="Onboarding_UpgradeStorage_Label_Mail">
-    <value>Lelevelezés</value>
+    <value>Mail: Custom and secure email</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>month</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Most popular</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Up to {0} users</value>
+    <comment>Only for number greater than 1.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
-    <value>Jelszókezelő</value>
+    <value>Pass: Encrypted password manager</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Premium value included</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Recommended">
     <value>Ajánlott</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Recover previous file versions</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>storage</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Label_Vpn">
-    <value>VPN</value>
+    <value>VPN: Ultra fast and private</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Title">
     <value>Kapjon több tárhelyet</value>

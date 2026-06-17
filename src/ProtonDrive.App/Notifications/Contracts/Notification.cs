@@ -23,5 +23,7 @@ public sealed class Notification
     public string? ButtonText { get; set; }
     public string? LogoImageUrl { get; init; }
 
+    public bool? DisplayCallToActionButton { get; init; }
+
     public Offer? Offer { get; init; }
 }

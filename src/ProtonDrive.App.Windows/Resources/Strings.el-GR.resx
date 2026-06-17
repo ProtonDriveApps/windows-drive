@@ -1359,6 +1359,15 @@
   <data name="MappingSetupStatus_Value_Succeeded">
     <value>ΟΚ</value>
   </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Προσθήκη Αποθηκευτικού χώρου</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Εξαντλημένος αποθηκευτικός χώρος</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Αναβαθμίστε για να αποκτήσετε περισσότερο χώρο αποθήκευσης και να ανεβάσετε τα αρχεία σας.</value>
+  </data>
   <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
     <value>Αλλαγή</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1399,6 +1408,18 @@
   <data name="Onboarding_SyncFolderSelection_Title">
     <value>Δημιουργία αντιγράφων ασφαλείας των φακέλων σας</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Αποκτήστε το Drive_Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Αποκτήστε το _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Αποκτήστε το _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Button_NotNow">
     <value>_Όχι τώρα</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1407,20 +1428,37 @@
     <value>Αναβάθμιση</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
-  <data name="Onboarding_UpgradeStorage_Label_Calendar">
-    <value>Ημερολόγιο</value>
-  </data>
   <data name="Onboarding_UpgradeStorage_Label_Mail">
-    <value>Ταχυδρομείο</value>
+    <value>Mail: Προσαρμοσμένο και ασφαλές email</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>μήνα</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Δημοφιλέστερα</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Μέχρι και {0} χρήστες</value>
+    <comment>Only for number greater than 1.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
-    <value>Διαχειριστής Κωδικών Πρόσβασης</value>
+    <value>Pass: Κρυπτογραφημένος διαχειριστής κωδικών πρόσβασης</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Περιλαμβάνεται premium αξία</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Recommended">
     <value>Προτεινόμενη</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Ανάκτηση προηγούμενων εκδόσεων αρχείων</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>αποθηκευτικού χώρου</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Label_Vpn">
-    <value>VPN</value>
+    <value>VPN: Εξαιρετικά γρήγορο και ιδιωτικό</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Title">
     <value>Αποκτήστε περισσότερο χώρο αποθήκευσης</value>

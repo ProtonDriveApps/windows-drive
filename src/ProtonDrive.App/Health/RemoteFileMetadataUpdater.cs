@@ -3,8 +3,8 @@ using Microsoft.Extensions.Logging;
 using MoreLinq.Extensions;
 using ProtonDrive.App.Settings;
 using ProtonDrive.Client.Health;
-using ProtonDrive.DataAccess.Databases;
 using ProtonDrive.Shared.Telemetry;
+using ProtonDrive.Sync.DataAccess.Databases;
 using ProtonDrive.Sync.Shared.FileSystem;
 using ProtonDrive.Sync.Shared.Health;
 

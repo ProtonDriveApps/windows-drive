@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Settings;
-using ProtonDrive.DataAccess;
-using ProtonDrive.DataAccess.Databases;
 using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Features;
+using ProtonDrive.Sync.DataAccess;
+using ProtonDrive.Sync.DataAccess.Databases;
 
 namespace ProtonDrive.App.FileSystem.Remote;
 

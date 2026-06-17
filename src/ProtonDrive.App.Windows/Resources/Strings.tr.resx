@@ -1357,6 +1357,15 @@ Dosyaların içeriği yalnızca istek yapıldığında indirilir.</value>
   <data name="MappingSetupStatus_Value_Succeeded">
     <value>Tamam</value>
   </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Depolama alanı ekle</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Depolama alanı yetersiz</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Daha fazla depolama alanı edinmek ve dosyalarınızı yüklemek için tarifenizi yükseltin.</value>
+  </data>
   <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
     <value>_Değiştir</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1397,6 +1406,18 @@ Dosyaların içeriği yalnızca istek yapıldığında indirilir.</value>
   <data name="Onboarding_SyncFolderSelection_Title">
     <value>Klasörlerinizi yedekleyin</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Drive _Plus edinin</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>_Duo edinin</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>_Unlimited edinin</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Button_NotNow">
     <value>_Şimdi değil</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1405,20 +1426,37 @@ Dosyaların içeriği yalnızca istek yapıldığında indirilir.</value>
     <value>_Yükselt</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
-  <data name="Onboarding_UpgradeStorage_Label_Calendar">
-    <value>Takvim</value>
-  </data>
   <data name="Onboarding_UpgradeStorage_Label_Mail">
-    <value>E-posta</value>
+    <value>Mail: Gizli ve güvenli e-posta</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>ay</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>En çok kullanılan</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>{0} kullanıcıya kadar</value>
+    <comment>Only for number greater than 1.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
-    <value>Parola yöneticisi</value>
+    <value>Pass: Şifrelenmiş parola yöneticisi</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Ücretli özelliklerle birlikte</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Recommended">
     <value>Önerilir</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Önceki dosya sürümlerini geri yükleyin</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>depolama alanı</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Label_Vpn">
-    <value>VPN</value>
+    <value>VPN: Çok hızlı ve gizli</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Title">
     <value>Daha fazla depolama alanı edinin</value>

@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel;
 using Microsoft.Extensions.Logging;
 using ProtonDrive.Client.Health;
-using ProtonDrive.DataAccess.Databases;
 using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Devices;
 using ProtonDrive.Shared.Features;
@@ -10,6 +9,7 @@ using ProtonDrive.Shared.Repository;
 using ProtonDrive.Shared.Telemetry;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Agent.Health;
+using ProtonDrive.Sync.DataAccess.Databases;
 using ProtonDrive.Sync.Shared.Health;
 
 namespace ProtonDrive.App.Health;

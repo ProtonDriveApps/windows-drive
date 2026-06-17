@@ -186,6 +186,15 @@ internal class EnumerationFailureStep<TId, TAltId>
             return;
         }
 
+        if (node.Model.Status.HasFlag(flags))
+        {
+            _logger.LogInformation("Adapter Tree {NodeType} node with Id={Id} already has ({DirtyFlags}) flag(s)", node.Type, node.Id, flags);
+        }
+        else
+        {
+            _logger.LogInformation("Adapter Tree {NodeType} node with Id={Id} got ({DirtyFlags}) flag(s)", node.Type, node.Id, flags);
+        }
+
         ExecuteOnTree(new Operation<AdapterTreeNodeModel<TId, TAltId>>(
             OperationType.Update,
             node.Model.Copy()

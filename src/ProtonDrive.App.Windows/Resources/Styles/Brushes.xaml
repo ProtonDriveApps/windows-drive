@@ -69,6 +69,21 @@
         Color="{StaticResource OfferButtonColor.Light}" />
 
     <SolidColorBrush
+        x:Key="PromoOfferButtonBrush.Default.Foreground"
+        po:Freeze="True"
+        Color="{StaticResource BlackTextColor}" />
+
+    <SolidColorBrush
+        x:Key="PromoOfferButtonBrush.Default.Background"
+        po:Freeze="True"
+        Color="{StaticResource YellowColor.Light}" />
+
+    <SolidColorBrush
+        x:Key="PromoOfferButtonBrush.MouseOver.Background"
+        po:Freeze="True"
+        Color="{StaticResource YellowColor}" />
+
+    <SolidColorBrush
         x:Key="PrimaryColorBrush"
         po:Freeze="True"
         Color="{StaticResource PrimaryColor}" />

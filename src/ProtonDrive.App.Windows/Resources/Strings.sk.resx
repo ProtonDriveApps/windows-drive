@@ -491,10 +491,10 @@ Vypnutím a opätovným zapnutím jeho synchronizácie ho obnovíte a odstránit
     <value>Kontrola aktualizácie zlyhala</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
-    <value>Update required</value>
+    <value>Je potrebná aktualizácia</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Update available</value>
+    <value>K dispozícii je aktualizácia</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Zásady ochrany osobných údajov</value>
@@ -1359,6 +1359,15 @@ Obsah súborov sa bude sťahovať len na požiadanie.</value>
   <data name="MappingSetupStatus_Value_Succeeded">
     <value>OK</value>
   </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Add Storage</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Out of storage space</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Upgrade to get more storage space and upload your files.</value>
+  </data>
   <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
     <value>_Zmeniť</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1399,6 +1408,18 @@ Obsah súborov sa bude sťahovať len na požiadanie.</value>
   <data name="Onboarding_SyncFolderSelection_Title">
     <value>Zálohujte svoje priečinky</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Get Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Get _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Get _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Button_NotNow">
     <value>_Teraz nie</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1407,20 +1428,37 @@ Obsah súborov sa bude sťahovať len na požiadanie.</value>
     <value>_Upgradovať</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
-  <data name="Onboarding_UpgradeStorage_Label_Calendar">
-    <value>Calendar</value>
-  </data>
   <data name="Onboarding_UpgradeStorage_Label_Mail">
-    <value>Mail</value>
+    <value>Mail: Custom and secure email</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>month</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Most popular</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Up to {0} users</value>
+    <comment>Only for number greater than 1.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
-    <value>Správca hesiel</value>
+    <value>Pass: Encrypted password manager</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Premium value included</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Recommended">
     <value>Odporúčané</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Recover previous file versions</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>storage</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Label_Vpn">
-    <value>VPN</value>
+    <value>VPN: Ultra fast and private</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Title">
     <value>Získajte viac úložného priestoru</value>

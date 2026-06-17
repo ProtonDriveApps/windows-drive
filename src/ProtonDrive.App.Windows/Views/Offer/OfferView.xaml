@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:behaviors="clr-namespace:ProtonDrive.App.Windows.Toolkit.Behaviors"
+    xmlns:converters="clr-namespace:ProtonDrive.App.Windows.Toolkit.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:loc="clr-namespace:ProtonDrive.App.Windows.Resources"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -32,36 +33,27 @@
         </b:DataTrigger>
     </b:Interaction.Triggers>
 
-    <Border
-        Background="{StaticResource OfferWindow.DarkTheme.Background}"
-        Padding="0,0,0,40">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-
-            <TextBlock Grid.Row="0">
-                <Hyperlink
-                    Command="{Binding GetDealCommand}"
-                    Cursor="Hand"
-                    TextDecorations="{x:Null}">
-                    <Image
-                        Source="{Binding Image}"
-                        Stretch="None"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center" />
-                </Hyperlink>
-            </TextBlock>
+    <Border Background="{StaticResource OfferWindow.DarkTheme.Background}">
+        <StackPanel>
+            <Button
+                Command="{Binding GetDealCommand}"
+                Cursor="Hand"
+                Style="{StaticResource TransparentButtonStyle}">
+                <Image
+                    Source="{Binding Image}"
+                    Stretch="Uniform"
+                    Height="568" />
+            </Button>
 
             <Button
-                Grid.Row="1"
                 Content="{loc:Resource Main_Sidebar_Offer_Button_GetDeal}"
                 Command="{Binding GetDealCommand}"
                 IsDefault="True"
-                Style="{StaticResource OfferButtonStyle}"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Visibility="{Binding DisplayCallToActionButton, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}"
                 MinWidth="160"
-                HorizontalAlignment="Center" />
-        </Grid>
+                HorizontalAlignment="Center"
+                Margin="0,0,0,40" />
+        </StackPanel>
     </Border>
 </UserControl>

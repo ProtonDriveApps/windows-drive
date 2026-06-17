@@ -20,6 +20,7 @@
 
     <b:Interaction.Behaviors>
         <behaviors:CloseDataContextOnClosingWindowBehavior />
+        <behaviors:CenterWindowOnSizeChangedBehavior />
     </b:Interaction.Behaviors>
 
     <FrameworkElement.Resources>

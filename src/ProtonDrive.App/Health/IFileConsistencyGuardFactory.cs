@@ -1,7 +1,7 @@
 ﻿using ProtonDrive.App.Settings;
-using ProtonDrive.DataAccess.Databases;
 using ProtonDrive.Sync.Adapter;
 using ProtonDrive.Sync.Agent.Health;
+using ProtonDrive.Sync.DataAccess.Databases;
 using ProtonDrive.Sync.Shared;
 using ProtonDrive.Sync.Shared.Adapters;
 

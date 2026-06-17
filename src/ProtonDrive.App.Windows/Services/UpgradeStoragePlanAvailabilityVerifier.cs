@@ -6,14 +6,21 @@ internal sealed class UpgradeStoragePlanAvailabilityVerifier : IUpgradeStoragePl
     private const string VpnPlusCode = "vpn2022";
     private const string MailPlusCode = "mail2022";
     private const string PassPlusCode = "pass2023";
+    private const string DrivePlusCode = "drive2022";
 
-    private readonly IReadOnlySet<string> _eligibleToUpgradePlanCodesDuringOnboarding = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+    private readonly HashSet<string> _eligibleToUpgradePlanCodesFromUpgradeStorageNotification = new(StringComparer.OrdinalIgnoreCase)
+    {
+        FreeCode,
+        DrivePlusCode,
+    };
+
+    private readonly HashSet<string> _eligibleToUpgradePlanCodesDuringOnboarding = new(StringComparer.OrdinalIgnoreCase)
     {
         FreeCode,
         VpnPlusCode,
     };
 
-    private readonly IReadOnlySet<string> _eligibleToUpgradePlanCodes = new HashSet<string>
+    private readonly HashSet<string> _eligibleToUpgradePlanCodes = new(StringComparer.OrdinalIgnoreCase)
     {
         FreeCode,
         VpnPlusCode,
@@ -32,6 +39,7 @@ internal sealed class UpgradeStoragePlanAvailabilityVerifier : IUpgradeStoragePl
         {
             UpgradeStoragePlanMode.Onboarding => _eligibleToUpgradePlanCodesDuringOnboarding.Contains(planCode),
             UpgradeStoragePlanMode.Sidebar => _eligibleToUpgradePlanCodes.Contains(planCode),
+            UpgradeStoragePlanMode.UpgradeStorageNotification => _eligibleToUpgradePlanCodesFromUpgradeStorageNotification.Contains(planCode),
             _ => false,
         };
     }

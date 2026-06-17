@@ -142,7 +142,7 @@ internal sealed class CopiedNodesHandler<TId, TAltId> : ICopiedNodes<TId, TAltId
             return;
         }
 
-        _logger.LogInformation(
+        _logger.LogDebug(
             "Removing {LinkType} links in a branch starting at the node with ID {Id}",
             NodeLinkType.Copied,
             nodeId);

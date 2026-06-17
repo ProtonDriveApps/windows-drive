@@ -1,8 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Settings;
 using ProtonDrive.Client.Health;
-using ProtonDrive.DataAccess;
-using ProtonDrive.DataAccess.Databases;
 using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Devices;
 using ProtonDrive.Shared.Features;
@@ -10,6 +8,8 @@ using ProtonDrive.Shared.Repository;
 using ProtonDrive.Shared.Telemetry;
 using ProtonDrive.Sync.Adapter;
 using ProtonDrive.Sync.Agent.Health;
+using ProtonDrive.Sync.DataAccess;
+using ProtonDrive.Sync.DataAccess.Databases;
 using ProtonDrive.Sync.Shared;
 using ProtonDrive.Sync.Shared.Adapters;
 

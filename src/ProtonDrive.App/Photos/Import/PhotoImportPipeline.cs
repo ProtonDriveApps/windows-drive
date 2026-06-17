@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using ProtonDrive.Client;
 using ProtonDrive.Client.FileUploading;
 using ProtonDrive.Sync.Shared.FileSystem;
 using ProtonDrive.Sync.Shared.FileSystem.Metadata.LivePhoto;
@@ -71,7 +72,7 @@ internal sealed class PhotoImportPipeline
                 await photoAlbumImporter.CreateAlbumAndImportPhotosAsync(folder, cancellationToken).ConfigureAwait(false);
             }
         }
-        catch (Exception exception) when (exception is FileSystemClientException)
+        catch (Exception exception) when (exception is FileSystemClientException || exception.IsDriveClientException())
         {
             throw new PhotoImportException("Import failed due to enumeration failure", exception);
         }

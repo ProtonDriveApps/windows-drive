@@ -4,4 +4,5 @@ internal enum UpgradeStoragePlanMode
 {
     Onboarding,
     Sidebar,
+    UpgradeStorageNotification,
 }

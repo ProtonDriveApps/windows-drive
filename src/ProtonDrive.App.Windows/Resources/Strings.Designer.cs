@@ -3589,6 +3589,33 @@ namespace ProtonDrive.App.Windows.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add Storage.
+        /// </summary>
+        internal static string Notification_Storage_Button_AddStorage {
+            get {
+                return ResourceManager.GetString("Notification_Storage_Button_AddStorage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Out of storage space.
+        /// </summary>
+        internal static string Notification_Storage_HeaderText {
+            get {
+                return ResourceManager.GetString("Notification_Storage_HeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upgrade to get more storage space and upload your files..
+        /// </summary>
+        internal static string Notification_Storage_Message {
+            get {
+                return ResourceManager.GetString("Notification_Storage_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Change.
         /// </summary>
         internal static string Onboarding_AccountRootFolderSelection_Button_ChangeFolder {
@@ -3697,6 +3724,33 @@ namespace ProtonDrive.App.Windows.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Get Drive _Plus.
+        /// </summary>
+        internal static string Onboarding_UpgradeStorage_Button_GetDrivePlus {
+            get {
+                return ResourceManager.GetString("Onboarding_UpgradeStorage_Button_GetDrivePlus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get _Duo.
+        /// </summary>
+        internal static string Onboarding_UpgradeStorage_Button_GetDuo {
+            get {
+                return ResourceManager.GetString("Onboarding_UpgradeStorage_Button_GetDuo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get _Unlimited.
+        /// </summary>
+        internal static string Onboarding_UpgradeStorage_Button_GetUnlimited {
+            get {
+                return ResourceManager.GetString("Onboarding_UpgradeStorage_Button_GetUnlimited", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to _Not now.
         /// </summary>
         internal static string Onboarding_UpgradeStorage_Button_NotNow {
@@ -3715,16 +3769,7 @@ namespace ProtonDrive.App.Windows.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Calendar.
-        /// </summary>
-        internal static string Onboarding_UpgradeStorage_Label_Calendar {
-            get {
-                return ResourceManager.GetString("Onboarding_UpgradeStorage_Label_Calendar", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mail.
+        ///   Looks up a localized string similar to Mail: Custom and secure email.
         /// </summary>
         internal static string Onboarding_UpgradeStorage_Label_Mail {
             get {
@@ -3733,11 +3778,47 @@ namespace ProtonDrive.App.Windows.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Password Manager.
+        ///   Looks up a localized string similar to month.
+        /// </summary>
+        internal static string Onboarding_UpgradeStorage_Label_Month {
+            get {
+                return ResourceManager.GetString("Onboarding_UpgradeStorage_Label_Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Most popular.
+        /// </summary>
+        internal static string Onboarding_UpgradeStorage_Label_MostPopular {
+            get {
+                return ResourceManager.GetString("Onboarding_UpgradeStorage_Label_MostPopular", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Up to {0} users.
+        /// </summary>
+        internal static string Onboarding_UpgradeStorage_Label_NumberOfUsers {
+            get {
+                return ResourceManager.GetString("Onboarding_UpgradeStorage_Label_NumberOfUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pass: Encrypted password manager.
         /// </summary>
         internal static string Onboarding_UpgradeStorage_Label_PasswordManager {
             get {
                 return ResourceManager.GetString("Onboarding_UpgradeStorage_Label_PasswordManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Premium value included.
+        /// </summary>
+        internal static string Onboarding_UpgradeStorage_Label_PremiumValuesIncluded {
+            get {
+                return ResourceManager.GetString("Onboarding_UpgradeStorage_Label_PremiumValuesIncluded", resourceCulture);
             }
         }
         
@@ -3751,7 +3832,25 @@ namespace ProtonDrive.App.Windows.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to VPN.
+        ///   Looks up a localized string similar to Recover previous file versions.
+        /// </summary>
+        internal static string Onboarding_UpgradeStorage_Label_RecoverVersions {
+            get {
+                return ResourceManager.GetString("Onboarding_UpgradeStorage_Label_RecoverVersions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to storage.
+        /// </summary>
+        internal static string Onboarding_UpgradeStorage_Label_Storage {
+            get {
+                return ResourceManager.GetString("Onboarding_UpgradeStorage_Label_Storage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VPN: Ultra fast and private.
         /// </summary>
         internal static string Onboarding_UpgradeStorage_Label_Vpn {
             get {

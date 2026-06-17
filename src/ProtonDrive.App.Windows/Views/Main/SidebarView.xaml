@@ -3,6 +3,8 @@
     x:ClassModifier="internal"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:behaviors="clr-namespace:ProtonDrive.App.Windows.Toolkit.Behaviors"
     xmlns:converters="clr-namespace:ProtonDrive.App.Windows.Toolkit.Converters"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:loc="clr-namespace:ProtonDrive.App.Windows.Resources"
@@ -116,14 +118,19 @@
                     Margin="0,10,0,0">
                     <TextBlock
                         Text="{loc:Resource Main_Sidebar_Storage_Button_GetMoreStorage}"
-                        TextTrimming="CharacterEllipsis" />
+                        TextTrimming="CharacterEllipsis"
+                        ToolTip="{loc:Resource Main_Sidebar_Storage_Button_GetMoreStorage}">
+                        <b:Interaction.Behaviors>
+                            <behaviors:TextBlockAutoToolTipBehavior />
+                        </b:Interaction.Behaviors>
+                    </TextBlock>
                 </Button>
 
                 <Button
                     Grid.Row="3"
                     Content="{Binding OfferTitle}"
                     Command="{Binding OpenOfferCommand}"
-                    Style="{StaticResource OfferButtonStyle}"
+                    Style="{Binding OfferTitle, Converter={x:Static converters:OfferButtonTextToStyleConverter.Instance}}"
                     Visibility="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}"
                     Margin="0,20,0,0" />
             </Grid>

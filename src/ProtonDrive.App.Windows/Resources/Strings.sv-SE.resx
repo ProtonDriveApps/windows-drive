@@ -491,10 +491,10 @@ Slå av/på dess synkronisering igen för att återställa den och rensa detta f
     <value>Misslyckades att söka efter uppdatering</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
-    <value>Update required</value>
+    <value>Uppdatering krävs</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Update available</value>
+    <value>Uppdatering tillgänglig</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Integritetspolicy</value>
@@ -1359,6 +1359,15 @@ Innehållet i filer kommer endast att laddas ner på begäran.</value>
   <data name="MappingSetupStatus_Value_Succeeded">
     <value>OK</value>
   </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Lägg till lagringsutrymme</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Slut på lagringsutrymme</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Uppgradera för att skaffa mer lagringsutrymme och ladda upp dina filer.</value>
+  </data>
   <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
     <value>_Ändra</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1399,6 +1408,18 @@ Innehållet i filer kommer endast att laddas ner på begäran.</value>
   <data name="Onboarding_SyncFolderSelection_Title">
     <value>Säkerhetskopiera dina mappar</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Skaffa Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Skaffa _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Skaffa _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Button_NotNow">
     <value>_Inte nu</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1407,20 +1428,37 @@ Innehållet i filer kommer endast att laddas ner på begäran.</value>
     <value>_Uppgradera</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
-  <data name="Onboarding_UpgradeStorage_Label_Calendar">
-    <value>Kalender</value>
-  </data>
   <data name="Onboarding_UpgradeStorage_Label_Mail">
-    <value>E-post</value>
+    <value>E-post: Anpassad och säker e-post</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>månad</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Mest populär</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Upp till {0} användare</value>
+    <comment>Only for number greater than 1.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
-    <value>Lösenordshanterare</value>
+    <value>Pass: Krypterad lösenordshanterare</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Premiumvalv inkluderat</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Recommended">
     <value>Rekommenderat</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Återställ tidigare filversioner</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>lagringsutrymme</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Label_Vpn">
-    <value>VPN</value>
+    <value>VPN: Ultrasnabbt och privat</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Title">
     <value>Skaffa mer lagringsutrymme</value>

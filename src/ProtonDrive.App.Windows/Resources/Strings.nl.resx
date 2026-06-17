@@ -491,10 +491,10 @@ Zet de synchronisatie uit en weer aan om deze te herstellen en deze fout te verw
     <value>Updates controleren is mislukt</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
-    <value>Update required</value>
+    <value>Update vereist</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Update available</value>
+    <value>Update beschikbaar</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Privacybeleid</value>
@@ -1358,6 +1358,15 @@ De inhoud van bestanden wordt alleen op aanvraag gedownload.</value>
   <data name="MappingSetupStatus_Value_Succeeded">
     <value>Oké</value>
   </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Opslag toevoegen</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Geen opslagruimte meer</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Upgrade om meer opslagruimte te krijgen en upload uw bestanden.</value>
+  </data>
   <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
     <value>_Wijzigen</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1398,6 +1407,18 @@ De inhoud van bestanden wordt alleen op aanvraag gedownload.</value>
   <data name="Onboarding_SyncFolderSelection_Title">
     <value>Maak een back-up van uw mappen</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Koop Drive_Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Koop _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Koop _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Button_NotNow">
     <value>_Niet nu</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1406,20 +1427,37 @@ De inhoud van bestanden wordt alleen op aanvraag gedownload.</value>
     <value>_Upgrade</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
-  <data name="Onboarding_UpgradeStorage_Label_Calendar">
-    <value>Agenda</value>
-  </data>
   <data name="Onboarding_UpgradeStorage_Label_Mail">
-    <value>E-mail</value>
+    <value>Mail: Aangepaste en veilige e-mail</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>maand</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Meest populair</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Tot {0} gebruikers</value>
+    <comment>Only for number greater than 1.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
-    <value>Wachtwoordbeheerder</value>
+    <value>Pass: Versleutelde wachtwoordmanager</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Premiumwaarde inbegrepen</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Recommended">
     <value>Aanbevolen</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Herstel vorige bestandsversies</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>opslagruimte</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Label_Vpn">
-    <value>VPN</value>
+    <value>VPN: Ultrasnel en privé</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Title">
     <value>Krijg meer opslag</value>

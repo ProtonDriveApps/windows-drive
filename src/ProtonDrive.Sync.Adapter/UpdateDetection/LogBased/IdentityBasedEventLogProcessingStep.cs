@@ -75,16 +75,9 @@ internal class IdentityBasedEventLogProcessingStep<TId, TAltId> : SuccessStep<TI
 
         if (node?.IsSyncRoot() == true)
         {
-            _logger.LogDebug("Node with AltId={AltId} is the sync root, skipping", altId);
+            _logger.LogDebug("Adapter Tree {Type} node with AltId={AltId} is the sync root, skipping", node.Type, altId);
 
             return;
-        }
-
-        if (entry.ChangeType != EventLogChangeType.Error &&
-            entry.ChangeType != EventLogChangeType.Skipped &&
-            IsDefault(entry.Id))
-        {
-            throw new ArgumentException($"{nameof(entry.Id)} value cannot be null or empty", nameof(entry));
         }
 
         switch (entry.ChangeType)
@@ -168,7 +161,7 @@ internal class IdentityBasedEventLogProcessingStep<TId, TAltId> : SuccessStep<TI
 
         if (node.Model.Status.HasFlag(AdapterNodeStatus.DirtyDeleted))
         {
-            _logger.LogDebug("Adapter Tree node with Id={Id} is already deleted, skipping", node.Id);
+            _logger.LogDebug("Adapter Tree {Type} node with Id={Id} is already deleted, skipping", node.Type, node.Id);
 
             return;
         }
@@ -256,7 +249,7 @@ internal class IdentityBasedEventLogProcessingStep<TId, TAltId> : SuccessStep<TI
 
     private long GetMappedVersion(IIdentifiable<TId>? node, EventLogEntry<TAltId> entry)
     {
-        return node == null || entry.Size == null ? default : _fileVersionMapping.GetVersion(node.Id, entry.LastWriteTimeUtc, entry.Size.Value);
+        return node == null || entry.Size == null ? 0 : _fileVersionMapping.GetVersion(node.Id, entry.LastWriteTimeUtc, entry.Size.Value);
     }
 
     private AdapterNodeStatus GetStateUpdateFlags(AdapterTreeNode<TId, TAltId> nodeForObtainingRoot, EventLogEntry<TAltId> entry)

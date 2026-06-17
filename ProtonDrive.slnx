@@ -15,7 +15,7 @@
     </Project>
     <Project Path="src/ProtonDrive.App/ProtonDrive.App.csproj" />
     <Project Path="src/ProtonDrive.Client/ProtonDrive.Client.csproj" />
-    <Project Path="src/ProtonDrive.DataAccess/ProtonDrive.DataAccess.csproj" />
+    <Project Path="src/ProtonDrive.Sync.DataAccess/ProtonDrive.Sync.DataAccess.csproj" />
     <Project Path="src/ProtonDrive.Native.Windows/ProtonDrive.Native.Windows.csproj" />
     <Project Path="src/ProtonDrive.Shared/ProtonDrive.Shared.csproj" />
     <Project Path="src/ProtonDrive.Sync.Adapter/ProtonDrive.Sync.Adapter.csproj" />

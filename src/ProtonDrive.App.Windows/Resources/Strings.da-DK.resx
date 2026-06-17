@@ -1357,6 +1357,15 @@ Indholdet af filerne downloades kun efter behov.</value>
   <data name="MappingSetupStatus_Value_Succeeded">
     <value>Ok</value>
   </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Tilføj lagerplads</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Ikke mere lagerplads</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Opgrader for at få mere lagerplads og upload dine filer.</value>
+  </data>
   <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
     <value>_Skift</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1397,6 +1406,18 @@ Indholdet af filerne downloades kun efter behov.</value>
   <data name="Onboarding_SyncFolderSelection_Title">
     <value>Sikkerhedskopier dine mapper</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Få Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Få _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Få _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Button_NotNow">
     <value>_Ikke nu</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1405,20 +1426,37 @@ Indholdet af filerne downloades kun efter behov.</value>
     <value>_Opgrader</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
-  <data name="Onboarding_UpgradeStorage_Label_Calendar">
-    <value>Kalender</value>
-  </data>
   <data name="Onboarding_UpgradeStorage_Label_Mail">
-    <value>Mail</value>
+    <value>Mail: brugerdefineret og sikker e-mail</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>måned</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Mest populær</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Op til {0} brugere</value>
+    <comment>Only for number greater than 1.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
-    <value>Adgangskodeadministrator</value>
+    <value>Pass: krypteret adgangskodeadministrator</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Premium-tilbud inkluderet</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Recommended">
     <value>Anbefalet</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Gendan tidligere filversioner</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>lagerplads</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Label_Vpn">
-    <value>VPN</value>
+    <value>VPN: lynhurtig og privat</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Title">
     <value>Få mere lagerplads</value>

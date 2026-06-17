@@ -29,154 +29,296 @@
         <Style
             x:Key="OfferBorderStyle"
             TargetType="Border">
-            <Setter Property="Margin" Value="10,0" />
+            <Setter Property="Margin" Value="10,2" />
             <Setter Property="Padding" Value="8" />
             <Setter Property="CornerRadius" Value="6" />
+        </Style>
+
+        <Style
+            x:Key="MajorOfferBorderStyle"
+            TargetType="Border"
+            BasedOn="{StaticResource OfferBorderStyle}">
+            <d:Style.DataContext>
+                <x:Type Type="onboarding:StorageUpgradeOffer" />
+            </d:Style.DataContext>
+            <Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding IsMajorOffer}"
+                    Value="False">
+                    <Setter Property="Visibility" Value="Hidden" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style
+            x:Key="IconOfferStyle"
+            TargetType="Path">
+            <d:Style.DataContext>
+                <x:Type Type="onboarding:StorageUpgradeOffer" />
+            </d:Style.DataContext>
+            <Setter Property="Fill" Value="White" />
+            <Style.Triggers>
+                <DataTrigger
+                    Binding="{Binding IsRecommended}"
+                    Value="True">
+                    <Setter Property="Fill" Value="{StaticResource Offer.DetailIcon.ColorBrush}" />
+                </DataTrigger>
+            </Style.Triggers>
         </Style>
 
         <DataTemplate
             x:Key="UpgradeOfferTemplate"
             DataType="{x:Type onboarding:StorageUpgradeOffer}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-
+            <StackPanel Width="270">
                 <Border
-                    Grid.Row="1"
-                    BorderBrush="{StaticResource Section.Default.BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="8">
+                    Background="{StaticResource Offer.DetailIcon.ColorBrush}"
+                    CornerRadius="12,12,0,0"
+                    Visibility="{Binding IsRecommended, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsHidden}}"
+                    Padding="0,8">
+                    <StackPanel
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center">
+                        <Path
+                            Data="{StaticResource Icon.FilledStar}"
+                            Fill="White" />
+
+                        <TextBlock
+                            Text="{loc:Resource Onboarding_UpgradeStorage_Label_MostPopular}"
+                            Foreground="White"
+                            TextTrimming="CharacterEllipsis"
+                            Margin="12,0,0,0" />
+                    </StackPanel>
+                </Border>
+
+                <Border BorderThickness="1">
+                    <Border.Style>
+                        <Style TargetType="Border">
+                            <Setter Property="BorderBrush" Value="{StaticResource Section.Default.BorderBrush}" />
+                            <Setter Property="CornerRadius" Value="6" />
+                            <Setter Property="Margin" Value="0,15,0,0" />
+                            <Setter Property="Padding" Value="0,0,0,10" />
+                            <Style.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding IsRecommended}"
+                                    Value="True">
+                                    <Setter Property="BorderBrush" Value="{StaticResource Offer.DetailIcon.ColorBrush}" />
+                                    <Setter Property="CornerRadius" Value="0,0,6,6" />
+                                    <Setter Property="Margin" Value="0,0,0,0" />
+                                    <Setter Property="Padding" Value="0,0,0,20" />
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Border.Style>
+
                     <StackPanel>
                         <TextBlock
                             Text="{Binding Name}"
-                            FontSize="18"
-                            Foreground="{StaticResource GrayBrush}"
+                            Foreground="#9E9B98"
                             HorizontalAlignment="Center"
                             Margin="0,30,0,0" />
 
                         <TextBlock
                             Text="{Binding StorageDescription}"
                             FontSize="30"
+                            TextTrimming="CharacterEllipsis"
                             HorizontalAlignment="Center"
                             Margin="0,10,0,0" />
 
+                        <TextBlock
+                            FontSize="30"
+                            Visibility="{Binding DataContext.OfferPriceIsVisible, RelativeSource={RelativeSource FindAncestor, AncestorType=onboarding:UpgradeStorageStepView}, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}"
+                            HorizontalAlignment="Center"
+                            Margin="0,10,0,0">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0}{1} /{2}">
+                                    <Binding
+                                        Path="DataContext.UserCurrencySymbol"
+                                        RelativeSource="{RelativeSource FindAncestor,
+                                                                        AncestorType=onboarding:UpgradeStorageStepView}" />
+                                    <Binding
+                                        Path="Price"
+                                        Mode="OneWay"
+                                        StringFormat="#.##" />
+                                    <Binding Source="{loc:Resource Onboarding_UpgradeStorage_Label_Month}" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+
                         <Button
-                            Content="{loc:Resource Onboarding_UpgradeStorage_Button_Upgrade}"
+                            Content="{Binding ButtonText}"
                             Command="{Binding UpgradeCommand}"
-                            BorderBrush="White"
-                            Style="{StaticResource Button.DarkTheme.Style}"
-                            Margin="10,30,10,0" />
+                            Margin="10,30,10,0">
+                            <Button.Style>
+                                <Style
+                                    TargetType="Button"
+                                    BasedOn="{StaticResource Button.DarkTheme.Style}">
+                                    <Setter Property="BorderBrush" Value="White" />
+                                    <Style.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsRecommended}"
+                                            Value="true">
+                                            <Setter Property="Background" Value="{StaticResource PrimaryColorBrush}" />
+                                            <Setter Property="BorderBrush" Value="{StaticResource PrimaryColorBrush}" />
+                                            <Setter Property="Padding" Value="20,12" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
+                        <TextBlock Margin="10,20,0,0">
+                            <Run Text="{loc:Resource Onboarding_UpgradeStorage_Label_PremiumValuesIncluded}" /><Run Text=":" />
+                        </TextBlock>
 
                         <Border
                             Background="{StaticResource Offer.Highlighted.ColorBrush}"
                             Style="{StaticResource OfferBorderStyle}"
-                            Margin="10,30,10,0">
+                            Margin="10,20,10,0">
                             <StackPanel Orientation="Horizontal">
                                 <Path
                                     Data="{StaticResource Icon.Product.Drive}"
-                                    Fill="{StaticResource Offer.DetailIcon.ColorBrush}"
+                                    Style="{StaticResource IconOfferStyle}"
                                     VerticalAlignment="Center" />
+
                                 <TextBlock
+                                    TextTrimming="CharacterEllipsis"
                                     VerticalAlignment="Center"
                                     Margin="7,0,0,0">
                                     <Run Text="{Binding StorageDescription, Mode=OneWay}" />
-                                    <Run>storage</Run>
+                                    <Run Text="{loc:Resource Onboarding_UpgradeStorage_Label_Storage}" />
                                 </TextBlock>
                             </StackPanel>
                         </Border>
 
                         <Border Style="{StaticResource OfferBorderStyle}">
-                            <StackPanel Orientation="Horizontal">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
                                 <Path
-                                    Data="{StaticResource Icon.Users}"
-                                    Fill="{StaticResource Offer.DetailIcon.ColorBrush}"
+                                    Data="{StaticResource Icon.ClockRotateLeft}"
+                                    Style="{StaticResource IconOfferStyle}"
                                     VerticalAlignment="Center" />
+
                                 <TextBlock
-                                    Text="{Binding NumberOfUsersDescription}"
-                                    VerticalAlignment="Center"
+                                    Grid.Column="1"
+                                    Text="{loc:Resource Onboarding_UpgradeStorage_Label_RecoverVersions}"
+                                    TextTrimming="CharacterEllipsis"
                                     Margin="7,0,0,0" />
-                            </StackPanel>
+                            </Grid>
                         </Border>
 
                         <Border
                             Background="{StaticResource Offer.Highlighted.ColorBrush}"
-                            Style="{StaticResource OfferBorderStyle}">
-                            <StackPanel Orientation="Horizontal">
+                            Style="{StaticResource MajorOfferBorderStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
                                 <Path
                                     Data="{StaticResource Icon.Product.Vpn}"
-                                    Fill="{StaticResource Offer.DetailIcon.ColorBrush}"
+                                    Style="{StaticResource IconOfferStyle}"
                                     VerticalAlignment="Center" />
+
                                 <TextBlock
+                                    Grid.Column="1"
                                     Text="{loc:Resource Onboarding_UpgradeStorage_Label_Vpn}"
+                                    TextTrimming="CharacterEllipsis"
                                     VerticalAlignment="Center"
                                     Margin="7,0,0,0" />
-                            </StackPanel>
+                            </Grid>
                         </Border>
 
-                        <Border Style="{StaticResource OfferBorderStyle}">
-                            <StackPanel Orientation="Horizontal">
+                        <Border Style="{StaticResource MajorOfferBorderStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
                                 <Path
                                     Data="{StaticResource Icon.Product.Mail}"
-                                    Fill="{StaticResource Offer.DetailIcon.ColorBrush}"
+                                    Style="{StaticResource IconOfferStyle}"
                                     VerticalAlignment="Center" />
+
                                 <TextBlock
+                                    Grid.Column="1"
                                     Text="{loc:Resource Onboarding_UpgradeStorage_Label_Mail}"
+                                    TextTrimming="CharacterEllipsis"
                                     VerticalAlignment="Center"
                                     Margin="7,0,0,0" />
-                            </StackPanel>
+                            </Grid>
                         </Border>
 
                         <Border
                             Background="{StaticResource Offer.Highlighted.ColorBrush}"
-                            Style="{StaticResource OfferBorderStyle}">
-                            <StackPanel Orientation="Horizontal">
-                                <Path
-                                    Data="{StaticResource Icon.Product.Calendar}"
-                                    Fill="{StaticResource Offer.DetailIcon.ColorBrush}"
-                                    VerticalAlignment="Center" />
-                                <TextBlock
-                                    Text="{loc:Resource Onboarding_UpgradeStorage_Label_Calendar}"
-                                    Margin="7,0,0,0" />
-                            </StackPanel>
-                        </Border>
+                            Style="{StaticResource MajorOfferBorderStyle}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
 
-                        <Border Style="{StaticResource OfferBorderStyle}">
-                            <StackPanel Orientation="Horizontal">
                                 <Path
                                     Data="{StaticResource Icon.Product.Pass}"
-                                    Fill="{StaticResource Offer.DetailIcon.ColorBrush}"
+                                    Style="{StaticResource IconOfferStyle}"
                                     VerticalAlignment="Center" />
+
                                 <TextBlock
+                                    Grid.Column="1"
                                     Text="{loc:Resource Onboarding_UpgradeStorage_Label_PasswordManager}"
+                                    TextTrimming="CharacterEllipsis"
                                     VerticalAlignment="Center"
                                     Margin="7,0,0,0" />
-                            </StackPanel>
+                            </Grid>
+                        </Border>
+
+                        <Border>
+                            <Border.Style>
+                                <Style
+                                    TargetType="Border"
+                                    BasedOn="{StaticResource MajorOfferBorderStyle}">
+                                    <Style.Triggers>
+                                        <DataTrigger
+                                            Binding="{Binding IsMultiUserOffer}"
+                                            Value="False">
+                                            <Setter Property="Visibility" Value="Hidden" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Path
+                                    Data="{StaticResource Icon.Users}"
+                                    Fill="White"
+                                    VerticalAlignment="Center" />
+
+                                <TextBlock
+                                    Grid.Column="1"
+                                    TextTrimming="CharacterEllipsis"
+                                    VerticalAlignment="Center"
+                                    Margin="7,0,0,0">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="{loc:Resource Onboarding_UpgradeStorage_Label_NumberOfUsers}">
+                                            <Binding Path="NumberOfUsers" />
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                            </Grid>
                         </Border>
                     </StackPanel>
                 </Border>
-
-                <Border
-                    Grid.Row="0"
-                    Background="{StaticResource Offer.Highlighted.ColorBrush}"
-                    BorderBrush="{StaticResource Section.Default.BorderBrush}"
-                    BorderThickness="1"
-                    CornerRadius="12"
-                    Visibility="{Binding IsRecommended, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsHidden}}"
-                    HorizontalAlignment="Center"
-                    Padding="20,8"
-                    Margin="0,0,0,-20">
-                    <StackPanel Orientation="Horizontal">
-                        <Path
-                            Data="{StaticResource Icon.FilledStar}"
-                            Fill="White" />
-                        <TextBlock
-                            Text="{loc:Resource Onboarding_UpgradeStorage_Label_Recommended}"
-                            Margin="12,0,0,0" />
-                    </StackPanel>
-                </Border>
-            </Grid>
+            </StackPanel>
         </DataTemplate>
     </UserControl.Resources>
 
@@ -204,7 +346,7 @@
 
             <ItemsControl.ItemContainerStyle>
                 <Style TargetType="FrameworkElement">
-                    <Setter Property="Margin" Value="10,0,0,0" />
+                    <Setter Property="Margin" Value="5,0,5,0" />
                     <Style.Triggers>
                         <DataTrigger
                             Binding="{Binding RelativeSource={RelativeSource PreviousData}}"

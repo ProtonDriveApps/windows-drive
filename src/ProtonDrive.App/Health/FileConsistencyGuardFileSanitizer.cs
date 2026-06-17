@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
-using ProtonDrive.DataAccess.Databases;
+using ProtonDrive.Sync.DataAccess.Databases;
 using ProtonDrive.Sync.Shared.Health;
 
 namespace ProtonDrive.App.Health;

@@ -305,22 +305,13 @@
     </Style>
 
     <Style
-        x:Key="OfferButtonStyle"
+        x:Key="OfferButtonStyle.Base"
         TargetType="Button"
         BasedOn="{StaticResource ButtonStyle}">
         <Setter Property="Padding" Value="6,6" />
         <Setter Property="Background" Value="{StaticResource OfferButtonBrush.Default.Background}" />
         <Setter Property="Foreground" Value="{StaticResource Text.DarkTheme.Brush}" />
         <Setter Property="FontWeight" Value="Bold" />
-        <Setter Property="Effect">
-            <Setter.Value>
-                <DropShadowEffect
-                    BlurRadius="30"
-                    Opacity="0.5"
-                    ShadowDepth="0"
-                    Color="{StaticResource OfferButtonColor}" />
-            </Setter.Value>
-        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type Button}">
@@ -345,12 +336,6 @@
                         <Trigger Property="IsDefaulted" Value="true">
                             <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
                         </Trigger>
-                        <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource OfferButtonBrush.MouseOver.Background}" />
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="true">
-                            <Setter TargetName="border" Property="Background" Value="{StaticResource OfferButtonBrush.MouseOver.Background}" />
-                        </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter TargetName="border" Property="Background" Value="{StaticResource Button.Disabled.Background}" />
                             <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource Button.Disabled.Foreground}" />
@@ -359,6 +344,36 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style
+        x:Key="OfferButtonStyle"
+        TargetType="Button"
+        BasedOn="{StaticResource OfferButtonStyle.Base}">
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="{StaticResource OfferButtonBrush.MouseOver.Background}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter Property="Background" Value="{StaticResource OfferButtonBrush.MouseOver.Background}" />
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style
+        x:Key="OfferButtonStyle.Promo"
+        TargetType="Button"
+        BasedOn="{StaticResource OfferButtonStyle.Base}">
+        <Setter Property="Background" Value="{StaticResource PromoOfferButtonBrush.Default.Background}" />
+        <Setter Property="Foreground" Value="{StaticResource PromoOfferButtonBrush.Default.Foreground}" />
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="true">
+                <Setter Property="Background" Value="{StaticResource PromoOfferButtonBrush.MouseOver.Background}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="true">
+                <Setter Property="Background" Value="{StaticResource PromoOfferButtonBrush.MouseOver.Background}" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style

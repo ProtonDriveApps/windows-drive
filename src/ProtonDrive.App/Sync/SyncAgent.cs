@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using ProtonDrive.DataAccess.Databases;
 using ProtonDrive.Shared;
 using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Shared.Telemetry;
@@ -7,6 +6,7 @@ using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Adapter;
 using ProtonDrive.Sync.Adapter.Shared;
 using ProtonDrive.Sync.Agent.Health;
+using ProtonDrive.Sync.DataAccess.Databases;
 using ProtonDrive.Sync.Engine;
 using ProtonDrive.Sync.Shared;
 using ProtonDrive.Sync.Shared.ExecutionStatistics;

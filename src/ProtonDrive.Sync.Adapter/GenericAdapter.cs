@@ -61,6 +61,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
 
     public GenericAdapter(
         ILoggerFactory loggerFactory,
+        Replica replica,
         AppConfig appConfig,
         IScheduler scheduler,
         ILooseCompoundAltIdentifiableTreeNodeRepository<AdapterTreeNodeModel<TId, TAltId>, TId, TAltId> adapterTreeRepository,
@@ -275,6 +276,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
 
         var deletionDetection = new DeletionDetection<TId, TAltId>(
             loggerFactory.CreateLogger<DeletionDetection<TId, TAltId>>(),
+            replica,
             SyncScheduler,
             FileSystemTree,
             DirtyTree,
@@ -283,6 +285,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
 
         var stateBasedUpdateDetection = new StateBasedUpdateDetection<TId, TAltId>(
             loggerFactory.CreateLogger<StateBasedUpdateDetection<TId, TAltId>>(),
+            replica,
             executionScheduler,
             SyncScheduler,
             FileSystemTree,
@@ -295,6 +298,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
 
         var logBasedUpdateDetection = new LogBasedUpdateDetection<TId, TAltId>(
             loggerFactory,
+            replica,
             executionScheduler,
             SyncScheduler,
             FileSystemTree,

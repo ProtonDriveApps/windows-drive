@@ -15,7 +15,6 @@ internal sealed class OfferViewModel : ObservableObject, ICloseable, IDialogView
     private readonly IForkingSessionUrlOpener _urlOpener;
     private readonly ILogger<OfferViewModel> _logger;
 
-    private bool _closingRequested;
     private Notifications.Offers.Offer? _offer;
 
     public OfferViewModel(IForkingSessionUrlOpener urlOpener, ILogger<OfferViewModel> logger)
@@ -30,12 +29,14 @@ internal sealed class OfferViewModel : ObservableObject, ICloseable, IDialogView
 
     public ImageSource? Image { get; private set; }
 
+    public bool DisplayCallToActionButton { get; private set; }
+
     public ICommand GetDealCommand { get; }
 
     public bool ClosingRequested
     {
-        get => _closingRequested;
-        set => SetProperty(ref _closingRequested, value);
+        get;
+        set => SetProperty(ref field, value);
     }
 
     private Notifications.Offers.Offer Offer => _offer ?? throw new ArgumentNullException(nameof(Offer));
@@ -47,6 +48,9 @@ internal sealed class OfferViewModel : ObservableObject, ICloseable, IDialogView
         try
         {
             _offer = offer;
+
+            DisplayCallToActionButton = offer.DisplayCallToActionButton;
+
             Image = new BitmapImage(new Uri(offer.ImageFilePath, UriKind.Absolute));
         }
         catch (Exception ex) when (ex is FormatException || ex.IsFileAccessException())

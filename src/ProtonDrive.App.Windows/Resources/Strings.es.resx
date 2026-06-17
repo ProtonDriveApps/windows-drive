@@ -491,10 +491,10 @@ Desactiva y activa la sincronización nuevamente para restaurarlo y eliminar est
     <value>Error al buscar actualizaciones</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
-    <value>Update required</value>
+    <value>Actualización requerida</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Update available</value>
+    <value>Actualización disponible</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Política de privacidad</value>
@@ -1359,6 +1359,15 @@ El contenido de los archivos se descargará solo cuando lo necesites.</value>
   <data name="MappingSetupStatus_Value_Succeeded">
     <value>OK</value>
   </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Añadir almacenamiento</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Se ha agotado el espacio de almacenamiento</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Mejora tu plan para obtener más espacio de almacenamiento y subir tus archivos.</value>
+  </data>
   <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
     <value>_Cambiar</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1399,6 +1408,18 @@ El contenido de los archivos se descargará solo cuando lo necesites.</value>
   <data name="Onboarding_SyncFolderSelection_Title">
     <value>Realiza una copia de seguridad de tus carpetas</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Obtener Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Get _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Obtener _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Button_NotNow">
     <value>_Ahora no</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1407,20 +1428,37 @@ El contenido de los archivos se descargará solo cuando lo necesites.</value>
     <value>_Mejorar</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
-  <data name="Onboarding_UpgradeStorage_Label_Calendar">
-    <value>Calendario</value>
-  </data>
   <data name="Onboarding_UpgradeStorage_Label_Mail">
-    <value>Correo</value>
+    <value>Mail: correo electrónico personalizado y seguro</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>mes</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Más popular</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Hasta {0} usuarios</value>
+    <comment>Only for number greater than 1.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
-    <value>Gestor de contraseñas</value>
+    <value>Pass: gestor de contraseñas cifrado</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Funciones prémium incluidas</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Recommended">
     <value>Recomendado</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Recupera las versiones previas de los archivos</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>almacenamiento</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Label_Vpn">
-    <value>VPN</value>
+    <value>VPN: ultrarrápida y privada</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Title">
     <value>Obtener más almacenamiento</value>
@@ -1429,7 +1467,7 @@ El contenido de los archivos se descargará solo cuando lo necesites.</value>
     <value>Error con la importación. El álbum no existe.</value>
   </data>
   <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
-    <value>Import failed. The folder does not exist.</value>
+    <value>Se ha producido un error en la importación. La carpeta no existe.</value>
   </data>
   <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
     <value>Error con la importación. Se ha alcanzado el número máximo de álbumes.</value>

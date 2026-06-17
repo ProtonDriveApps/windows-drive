@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProtonDrive.DataAccess\ProtonDrive.DataAccess.csproj" />
+    <ProjectReference Include="..\ProtonDrive.Sync.DataAccess\ProtonDrive.Sync.DataAccess.csproj" />
     <ProjectReference Include="..\ProtonDrive.Sync.Adapter\ProtonDrive.Sync.Adapter.csproj" />
     <ProjectReference Include="..\ProtonDrive.Sync.Engine\ProtonDrive.Sync.Engine.csproj" />
     <ProjectReference Include="..\ProtonDrive.Sync.Shared\ProtonDrive.Sync.Shared.csproj" />

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System.Globalization;
+using Microsoft.Extensions.Logging;
 using ProtonDrive.App.Account;
 using ProtonDrive.App.Notifications.Contracts;
 using ProtonDrive.App.Services;
@@ -9,6 +10,7 @@ using ProtonDrive.Shared;
 using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Shared.Features;
+using ProtonDrive.Shared.Localization;
 using ProtonDrive.Shared.Logging;
 using ProtonDrive.Shared.Threading;
 using ClientNotification = ProtonDrive.App.Notifications.Contracts.Notification;
@@ -29,6 +31,7 @@ internal sealed class OfferService : IStoppableService, IAccountStateAware, IUse
 
     private readonly CoalescingAction _stateChangeHandler;
     private readonly ISchedulerTimer _timer;
+    private readonly bool _languageIsEnglish;
 
     private AccountStatus _accountStatus;
     private RemoteSettings _settings = RemoteSettings.Default;
@@ -45,6 +48,7 @@ internal sealed class OfferService : IStoppableService, IAccountStateAware, IUse
         INotificationClient notificationClient,
         ICoreFeatureClient coreFeatureClient,
         Lazy<IEnumerable<IOffersAware>> offersAwareInstances,
+        ILanguageProvider languageProvider,
         ILogger<OfferService> logger)
     {
         _appConfig = appConfig;
@@ -52,6 +56,8 @@ internal sealed class OfferService : IStoppableService, IAccountStateAware, IUse
         _notificationClient = notificationClient;
         _coreFeatureClient = coreFeatureClient;
         _offersAwareInstances = offersAwareInstances;
+        var cultureInfo = new CultureInfo(languageProvider.GetCulture());
+        _languageIsEnglish = cultureInfo.TwoLetterISOLanguageName.Equals("en", StringComparison.OrdinalIgnoreCase);
         _logger = logger;
 
         _stateChangeHandler = logger.GetCoalescingActionWithExceptionsLoggingAndCancellationHandling(HandleExternalStateChangeAsync, nameof(OfferService));
@@ -234,14 +240,15 @@ internal sealed class OfferService : IStoppableService, IAccountStateAware, IUse
             AccountAppUrl = notification.Offer.AccountAppUrl,
             ImageFilePath = Path.Combine(appFolderPath, notification.Offer.ImageUrl),
             Title = notification.Offer.Title,
+            DisplayCallToActionButton = notification.DisplayCallToActionButton ?? false,
             NotificationMessage = ToNotificationMessage(notification),
         };
     }
 
     private NotificationMessage? ToNotificationMessage(ClientNotification notification)
     {
-        if (string.IsNullOrEmpty(notification.HeaderText) ||
-            string.IsNullOrEmpty(notification.ContentText))
+        if (string.IsNullOrEmpty(notification.HeaderText)
+            || string.IsNullOrEmpty(notification.ContentText))
         {
             return null;
         }
@@ -261,10 +268,11 @@ internal sealed class OfferService : IStoppableService, IAccountStateAware, IUse
     {
         var userState = _userState;
 
-        if (_accountStatus is not AccountStatus.Succeeded ||
-            !_settings.HasInAppNotificationsEnabled ||
-            !_offersEnabled ||
-            !CanGetAnOffer(userState))
+        if (_accountStatus is not AccountStatus.Succeeded
+            || !_settings.HasInAppNotificationsEnabled
+            || !_offersEnabled
+            || !_languageIsEnglish
+            || !CanGetAnOffer(userState))
         {
             _eligibleForRetentionOffers = null;
             _timer.Stop();

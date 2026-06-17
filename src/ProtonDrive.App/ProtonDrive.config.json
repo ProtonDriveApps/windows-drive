@@ -37,6 +37,7 @@
   "ContactsCacheInvalidationInterval": "12:00:00",
   "ContactsCacheGraceInterval": "00:10:00",
   "DelayBeforeDisplayingSyncInitializationProgress": "00:00:20",
+  "DelayBeforeShowingNotification": "00:00:10",
   "NumberOfDaysBeforeRemovingInstallationLogFiles": 90,
   "PeriodicTelemetryReportInterval": "00:30:00",
   "PeriodicObservabilityReportInterval": "00:00:10",

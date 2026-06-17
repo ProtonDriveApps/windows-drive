@@ -491,10 +491,10 @@
     <value>Не ўдалося праверыць абнаўленні</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
-    <value>Update required</value>
+    <value>Патрабуецца абнаўленне</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Update available</value>
+    <value>Даступна абнаўленне</value>
   </data>
   <data name="Main_About_Button_PrivacyPolicy">
     <value>_Палітыка прыватнасці</value>
@@ -1359,6 +1359,15 @@
   <data name="MappingSetupStatus_Value_Succeeded">
     <value>OK</value>
   </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Павялічыць сховішча</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Скончылася месца ў сховішчы</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Палепшыце, каб атрымаць больш прасторы ў сховішчы і запампаваць свае файлы.</value>
+  </data>
   <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
     <value>_Змяніць</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1399,6 +1408,18 @@
   <data name="Onboarding_SyncFolderSelection_Title">
     <value>Рэзервовае капіяванне вашых папак</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Атрымаць Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Атрымаць _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Атрымаць _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Button_NotNow">
     <value>_Не зараз</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1407,20 +1428,37 @@
     <value>_Палепшыць</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
-  <data name="Onboarding_UpgradeStorage_Label_Calendar">
-    <value>Каляндар</value>
-  </data>
   <data name="Onboarding_UpgradeStorage_Label_Mail">
-    <value>Пошта</value>
+    <value>Mail: карыстальніцкая і бяспечная электронная пошта</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>месяц</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Найбольш папулярны</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Да {0} карыстальнікаў</value>
+    <comment>Only for number greater than 1.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
-    <value>Менеджар пароляў</value>
+    <value>Pass: зашыфраваны менеджар пароляў</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Уключаны прэміяльны функцыянал</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Recommended">
     <value>Рэкамендаваны</value>
   </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Аднаўленне папярэдніх версій файла</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>сховішча</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
   <data name="Onboarding_UpgradeStorage_Label_Vpn">
-    <value>VPN</value>
+    <value>VPN: ультра хуткі і прыватны</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Title">
     <value>Атрымаць больш месца ў сховішчы</value>

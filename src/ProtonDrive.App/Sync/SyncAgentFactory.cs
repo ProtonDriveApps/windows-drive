@@ -5,14 +5,14 @@ using ProtonDrive.App.FileSystem.Remote;
 using ProtonDrive.App.Health;
 using ProtonDrive.App.Mapping;
 using ProtonDrive.App.Settings;
-using ProtonDrive.DataAccess;
-using ProtonDrive.DataAccess.Databases;
 using ProtonDrive.Shared;
 using ProtonDrive.Shared.Configuration;
 using ProtonDrive.Shared.Telemetry;
 using ProtonDrive.Shared.Threading;
 using ProtonDrive.Sync.Adapter;
 using ProtonDrive.Sync.Agent.Health;
+using ProtonDrive.Sync.DataAccess;
+using ProtonDrive.Sync.DataAccess.Databases;
 using ProtonDrive.Sync.Engine;
 using ProtonDrive.Sync.Shared;
 using ProtonDrive.Sync.Shared.FileSystem;
@@ -118,6 +118,7 @@ internal sealed class SyncAgentFactory
 
         var remoteAdapter = new GenericAdapter<long, string>(
             _loggerFactory,
+            Replica.Remote,
             _appConfig,
             _scheduler,
             remoteAdapterDatabase.AdapterTreeRepository,
@@ -159,6 +160,7 @@ internal sealed class SyncAgentFactory
 
         var localAdapter = new GenericAdapter<long, long>(
             _loggerFactory,
+            Replica.Local,
             _appConfig,
             _scheduler,
             localAdapterDatabase.AdapterTreeRepository,

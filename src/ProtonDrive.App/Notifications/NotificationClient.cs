@@ -19,12 +19,11 @@ internal sealed class NotificationClient : INotificationClient
 
         try
         {
-            var notifications =
-                _repository
-                    .GetAll()
-                    .Where(n => n.UserSubscriptionPlanCodes.Contains(userSubscriptionPlanCode))
-                    .ToList()
-                    .AsReadOnly();
+            var notifications = _repository
+                .GetAll()
+                .Where(n => n.UserSubscriptionPlanCodes.Contains(userSubscriptionPlanCode))
+                .ToList()
+                .AsReadOnly();
 
             return Task.FromResult<IReadOnlyCollection<Contracts.Notification>>(notifications);
         }

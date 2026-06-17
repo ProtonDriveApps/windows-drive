@@ -125,8 +125,9 @@ internal abstract partial class SuccessStep<TId, TAltId>
         if (isFolderMove && parentNode.FromParentToRoot().SkipLast(1).Any(n => n.Id.Equals(node!.Id)))
         {
             _logger.LogWarning(
-                "Moving Adapter Tree node with Id={Id} to parent with Id={ParentId} is a cyclic move",
-                node!.Id,
+                "Moving Adapter Tree {Type} node with Id={Id} to parent with Id={ParentId} is a cyclic move",
+                node!.Type,
+                node.Id,
                 parentNode.Id);
 
             AppendDirtyStatus(node, AdapterNodeStatus.DirtyAttributes | AdapterNodeStatus.DirtyParent);
@@ -187,12 +188,12 @@ internal abstract partial class SuccessStep<TId, TAltId>
 
         if (node.IsNodeOrBranchDeleted())
         {
-            _logger.LogDebug("Adapter Tree node with Id={Id} is in already deleted branch", node.Id);
+            _logger.LogDebug("Adapter Tree {Type} node with Id={Id} is in already deleted branch", node.Type, node.Id);
 
             return;
         }
 
-        _logger.LogDebug("Marking Adapter Tree node with Id={Id} as deleted", node.Id);
+        _logger.LogDebug("Marking Adapter Tree {Type} node with Id={Id} as deleted", node.Type, node.Id);
 
         // Directories deleted while in a dirty branch are marked with the DirtyDescendants flag.
         var dirtyStatus = node.Type == NodeType.Directory && BranchIsDirty(node)
@@ -204,7 +205,7 @@ internal abstract partial class SuccessStep<TId, TAltId>
 
     protected void RemoveAltId(AdapterTreeNode<TId, TAltId> node)
     {
-        _logger.LogDebug("Updating Adapter Tree node with Id={Id} to remove AltId value={AltId}", node.Id, node.AltId);
+        _logger.LogDebug("Updating Adapter Tree {Type} node with Id={Id} to remove AltId value={AltId}", node.Type, node.Id, node.AltId);
 
         var updatedNodeModel = IncomingAdapterTreeNodeModel<TId, TAltId>
             .FromNodeModel(node.Model)
@@ -215,7 +216,7 @@ internal abstract partial class SuccessStep<TId, TAltId>
 
     protected void AppendDirtyStatus(AdapterTreeNode<TId, TAltId> node, AdapterNodeStatus value)
     {
-        _logger.LogDebug("Updating Adapter Tree node with Id={Id} to set status flag(s) ({Flags})", node.Id, value);
+        _logger.LogInformation("Updating Adapter Tree {Type} node with Id={Id} to append status flag(s) ({Flags})", node.Type, node.Id, value);
 
         var incoming = IncomingAdapterTreeNodeModel<TId, TAltId>
             .FromNodeModel(node.Model)
@@ -226,7 +227,7 @@ internal abstract partial class SuccessStep<TId, TAltId>
 
     protected void SetStateUpdateFlags(AdapterTreeNode<TId, TAltId> node, AdapterNodeStatus value)
     {
-        _logger.LogDebug("Updating Adapter Tree node with Id={Id} state update flag(s) to ({Value})", node.Id, value);
+        _logger.LogDebug("Updating Adapter Tree {Type} node with Id={Id} state update flag(s) to ({Value})", node.Type, node.Id, value);
 
         var incoming = IncomingAdapterTreeNodeModel<TId, TAltId>
             .FromNodeModel(node.Model)
@@ -237,6 +238,8 @@ internal abstract partial class SuccessStep<TId, TAltId>
 
     protected void SetDirtyStatus(AdapterTreeNode<TId, TAltId> node, AdapterNodeStatus value)
     {
+        _logger.LogInformation("Updating Adapter Tree {Type} node with Id={Id} to set status flag(s) ({Flags})", node.Type, node.Id, value);
+
         var incoming = IncomingAdapterTreeNodeModel<TId, TAltId>
             .FromNodeModel(node.Model)
             .WithDirtyFlags(value);
@@ -316,10 +319,10 @@ internal abstract partial class SuccessStep<TId, TAltId>
 
         // New file system object appeared with the reused ID
         _logger.LogWarning(
-            "Adapter Tree node with Id={Id} {AltId} type={Type} doesn't match the expected, marking it as deleted",
+            "Adapter Tree {Type} node with Id={Id} {AltId} doesn't match the expected, marking it as deleted",
+            node.Type,
             node.Id,
-            node.AltId,
-            node.Type);
+            node.AltId);
 
         MarkAsDeleted(node);
         RemoveAltId(node);

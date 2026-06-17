@@ -2,11 +2,9 @@
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using MoreLinq;
-using ProtonDrive.App.Onboarding;
 using ProtonDrive.App.Services;
 using ProtonDrive.App.Settings;
 using ProtonDrive.App.Sync;
-using ProtonDrive.App.Volumes;
 using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Shared.Logging;
 using ProtonDrive.Shared.Telemetry;
@@ -16,7 +14,7 @@ using ProtonDrive.Sync.Shared.SyncActivity;
 namespace ProtonDrive.App.Mapping;
 
 internal sealed class MappingSetupService
-    : IMappingSetupService, IStoppableService, IMappingsAware, IMainVolumeStateAware, ISyncStateAware, IOnboardingStateAware, IRootDeletionHandler
+    : IMappingSetupService, IStoppableService, IMappingsAware, ISyncLifecycleStateAware, ISyncStateAware, IRootDeletionHandler
 {
     // Sync folder mappings are set up in a specific order based on mapping type
     private static readonly MappingType[] MappingTypesToSetUp =
@@ -40,9 +38,8 @@ internal sealed class MappingSetupService
     private readonly ConcurrentQueue<int> _deletedSyncRootIds = new();
 
     private volatile bool _stopping;
-    private VolumeState _mainVolumeState = VolumeState.Idle;
+    private SyncLifecycleStatus _syncLifecycleState;
     private SyncState _syncState = SyncState.Terminated;
-    private OnboardingState _onboardingState = OnboardingState.Initial;
 
     private volatile bool _hasReceivedMappings;
     private Mappings _mappings = new([], []);
@@ -99,32 +96,16 @@ internal sealed class MappingSetupService
         ScheduleSetup(forceRestart: true);
     }
 
-    void IMainVolumeStateAware.OnMainVolumeStateChanged(VolumeState value)
+    void ISyncLifecycleStateAware.OnSyncLifecycleStateChanged(SyncLifecycleStatus value)
     {
-        // Checking whether status changed into Ready from
-        // a different one, or from Ready into a different one
-        var statusChanged = _mainVolumeState.Status != value.Status
-                            && (_mainVolumeState.Status == VolumeStatus.Ready
-                                || value.Status == VolumeStatus.Ready);
+        _syncLifecycleState = value;
 
-        _mainVolumeState = value;
-
-        if (statusChanged)
-        {
-            ScheduleSetup(forceRestart: value.Status is VolumeStatus.Idle);
-        }
+        ScheduleSetup(forceRestart: value is SyncLifecycleStatus.Disabled);
     }
 
     void ISyncStateAware.OnSyncStateChanged(SyncState value)
     {
         _syncState = value;
-    }
-
-    void IOnboardingStateAware.OnboardingStateChanged(OnboardingState value)
-    {
-        _onboardingState = value;
-
-        ScheduleSetup(forceRestart: false);
     }
 
     void IRootDeletionHandler.HandleRootDeletion(IEnumerable<int> syncRootIds)
@@ -305,8 +286,7 @@ internal sealed class MappingSetupService
     private bool ValidatePreconditions()
     {
         return _hasReceivedMappings
-            && _mainVolumeState.Status is VolumeStatus.Ready
-            && _onboardingState.Status is not OnboardingStatus.Onboarding;
+            && _syncLifecycleState is SyncLifecycleStatus.Enabled;
     }
 
     /// <summary>

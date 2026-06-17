@@ -213,44 +213,50 @@ internal sealed class RemoteEventLogClient : IEventLogClient<string>, IDisposabl
 
                 if (item.Link == null)
                 {
-                    _logger.LogError("Link cannot be null");
+                    _logger.LogError("Link in remote event cannot be null");
+                    continue;
                 }
-                else if (item.Type == EventType.Delete)
+
+                if (item.Link.ParentId == null)
+                {
+                    _logger.LogInformation(
+                        "Event received for the root link: {EventType}, link ID={LinkID}, link state={LinkState}, {VolumeOrShare} ID={VolumeOrShareId}",
+                        item.Type,
+                        item.Link.Id,
+                        item.Link.State,
+                        _volumeOrShare,
+                        _volumeOrShareId);
+                }
+
+                if (item.Type == EventType.Delete)
                 {
                     entries.Add(
                         new EventLogEntry<string>(EventLogChangeType.Deleted)
                         {
                             Id = item.Link.Id,
                         });
+
+                    continue;
                 }
-                else if (_isVolumeBased && string.IsNullOrEmpty(item.ContextShareId))
+
+                if (_isVolumeBased && string.IsNullOrEmpty(item.ContextShareId))
                 {
                     _logger.LogError(
                         "Context share is null for event type {EventType}, link ID={LinkId}, volume ID={VolumeId}",
                         item.Type,
                         item.Link.Id,
                         _volumeOrShareId);
+
+                    continue;
                 }
-                else
-                {
-                    if (item.Link.ParentId == null)
-                    {
-                        _logger.LogInformation(
-                            "Event received for the root link: {EventType}, link ID={LinkID}, {VolumeOrShare} ID={VolumeOrShareId}",
-                            item.Type,
-                            item.Link.Id,
-                            _volumeOrShare,
-                            _volumeOrShareId);
-                    }
 
-                    var shareId = (_isVolumeBased ? item.ContextShareId : _volumeOrShareId) ?? throw new InvalidOperationException();
+                var shareId = (_isVolumeBased ? item.ContextShareId : _volumeOrShareId) ?? throw new InvalidOperationException();
 
-                    var remoteNode = await _remoteNodeService.GetRemoteNodeAsync(shareId, item.Link, cancellationToken).ConfigureAwait(false);
+                var remoteNode = await _remoteNodeService.GetRemoteNodeAsync(shareId, item.Link, cancellationToken).ConfigureAwait(false);
 
-                    cancellationToken.ThrowIfCancellationRequested();
+                cancellationToken.ThrowIfCancellationRequested();
 
-                    entries.Add(ToEventLogEntry(item.Type, remoteNode));
-                }
+                entries.Add(ToEventLogEntry(item.Type, remoteNode));
             }
             catch (ApiException ex)
             {

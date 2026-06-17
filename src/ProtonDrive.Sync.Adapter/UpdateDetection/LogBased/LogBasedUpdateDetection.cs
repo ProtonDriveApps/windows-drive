@@ -16,6 +16,7 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
     where TAltId : IEquatable<TAltId>
 {
     private readonly ILogger _logger;
+    private readonly Replica _replica;
     private readonly IScheduler _executionScheduler;
     private readonly IScheduler _syncScheduler;
     private readonly IEventLogClient<TAltId> _eventLogClient;
@@ -32,6 +33,7 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
 
     public LogBasedUpdateDetection(
         ILoggerFactory loggerFactory,
+        Replica replica,
         IScheduler executionScheduler,
         IScheduler syncScheduler,
         AdapterTree<TId, TAltId> adapterTree,
@@ -46,6 +48,7 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
         UpdateDetectionSequencer updateDetectionSequencer)
     {
         _logger = loggerFactory.CreateLogger<LogBasedUpdateDetection<TId, TAltId>>();
+        _replica = replica;
         _executionScheduler = executionScheduler;
         _syncScheduler = syncScheduler;
         _eventLogClient = eventLogClient;
@@ -71,7 +74,7 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
 
     public void Start()
     {
-        _logger.LogInformation("Starting event log-based update detection");
+        _logger.LogInformation("Starting {Replica} event log-based update detection", _replica);
         _started = true;
 
         _eventLogClient.Enable();
@@ -79,7 +82,7 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
 
     public Task StopAsync()
     {
-        _logger.LogInformation("Stopping event log-based update detection");
+        _logger.LogInformation("Stopping {Replica} event log-based update detection", _replica);
         _started = false;
 
         _eventLogClient.Disable();
@@ -124,7 +127,7 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
     {
         if (!_started)
         {
-            _logger.LogWarning("Event log-based update detection is not started");
+            _logger.LogWarning("{Replica} event log-based update detection is not started", _replica);
 
             return Task.CompletedTask;
         }
@@ -210,7 +213,7 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
 
         if (faulted)
         {
-            _logger.LogWarning("{ComponentName} has faulted", nameof(LogBasedUpdateDetection<TId, TAltId>));
+            _logger.LogWarning("{Replica} {ComponentName} has faulted", _replica, nameof(LogBasedUpdateDetection<TId, TAltId>));
         }
     }
 
@@ -223,7 +226,7 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
         catch (FaultyStateException ex)
         {
             // Ignore
-            _logger.LogWarning("{ComponentName} operation failed: {ErrorMessage}", nameof(LogBasedUpdateDetection<TId, TAltId>), ex.Message);
+            _logger.LogWarning("{Replica} {ComponentName} operation failed: {ErrorMessage}", _replica, nameof(LogBasedUpdateDetection<TId, TAltId>), ex.Message);
 
             Fault();
         }
@@ -231,12 +234,12 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
 
     private Task WithSafeCancellation(Func<Task> origin)
     {
-        return _logger.WithSafeCancellation(origin, nameof(LogBasedUpdateDetection<TId, TAltId>));
+        return _logger.WithSafeCancellation(origin, $"{_replica} {nameof(LogBasedUpdateDetection<TId, TAltId>)}");
     }
 
     private Task WithLoggedException(Func<Task> origin)
     {
-        return _logger.WithLoggedException(origin, $"{nameof(LogBasedUpdateDetection<TId, TAltId>)} operation failed", includeStackTrace: true);
+        return _logger.WithLoggedException(origin, $"{_replica} {nameof(LogBasedUpdateDetection<TId, TAltId>)} operation failed", includeStackTrace: true);
     }
 
     private Task ScheduleExecution(Func<Task> origin)

@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 using System.Security.Cryptography;
 using Microsoft.Extensions.Logging;
-using ProtonDrive.DataAccess.Databases;
 using ProtonDrive.Shared.Extensions;
 using ProtonDrive.Shared.IO;
 using ProtonDrive.Shared.Telemetry;
+using ProtonDrive.Sync.DataAccess.Databases;
 using ProtonDrive.Sync.Shared.Adapters;
 using ProtonDrive.Sync.Shared.FileSystem;
 using ProtonDrive.Sync.Shared.Health;

@@ -11,7 +11,7 @@ internal class CapitalizationConverter : IValueConverter
 
     public static CapitalizationConverter Instance => _instance ??= new CapitalizationConverter();
 
-    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
         if (value is not string text)
         {
@@ -21,7 +21,7 @@ internal class CapitalizationConverter : IValueConverter
         return Convert(text);
     }
 
-    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
         throw new NotSupportedException();
     }
