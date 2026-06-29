@@ -1,0 +1,1771 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountDisplayStatus_Value_AccountError">
+    <value></value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SessionError">
+    <value>登录失败</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SettingUp">
+    <value>正在设置...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SignedOut">
+    <value>已登出</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningIn">
+    <value>正在登录...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningOut">
+    <value>正在登出...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_Succeeded">
+    <value>已登录</value>
+  </data>
+  <data name="AccountErrorCode_Value_AccountSwitchingFailed">
+    <value>切换账户失败，请重启应用。</value>
+  </data>
+  <data name="AccountErrorCode_Value_Delinquent">
+    <value>账户有未付发票。请前往控制面板付款或告知您的管理员。</value>
+  </data>
+  <data name="AccountErrorCode_Value_DriveAccessFailed">
+    <value>无法连接到 Proton Drive。请尝试检查您的网络连接。</value>
+  </data>
+  <data name="AccountErrorCode_Value_NoDriveAccess">
+    <value>要访问 Proton Drive，请升级您的计划</value>
+  </data>
+  <data name="AccountErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Create">
+    <value>正在创建</value>
+    <comment>Indicates a local folder being created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Delete">
+    <value>正在删除</value>
+    <comment>Indicates the local file or folder being deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Download">
+    <value>从 Proton Drive 下载</value>
+    <comment>Indicates a file being downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>获取更新中</value>
+    <comment>Indicates local file system changes being fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Move">
+    <value>移动中</value>
+    <comment>Indicates the local file or folder being moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Rename">
+    <value>重命名中</value>
+    <comment>Indicates the local file or folder being renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Upload">
+    <value>上传至 Proton Drive</value>
+    <comment>Indicates a  file being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Create">
+    <value>已创建</value>
+    <comment>Indicates a local folder has been created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Delete">
+    <value>已删除</value>
+    <comment>Indicates a local file or folder has been deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Download">
+    <value>从 Proton Drive 下载</value>
+    <comment>Indicates a file has been downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>已获取更新</value>
+    <comment>Indicates local file system changes have been fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Move">
+    <value>已移动</value>
+    <comment>Indicates a local file or folder has been moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Rename">
+    <value>已重命名</value>
+    <comment>Indicates a local file or folder has been renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Upload">
+    <value>已上传至 Proton Drive</value>
+    <comment>Indicates a file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Create">
+    <value>在 Proton Drive 上创建</value>
+    <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
+    <value>正在移至 Proton Drive 回收站</value>
+    <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
+    <value>从 Proton Drive 下载</value>
+    <comment>Indicates a file is being downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>从 Proton Drive 获取更新</value>
+    <comment>Indicates changes are being fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Move">
+    <value>在 Proton Drive 上继续</value>
+    <comment>Indicates the file or folder is being moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Rename">
+    <value>在 Proton Drive 上重命名</value>
+    <comment>Indicates the file or folder is being renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Upload">
+    <value>上传至 Proton Drive</value>
+    <comment>Indicates the file is being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Create">
+    <value>在 Proton Drive 上创建</value>
+    <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
+    <value>已移至 Proton Drive 回收站</value>
+    <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
+    <value>从 Proton Drive 下载</value>
+    <comment>Indicates a file has been downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>从 Proton Drive 获取的更新</value>
+    <comment>Indicates changes have been fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Move">
+    <value>已移至 Proton Drive</value>
+    <comment>Indicates the file or folder has been moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Rename">
+    <value>已在 Proton Drive 上重命名</value>
+    <comment>Indicates the file or folder has been renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Upload">
+    <value>已上传至 Proton Drive</value>
+    <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="AppDisplayStatus_Value_AccountError">
+    <value>设置账户失败</value>
+  </data>
+  <data name="AppDisplayStatus_Value_FinishingUp">
+    <value>即将完成…</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Offline">
+    <value>离线</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SettingUp">
+    <value>正在设置...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignInError">
+    <value>登录失败</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignedOut">
+    <value>已登出</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningIn">
+    <value>正在登录...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningOut">
+    <value>正在登出...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SyncFolderError">
+    <value>同步文件夹设置失败</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationError">
+    <value>同步失败</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationPaused">
+    <value>同步已暂停</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationWarning">
+    <value>有些项目无法同步</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronized">
+    <value>已同步</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronizing">
+    <value>正在同步...</value>
+  </data>
+  <data name="BugReport_Button_Cancel">
+    <value>取消(_C)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel_HelpText">
+    <value>取消您的报告</value>
+  </data>
+  <data name="BugReport_Button_Report">
+    <value>报告(_R)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Report_HelpText">
+    <value>发送您的报告</value>
+  </data>
+  <data name="BugReport_Button_ShowLogs">
+    <value>显示日志(_L)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs">
+    <value>包含应用日志(_I)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs_Tooltip">
+    <value>报告将包括最新的应用程序日志文件和安装日志文件</value>
+  </data>
+  <data name="BugReport_NeedHelp_Description">
+    <value>设置、应用使用和文件同步的快速指南</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_FAQ">
+    <value>常见问题 (FAQ)</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks">
+    <value>了解 Proton Drive 应用的工作原理</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowSharedFilesWork">
+    <value>访问共享文件</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_SyncFolders">
+    <value>将文件夹同步到 Proton Drive</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_UseOnDemandSync">
+    <value>使用按需同步</value>
+  </data>
+  <data name="BugReport_NeedHelp_Title">
+    <value>需要 Proton Drive 使用帮助？</value>
+  </data>
+  <data name="BugReport_Text_Description_HelpText">
+    <value>描述：出了什么问题？您执行的具体步骤是什么？（至少 10 个字符）</value>
+  </data>
+  <data name="BugReport_Text_Description_Label">
+    <value>描述(_D)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_Description_Label_Requirement">
+    <value>（最少 10 个字符）</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_ExactSteps">
+    <value>您具体都执行了哪些操作？</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_WhatWentWrong">
+    <value>出现什么问题了？</value>
+  </data>
+  <data name="BugReport_Text_Email_HelpText">
+    <value>邮箱地址（必填字段）</value>
+  </data>
+  <data name="BugReport_Text_Email_Label">
+    <value>邮箱(_E)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_HelpText">
+    <value>问题标题（必填字段）</value>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Label">
+    <value>标题(_T)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Watermark">
+    <value>问题标题</value>
+  </data>
+  <data name="BugReport_Text_ReportSuccessfullySent">
+    <value>报告已成功发送，感谢！</value>
+  </data>
+  <data name="BugReport_Title">
+    <value>Proton Drive 反馈</value>
+  </data>
+  <data name="Dialog_Button_Cancel">
+    <value>取消</value>
+  </data>
+  <data name="Dialog_Button_Ok">
+    <value>确定</value>
+  </data>
+  <data name="Dialog_Button_Save">
+    <value>保存(_S)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="FileSystemErrorCode_Value_Cancelled">
+    <value>已中止</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CloudFileProviderNotRunning">
+    <value>请确保您的云存储提供商（如 OneDrive）正在运行并已连接。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CyclicRedundancyCheck">
+    <value>数据错误（循环冗余检查）。请检查硬盘（USB、磁盘等）是否存在文件系统错误和坏扇区。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DirectoryNotFound">
+    <value>找不到部分路径</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DuplicateName">
+    <value>已在使用的名称</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_FreeSpaceExceeded">
+    <value>可用空间不足</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IdentityMismatch">
+    <value>文件或文件夹不匹配</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IntegrityFailure">
+    <value>验证数据失败</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_InvalidName">
+    <value>名称中包含 Windows 不支持的字符。请删除以下字符，以便同步：\ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
+    <value>由于文件最近更改过多而跳过。应用程序将自动重试</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
+    <value>Live Photo 无法上传。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MetadataMismatch">
+    <value>文件或文件夹不匹配</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MissingIndividuallySharedFile">
+    <value>与您共享的原始文件已被删除、移动或重命名。
+将其同步切换为关闭并重新打开，即可恢复并清除此错误。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_NetworkError">
+    <value>无法连接到 Proton Drive。请尝试检查您的网络连接。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ObjectNotFound">
+    <value>文件或文件夹不存在</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Offline">
+    <value>离线</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Partial">
+    <value>该文件在本地不可用，无法上传。要解决这个问题，请删除该文件，然后从 Proton Drive 回收站中恢复一个副本 ( 如果有的话 ) 。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_PathNotFound">
+    <value>文件或文件夹不存在</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_RateLimited">
+    <value>出了些问题</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyFile">
+    <value>文件为只读文件</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyRoot">
+    <value>无法修改只能查看的文件和文件夹。在 “与我共享” 下关闭和打开同步即可解决。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ServerError">
+    <value>出了些问题</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_SharingViolation">
+    <value>文件或文件夹正在被另一个应用使用</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TimedOut">
+    <value>超时</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TransferAbortedDueToFileChange">
+    <value>同步过程中文件发生变化，导致上传失败。应用程序将自动重试</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_UnauthorizedAccess">
+    <value>权限不足</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Unknown">
+    <value>出了些问题</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_ContainsInvalidCharacter">
+    <value>名称包含无效字符</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Empty">
+    <value>名称为空</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithPeriod">
+    <value>名称以句号结束</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithSpace">
+    <value>名称以空格结束</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Reserved">
+    <value>名称不受 Windows 支持</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_TooLong">
+    <value>名称过长</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Valid">
+    <value></value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_CheckingForUpdate">
+    <value>正在检查更新...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_DownloadingAnUpdate">
+    <value>正在下载更新...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpToDate">
+    <value>应用是最新版本</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
+    <value>检查更新失败</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>需要更新</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
+    <value>有可用更新</value>
+  </data>
+  <data name="Main_About_Button_UpdateNow">
+    <value>立即更新(_U)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Button_UpdateNow_HelpText">
+    <value>Proton Drive 有新版本可用，请立即更新。</value>
+  </data>
+  <data name="Main_About_Label_CurrentVersion">
+    <value>当前版本</value>
+  </data>
+  <data name="Main_About_Label_ReleaseDate">
+    <value>发布日期</value>
+  </data>
+  <data name="Main_About_Link_PrivacyPolicy">
+    <value>隐私政策(_P)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Link_TermsOfService">
+    <value>服务条款(_T)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_ReleaseHistory_Label_New">
+    <value>新功能</value>
+  </data>
+  <data name="Main_About_ReleaseHistory_Title">
+    <value>最新动态</value>
+  </data>
+  <data name="Main_About_Title">
+    <value>关于</value>
+  </data>
+  <data name="Main_Account_Account_Button_ManageAccount">
+    <value>管理账户(_A)</value>
+  </data>
+  <data name="Main_Account_Account_HelpText">
+    <value>管理您的账户</value>
+  </data>
+  <data name="Main_Account_Account_Info_UnknownUser">
+    <value>未知用户</value>
+  </data>
+  <data name="Main_Account_Label_Account">
+    <value>账户</value>
+  </data>
+  <data name="Main_Account_Label_Security">
+    <value>安全</value>
+  </data>
+  <data name="Main_Account_Password_Button_ChangePassword">
+    <value>更改(_C)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Password_Description">
+    <value>更改您账户的密码。</value>
+  </data>
+  <data name="Main_Account_Password_HelpText">
+    <value>更改您的 Proton Drive 密码</value>
+  </data>
+  <data name="Main_Account_Password_Title">
+    <value>密码</value>
+  </data>
+  <data name="Main_Account_Plan_Button_SeePlans">
+    <value>查看套餐(_P)</value>
+  </data>
+  <data name="Main_Account_Plan_Description">
+    <value>获得更多存储空间</value>
+  </data>
+  <data name="Main_Account_Plan_HelpText">
+    <value>查看其他 Proton Drive 计划</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Button_Manage">
+    <value>管理(_M)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_SessionManagement_Description">
+    <value>除非您登出账户或更改密码，否则您的会话将保持激活状态。会话在闲置 60 天后失效。</value>
+  </data>
+  <data name="Main_Account_SessionManagement_HelpText">
+    <value>管理您的会话。60天内不活动的会话将过期。</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Title">
+    <value>登录设备管理</value>
+  </data>
+  <data name="Main_Account_SignOut_Description">
+    <value>登出并禁用同步。您可以使用同一账户重新登录，以恢复同步。</value>
+  </data>
+  <data name="Main_Account_SignOut_HelpText">
+    <value>从 Proton Drive 登出</value>
+  </data>
+  <data name="Main_Account_SignOut_Title">
+    <value>登出账户(_S)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Storage_Button_UpgradePlan">
+    <value>升级计划</value>
+  </data>
+  <data name="Main_Account_Storage_Info_EnsureMoreStorage">
+    <value>为确保不间断同步，请立即获取更多存储空间。</value>
+  </data>
+  <data name="Main_Account_Storage_Info_UsedSpaceFormat">
+    <value>总使用空间：已使用 {0}，共 {1}</value>
+  </data>
+  <data name="Main_Account_Storage_Title">
+    <value>存储容量</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageExceeded">
+    <value>同步已停止，您的账户已超出存储容量限制。</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageLimit">
+    <value>您的存储空间即将达到上限。</value>
+  </data>
+  <data name="Main_Account_Title">
+    <value>账户</value>
+  </data>
+  <data name="Main_Activity_Button_PauseSync">
+    <value>暂停同步(_P)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Rename">
+    <value>重命名</value>
+  </data>
+  <data name="Main_Activity_Button_Rename_Tooltip">
+    <value>重命名此项目以解决同步问题</value>
+  </data>
+  <data name="Main_Activity_Button_ResumeSync">
+    <value>恢复同步(_R)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Retry">
+    <value>重试同步</value>
+  </data>
+  <data name="Main_Activity_Column_Folder">
+    <value>文件夹</value>
+  </data>
+  <data name="Main_Activity_Column_Name">
+    <value>名称</value>
+  </data>
+  <data name="Main_Activity_Column_Progress_Tooltip_Finalizing">
+    <value>即将完成...</value>
+  </data>
+  <data name="Main_Activity_Column_Size">
+    <value>大小</value>
+  </data>
+  <data name="Main_Activity_Column_Status">
+    <value>当前状态</value>
+  </data>
+  <data name="Main_Activity_Column_Synced">
+    <value>已同步</value>
+  </data>
+  <data name="Main_Activity_Column_Type">
+    <value>类型</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Button_ShowMore">
+    <value>显示更多详情</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Description">
+    <value>点击了解更多关于这些问题的信息</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_HelpText">
+    <value>在新分组中显示所有错误</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_MultipleItemsFormat">
+    <value>存在 {0} 个问题</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_SingleItem">
+    <value>存在 1 个问题</value>
+  </data>
+  <data name="Main_Activity_Errors_Title">
+    <value>同步问题 ({0})</value>
+  </data>
+  <data name="Main_Activity_Errors_Title_Tooltip">
+    <value>返回主界面</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Description">
+    <value>文件和文件夹的同步信息将显示在这里</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_HelpText">
+    <value>您的文件是最新的</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Title">
+    <value>您的文件是最新的</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line1">
+    <value>这个过程可能需要几分钟。</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line2">
+    <value>您可以安全地最小化或关闭窗口。</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_HelpText">
+    <value>正在初始化同步</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Title">
+    <value>正在设置您的驱动器...</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Description">
+    <value>点击 “恢复同步” 以启用同步</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_HelpText">
+    <value>同步已暂停</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Title">
+    <value>同步已暂停</value>
+  </data>
+  <data name="Main_Activity_Rename_CurrentName_Label">
+    <value>当前名称：</value>
+  </data>
+  <data name="Main_Activity_Rename_Description">
+    <value>此项目名称包含 Windows 不支持的字符。</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_AlreadyExists">
+    <value>名称已被占用</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_ContainsInvalidCharacter">
+    <value>名称包含无效字符</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Failed">
+    <value>出了些问题</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Required">
+    <value>名称为必填项</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Label">
+    <value>新名称：</value>
+  </data>
+  <data name="Main_Activity_Rename_Status_Value_Renaming">
+    <value>重命名中...</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion">
+    <value>请移除以下内容以继续同步：</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion_CharacterList">
+    <value>/ : * ? &gt; &lt; " |</value>
+  </data>
+  <data name="Main_Activity_Rename_Title">
+    <value>重命名项目</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUp">
+    <value>正在设置...</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUpFormat">
+    <value>正在设置...（{0} 个项目准备同步）</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SyncPausedUntilFormat">
+    <value>(直到 {0})</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>几分钟前</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
+    <value>{0} 天前</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_HoursAgoFormat">
+    <value>{0} 小时前</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_MinutesAgoFormat">
+    <value>{0} 分钟前</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneDayAgo">
+    <value>1 天前</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneHourAgo">
+    <value>1 小时前</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneMinuteAgo">
+    <value>1 分钟前</value>
+  </data>
+  <data name="Main_Activity_Title">
+    <value>主界面</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>从您电脑同步的文件夹将显示在 Drive 应用的“电脑”分区中。</value>
+  </data>
+  <data name="Main_MyComputer_Device_Button_Rename">
+    <value>重命名(_R)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Device_HelpText">
+    <value>重命名您的设备</value>
+  </data>
+  <data name="Main_MyComputer_Device_Label">
+    <value>此设备</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Cancel_HelpText">
+    <value>取消设备重命名</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Save_HelpText">
+    <value>保存设备名称</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Error_Tooltip">
+    <value>设备名称无效：新名称不得为空，且不得超过 255 个字符。</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_HelpText">
+    <value>重命名您的设备</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Button_AddMore">
+    <value>添加更多文件夹(_A)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Description">
+    <value>添加文件夹会将其所有数据备份到 Proton Drive。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Info_Saving">
+    <value>正在保存文件夹...</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Title">
+    <value>添加文件夹</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludedByAnAlreadySyncedFolderFormat">
+    <value>无法同步 {0} 个文件夹，因为其中包含已同步到 Proton Drive 的文件夹</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludesAnAlreadySyncedFolderFormat">
+    <value>无法同步 {0} 个文件夹，因为其中有一个子文件夹已同步到 Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFileSystemAccessFailedFormat">
+    <value>无法访问 {0} 个文件夹</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFolderDoesNotExistFormat">
+    <value>找不到或无法打开 {0} 个文件夹</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalVolumeNotSupportedFormat">
+    <value>{0} 文件夹因位于不支持的硬盘上而无法同步</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NetworkFolderNotSupportedFormat">
+    <value>由于不支持网络文件夹，因此无法同步 {0} 个文件夹</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat">
+    <value>{0} 个文件夹无法同步，因为它们是系统文件夹</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
+    <value>无法添加 {0} 个文件夹</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder">
+    <value>无法添加 1 个文件夹</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add">
+    <value>添加文件夹(_A)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst">
+    <value>添加您的第一个文件夹以同步</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddNext">
+    <value>添加新文件夹以同步</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_Name">
+    <value>名称</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization">
+    <value>优化设备存储空间</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization_Info_Tooltip">
+    <value>启用按需同步，优化存储。
+文件只在打开时占用本地空间，或选择始终将它们保存在此设备上。
+您可以随时禁用存储优化。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Description">
+    <value>添加文件夹以开始安全同步文件到云端</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Title">
+    <value>安全同步您的文件</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Label">
+    <value>正在从此设备同步文件夹</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_OpenFolder">
+    <value>打开文件夹(_O)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder">
+    <value>删除文件夹(_R)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm">
+    <value>删除文件夹</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_1">
+    <value>添加到 "{0}" 文件夹中的任何文件将不再同步，该文件夹将被移至 Proton Drive 中的回收站。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_2">
+    <value>现有文件将保留在您的计算机上。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_1">
+    <value>在 "{0}" 文件夹中的某些文件可能只存储在云中。删除该文件夹将停止同步，并将其移至 Proton Drive 中的回收站。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_2">
+    <value>若要在计算机上保留所有文件的本地副本，请先关闭该文件夹的"优化存储空间"功能。如果该功能已处于关闭状态，请将其重新开关一次。等待文件下载完成（可通过文件资源管理器查看进度），最后在"我的电脑"分区中取消该文件夹的同步设置。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_1">
+    <value>已下载的文件将保留在您的设备上。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_2">
+    <value>仅存储在云中的文件将从您的设备中删除。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Title">
+    <value>刪除文件夹？</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_1">
+    <value>现在，"{0}" 文件夹中的文件将始终在设备上保持可用。所有文件完成下载可能需要几分钟时间（您可以通过文件资源管理器查看同步状态）。</value>
+    <comment>Placeholder {0}: folder name</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_2">
+    <value>您仍然可以在设置中手动释放单个文件的空间。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Title">
+    <value>所有文件在该设备上始终可用</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1">
+    <value>"{0}" 文件夹不能使用按需同步来优化存储，因为 {1}。</value>
+    <comment>Placeholder {0}: folder name. Placeholder {1}: the reason text, one of resources with "StorageOptimizationErrorCode_Value_..." key.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_2">
+    <value>您的文件仍将与 Proton Drive 同步，并在您的电脑和云中保持可用。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Title">
+    <value>存储优化不可用</value>
+  </data>
+  <data name="Main_MyComputer_Link_LearnMore">
+    <value>了解详情</value>
+  </data>
+  <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
+    <value>关闭我电脑的集成功能</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Button_Next">
+    <value>下一页(_N)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Description">
+    <value>启用按需同步，节省硬盘空间。只有当您打开文件或将其标记为 "始终保存在此设备上" 时，文件才会占用本地存储空间。</value>
+    <comment>"Always keep on this device" is the exact text displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Title">
+    <value>优化存储空间</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted">
+    <value>立即体验(_S)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1">
+    <value>右键点击任意通过 Proton Drive 同步的文件或文件夹</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2">
+    <value>选择 "始终保存在此设备上" 进行离线存储，或选择 "释放空间" 进行云存储。</value>
+    <comment>"Always keep on this device" and "Free up space" are the exact texts displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Title">
+    <value>管理存储空间</value>
+  </data>
+  <data name="Main_MyComputer_Title">
+    <value>我的电脑</value>
+  </data>
+  <data name="Main_Photos_Folders_Error_ImportFailed">
+    <value>导入失败。请尝试删除文件夹并重新导入。如果问题仍然存在，请联系技术支持。</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportedItemsFormat">
+    <value>已导入 {0} / {1} 项</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportingItemsFormat">
+    <value>{0}/{1} 正在导入...</value>
+  </data>
+  <data name="Main_Photos_Folders_Items_Label">
+    <value>项</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>管理相册(_A)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
+    <value>打开文件夹(_O)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Remove">
+    <value>移除(_R)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Retry">
+    <value>重试(_R)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_NoItemsFound_Label">
+    <value>未找到照片/视频</value>
+  </data>
+  <data name="Main_Photos_Folders_WaitingToImport">
+    <value>等待导入...</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Description">
+    <value>分步指南：如何导出 Google 相册</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Title">
+    <value>1. 导出 Google 相册</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Description">
+    <value>它必须是包含导出照片和视频的未压缩文件夹。</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Title">
+    <value>2. 导入 Google 相册文件夹</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_SelectFolder_Button">
+    <value>选择文件夹</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Title">
+    <value>从 Google 相册导入</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Description">
+    <value>从电脑导入本地文件夹</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Title">
+    <value>导入文件夹</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Description">
+    <value>从 Google Takeout 导入 Google 相册</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Title">
+    <value>从 Google 相册导入</value>
+  </data>
+  <data name="Main_Photos_Import_Link_HowImportWorks">
+    <value>如何导入相册？</value>
+  </data>
+  <data name="Main_Photos_Import_Title">
+    <value>导入相册</value>
+  </data>
+  <data name="Main_Photos_Info_Duplicates">
+    <value>我们只会导入新的内容——重复项将被自动跳过。</value>
+  </data>
+  <data name="Main_Photos_Title">
+    <value>照片</value>
+  </data>
+  <data name="Main_Photos_Warning_UploadUnavailable">
+    <value>上传照片功能暂时无法使用</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Button_Change">
+    <value>更改(_C)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_HelpText">
+    <value>更改您的 Proton Drive 根目录。</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Title">
+    <value>本地</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>抢先体验并帮助我们测试新版 Proton Drive。</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>测试版访问</value>
+  </data>
+  <data name="Main_Settings_Label_AccountRootFolder">
+    <value>您的 Proton Drive 文件夹:</value>
+  </data>
+  <data name="Main_Settings_Label_General">
+    <value>常规​​​​​</value>
+  </data>
+  <data name="Main_Settings_Language_Button_Restart">
+    <value>现在重新启动</value>
+  </data>
+  <data name="Main_Settings_Language_Message_PleaseRestart">
+    <value>请重新启动应用程序以应用您的语言变更</value>
+  </data>
+  <data name="Main_Settings_Language_Title">
+    <value>语言</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_HelpText">
+    <value>Windows 启动时打开 Proton Drive</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_Title">
+    <value>开机时启动</value>
+  </data>
+  <data name="Main_Settings_Title">
+    <value>设置</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Name">
+    <value>名称</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions">
+    <value>权限</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Tooltip">
+    <value>所有者授予您的权限</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Editor">
+    <value>编辑者</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Viewer">
+    <value>查看者</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedBy">
+    <value>分享者</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedOn">
+    <value>分享于</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync">
+    <value>同步</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync_Info_Tooltip">
+    <value>启用后，可从电脑访问共享文件或文件夹。
+文件内容只能按需下载。</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad">
+    <value>加载数据失败</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Plural">
+    <value>{0} 个项目加载失败</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Singular">
+    <value>{0} 个项目加载失败</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Description">
+    <value>这里将显示与您共享的文件和文件夹</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Title">
+    <value>尚未分享任何内容</value>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_OpenFolder">
+    <value>打开文件夹(_O)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_RemoveMe">
+    <value>将我移除(_R)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_Close_HelpText">
+    <value>取消与我共享的待办信息</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_GetStarted">
+    <value>立即体验(_S)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Description">
+    <value>轻松将与您共享的文件和文件夹同步到电脑。</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1">
+    <value>选择要同步的文件或文件夹。</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2">
+    <value>访问 Proton Drive 文件夹中的共享文件。</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3">
+    <value>编辑它们、上传新内容并离线访问它们。</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3_Label">
+    <value>3.</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Plural">
+    <value>同步了 {1} 个项目中的 {0} 个项目</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Singular">
+    <value>同步了 {1} 个项目中的 {0} 个项目</value>
+  </data>
+  <data name="Main_SharedWithMe_Title">
+    <value>与我分享</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Advice">
+    <value>要添加新项目，请停止同步部分旧项目。</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Limit">
+    <value>您只能同时同步 {0} 个项目。</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_SharingUnavailable">
+    <value>共享功能暂时不可用</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About">
+    <value>关于</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About_HelpText">
+    <value>菜单项：关于</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account">
+    <value>账户</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account_HelpText">
+    <value>菜单项：账户</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity">
+    <value>主界面</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity_HelpText">
+    <value>菜单项：主界面</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help">
+    <value>帮助</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help_HelpText">
+    <value>菜单项：帮助</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer">
+    <value>我的电脑</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer_HelpText">
+    <value>菜单项：我的电脑</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos">
+    <value>照片</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_PhotosImport">
+    <value>导入照片</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos_HelpText">
+    <value>菜单项： 照片</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings">
+    <value>设置</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings_HelpText">
+    <value>菜单项：设置</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe">
+    <value>与我分享</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe_HelpText">
+    <value>菜单项：与我共享</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceededQuota_Description">
+    <value>同步已停止：您的账户已超出存储容量</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceedingQuota_Description">
+    <value>您的存储空间即将达到上限</value>
+  </data>
+  <data name="Main_Sidebar_Notification_GetStarted_Description">
+    <value>立即体验</value>
+  </data>
+  <data name="Main_Sidebar_Notification_NewVersion_Description">
+    <value>新版 Proton Drive 现已推出！</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SharingUnavailable_Description">
+    <value>共享功能暂时不可用</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SyncFoldersFailure_Description">
+    <value>文件夹同步失败</value>
+  </data>
+  <data name="Main_Sidebar_Notification_UpdateRequired_Description">
+    <value>要继续使用 Proton Drive，您需要更新到最新版本</value>
+  </data>
+  <data name="Main_Sidebar_Offer_Button_GetDeal">
+    <value>获取优惠(_D)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Sidebar_Storage_Button_GetMoreStorage">
+    <value>获得更多存储空间</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_StorageNotAvailable">
+    <value>空间信息不可用</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_UsedSpaceFormat">
+    <value>已使用 {0}，共 {1}</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Title">
+    <value>存储空间</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Tooltip">
+    <value>管理存储空间</value>
+  </data>
+  <data name="Main_Window_Title">
+    <value>Proton Drive</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>该文件夹包含一个按需同步的子文件夹。请设置新的同步文件夹。</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>此文件夹已按需同步。请设置新的同步文件夹。</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveAccessFailed">
+    <value>无法连接到 Proton Drive。请尝试检查您的网络连接。</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDiverged">
+    <value>Proton Drive 文件夹已移动。请设置新的同步文件夹。</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDoesNotExist">
+    <value>无法访问 Proton Drive 文件，可能是因为删除了设备文件夹。请设置新的同步文件夹。</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveHostDeviceDiverged">
+    <value>无法访问 Proton Drive 文件，可能是因为设备被删除。请设置新的同步文件夹。</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveShareDiverged">
+    <value>无法访问 Proton Drive 文件，可能是因为重置了密码。请设置新的同步文件夹。</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveVolumeDiverged">
+    <value>无法访问 Proton Drive 文件，可能是因为重置了密码。请设置新的同步文件夹。</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientDeviceQuota">
+    <value>已达到同步计算机的最大数量。请删除网络上 Proton Drive 中不必要的计算机。</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientLocalFreeSpace">
+    <value>释放空间或取消选择复选框</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalAndRemoteFoldersNotEmpty">
+    <value>设置同步文件夹需要一个空的 Windows 或 Proton Drive 网络文件夹。请清除一个文件夹并重试。</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFileSystemAccessFailed">
+    <value>无法访问或创建本地同步文件夹。我们将继续重试。</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDiverged">
+    <value>同步文件夹被路径中的新文件夹取代。恢复之前的同步文件夹或设置新的同步文件夹。</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDoesNotExist">
+    <value>未找到同步文件夹。它可能已删除、重命名或移动。请恢复或设置新的同步文件夹。</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludedByAnAlreadySyncedFolder">
+    <value>您选择的文件夹已被包含在另一个已同步的文件夹中</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludesAnAlreadySyncedFolder">
+    <value>所选文件夹包含已同步的文件夹</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNonSyncable">
+    <value>本地文件夹不符合同步条件。请设置新的同步文件夹。</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNotEmpty">
+    <value>设置同步前，本地文件夹必须为空</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeDiverged">
+    <value>本地卷序列号已更改。设置新的同步文件夹。</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeNotSupported">
+    <value>不支持的本地驱动器类型。请尝试在不同的本地驱动器上设置同步文件夹。</value>
+  </data>
+  <data name="MappingErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootMissingSyncRootFlag">
+    <value>同步文件夹设置无效，请设置新的同步文件夹。</value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootNotRegistered">
+    <value>同步文件夹意外取消注册。请设置新的同步文件夹。</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotoImportFailed">
+    <value>导入照片失败</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosDisabled">
+    <value>Proton 相册不可用</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosNotReady">
+    <value>相册功能未就绪</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemDoesNotExist">
+    <value>无法访问共享的 Proton Drive 文件或文件夹，检查是否仍与您共享。</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemPermissionsDiverged">
+    <value>共享的 Proton Drive 文件或文件夹的权限已更改，请关闭并重新打开同步即可解决。</value>
+  </data>
+  <data name="MappingErrorCode_Value_SharingDisabled">
+    <value>共享功能暂时不可用</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Failed">
+    <value>同步文件夹设置失败</value>
+  </data>
+  <data name="MappingSetupStatus_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingSetupStatus_Value_PartiallySucceeded">
+    <value>无法设置某些同步文件夹</value>
+  </data>
+  <data name="MappingSetupStatus_Value_SettingUp">
+    <value>正在设置同步文件夹...</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Succeeded">
+    <value>好的</value>
+  </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>扩容</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>存储空间不足</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>升级以获取更多存储空间并上传您的文件</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
+    <value>更改(_C)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder_HelpText">
+    <value>更改您的 Proton Drive 根目录。</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Error_InvalidSyncFolder">
+    <value>同步文件夹无效</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Description">
+    <value>在此访问我的文件和其他同步设备</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Location">
+    <value>本地</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Title">
+    <value>您的 Proton Drive 文件夹</value>
+  </data>
+  <data name="Onboarding_Button_Continue">
+    <value>继续(_C)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_Button_FinishSetup">
+    <value>完成设置(_F)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders">
+    <value>添加更多文件夹(_A)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText">
+    <value>添加另一个要同步的文件夹</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Label_Description">
+    <value>选定的文件夹将同步到 Proton Drive。文件将被备份，并可在您的其他设备上使用。</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Title">
+    <value>备份您的文件夹</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>获取 Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>获取 _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>获取 _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_NotNow">
+    <value>暂不(_N)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_Upgrade">
+    <value>升级(_U)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Mail">
+    <value>邮箱：定制且安全的邮箱</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>月</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>最受欢迎</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>最多 {0} 位用户</value>
+    <comment>Only for number greater than 1.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
+    <value>Pass：加密的密码管理器</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>包括高级功能</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Recommended">
+    <value>推荐</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>恢复先前的文件版本</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>存储空间</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Vpn">
+    <value>VPN：超快速且私密</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Title">
+    <value>获得更多存储空间</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
+    <value>导入失败，相册不存在。</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>导入失败，该文件夹不存在。</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
+    <value>导入失败，已达到最大相册数量。</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfPhotosPerAlbumReached">
+    <value>导入失败，每个相册的照片数量已达到上限。</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_Unknown">
+    <value>导入失败，请重试。</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Failed">
+    <value>导入失败</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Importing">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Interrupted">
+    <value>导入已中断</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_NotStarted">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_SetupFailed">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Succeeded">
+    <value>导入成功</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_ValidationFailed">
+    <value></value>
+  </data>
+  <data name="ReleaseNoteType_Value_Feature">
+    <value>新功能</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Fix">
+    <value>Bug 修复</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Improvement">
+    <value>改进功能</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Fido2">
+    <value>安全密钥</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_NotSupported">
+    <value></value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Totp">
+    <value>身份验证器应用</value>
+  </data>
+  <data name="SessionStatus_Value_Ending">
+    <value>正在登出...</value>
+  </data>
+  <data name="SessionStatus_Value_Failed">
+    <value>登录失败。请尝试检查您的网络连接。</value>
+  </data>
+  <data name="SessionStatus_Value_NotStarted">
+    <value>已登出</value>
+  </data>
+  <data name="SessionStatus_Value_SigningIn">
+    <value>正在登录...</value>
+  </data>
+  <data name="SessionStatus_Value_Started">
+    <value>已登录</value>
+  </data>
+  <data name="SessionStatus_Value_Starting">
+    <value>正在登录...</value>
+  </data>
+  <data name="SignIn_Button_Authenticate">
+    <value>身份验证(_A)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_Back">
+    <value>返回(_B)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignIn">
+    <value>登录(_S)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignInAsAnotherUser">
+    <value>或选择其他用户登录</value>
+  </data>
+  <data name="SignIn_Button_Unlock">
+    <value>解锁(_U)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_CreateAccount">
+    <value>创建账户(_C)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_ForgotPassword">
+    <value>忘记密码(_F)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_LearnMore">
+    <value>了解详情</value>
+  </data>
+  <data name="SignIn_Message_SigningIn">
+    <value>正在登录您的账户</value>
+  </data>
+  <data name="SignIn_Text_2FACode">
+    <value>输入身份验证器应用中的代码</value>
+  </data>
+  <data name="SignIn_Text_No2FAMethodFound">
+    <value>未设定双因素身份验证。</value>
+  </data>
+  <data name="SignIn_Text_Password">
+    <value>密码(_P)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_SecondPassword">
+    <value>二级密码</value>
+  </data>
+  <data name="SignIn_Text_SecurityKey">
+    <value>插入与您的 Proton Account 关联的安全密钥。</value>
+  </data>
+  <data name="SignIn_Text_SecurityKeyNotSupported">
+    <value>您的系统不支持安全密钥</value>
+  </data>
+  <data name="SignIn_Text_Username">
+    <value>邮箱或用户名(_U)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_Username_HelpText">
+    <value>用户名</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_PasswordRequired">
+    <value>需要密码</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SessionExpired">
+    <value>您的会话已过期。请登录以继续。</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SomethingWentWrong">
+    <value>出了点问题</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_UsernameRequired">
+    <value>用户名是必填项</value>
+  </data>
+  <data name="SignIn_Title_2FA">
+    <value>双因素身份验证 (2FA)</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>它包含一个由 {0} 按需同步的子文件夹</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>已由 {0} 按需同步</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_NetworkVolumeNotSupported">
+    <value>不支持网络硬盘</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_RemovableVolumeNotSupported">
+    <value>不支持移动硬盘</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_Unknown">
+    <value>启用按需同步失败</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
+    <value>不支持本地硬盘类型</value>
+  </data>
+  <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
+    <value>设备可用空间不足</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludedByAnAlreadySyncedFolder">
+    <value>文件夹已被同步文件夹包含</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludesAnAlreadySyncedFolder">
+    <value>文件夹包含已同步的文件夹</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_InsufficientLocalFreeSpace">
+    <value>释放空间或取消选择复选框.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFileSystemAccessFailed">
+    <value>无法访问文件夹</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderDoesNotExist">
+    <value>无法找到文件夹</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderNotEmpty">
+    <value>设置同步前，文件夹必须为空</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalVolumeNotSupported">
+    <value>不支持的驱动器类型</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NetworkFolderNotSupported">
+    <value>不支持从网络驱动器同步文件夹</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NonSyncableFolder">
+    <value>文件夹不符合同步条件</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_Succeeded">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_DetectingUpdates">
+    <value>正在获取更新...</value>
+  </data>
+  <data name="SyncStatus_Value_Failed">
+    <value>错误</value>
+  </data>
+  <data name="SyncStatus_Value_Idle">
+    <value>已同步</value>
+  </data>
+  <data name="SyncStatus_Value_Initializing">
+    <value>正在设置...</value>
+  </data>
+  <data name="SyncStatus_Value_Offline">
+    <value>离线</value>
+  </data>
+  <data name="SyncStatus_Value_Paused">
+    <value>已暂停</value>
+  </data>
+  <data name="SyncStatus_Value_Synchronizing">
+    <value>正在同步...</value>
+  </data>
+  <data name="SyncStatus_Value_Terminated">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_Terminating">
+    <value>正在终止...</value>
+  </data>
+  <data name="SystemTray_Menu_Item_Exit">
+    <value>退出(_X)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenInBrowser">
+    <value>在浏览器中打开(_B)</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenLocalFolder">
+    <value>打开本地文件夹(_F)</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenProtonDrive">
+    <value>打开 Proton Drive(_O)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSync">
+    <value>暂停同步(_P)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
+    <value>暂停 1 小时</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor4Hours">
+    <value>暂停 4 小时</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor8Hours">
+    <value>暂停 8 小时</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncIndefinitely">
+    <value>无限期暂停</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow">
+    <value>暂停至明天 (上午 8 点)</value>
+  </data>
+  <data name="SystemTray_Menu_Item_ResumeSync">
+    <value>恢复同步(_R)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_SignIn">
+    <value>登录(_S)</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="ToggleSwitch_Off">
+    <value>未启用</value>
+  </data>
+  <data name="ToggleSwitch_On">
+    <value>已启用</value>
+  </data>
+</root>

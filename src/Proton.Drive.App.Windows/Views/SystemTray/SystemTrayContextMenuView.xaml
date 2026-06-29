@@ -1,0 +1,129 @@
+﻿<ContextMenu
+    x:Class="Proton.Drive.App.Windows.Views.SystemTray.SystemTrayContextMenuView"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:Proton.Drive.App.Windows.Toolkit.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:loc="clr-namespace:Proton.Drive.App.Windows.Resources"
+    xmlns:local="clr-namespace:Proton.Drive.App.Windows.Views.SystemTray"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Style="{StaticResource DarkContextMenuStyle}"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance local:SystemTrayViewModel}">
+    <ContextMenu.Resources>
+        <ResourceDictionary Source="/Resources/Styles/MenuItemStyle.DarkTheme.xaml" />
+    </ContextMenu.Resources>
+
+    <MenuItem
+        Command="{Binding ShowAppCommand}"
+        Header="{loc:Resource SystemTray_Menu_Item_OpenProtonDrive}"
+        Style="{StaticResource DarkMenuItemStyle}"
+        Visibility="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}" />
+
+    <MenuItem
+        Command="{Binding SignInCommand}"
+        Header="{loc:Resource SystemTray_Menu_Item_SignIn}"
+        Style="{StaticResource DarkMenuItemStyle}"
+        Visibility="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}" />
+
+    <Separator
+        BorderBrush="{StaticResource SystemTrayMenu.Separator.BorderBrush}"
+        Margin="0,3,0,3" />
+
+    <MenuItem
+        Command="{Binding OpenDriveOnlineCommand}"
+        Header="{loc:Resource SystemTray_Menu_Item_OpenInBrowser}"
+        Style="{StaticResource DarkMenuItemStyle}" />
+
+    <MenuItem
+        x:Name="OpenLocalFolderItemMenu"
+        Command="{Binding OpenAccountRootFolderCommand}"
+        Header="{loc:Resource SystemTray_Menu_Item_OpenLocalFolder}"
+        Style="{StaticResource DarkMenuItemStyle}"
+        Visibility="{Binding RelativeSource={RelativeSource Self}, Path=IsEnabled, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}" />
+
+    <MenuItem
+        Command="{Binding ResumeSyncCommand}"
+        Header="{loc:Resource SystemTray_Menu_Item_ResumeSync}"
+        IsEnabled="{Binding ElementName=OpenLocalFolderItemMenu, Path=IsEnabled}">
+        <MenuItem.Style>
+            <Style
+                TargetType="MenuItem"
+                BasedOn="{StaticResource DarkMenuItemStyle}">
+                <Style.Triggers>
+                    <DataTrigger
+                        Binding="{Binding SynchronizationPaused}"
+                        Value="False">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding ElementName=OpenLocalFolderItemMenu, Path=IsEnabled}"
+                        Value="False">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </MenuItem.Style>
+    </MenuItem>
+
+    <MenuItem
+        Header="{loc:Resource SystemTray_Menu_Item_PauseSync}"
+        IsEnabled="{Binding ElementName=OpenLocalFolderItemMenu, Path=IsEnabled}">
+        <MenuItem.Style>
+            <Style
+                TargetType="MenuItem"
+                BasedOn="{StaticResource DarkMenuItemStyle}">
+                <Style.Triggers>
+                    <DataTrigger
+                        Binding="{Binding SynchronizationPaused}"
+                        Value="True">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                    <DataTrigger
+                        Binding="{Binding ElementName=OpenLocalFolderItemMenu, Path=IsEnabled}"
+                        Value="False">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </MenuItem.Style>
+        <MenuItem
+            CommandParameter="1"
+            Command="{Binding PauseSyncTemporarilyCommand}"
+            Header="{loc:Resource SystemTray_Menu_Item_PauseSyncFor1Hour}"
+            Style="{StaticResource DarkMenuItemStyle}" />
+
+        <MenuItem
+            CommandParameter="4"
+            Command="{Binding PauseSyncTemporarilyCommand}"
+            Header="{loc:Resource SystemTray_Menu_Item_PauseSyncFor4Hours}"
+            Style="{StaticResource DarkMenuItemStyle}" />
+
+        <MenuItem
+            CommandParameter="8"
+            Command="{Binding PauseSyncTemporarilyCommand}"
+            Header="{loc:Resource SystemTray_Menu_Item_PauseSyncFor8Hours}"
+            Style="{StaticResource DarkMenuItemStyle}" />
+
+        <MenuItem
+            Command="{Binding PauseSyncUntilTomorrowMorningCommand}"
+            Header="{loc:Resource SystemTray_Menu_Item_PauseSyncUntilTomorrow}"
+            Style="{StaticResource DarkMenuItemStyle}" />
+
+        <MenuItem
+            Header="{loc:Resource SystemTray_Menu_Item_PauseSyncIndefinitely}"
+            IsCheckable="True"
+            IsChecked="{Binding SynchronizationPaused}"
+            Style="{StaticResource DarkMenuItemStyle}" />
+    </MenuItem>
+
+    <Separator
+        BorderBrush="{StaticResource SystemTrayMenu.Separator.BorderBrush}"
+        Margin="0,3,0,3" />
+
+    <MenuItem
+        Command="{Binding ExitCommand}"
+        Header="{loc:Resource SystemTray_Menu_Item_Exit}"
+        Style="{StaticResource DarkMenuItemStyle}" />
+</ContextMenu>

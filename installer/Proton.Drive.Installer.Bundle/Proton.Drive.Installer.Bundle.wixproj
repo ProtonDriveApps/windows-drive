@@ -1,0 +1,29 @@
+﻿<Project Sdk="WixToolset.Sdk/5.0.2">
+  <PropertyGroup Condition="'$(AppPlatform)' == ''">
+    <AppPlatform Condition="'$(Platform)' == 'x64' OR '$(Platform)' == ''">x64</AppPlatform>
+    <AppPlatform Condition="'$(Platform)' == 'ARM64'">arm64</AppPlatform>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Bundle</OutputType>
+    <OutputName>Proton Drive Setup $(Version)</OutputName>
+    <DefineConstants>ProductName=$(Product);ProductVersion=$(Version);CompanyName=$(Company)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(SourceRevisionId)' != ''">
+    <OutputName>$(OutputName) ($(SourceRevisionId))</OutputName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(AppPlatform)' != ''">
+    <OutputName>$(OutputName) ($(AppPlatform))</OutputName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(MsiFilePath)' != ''">
+    <DefineConstants>$(DefineConstants);MsiFilePath=$(MsiFilePath)</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="DummySplash.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Bal.wixext" Version="5.0.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Proton.Drive.Installer.Package\Proton.Drive.Installer.Package.wixproj" />
+  </ItemGroup>
+</Project>

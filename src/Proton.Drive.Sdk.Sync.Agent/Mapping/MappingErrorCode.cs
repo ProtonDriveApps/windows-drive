@@ -1,0 +1,31 @@
+﻿namespace Proton.Drive.Sdk.Sync.Agent.Mapping;
+
+public enum MappingErrorCode
+{
+    None,
+    DriveAccessFailed,
+    DriveVolumeDiverged,
+    DriveShareDiverged,
+    DriveHostDeviceDiverged,
+    DriveFolderDoesNotExist,
+    DriveFolderDiverged,
+    RemoteSharedWithMeItemDoesNotExist,
+    RemoteSharedWithMeItemPermissionsDiverged,
+    LocalFileSystemAccessFailed,
+    LocalVolumeNotSupported,
+    LocalFolderDoesNotExist,
+    LocalFolderDiverged,
+    LocalVolumeDiverged,
+    LocalAndRemoteFoldersNotEmpty,
+    LocalFolderNotEmpty,
+    LocalFolderIncludedByAnAlreadySyncedFolder,
+    LocalFolderIncludesAnAlreadySyncedFolder,
+    LocalFolderNonSyncable,
+    OnDemandSyncRootNotRegistered,
+    OnDemandSyncRootMissingSyncRootFlag,
+    ConflictingOnDemandSyncRootExists,
+    ConflictingDescendantOnDemandSyncRootExists,
+    InsufficientLocalFreeSpace,
+    InsufficientDeviceQuota,
+    SharingDisabled,
+}

@@ -1,0 +1,1772 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountDisplayStatus_Value_AccountError">
+    <value></value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SessionError">
+    <value>Upaya masuk gagal</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SettingUp">
+    <value>Mempersiapkan...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SignedOut">
+    <value>Keluar</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningIn">
+    <value>Memasukkan Anda ke akun...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningOut">
+    <value>Mengeluarkan Anda dari akun…</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_Succeeded">
+    <value>Masuk</value>
+  </data>
+  <data name="AccountErrorCode_Value_AccountSwitchingFailed">
+    <value>Akun gagal diubah. Silakan mulai ulang aplikasi.</value>
+  </data>
+  <data name="AccountErrorCode_Value_Delinquent">
+    <value>Akun memiliki tagihan yang tertunggak. Tuju dasbor Anda untuk membayar atau beri tahu admin Anda.</value>
+  </data>
+  <data name="AccountErrorCode_Value_DriveAccessFailed">
+    <value>Tidak dapat terhubung ke Proton Drive. Cobalah untuk memeriksa koneksi internet Anda.</value>
+  </data>
+  <data name="AccountErrorCode_Value_NoDriveAccess">
+    <value>Untuk mengakses Proton Drive, tingkatkan paket Anda</value>
+  </data>
+  <data name="AccountErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Create">
+    <value>Membuat</value>
+    <comment>Indicates a local folder being created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Delete">
+    <value>Menghapus</value>
+    <comment>Indicates the local file or folder being deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Download">
+    <value>Mengunduh dari Proton Drive</value>
+    <comment>Indicates a file being downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Memperoleh pembaruan</value>
+    <comment>Indicates local file system changes being fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Move">
+    <value>Memindahkan</value>
+    <comment>Indicates the local file or folder being moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Rename">
+    <value>Mengubah nama</value>
+    <comment>Indicates the local file or folder being renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Upload">
+    <value>Mengunggah ke Proton Drive</value>
+    <comment>Indicates a  file being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Create">
+    <value>Dibuat</value>
+    <comment>Indicates a local folder has been created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Delete">
+    <value>Dihapus</value>
+    <comment>Indicates a local file or folder has been deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Download">
+    <value>Diunduh dari Proton Drive</value>
+    <comment>Indicates a file has been downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Pembaruan diperoleh</value>
+    <comment>Indicates local file system changes have been fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Move">
+    <value>Dipindahkan</value>
+    <comment>Indicates a local file or folder has been moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Rename">
+    <value>Dinamai ulang</value>
+    <comment>Indicates a local file or folder has been renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Upload">
+    <value>Diunggah ke Proton Drive</value>
+    <comment>Indicates a file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Create">
+    <value>Membuat di Proton Drive</value>
+    <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
+    <value>Memindahkan ke Sampah Proton Drive</value>
+    <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
+    <value>Mengunduh dari Proton Drive</value>
+    <comment>Indicates a file is being downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Memperoleh pembaruan dari Proton Drive</value>
+    <comment>Indicates changes are being fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Move">
+    <value>Memindahkan di Proton Drive</value>
+    <comment>Indicates the file or folder is being moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Rename">
+    <value>Menamai ulang di Proton Drive</value>
+    <comment>Indicates the file or folder is being renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Upload">
+    <value>Mengunggah ke Proton Drive</value>
+    <comment>Indicates the file is being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Create">
+    <value>Dibuat di Proton Drive</value>
+    <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
+    <value>Dipindahkan ke Sampah Proton Drive</value>
+    <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
+    <value>Diunduh dari Proton Drive</value>
+    <comment>Indicates a file has been downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Pembaruan diperoleh dari Proton Drive</value>
+    <comment>Indicates changes have been fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Move">
+    <value>Dipindahkan di Proton Drive</value>
+    <comment>Indicates the file or folder has been moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Rename">
+    <value>Dinamai ulang di Proton Drive</value>
+    <comment>Indicates the file or folder has been renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Upload">
+    <value>Diunggah ke Proton Drive</value>
+    <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="AppDisplayStatus_Value_AccountError">
+    <value>Akun gagal dipersiapkan</value>
+  </data>
+  <data name="AppDisplayStatus_Value_FinishingUp">
+    <value>Menyelesaikan...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Offline">
+    <value>Offline</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SettingUp">
+    <value>Mempersiapkan...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignInError">
+    <value>Upaya masuk gagal</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignedOut">
+    <value>Keluar</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningIn">
+    <value>Memasukkan Anda ke akun...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningOut">
+    <value>Mengeluarkan Anda dari akun…</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SyncFolderError">
+    <value>Folder sinkronisasi gagal dipersiapkan</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationError">
+    <value>Sinkronisasi gagal</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationPaused">
+    <value>Sinkronisasi dijeda</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationWarning">
+    <value>Sebagian item gagal disinkronkan</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronized">
+    <value>Tersinkron</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronizing">
+    <value>Menyinkronkan...</value>
+  </data>
+  <data name="BugReport_Button_Cancel">
+    <value>_Batal</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel_HelpText">
+    <value>Batalkan laporan Anda</value>
+  </data>
+  <data name="BugReport_Button_Report">
+    <value>_Lapor</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Report_HelpText">
+    <value>Kirim laporan Anda</value>
+  </data>
+  <data name="BugReport_Button_ShowLogs">
+    <value>Tampilkan _log</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs">
+    <value>_Sertakan log aplikasi</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs_Tooltip">
+    <value>Laporan ini akan meliputi berkas log aplikasi terkini dan log instalasi</value>
+  </data>
+  <data name="BugReport_NeedHelp_Description">
+    <value>Quick guides for setup, app use, and file sync.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_FAQ">
+    <value>Frequently asked questions (FAQ)</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks">
+    <value>Learn how the Proton Drive app works</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowSharedFilesWork">
+    <value>Access shared files</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_SyncFolders">
+    <value>Sync folders to Proton Drive</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_UseOnDemandSync">
+    <value>Use on-demand sync</value>
+  </data>
+  <data name="BugReport_NeedHelp_Title">
+    <value>Need help getting started with Proton Drive?</value>
+  </data>
+  <data name="BugReport_Text_Description_HelpText">
+    <value>Keterangan: Apa yang salah? Langkah apa saja yang telah Anda lakukan? (minimal 10 karakter)</value>
+  </data>
+  <data name="BugReport_Text_Description_Label">
+    <value>_Keterangan</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_Description_Label_Requirement">
+    <value>(minimal 10 karakter)</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_ExactSteps">
+    <value>Langkah apa saja yang telah Anda lakukan?</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_WhatWentWrong">
+    <value>Apa yang salah?</value>
+  </data>
+  <data name="BugReport_Text_Email_HelpText">
+    <value>Email (wajib diisi)</value>
+  </data>
+  <data name="BugReport_Text_Email_Label">
+    <value>_Email</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_HelpText">
+    <value>Judul masalah (wajib diisi)</value>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Label">
+    <value>_Judul</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Watermark">
+    <value>Judul masalah</value>
+  </data>
+  <data name="BugReport_Text_ReportSuccessfullySent">
+    <value>Report successfully sent. Thank you.</value>
+  </data>
+  <data name="BugReport_Title">
+    <value>Proton Drive Feedback</value>
+  </data>
+  <data name="Dialog_Button_Cancel">
+    <value>Batal</value>
+  </data>
+  <data name="Dialog_Button_Ok">
+    <value>OK</value>
+  </data>
+  <data name="Dialog_Button_Save">
+    <value>_Simpan</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="FileSystemErrorCode_Value_Cancelled">
+    <value>Dibatalkan</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CloudFileProviderNotRunning">
+    <value>Silakan pastikan bahwa penyedia ruang penyimpanan cloud Anda (mis. OneDrive) sedang berjalan dan terhubung.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CyclicRedundancyCheck">
+    <value>Terdapat kesalahan pada data (pemeriksaan redundansi siklik). Silakan periksa apakah terdapat kesalahan atau sektor yang cacat pada perangkat Anda (USB, cakram, dll...).</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DirectoryNotFound">
+    <value>Bagian jalur direktori tidak dapat ditemukan</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DuplicateName">
+    <value>Nama telah digunakan</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_FreeSpaceExceeded">
+    <value>Ruang kosong tidak memadai</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IdentityMismatch">
+    <value>Berkas atau folder telah berubah</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IntegrityFailure">
+    <value>Verifikasi data gagal</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_InvalidName">
+    <value>Nama ini mengandung karakter yang tidak didukung oleh WIndows. Silakan hapus karakter berikut untuk dapat mulai menyinkron: \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
+    <value>Berkas ini dilewati karena terdapat perubahan yang terlalu terkini pada berkas. Aplikasi akan mencoba ulang secara otomatis</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
+    <value>Live Photo tidak dapat diunggah.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MetadataMismatch">
+    <value>Berkas atau folder telah berubah</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MissingIndividuallySharedFile">
+    <value>Berkas asli yang dibagikan dengan Anda telah dihapus, dipindahkan, atau dinamai ulang.
+Nonaktifkan dan aktifkan kembali sinkronisasi berkas ini untuk memulihkan berkas dan menyelesaikan masalah ini.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_NetworkError">
+    <value>Tidak dapat terhubung ke Proton Drive. Cobalah untuk memeriksa koneksi internet Anda.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ObjectNotFound">
+    <value>Berkas atau folder tidak ada</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Offline">
+    <value>Offline</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Partial">
+    <value>Berkas ini tidak tersedia secara lokal dan tidak dapat diunggah. Untuk menyelesaikan masalah ini, silakan hapus berkas ini dan pulihkan salinan berkas dari tempat sampah Proton Drive apabila tersedia.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_PathNotFound">
+    <value>Berkas atau folder tidak ada</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_RateLimited">
+    <value>Terdapat suatu kesalahan</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyFile">
+    <value>Berkas ini bersifat read-only</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyRoot">
+    <value>Berkas dan folder yang bersifat read-only tidak dapat dimodifikasi. Nonaktifkan dan aktifkan kembali sinkronisasi pada menu "Dibagikan dengan saya" untuk menyelesaikan masalah ini.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ServerError">
+    <value>Terdapat suatu kesalahan</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_SharingViolation">
+    <value>Berkas atau folder sedang digunakan oleh aplikasi lainnya</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TimedOut">
+    <value>Terputus</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TransferAbortedDueToFileChange">
+    <value>Unggahan dibatalkan karena terdapat berkas yang diubah pada saat sinkronisasi sedang berlangsung. Aplikasi akan mencoba kembali secara otomatis.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_UnauthorizedAccess">
+    <value>Izin tidak memadai</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Unknown">
+    <value>Terjadi kesalahan</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_ContainsInvalidCharacter">
+    <value>Nama mengandung karakter yang tidak valid</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Empty">
+    <value>Nama belum diisi</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithPeriod">
+    <value>Nama berakhir dengan tanda titik</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithSpace">
+    <value>Nama berakhir dengan spasi</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Reserved">
+    <value>Nama tidak didukung oleh Windows</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_TooLong">
+    <value>Nama terlalu panjang</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Valid">
+    <value></value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_CheckingForUpdate">
+    <value>Memeriksa pembaruan...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_DownloadingAnUpdate">
+    <value>Mengunduh pembaruan...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpToDate">
+    <value>Terbaru</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
+    <value>Pembaruan gagal diperiksa</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Update required</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
+    <value>Update available</value>
+  </data>
+  <data name="Main_About_Button_UpdateNow">
+    <value>_Perbarui sekarang</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Button_UpdateNow_HelpText">
+    <value>Versi Proton Drive baru tersedia. Silakan perbarui aplikasi sekarang juga.</value>
+  </data>
+  <data name="Main_About_Label_CurrentVersion">
+    <value>Versi saat ini</value>
+  </data>
+  <data name="Main_About_Label_ReleaseDate">
+    <value>Tanggal rilis</value>
+  </data>
+  <data name="Main_About_Link_PrivacyPolicy">
+    <value>_Privacy policy</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Link_TermsOfService">
+    <value>_Terms of service</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_ReleaseHistory_Label_New">
+    <value>BARU</value>
+  </data>
+  <data name="Main_About_ReleaseHistory_Title">
+    <value>Apa saja yang baru</value>
+  </data>
+  <data name="Main_About_Title">
+    <value>Tentang</value>
+  </data>
+  <data name="Main_Account_Account_Button_ManageAccount">
+    <value>Kelola _akun</value>
+  </data>
+  <data name="Main_Account_Account_HelpText">
+    <value>Kelola akun Anda</value>
+  </data>
+  <data name="Main_Account_Account_Info_UnknownUser">
+    <value>Pengguna tidak diketahui</value>
+  </data>
+  <data name="Main_Account_Label_Account">
+    <value>Akun</value>
+  </data>
+  <data name="Main_Account_Label_Security">
+    <value>Keamanan</value>
+  </data>
+  <data name="Main_Account_Password_Button_ChangePassword">
+    <value>_Ubah</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Password_Description">
+    <value>Ubah kata sandi untuk akun Anda.</value>
+  </data>
+  <data name="Main_Account_Password_HelpText">
+    <value>Ubah kata sandi Proton Drive Anda</value>
+  </data>
+  <data name="Main_Account_Password_Title">
+    <value>Kata sandi</value>
+  </data>
+  <data name="Main_Account_Plan_Button_SeePlans">
+    <value>Lihat daftar _paket</value>
+  </data>
+  <data name="Main_Account_Plan_Description">
+    <value>Dapatkan lebih banyak ruang penyimpanan</value>
+  </data>
+  <data name="Main_Account_Plan_HelpText">
+    <value>Lihat paket Proton Drive lainnya</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Button_Manage">
+    <value>_Kelola</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_SessionManagement_Description">
+    <value>Selama Anda tidak keluar dari akun atau mengubah kata sandi Anda, sesi Anda akan tetap aktif. Seluruh sesi akan berakhir setelah 60 hari tidak aktif.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_HelpText">
+    <value>Kelola sesi Anda. Sesi akan berakhir setelah 60 hari tidak aktif.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Title">
+    <value>Pengelolaan sesi</value>
+  </data>
+  <data name="Main_Account_SignOut_Description">
+    <value>Keluar dari akun dan nonaktifkan sinkronisasi. Anda dapat masuk lagi dengan akun yang sama untuk melanjutkan sinkronisasi.</value>
+  </data>
+  <data name="Main_Account_SignOut_HelpText">
+    <value>Keluarkan akun dari Proton Drive</value>
+  </data>
+  <data name="Main_Account_SignOut_Title">
+    <value>_Keluar dari akun</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Storage_Button_UpgradePlan">
+    <value>Tingkatkan paket</value>
+  </data>
+  <data name="Main_Account_Storage_Info_EnsureMoreStorage">
+    <value>Untuk memastikan sinkronisasi yang berlangsung tanpa gangguan, silakan tingkatkan ruang penyimpanan Anda sekarang juga.</value>
+  </data>
+  <data name="Main_Account_Storage_Info_UsedSpaceFormat">
+    <value>Total ruang penyimpanan yang digunakan: {0} dari {1}</value>
+  </data>
+  <data name="Main_Account_Storage_Title">
+    <value>Kapasitas ruang penyimpanan</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageExceeded">
+    <value>Sinkronisasi dihentikan. Akun Anda telah melebihi kapasitas penyimpanannya.</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageLimit">
+    <value>Anda hampir mencapai batas ruang penyimpanan Anda.</value>
+  </data>
+  <data name="Main_Account_Title">
+    <value>Akun</value>
+  </data>
+  <data name="Main_Activity_Button_PauseSync">
+    <value>_Jeda sinkronisasi</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Rename">
+    <value>Ubah nama</value>
+  </data>
+  <data name="Main_Activity_Button_Rename_Tooltip">
+    <value>Ubah nama item ini untuk menyelesaikan masalah sinkronisasi</value>
+  </data>
+  <data name="Main_Activity_Button_ResumeSync">
+    <value>_Lanjutkan sinkronisasi</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Retry">
+    <value>Coba ulang sinkronisasi</value>
+  </data>
+  <data name="Main_Activity_Column_Folder">
+    <value>Folder</value>
+  </data>
+  <data name="Main_Activity_Column_Name">
+    <value>Nama</value>
+  </data>
+  <data name="Main_Activity_Column_Progress_Tooltip_Finalizing">
+    <value>Menyelesaikan...</value>
+  </data>
+  <data name="Main_Activity_Column_Size">
+    <value>Ukuran</value>
+  </data>
+  <data name="Main_Activity_Column_Status">
+    <value>Status</value>
+  </data>
+  <data name="Main_Activity_Column_Synced">
+    <value>Tersinkron</value>
+  </data>
+  <data name="Main_Activity_Column_Type">
+    <value>Jenis</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Button_ShowMore">
+    <value>Tampilkan detail lanjut</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Description">
+    <value>Klik untuk mempelajari lebih lanjut seputar masalah ini</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_HelpText">
+    <value>Tampilkan seluruh masalah dalam bagian baru</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_MultipleItemsFormat">
+    <value>Terdapat {0} masalah</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_SingleItem">
+    <value>Terdapat 1 masalah</value>
+  </data>
+  <data name="Main_Activity_Errors_Title">
+    <value>Masalah sinkronisasi ({0})</value>
+  </data>
+  <data name="Main_Activity_Errors_Title_Tooltip">
+    <value>Kembali ke aktivitas</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Description">
+    <value>Informasi sinkronisasi seputar folder dan berkas akan muncul di sini</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_HelpText">
+    <value>Berkas Anda sudah terkini</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Title">
+    <value>Berkas Anda sudah terkini</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line1">
+    <value>Proses ini dapat memakan waktu beberapa menit.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line2">
+    <value>Anda dapat memperkecil atau menutup jendela ini secara aman.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_HelpText">
+    <value>Sinkronisasi sedang dimulai</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Title">
+    <value>Mempersiapkan drive Anda...</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Description">
+    <value>Klik "Lanjutkan sinkronisasi" untuk mengaktifkan sinkronisasi</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_HelpText">
+    <value>Sinkronisasi dijeda</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Title">
+    <value>Sinkronisasi dijeda</value>
+  </data>
+  <data name="Main_Activity_Rename_CurrentName_Label">
+    <value>Nama saat ini:</value>
+  </data>
+  <data name="Main_Activity_Rename_Description">
+    <value>Nama item ini mengandung karakter yang tidak didukung pada Windows.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_AlreadyExists">
+    <value>Nama telah digunakan</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_ContainsInvalidCharacter">
+    <value>Nama mengandung karakter yang tidak valid</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Failed">
+    <value>Terdapat suatu kesalahan</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Required">
+    <value>Nama wajib diisi</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Label">
+    <value>Nama baru:</value>
+  </data>
+  <data name="Main_Activity_Rename_Status_Value_Renaming">
+    <value>Mengubah nama...</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion">
+    <value>Silakan hapus rangkaian karakter berikut untuk melanjutkan sinkronisasi:</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion_CharacterList">
+    <value>/ : * ? &gt; &lt; " |</value>
+  </data>
+  <data name="Main_Activity_Rename_Title">
+    <value>Mengubah nama item</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUp">
+    <value>Mempersiapkan...</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUpFormat">
+    <value>Mempersiapkan... ({0} item disiapkan untuk penyinkronan)</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SyncPausedUntilFormat">
+    <value>(until {0})</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>beberapa saat yang lalu</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
+    <value>{0} hari yang lalu</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_HoursAgoFormat">
+    <value>{0} jam yang lalu</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_MinutesAgoFormat">
+    <value>{0} menit yang lalu</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneDayAgo">
+    <value>satu hari yang lalu</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneHourAgo">
+    <value>satu jam yang lalu</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneMinuteAgo">
+    <value>satu menit yang lalu</value>
+  </data>
+  <data name="Main_Activity_Title">
+    <value>Aktivitas</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Folder yang disinkronkan dari komputer akan muncul di bagian "Komputer" di seluruh aplikasi Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Button_Rename">
+    <value>_Ubah nama</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Device_HelpText">
+    <value>Ubah nama perangkat Anda</value>
+  </data>
+  <data name="Main_MyComputer_Device_Label">
+    <value>Perangkat ini</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Cancel_HelpText">
+    <value>Batalkan perubahan nama perangkat</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Save_HelpText">
+    <value>Simpan nama perangkat</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Error_Tooltip">
+    <value>Nama perangkat tidak valid: Nama baru tidak boleh kosong dan tidak boleh melebihi 255 karakter.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_HelpText">
+    <value>Ubah nama perangkat Anda</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Button_AddMore">
+    <value>_Tambah lebih banyak folder</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Description">
+    <value>Menambahkan folder akan mencadangkan semua datanya ke Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Info_Saving">
+    <value>Menyimpan folder…</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Title">
+    <value>Tambahkan folder</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludedByAnAlreadySyncedFolderFormat">
+    <value>{0} folder tidak dapat disinkronkan karena folder ini disertakan dalam folder yang telah disinkronkan ke Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludesAnAlreadySyncedFolderFormat">
+    <value>{0} folder tidak dapat disinkronkan karena folder ini memiliki subfolder yang telah disinkronkan ke Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFileSystemAccessFailedFormat">
+    <value>{0} folder tidak dapat diakses</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFolderDoesNotExistFormat">
+    <value>{0} folder tidak dapat ditemukan atau dibuka</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalVolumeNotSupportedFormat">
+    <value>{0} folder tidak dapat disinkronkan karena folder ini terletak pada drive yang tidak didukung</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NetworkFolderNotSupportedFormat">
+    <value>{0} folder tidak dapat disinkronkan karena folder jaringan tidak didukung</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat">
+    <value>{0} folder tidak dapat disinkronkan karena folder ini merupakan folder sistem</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
+    <value>{0} folder tidak dapat ditambahkan</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder">
+    <value>1 folder tidak dapat ditambahkan</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add">
+    <value>_Tambahkan folder</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst">
+    <value>Tambahkan folder pertama Anda untuk disinkronkan</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddNext">
+    <value>Tambahkan folder baru untuk disinkronkan</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_Name">
+    <value>Nama</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization">
+    <value>Optimalkan ruang penyimpanan</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization_Info_Tooltip">
+    <value>Optimalkan ruang penyimpanan dengan mengaktifkan sinkronisasi on-demand.
+Berkas yang ada hanya akan menempati ruang penyimpanan lokal pada saat Anda membuka berkas ini atau
+memilih untuk selalu menyimpan berkas pada perangkat ini. Anda dapat
+menonaktifkan optimisasi ruang penyimpanan ini kapan saja.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Description">
+    <value>Tambahkan folder untuk mulai menyinkronkan berkas ke layanan cloud secara aman</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Title">
+    <value>Sinkronkan berkas Anda secara aman</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Label">
+    <value>Folder yang menyinkronkan dari perangkat ini</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_OpenFolder">
+    <value>_Buka folder</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder">
+    <value>_Hapus folder</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm">
+    <value>Hapus folder</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_1">
+    <value>Berkas yang ditambahkan ke folder "{0}" akan tidak lagi tersinkron dan folder ini akan dipindahkan ke Sampah di Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_2">
+    <value>Berkas yang telah ada akan tetap tersedia pada komputer Anda.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_1">
+    <value>Sebagian berkas dalam folder "{0}" dapat hanya tersimpan di cloud. Dengan menghapus folder ini, berkas ini tidak lagi akan tersinkron dan akan berpindah ke Sampah di Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_2">
+    <value>Untuk menyimpan salinan lokal semua berkas di komputer Anda, pertama-tama matikan Optimalkan penyimpanan untuk folder ini. Jika optimasi penyimpanan sudah dimatikan, aktifkan lalu matikan. Tunggu hingga proses unduh selesai (Anda dapat memeriksa statusnya di File Explorer), lalu hapus folder dari sinkronisasi di bagian Komputer Saya.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_1">
+    <value>Berkas yang telah diunduh akan tetap tersedia pada komputer Anda.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_2">
+    <value>Berkas yang hanya disimpan di cloud akan dihapus dari perangkat Anda.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Title">
+    <value>Hapus folder?</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_1">
+    <value>Berkas yang terdapat di dalam folder "{0}" kini akan selalu tersedia pada perangkat Anda. Seluruh berkas yang ada mungkin akan memerlukan waktu beberapa menit untuk dapat selesai diunduh (Anda dapat memeriksa status unduhan ini pada File Explorer).</value>
+    <comment>Placeholder {0}: folder name</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_2">
+    <value>Anda tetap dapat mengosongkan ruang penyimpanan untuk satu per satu berkas yang ada secara manual melalui pengaturan masing-masing berkas.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Title">
+    <value>Seluruh berkas akan selalu tersedia pada perangkat ini</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1">
+    <value>Folder "{0}" tidak dapat menggunakan sinkronisasi on-demand untuk mengoptimalkan ruang penyimpanan, karena {1}.</value>
+    <comment>Placeholder {0}: folder name. Placeholder {1}: the reason text, one of resources with "StorageOptimizationErrorCode_Value_..." key.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_2">
+    <value>Berkas Anda akan tetap tersinkron dengan Proton Drive dan tetap tersedia di komputer Anda dan awan.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Title">
+    <value>Optimalisasi penyimpanan tidak tersedia</value>
+  </data>
+  <data name="Main_MyComputer_Link_LearnMore">
+    <value>Learn more</value>
+  </data>
+  <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
+    <value>Tutup panduan komputer saya</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Button_Next">
+    <value>_Selanjutnya</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Description">
+    <value>Aktifkan sinkronisasi on-demand untuk menghemat ruang penyimpanan. Berkas yang ada hanya akan menempati ruang penyimpanan lokal pada saat Anda membuka berkas ini atau menandai berkas dengan "Selalu simpan pada perangkat ini".</value>
+    <comment>"Always keep on this device" is the exact text displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Title">
+    <value>Optimalkan Ruang Penyimpanan</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted">
+    <value>_Mulai</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1">
+    <value>Klik kanan pada berkas atau folder yang disinkronkan menggunakan Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2">
+    <value>Pilih "Selalu simpan pada perangkat ini" untuk menyimpan berkas secara offline, atau "Kosongkan ruang" untuk menyimpan berkas hanya pada layanan cloud.</value>
+    <comment>"Always keep on this device" and "Free up space" are the exact texts displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Title">
+    <value>Mengelola Ruang Penyimpanan</value>
+  </data>
+  <data name="Main_MyComputer_Title">
+    <value>Komputer Saya</value>
+  </data>
+  <data name="Main_Photos_Folders_Error_ImportFailed">
+    <value>Proses impor gagal. Cobalah untuk menghapus folder ini dan mengimpornya kembali. Apabila masalah ini terus berlanjut, silakan hubungi layanan dukungan.</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportedItemsFormat">
+    <value>{0} dari {1} diimpor</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportingItemsFormat">
+    <value>Mengimpor... {0} dari {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_Items_Label">
+    <value>item(s)</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Manage _albums</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
+    <value>_Buka folder</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Remove">
+    <value>_Hapus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Retry">
+    <value>_Coba lagi</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_NoItemsFound_Label">
+    <value>Foto/video tidak ditemukan</value>
+  </data>
+  <data name="Main_Photos_Folders_WaitingToImport">
+    <value>Menunggu untuk mengimpor...</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Description">
+    <value>Panduan langkah demi langkah untuk mengekspor Google Photos Anda</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Title">
+    <value>1. Ekspor Google Photos Anda</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Description">
+    <value>Folder yang belum diekstrak yang berisi foto dan video yang Anda ekspor.</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Title">
+    <value>2. Impor folder Google Photos</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_SelectFolder_Button">
+    <value>Pilih Folder</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Title">
+    <value>Impor dari Google Photos</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Description">
+    <value>Impor folder lokal dari komputer Anda</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Title">
+    <value>Impor folder</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Description">
+    <value>Impor foto Google dari Google Takeout</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Title">
+    <value>Impor dari Google Photos</value>
+  </data>
+  <data name="Main_Photos_Import_Link_HowImportWorks">
+    <value>How does photo import work?</value>
+  </data>
+  <data name="Main_Photos_Import_Title">
+    <value>Impor foto</value>
+  </data>
+  <data name="Main_Photos_Info_Duplicates">
+    <value>Kami hanya akan mengimpor apa yang baru — duplikat akan dilewati secara otomatis.</value>
+  </data>
+  <data name="Main_Photos_Title">
+    <value>Foto</value>
+  </data>
+  <data name="Main_Photos_Warning_UploadUnavailable">
+    <value>Mengunggah foto untuk sementara tidak tersedia</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Button_Change">
+    <value>_Ubah</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_HelpText">
+    <value>Ubah folder akar Proton Drive Anda.</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Title">
+    <value>Lokasi</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Dapatkan akses awal dan bantu kami menguji versi baru Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Akses beta</value>
+  </data>
+  <data name="Main_Settings_Label_AccountRootFolder">
+    <value>Folder Proton Drive Anda:</value>
+  </data>
+  <data name="Main_Settings_Label_General">
+    <value>Umum</value>
+  </data>
+  <data name="Main_Settings_Language_Button_Restart">
+    <value>Mulai ulang sekarang</value>
+  </data>
+  <data name="Main_Settings_Language_Message_PleaseRestart">
+    <value>Silakan mulai ulang aplikasi untuk menerapkan perubahan bahasa Anda</value>
+  </data>
+  <data name="Main_Settings_Language_Title">
+    <value>Bahasa</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_HelpText">
+    <value>Buka Proton Drive pada saat Windows dinyalakan</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_Title">
+    <value>Luncurkan aplikasi pada saat startup</value>
+  </data>
+  <data name="Main_Settings_Title">
+    <value>Pengaturan</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Name">
+    <value>Nama</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions">
+    <value>Izin</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Tooltip">
+    <value>Izin yang diberikan kepada Anda oleh pemilik</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Editor">
+    <value>Penyunting</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Viewer">
+    <value>Penampil</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedBy">
+    <value>Dibagikan oleh</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedOn">
+    <value>Dibagikan pada</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync">
+    <value>Sinkronkan</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync_Info_Tooltip">
+    <value>Aktifkan untuk membuat agar berkas atau folder yang dibagikan dapat diakses dari komputer Anda. 
+Konten berkas hanya akan diunduh apabila diminta.</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad">
+    <value>Gagal memuat data</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Plural">
+    <value>{0} item gagal dimuat</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Singular">
+    <value>{0} item gagal dimuat</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Description">
+    <value>Berkas dan folder yang dibagikan dengan Anda akan muncul di sini</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Title">
+    <value>Belum ada hal apa pun yang dibagikan</value>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_OpenFolder">
+    <value>_Buka folder</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_RemoveMe">
+    <value>_Keluarkan saya</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_Close_HelpText">
+    <value>Tutup layar pengenalan dibagikan dengan saya</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_GetStarted">
+    <value>_Mulai</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Description">
+    <value>Sinkronisasikan berkas dan folder yang dibagikan kepada Anda ke komputer Anda.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1">
+    <value>Pilih berkas atau folder untuk disinkronkan.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2">
+    <value>Akses berkas terbagi dalam folder Proton Drive Anda.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3">
+    <value>Sunting mereka, unggah yang baru, dan akses secara luring.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3_Label">
+    <value>3.</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Plural">
+    <value>{0} dari {1} item tersinkron</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Singular">
+    <value>{0} dari {1} item tersinkron</value>
+  </data>
+  <data name="Main_SharedWithMe_Title">
+    <value>Dibagikan dengan saya</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Advice">
+    <value>Untuk menambahkan item baru, silakan berhenti menyinkronkan sebagian item lama.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Limit">
+    <value>Anda hanya dapat menyinkronkan {0} item dalam satu waktu.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_SharingUnavailable">
+    <value>Pembagian untuk sementara tidak tersedia</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About">
+    <value>Tentang</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About_HelpText">
+    <value>Item menu: Tentang</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account">
+    <value>Akun</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account_HelpText">
+    <value>Item menu: Akun</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity">
+    <value>Aktivitas</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity_HelpText">
+    <value>Item menu: Aktivitas</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help">
+    <value>Bantuan</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help_HelpText">
+    <value>Item menu: Bantuan</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer">
+    <value>Komputer saya</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer_HelpText">
+    <value>Item menu: Komputer saya</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos">
+    <value>Foto</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_PhotosImport">
+    <value>Impor foto</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos_HelpText">
+    <value>Item menu: Foto</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings">
+    <value>Pengaturan</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings_HelpText">
+    <value>Item menu: Pengaturan</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe">
+    <value>Dibagikan dengan saya</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe_HelpText">
+    <value>Item menu: Dibagikan dengan saya</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceededQuota_Description">
+    <value>Sinkronisasi dihentikan: akun Anda telah melebihi kapasitas ruang penyimpanan</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceedingQuota_Description">
+    <value>Anda hampir mencapai batas ruang penyimpanan Anda</value>
+  </data>
+  <data name="Main_Sidebar_Notification_GetStarted_Description">
+    <value>Mulai</value>
+  </data>
+  <data name="Main_Sidebar_Notification_NewVersion_Description">
+    <value>Versi baru Proton Drive telah tersedia!</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SharingUnavailable_Description">
+    <value>Pembagian untuk sementara tidak tersedia</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SyncFoldersFailure_Description">
+    <value>Folder gagal disinkronisasi</value>
+  </data>
+  <data name="Main_Sidebar_Notification_UpdateRequired_Description">
+    <value>Untuk tetap menggunakan Proton Drive, Anda perlu memperbarui ke versi terbaru</value>
+  </data>
+  <data name="Main_Sidebar_Offer_Button_GetDeal">
+    <value>Dapatkan _penawaran ini</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Sidebar_Storage_Button_GetMoreStorage">
+    <value>Dapatkan lebih banyak ruang penyimpanan</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_StorageNotAvailable">
+    <value>Info ruang tidak tersedia</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_UsedSpaceFormat">
+    <value>{0} dari {1} telah digunakan</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Title">
+    <value>Ruang penyimpanan</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Tooltip">
+    <value>Kelola ruang penyimpanan</value>
+  </data>
+  <data name="Main_Window_Title">
+    <value>Proton Drive</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>Folder ini mengandung subfolder yang tersinkron secara on-demand. Persiapkan folder sinkronisasi baru.</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>Folder ini telah tersinkron secara on-demand. Persiapkan folder sinkronisasi baru.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveAccessFailed">
+    <value>Tidak dapat terhubung ke Proton Drive. Cobalah untuk memeriksa koneksi internet Anda.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDiverged">
+    <value>Folder Proton Drive telah dipindahkan. Persiapkan folder sinkronisasi baru.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDoesNotExist">
+    <value>Berkas Proton Drive Anda tidak dapat diakses, yang kemungkinan disebabkan oleh terhapusnya folder pada perangkat. Persiapkan folder sinkronisasi baru.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveHostDeviceDiverged">
+    <value>Berkas Proton Drive Anda tidak dapat diakses, yang kemungkinan disebabkan oleh terhapusnya perangkat. Persiapkan folder sinkronisasi baru.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveShareDiverged">
+    <value>Berkas Proton Drive Anda tidak dapat diakses, yang kemungkinan disebabkan oleh pengaturan ulang kata sandi. Persiapkan folder sinkronisasi baru.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveVolumeDiverged">
+    <value>Berkas Proton Drive Anda tidak dapat diakses, yang kemungkinan disebabkan oleh terhapusnya folder pada perangkat. Persiapkan folder sinkronisasi baru.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientDeviceQuota">
+    <value>Jumlah maksimum komputer yang disinkronkan telah tercapai. Hapus komputer yang tidak diperlukan dari Proton Drive di web.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientLocalFreeSpace">
+    <value>Kosongkan ruang yang ada atau lepas pilihan pada kotak centang</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalAndRemoteFoldersNotEmpty">
+    <value>Penyiapan folder sinkronisasi memerlukan folder web Windows atau Proton Drive yang kosong. Silakan kosongkan isi salah satu folder web ini dan coba lagi.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFileSystemAccessFailed">
+    <value>Folder sinkronisasi lokal tidak dapat diakses atau dibuat. Kami akan terus mencoba.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDiverged">
+    <value>Folder sinkronisasi telah digantikan oleh folder baru dalam jalur direktori. Pulihkan folder sinkronisasi sebelumnya atau persiapkan folder sinkronisasi baru.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDoesNotExist">
+    <value>Folder sinkronisasi tidak ditemukan. Folder ini mungkin telah dihapus, diubah nama, atau dipindahkan. Pulihkan folder ini atau persiapkan folder sinkronisasi baru.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludedByAnAlreadySyncedFolder">
+    <value>Folder yang dipilih sudah termasuk dalam folder yang disinkronkan lainnya</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludesAnAlreadySyncedFolder">
+    <value>Folder yang dipilih berisi folder yang sudah disinkronkan</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNonSyncable">
+    <value>Folder lokal ini tidak memenuhi syarat untuk digunakan sebagai folder sinkronisasi. Persiapkan folder sinkronisasi baru.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNotEmpty">
+    <value>Folder lokal harus kosong sebelum mempersiapkan sinkronisasi</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeDiverged">
+    <value>Nomor seri volume lokal telah berubah. Siapkan folder sinkronisasi baru.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeNotSupported">
+    <value>Tipe drive lokal tidak didukung. Cobalah untuk mengatur folder sinkronisasi pada drive lokal yang berbeda.</value>
+  </data>
+  <data name="MappingErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootMissingSyncRootFlag">
+    <value>Folder sinkronisasi tidak valid. Atur folder sinkronisasi baru.</value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootNotRegistered">
+    <value>Folder sinkronisasi tidak terdaftar secara tidak sengaja. Persiapkan folder sinkronisasi baru.</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotoImportFailed">
+    <value>Impor foto gagal</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosDisabled">
+    <value>Proton Foto tidak tersedia</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosNotReady">
+    <value>Fitur foto belum siap</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemDoesNotExist">
+    <value>Tidak dapat mengakses file atau folder Proton Drive yang dibagikan. Periksa apakah masih dibagikan dengan Anda.</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemPermissionsDiverged">
+    <value>Izin file atau folder Proton Drive yang dibagikan telah berubah. Matikan sinkronisasinya lalu hidupkan kembali untuk memperbaikinya.</value>
+  </data>
+  <data name="MappingErrorCode_Value_SharingDisabled">
+    <value>Pembagian untuk sementara tidak tersedia</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Failed">
+    <value>Folder sinkronisasi gagal dipersiapkan</value>
+  </data>
+  <data name="MappingSetupStatus_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingSetupStatus_Value_PartiallySucceeded">
+    <value>Sebagian folder sinkronisasi gagal dipersiapkan</value>
+  </data>
+  <data name="MappingSetupStatus_Value_SettingUp">
+    <value>Mempersiapkan folder sinkronisasi...</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Succeeded">
+    <value>OK</value>
+  </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Add Storage</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Out of storage space</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Upgrade to get more storage space and upload your files.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
+    <value>_Ubah</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder_HelpText">
+    <value>Ubah folder root Proton Drive Anda.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Error_InvalidSyncFolder">
+    <value>Folder sinkronisasi tidak valid</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Description">
+    <value>Akses berkas yang Anda miliki dan perangkat lainnya yang disinkronkan di sini</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Location">
+    <value>Lokasi</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Title">
+    <value>Folder Proton Drive Anda</value>
+  </data>
+  <data name="Onboarding_Button_Continue">
+    <value>_Lanjut</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_Button_FinishSetup">
+    <value>_Selesaikan pengaturan</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders">
+    <value>_Tambah lebih banyak folder</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText">
+    <value>Tambah folder lainnya untuk disinkronkan</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Label_Description">
+    <value>Folder yang dipilih akan disinkronkan ke Proton Drive. Berkas yang terkandung di dalamnya akan dicadangkan dan tersedia pada perangkat lainnya yang Anda miliki.</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Title">
+    <value>Cadangkan folder Anda</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Get Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Get _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Get _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_NotNow">
+    <value>_Tidak sekarang</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_Upgrade">
+    <value>_Tingkatkan</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Mail">
+    <value>Mail: Custom and secure email</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>month</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Most popular</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Up to {0} users</value>
+    <comment>Only for number greater than 1.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
+    <value>Pass: Encrypted password manager</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Premium value included</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Recommended">
+    <value>Direkomendasikan</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Recover previous file versions</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>storage</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Vpn">
+    <value>VPN: Ultra fast and private</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Title">
+    <value>Dapatkan lebih banyak ruang penyimpanan</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
+    <value>Impor gagal. Album tidak ada.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Import failed. The folder does not exist.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
+    <value>Impor gagal. Jumlah maksimum album telah tercapai.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfPhotosPerAlbumReached">
+    <value>Impor gagal. Jumlah maksimum foto per album telah tercapai.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_Unknown">
+    <value>Impor gagal. Coba lagi.</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Failed">
+    <value>Proses impor gagal</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Importing">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Interrupted">
+    <value>Proses impor terganggu</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_NotStarted">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_SetupFailed">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Succeeded">
+    <value>Proses impor berhasil</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_ValidationFailed">
+    <value></value>
+  </data>
+  <data name="ReleaseNoteType_Value_Feature">
+    <value>Fitur Baru</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Fix">
+    <value>Perbaikan Bug</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Improvement">
+    <value>Peningkatan</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Fido2">
+    <value>Kunci keamanan</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_NotSupported">
+    <value></value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Totp">
+    <value>Aplikasi autentikator</value>
+  </data>
+  <data name="SessionStatus_Value_Ending">
+    <value>Sedang keluar…</value>
+  </data>
+  <data name="SessionStatus_Value_Failed">
+    <value>Gagal masuk ke akun. Coba memeriksa koneksi internet.</value>
+  </data>
+  <data name="SessionStatus_Value_NotStarted">
+    <value>Sudah keluar</value>
+  </data>
+  <data name="SessionStatus_Value_SigningIn">
+    <value>Sedang masuk...</value>
+  </data>
+  <data name="SessionStatus_Value_Started">
+    <value>Masuk</value>
+  </data>
+  <data name="SessionStatus_Value_Starting">
+    <value>Sedang masuk...</value>
+  </data>
+  <data name="SignIn_Button_Authenticate">
+    <value>_Autentikasi</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_Back">
+    <value>_Kembali</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignIn">
+    <value>_Masuk</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignInAsAnotherUser">
+    <value>Atau masuk sebagai pengguna lainnya</value>
+  </data>
+  <data name="SignIn_Button_Unlock">
+    <value>_Buka kunci</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_CreateAccount">
+    <value>_Create account</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_ForgotPassword">
+    <value>_Forgot your password?</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_LearnMore">
+    <value>Learn more</value>
+  </data>
+  <data name="SignIn_Message_SigningIn">
+    <value>Memasukkan Anda ke akun</value>
+  </data>
+  <data name="SignIn_Text_2FACode">
+    <value>Masukkan kode dari aplikasi autentikator Anda</value>
+  </data>
+  <data name="SignIn_Text_No2FAMethodFound">
+    <value>Tidak ada metode autentikasi dua faktor yang ditemukan.</value>
+  </data>
+  <data name="SignIn_Text_Password">
+    <value>_Kata sandi</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_SecondPassword">
+    <value>Kata sandi kedua</value>
+  </data>
+  <data name="SignIn_Text_SecurityKey">
+    <value>Masukkan kunci keamanan yang tertaut ke Akun Proton Anda.</value>
+  </data>
+  <data name="SignIn_Text_SecurityKeyNotSupported">
+    <value>Sistem Anda tidak mendukung kunci keamanan</value>
+  </data>
+  <data name="SignIn_Text_Username">
+    <value>Email atau _nama pengguna</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_Username_HelpText">
+    <value>Nama pengguna</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_PasswordRequired">
+    <value>Kata sandi dibutuhkan</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SessionExpired">
+    <value>Sesi Anda telah kedaluwarsa. Silakan masuk kembali untuk melanjutkan.</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SomethingWentWrong">
+    <value>Terdapat suatu kesalahan</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_UsernameRequired">
+    <value>Nama pengguna dibutuhkan</value>
+  </data>
+  <data name="SignIn_Title_2FA">
+    <value>Autentikasi dua faktor</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>berisi subfolder tersinkron secara permintaan oleh {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>sudah disinkron sesuai permintaan oleh {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_NetworkVolumeNotSupported">
+    <value>drive jaringan tidak didukung</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_RemovableVolumeNotSupported">
+    <value>drive portabel tidak didukung</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_Unknown">
+    <value>aktivasi sinkronisasi on-demand gagal</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
+    <value>tipe drive lokal tidak didukung</value>
+  </data>
+  <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
+    <value>Ruang kosong pada perangkat ini tidak memadai</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludedByAnAlreadySyncedFolder">
+    <value>Folder ini diikutsertakan oleh folder yang telah disinkronkan</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludesAnAlreadySyncedFolder">
+    <value>Folder ini mengandung folder yang telah disinkronkan</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_InsufficientLocalFreeSpace">
+    <value>Kosongkan ruang yang ada atau lepas pilihan pada kotak centang.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFileSystemAccessFailed">
+    <value>Folder tidak dapat diakses</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderDoesNotExist">
+    <value>Folder ini tidak dapat ditemukan</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderNotEmpty">
+    <value>Folder ini harus kosong sebelum mempersiapkan sinkronisasi</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalVolumeNotSupported">
+    <value>Tipe drive tidak didukung</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NetworkFolderNotSupported">
+    <value>Menyinkronkan folder dari drive jaringan tidak didukung</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NonSyncableFolder">
+    <value>Folder ini tidak memenuhi syarat untuk disinkronkan</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_Succeeded">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_DetectingUpdates">
+    <value>Memperoleh pembaruan...</value>
+  </data>
+  <data name="SyncStatus_Value_Failed">
+    <value>Error</value>
+  </data>
+  <data name="SyncStatus_Value_Idle">
+    <value>Tersinkron</value>
+  </data>
+  <data name="SyncStatus_Value_Initializing">
+    <value>Mempersiapkan...</value>
+  </data>
+  <data name="SyncStatus_Value_Offline">
+    <value>Offline</value>
+  </data>
+  <data name="SyncStatus_Value_Paused">
+    <value>Dijeda</value>
+  </data>
+  <data name="SyncStatus_Value_Synchronizing">
+    <value>Menyinkronkan...</value>
+  </data>
+  <data name="SyncStatus_Value_Terminated">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_Terminating">
+    <value>Memberhentikan...</value>
+  </data>
+  <data name="SystemTray_Menu_Item_Exit">
+    <value>_Keluar</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenInBrowser">
+    <value>Buka di _browser</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenLocalFolder">
+    <value>Buka _folder lokal</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenProtonDrive">
+    <value>_Buka Proton Drive</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSync">
+    <value>_Jeda sinkronisasi</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
+    <value>Pause for 1 hour</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor4Hours">
+    <value>Pause for 4 hours</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor8Hours">
+    <value>Pause for 8 hours</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncIndefinitely">
+    <value>Pause indefinitely</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow">
+    <value>Pause until tomorrow (8AM)</value>
+  </data>
+  <data name="SystemTray_Menu_Item_ResumeSync">
+    <value>_Resume the synchronization</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_SignIn">
+    <value>_Masuk</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="ToggleSwitch_Off">
+    <value>Nonaktif</value>
+  </data>
+  <data name="ToggleSwitch_On">
+    <value>Aktif</value>
+  </data>
+</root>

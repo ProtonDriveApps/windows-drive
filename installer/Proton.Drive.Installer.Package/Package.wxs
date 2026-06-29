@@ -1,0 +1,103 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
+  <Package
+    Name="$(Product)"
+    Manufacturer="$(Company)"
+    Version="$(Version)"
+    ProductCode="*"
+    UpgradeCode="f3b95bd2-1311-4b82-8b4a-b9eb7c0500ed"
+    Scope="perUser">
+
+    <Property Id="MsiLogging" Value="v" />
+
+    <Binary Id="ProtonExtensions" SourceFile="Proton.Drive.Installer.Extensions.CA.dll" />
+
+    <!--
+    When upgrading to a newer version, the "afterInstallInitialize" schedule uninstalls the old version first, and installs the new one after,
+    under a single transaction. If either the uninstallation or installation fails, everything that was not done by a custom action is rolled back.
+    -->
+    <MajorUpgrade Schedule="afterInstallInitialize" DowngradeErrorMessage="!(loc.DowngradeError)" AllowSameVersionUpgrades="yes" IgnoreLanguage="yes"/>
+
+    <!-- Embed everything in the .msi file, instead of having one or more .cab files next to it -->
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Icon Id="ProtonDrive.ico" SourceFile="../../assets/ProtonDrive.ico" />
+    <Icon Id="ProtonDocs.ico" SourceFile="../../assets/ProtonDocs.ico" />
+    <Icon Id="ProtonSheets.ico" SourceFile="../../assets/ProtonSheets.ico" />
+
+    <Property Id="DISABLEADVTSHORTCUTS" Value="1" />
+    
+    <Property Id="ARPPRODUCTICON" Value="ProtonDrive.ico" />
+
+    <!--
+    The "ARPNOMODIFY" is cleared after the UI sequence, so that only the "Change" button was disabled in the maintenance dialog,
+    but not the "Modify" option in the ARP (Add/Remove Programs)
+    -->
+    <SetProperty Id="ARPNOMODIFY" Value="{}" Sequence="execute" Before="InstallValidate" />
+
+    <Launch
+      Condition="NOT ALLUSERS"
+      Message="!(loc.AllUsersPropertyError)" />
+
+    <!--
+    Action that triggers a rollback if the WIXFAILWHENDEFERRED=1 argument is passed to the installation.
+    Warning: There is a bug on rollback, where the product publishing fails to roll back, leaving an entry in the add/remove programs list, and
+    preventing any reinstallation of the product. 
+    See https://github.com/wixtoolset/issues/issues/8574
+    This can be fixed using a Microsoft-provided troubleshooter:
+    https://support.microsoft.com/en-us/topic/fix-problems-that-block-programs-from-being-installed-or-removed-cca7d1b6-65a9-3d98-426b-e9f927e1eb4d
+    -->
+    <util:FailWhenDeferred />
+
+    <Property Id="WINDOWSBUILDNUMBER">
+      <RegistrySearch Id="WindowsBuildNumberSearch" Root="HKLM" Key="SOFTWARE\Microsoft\Windows NT\CurrentVersion" Name="CurrentBuildNumber" Type="raw"/>
+    </Property>
+
+    <!--
+    This will set the WIX_NATIVE_MACHINE property, for which:
+    34404 = 0x8664 = IMAGE_FILE_MACHINE_AMD64
+    43620 = 0xAA64 = IMAGE_FILE_MACHINE_ARM64
+    -->
+    <util:QueryNativeMachine />
+
+    <?if $(AppPlatform) ~= "x64" ?>
+    <Launch
+      Condition="WIX_NATIVE_MACHINE = 34404"
+      Message="!(loc.RequiredX64WindowsError)" />
+    <?endif ?>
+
+    <?if $(AppPlatform) ~= "arm64" ?>
+    <Launch
+      Condition="WIX_NATIVE_MACHINE = 43620"
+      Message="!(loc.RequiredArm64WindowsError)" />
+    <?endif ?>
+
+    <Launch
+      Condition="Installed OR ((VersionNT64 >= 603) AND (WINDOWSBUILDNUMBER >= 17763))"
+      Message="!(loc.RequiredWindows10OrNewerError)" />
+
+    <util:CloseApplication Target="ProtonDrive.exe" EndSessionMessage="yes" RebootPrompt="no" />
+
+    <CustomActionRef Id="DoPerMachineUpgradeSupportActions" />
+
+    <Feature Id="Main">
+      <ComponentGroupRef Id="ApplicationFiles" />
+      <ComponentRef Id="RunOnStartupRegistryEntry" />
+      <ComponentRef Id="DesktopShortcut" />
+      <ComponentRef Id="LocalAppData" />
+      <ComponentRef Id="InstallationInitiatorRegistryEntry" />
+      <ComponentRef Id="FirstLaunchRegistryEntry" />
+    </Feature>
+
+    <UIRef Id="WixUI_Minimal_WithoutEULA" />
+
+    <InstallExecuteSequence>
+      <!-- By default, the action to close applications happens after InstallValidate, it needs to happen before to avoid the FilesInUse dialog -->
+      <Custom Action="override Wix4CloseApplications_$(sys.BUILDARCHSHORT)" Before="InstallValidate" />
+      <!-- Prevent removal of shortcuts during upgrades, to avoid breaking taskbar pin -->
+      <RemoveShortcuts Condition="Installed AND NOT UPGRADINGPRODUCTCODE" />
+    </InstallExecuteSequence>
+
+    <CustomActionRef Id="HideCancelButton" />
+    <CustomActionRef Id="LaunchApplication" />
+  </Package>
+</Wix>

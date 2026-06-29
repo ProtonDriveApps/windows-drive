@@ -1,0 +1,151 @@
+﻿using System.IO;
+using System.Windows.Input;
+using System.Windows.Media;
+using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Proton.Drive.App.Windows.SystemIntegration;
+using Proton.Drive.App.Windows.Views.Shared;
+using Proton.Drive.Sdk.Sync.Agent.Mapping;
+using Proton.Drive.Sdk.Sync.Agent.Mapping.SyncFolders;
+using Proton.Drive.Sdk.Sync.Client.Contracts;
+using Proton.Drive.Sdk.Sync.Shared.FileSystem.Integration;
+using Proton.Drive.Sdk.Sync.Shared.Trees.FileSystem;
+using Proton.Drive.Shared;
+using SharedWithMeItem = Proton.Drive.Sdk.Sync.Client.Shares.SharedWithMe.SharedWithMeItem;
+
+namespace Proton.Drive.App.Windows.Views.Main.SharedWithMe;
+
+internal class SharedWithMeItemViewModel : ObservableObject, IIdentifiable<string>, IMappingStatusViewModel
+{
+    private readonly IFileSystemDisplayNameAndIconProvider _fileSystemDisplayNameAndIconProvider;
+    private readonly ILocalFolderService _localFolderService;
+    private readonly IAsyncRelayCommand _toggleSyncCommand;
+    private readonly IAsyncRelayCommand _removeMeCommand;
+    private readonly IAsyncRelayCommand _openFolderCommand;
+
+    private SharedWithMeItem? _dataItem;
+    private SyncFolder? _syncFolder;
+    private bool _isSyncEnabled;
+
+    public SharedWithMeItemViewModel(
+        IFileSystemDisplayNameAndIconProvider fileSystemDisplayNameAndIconProvider,
+        ILocalFolderService localFolderService,
+        IAsyncRelayCommand<SharedWithMeItemViewModel> toggleSyncCommand,
+        IAsyncRelayCommand removeMeCommand)
+    {
+        _fileSystemDisplayNameAndIconProvider = fileSystemDisplayNameAndIconProvider;
+        _localFolderService = localFolderService;
+        _toggleSyncCommand = toggleSyncCommand;
+
+        _openFolderCommand = new AsyncRelayCommand(OpenFolderAsync, CanOpenFolder);
+        _removeMeCommand = removeMeCommand;
+    }
+
+    public string Id => DataItem?.Id ?? SyncFolder?.RemoteShareId ?? throw new InvalidOperationException();
+
+    public NodeType Type => (DataItem?.IsFolder is true || SyncFolder is { Type: SyncFolderType.SharedWithMeItem, RootLinkType: LinkType.Folder })
+        ? NodeType.Directory
+        : NodeType.File;
+
+    public ImageSource? Icon => Type is NodeType.Directory
+        ? _fileSystemDisplayNameAndIconProvider.GetFolderIconWithoutAccess(Name, ShellIconSize.Small)
+        : _fileSystemDisplayNameAndIconProvider.GetFileIconWithoutAccess(Name, ShellIconSize.Small);
+
+    public string Name => SyncFolder?.RemoteName ?? DataItem?.Name ?? throw new InvalidOperationException();
+
+    public string? InviterEmailAddress => DataItem?.InviterEmailAddress;
+
+    public string? InviterDisplayName => DataItem?.InviterDisplayName ?? InviterEmailAddress;
+
+    public DateTime? SharingLocalDateTime => DataItem?.SharingTime.ToLocalTime();
+
+    public bool IsReadOnly => DataItem?.IsReadOnly ?? SyncFolder?.RemoteIsReadOnly ?? throw new InvalidOperationException();
+
+    public ICommand ToggleSyncCommand => _toggleSyncCommand;
+
+    public ICommand OpenFolderCommand => _openFolderCommand;
+
+    public ICommand RemoveMeCommand => _removeMeCommand;
+
+    public bool IsSyncEnabled
+    {
+        get => _isSyncEnabled;
+        private set
+        {
+            SetProperty(ref _isSyncEnabled, value);
+        }
+    }
+
+    public MappingSetupStatus Status => _syncFolder?.Status ?? MappingSetupStatus.None;
+
+    public MappingErrorCode ErrorCode => _syncFolder?.ErrorCode ?? MappingErrorCode.None;
+
+    public bool SetupIsInProgress => _syncFolder?.Status is MappingSetupStatus.SettingUp;
+
+    public MappingErrorRenderingMode RenderingMode => MappingErrorRenderingMode.Icon;
+
+    internal SharedWithMeItem? DataItem
+    {
+        get => _dataItem;
+        set
+        {
+            SetDataItem(value);
+
+            OnPropertyChanged(nameof(Type));
+            OnPropertyChanged(nameof(Icon));
+            OnPropertyChanged(nameof(Name));
+            OnPropertyChanged(nameof(InviterDisplayName));
+            OnPropertyChanged(nameof(InviterEmailAddress));
+            OnPropertyChanged(nameof(SharingLocalDateTime));
+            OnPropertyChanged(nameof(IsReadOnly));
+
+            _toggleSyncCommand.NotifyCanExecuteChanged();
+            _removeMeCommand.NotifyCanExecuteChanged();
+        }
+    }
+
+    internal SyncFolder? SyncFolder
+    {
+        get => _syncFolder;
+        set
+        {
+            _syncFolder = value;
+            IsSyncEnabled = value is not null;
+            OnPropertyChanged(nameof(Status));
+            OnPropertyChanged(nameof(ErrorCode));
+
+            _toggleSyncCommand.NotifyCanExecuteChanged();
+            _removeMeCommand.NotifyCanExecuteChanged();
+            _openFolderCommand.NotifyCanExecuteChanged();
+        }
+    }
+
+    private void SetDataItem(SharedWithMeItem? value)
+    {
+        if (value != null && _dataItem != null && value.Id != _dataItem.Id)
+        {
+            throw new ArgumentException($"Cannot set {nameof(DataItem)} with a different identity value");
+        }
+
+        _dataItem = value;
+    }
+
+    private bool CanOpenFolder()
+    {
+        return _syncFolder is not null;
+    }
+
+    private async Task OpenFolderAsync(CancellationToken cancellationToken)
+    {
+        if (_syncFolder is null)
+        {
+            return;
+        }
+
+        var pathOfFolderToOpen = _syncFolder.RootLinkType is LinkType.Folder
+            ? _syncFolder.LocalPath
+            : Path.GetDirectoryName(_syncFolder.LocalPath);
+
+        await _localFolderService.OpenFolderAsync(pathOfFolderToOpen).ConfigureAwait(true);
+    }
+}

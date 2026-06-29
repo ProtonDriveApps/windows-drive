@@ -1,0 +1,1772 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountDisplayStatus_Value_AccountError">
+    <value></value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SessionError">
+    <value>Nepodarilo sa prihlásiť</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SettingUp">
+    <value>Nastavovanie...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SignedOut">
+    <value>Odhlásené</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningIn">
+    <value>Prihlasovanie ...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningOut">
+    <value>Odhlasovanie...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_Succeeded">
+    <value>Prihlásený</value>
+  </data>
+  <data name="AccountErrorCode_Value_AccountSwitchingFailed">
+    <value>Účet sa nepodarilo prepnúť. Reštartujte aplikáciu.</value>
+  </data>
+  <data name="AccountErrorCode_Value_Delinquent">
+    <value>Účet má nezaplatené faktúry. Prejdite do svojho ovládacieho panela a zaplaťte ich alebo o tom informujte svojho správcu.</value>
+  </data>
+  <data name="AccountErrorCode_Value_DriveAccessFailed">
+    <value>Nemožno sa pripojiť k Proton Drive. Skúste skontrolovať svoje internetové pripojenie.</value>
+  </data>
+  <data name="AccountErrorCode_Value_NoDriveAccess">
+    <value>Pre prístup k Proton Drive aktualizujte svoj plán</value>
+  </data>
+  <data name="AccountErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Create">
+    <value>Vytváranie</value>
+    <comment>Indicates a local folder being created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Delete">
+    <value>Mazanie</value>
+    <comment>Indicates the local file or folder being deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Download">
+    <value>Sťahovanie z Proton Drive</value>
+    <comment>Indicates a file being downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Vyhľadávanie aktualizácií</value>
+    <comment>Indicates local file system changes being fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Move">
+    <value>Presúvanie</value>
+    <comment>Indicates the local file or folder being moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Rename">
+    <value>Premenúvanie</value>
+    <comment>Indicates the local file or folder being renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Upload">
+    <value>Nahrávanie do Proton Drive</value>
+    <comment>Indicates a  file being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Create">
+    <value>Vytvorené</value>
+    <comment>Indicates a local folder has been created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Delete">
+    <value>Vymazané</value>
+    <comment>Indicates a local file or folder has been deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Download">
+    <value>Stiahnuté z Proton Drive</value>
+    <comment>Indicates a file has been downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Aktualizácie stiahnuté</value>
+    <comment>Indicates local file system changes have been fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Move">
+    <value>Presunuté</value>
+    <comment>Indicates a local file or folder has been moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Rename">
+    <value>Premenované</value>
+    <comment>Indicates a local file or folder has been renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Upload">
+    <value>Nahraté do Proton Drive</value>
+    <comment>Indicates a file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Create">
+    <value>Vytváranie v Proton Drive</value>
+    <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
+    <value>Presúvanie do Koša Proton Drive</value>
+    <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
+    <value>Sťahovanie z Proton Drive</value>
+    <comment>Indicates a file is being downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Načítavanie aktualizácii z Proton Drive</value>
+    <comment>Indicates changes are being fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Move">
+    <value>Presúvanie v Proton Drive</value>
+    <comment>Indicates the file or folder is being moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Rename">
+    <value>Premenovanie na Proton Drive</value>
+    <comment>Indicates the file or folder is being renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Upload">
+    <value>Nahrávanie do Proton Drive</value>
+    <comment>Indicates the file is being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Create">
+    <value>Vytvorené v Proton Drive</value>
+    <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
+    <value>Presunuté do Koša Proton Drive</value>
+    <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
+    <value>Stiahnuté z Proton Drive</value>
+    <comment>Indicates a file has been downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Aktualizácie z Proton Drive načítané</value>
+    <comment>Indicates changes have been fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Move">
+    <value>Presunuté v Proton Drive</value>
+    <comment>Indicates the file or folder has been moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Rename">
+    <value>Premenované v Proton Drive</value>
+    <comment>Indicates the file or folder has been renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Upload">
+    <value>Nahraté do Proton Drive</value>
+    <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="AppDisplayStatus_Value_AccountError">
+    <value>Nepodarilo sa nastaviť účet</value>
+  </data>
+  <data name="AppDisplayStatus_Value_FinishingUp">
+    <value>Dokončovanie...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Offline">
+    <value>Offline</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SettingUp">
+    <value>Nastavovanie...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignInError">
+    <value>Nepodarilo sa prihlásiť</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignedOut">
+    <value>Odhlásené</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningIn">
+    <value>Prihlasovanie ...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningOut">
+    <value>Odhlasovanie...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SyncFolderError">
+    <value>Synchronizáciu priečinkov sa nepodarilo nastaviť</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationError">
+    <value>Synchronizácia zlyhala</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationPaused">
+    <value>Synchronizácia pozastavená</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationWarning">
+    <value>Niektoré položky sa nepodarilo synchronizovať</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronized">
+    <value>Synchronizované</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronizing">
+    <value>Synchronizácia...</value>
+  </data>
+  <data name="BugReport_Button_Cancel">
+    <value>_Zrušiť</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel_HelpText">
+    <value>Zrušiť vaše hlásenie</value>
+  </data>
+  <data name="BugReport_Button_Report">
+    <value>_Nahlásiť</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Report_HelpText">
+    <value>Odoslať vaše hlásenie</value>
+  </data>
+  <data name="BugReport_Button_ShowLogs">
+    <value>Zobraziť _záznamy</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs">
+    <value>_Vrátane záznamov aplikácie</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs_Tooltip">
+    <value>Správa bude obsahovať najnovšie log súbory aplikácie a log súbory inštalácie</value>
+  </data>
+  <data name="BugReport_NeedHelp_Description">
+    <value>Stručné návody na nastavenie, používanie aplikácie a synchronizáciu súborov.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_FAQ">
+    <value>Často kladené otázky (FAQ)</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks">
+    <value>Zistite, ako funguje aplikácia Proton Drive</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowSharedFilesWork">
+    <value>Prístup k zdieľaným súborom</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_SyncFolders">
+    <value>Synchronizovať priečinky s Proton Drive</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_UseOnDemandSync">
+    <value>Použiť synchronizáciu na vyžiadanie</value>
+  </data>
+  <data name="BugReport_NeedHelp_Title">
+    <value>Potrebujete pomoc so začatím používania služby Proton Drive?</value>
+  </data>
+  <data name="BugReport_Text_Description_HelpText">
+    <value>Popis: Čo sa pokazilo? Aké presné kroky ste vykonali? (minimálne 10 znakov)</value>
+  </data>
+  <data name="BugReport_Text_Description_Label">
+    <value>_Popis</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_Description_Label_Requirement">
+    <value>(min. 10 znakov)</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_ExactSteps">
+    <value>Aké kroky ste presne vykonali?</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_WhatWentWrong">
+    <value>Čo sa pokazilo?</value>
+  </data>
+  <data name="BugReport_Text_Email_HelpText">
+    <value>Email (povinné pole)</value>
+  </data>
+  <data name="BugReport_Text_Email_Label">
+    <value>_Email</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_HelpText">
+    <value>Názov problému (povinné pole)</value>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Label">
+    <value>_Názov</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Watermark">
+    <value>Názov problému</value>
+  </data>
+  <data name="BugReport_Text_ReportSuccessfullySent">
+    <value>Hlásenie bolo úspešne odoslané. Ďakujeme.</value>
+  </data>
+  <data name="BugReport_Title">
+    <value>Spätná väzba k Proton Drive</value>
+  </data>
+  <data name="Dialog_Button_Cancel">
+    <value>Zrušiť</value>
+  </data>
+  <data name="Dialog_Button_Ok">
+    <value>OK</value>
+  </data>
+  <data name="Dialog_Button_Save">
+    <value>_Uložiť</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="FileSystemErrorCode_Value_Cancelled">
+    <value>Prerušené</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CloudFileProviderNotRunning">
+    <value>Uistite sa, že je spustený a pripojený poskytovateľ cloudového úložiska (napr. OneDrive).</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CyclicRedundancyCheck">
+    <value>Chyba údajov (cyklická redundantná kontrola). Skontrolujte disk (USB, disk atď...), či neobsahuje chyby súborového systému a chybné sektory.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DirectoryNotFound">
+    <value>Nepodarilo sa nájsť časť cesty</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DuplicateName">
+    <value>Názov sa už používa</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_FreeSpaceExceeded">
+    <value>Nemáte dostatok voľného miesta</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IdentityMismatch">
+    <value>Súbor alebo priečinok sa rozdelil</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IntegrityFailure">
+    <value>Overenie údajov zlyhalo</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_InvalidName">
+    <value>Názov obsahuje znaky, ktoré systém Windows nepodporuje. Odstráňte nasledujúce znaky, aby ste umožnili synchronizáciu: \ / : * ? „ &lt; &gt; |</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
+    <value>Súbor bol vynechaný, pretože sa len nedávno zmenil. Aplikácia sa automaticky pokúsi o opakovanie</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
+    <value>Živé fotografie nie je možné nahrať.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MetadataMismatch">
+    <value>Súbor alebo priečinok sa rozdelil</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MissingIndividuallySharedFile">
+    <value>Pôvodný súbor, ktorý máte zdieľaný, bol vymazaný, presunutý alebo premenovaný.
+Vypnutím a opätovným zapnutím jeho synchronizácie ho obnovíte a odstránite túto chybu.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_NetworkError">
+    <value>Nemožno sa pripojiť k Proton Drive. Skúste skontrolovať svoje internetové pripojenie.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ObjectNotFound">
+    <value>Súbor alebo priečinok neexistuje</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Offline">
+    <value>Offline</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Partial">
+    <value>Tento súbor nie je lokálne dostupný a nie je možné ho nahrať. Ak to chcete vyriešiť, odstráňte ho a obnovte kópiu z koša Proton Drive, ak je k dispozícii.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_PathNotFound">
+    <value>Súbor alebo priečinok neexistuje</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_RateLimited">
+    <value>Niečo sa pokazilo</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyFile">
+    <value>Súbor je iba na čítanie</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyRoot">
+    <value>Súbory a priečinky určené len na zobrazenie nie je možné upravovať. Vyriešte to vypnutím a zapnutím synchronizácie v časti Zdieľané so mnou.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ServerError">
+    <value>Niečo sa pokazilo</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_SharingViolation">
+    <value>Súbor alebo priečinok používa iná aplikácia</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TimedOut">
+    <value>Časový limit vypršal</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TransferAbortedDueToFileChange">
+    <value>Nahrávanie sa prerušilo, pretože súbor sa počas synchronizácie zmenil. Aplikácia sa automaticky pokúsi o opakovanie</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_UnauthorizedAccess">
+    <value>Nedostatočné oprávnenia</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Unknown">
+    <value>Niečo sa pokazilo</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_ContainsInvalidCharacter">
+    <value>Názov obsahuje neplatný znak</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Empty">
+    <value>Názov je prázdny</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithPeriod">
+    <value>Názov končí bodkou</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithSpace">
+    <value>Názov končí medzerou</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Reserved">
+    <value>Názov nie je podporovaný systémom Windows</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_TooLong">
+    <value>Názov je príliš dlhý</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Valid">
+    <value></value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_CheckingForUpdate">
+    <value>Kontrolujem aktualizácie...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_DownloadingAnUpdate">
+    <value>Sťahovanie aktualizácie...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpToDate">
+    <value>Aktuálne</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
+    <value>Kontrola aktualizácie zlyhala</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Je potrebná aktualizácia</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
+    <value>K dispozícii je aktualizácia</value>
+  </data>
+  <data name="Main_About_Button_UpdateNow">
+    <value>_Aktualizovať teraz</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Button_UpdateNow_HelpText">
+    <value>K dispozícii je nová verzia aplikácie Proton Drive, aktualizujte ju teraz, prosím.</value>
+  </data>
+  <data name="Main_About_Label_CurrentVersion">
+    <value>Aktuálna verzia</value>
+  </data>
+  <data name="Main_About_Label_ReleaseDate">
+    <value>Dátum vydania</value>
+  </data>
+  <data name="Main_About_Link_PrivacyPolicy">
+    <value>_Zásady ochrany osobných údajov</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Link_TermsOfService">
+    <value>_Podmienky používania</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_ReleaseHistory_Label_New">
+    <value>NOVÉ</value>
+  </data>
+  <data name="Main_About_ReleaseHistory_Title">
+    <value>Čo je nové</value>
+  </data>
+  <data name="Main_About_Title">
+    <value>O aplikácii</value>
+  </data>
+  <data name="Main_Account_Account_Button_ManageAccount">
+    <value>Spravovať _účet</value>
+  </data>
+  <data name="Main_Account_Account_HelpText">
+    <value>Spravujte svoj účet</value>
+  </data>
+  <data name="Main_Account_Account_Info_UnknownUser">
+    <value>Neznámy používateľ</value>
+  </data>
+  <data name="Main_Account_Label_Account">
+    <value>Účet</value>
+  </data>
+  <data name="Main_Account_Label_Security">
+    <value>Zabezpečenie</value>
+  </data>
+  <data name="Main_Account_Password_Button_ChangePassword">
+    <value>_Zmeniť</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Password_Description">
+    <value>Zmena hesla k vášmu účtu.</value>
+  </data>
+  <data name="Main_Account_Password_HelpText">
+    <value>Zmeňte svoje Proton Drive heslo</value>
+  </data>
+  <data name="Main_Account_Password_Title">
+    <value>Heslo</value>
+  </data>
+  <data name="Main_Account_Plan_Button_SeePlans">
+    <value>Zobraziť _plány</value>
+  </data>
+  <data name="Main_Account_Plan_Description">
+    <value>Získajte viac úložného priestoru</value>
+  </data>
+  <data name="Main_Account_Plan_HelpText">
+    <value>Prezrite si ďalšie plány pre Proton Drive</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Button_Manage">
+    <value>_Spravovať</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_SessionManagement_Description">
+    <value>Kým sa neodhlásite z vášho účtu alebo nezmeníte heslo, vaša relácia zostane aktívna. Relácia vyprší po 60 dňoch nečinnosti.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_HelpText">
+    <value>Spravujte svoju reláciu. Po 60 dňoch nečinnosti relácia vyprší.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Title">
+    <value>Správca relácií</value>
+  </data>
+  <data name="Main_Account_SignOut_Description">
+    <value>Odhláste sa a vypnite synchronizáciu. Pre obnovenie synchronizácie sa môžete prihlásiť späť s tým istým účtom.</value>
+  </data>
+  <data name="Main_Account_SignOut_HelpText">
+    <value>Odhlásiť z Proton Drive</value>
+  </data>
+  <data name="Main_Account_SignOut_Title">
+    <value>_Odhlásiť sa</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Storage_Button_UpgradePlan">
+    <value>Upgradovať plán</value>
+  </data>
+  <data name="Main_Account_Storage_Info_EnsureMoreStorage">
+    <value>Ak chcete zabezpečiť nepretržitú synchronizáciu, zaobstarajte si ešte teraz viac úložného priestoru.</value>
+  </data>
+  <data name="Main_Account_Storage_Info_UsedSpaceFormat">
+    <value>Celkové využitie priestoru: {0} z {1}</value>
+  </data>
+  <data name="Main_Account_Storage_Title">
+    <value>Kapacita úložiska</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageExceeded">
+    <value>Synchronizácia sa zastavila. Váš účet prekročil kapacitu úložiska.</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageLimit">
+    <value>Čoskoro dosiahnete limit úložiska.</value>
+  </data>
+  <data name="Main_Account_Title">
+    <value>Účet</value>
+  </data>
+  <data name="Main_Activity_Button_PauseSync">
+    <value>_Pozastaviť synchronizáciu</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Rename">
+    <value>Premenovať</value>
+  </data>
+  <data name="Main_Activity_Button_Rename_Tooltip">
+    <value>Premenujte túto položku na opravu problému so synchronizáciou</value>
+  </data>
+  <data name="Main_Activity_Button_ResumeSync">
+    <value>_Obnoviť synchronizáciu</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Retry">
+    <value>Opakovať synchronizáciu</value>
+  </data>
+  <data name="Main_Activity_Column_Folder">
+    <value>Priečinok</value>
+  </data>
+  <data name="Main_Activity_Column_Name">
+    <value>Názov</value>
+  </data>
+  <data name="Main_Activity_Column_Progress_Tooltip_Finalizing">
+    <value>Dokončovanie...</value>
+  </data>
+  <data name="Main_Activity_Column_Size">
+    <value>Veľkosť</value>
+  </data>
+  <data name="Main_Activity_Column_Status">
+    <value>Stav</value>
+  </data>
+  <data name="Main_Activity_Column_Synced">
+    <value>Synchronizácia</value>
+  </data>
+  <data name="Main_Activity_Column_Type">
+    <value>Typ</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Button_ShowMore">
+    <value>Zobraziť ďalšie podrobnosti</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Description">
+    <value>Kliknutím sa dozviete viac o týchto problémoch</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_HelpText">
+    <value>Zobraziť všetky chyby v novej sekcii</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_MultipleItemsFormat">
+    <value>Objavilo sa {0} problémov</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_SingleItem">
+    <value>Objavil sa 1 problém</value>
+  </data>
+  <data name="Main_Activity_Errors_Title">
+    <value>Synchronizácia problémov ({0})</value>
+  </data>
+  <data name="Main_Activity_Errors_Title_Tooltip">
+    <value>Späť k aktivite</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Description">
+    <value>Tu sa zobrazia informácie o synchronizácii súborov a priečinkov</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_HelpText">
+    <value>Vaše súbory sú aktuálne</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Title">
+    <value>Vaše súbory sú aktuálne</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line1">
+    <value>Tento proces môže trvať niekoľko minút.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line2">
+    <value>Okno môžete bezpečne minimalizovať alebo zavrieť.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_HelpText">
+    <value>Inicializuje sa synchronizácia</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Title">
+    <value>Nastavujeme váš disk...</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Description">
+    <value>Kliknutím na „Obnoviť synchronizáciu“ povolíte synchronizáciu</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_HelpText">
+    <value>Synchronizácia je pozastavená</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Title">
+    <value>Synchr. je pozastavená</value>
+  </data>
+  <data name="Main_Activity_Rename_CurrentName_Label">
+    <value>Aktuálny názov:</value>
+  </data>
+  <data name="Main_Activity_Rename_Description">
+    <value>Názov tejto položky obsahuje znaky, ktoré nie sú podporované v systéme Windows.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_AlreadyExists">
+    <value>Názov sa už používa</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_ContainsInvalidCharacter">
+    <value>Názov obsahuje neplatný znak</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Failed">
+    <value>Niečo sa pokazilo</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Required">
+    <value>Názov je povinný</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Label">
+    <value>Nový názov:</value>
+  </data>
+  <data name="Main_Activity_Rename_Status_Value_Renaming">
+    <value>Premenúvanie...</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion">
+    <value>Pre pokračovanie v synchronizácii odstráňte nasledovné:</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion_CharacterList">
+    <value>/ : * ? &gt; &lt; " |</value>
+  </data>
+  <data name="Main_Activity_Rename_Title">
+    <value>Premenúvanie položky</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUp">
+    <value>Nastavovanie...</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUpFormat">
+    <value>Nastavenie... ({0} položiek pripravených na synchronizáciu)</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SyncPausedUntilFormat">
+    <value>(do {0})</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>pred chvíľou</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
+    <value>pred {0} dňami</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_HoursAgoFormat">
+    <value>pred {0} hodinami</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_MinutesAgoFormat">
+    <value>pred {0} minútami</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneDayAgo">
+    <value>včera</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneHourAgo">
+    <value>pred hodinou</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneMinuteAgo">
+    <value>pred minútou</value>
+  </data>
+  <data name="Main_Activity_Title">
+    <value>Aktivita</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Priečinky synchronizované z vašich počítačov sa zobrazia v sekcii „Počítače“ v aplikáciách vášho Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Button_Rename">
+    <value>P_remenovať</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Device_HelpText">
+    <value>Premenuje vaše zariadenie</value>
+  </data>
+  <data name="Main_MyComputer_Device_Label">
+    <value>Toto zariadenie</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Cancel_HelpText">
+    <value>Zrušiť premenovanie zariadenia</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Save_HelpText">
+    <value>Uložiť názov zariadenia</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Error_Tooltip">
+    <value>Neplatný názov zariadenia: nový názov nesmie byť prázdny a nesmie presiahnuť 255 znakov.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_HelpText">
+    <value>Premenuje vaše zariadenie</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Button_AddMore">
+    <value>_Pridať ďalšie priečinky</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Description">
+    <value>Pridaním priečinka sa všetky jeho údaje zálohujú do Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Info_Saving">
+    <value>Ukladanie priečinkov...</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Title">
+    <value>Pridať priečinky</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludedByAnAlreadySyncedFolderFormat">
+    <value>{0} priečinkov nie je možné synchronizovať, pretože sú súčasťou priečinka, ktorý už bol synchronizovaný s jednotkou Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludesAnAlreadySyncedFolderFormat">
+    <value>{0} priečinkov nie je možné synchronizovať, pretože obsahujú podpriečinok, ktorý už bol synchronizovaný s Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFileSystemAccessFailedFormat">
+    <value>{0} priečinok(y) nie je možné sprístupniť</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFolderDoesNotExistFormat">
+    <value>{0} priečinok(y) nemožno nájsť alebo otvoriť</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalVolumeNotSupportedFormat">
+    <value>{0} priečinky nie je možné synchronizovať, pretože sa nachádzajú na nepodporovanej jednotke</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NetworkFolderNotSupportedFormat">
+    <value>{0} priečinok(y) nemožno synchronizovať, pretože sieťové priečinky nie sú podporované</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat">
+    <value>{0} priečinok(y) nie je možné synchronizovať, pretože ide o systémový(é) priečinok(y)</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
+    <value>Nie je možné pridať {0} priečinok</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder">
+    <value>Nie je možné pridať 1 priečinok</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add">
+    <value>_Pridať priečinky</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst">
+    <value>Pridajte váš prvý priečinok na synchronizáciu</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddNext">
+    <value>Pridať nový priečinok na synchronizáciu</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_Name">
+    <value>Názov</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization">
+    <value>Optimalizovať úložisko</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization_Info_Tooltip">
+    <value>Optimalizujte úložisko zapnutím synchronizácie na vyžiadanie.
+Súbory zaberajú miestny priestor len vtedy, keď ich otvoríte alebo
+sa rozhodnete, že budú zachované navždy v tomto zariadení. 
+Optimalizáciu úložiska môžete kedykoľvek vypnúť.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Description">
+    <value>Pridajte priečinok a začnite bezpečne synchronizovať súbory do cloudu</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Title">
+    <value>Bezpečne synchronizujte svoje súbory</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Label">
+    <value>Priečinky synchronizované z tohto zariadenia</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_OpenFolder">
+    <value>_Otvoriť priečinok</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder">
+    <value>_Odstrániť priečinok</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm">
+    <value>Odstrániť priečinok</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_1">
+    <value>Všetky súbory pridané do priečinka „{0}“ už nebudú synchronizované a tento priečinok sa presunie do koša v aplikácii Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_2">
+    <value>Existujúce súbory zostanú vo vašom počítači.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_1">
+    <value>Niektoré súbory v priečinku „{0}“ môžu byť uložené len v cloude. Odstránením tohto priečinka sa zastaví synchronizácia a a dôjde k presunu do koša v aplikácii Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_2">
+    <value>Ak chcete uchovávať lokálnu kópiu všetkých súborov v počítači, najprv vypnite funkciu Optimalizovať úložisko pre tento priečinok. Ak je optimalizácia úložiska už vypnutá, zapnite ju a vypnite. Počkajte na dokončenie sťahovania (stav môžete skontrolovať v Prieskumníkovi súborov) a potom priečinok odstráňte zo synchronizácie v časti Môj počítač.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_1">
+    <value>Súbory, ktoré už boli stiahnuté, zostanú v zariadení.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_2">
+    <value>Súbory uložené len v cloude budú zo zariadenia odstránené.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Title">
+    <value>Odstrániť priečinok?</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_1">
+    <value>Súbory v priečinku "{0}" budú odteraz v zariadení vždy k dispozícii. Môže trvať niekoľko minút, kým sa všetky súbory stiahnu (stav môžete skontrolovať v Prieskumníkovi súborov).</value>
+    <comment>Placeholder {0}: folder name</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_2">
+    <value>V nastaveniach jednotlivých súborov môžete stále ručne uvoľniť miesto.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Title">
+    <value>Všetky súbory sú v tomto zariadení vždy k dispozícii</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1">
+    <value>Priečinok „{0}“ nemôže používať synchronizáciu na požiadanie na optimalizáciu úložiska, pretože {1}.</value>
+    <comment>Placeholder {0}: folder name. Placeholder {1}: the reason text, one of resources with "StorageOptimizationErrorCode_Value_..." key.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_2">
+    <value>Vaše súbory sa budú stále synchronizovať s Proton Drive a zostanú dostupné v počítači aj v cloude.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Title">
+    <value>Optimalizácia úložiska nie je k dispozícii</value>
+  </data>
+  <data name="Main_MyComputer_Link_LearnMore">
+    <value>Zistiť viac</value>
+  </data>
+  <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
+    <value>Zavrieť predstavenie funkcie používania počítača</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Button_Next">
+    <value>_Ďalej</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Description">
+    <value>Povoľte synchronizáciu na požiadanie, aby ste ušetrili miesto na pevnom disku. Súbory zaberajú miestne úložisko len vtedy, keď ich otvoríte alebo označíte ako „Vždy uchovávať v tomto zariadení“.</value>
+    <comment>"Always keep on this device" is the exact text displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Title">
+    <value>Optimalizovať úložisko</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted">
+    <value>_Začať</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1">
+    <value>Kliknutie pravým tlačidlom myši na ľubovoľný súbor alebo priečinok synchronizovaný pomocou aplikácie Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2">
+    <value>Vyberte možnosť „Vždy uchovávať v tomto zariadení“, ak si ich chcete uložiť offline, alebo „Uvoľniť miesto“, ak si ich chcete ponechať len v cloude.</value>
+    <comment>"Always keep on this device" and "Free up space" are the exact texts displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Title">
+    <value>Spravovať úložisko</value>
+  </data>
+  <data name="Main_MyComputer_Title">
+    <value>Môj počítač</value>
+  </data>
+  <data name="Main_Photos_Folders_Error_ImportFailed">
+    <value>Import zlyhal. Skúste odstrániť priečinok a importovať ho znova. Ak problém pretrváva, kontaktujte podporu, prosím.</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportedItemsFormat">
+    <value>Importovaných {0} z {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportingItemsFormat">
+    <value>Importovanie... {0} z {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_Items_Label">
+    <value>položka(y)</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Spravovať _albumy</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
+    <value>_Otvoriť priečinok</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Remove">
+    <value>Odst_rániť</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Retry">
+    <value>_Opakovať</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_NoItemsFound_Label">
+    <value>Nenašli sa žiadne fotografie/videá</value>
+  </data>
+  <data name="Main_Photos_Folders_WaitingToImport">
+    <value>Čakanie na importovanie...</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Description">
+    <value>Podrobný návod, ako exportovať vaše Fotky Google</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Title">
+    <value>1. Exportujte svoje fotografie z Google Photos</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Description">
+    <value>Musí to byť rozbalený priečinok obsahujúci vaše exportované fotografie a videá.</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Title">
+    <value>2. Importujte priečinok Google Fotiek</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_SelectFolder_Button">
+    <value>Vyberte priečinok</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Title">
+    <value>Import z Google Photos</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Description">
+    <value>Importujte miestny priečinok z vášho počítača</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Title">
+    <value>Importovať priečinok</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Description">
+    <value>Import Google Fotiek z Google Takeout</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Title">
+    <value>Import z Google Photos</value>
+  </data>
+  <data name="Main_Photos_Import_Link_HowImportWorks">
+    <value>Ako funguje importovanie fotografií?</value>
+  </data>
+  <data name="Main_Photos_Import_Title">
+    <value>Importovať fotografie</value>
+  </data>
+  <data name="Main_Photos_Info_Duplicates">
+    <value>Budeme importovať len nové položky — duplikáty sa automaticky preskočia.</value>
+  </data>
+  <data name="Main_Photos_Title">
+    <value>Fotografie</value>
+  </data>
+  <data name="Main_Photos_Warning_UploadUnavailable">
+    <value>Nahrávanie fotografií je dočasne nedostupné</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Button_Change">
+    <value>_Zmeniť</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_HelpText">
+    <value>Zmeňte koreňový priečinok Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Title">
+    <value>Poloha</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Získajte skorší prístup a pomôžte nám testovať nové verzie Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Beta prístup</value>
+  </data>
+  <data name="Main_Settings_Label_AccountRootFolder">
+    <value>Váš Proton Drive priečinok:</value>
+  </data>
+  <data name="Main_Settings_Label_General">
+    <value>Všeobecné</value>
+  </data>
+  <data name="Main_Settings_Language_Button_Restart">
+    <value>Reštartovať teraz</value>
+  </data>
+  <data name="Main_Settings_Language_Message_PleaseRestart">
+    <value>Reštartujte aplikáciu, prosím, aby ste uplatnili zmenu jazyka.</value>
+  </data>
+  <data name="Main_Settings_Language_Title">
+    <value>Jazyk</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_HelpText">
+    <value>Otvoriť Proton Drive pri spustení systému Windows</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_Title">
+    <value>Otvoriť po štarte</value>
+  </data>
+  <data name="Main_Settings_Title">
+    <value>Nastavenia</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Name">
+    <value>Názov</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions">
+    <value>Oprávnenia</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Tooltip">
+    <value>Oprávnenia udelené vlastníkom</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Editor">
+    <value>Redaktor</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Viewer">
+    <value>Čitateľ</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedBy">
+    <value>Zdieľané používateľom</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedOn">
+    <value>Zdieľané</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync">
+    <value>Synchronizácia</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync_Info_Tooltip">
+    <value>Povoľte, aby bol zdieľaný súbor alebo priečinok prístupný z vášho počítača.
+Obsah súborov sa bude sťahovať len na požiadanie.</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad">
+    <value>Údaje sa nepodarilo načítať</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Plural">
+    <value>{0} položiek sa nepodarilo načítať</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Singular">
+    <value>{0} položku sa nepodarilo načítať</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Description">
+    <value>Súbory a priečinky, ktoré sú s vami zdieľané, sa zobrazia tu.</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Title">
+    <value>Zatiaľ nie je nič zdieľané</value>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_OpenFolder">
+    <value>_Otvoriť priečinok</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_RemoveMe">
+    <value>_Odstrániť ma</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_Close_HelpText">
+    <value>Odmietnuť sprievodcu službou zdieľané so mnou</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_GetStarted">
+    <value>Z_ačíname</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Description">
+    <value>Jednoduchá synchronizácia súborov a priečinkov zdieľaných s vami na vašom počítači.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1">
+    <value>Vyberte súbory alebo priečinky, ktoré chcete synchronizovať.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2">
+    <value>Pristupujte k zdieľaným súborom v priečinku Proton Drive.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3">
+    <value>Môžete ich upravovať, nahrávať nové a pristupovať k nim offline.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3_Label">
+    <value>3.</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Plural">
+    <value>{0} z {1} položiek synchronizovaných</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Singular">
+    <value>{0} z {1} položky synchronizovaná</value>
+  </data>
+  <data name="Main_SharedWithMe_Title">
+    <value>Zdieľané so mnou</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Advice">
+    <value>Ak chcete pridať nové položky, prestaňte synchronizovať niektoré staré položky.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Limit">
+    <value>Naraz môžete synchronizovať iba {0} položiek.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_SharingUnavailable">
+    <value>Zdieľanie je dočasne nedostupné</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About">
+    <value>O aplikácii</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About_HelpText">
+    <value>Položka menu: O aplikácii</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account">
+    <value>Účet</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account_HelpText">
+    <value>Položka menu: Účet</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity">
+    <value>Aktivita</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity_HelpText">
+    <value>Položka menu: Aktivita</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help">
+    <value>Nápoveda</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help_HelpText">
+    <value>Položka menu: Nápoveda</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer">
+    <value>Môj počítač</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer_HelpText">
+    <value>Položka menu: Môj počítač</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos">
+    <value>Fotografie</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_PhotosImport">
+    <value>Import fotografií</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos_HelpText">
+    <value>Položka menu: Fotografie</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings">
+    <value>Nastavenia</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings_HelpText">
+    <value>Položka menu: Nastavenia</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe">
+    <value>Zdieľané so mnou</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe_HelpText">
+    <value>Položka menu: Zdieľané so mnou</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceededQuota_Description">
+    <value>Synchronizácia zastavená: Váš účet prekročil kapacitu úložiska</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceedingQuota_Description">
+    <value>Čoskoro dosiahnete limit úložiska</value>
+  </data>
+  <data name="Main_Sidebar_Notification_GetStarted_Description">
+    <value>Začíname</value>
+  </data>
+  <data name="Main_Sidebar_Notification_NewVersion_Description">
+    <value>K dispozícii je nová verzia Proton Drive!</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SharingUnavailable_Description">
+    <value>Zdieľanie je dočasne nedostupné</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SyncFoldersFailure_Description">
+    <value>Synchronizácia priečinka zlyhala</value>
+  </data>
+  <data name="Main_Sidebar_Notification_UpdateRequired_Description">
+    <value>Ak chcete naďalej používať Proton Drive, musíte aktualizovať na najnovšiu verziu</value>
+  </data>
+  <data name="Main_Sidebar_Offer_Button_GetDeal">
+    <value>Využi_te ponuku</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Sidebar_Storage_Button_GetMoreStorage">
+    <value>Získajte viac úložného priestoru</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_StorageNotAvailable">
+    <value>Informácie o priestore nie sú dostuné</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_UsedSpaceFormat">
+    <value>Využité {0} z {1}</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Title">
+    <value>Úložisko</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Tooltip">
+    <value>Spravovať úložisko</value>
+  </data>
+  <data name="Main_Window_Title">
+    <value>Proton Drive</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>Tento priečinok obsahuje podpriečinok synchronizovaný na vyžiadanie. Nastavte nový synchronizačný priečinok.</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>Tento priečinok už je synchronizovaný na vyžiadanie. Nastavte nový synchronizačný priečinok.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveAccessFailed">
+    <value>Nemožno sa pripojiť k Proton Drive. Skúste skontrolovať svoje internetové pripojenie.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDiverged">
+    <value>Priečinok Proton Drive bol presunutý. Nastavte nový synchronizačný priečinok.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDoesNotExist">
+    <value>Nie je možné získať prístup k súborom Proton Drive, pravdepodobne z dôvodu vymazania priečinka zo zariadenia. Nastavte nový synchronizačný priečinok.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveHostDeviceDiverged">
+    <value>Nie je možné získať prístup k súborom v Proton Drive, pravdepodobne z dôvodu vymazania zariadenia. Nastavte nový synchronizačný priečinok.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveShareDiverged">
+    <value>Nie je možné získať prístup k súborom v Proton Drive, pravdepodobne z dôvodu obnovenia hesla. Nastavte nový synchronizačný priečinok.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveVolumeDiverged">
+    <value>Nie je možné získať prístup k súborom v Proton Drive, pravdepodobne z dôvodu obnovenia hesla. Nastavte nový synchronizačný priečinok.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientDeviceQuota">
+    <value>Bol dosiahnutý maximálny počet synchronizovaných počítačov. Odstráňte nepotrebné počítače z Proton Drive na webe.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientLocalFreeSpace">
+    <value>Uvoľnite miesto alebo zrušte začiarknutie políčka</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalAndRemoteFoldersNotEmpty">
+    <value>Nastavenie synchronizačného priečinka vyžaduje prázdny webový priečinok systému Windows alebo Proton Drive. Vymažte ho a skúste to znova.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFileSystemAccessFailed">
+    <value>Nie je možné získať prístup k miestnemu synchronizačnému priečinku ani ho vytvoriť. Pokračujeme v opakovaných pokusoch.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDiverged">
+    <value>Priečinok synchronizácie bol nahradený novým priečinkom v ceste. Obnovte predchádzajúci synchronizačný priečinok alebo nastavte nový synchronizačný priečinok.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDoesNotExist">
+    <value>Synchronizačný priečinok nebol nájdený. Mohol byť odstránený, premenovaný alebo presunutý. Obnovte ho alebo nastavte nový synchronizačný priečinok.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludedByAnAlreadySyncedFolder">
+    <value>Vybraný priečinok je už zahrnutý v inom synchronizovanom priečinku</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludesAnAlreadySyncedFolder">
+    <value>Vybraný priečinok obsahuje už synchronizovaný priečinok</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNonSyncable">
+    <value>Miestny priečinok nie je vhodný na synchronizáciu. Nastavte nový synchronizačný priečinok.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNotEmpty">
+    <value>Miestny priečinok musí byť pred nastavením synchronizácie prázdny.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeDiverged">
+    <value>Sériové číslo lokálneho disku sa zmenilo. Nastavte novú synchronizačnú zložku.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeNotSupported">
+    <value>Nepodporovaný typ miestnej jednotky. Skúste nastaviť synchronizačný priečinok na inej miestnej jednotke.</value>
+  </data>
+  <data name="MappingErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootMissingSyncRootFlag">
+    <value>Synchronizačný priečinok je neplatný. Nastavte nový synchronizačný priečinok.</value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootNotRegistered">
+    <value>Synchronizačný priečinok bol neočakávane odregistrovaný. Nastavte nový synchronizačný priečinok.</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotoImportFailed">
+    <value>Vloženie fotografie zlyhalo</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosDisabled">
+    <value>Proton Fotografie sú nedostupné</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosNotReady">
+    <value>Funkcia Fotografie nie je pripravená</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemDoesNotExist">
+    <value>Nie je možné získať prístup k zdieľanému súboru alebo priečinku na disku Proton. Skontrolujte, či je stále zdieľaný.</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemPermissionsDiverged">
+    <value>Oprávnenia zdieľaného súboru alebo priečinka Proton Drive sa zmenili. Vyriešte to vypnutím a opätovným zapnutím synchronizácie.</value>
+  </data>
+  <data name="MappingErrorCode_Value_SharingDisabled">
+    <value>Zdieľanie je dočasne nedostupné</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Failed">
+    <value>Synchronizáciu priečinkov sa nepodarilo nastaviť</value>
+  </data>
+  <data name="MappingSetupStatus_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingSetupStatus_Value_PartiallySucceeded">
+    <value>Nepodarilo sa nastaviť niektoré synchronizačné priečinky</value>
+  </data>
+  <data name="MappingSetupStatus_Value_SettingUp">
+    <value>Nastavovanie synchronizačných priečinkov...</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Succeeded">
+    <value>OK</value>
+  </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Pridať úložný priestor</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Úložný priestor je plný</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Navýšte úroveň, aby ste získali viac úložného priestoru a mohli nahrať svoje súbory.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
+    <value>_Zmeniť</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder_HelpText">
+    <value>Zmeňte koreňový priečinok Proton Drive.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Error_InvalidSyncFolder">
+    <value>Neplatný synchronizačný priečinok</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Description">
+    <value>Prístup k mojim súborom a iným synchronizovaným zariadeniam je tu</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Location">
+    <value>Poloha</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Title">
+    <value>Váš Proton Drive priečinok</value>
+  </data>
+  <data name="Onboarding_Button_Continue">
+    <value>P_okračovať</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_Button_FinishSetup">
+    <value>_Dokončiť nastavenie</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders">
+    <value>_Pridať ďalšie priečinky</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText">
+    <value>Pridajte ďalší priečinok na synchronizáciu</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Label_Description">
+    <value>Vybrané priečinky budú synchronizované s Proton Drive. Súbory budú zálohované a dostupné na vašich ostatných zariadeniach.</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Title">
+    <value>Zálohujte svoje priečinky</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Získajte Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Získajte _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Získajte _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_NotNow">
+    <value>_Teraz nie</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_Upgrade">
+    <value>_Upgradovať</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Mail">
+    <value>E-mail: Personalizovaný a bezpečný email</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>mesiac</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Najpopulárnejšie</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Až {0} používatelia</value>
+    <comment>Only for number greater than 1.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
+    <value>Pass: Šifrovaný správca hesiel</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Vrátane prémiovej hodnoty</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Recommended">
+    <value>Odporúčané</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Obnova predchádzajúcich verzií súborov</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>úložisko</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Vpn">
+    <value>VPN: Ultra rýchla a bezpečná</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Title">
+    <value>Získajte viac úložného priestoru</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
+    <value>Import zlyhal. Album neexistuje.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Import zlyhal. Priečinok neexistuje.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
+    <value>Import zlyhal. Bol dosiahnutý maximálny počet albumov.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfPhotosPerAlbumReached">
+    <value>Import zlyhal. Bol dosiahnutý maximálny počet fotografií na album.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_Unknown">
+    <value>Import zlyhal. Skúste znova.</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Failed">
+    <value>Import zlyhal</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Importing">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Interrupted">
+    <value>Importovanie bolo prerušené</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_NotStarted">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_SetupFailed">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Succeeded">
+    <value>Import bol úspešný</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_ValidationFailed">
+    <value></value>
+  </data>
+  <data name="ReleaseNoteType_Value_Feature">
+    <value>Nové funkcie</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Fix">
+    <value>Opravy chýb</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Improvement">
+    <value>Vylepšenia</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Fido2">
+    <value>Bezpečnostný kľúč</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_NotSupported">
+    <value></value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Totp">
+    <value>Overovacia aplikácia</value>
+  </data>
+  <data name="SessionStatus_Value_Ending">
+    <value>Odhlasovanie...</value>
+  </data>
+  <data name="SessionStatus_Value_Failed">
+    <value>Prihlásenie sa nepodarilo. Skúste skontrolovať internetové pripojenie.</value>
+  </data>
+  <data name="SessionStatus_Value_NotStarted">
+    <value>Odhlásené</value>
+  </data>
+  <data name="SessionStatus_Value_SigningIn">
+    <value>Prihlasovanie ...</value>
+  </data>
+  <data name="SessionStatus_Value_Started">
+    <value>Prihlásený</value>
+  </data>
+  <data name="SessionStatus_Value_Starting">
+    <value>Prihlasovanie ...</value>
+  </data>
+  <data name="SignIn_Button_Authenticate">
+    <value>_Overiť</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_Back">
+    <value>_Späť</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignIn">
+    <value>Pr_ihlásiť sa</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignInAsAnotherUser">
+    <value>alebo sa prihláste ako iný používateľ</value>
+  </data>
+  <data name="SignIn_Button_Unlock">
+    <value>_Odomknúť</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_CreateAccount">
+    <value>_Vytvoriť účet</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_ForgotPassword">
+    <value>Zabudli ste vaše _heslo?</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_LearnMore">
+    <value>Zistiť viac</value>
+  </data>
+  <data name="SignIn_Message_SigningIn">
+    <value>Prihlasovanie do vášho účtu</value>
+  </data>
+  <data name="SignIn_Text_2FACode">
+    <value>Zadajte kód z vašej overovacej aplikácie</value>
+  </data>
+  <data name="SignIn_Text_No2FAMethodFound">
+    <value>Nebola nájdená žiadna metóda dvojstupňového overenia.</value>
+  </data>
+  <data name="SignIn_Text_Password">
+    <value>_Heslo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_SecondPassword">
+    <value>Druhé heslo</value>
+  </data>
+  <data name="SignIn_Text_SecurityKey">
+    <value>Vložte bezpečnostný kľúč prepojený s vaším Proton účtom.</value>
+  </data>
+  <data name="SignIn_Text_SecurityKeyNotSupported">
+    <value>Váš systém nepodporuje bezpečnostný kľúč</value>
+  </data>
+  <data name="SignIn_Text_Username">
+    <value>Email alebo _používateľské meno</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_Username_HelpText">
+    <value>Používateľské meno</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_PasswordRequired">
+    <value>Heslo je požadované</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SessionExpired">
+    <value>Vaša relácia vypršala. Prihláste sa pre pokračovanie.</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SomethingWentWrong">
+    <value>Niečo sa pokazilo</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_UsernameRequired">
+    <value>Používateľské meno je povinné</value>
+  </data>
+  <data name="SignIn_Title_2FA">
+    <value>Dvojstupňové overenie</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>obsahuje podpriečinok synchronizovaný na vyžiadanie cez {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>je už synchronizovaný na vyžiadanie cez {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_NetworkVolumeNotSupported">
+    <value>sieťové disky nie sú podporované</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_RemovableVolumeNotSupported">
+    <value>vymeniteľné disky nie sú podporované</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_Unknown">
+    <value>povolenie synchronizácie na vyžiadanie zlyhalo</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
+    <value>typ miestneho disku nie je podporovaný</value>
+  </data>
+  <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
+    <value>V tomto zariadení nie je dostatok voľného miesta</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludedByAnAlreadySyncedFolder">
+    <value>Priečinok je zahrnutý v už synchronizovanom priečinku</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludesAnAlreadySyncedFolder">
+    <value>Priečinok obsahuje už synchronizovaný priečinok</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_InsufficientLocalFreeSpace">
+    <value>Uvoľnite miesto alebo zrušte začiarknutie políčka.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFileSystemAccessFailed">
+    <value>Nemožno pristupovať k priečinku</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderDoesNotExist">
+    <value>Priečinok sa nedá nájsť</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderNotEmpty">
+    <value>Priečinok musí byť pred nastavením synchronizácie prázdny.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalVolumeNotSupported">
+    <value>Nepodporovaný typ úložiska</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NetworkFolderNotSupported">
+    <value>Synchronizácia priečinkov zo sieťových diskov nie je podporovaná</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NonSyncableFolder">
+    <value>Priečinok nie je vhodný na synchronizáciu</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_Succeeded">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_DetectingUpdates">
+    <value>Vyhľadávanie aktualizácií...</value>
+  </data>
+  <data name="SyncStatus_Value_Failed">
+    <value>Chyba</value>
+  </data>
+  <data name="SyncStatus_Value_Idle">
+    <value>Synchronizované</value>
+  </data>
+  <data name="SyncStatus_Value_Initializing">
+    <value>Nastavovanie...</value>
+  </data>
+  <data name="SyncStatus_Value_Offline">
+    <value>Offline</value>
+  </data>
+  <data name="SyncStatus_Value_Paused">
+    <value>Pozastavené</value>
+  </data>
+  <data name="SyncStatus_Value_Synchronizing">
+    <value>Synchronizácia...</value>
+  </data>
+  <data name="SyncStatus_Value_Terminated">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_Terminating">
+    <value>Prerušovanie...</value>
+  </data>
+  <data name="SystemTray_Menu_Item_Exit">
+    <value>_Ukončiť</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenInBrowser">
+    <value>Otvoriť v _prehliadači</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenLocalFolder">
+    <value>Otvoriť miestny priečino_k</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenProtonDrive">
+    <value>_Otvoriť Proton Drive</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSync">
+    <value>_Pozastaviť synchronizáciu</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
+    <value>Pozastaviť na 1 hodinu</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor4Hours">
+    <value>Pozastaviť na 4 hodiny</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor8Hours">
+    <value>Pozastaviť na 8 hodín</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncIndefinitely">
+    <value>Pozastaviť na neurčito</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow">
+    <value>Pozastaviť do zajtra (8:00 ráno)</value>
+  </data>
+  <data name="SystemTray_Menu_Item_ResumeSync">
+    <value>Pokr_račovať v synchronizácii</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_SignIn">
+    <value>Pr_ihlásiť sa</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="ToggleSwitch_Off">
+    <value>Vyp.</value>
+  </data>
+  <data name="ToggleSwitch_On">
+    <value>Zap.</value>
+  </data>
+</root>

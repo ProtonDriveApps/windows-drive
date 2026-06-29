@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>$(DefaultTargetFramework)-windows</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" />
+    <PackageReference Include="morelinq" />
+    <PackageReference Include="Serilog.Extensions.Hosting" />
+    <PackageReference Include="Serilog.Settings.Configuration" />
+    <PackageReference Include="Serilog.Sinks.Async" />
+    <PackageReference Include="Serilog.Sinks.File" />
+    <PackageReference Include="System.Linq.Async" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Proton.Drive.Sdk.Sync.Client\Proton.Drive.Sdk.Sync.Client.csproj" />
+    <ProjectReference Include="..\Proton.Drive.Sdk.Sync.DataAccess\Proton.Drive.Sdk.Sync.DataAccess.csproj" />
+    <ProjectReference Include="..\Proton.Drive.Shared\Proton.Drive.Shared.csproj" />
+    <ProjectReference Include="..\Proton.Drive.Sdk.Sync.Adapter\Proton.Drive.Sdk.Sync.Adapter.csproj" />
+    <ProjectReference Include="..\Proton.Drive.Sdk.Sync.Agent\Proton.Drive.Sdk.Sync.Agent.csproj" />
+    <ProjectReference Include="..\Proton.Drive.Sdk.Sync.Engine\Proton.Drive.Sdk.Sync.Engine.csproj" />
+    <ProjectReference Include="..\Proton.Drive.Sdk.Sync.Shared\Proton.Drive.Sdk.Sync.Shared.csproj" />
+    <ProjectReference Include="..\Proton.Drive.Update\Proton.Drive.Update.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+    <InternalsVisibleTo Include="Proton.Drive.App.Windows.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ProtonDrive.config.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

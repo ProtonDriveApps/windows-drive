@@ -1,0 +1,166 @@
+﻿<UserControl
+    x:Class="Proton.Drive.App.Windows.Views.Main.SharedWithMe.SharedWithMeOnboardingView"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:behaviors="clr-namespace:Proton.Drive.App.Windows.Toolkit.Behaviors"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:loc="clr-namespace:Proton.Drive.App.Windows.Resources"
+    xmlns:local="clr-namespace:Proton.Drive.App.Windows.Views.Main.SharedWithMe"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance local:SharedWithMeViewModel}">
+    <Border Background="Transparent">
+        <Border
+            Background="{StaticResource Window.Page.Background}"
+            BorderBrush="{StaticResource SeparatorBrush}"
+            BorderThickness="1"
+            CornerRadius="12"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Padding="0,0,0,30">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="270" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Image
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Grid.RowSpan="2"
+                    Source="SharedWithMeOnboarding.png"
+                    Width="360"
+                    Margin="0,30,0,0" />
+
+                <Button
+                    AutomationProperties.AutomationId="DismissOnboardingButton"
+                    AutomationProperties.HelpText="{loc:Resource Main_SharedWithMe_Onboarding_Button_Close_HelpText}"
+                    Grid.Column="1"
+                    Grid.Row="0"
+                    Command="{Binding DismissOnboardingCommand}"
+                    HorizontalAlignment="Right"
+                    Padding="4"
+                    Margin="0,7,12,0">
+                    <Button.Style>
+                        <Style
+                            TargetType="Button"
+                            BasedOn="{StaticResource TransparentButtonStyle}">
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter Property="Opacity" Value="0.5" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <Image
+                        Source="{StaticResource Icon.Cross}"
+                        Width="10"
+                        Height="10"
+                        VerticalAlignment="Center" />
+                </Button>
+
+                <Grid
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Margin="30,0,30,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Text="{loc:Resource Main_SharedWithMe_Title}"
+                        Style="{StaticResource Title.DarkTheme.Style}"
+                        TextTrimming="CharacterEllipsis"
+                        TextWrapping="Wrap"
+                        MaxHeight="80"
+                        Margin="0,20,0,0">
+                        <b:Interaction.Behaviors>
+                            <behaviors:TextBlockAutoToolTipBehavior />
+                        </b:Interaction.Behaviors>
+                    </TextBlock>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Text="{loc:Resource Main_SharedWithMe_Onboarding_Description}"
+                        Foreground="{StaticResource GrayBrush}"
+                        TextWrapping="Wrap"
+                        Margin="0,20,0,0" />
+
+                    <Grid
+                        Grid.Row="2"
+                        TextElement.Foreground="{StaticResource GrayBrush}"
+                        Margin="10,20,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="18" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Text="{loc:Resource Main_SharedWithMe_Onboarding_Point_1_Label}" />
+
+                        <TextBlock
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            Text="{loc:Resource Main_SharedWithMe_Onboarding_Point_1}" />
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Text="{loc:Resource Main_SharedWithMe_Onboarding_Point_2_Label}"
+                            Margin="0,10,0,0" />
+
+                        <TextBlock
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            Text="{loc:Resource Main_SharedWithMe_Onboarding_Point_2}"
+                            TextWrapping="Wrap"
+                            Margin="0,10,0,0" />
+
+                        <TextBlock
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            Text="{loc:Resource Main_SharedWithMe_Onboarding_Point_3_Label}"
+                            Margin="0,10,0,0" />
+
+                        <TextBlock
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            Text="{loc:Resource Main_SharedWithMe_Onboarding_Point_3}"
+                            TextWrapping="Wrap"
+                            Margin="0,10,0,0" />
+                    </Grid>
+
+                    <Button
+                        Grid.Row="3"
+                        Content="{loc:Resource Main_SharedWithMe_Onboarding_Button_GetStarted}"
+                        Command="{Binding DismissOnboardingCommand}"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom" />
+                </Grid>
+            </Grid>
+        </Border>
+    </Border>
+</UserControl>

@@ -1,0 +1,1770 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountDisplayStatus_Value_AccountError">
+    <value></value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SessionError">
+    <value>Autentificare eșuată.</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SettingUp">
+    <value>Se setează…</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SignedOut">
+    <value>Deconectat</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningIn">
+    <value>Se conectează...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningOut">
+    <value>Se deconectează…</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_Succeeded">
+    <value>Conectat</value>
+  </data>
+  <data name="AccountErrorCode_Value_AccountSwitchingFailed">
+    <value>Eșuare comutare cont. Reporniți aplicația.</value>
+  </data>
+  <data name="AccountErrorCode_Value_Delinquent">
+    <value>Contul are facturi neplătite. Accesați panoul de control pentru a plăti și a anunța administratorul.</value>
+  </data>
+  <data name="AccountErrorCode_Value_DriveAccessFailed">
+    <value>Nu se poate conecta la Proton Drive. Verificați conexiunea la internet.</value>
+  </data>
+  <data name="AccountErrorCode_Value_NoDriveAccess">
+    <value>Pentru a accesa Proton Drive, modificați-vă planul.</value>
+  </data>
+  <data name="AccountErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Create">
+    <value>Se creează</value>
+    <comment>Indicates a local folder being created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Delete">
+    <value>Se șterge</value>
+    <comment>Indicates the local file or folder being deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Download">
+    <value>Se descarcă din Proton Drive</value>
+    <comment>Indicates a file being downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Se preiau actualizările</value>
+    <comment>Indicates local file system changes being fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Move">
+    <value>Se mută</value>
+    <comment>Indicates the local file or folder being moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Rename">
+    <value>Se redenumește</value>
+    <comment>Indicates the local file or folder being renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Upload">
+    <value>Se încarcă în Proton Drive</value>
+    <comment>Indicates a  file being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Create">
+    <value>Creat</value>
+    <comment>Indicates a local folder has been created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Delete">
+    <value>Șters</value>
+    <comment>Indicates a local file or folder has been deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Download">
+    <value>Descărcat din Proton Drive</value>
+    <comment>Indicates a file has been downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Încărcări preluate</value>
+    <comment>Indicates local file system changes have been fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Move">
+    <value>Mutat</value>
+    <comment>Indicates a local file or folder has been moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Rename">
+    <value>Redenumit</value>
+    <comment>Indicates a local file or folder has been renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Upload">
+    <value>Încărcat în Proton Drive</value>
+    <comment>Indicates a file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Create">
+    <value>Se creează în Proton Drive</value>
+    <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
+    <value>Se mută în gunoiul Proton Drive</value>
+    <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
+    <value>Se descarcă din Proton Drive</value>
+    <comment>Indicates a file is being downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Se preiau actualizări din Proton Drive</value>
+    <comment>Indicates changes are being fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Move">
+    <value>Se mută în Proton Drive</value>
+    <comment>Indicates the file or folder is being moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Rename">
+    <value>Se redenumește în Proton Drive</value>
+    <comment>Indicates the file or folder is being renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Upload">
+    <value>Se încarcă în Proton Drive</value>
+    <comment>Indicates the file is being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Create">
+    <value>Creat în Proton Drive</value>
+    <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
+    <value>Mutat în gunoiul Proton Drive</value>
+    <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
+    <value>Descărcat din Proton Drive</value>
+    <comment>Indicates a file has been downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Actualizări preluate din Proton Drive</value>
+    <comment>Indicates changes have been fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Move">
+    <value>Mutat în Proton Drive</value>
+    <comment>Indicates the file or folder has been moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Rename">
+    <value>Redenumit în Proton Drive</value>
+    <comment>Indicates the file or folder has been renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Upload">
+    <value>Încărcat în Proton Drive</value>
+    <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="AppDisplayStatus_Value_AccountError">
+    <value>Nu s-a reușit configurarea unui cont</value>
+  </data>
+  <data name="AppDisplayStatus_Value_FinishingUp">
+    <value>Se finalizează...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Offline">
+    <value>Deconectat</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SettingUp">
+    <value>Se setează…</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignInError">
+    <value>Autentificare eșuată.</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignedOut">
+    <value>Deconectat</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningIn">
+    <value>Conectare…</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningOut">
+    <value>Se deconectează…</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SyncFolderError">
+    <value>Nu s-a reușit configurarea folderelor de sincronizare.</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationError">
+    <value>Sincronizare eșuată</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationPaused">
+    <value>Sincronizare suspendată</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationWarning">
+    <value>Unele articole nu s-au sincronizat.</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronized">
+    <value>Sincronizat</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronizing">
+    <value>Se sincronizează...</value>
+  </data>
+  <data name="BugReport_Button_Cancel">
+    <value>_Anulare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel_HelpText">
+    <value>Anulare raportare</value>
+  </data>
+  <data name="BugReport_Button_Report">
+    <value>_Raportare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Report_HelpText">
+    <value>Trimitere raportare</value>
+  </data>
+  <data name="BugReport_Button_ShowLogs">
+    <value>Afișare jurna_le</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs">
+    <value>_Includere jurnale aplicație</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs_Tooltip">
+    <value>Raportul va include ultimele jurnale ale aplicației și jurnalele de instalare.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Description">
+    <value>Ghiduri rapide pentru configurare, utilizare aplicație și sincronizare fișiere.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_FAQ">
+    <value>Întrebări frecvente</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks">
+    <value>Aflați cum funcționează aplicația Proton Drive</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowSharedFilesWork">
+    <value>Accesați fișiere partajate</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_SyncFolders">
+    <value>Sincronizați foldere cu Proton Drive</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_UseOnDemandSync">
+    <value>Folosiți sincronizarea la cerere</value>
+  </data>
+  <data name="BugReport_NeedHelp_Title">
+    <value>Aveți nevoie de ajutor pentru a începe să folosiți Proton Drive?</value>
+  </data>
+  <data name="BugReport_Text_Description_HelpText">
+    <value>Descriere. Ce nu a mers bine? Care sunt pașii exacți pe care i-ați executat? (minim 10 caractere)</value>
+  </data>
+  <data name="BugReport_Text_Description_Label">
+    <value>_Descriere</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_Description_Label_Requirement">
+    <value>(minim 10 caractere)</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_ExactSteps">
+    <value>Care sunt pașii exacți pe care i-ați urmat?</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_WhatWentWrong">
+    <value>Ce nu a funcționat?</value>
+  </data>
+  <data name="BugReport_Text_Email_HelpText">
+    <value>E-mail (câmp obligatoriu)</value>
+  </data>
+  <data name="BugReport_Text_Email_Label">
+    <value>_E-mail</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_HelpText">
+    <value>Titlu problemă (câmp obligatoriu)</value>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Label">
+    <value>_Titlu</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Watermark">
+    <value>Titlu problemă</value>
+  </data>
+  <data name="BugReport_Text_ReportSuccessfullySent">
+    <value>Raportul a fost trimis cu succes. Vă mulțumim.</value>
+  </data>
+  <data name="BugReport_Title">
+    <value>Feedback Proton Drive</value>
+  </data>
+  <data name="Dialog_Button_Cancel">
+    <value>Anulare</value>
+  </data>
+  <data name="Dialog_Button_Ok">
+    <value>OK</value>
+  </data>
+  <data name="Dialog_Button_Save">
+    <value>_Salvează</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="FileSystemErrorCode_Value_Cancelled">
+    <value>Anulat</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CloudFileProviderNotRunning">
+    <value>Asigurați-vă că furnizorul spațiului de stocare din cloud (ex. OneDrive) rulează și este conectat.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CyclicRedundancyCheck">
+    <value>Eroare de date (verificare a redundanței ciclice). Verificați-vă unitatea (USB, disc etc...) pentru erori de sistem de fișiere și sectoare defecte.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DirectoryNotFound">
+    <value>Nu poate fi găsită o parte din cale.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DuplicateName">
+    <value>Numele este deja utilizat.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_FreeSpaceExceeded">
+    <value>Nu există suficient spațiu liber.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IdentityMismatch">
+    <value>Fișierul sau folderul s-a modificat.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IntegrityFailure">
+    <value>Verificarea datelor a eșuat.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_InvalidName">
+    <value>Numele conține caractere nesuportate de Windows. Eliminați următoarele caractere pentru a permite sincronizarea: \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
+    <value>Fișier ignorat deoarece a fost modificat prea recent. Aplicația va reîncerca automat.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
+    <value>Fotografiile în direct nu pot fi încărcate.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MetadataMismatch">
+    <value>Fișierul sau folderul s-a modificat.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MissingIndividuallySharedFile">
+    <value>Fișierul original care v-a fost partajat a fost șters, mutat sau redenumit.
+Dezactivați și reactivați sincronizarea pentru a o restabili și a șterge această eroare.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_NetworkError">
+    <value>Nu se poate conecta la Proton Drive. Verificați conexiunea la internet.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ObjectNotFound">
+    <value>Fișierul sau folderul nu există.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Offline">
+    <value>Deconectat</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Partial">
+    <value>Acest fișier nu este disponibil local și nu poate fi încărcat. Pentru rezolvare, ștergeți-l și restaurați o copie din coșul de gunoi Proton Drive, dacă este disponibilă.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_PathNotFound">
+    <value>Fișierul sau folderul nu există.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_RateLimited">
+    <value>Ceva nu a mers bine.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyFile">
+    <value>Fișierul poate fi doar citit.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyRoot">
+    <value>Fișierele și folderele care pot fi doar citite nu pot fi modificate. Opriți și reporniți sincronizarea în „Partajate cu mine” pentru rezolvare.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ServerError">
+    <value>Ceva nu a mers bine.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_SharingViolation">
+    <value>Fișierul sau folderul este utilizat de către altă aplicație.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TimedOut">
+    <value>Timp expirat.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TransferAbortedDueToFileChange">
+    <value>Încărcare anulată deoarece fișierul s-a modificat în timpul sincronizării. Aplicația va reîncerca automat.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_UnauthorizedAccess">
+    <value>Nu aveți suficiente permisiuni</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Unknown">
+    <value>Ceva nu a mers bine.</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_ContainsInvalidCharacter">
+    <value>Numele conține un caracter nevalid.</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Empty">
+    <value>Numele nu este completat</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithPeriod">
+    <value>Numele se termină cu punct.</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithSpace">
+    <value>Numele se termină cu spațiu.</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Reserved">
+    <value>Numele nu este suportat de Windows.</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_TooLong">
+    <value>Nume prea lung.</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Valid">
+    <value></value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_CheckingForUpdate">
+    <value>Verificare actualizări.…</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_DownloadingAnUpdate">
+    <value>Se descarcă o actualizare…</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpToDate">
+    <value>Actualizat</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
+    <value>Verificarea actualizării a eșuat</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Necesită actualizare</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
+    <value>Actualizare disponibilă</value>
+  </data>
+  <data name="Main_About_Button_UpdateNow">
+    <value>_Actualizare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Button_UpdateNow_HelpText">
+    <value>Proton Drive are o versiune nouă. Actualizați-o acum.</value>
+  </data>
+  <data name="Main_About_Label_CurrentVersion">
+    <value>Versiunea actuală</value>
+  </data>
+  <data name="Main_About_Label_ReleaseDate">
+    <value>Data lansării</value>
+  </data>
+  <data name="Main_About_Link_PrivacyPolicy">
+    <value>_Politica de confidențialitate</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Link_TermsOfService">
+    <value>_Termenii serviciului</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_ReleaseHistory_Label_New">
+    <value>NOU</value>
+  </data>
+  <data name="Main_About_ReleaseHistory_Title">
+    <value>Noutăți</value>
+  </data>
+  <data name="Main_About_Title">
+    <value>Despre</value>
+  </data>
+  <data name="Main_Account_Account_Button_ManageAccount">
+    <value>Gestionare _cont</value>
+  </data>
+  <data name="Main_Account_Account_HelpText">
+    <value>Gestionați-vă contul</value>
+  </data>
+  <data name="Main_Account_Account_Info_UnknownUser">
+    <value>Utilizator necunoscut</value>
+  </data>
+  <data name="Main_Account_Label_Account">
+    <value>Cont</value>
+  </data>
+  <data name="Main_Account_Label_Security">
+    <value>Securitate</value>
+  </data>
+  <data name="Main_Account_Password_Button_ChangePassword">
+    <value>Modifi_care</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Password_Description">
+    <value>Modificați parola contului.</value>
+  </data>
+  <data name="Main_Account_Password_HelpText">
+    <value>Schimbați-vă parola Proton Drive</value>
+  </data>
+  <data name="Main_Account_Password_Title">
+    <value>Parola</value>
+  </data>
+  <data name="Main_Account_Plan_Button_SeePlans">
+    <value>Afișare planuri</value>
+  </data>
+  <data name="Main_Account_Plan_Description">
+    <value>Obțineți mai mult spațiu de stocare</value>
+  </data>
+  <data name="Main_Account_Plan_HelpText">
+    <value>Vedeți alte planuri Proton Drive</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Button_Manage">
+    <value>_Gestionare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_SessionManagement_Description">
+    <value>Dacă nu vă deconectați din cont sau nu vă schimbați parola, sesiunea va rămâne activă. Sesiunile expiră după 60 de zile de inactivitate.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_HelpText">
+    <value>Gestionați-vă sesiunea. După 60 de zile de inactivitate sesiunea va expira.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Title">
+    <value>Gestionare sesiuni</value>
+  </data>
+  <data name="Main_Account_SignOut_Description">
+    <value>Vă deconectați și dezactivați sincronizarea. Vă puteți reconecta cu același cont pentru a relua sincronizarea.</value>
+  </data>
+  <data name="Main_Account_SignOut_HelpText">
+    <value>Deconectare din Proton Drive</value>
+  </data>
+  <data name="Main_Account_SignOut_Title">
+    <value>_Deconectare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Storage_Button_UpgradePlan">
+    <value>Modificare plan</value>
+  </data>
+  <data name="Main_Account_Storage_Info_EnsureMoreStorage">
+    <value>Pentru a asigura o sincronizare neîntreruptă, obțineți mai mult spațiu acum.</value>
+  </data>
+  <data name="Main_Account_Storage_Info_UsedSpaceFormat">
+    <value>Spațiu total utilizat: {0} din {1}</value>
+  </data>
+  <data name="Main_Account_Storage_Title">
+    <value>Spațiu de stocare</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageExceeded">
+    <value>Sincronizare oprită. Contul a depășit spațiul de stocare alocat.</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageLimit">
+    <value>Urmează să atingeți limita de spațiului de stocare.</value>
+  </data>
+  <data name="Main_Account_Title">
+    <value>Cont</value>
+  </data>
+  <data name="Main_Activity_Button_PauseSync">
+    <value>Sus_pendare sincronizare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Rename">
+    <value>Redenumire</value>
+  </data>
+  <data name="Main_Activity_Button_Rename_Tooltip">
+    <value>Redenumiți acest articol pentru a rezolva problema sincronizării.</value>
+  </data>
+  <data name="Main_Activity_Button_ResumeSync">
+    <value>_Reluare sincronizare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Retry">
+    <value>Reîncercare sincronizare</value>
+  </data>
+  <data name="Main_Activity_Column_Folder">
+    <value>Folder</value>
+  </data>
+  <data name="Main_Activity_Column_Name">
+    <value>Nume</value>
+  </data>
+  <data name="Main_Activity_Column_Progress_Tooltip_Finalizing">
+    <value>Se finalizează…</value>
+  </data>
+  <data name="Main_Activity_Column_Size">
+    <value>Mărime</value>
+  </data>
+  <data name="Main_Activity_Column_Status">
+    <value>Stare</value>
+  </data>
+  <data name="Main_Activity_Column_Synced">
+    <value>Sincronizat</value>
+  </data>
+  <data name="Main_Activity_Column_Type">
+    <value>Tip</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Button_ShowMore">
+    <value>Afișare detalii</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Description">
+    <value>Faceți clic pentru a afla despre aceste probleme</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_HelpText">
+    <value>Afișare toate erorile într-o secțiune nouă</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_MultipleItemsFormat">
+    <value>Probleme existente: {0}</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_SingleItem">
+    <value>Există o problemă</value>
+  </data>
+  <data name="Main_Activity_Errors_Title">
+    <value>Probleme sincronizare ({0})</value>
+  </data>
+  <data name="Main_Activity_Errors_Title_Tooltip">
+    <value>Înapoi la activitate</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Description">
+    <value>Informațiile despre sincronizarea fișierelor și folderelor vor apărea aici.</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_HelpText">
+    <value>Fișierele sunt sincronizate</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Title">
+    <value>Fișierele sunt sincronizate</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line1">
+    <value>Acest proces poate dura câteva minute.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line2">
+    <value>Puteți micșora sau închide fereastra în siguranță.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_HelpText">
+    <value>Se inițializează sincronizarea</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Title">
+    <value>Se configurează Drive...</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Description">
+    <value>Faceți clic pe „Reluare sincronizare” pentru a activa sincronizarea.</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_HelpText">
+    <value>Sincronizarea este suspendată.</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Title">
+    <value>Sincronizare suspendată</value>
+  </data>
+  <data name="Main_Activity_Rename_CurrentName_Label">
+    <value>Nume actual:</value>
+  </data>
+  <data name="Main_Activity_Rename_Description">
+    <value>Numele acestui articol include caractere nesuportate în Windows.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_AlreadyExists">
+    <value>Numele este deja utilizat.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_ContainsInvalidCharacter">
+    <value>Numele conține caractere nevalide.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Failed">
+    <value>Ceva nu a mers bine.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Required">
+    <value>Numele este obligatoriu.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Label">
+    <value>Nume nou:</value>
+  </data>
+  <data name="Main_Activity_Rename_Status_Value_Renaming">
+    <value>Se redenumește...</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion">
+    <value>Eliminați următoarele pentru a continua sincronizarea:</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion_CharacterList">
+    <value>/ : * ? &gt; &lt; " |</value>
+  </data>
+  <data name="Main_Activity_Rename_Title">
+    <value>Redenumire articol</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUp">
+    <value>Se setează…</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUpFormat">
+    <value>Se setează... (articole pregătite pentru sincronizare: {0})</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SyncPausedUntilFormat">
+    <value>(până la {0})</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>de curând</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
+    <value>zile: {0}</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_HoursAgoFormat">
+    <value>ore: {0}</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_MinutesAgoFormat">
+    <value>minute: {0}</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneDayAgo">
+    <value>acum o zi</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneHourAgo">
+    <value>acum o oră</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneMinuteAgo">
+    <value>acum un minut</value>
+  </data>
+  <data name="Main_Activity_Title">
+    <value>Activitate</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Folderele sincronizate de pe computere vor apărea în secțiunea „Computere” din aplicațiile Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Button_Rename">
+    <value>_Redenumire</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Device_HelpText">
+    <value>Redenumiți dispozitivul</value>
+  </data>
+  <data name="Main_MyComputer_Device_Label">
+    <value>Acest dispozitiv</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Cancel_HelpText">
+    <value>Anulare redenumire dispozitiv</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Save_HelpText">
+    <value>Salvare nume dispozitiv</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Error_Tooltip">
+    <value>Nume dispozitiv nevalid: noul nume nu trebuie să fie gol și nu trebuie să depășească 255 de caractere.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_HelpText">
+    <value>Redenumiți dispozitivul</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Button_AddMore">
+    <value>_Adăugare alte foldere</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Description">
+    <value>Adăugând un folder toate datele din acesta vor fi sincronizate în Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Info_Saving">
+    <value>Se salvează folderele...</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Title">
+    <value>Adăugare foldere</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludedByAnAlreadySyncedFolderFormat">
+    <value>Foldere care nu pot fi sincronizate deoarece sunt deja incluse într-un folder sincronizat cu Proton Drive: {0}</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludesAnAlreadySyncedFolderFormat">
+    <value>Foldere care nu pot fi sincronizate deoarece au deja un subfolder sincronizat cu Proton Drive: {0}</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFileSystemAccessFailedFormat">
+    <value>Foldere care nu pot fi accesate: {0}</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFolderDoesNotExistFormat">
+    <value>Foldere care nu pot fi găsite sau deschise: {0}</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalVolumeNotSupportedFormat">
+    <value>Foldere care nu pot fi sincronizate deoarece se află pe o unitate necompatibilă: {0}</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NetworkFolderNotSupportedFormat">
+    <value>Foldere care nu pot fi sincronizate deoarece folderele din rețea nu sunt acceptate: {0}</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat">
+    <value>Foldere care nu pot fi sincronizate deoarece sunt foldere de sistem: {0}</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
+    <value>Foldere care nu se pot adăuga: {0}</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder">
+    <value>Un folder nu se poate adăuga</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add">
+    <value>_Adăugare foldere</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst">
+    <value>Adăugați primele foldere de sincronizat</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddNext">
+    <value>Adăugați un folder nou de sincronizat</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_Name">
+    <value>Nume</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization">
+    <value>Optimizare stocare</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization_Info_Tooltip">
+    <value>Optimizați spațiul de stocare activând sincronizarea la cerere.
+Fișierele ocupă spațiul local doar când sunt deschise sau alegeți să fie păstrate și pe acest dispozitiv. Puteți dezactiva oricând optimizarea spațiului de stocare.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Description">
+    <value>Adăugați un folder pentru a începe sincronizarea în siguranță a fișierelor cu serverul</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Title">
+    <value>Sincronizați fișierele în siguranță</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Label">
+    <value>Foldere sincronizate de pe acest dispozitiv</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_OpenFolder">
+    <value>Deschidere f_older</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder">
+    <value>Ște_rgere folder</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm">
+    <value>Eliminare folder</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_1">
+    <value>Orice fișier adăugat în folderul „{0}” nu va mai fi sincronizat și acest folder va fi mutat în folderul «Gunoi» din Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_2">
+    <value>Fișierele existente vor rămâne în calculator.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_1">
+    <value>Unele fișiere din folderul „{0}” pot fi stocate numai în cloud. Eliminarea acestui folder va opri sincronizarea și îl va muta în folderul «Gunoi» din Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_2">
+    <value>Pentru a păstra o copie locală a tuturor fișierelor de pe computer, mai întâi dezactivați „Optimizare stocare” pentru acest folder. Dacă optimizarea stocării este deja dezactivată, activați-o și dezactivați-o. Așteptați finalizarea descărcării (puteți verifica starea în Exploratorul de fișiere), apoi eliminați folderul de la sincronizare din secțiunea „Calculatorul meu”.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_1">
+    <value>Fișierele care au fost deja descărcate vor rămâne pe dispozitiv.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_2">
+    <value>Fișierele stocate doar în cloud vor fi eliminate din dispozitiv.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Title">
+    <value>Eliminați folderul?</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_1">
+    <value>Fișierele din folderul „{0}” vor fi acum întotdeauna disponibile pe acest dispozitiv. Poate dura câteva minute înainte ca toate fișierele să fie descărcate (puteți verifica starea în Exploratorul de fișiere).</value>
+    <comment>Placeholder {0}: folder name</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_2">
+    <value>Puteți elibera spațiu pentru fișiere individuale în setările acestora.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Title">
+    <value>Toate fișierele sunt disponibile permanent pe acest dispozitiv</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1">
+    <value>Folderul „{0}” nu poate utiliza sincronizarea la cerere pentru a optimiza spațiul de stocare, deoarece {1}.</value>
+    <comment>Placeholder {0}: folder name. Placeholder {1}: the reason text, one of resources with "StorageOptimizationErrorCode_Value_..." key.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_2">
+    <value>Fișierele vor fi sincronizate în continuare cu Proton Drive și rămân disponibile atât pe calculator cât și în cloud.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Title">
+    <value>Optimizarea spațiului de stocare nedisponibilă</value>
+  </data>
+  <data name="Main_MyComputer_Link_LearnMore">
+    <value>Detalii</value>
+  </data>
+  <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
+    <value>Renunțare integrare calculator</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Button_Next">
+    <value>Î_nainte</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Description">
+    <value>Activați sincronizarea la cerere pentru a economisi spațiu pe disc. Fișierele ocupă spațiu de stocare local numai atunci când le deschideți sau le marcați ca „Păstrare întotdeauna pe acest dispozitiv”.</value>
+    <comment>"Always keep on this device" is the exact text displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Title">
+    <value>Optimizare spațiu de stocare</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted">
+    <value>_Să începem</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1">
+    <value>Faceți clic dreapta pe orice fișier sau folder sincronizat folosind Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2">
+    <value>Alegeți „Păstrare întotdeauna pe acest dispozitiv” pentru a-l stoca local sau „Eliberare spațiu” pentru a-l păstra numai în cloud.</value>
+    <comment>"Always keep on this device" and "Free up space" are the exact texts displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Title">
+    <value>Gestionare spațiu de stocare</value>
+  </data>
+  <data name="Main_MyComputer_Title">
+    <value>Calculatorul meu</value>
+  </data>
+  <data name="Main_Photos_Folders_Error_ImportFailed">
+    <value>Importarea a eșuat. Încercați să eliminați folderul și să îl importați din nou. Dacă problema persistă, contactați asistența.</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportedItemsFormat">
+    <value>Articole importate: {0} din {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportingItemsFormat">
+    <value>Se importă... {0} din {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_Items_Label">
+    <value>articol(e)</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Gestionare _albume</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
+    <value>Deschidere f_older</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Remove">
+    <value>_Eliminare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Retry">
+    <value>_Reîncercați</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_NoItemsFound_Label">
+    <value>Nu s-au găsit fotografii/videoclipuri</value>
+  </data>
+  <data name="Main_Photos_Folders_WaitingToImport">
+    <value>Se așteaptă importarea...</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Description">
+    <value>Ghid pas cu pas pentru a vă exporta fotografiile din Google</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Title">
+    <value>1. Exportați-vă fotografiile din Google</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Description">
+    <value>Trebuie să fie folderul dezarhivat care conține fotografiile și videoclipurile exportate.</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Title">
+    <value>2. Importare folder Google Photos</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_SelectFolder_Button">
+    <value>Selectare folder</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Title">
+    <value>Importare din Google Photos</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Description">
+    <value>Importați un folder local din calculator.</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Title">
+    <value>Importare folder</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Description">
+    <value>Importați fotografii Google din Google Takeout.</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Title">
+    <value>Importare din Google Photos</value>
+  </data>
+  <data name="Main_Photos_Import_Link_HowImportWorks">
+    <value>Cum funcționează importarea fotografiilor?</value>
+  </data>
+  <data name="Main_Photos_Import_Title">
+    <value>Importare fotografii</value>
+  </data>
+  <data name="Main_Photos_Info_Duplicates">
+    <value>Se va importa doar ce este nou — duplicatele sunt omise automat.</value>
+  </data>
+  <data name="Main_Photos_Title">
+    <value>Fotografii</value>
+  </data>
+  <data name="Main_Photos_Warning_UploadUnavailable">
+    <value>Încărcarea fotografiilor nu este disponibilă temporar.</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Button_Change">
+    <value>Modifi_care</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_HelpText">
+    <value>Modificați folderul rădăcină al Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Title">
+    <value>Cale</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Obțineți acces timpuriu și ajutați-ne să testăm noi versiuni ale Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Acces la beta</value>
+  </data>
+  <data name="Main_Settings_Label_AccountRootFolder">
+    <value>Folder Proton Drive:</value>
+  </data>
+  <data name="Main_Settings_Label_General">
+    <value>Generale</value>
+  </data>
+  <data name="Main_Settings_Language_Button_Restart">
+    <value>Repornire</value>
+  </data>
+  <data name="Main_Settings_Language_Message_PleaseRestart">
+    <value>Reporniți aplicația pentru aplicarea limbii selectate.</value>
+  </data>
+  <data name="Main_Settings_Language_Title">
+    <value>Limba</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_HelpText">
+    <value>Deschidere Proton Drive la pornirea Windows.</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_Title">
+    <value>Deschidere la pornire</value>
+  </data>
+  <data name="Main_Settings_Title">
+    <value>Setări</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Name">
+    <value>Nume</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions">
+    <value>Permisiuni</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Tooltip">
+    <value>Permisiuni pe care vi le-a acordat proprietarul.</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Editor">
+    <value>Editor</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Viewer">
+    <value>Utilizator</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedBy">
+    <value>Partajat de</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedOn">
+    <value>Partajat</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync">
+    <value>Sincronizare</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync_Info_Tooltip">
+    <value>Activați pentru ca fișierul sau folderul partajat să fie accesibil de pe computer.
+Conținutul fișierelor va fi descărcat numai la cerere.</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad">
+    <value>Datele nu s-au putut încărca.</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Plural">
+    <value>Articole care nu s-au putut încărca: {0}</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Singular">
+    <value>Articole care nu s-au putut încărca: {0}</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Description">
+    <value>Fișierele și folderele partajate de alții vor apărea aici.</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Title">
+    <value>Încă nimic partajat</value>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_OpenFolder">
+    <value>Deschidere f_older</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_RemoveMe">
+    <value>_Elimină-mă</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_Close_HelpText">
+    <value>Ignorare pas de integrare articole partajate cu mine</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_GetStarted">
+    <value>_Să începem</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Description">
+    <value>Sincronizați ușor pe computerul personal fișierele și folderele care vi s-au partajat.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1">
+    <value>Selectați fișierele sau folderele de sincronizat.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2">
+    <value>Accesați fișierele partajate din folderul Proton Drive.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3">
+    <value>Editați-le, încărcați altele și accesați-le fără conexiune.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3_Label">
+    <value>3.</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Plural">
+    <value>Articole sincronizate: {0} din {1}</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Singular">
+    <value>Articole sincronizate: {0} din {1}</value>
+  </data>
+  <data name="Main_SharedWithMe_Title">
+    <value>Partajate cu mine</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Advice">
+    <value>Pentru a adăuga articole noi, opriți sincronizarea unora vechi.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Limit">
+    <value>Puteți sincroniza doar {0} articole simultan.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_SharingUnavailable">
+    <value>Partajarea nu este disponibilă momentan.</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About">
+    <value>Despre</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About_HelpText">
+    <value>Articol meniu: Despre</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account">
+    <value>Cont</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account_HelpText">
+    <value>Articol meniu: Cont</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity">
+    <value>Activitate</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity_HelpText">
+    <value>Articol meniu: Activitate</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help">
+    <value>Ajutor</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help_HelpText">
+    <value>Articol meniu: Ajutor</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer">
+    <value>Calculatorul meu</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer_HelpText">
+    <value>Articol meniu: Calculatorul meu</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos">
+    <value>Fotografii</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_PhotosImport">
+    <value>Importare fotografii</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos_HelpText">
+    <value>Articol meniu: Fotografii</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings">
+    <value>Setări</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings_HelpText">
+    <value>Articol meniu: Setări</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe">
+    <value>Partajate cu mine</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe_HelpText">
+    <value>Articol meniu: Partajate cu mine</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceededQuota_Description">
+    <value>Sincronizare oprită: contul a depășit spațiul de stocare alocat.</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceedingQuota_Description">
+    <value>Urmează să atingeți limita spațiului de stocare.</value>
+  </data>
+  <data name="Main_Sidebar_Notification_GetStarted_Description">
+    <value>Să începem</value>
+  </data>
+  <data name="Main_Sidebar_Notification_NewVersion_Description">
+    <value>Este disponibilă o versiune nouă a Proton Drive!</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SharingUnavailable_Description">
+    <value>Partajarea nu este disponibilă momentan.</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SyncFoldersFailure_Description">
+    <value>A eșuat sincronizarea unui folder.</value>
+  </data>
+  <data name="Main_Sidebar_Notification_UpdateRequired_Description">
+    <value>Pentru a putea utiliza Proton Drive, va trebui să-l actualizați la ultima versiune.</value>
+  </data>
+  <data name="Main_Sidebar_Offer_Button_GetDeal">
+    <value>Luați _oferta</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Sidebar_Storage_Button_GetMoreStorage">
+    <value>Obțineți mai mult spațiu de stocare</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_StorageNotAvailable">
+    <value>Informații spațiu nedisponibile</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_UsedSpaceFormat">
+    <value>Folosit {0} din {1}</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Title">
+    <value>Spațiu</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Tooltip">
+    <value>Gestionați spațiul de stocare</value>
+  </data>
+  <data name="Main_Window_Title">
+    <value>Proton Drive</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>Acest folder conține un subfolder sincronizat la cerere. Setați un folder nou de sincronizare.</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>Acest folder este deja sincronizat la cerere. Setați un folder nou de sincronizare.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveAccessFailed">
+    <value>Nu se poate conecta la Proton Drive. Verificați conexiunea la internet.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDiverged">
+    <value>Folderul Proton Drive a fost mutat. Setați un folder nou de sincronizare.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDoesNotExist">
+    <value>Nu se pot accesa fișiere Proton Drive, posibil datorită ștergerii folderului de pe dispozitiv. Setați un folder nou de sincronizare.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveHostDeviceDiverged">
+    <value>Nu se pot accesa fișiere Proton Drive, posibil datorită ștergerii dispozitivului. Setați un folder nou de sincronizare.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveShareDiverged">
+    <value>Nu se pot accesa fișiere Proton Drive, posibil datorită resetării parolei. Setați un folder nou de sincronizare.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveVolumeDiverged">
+    <value>Nu se pot accesa fișiere Proton Drive, posibil datorită resetării parolei. Setați un folder nou de sincronizare.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientDeviceQuota">
+    <value>A fost atins numărul maxim de calculatoare sincronizate. Ștergeți calculatoarele nenecesare din Proton Drive de pe web.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientLocalFreeSpace">
+    <value>Eliberați spațiu sau deselectați caseta.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalAndRemoteFoldersNotEmpty">
+    <value>Setarea unui folder de sincronizare necesită un folder gol Windows sau Proton Drive din web. Creați unul și reîncercați.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFileSystemAccessFailed">
+    <value>Nu se poate accesa sau crea folderul local de sincronizare. Se va reîncerca.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDiverged">
+    <value>Folderul de sincronizare a fost înlocuit de un alt folder în cale. Refaceți folderul de sincronizare anterior sau setați unul nou.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDoesNotExist">
+    <value>Folderul de sincronizare nu a fost găsit. Ar putea fi șters, redenumit sau mutat. Restaurați-l sau setați unul nou pentru sincronizare.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludedByAnAlreadySyncedFolder">
+    <value>Folderul selectat este deja inclus cu alt folder sincronizat.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludesAnAlreadySyncedFolder">
+    <value>Folderul selectat conține deja un folder sincronizat.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNonSyncable">
+    <value>Folderul local nu este eligibil pentru sincronizare. Setați un folder nou de sincronizare.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNotEmpty">
+    <value>Folderul local trebuie să fie gol înainte de a seta sincronizarea.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeDiverged">
+    <value>Numărul de serie al volumului local s-a modificat. Setați un folder nou de sincronizare.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeNotSupported">
+    <value>Tip de unitate locală nesuportată. Încercați să setați un folder de sincronizare pe o unitate diferită.</value>
+  </data>
+  <data name="MappingErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootMissingSyncRootFlag">
+    <value>Folderul de sincronizare nu este valid. Setați un folder nou de sincronizare.</value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootNotRegistered">
+    <value>Folderul de sincronizare s-a dezînregistrat neașteptat. Setați un folder nou de sincronizare.</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotoImportFailed">
+    <value>Importarea fotografiilor a eșuat.</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosDisabled">
+    <value>Fotografii Proton nedisponibil</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosNotReady">
+    <value>Funcția fotografii nu este gata.</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemDoesNotExist">
+    <value>Nu se poate accesa fișierul sau folderul partajat din Proton Drive. Verificați dacă încă vă este partajat.</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemPermissionsDiverged">
+    <value>Permisiunile fișierului sau folderului partajat din Proton Drive s-au modificat. Opriți și reporniți sincronizarea sa pentru rezolvare.</value>
+  </data>
+  <data name="MappingErrorCode_Value_SharingDisabled">
+    <value>Partajarea nu este disponibilă momentan</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Failed">
+    <value>Nu s-a reușit configurarea folderelor de sincronizare.</value>
+  </data>
+  <data name="MappingSetupStatus_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingSetupStatus_Value_PartiallySucceeded">
+    <value>Nu s-a reușit configurarea unor foldere de sincronizare.</value>
+  </data>
+  <data name="MappingSetupStatus_Value_SettingUp">
+    <value>Se setează folderele de sincronizare...</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Succeeded">
+    <value>OK</value>
+  </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Adăugați spațiu</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Nu mai este spațiu</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Modificați planul pentru a obține mai mult spațiu și a putea încărca fișiere.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
+    <value>Modifi_care</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder_HelpText">
+    <value>Modificați folderul rădăcină al Proton Drive.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Error_InvalidSyncFolder">
+    <value>Folder de sincronizare nevalid.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Description">
+    <value>Accesează aici fișierele mele și alte dispozitive sincronizate</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Location">
+    <value>Cale</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Title">
+    <value>Folder Proton Drive</value>
+  </data>
+  <data name="Onboarding_Button_Continue">
+    <value>_Continuare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_Button_FinishSetup">
+    <value>_Finalizare setare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders">
+    <value>_Adăugare alte foldere</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText">
+    <value>Adăugați alt folder de sincronizat</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Label_Description">
+    <value>Folderele selectate vor fi sincronizate cu Proton Drive. Fișierele vor fi salvate și disponibile pe celelalte dispozitive deținute.</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Title">
+    <value>Conservare foldere</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Luați Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Luați _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Luați _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_NotNow">
+    <value>_Nu acum</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_Upgrade">
+    <value>_Modificare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Mail">
+    <value>Mail: e-mail personal și securizat</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>lună</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Cel mai popular</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Până la {0} utilizatori</value>
+    <comment>Only for number greater than 1.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
+    <value>Pass: manager criptat de parole</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Funcții premium incluse</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Recommended">
+    <value>Recomandat</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Recuperați versiunile anterioare ale fișierelor</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>spațiu de stocare</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Vpn">
+    <value>VPN: ultra rapid și privat</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Title">
+    <value>Obțineți mai mult spațiu de stocare</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
+    <value>Importarea a eșuat. Albumul nu există.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Importarea a eșuat. Folderul nu există.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
+    <value>Importarea a eșuat. Numărul maxim de albume a fost atins.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfPhotosPerAlbumReached">
+    <value>Importarea a eșuat. Numărul maxim de fotografii per album a fost atins.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_Unknown">
+    <value>Importarea a eșuat. Reîncercați.</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Failed">
+    <value>Importare eșuată</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Importing">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Interrupted">
+    <value>Importarea a fost întreruptă</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_NotStarted">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_SetupFailed">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Succeeded">
+    <value>Importarea a reușit</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_ValidationFailed">
+    <value></value>
+  </data>
+  <data name="ReleaseNoteType_Value_Feature">
+    <value>Funcții noi</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Fix">
+    <value>Probleme rezolvate</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Improvement">
+    <value>Îmbunătățiri</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Fido2">
+    <value>Cheia de securitate</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_NotSupported">
+    <value></value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Totp">
+    <value>Aplicația de autentificare</value>
+  </data>
+  <data name="SessionStatus_Value_Ending">
+    <value>Se deconectează…</value>
+  </data>
+  <data name="SessionStatus_Value_Failed">
+    <value>Conectare eșuată. Verificați conexiunea la internet.</value>
+  </data>
+  <data name="SessionStatus_Value_NotStarted">
+    <value>Deconectat</value>
+  </data>
+  <data name="SessionStatus_Value_SigningIn">
+    <value>Se conectează...</value>
+  </data>
+  <data name="SessionStatus_Value_Started">
+    <value>Conectat</value>
+  </data>
+  <data name="SessionStatus_Value_Starting">
+    <value>Se conectează...</value>
+  </data>
+  <data name="SignIn_Button_Authenticate">
+    <value>_Autentificare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_Back">
+    <value>Î_napoi</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignIn">
+    <value>_Conectare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignInAsAnotherUser">
+    <value>Sau conectare ca alt utilizator</value>
+  </data>
+  <data name="SignIn_Button_Unlock">
+    <value>_Deblocare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_CreateAccount">
+    <value>_Creare cont</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_ForgotPassword">
+    <value>_V-ați uitat parola?</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_LearnMore">
+    <value>Detalii</value>
+  </data>
+  <data name="SignIn_Message_SigningIn">
+    <value>Se conectează la cont</value>
+  </data>
+  <data name="SignIn_Text_2FACode">
+    <value>Introduceți codul din aplicația de autentificare</value>
+  </data>
+  <data name="SignIn_Text_No2FAMethodFound">
+    <value>Nu sunt disponibile metode de autentificare cu doi factori.</value>
+  </data>
+  <data name="SignIn_Text_Password">
+    <value>_Parola</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_SecondPassword">
+    <value>Parola secundară</value>
+  </data>
+  <data name="SignIn_Text_SecurityKey">
+    <value>Inserați o cheie de securitate conectată la contul Proton.</value>
+  </data>
+  <data name="SignIn_Text_SecurityKeyNotSupported">
+    <value>Sistemul actual nu suportă cheia de securitate.</value>
+  </data>
+  <data name="SignIn_Text_Username">
+    <value>E-mail sau _nume de utilizator</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_Username_HelpText">
+    <value>Nume de utilizator</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_PasswordRequired">
+    <value>Parola este obligatorie</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SessionExpired">
+    <value>Sesiunea a expirat. Conectați-vă pentru a continua.</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SomethingWentWrong">
+    <value>Ceva nu a mers bine.</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_UsernameRequired">
+    <value>Numele de utilizator este obligatoriu</value>
+  </data>
+  <data name="SignIn_Title_2FA">
+    <value>Autentificare cu doi factori</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>conține un subfolder sincronizat la cerere de către {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>este deja sincronizat la cerere de către {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_NetworkVolumeNotSupported">
+    <value>unitățile din rețea nu sunt suportate</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_RemovableVolumeNotSupported">
+    <value>unitățile portabile nu sunt suportate</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_Unknown">
+    <value>activarea sincronizării la cerere a eșuat</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
+    <value>tipul de unitate locală nu este suportată</value>
+  </data>
+  <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
+    <value>Nu există spațiu suficient pe acest dispozitiv</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludedByAnAlreadySyncedFolder">
+    <value>Folderul este inclus de un folder sincronizat deja.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludesAnAlreadySyncedFolder">
+    <value>Folderul conține deja un folder sincronizat.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_InsufficientLocalFreeSpace">
+    <value>Eliberați spațiu sau deselectați caseta.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFileSystemAccessFailed">
+    <value>Folderul nu se poate accesa.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderDoesNotExist">
+    <value>Folderul nu poate fi găsit.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderNotEmpty">
+    <value>Folderul trebuie să fie gol înainte de a seta sincronizarea.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalVolumeNotSupported">
+    <value>Tip de unitate nesuportat.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NetworkFolderNotSupported">
+    <value>Sincronizarea folderelor din unitățile din rețea nu este suportată.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NonSyncableFolder">
+    <value>Folderul nu este eligibil pentru sincronizare.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_Succeeded">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_DetectingUpdates">
+    <value>Se preiau actualizările…</value>
+  </data>
+  <data name="SyncStatus_Value_Failed">
+    <value>Eroare</value>
+  </data>
+  <data name="SyncStatus_Value_Idle">
+    <value>Sincronizat</value>
+  </data>
+  <data name="SyncStatus_Value_Initializing">
+    <value>Se setează…</value>
+  </data>
+  <data name="SyncStatus_Value_Offline">
+    <value>Deconectat</value>
+  </data>
+  <data name="SyncStatus_Value_Paused">
+    <value>Suspendat</value>
+  </data>
+  <data name="SyncStatus_Value_Synchronizing">
+    <value>Se sincronizează…</value>
+  </data>
+  <data name="SyncStatus_Value_Terminated">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_Terminating">
+    <value>Se finalizează…</value>
+  </data>
+  <data name="SystemTray_Menu_Item_Exit">
+    <value>_Ieșire</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenInBrowser">
+    <value>Deschidere în navigator we_b</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenLocalFolder">
+    <value>Deschidere _folder local</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenProtonDrive">
+    <value>_Deschidere Proton Drive</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSync">
+    <value>_Suspendare sincronizare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
+    <value>Pauză o oră</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor4Hours">
+    <value>Pauză 4 ore</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor8Hours">
+    <value>Pauză 8 ore</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncIndefinitely">
+    <value>Pauză indefinită</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow">
+    <value>Pauză până mâine</value>
+  </data>
+  <data name="SystemTray_Menu_Item_ResumeSync">
+    <value>_Reluare sincronizare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_SignIn">
+    <value>_Conectare</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="ToggleSwitch_Off">
+    <value>Oprită</value>
+  </data>
+  <data name="ToggleSwitch_On">
+    <value>Pornită</value>
+  </data>
+</root>

@@ -1,0 +1,47 @@
+﻿<Project Sdk="WixToolset.Sdk/5.0.2">
+  <PropertyGroup Condition="'$(AppPlatform)' == ''">
+    <AppPlatform Condition="'$(Platform)' == 'x64' OR '$(Platform)' == ''">x64</AppPlatform>
+    <AppPlatform Condition="'$(Platform)' == 'ARM64'">arm64</AppPlatform>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputName>Proton Drive Setup $(Version)</OutputName>
+    <DefineConstants>Product=$(Product);Version=$(Version);Company=$(Company);AppPlatform=$(AppPlatform)</DefineConstants>
+    <SuppressIces>ICE61</SuppressIces>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(SourceRevisionId)' != ''">
+    <OutputName>$(OutputName) ($(SourceRevisionId))</OutputName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(AppPlatform)' != ''">
+    <OutputName>$(OutputName) ($(AppPlatform))</OutputName>
+  </PropertyGroup>
+  <!-- 
+  Remove this property in order to support localization and multi-language MSI package:
+  https://wixtoolset.org/docs/v3/howtos/ui_and_localization/specifying_cultures_to_build/
+  -->
+  <PropertyGroup>
+    <Cultures>en-US</Cultures>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(ApplicationFilesPath)' != ''">
+    <BindPath Include="$(ApplicationFilesPath)">
+      <BindName>ApplicationFiles</BindName>
+    </BindPath>
+  </ItemGroup>
+  <ItemGroup Condition="'$(ApplicationFilesPath)' == ''">
+    <ProjectReference Include="..\..\src\Proton.Drive.App.Windows\Proton.Drive.App.Windows.csproj" Publish="true" />
+    <BindPath Include="$(IntermediateOutputPath)\publish\Proton.Drive.App.Windows">
+      <BindName>ApplicationFiles</BindName>
+    </BindPath>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UI\Banner.png" />
+    <Content Include="UI\Dialog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Heat" Version="5.0.*" />
+    <PackageReference Include="WixToolset.UI.wixext" Version="5.0.*" />
+    <PackageReference Include="WixToolset.Util.wixext" Version="5.0.*" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Proton.Drive.Installer.Extensions\Proton.Drive.Installer.Extensions.csproj" />
+  </ItemGroup>
+</Project>

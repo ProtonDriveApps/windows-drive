@@ -1,0 +1,1772 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountDisplayStatus_Value_AccountError">
+    <value></value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SessionError">
+    <value>La connexion n'a pas abouti.</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SettingUp">
+    <value>Configuration...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SignedOut">
+    <value>Déconnecté</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningIn">
+    <value>Connexion...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningOut">
+    <value>Déconnexion...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_Succeeded">
+    <value>Connecté</value>
+  </data>
+  <data name="AccountErrorCode_Value_AccountSwitchingFailed">
+    <value>Le changement de compte n'a pas abouti. Veuillez redémarrer l'application.</value>
+  </data>
+  <data name="AccountErrorCode_Value_Delinquent">
+    <value>Le compte présente des factures impayées. Rendez-vous sur votre tableau de bord pour les régler ou contactez votre administrateur.</value>
+  </data>
+  <data name="AccountErrorCode_Value_DriveAccessFailed">
+    <value>La connexion à Proton Drive n'a pas abouti. Veuillez vérifier votre connexion internet.</value>
+  </data>
+  <data name="AccountErrorCode_Value_NoDriveAccess">
+    <value>Pour accéder à Proton Drive, nous vous invitons à changer d'abonnement.</value>
+  </data>
+  <data name="AccountErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Create">
+    <value>Création</value>
+    <comment>Indicates a local folder being created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Delete">
+    <value>Suppression</value>
+    <comment>Indicates the local file or folder being deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Download">
+    <value>Téléchargement depuis Proton Drive</value>
+    <comment>Indicates a file being downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Récupération des mises à jour</value>
+    <comment>Indicates local file system changes being fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Move">
+    <value>Déplacement</value>
+    <comment>Indicates the local file or folder being moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Rename">
+    <value>Changement de nom</value>
+    <comment>Indicates the local file or folder being renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Upload">
+    <value>Importation sur Proton Drive</value>
+    <comment>Indicates a  file being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Create">
+    <value>Créé</value>
+    <comment>Indicates a local folder has been created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Delete">
+    <value>Supprimé</value>
+    <comment>Indicates a local file or folder has been deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Download">
+    <value>Téléchargé de Proton Drive</value>
+    <comment>Indicates a file has been downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Mises à jour récupérées</value>
+    <comment>Indicates local file system changes have been fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Move">
+    <value>Déplacé</value>
+    <comment>Indicates a local file or folder has been moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Rename">
+    <value>Renommé</value>
+    <comment>Indicates a local file or folder has been renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Upload">
+    <value>Importé sur Proton Drive</value>
+    <comment>Indicates a file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Create">
+    <value>Création sur Proton Drive</value>
+    <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
+    <value>Déplacement vers la corbeille de Proton Drive</value>
+    <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
+    <value>Téléchargement depuis Proton Drive</value>
+    <comment>Indicates a file is being downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Récupération des mises à jour depuis Proton Drive</value>
+    <comment>Indicates changes are being fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Move">
+    <value>Déplacement vers Proton Drive</value>
+    <comment>Indicates the file or folder is being moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Rename">
+    <value>Changement de nom sur Proton Drive</value>
+    <comment>Indicates the file or folder is being renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Upload">
+    <value>Importation sur Proton Drive</value>
+    <comment>Indicates the file is being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Create">
+    <value>Créé sur Proton Drive</value>
+    <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
+    <value>Déplacé vers la corbeille de Proton Drive</value>
+    <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
+    <value>Téléchargé de Proton Drive</value>
+    <comment>Indicates a file has been downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Les mises à jour ont été récupérées depuis Proton Drive.</value>
+    <comment>Indicates changes have been fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Move">
+    <value>Déplacé sur Proton Drive</value>
+    <comment>Indicates the file or folder has been moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Rename">
+    <value>Renommé sur Proton Drive</value>
+    <comment>Indicates the file or folder has been renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Upload">
+    <value>Importé sur Proton Drive</value>
+    <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="AppDisplayStatus_Value_AccountError">
+    <value>La configuration d'un compte n'a pas abouti.</value>
+  </data>
+  <data name="AppDisplayStatus_Value_FinishingUp">
+    <value>Finalisation...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Offline">
+    <value>Hors ligne</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SettingUp">
+    <value>Configuration...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignInError">
+    <value>La connexion n'a pas abouti.</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignedOut">
+    <value>Déconnecté</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningIn">
+    <value>Connexion...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningOut">
+    <value>Déconnexion...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SyncFolderError">
+    <value>La configuration des dossiers de synchronisation n'a pas abouti.</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationError">
+    <value>La synchronisation n'a pas abouti.</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationPaused">
+    <value>La synchronisation a été mise en pause.</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationWarning">
+    <value>Certains éléments n'ont pas pu être synchronisés.</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronized">
+    <value>Synchronisé</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronizing">
+    <value>Synchronisation...</value>
+  </data>
+  <data name="BugReport_Button_Cancel">
+    <value>_Annuler</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel_HelpText">
+    <value>Annuler votre rapport</value>
+  </data>
+  <data name="BugReport_Button_Report">
+    <value>_Signaler</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Report_HelpText">
+    <value>Envoyer votre rapport</value>
+  </data>
+  <data name="BugReport_Button_ShowLogs">
+    <value>Afficher les _journaux</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs">
+    <value>_Inclure les journaux de l'application</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs_Tooltip">
+    <value>Le rapport comprendra les derniers journaux de l'application et d'installation.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Description">
+    <value>Guides rapides pour la configuration, l'utilisation de l'application et la synchronisation de fichier.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_FAQ">
+    <value>Questions fréquentes (FAQ)</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks">
+    <value>Découvrir comment l'application Proton Drive fonctionne</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowSharedFilesWork">
+    <value>Accéder aux fichiers partagés</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_SyncFolders">
+    <value>Synchroniser les dossiers dans Proton Drive</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_UseOnDemandSync">
+    <value>Utiliser la synchronisation à la demande</value>
+  </data>
+  <data name="BugReport_NeedHelp_Title">
+    <value>Besoin d'aide pour démarrer avec Proton Drive ?</value>
+  </data>
+  <data name="BugReport_Text_Description_HelpText">
+    <value>Description. Quel était le problème ? Quelles sont les actions exactes que vous avez effectuées ? (10 caractères minimum)</value>
+  </data>
+  <data name="BugReport_Text_Description_Label">
+    <value>_Description</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_Description_Label_Requirement">
+    <value>(10 caractères minimum)</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_ExactSteps">
+    <value>Quel sont précisément les étapes que vous avez suivies ?</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_WhatWentWrong">
+    <value>Quel était le problème ?</value>
+  </data>
+  <data name="BugReport_Text_Email_HelpText">
+    <value>E-mail (champ obligatoire)</value>
+  </data>
+  <data name="BugReport_Text_Email_Label">
+    <value>_E-mail</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_HelpText">
+    <value>Titre du problème (champ obligatoire)</value>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Label">
+    <value>_Titre</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Watermark">
+    <value>Titre du problème</value>
+  </data>
+  <data name="BugReport_Text_ReportSuccessfullySent">
+    <value>Le rapport a bien été envoyé. Merci.</value>
+  </data>
+  <data name="BugReport_Title">
+    <value>Commentaire sur Proton Drive</value>
+  </data>
+  <data name="Dialog_Button_Cancel">
+    <value>Annuler</value>
+  </data>
+  <data name="Dialog_Button_Ok">
+    <value>OK</value>
+  </data>
+  <data name="Dialog_Button_Save">
+    <value>_Enregistrer</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="FileSystemErrorCode_Value_Cancelled">
+    <value>Abandonné</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CloudFileProviderNotRunning">
+    <value>Vérifiez que votre fournisseur de stockage cloud (par exemple : OneDrive) est opérationnel et connecté.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CyclicRedundancyCheck">
+    <value>Erreur de données (contrôle de redondance cyclique). Veuillez vérifier votre lecteur (USB, disque, etc.) pour détecter d'éventuelles erreurs de système de fichiers et des secteurs défectueux.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DirectoryNotFound">
+    <value>Une partie du chemin d’accès est manquante.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DuplicateName">
+    <value>Le nom est déjà utilisé.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_FreeSpaceExceeded">
+    <value>Pas assez d'espace libre</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IdentityMismatch">
+    <value>Le fichier ou le dossier ne correspond pas.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IntegrityFailure">
+    <value>La vérification des données n'a pas abouti.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_InvalidName">
+    <value>Le nom contient des caractères non pris en charge par Windows. Veuillez supprimer les caractères suivants pour permettre la synchronisation : \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
+    <value>Le fichier a été ignoré car il a été modifié trop récemment. L'application tentera à nouveau automatiquement.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
+    <value>Les Live Photos ne peuvent pas être importées.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MetadataMismatch">
+    <value>Le fichier ou le dossier ne correspond pas.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MissingIndividuallySharedFile">
+    <value>Le fichier d'origine partagé avec vous a été supprimé, déplacé ou renommé.
+Désactivez et réactivez sa synchronisation pour le restaurer et effacer cette erreur.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_NetworkError">
+    <value>La connexion à Proton Drive n'a pas abouti. Veuillez vérifier votre connexion internet.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ObjectNotFound">
+    <value>Le fichier ou le dossier n'existe pas.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Offline">
+    <value>Hors ligne</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Partial">
+    <value>Ce fichier n'est pas disponible localement et ne peut pas être importé. Pour résoudre ce problème, supprimez-le et restaurez une copie à partir de la corbeille de Proton Drive si elle est disponible.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_PathNotFound">
+    <value>Le fichier ou le dossier n'existe pas.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_RateLimited">
+    <value>Une erreur s'est produite.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyFile">
+    <value>Le fichier est en lecture seule.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyRoot">
+    <value>Les fichiers en lecture seule ne peuvent pas être modifiés. Déactivez et réactivez la synchronisation dans « Partagé avec moi » pour résoudre ce problème.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ServerError">
+    <value>Une erreur s'est produite.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_SharingViolation">
+    <value>Une autre application utilise le dossier ou le fichier.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TimedOut">
+    <value>Expiré</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TransferAbortedDueToFileChange">
+    <value>L'importation a été annulée car le fichier à été modifié pendant la synchronisation. L'application va réessayer automatiquement.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_UnauthorizedAccess">
+    <value>Vous n'avez pas assez de permissions.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Unknown">
+    <value>Une erreur s'est produite.</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_ContainsInvalidCharacter">
+    <value>Le nom contient un caractère non valide.</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Empty">
+    <value>Le nom est vide.</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithPeriod">
+    <value>Le nom se termine par un point.</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithSpace">
+    <value>Le nom se termine par un espace.</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Reserved">
+    <value>Le nom n'est pas pris en charge par Windows.</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_TooLong">
+    <value>Le nom est trop long.</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Valid">
+    <value></value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_CheckingForUpdate">
+    <value>Recherche de mise à jour...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_DownloadingAnUpdate">
+    <value>Téléchargement d'une mise à jour...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpToDate">
+    <value>L'application est à jour.</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
+    <value>La vérification de mise à jour n'a pas abouti.</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Mise à jour nécessaire</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
+    <value>Mise à jour disponible</value>
+  </data>
+  <data name="Main_About_Button_UpdateNow">
+    <value>_Mettre à jour</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Button_UpdateNow_HelpText">
+    <value>Une nouvelle version de Proton Drive est disponible. Nous vous invitons à le mettre à jour dès maintenant.</value>
+  </data>
+  <data name="Main_About_Label_CurrentVersion">
+    <value>Version actuelle</value>
+  </data>
+  <data name="Main_About_Label_ReleaseDate">
+    <value>Date de publication  </value>
+  </data>
+  <data name="Main_About_Link_PrivacyPolicy">
+    <value>_Politique de confidentialité</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Link_TermsOfService">
+    <value>_Conditions d’utilisation</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_ReleaseHistory_Label_New">
+    <value>NOUVEAU</value>
+  </data>
+  <data name="Main_About_ReleaseHistory_Title">
+    <value>Nouveautés</value>
+  </data>
+  <data name="Main_About_Title">
+    <value>À propos</value>
+  </data>
+  <data name="Main_Account_Account_Button_ManageAccount">
+    <value>Gérer le _compte</value>
+  </data>
+  <data name="Main_Account_Account_HelpText">
+    <value>Gérer votre compte</value>
+  </data>
+  <data name="Main_Account_Account_Info_UnknownUser">
+    <value>Utilisateur inconnu</value>
+  </data>
+  <data name="Main_Account_Label_Account">
+    <value>Compte</value>
+  </data>
+  <data name="Main_Account_Label_Security">
+    <value>Sécurité</value>
+  </data>
+  <data name="Main_Account_Password_Button_ChangePassword">
+    <value>_Modifier</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Password_Description">
+    <value>Modifiez le mot de passe de votre compte.</value>
+  </data>
+  <data name="Main_Account_Password_HelpText">
+    <value>Modifier le mot de passe de Proton Drive</value>
+  </data>
+  <data name="Main_Account_Password_Title">
+    <value>Mot de passe</value>
+  </data>
+  <data name="Main_Account_Plan_Button_SeePlans">
+    <value>Voir les _abonnements</value>
+  </data>
+  <data name="Main_Account_Plan_Description">
+    <value>Obtenir plus d'espace de stockage</value>
+  </data>
+  <data name="Main_Account_Plan_HelpText">
+    <value>Voir les autres abonnements de Proton Drive</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Button_Manage">
+    <value>_Gérer</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_SessionManagement_Description">
+    <value>Sauf si vous vous déconnectez explicitement ou modifiez votre mot de passe, votre session restera active. Les sessions n'expirent qu'après 60 jours d'inactivité.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_HelpText">
+    <value>Gérez votre session. Après 60 jours d'inactivités, la session arrivera à expiration.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Title">
+    <value>Gestionnaire de sessions</value>
+  </data>
+  <data name="Main_Account_SignOut_Description">
+    <value>Déconnectez-vous et désactivez la synchronisation. Vous pouvez vous reconnecter avec le même compte pour reprendre la synchronisation.</value>
+  </data>
+  <data name="Main_Account_SignOut_HelpText">
+    <value>Se déconnecter de Proton Drive</value>
+  </data>
+  <data name="Main_Account_SignOut_Title">
+    <value>_Se déconnecter</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Storage_Button_UpgradePlan">
+    <value>Passer à l'abonnement supérieur</value>
+  </data>
+  <data name="Main_Account_Storage_Info_EnsureMoreStorage">
+    <value>Pour garantir une synchronisation sans interruption, nous vous invitons à augmenter dès à présent l'espace de stockage.</value>
+  </data>
+  <data name="Main_Account_Storage_Info_UsedSpaceFormat">
+    <value>Espace de stockage total utilisé : {0} sur {1}</value>
+  </data>
+  <data name="Main_Account_Storage_Title">
+    <value>Capacité de stockage</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageExceeded">
+    <value>La synchronisation a été interrompue. Vous avez atteint la limite de l'espace de stockage de votre compte.</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageLimit">
+    <value>Vous allez atteindre la limite de l'espace de stockage.</value>
+  </data>
+  <data name="Main_Account_Title">
+    <value>Compte</value>
+  </data>
+  <data name="Main_Activity_Button_PauseSync">
+    <value>_Suspendre la synchronisation</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Rename">
+    <value>Renommer</value>
+  </data>
+  <data name="Main_Activity_Button_Rename_Tooltip">
+    <value>Modifiez le nom de cet élément pour résoudre le problème de synchronisation.</value>
+  </data>
+  <data name="Main_Activity_Button_ResumeSync">
+    <value>_Reprendre la synchronisation</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Retry">
+    <value>Réessayer de synchroniser</value>
+  </data>
+  <data name="Main_Activity_Column_Folder">
+    <value>Dossier</value>
+  </data>
+  <data name="Main_Activity_Column_Name">
+    <value>Nom</value>
+  </data>
+  <data name="Main_Activity_Column_Progress_Tooltip_Finalizing">
+    <value>Finalisation...</value>
+  </data>
+  <data name="Main_Activity_Column_Size">
+    <value>Taille</value>
+  </data>
+  <data name="Main_Activity_Column_Status">
+    <value>État</value>
+  </data>
+  <data name="Main_Activity_Column_Synced">
+    <value>Synchronisé</value>
+  </data>
+  <data name="Main_Activity_Column_Type">
+    <value>Type</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Button_ShowMore">
+    <value>Afficher plus d'informations</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Description">
+    <value>Cliquez pour en savoir plus sur ces problèmes.</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_HelpText">
+    <value>Afficher toutes les erreurs dans une nouvelle section</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_MultipleItemsFormat">
+    <value>Il existe {0} problèmes.</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_SingleItem">
+    <value>Il existe 1 problème.</value>
+  </data>
+  <data name="Main_Activity_Errors_Title">
+    <value>Problèmes de synchronisation ({0})</value>
+  </data>
+  <data name="Main_Activity_Errors_Title_Tooltip">
+    <value>Retour aux activités</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Description">
+    <value>Les informations de synchronisation des dossiers et des fichiers s'afficheront ici.</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_HelpText">
+    <value>Vos fichiers sont à jour.</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Title">
+    <value>Vos fichiers sont à jour.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line1">
+    <value>Ce processus peut prendre quelques minutes.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line2">
+    <value>Vous pouvez réduire ou fermer cette fenêtre en toute sécurité.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_HelpText">
+    <value>Initialisation de la synchronisation</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Title">
+    <value>Configuration de votre drive...</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Description">
+    <value>Cliquez sur « Reprendre la synchronisation » pour activer la synchronisation.</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_HelpText">
+    <value>La synchronisation est en pause.</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Title">
+    <value>La synchronisation est en pause.</value>
+  </data>
+  <data name="Main_Activity_Rename_CurrentName_Label">
+    <value>Nom actuel :</value>
+  </data>
+  <data name="Main_Activity_Rename_Description">
+    <value>Le nom de cet élément comprend des caractères non pris en charge par Windows.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_AlreadyExists">
+    <value>Le nom est déjà utilisé.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_ContainsInvalidCharacter">
+    <value>Le nom contient des caractères non valides.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Failed">
+    <value>Une erreur s'est produite.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Required">
+    <value>Veuillez indiquer un nom.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Label">
+    <value>Nouveau nom :</value>
+  </data>
+  <data name="Main_Activity_Rename_Status_Value_Renaming">
+    <value>Changement de nom...</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion">
+    <value>Veuillez retirer les éléments suivants pour continuer la synchronisation :</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion_CharacterList">
+    <value>/ : * ? &gt; &lt; " |</value>
+  </data>
+  <data name="Main_Activity_Rename_Title">
+    <value>Modification du nom de l'élément</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUp">
+    <value>Configuration...</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUpFormat">
+    <value>Configuration... (préparation de {0} éléments à synchroniser)</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SyncPausedUntilFormat">
+    <value>(jusqu'au {0})</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>il y a quelques instants</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
+    <value>il y a {0} jours</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_HoursAgoFormat">
+    <value>Il y a {0} heures</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_MinutesAgoFormat">
+    <value>Il y a {0} minutes</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneDayAgo">
+    <value>il y a un jour</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneHourAgo">
+    <value>il y a une heure</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneMinuteAgo">
+    <value>il y a une minute</value>
+  </data>
+  <data name="Main_Activity_Title">
+    <value>Activité</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Les dossiers synchronisés depuis vos ordinateurs apparaîtront dans la section « Ordinateurs » de vos applications Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Button_Rename">
+    <value>_Renommer</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Device_HelpText">
+    <value>Modifier le nom de votre appareil</value>
+  </data>
+  <data name="Main_MyComputer_Device_Label">
+    <value>Cet appareil</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Cancel_HelpText">
+    <value>Annuler le changement de nom de l'appareil</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Save_HelpText">
+    <value>Enregistrer le nom de l'appareil</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Error_Tooltip">
+    <value>Le nom de l'appareil n'est pas valide : le nouveau nom ne peut être vide et ne doit pas dépasser 255 caractères.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_HelpText">
+    <value>Modifier le nom de votre appareil</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Button_AddMore">
+    <value>_Ajouter plus de dossiers</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Description">
+    <value>L'ajout d'un dossier sauvegardera toutes ses données dans Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Info_Saving">
+    <value>Enregistrement des dossiers...</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Title">
+    <value>Ajouter des dossiers</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludedByAnAlreadySyncedFolderFormat">
+    <value>{0} dossiers ne peuvent pas être synchronisés car ils sont inclus dans un dossier déjà synchronisé avec Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludesAnAlreadySyncedFolderFormat">
+    <value>{0} dossiers ne peuvent pas être synchronisé car ils ont un sous-dossier déjà synchronisé avec Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFileSystemAccessFailedFormat">
+    <value>{0} dossiers ne sont pas accessibles.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFolderDoesNotExistFormat">
+    <value>{0} dossiers sont introuvables ou ne peuvent être ouverts.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalVolumeNotSupportedFormat">
+    <value>{0} dossiers ne peuvent pas être synchronisé car ils se trouvent sur un lecteur non pris en charge</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NetworkFolderNotSupportedFormat">
+    <value>{0} dossiers ne peuvent pas être synchronisés car les dossiers réseau ne sont pas pris en charge.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat">
+    <value>{0} dossiers ne peuvent pas être synchronisés car il s'agit de dossiers système.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
+    <value>Impossible d'ajouter {0} dossiers</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder">
+    <value>Impossible d'ajouter 1 dossier</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add">
+    <value>_Ajouter des dossiers</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst">
+    <value>Ajoutez vos premiers dossiers à synchroniser</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddNext">
+    <value>Ajouter un nouveau dossier à synchroniser</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_Name">
+    <value>Nom</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization">
+    <value>Optimiser l'espace de stockage</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization_Info_Tooltip">
+    <value>Optimisez le stockage en activant la synchronisation à la demande.
+Les fichiers n'occupent l'espace local que lorsque vous les ouvrez ou
+choisissez de les conserver en permanence sur cet appareil. Vous pouvez
+désactiver l'optimisation du stockage à tout moment.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Description">
+    <value>Ajoutez un dossier pour démarrer la synchronisation sécurisée de fichiers vers le cloud.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Title">
+    <value>Synchronisez vos fichiers en toute sécurité</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Label">
+    <value>Synchronisation de dossiers depuis cet appareil</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_OpenFolder">
+    <value>_Ouvrir le dossier</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder">
+    <value>_Retirer le dossier</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm">
+    <value>Retirer le dossier</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_1">
+    <value>Tout fichier ajouté au dossier « {0} » ne sera plus synchronisé et ce dossier sera mis à la corbeille dans Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_2">
+    <value>Les fichiers existants resteront sur votre ordinateur.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_1">
+    <value>Certains fichiers dans le dossier « {0} » pourraient être stockés uniquement dans le cloud. Le retrait de ce dossier arrêtera la synchronisation et le déplacera vers la corbeille de Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_2">
+    <value>Pour conserver une copie locale de tous les fichiers sur votre ordinateur, commencez par désactiver l'option Optimiser le stockage pour ce dossier. Si l'optimisation du stockage est déjà désactivée, activez-la puis désactivez-la à nouveau. Attendez que le téléchargement soit terminé (vous pouvez vérifier l'état dans l'explorateur de fichiers), puis retirez le dossier de la synchronisation sous la section Mon ordinateur.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_1">
+    <value>Les fichiers déjà téléchargés resteront sur votre appareil.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_2">
+    <value>Les fichiers stockés uniquement sur le cloud seront retirés de votre appareil.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Title">
+    <value>Retirer le dossier ?</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_1">
+    <value>Les fichiers dans le dossier « {0} » seront désormais toujours disponibles sur votre appareil. Cela peut prendre quelques minutes avant que tous les fichiers ne soient téléchargés (vous pouvez vérifier l’état dans l’explorateur de fichiers).</value>
+    <comment>Placeholder {0}: folder name</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_2">
+    <value>Vous pouvez toujours libérer manuellement de l'espace pour chaque fichier dans ses paramètres.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Title">
+    <value>Tous les fichiers sont disponibles en permanence sur cet appareil.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1">
+    <value>Le dossier « {0} » ne peut pas utiliser la synchronisation à la demande pour optimiser le stockage car {1}.</value>
+    <comment>Placeholder {0}: folder name. Placeholder {1}: the reason text, one of resources with "StorageOptimizationErrorCode_Value_..." key.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_2">
+    <value>Vos fichiers seront toujours synchronisés avec Proton Drive et resteront disponibles sur votre ordinateur et dans le cloud.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Title">
+    <value>Optimisation du stockage indisponible</value>
+  </data>
+  <data name="Main_MyComputer_Link_LearnMore">
+    <value>En savoir plus</value>
+  </data>
+  <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
+    <value>Annuler l'intégration de mon ordinateur</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Button_Next">
+    <value>_Suivant</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Description">
+    <value>Activez la synchronisation à la demande pour économiser de l'espace sur le disque dur. Les fichiers n'occupent l'espace de stockage local que lorsque vous les ouvrez ou les marquez comme « Toujours conserver sur cet appareil ».</value>
+    <comment>"Always keep on this device" is the exact text displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Title">
+    <value>Optimiser l'espace de stockage</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted">
+    <value>_Commencer</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1">
+    <value>Cliquez avec le bouton droit sur n'importe quel fichier ou dossier synchronisé à l'aide de Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2">
+    <value>Choisissez « Toujours conserver sur cet appareil » pour le stocker hors ligne ou « Libérer de l'espace » pour le conserver uniquement dans le cloud.</value>
+    <comment>"Always keep on this device" and "Free up space" are the exact texts displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Title">
+    <value>Gestion du stockage</value>
+  </data>
+  <data name="Main_MyComputer_Title">
+    <value>Mon ordinateur</value>
+  </data>
+  <data name="Main_Photos_Folders_Error_ImportFailed">
+    <value>L'importation n'a pas abouti. Essayez de supprimer le dossier et de le réimporter. Si le problème persiste, veuillez contacter le support</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportedItemsFormat">
+    <value>Importation de {0} sur {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportingItemsFormat">
+    <value>Importation en cours... {0} sur {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_Items_Label">
+    <value>éléments</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Gérer les _albums</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
+    <value>_Ouvrir le dossier</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Remove">
+    <value>_Supprimer</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Retry">
+    <value>_Réessayez</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_NoItemsFound_Label">
+    <value>Aucune photo/vidéo</value>
+  </data>
+  <data name="Main_Photos_Folders_WaitingToImport">
+    <value>En attente d'importation...</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Description">
+    <value>Guide étape par étape pour exporter vos photos depuis Google Photos</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Title">
+    <value>1. Exportez vos photos depuis Google Photos</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Description">
+    <value>Il doit s'agir du dossier décompressé contenant vos photos et vidéos exportées.</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Title">
+    <value>2. Importez le dossier Google Photos</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_SelectFolder_Button">
+    <value>Sélectionner le dossier</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Title">
+    <value>Importer depuis Google Photos</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Description">
+    <value>Importer un dossier local depuis votre ordinateur</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Title">
+    <value>Importer un dossier</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Description">
+    <value>Importer les photos de Google depuis Google Takeout</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Title">
+    <value>Importer depuis Google Photos</value>
+  </data>
+  <data name="Main_Photos_Import_Link_HowImportWorks">
+    <value>Comment fonctionne l'importation des photos ?</value>
+  </data>
+  <data name="Main_Photos_Import_Title">
+    <value>Importer des photos</value>
+  </data>
+  <data name="Main_Photos_Info_Duplicates">
+    <value>Nous importerons seulement ce qu'il y a de nouveau. Les doublons sont ignorés automatiquement.</value>
+  </data>
+  <data name="Main_Photos_Title">
+    <value>Photos</value>
+  </data>
+  <data name="Main_Photos_Warning_UploadUnavailable">
+    <value>L'envoi des photos est temporairement indisponible</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Button_Change">
+    <value>_Modifier</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_HelpText">
+    <value>Modifiez le dossier principal de Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Title">
+    <value>Emplacement</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Bénéficiez d'un accès en avant-première et aidez-nous à tester les nouvelles versions de Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Accès à la version bêta</value>
+  </data>
+  <data name="Main_Settings_Label_AccountRootFolder">
+    <value>Votre dossier Proton Drive :</value>
+  </data>
+  <data name="Main_Settings_Label_General">
+    <value>Général</value>
+  </data>
+  <data name="Main_Settings_Language_Button_Restart">
+    <value>Redémarrer maintenant</value>
+  </data>
+  <data name="Main_Settings_Language_Message_PleaseRestart">
+    <value>Veuillez redémarrer l'application pour appliquer la modification de la langue.</value>
+  </data>
+  <data name="Main_Settings_Language_Title">
+    <value>Langue</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_HelpText">
+    <value>Ouvrir Proton Drive lors du démarrage de Windows</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_Title">
+    <value>Ouvrir au démarrage</value>
+  </data>
+  <data name="Main_Settings_Title">
+    <value>Paramètres</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Name">
+    <value>Nom</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions">
+    <value>Autorisations</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Tooltip">
+    <value>Le propriétaire vous a accordé les autorisations nécessaires.</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Editor">
+    <value>Éditeur</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Viewer">
+    <value>Lecteur</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedBy">
+    <value>Partagé par</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedOn">
+    <value>Partagé le</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync">
+    <value>Synchroniser</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync_Info_Tooltip">
+    <value>Activez cette option pour rendre le fichier ou le dossier partagé accessible depuis votre ordinateur.
+Le contenu des fichiers sera téléchargé à la demande uniquement.</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad">
+    <value>Les données n'ont pas pu être chargées.</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Plural">
+    <value>{0} éléments n'ont pas pu être chargés.</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Singular">
+    <value>{0} élément n'a pas pu être chargé.</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Description">
+    <value>Les dossiers et fichiers partagés avec vous s'afficheront ici.</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Title">
+    <value>Rien n'a été partagé pour le moment.</value>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_OpenFolder">
+    <value>_Ouvrir le dossier</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_RemoveMe">
+    <value>_Me retirer</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_Close_HelpText">
+    <value>Passer la phase d'intégration des éléments partagés avec moi</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_GetStarted">
+    <value>_Commencer</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Description">
+    <value>Synchronisez facilement les fichiers et les dossiers partagés avec vous sur votre ordinateur.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1">
+    <value>Sélectionnez les dossiers ou fichiers à synchroniser.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2">
+    <value>Accédez aux fichiers partagés de votre dossier Proton Drive.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3">
+    <value>Modifiez-les, importez-en de nouveaux et accédez-y hors ligne.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3_Label">
+    <value>3.</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Plural">
+    <value>{0} sur {1} éléments synchronisés</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Singular">
+    <value>{0} sur {1} élément synchronisé</value>
+  </data>
+  <data name="Main_SharedWithMe_Title">
+    <value>Partagé avec moi</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Advice">
+    <value>Pour ajouter des éléments, veuillez arrêter la synchronisation de certains éléments anciens.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Limit">
+    <value>Vous ne pouvez synchroniser que {0} éléments à la fois.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_SharingUnavailable">
+    <value>Le partage est temporairement indisponible.</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About">
+    <value>À propos</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About_HelpText">
+    <value>Élément de menu : À propos</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account">
+    <value>Compte</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account_HelpText">
+    <value>Élément de menu : Compte</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity">
+    <value>Activité</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity_HelpText">
+    <value>Élément de menu : Activités</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help">
+    <value>Aide</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help_HelpText">
+    <value>Élément de menu : Aide</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer">
+    <value>Mon ordinateur</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer_HelpText">
+    <value>Élément de menu : Mon ordinateur</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos">
+    <value>Photos</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_PhotosImport">
+    <value>Importation de photos</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos_HelpText">
+    <value>Élément de menu : Photos</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings">
+    <value>Paramètres</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings_HelpText">
+    <value>Élément de menu : Paramètres</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe">
+    <value>Partagé avec moi</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe_HelpText">
+    <value>Élément de menu : Partagé avec moi</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceededQuota_Description">
+    <value>La synchronisation a été interrompue : vous avez atteint la limite de l'espace de stockage de votre compte.</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceedingQuota_Description">
+    <value>Vous allez atteindre la limite de l'espace de stockage.</value>
+  </data>
+  <data name="Main_Sidebar_Notification_GetStarted_Description">
+    <value>Démarrer</value>
+  </data>
+  <data name="Main_Sidebar_Notification_NewVersion_Description">
+    <value>Une nouvelle version de Proton Drive est disponible.</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SharingUnavailable_Description">
+    <value>Le partage est temporairement indisponible.</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SyncFoldersFailure_Description">
+    <value>Un dossier n'a pas été synchronisé.</value>
+  </data>
+  <data name="Main_Sidebar_Notification_UpdateRequired_Description">
+    <value>Pour continuer à utiliser Proton Drive, vous devrez le mettre à jour vers la dernière version.</value>
+  </data>
+  <data name="Main_Sidebar_Offer_Button_GetDeal">
+    <value>_Profiter de l'offre</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Sidebar_Storage_Button_GetMoreStorage">
+    <value>Obtenir plus d'espace de stockage</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_StorageNotAvailable">
+    <value>Les informations sur l'espace de stockage ne sont pas disponibles.</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_UsedSpaceFormat">
+    <value>Utilisé : {0} sur {1}</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Title">
+    <value>Espace de stockage</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Tooltip">
+    <value>Gérer l'espace de stockage</value>
+  </data>
+  <data name="Main_Window_Title">
+    <value>Proton Drive</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>Ce dossier contient un sous-dossier synchronisé à la demande. Configurez un nouveau dossier de synchronisation.</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>Ce dossier est déjà synchronisé à la demande. Configurez un nouveau dossier de synchronisation.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveAccessFailed">
+    <value>La connexion à Proton Drive n'a pas abouti. Veuillez vérifier votre connexion internet.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDiverged">
+    <value>Le dossier de Proton Drive a été déplacé. Veuillez configurer un nouveau dossier de synchronisation.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDoesNotExist">
+    <value>L'accès à vos fichiers Proton Drive est impossible, probablement à cause de la suppression d'un dossier sur un appareil. Veuillez configurer un nouveau dossier de synchronisation.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveHostDeviceDiverged">
+    <value>L'accès à vos fichiers Proton Drive est impossible, probablement à cause d'une suppression d'un appareil. Veuillez configurer un nouveau dossier de synchronisation.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveShareDiverged">
+    <value>L'accès à vos fichiers Proton Drive est impossible, probablement à cause d'une réinitialisation de votre mot de passe. Veuillez configurer un nouveau dossier de synchronisation.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveVolumeDiverged">
+    <value>L'accès à vos fichiers Proton Drive est impossible, probablement à cause d'une réinitialisation de votre mot de passe. Veuillez configurer un nouveau dossier de synchronisation.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientDeviceQuota">
+    <value>Le nombre maximal d'ordinateurs synchronisés a été atteint. Supprimez les ordinateurs inutiles de Proton Drive sur le web.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientLocalFreeSpace">
+    <value>Libérez de l'espace ou décochez la case.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalAndRemoteFoldersNotEmpty">
+    <value>La configuration d'un dossier de synchronisation nécessite un dossier Windows vide ou un dossier web Proton Drive. Veuillez en effacer un et réessayer.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFileSystemAccessFailed">
+    <value>L'accès au dossier de synchronisation local ou sa création n'a pas abouti. Nous allons réessayer.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDiverged">
+    <value>Le dossier de synchronisation a été remplacé par un nouveau dossier dans le chemin. Restaurez le dossier de synchronisation précédent ou configurez un nouveau dossier de synchronisation.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDoesNotExist">
+    <value>Le dossier de synchronisation est introuvable. Il a peut-être été supprimé, renommé ou déplacé. Restaurez-le ou configurez un nouveau dossier de synchronisation.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludedByAnAlreadySyncedFolder">
+    <value>Le dossier sélectionné est déjà inclus dans un autre dossier synchronisé</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludesAnAlreadySyncedFolder">
+    <value>Le dossier sélectionné contient un dossier déjà synchronisé.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNonSyncable">
+    <value>Le dossier local ne peut pas être synchronisé. Veuillez configurer un nouveau dossier de synchronisation.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNotEmpty">
+    <value>Le dossier local doit être vide avant de configurer la synchronisation.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeDiverged">
+    <value>Le numéro de série du volume local a été modifié. Veuillez configurer un nouveau dossier de synchronisation.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeNotSupported">
+    <value>Ce type de lecteur local n'est pas pris en charge. Essayez de configurer le dossier de synchronisation sur un autre lecteur local.</value>
+  </data>
+  <data name="MappingErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootMissingSyncRootFlag">
+    <value>Le dossier de synchronisation n'est pas valide. Veuillez créer un nouveau dossier de synchronisation.</value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootNotRegistered">
+    <value>L'enregistrement du dossier de synchronisation a été annulé de façon inattendue. Configurez un nouveau dossier de synchronisation.</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotoImportFailed">
+    <value>L'importation de la photo n'a pas abouti.</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosDisabled">
+    <value>Proton Photos indisponible</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosNotReady">
+    <value>La fonctionnalité Photos n'est pas prête.</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemDoesNotExist">
+    <value>L'accès au fichier ou au dossier partagé sur Proton Drive est impossible. Vérifiez s'il est toujours partagé avec vous.</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemPermissionsDiverged">
+    <value>Les autorisations du fichier ou du dossier partagé Proton Drive ont changé. Désactivez et réactivez sa synchronisation pour résoudre le problème.</value>
+  </data>
+  <data name="MappingErrorCode_Value_SharingDisabled">
+    <value>Le partage est temporairement indisponible.</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Failed">
+    <value>La configuration des dossiers de synchronisation n'a pas abouti.</value>
+  </data>
+  <data name="MappingSetupStatus_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingSetupStatus_Value_PartiallySucceeded">
+    <value>La configuration de certains dossiers de synchronisation n'a pas abouti.</value>
+  </data>
+  <data name="MappingSetupStatus_Value_SettingUp">
+    <value>Configuration des dossiers de synchronisation...</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Succeeded">
+    <value>OK</value>
+  </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Ajouter de l'espace de stockage</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>À court d'espace de stockage</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Mettez à niveau pour obtenir davantage d'espace de stockage et importer vos fichiers.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
+    <value>_Modifier</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder_HelpText">
+    <value>Modifiez le dossier principal de Proton Drive.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Error_InvalidSyncFolder">
+    <value>Le dossier de synchronisation n'est pas valide.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Description">
+    <value>Accédez à Mes fichiers et d'autres appareils synchronisés ici.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Location">
+    <value>Emplacement</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Title">
+    <value>Votre dossier Proton Drive</value>
+  </data>
+  <data name="Onboarding_Button_Continue">
+    <value>_Continuer</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_Button_FinishSetup">
+    <value>_Terminer la configuration</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders">
+    <value>_Ajouter plus de dossiers</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText">
+    <value>Ajouter un autre dossier à synchroniser</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Label_Description">
+    <value>Les dossiers sélectionnés seront synchronisés avec Proton Drive. Les fichiers seront sauvegardés et disponibles sur vos autres appareils.</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Title">
+    <value>Sauvegardez vos dossiers</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Obtenir Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Obtenir _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Obtenir _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_NotNow">
+    <value>_Plus tard</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_Upgrade">
+    <value>_Changer d'abonnement</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Mail">
+    <value>Mail : boite mail sécurisée et personnalisé</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>mois</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Le plus populaire</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Jusqu'à {0} utilisateurs</value>
+    <comment>Only for number greater than 1.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
+    <value>Pass : gestionnaire de mots de passe chiffré</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Fonctionnalités premium incluses</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Recommended">
+    <value>Recommandé</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Récupérez les versions précédentes de vos fichiers</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>espace de stockage</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Vpn">
+    <value>VPN : ultra rapide et privé</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Title">
+    <value>Obtenir plus d'espace de stockage</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
+    <value>L'importation n'a pas abouti. L'album n'existe pas.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>L'importation n'a pas abouti. Le dossier n'existe pas.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
+    <value>L'importation n'a pas abouti. Le nombre maximum d'albums a été atteint.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfPhotosPerAlbumReached">
+    <value>L'importation n'a pas abouti. Le nombre maximal de photos par album a été atteint.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_Unknown">
+    <value>L'importation n'a pas abouti. Veuillez réessayer.</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Failed">
+    <value>L'importation n'a pas abouti.</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Importing">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Interrupted">
+    <value>L'importation a été interrompue</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_NotStarted">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_SetupFailed">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Succeeded">
+    <value>L'Importation a été réussie</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_ValidationFailed">
+    <value></value>
+  </data>
+  <data name="ReleaseNoteType_Value_Feature">
+    <value>Nouvelles fonctionnalités</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Fix">
+    <value>Corrections de bugs</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Improvement">
+    <value>Améliorations</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Fido2">
+    <value>Clé de sécurité</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_NotSupported">
+    <value></value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Totp">
+    <value>Application d'authentification</value>
+  </data>
+  <data name="SessionStatus_Value_Ending">
+    <value>Déconnexion...</value>
+  </data>
+  <data name="SessionStatus_Value_Failed">
+    <value>La connexion n'a pas abouti. Vérifiez votre connexion internet.</value>
+  </data>
+  <data name="SessionStatus_Value_NotStarted">
+    <value>Déconnecté</value>
+  </data>
+  <data name="SessionStatus_Value_SigningIn">
+    <value>Connexion...</value>
+  </data>
+  <data name="SessionStatus_Value_Started">
+    <value>Connecté</value>
+  </data>
+  <data name="SessionStatus_Value_Starting">
+    <value>Connexion...</value>
+  </data>
+  <data name="SignIn_Button_Authenticate">
+    <value>S'_authentifier</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_Back">
+    <value>_Retour</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignIn">
+    <value>_Connexion</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignInAsAnotherUser">
+    <value>Ou connectez-vous avec un autre compte utilisateur.</value>
+  </data>
+  <data name="SignIn_Button_Unlock">
+    <value>_Déverrouiller</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_CreateAccount">
+    <value>_Créer un compte</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_ForgotPassword">
+    <value>_Mot de passe oublié ?</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_LearnMore">
+    <value>En savoir plus</value>
+  </data>
+  <data name="SignIn_Message_SigningIn">
+    <value>Connexion à votre compte</value>
+  </data>
+  <data name="SignIn_Text_2FACode">
+    <value>Saisissez le code de votre application d'authentification.</value>
+  </data>
+  <data name="SignIn_Text_No2FAMethodFound">
+    <value>Aucune méthode d'authentification à deux facteurs n'a été trouvée.</value>
+  </data>
+  <data name="SignIn_Text_Password">
+    <value>_Mot de passe</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_SecondPassword">
+    <value>Second mot de passe</value>
+  </data>
+  <data name="SignIn_Text_SecurityKey">
+    <value>Insérez une clé de sécurité associée à votre Proton Account.</value>
+  </data>
+  <data name="SignIn_Text_SecurityKeyNotSupported">
+    <value>Votre système ne prend pas en charge les clés de sécurité.</value>
+  </data>
+  <data name="SignIn_Text_Username">
+    <value>Adresse e-mail ou nom d'_utilisateur</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_Username_HelpText">
+    <value>Nom d'utilisateur</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_PasswordRequired">
+    <value>Le mot de passe est nécessaire.</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SessionExpired">
+    <value>Votre session a expiré. Veuillez vous connecter pour continuer.</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SomethingWentWrong">
+    <value>Une erreur s'est produite.</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_UsernameRequired">
+    <value>Le nom d’utilisateur est nécessaire.</value>
+  </data>
+  <data name="SignIn_Title_2FA">
+    <value>Authentification à deux facteurs</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>il contient un sous-dossier synchronisé à la demande par {0}.</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>il est déjà synchronisé à la demande par {0}.</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_NetworkVolumeNotSupported">
+    <value>les lecteurs réseau ne sont pas pris en charge.</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_RemovableVolumeNotSupported">
+    <value>les lecteurs amovibles ne sont pas pris en charge.</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_Unknown">
+    <value>l'activation de la synchronisation à la demande n'a pas abouti.</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
+    <value>le type de lecteur local n'est pas pris en charge.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
+    <value>L’espace libre sur cet appareil est insuffisant.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludedByAnAlreadySyncedFolder">
+    <value>Ce dossier fait partie d'un dossier déjà synchronisé.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludesAnAlreadySyncedFolder">
+    <value>Le dossier contient déjà un dossier synchronisé.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_InsufficientLocalFreeSpace">
+    <value>Libérez de l'espace ou décochez la case.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFileSystemAccessFailed">
+    <value>Le dossier n'est pas accessible.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderDoesNotExist">
+    <value>Ce dossier est introuvable.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderNotEmpty">
+    <value>Le dossier doit être vide avant de configurer la synchronisation.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalVolumeNotSupported">
+    <value>Ce type de drive n'est pris en charge.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NetworkFolderNotSupported">
+    <value>La synchronisation des dossiers depuis un drive sur un réseau n'est pas prise en charge.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NonSyncableFolder">
+    <value>Ce dossier ne peut pas être synchronisé.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_Succeeded">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_DetectingUpdates">
+    <value>Récupération des mises à jour...</value>
+  </data>
+  <data name="SyncStatus_Value_Failed">
+    <value>Erreur</value>
+  </data>
+  <data name="SyncStatus_Value_Idle">
+    <value>Synchronisé</value>
+  </data>
+  <data name="SyncStatus_Value_Initializing">
+    <value>Configuration...</value>
+  </data>
+  <data name="SyncStatus_Value_Offline">
+    <value>Hors ligne</value>
+  </data>
+  <data name="SyncStatus_Value_Paused">
+    <value>Suspendu</value>
+  </data>
+  <data name="SyncStatus_Value_Synchronizing">
+    <value>Synchronisation...</value>
+  </data>
+  <data name="SyncStatus_Value_Terminated">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_Terminating">
+    <value>Finalisation...</value>
+  </data>
+  <data name="SystemTray_Menu_Item_Exit">
+    <value>_Quitter</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenInBrowser">
+    <value>Ouvrir dans le _navigateur</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenLocalFolder">
+    <value>Ouvrir le _dossier local</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenProtonDrive">
+    <value>_Ouvrir Proton Drive</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSync">
+    <value>_Mettre en pause la synchronisation</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
+    <value>Mettre en pause pour 1 heure</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor4Hours">
+    <value>Mettre en pause pour 4 heures</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor8Hours">
+    <value>Mettre en pause pour 8 heures</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncIndefinitely">
+    <value>Mettre en pause indéfiniment</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow">
+    <value>Mettre en pause jusqu'à demain (8h)</value>
+  </data>
+  <data name="SystemTray_Menu_Item_ResumeSync">
+    <value>_Reprendre la synchronisation</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_SignIn">
+    <value>_Connexion</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="ToggleSwitch_Off">
+    <value>Désactivé</value>
+  </data>
+  <data name="ToggleSwitch_On">
+    <value>Activé</value>
+  </data>
+</root>

@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>$(DefaultTargetFramework)-windows10.0.17763.0</TargetFramework>
+    <WindowsSdkPackageVersion>10.0.17763.56</WindowsSdkPackageVersion>
+    <UseWPF>true</UseWPF>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Proton.Drive.Shared\Proton.Drive.Shared.csproj" />
+    <ProjectReference Include="..\Proton.Drive.Sdk.Sync.Shared\Proton.Drive.Sdk.Sync.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MetadataExtractor" />
+    <PackageReference Include="System.Linq.Async" />
+    <PackageReference Include="Vanara.PInvoke.CldApi" />
+    <PackageReference Include="Vanara.PInvoke.Shell32" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+    <InternalsVisibleTo Include="Proton.Drive.Sdk.Sync.Adapter.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Add a custom global namespaces for the entire project -->
+    <Using Include="System.IO" />
+  </ItemGroup>
+
+</Project>

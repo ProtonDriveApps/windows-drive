@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>$(DefaultTargetFramework)</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNext.Threading" />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="morelinq" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+    <InternalsVisibleTo Include="Proton.Drive.App.Tests" />
+    <InternalsVisibleTo Include="Proton.Drive.App.Windows.Tests" />
+    <InternalsVisibleTo Include="Proton.Drive.Sdk.Sync.Adapter.Tests" />
+    <InternalsVisibleTo Include="Proton.Drive.Sdk.Sync.Agent.Tests" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,1771 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Main_Window_Title" xml:space="preserve">
+    <value>Proton Drive</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity" xml:space="preserve">
+    <value>Activity</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity_HelpText" xml:space="preserve">
+    <value>Menu item: Activity</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos" xml:space="preserve">
+    <value>Photos</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_PhotosImport" xml:space="preserve">
+    <value>Photos import</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos_HelpText" xml:space="preserve">
+    <value>Menu item: Photos</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe" xml:space="preserve">
+    <value>Shared with me</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe_HelpText" xml:space="preserve">
+    <value>Menu item: Shared with me</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings_HelpText" xml:space="preserve">
+    <value>Menu item: Settings</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer" xml:space="preserve">
+    <value>My computer</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer_HelpText" xml:space="preserve">
+    <value>Menu item: My computer</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account_HelpText" xml:space="preserve">
+    <value>Menu item: Account</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About_HelpText" xml:space="preserve">
+    <value>Menu item: About</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help_HelpText" xml:space="preserve">
+    <value>Menu item: Help</value>
+  </data>
+  <data name="Main_Sidebar_Notification_UpdateRequired_Description" xml:space="preserve">
+    <value>To keep using Proton Drive, you'll need to update to the latest version</value>
+  </data>
+  <data name="Main_Sidebar_Notification_NewVersion_Description" xml:space="preserve">
+    <value>A new version of Proton Drive is available!</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SyncFoldersFailure_Description" xml:space="preserve">
+    <value>A folder failed to sync</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SharingUnavailable_Description" xml:space="preserve">
+    <value>Sharing is temporarily unavailable</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceededQuota_Description" xml:space="preserve">
+    <value>Sync stopped: your account has exceeded the storage capacity</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceedingQuota_Description" xml:space="preserve">
+    <value>You are about to reach your storage limit</value>
+  </data>
+  <data name="Main_Sidebar_Notification_GetStarted_Description" xml:space="preserve">
+    <value>Get started</value>
+  </data>
+  <data name="Main_Activity_Title" xml:space="preserve">
+    <value>Activity</value>
+  </data>
+  <data name="Main_Activity_Errors_Title" xml:space="preserve">
+    <value>Sync issues ({0})</value>
+  </data>
+  <data name="Main_Activity_Button_ResumeSync" xml:space="preserve">
+    <value>_Resume sync</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_PauseSync" xml:space="preserve">
+    <value>_Pause sync</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Status_Value_SyncPausedUntilFormat" xml:space="preserve">
+    <value>(until {0})</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUp" xml:space="preserve">
+    <value>Setting up...</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUpFormat" xml:space="preserve">
+    <value>Setting up... ({0} items prepared for sync)</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Title" xml:space="preserve">
+    <value>Sync is paused</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_HelpText" xml:space="preserve">
+    <value>Sync is paused</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Description" xml:space="preserve">
+    <value>Click "Resume sync" to enable the synchronization</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Title" xml:space="preserve">
+    <value>Your files are up to date</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_HelpText" xml:space="preserve">
+    <value>Your files are up to date</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Description" xml:space="preserve">
+    <value>Sync information about files and folders will show up here</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Title" xml:space="preserve">
+    <value>Setting up your drive...</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_HelpText" xml:space="preserve">
+    <value>Synchronization is getting initialized</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_HelpText" xml:space="preserve">
+    <value>Display all the errors in a new section</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_MultipleItemsFormat" xml:space="preserve">
+    <value>There are {0} issues</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_SingleItem" xml:space="preserve">
+    <value>There is 1 issue</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Description" xml:space="preserve">
+    <value>Click to learn more about these issues</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Button_ShowMore" xml:space="preserve">
+    <value>Show more details</value>
+  </data>
+  <data name="Main_Activity_Column_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Main_Activity_Column_Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="Main_Activity_Column_Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Main_Activity_Column_Folder" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="Main_Activity_Column_Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Main_Activity_Column_Synced" xml:space="preserve">
+    <value>Synced</value>
+  </data>
+  <data name="Main_Activity_Button_Retry" xml:space="preserve">
+    <value>Retry syncing</value>
+  </data>
+  <data name="Main_Activity_Button_Rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="Main_Activity_Button_Rename_Tooltip" xml:space="preserve">
+    <value>Rename this item to fix the synchronization issue</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo" xml:space="preserve">
+    <value>a moment ago</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneMinuteAgo" xml:space="preserve">
+    <value>a minute ago</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_MinutesAgoFormat" xml:space="preserve">
+    <value>{0} minutes ago</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneHourAgo" xml:space="preserve">
+    <value>an hour ago</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_HoursAgoFormat" xml:space="preserve">
+    <value>{0} hours ago</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneDayAgo" xml:space="preserve">
+    <value>a day ago</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_DaysAgoFormat" xml:space="preserve">
+    <value>{0} days ago</value>
+  </data>
+  <data name="Main_Activity_Errors_Title_Tooltip" xml:space="preserve">
+    <value>Back to activity</value>
+  </data>
+  <data name="Main_SharedWithMe_Title" xml:space="preserve">
+    <value>Shared with me</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_Close_HelpText" xml:space="preserve">
+    <value>Dismiss shared with me onboarding</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad" xml:space="preserve">
+    <value>Failed to load data</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Title" xml:space="preserve">
+    <value>Nothing shared yet</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Description" xml:space="preserve">
+    <value>Files and folders that are shared with you will appear here</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Limit" xml:space="preserve">
+    <value>You can only sync {0} items at once.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Advice" xml:space="preserve">
+    <value>To add new items, please stop syncing some of the old ones.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_SharingUnavailable" xml:space="preserve">
+    <value>Sharing is temporarily unavailable</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Singular" xml:space="preserve">
+    <value>{0} of {1} item synced</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Plural" xml:space="preserve">
+    <value>{0} of {1} items synced</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Singular" xml:space="preserve">
+    <value>{0} item failed to be loaded</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Plural" xml:space="preserve">
+    <value>{0} items failed to be loaded</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Title" xml:space="preserve">
+    <value>Add folders</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Description" xml:space="preserve">
+    <value>Adding a folder will back up all of its data to Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Button_AddMore" xml:space="preserve">
+    <value>_Add more folders</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Info_Saving" xml:space="preserve">
+    <value>Saving folders...</value>
+  </data>
+  <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText" xml:space="preserve">
+    <value>Dismiss my computer onboarding</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Title" xml:space="preserve">
+    <value>Optimize Storage</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Description" xml:space="preserve">
+    <value>Enable on‐demand sync to save hard drive space. Files only occupy local storage when you open them or mark them as "Always keep on this device".</value>
+    <comment>"Always keep on this device" is the exact text displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Button_Next" xml:space="preserve">
+    <value>_Next</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Title" xml:space="preserve">
+    <value>Managing Storage</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1_Label" xml:space="preserve">
+    <value>1.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2_Label" xml:space="preserve">
+    <value>2.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1" xml:space="preserve">
+    <value>Right-click on any file or folder synced using Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2" xml:space="preserve">
+    <value>Choose "Always keep on this device" to store it offline, or "Free up space" to keep it cloud‑only.</value>
+    <comment>"Always keep on this device" and "Free up space" are the exact texts displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted" xml:space="preserve">
+    <value>Get _started</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Dialog_Button_Save" xml:space="preserve">
+    <value>_Save</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Dialog_Button_Ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Dialog_Button_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Main_MyComputer_Title" xml:space="preserve">
+    <value>My computer</value>
+  </data>
+  <data name="Main_MyComputer_Link_LearnMore" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
+  <data name="Main_MyComputer_Description" xml:space="preserve">
+    <value>Folders synced from your computers will appear in the "Computers" section across your Drive apps.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Label" xml:space="preserve">
+    <value>This device</value>
+  </data>
+  <data name="Main_MyComputer_Device_HelpText" xml:space="preserve">
+    <value>Rename your device</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_HelpText" xml:space="preserve">
+    <value>Rename your device</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Error_Tooltip" xml:space="preserve">
+    <value>Invalid device name: the new name must not be empty and must not exceed 255 characters.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Save_HelpText" xml:space="preserve">
+    <value>Save the device name</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Cancel_HelpText" xml:space="preserve">
+    <value>Cancel device renaming</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Label" xml:space="preserve">
+    <value>Folders syncing from this device</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm" xml:space="preserve">
+    <value>Remove folder</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Title" xml:space="preserve">
+    <value>Remove folder?</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_1" xml:space="preserve">
+    <value>Any files added to "{0}" folder will no longer be synced and this folder will be moved to Trash in Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_2" xml:space="preserve">
+    <value>Existing files will remain on your computer.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_1" xml:space="preserve">
+    <value>Some files in "{0}" folder might be stored only in the cloud. Removing this folder will stop syncing and move it to Trash in Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_2" xml:space="preserve">
+    <value>To keep a local copy of all files on your computer, first turn off Optimize storage for this folder. If storage optimization is already turned off, toggle it on and off. Wait for the download to complete (you can check the status in File Explorer), then remove the folder from syncing under the My Computer section.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_1" xml:space="preserve">
+    <value>Files that have already been downloaded will remain on your device.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_2" xml:space="preserve">
+    <value>Files stored only in the cloud will be removed from your device.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Title" xml:space="preserve">
+    <value>All files are always available on this device</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_1" xml:space="preserve">
+    <value>Files within "{0}" folder will now always be available on your device. It may take a few minutes before all files finish downloading (you can check the status in File Explorer).</value>
+    <comment>Placeholder {0}: folder name</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_2" xml:space="preserve">
+    <value>You still can manually free up space for individual files in their settings.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Title" xml:space="preserve">
+    <value>Storage optimization unavailable</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1" xml:space="preserve">
+    <value>The "{0}" folder can't use on-demand sync to optimize storage, because {1}.</value>
+    <comment>Placeholder {0}: folder name. Placeholder {1}: the reason text, one of resources with "StorageOptimizationErrorCode_Value_..." key.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_2" xml:space="preserve">
+    <value>Your files will still sync with Proton Drive and remain available on both your computer and in the cloud.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Button_Rename" xml:space="preserve">
+    <value>_Rename</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization" xml:space="preserve">
+    <value>Optimize storage</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization_Info_Tooltip" xml:space="preserve">
+    <value>Optimize storage by enabling on-demand sync.
+Files only occupy local space when you open them or
+choose to always keep them on this device. You can
+disable storage optimization at any time.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_OpenFolder" xml:space="preserve">
+    <value>_Open folder</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder" xml:space="preserve">
+    <value>_Remove folder</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add" xml:space="preserve">
+    <value>_Add folders</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddNext" xml:space="preserve">
+    <value>Add a new folder to sync</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Title" xml:space="preserve">
+    <value>Safely sync your files</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Description" xml:space="preserve">
+    <value>Add folder to start securely syncing files to the cloud</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst" xml:space="preserve">
+    <value>Add your first folders to sync</value>
+  </data>
+  <data name="Main_About_Title" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Main_About_ReleaseHistory_Label_New" xml:space="preserve">
+    <value>NEW</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpToDate" xml:space="preserve">
+    <value>Up to date</value>
+  </data>
+  <data name="Main_About_Label_CurrentVersion" xml:space="preserve">
+    <value>Current version</value>
+  </data>
+  <data name="Main_About_Label_ReleaseDate" xml:space="preserve">
+    <value>Release date</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_CheckingForUpdate" xml:space="preserve">
+    <value>Checking for update...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_DownloadingAnUpdate" xml:space="preserve">
+    <value>Downloading an update...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable" xml:space="preserve">
+    <value>Update available</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired" xml:space="preserve">
+    <value>Update required</value>
+  </data>
+  <data name="Main_About_Button_UpdateNow" xml:space="preserve">
+    <value>_Update now</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Button_UpdateNow_HelpText" xml:space="preserve">
+    <value>A new version of Proton Drive is available, please update it now.</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed" xml:space="preserve">
+    <value>Failed to check for update</value>
+  </data>
+  <data name="Main_About_Link_TermsOfService" xml:space="preserve">
+    <value>_Terms of service</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Link_PrivacyPolicy" xml:space="preserve">
+    <value>_Privacy policy</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_ReleaseHistory_Title" xml:space="preserve">
+    <value>What's new</value>
+  </data>
+  <data name="Main_Account_Title" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageLimit" xml:space="preserve">
+    <value>You are about to reach your storage limit.</value>
+  </data>
+  <data name="Main_Account_Storage_Info_EnsureMoreStorage" xml:space="preserve">
+    <value>To ensure uninterrupted syncing, please get more storage now.</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageExceeded" xml:space="preserve">
+    <value>Sync stopped. Your account has exceeded the storage capacity.</value>
+  </data>
+  <data name="Main_Account_Account_HelpText" xml:space="preserve">
+    <value>Manage your account</value>
+  </data>
+  <data name="Main_Account_Account_Info_UnknownUser" xml:space="preserve">
+    <value>Unknown user</value>
+  </data>
+  <data name="Main_Account_Plan_Description" xml:space="preserve">
+    <value>Get more storage</value>
+  </data>
+  <data name="Main_Account_Storage_Button_UpgradePlan" xml:space="preserve">
+    <value>Upgrade plan</value>
+  </data>
+  <data name="Main_Account_Account_Button_ManageAccount" xml:space="preserve">
+    <value>Manage _account</value>
+  </data>
+  <data name="Main_Account_Storage_Title" xml:space="preserve">
+    <value>Storage capacity</value>
+  </data>
+  <data name="Main_Account_Storage_Info_UsedSpaceFormat" xml:space="preserve">
+    <value>Total used space: {0} of {1}</value>
+  </data>
+  <data name="Main_Account_Plan_HelpText" xml:space="preserve">
+    <value>See other Proton Drive plans</value>
+  </data>
+  <data name="Main_Account_Plan_Button_SeePlans" xml:space="preserve">
+    <value>See _plans</value>
+  </data>
+  <data name="Main_Account_Label_Security" xml:space="preserve">
+    <value>Security</value>
+  </data>
+  <data name="Main_Account_Password_HelpText" xml:space="preserve">
+    <value>Change your Proton Drive password</value>
+  </data>
+  <data name="Main_Account_Password_Button_ChangePassword" xml:space="preserve">
+    <value>_Change</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Password_Description" xml:space="preserve">
+    <value>Change the password for your account.</value>
+  </data>
+  <data name="Main_Account_Password_Title" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Main_Account_SessionManagement_HelpText" xml:space="preserve">
+    <value>Manage your session. After 60 days of inactivity the session will expire.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Title" xml:space="preserve">
+    <value>Session management</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Description" xml:space="preserve">
+    <value>Unless you sign out of your account or change your password, your session will remain active. Sessions expire after 60 days of inactivity.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Button_Manage" xml:space="preserve">
+    <value>_Manage</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Label_Account" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="Main_Account_SignOut_Title" xml:space="preserve">
+    <value>_Sign out</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_SignOut_HelpText" xml:space="preserve">
+    <value>Sign out from Proton Drive</value>
+  </data>
+  <data name="Main_Account_SignOut_Description" xml:space="preserve">
+    <value>Sign out and disable sync. You can sign back in with the same account to resume sync.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Required" xml:space="preserve">
+    <value>Name is required</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_ContainsInvalidCharacter" xml:space="preserve">
+    <value>Name contains invalid characters</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Failed" xml:space="preserve">
+    <value>Something went wrong</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_AlreadyExists" xml:space="preserve">
+    <value>Name already in use</value>
+  </data>
+  <data name="Main_Activity_Rename_Title" xml:space="preserve">
+    <value>Renaming item</value>
+  </data>
+  <data name="Main_Activity_Rename_Description" xml:space="preserve">
+    <value>This item's name includes characters not supported on Windows.</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion" xml:space="preserve">
+    <value>Please remove the following to continue syncing:</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion_CharacterList" xml:space="preserve">
+    <value>/ : * ? &gt; &lt; " |</value>
+  </data>
+  <data name="Main_Activity_Rename_CurrentName_Label" xml:space="preserve">
+    <value>Current name:</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Label" xml:space="preserve">
+    <value>New name:</value>
+  </data>
+  <data name="Main_Activity_Rename_Status_Value_Renaming" xml:space="preserve">
+    <value>Renaming...</value>
+  </data>
+  <data name="Main_Photos_Title" xml:space="preserve">
+    <value>Photos</value>
+  </data>
+  <data name="Main_Photos_Import_Link_HowImportWorks" xml:space="preserve">
+    <value>How does photo import work?</value>
+  </data>
+  <data name="Main_Photos_Import_Title" xml:space="preserve">
+    <value>Import photos</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Title" xml:space="preserve">
+    <value>Import a folder</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Description" xml:space="preserve">
+    <value>Import a local folder from your computer</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Title" xml:space="preserve">
+    <value>Import from Google Photos</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Description" xml:space="preserve">
+    <value>Import Google photos from Google Takeout</value>
+  </data>
+  <data name="Main_Photos_Folders_Items_Label" xml:space="preserve">
+    <value>item(s)</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_Unknown" xml:space="preserve">
+    <value>Import failed. Try again.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist" xml:space="preserve">
+    <value>Import failed. The album does not exist.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist" xml:space="preserve">
+    <value>Import failed. The folder does not exist.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached" xml:space="preserve">
+    <value>Import failed. Maximum number of albums reached.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfPhotosPerAlbumReached" xml:space="preserve">
+    <value>Import failed. Maximum number of photos per album reached.</value>
+  </data>
+  <data name="Main_Photos_Folders_Error_ImportFailed" xml:space="preserve">
+    <value>Import failed. Try removing the folder and importing it again. If the issue persists, please contact support.</value>
+  </data>
+  <data name="Main_Photos_Folders_WaitingToImport" xml:space="preserve">
+    <value>Waiting to import...</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportingItemsFormat" xml:space="preserve">
+    <value>Importing... {0} of {1}</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_NotStarted" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Importing" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Interrupted" xml:space="preserve">
+    <value>Import was interrupted</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Succeeded" xml:space="preserve">
+    <value>Import succeeded</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Failed" xml:space="preserve">
+    <value>Import failed</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_ValidationFailed" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_SetupFailed" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Main_Photos_Folders_ImportedItemsFormat" xml:space="preserve">
+    <value>Imported {0} of {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_NoItemsFound_Label" xml:space="preserve">
+    <value>No photos/videos found</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Remove" xml:space="preserve">
+    <value>_Remove</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_OpenFolder" xml:space="preserve">
+    <value>_Open folder</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Retry" xml:space="preserve">
+    <value>_Retry</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums" xml:space="preserve">
+    <value>Manage _albums</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Title" xml:space="preserve">
+    <value>Import from Google Photos</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Title" xml:space="preserve">
+    <value>1. Export your Google Photos</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Description" xml:space="preserve">
+    <value>Step-by-step guide of how to export your Google Photos</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Title" xml:space="preserve">
+    <value>2. Import Google Photos folder</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Description" xml:space="preserve">
+    <value>It must be the unzipped folder containing your exported photos and videos.</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_SelectFolder_Button" xml:space="preserve">
+    <value>Select Folder</value>
+  </data>
+  <data name="Main_Photos_Info_Duplicates" xml:space="preserve">
+    <value>We'll only import what's new — duplicates are skipped automatically.</value>
+  </data>
+  <data name="Main_Photos_Warning_UploadUnavailable" xml:space="preserve">
+    <value>Uploading photos is temporarily unavailable</value>
+  </data>
+  <data name="Main_Settings_Title" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Main_Settings_Label_General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_Title" xml:space="preserve">
+    <value>Open on startup</value>
+  </data>
+  <data name="Main_Settings_Language_Title" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title" xml:space="preserve">
+    <value>Beta access</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText" xml:space="preserve">
+    <value>Get early access and help us test new versions of Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_Language_Button_Restart" xml:space="preserve">
+    <value>Restart now</value>
+  </data>
+  <data name="Main_Settings_Language_Message_PleaseRestart" xml:space="preserve">
+    <value>Please restart the application to apply your language change</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_HelpText" xml:space="preserve">
+    <value>Open Proton Drive on Windows startup</value>
+  </data>
+  <data name="ToggleSwitch_Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="ToggleSwitch_On" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="Main_Settings_Label_AccountRootFolder" xml:space="preserve">
+    <value>Your Proton Drive folder:</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Title" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Button_Change" xml:space="preserve">
+    <value>_Change</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_HelpText" xml:space="preserve">
+    <value>Change your Proton Drive root folder.</value>
+  </data>
+  <data name="SignIn_Button_SignIn" xml:space="preserve">
+    <value>_Sign in</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_CreateAccount" xml:space="preserve">
+    <value>_Create account</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_ForgotPassword" xml:space="preserve">
+    <value>_Forgot your password?</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_Unlock" xml:space="preserve">
+    <value>_Unlock</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignInAsAnotherUser" xml:space="preserve">
+    <value>Or sign-in as another user</value>
+  </data>
+  <data name="SignIn_Button_Authenticate" xml:space="preserve">
+    <value>_Authenticate</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_Back" xml:space="preserve">
+    <value>_Back</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_LearnMore" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
+  <data name="SignIn_Text_SecurityKeyNotSupported" xml:space="preserve">
+    <value>Your system does not support security key</value>
+  </data>
+  <data name="BugReport_Title" xml:space="preserve">
+    <value>Proton Drive Feedback</value>
+  </data>
+  <data name="BugReport_NeedHelp_Title" xml:space="preserve">
+    <value>Need help getting started with Proton Drive?</value>
+  </data>
+  <data name="BugReport_NeedHelp_Description" xml:space="preserve">
+    <value>Quick guides for setup, app use, and file sync.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowSharedFilesWork" xml:space="preserve">
+    <value>Access shared files</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks" xml:space="preserve">
+    <value>Learn how the Proton Drive app works</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_UseOnDemandSync" xml:space="preserve">
+    <value>Use on-demand sync</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_SyncFolders" xml:space="preserve">
+    <value>Sync folders to Proton Drive</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_FAQ" xml:space="preserve">
+    <value>Frequently asked questions (FAQ)</value>
+  </data>
+  <data name="BugReport_Text_ReportSuccessfullySent" xml:space="preserve">
+    <value>Report successfully sent. Thank you.</value>
+  </data>
+  <data name="BugReport_Text_Email_Label" xml:space="preserve">
+    <value>_Email</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_Email_HelpText" xml:space="preserve">
+    <value>Email (mandatory field)</value>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Label" xml:space="preserve">
+    <value>_Title</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_HelpText" xml:space="preserve">
+    <value>Issue title (mandatory field)</value>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Watermark" xml:space="preserve">
+    <value>Issue title</value>
+  </data>
+  <data name="BugReport_Text_Description_Label" xml:space="preserve">
+    <value>_Description</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_Description_HelpText" xml:space="preserve">
+    <value>Description. What went wrong? What are the exact steps you performed? (10 characters minimum)</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_WhatWentWrong" xml:space="preserve">
+    <value>What went wrong?</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_ExactSteps" xml:space="preserve">
+    <value>What are the exact steps you performed?</value>
+  </data>
+  <data name="BugReport_Text_Description_Label_Requirement" xml:space="preserve">
+    <value>(10 characters min)</value>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs" xml:space="preserve">
+    <value>_Include app logs</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_ShowLogs" xml:space="preserve">
+    <value>Show _logs</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Report" xml:space="preserve">
+    <value>_Report</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Report_HelpText" xml:space="preserve">
+    <value>Send your report</value>
+  </data>
+  <data name="BugReport_Button_Cancel" xml:space="preserve">
+    <value>_Cancel</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel_HelpText" xml:space="preserve">
+    <value>Cancel your report</value>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs_Tooltip" xml:space="preserve">
+    <value>The report will include the latest app log files and installation log files</value>
+  </data>
+  <data name="Main_Sidebar_Offer_Button_GetDeal" xml:space="preserve">
+    <value>Get the _deal</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_Button_FinishSetup" xml:space="preserve">
+    <value>_Finish setup</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_Button_Continue" xml:space="preserve">
+    <value>_Continue</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="AccountDisplayStatus_Value_AccountError" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AccountDisplayStatus_Value_SessionError" xml:space="preserve">
+    <value>Failed to sign in</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SignedOut" xml:space="preserve">
+    <value>Signed out</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningIn" xml:space="preserve">
+    <value>Signing in...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningOut" xml:space="preserve">
+    <value>Signing out...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_Succeeded" xml:space="preserve">
+    <value>Signed in</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SettingUp" xml:space="preserve">
+    <value>Setting up...</value>
+  </data>
+  <data name="AccountErrorCode_Value_Delinquent" xml:space="preserve">
+    <value>Account has unpaid invoices. Go to your dashboard to pay or let your admin know.</value>
+  </data>
+  <data name="AccountErrorCode_Value_DriveAccessFailed" xml:space="preserve">
+    <value>Can’t connect to Proton Drive. Try checking your internet connection.</value>
+  </data>
+  <data name="AccountErrorCode_Value_NoDriveAccess" xml:space="preserve">
+    <value>To access Proton Drive, upgrade your plan</value>
+  </data>
+  <data name="AccountErrorCode_Value_None" xml:space="preserve">
+    <value />
+  </data>
+  <data name="AppDisplayStatus_Value_AccountError" xml:space="preserve">
+    <value>Failed to set up an account</value>
+  </data>
+  <data name="AppDisplayStatus_Value_FinishingUp" xml:space="preserve">
+    <value>Finishing up...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SyncFolderError" xml:space="preserve">
+    <value>Failed to set up sync folders</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SettingUp" xml:space="preserve">
+    <value>Setting up...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignedOut" xml:space="preserve">
+    <value>Signed out</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignInError" xml:space="preserve">
+    <value>Failed to sign in</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningIn" xml:space="preserve">
+    <value>Signing in...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningOut" xml:space="preserve">
+    <value>Signing out...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Offline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationWarning" xml:space="preserve">
+    <value>Some items failed to synchronize</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationPaused" xml:space="preserve">
+    <value>Synchronization paused</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronized" xml:space="preserve">
+    <value>Synced</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronizing" xml:space="preserve">
+    <value>Synchronizing...</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveAccessFailed" xml:space="preserve">
+    <value>Can't connect to Proton Drive. Try checking your internet connection.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveShareDiverged" xml:space="preserve">
+    <value>Can't access your Proton Drive files, possibly due to a password reset. Set up a new sync folder.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFileSystemAccessFailed" xml:space="preserve">
+    <value>Can't access or create local sync folder. We’ll keep retrying.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDiverged" xml:space="preserve">
+    <value>Sync folder was replaced by a new folder in path. Restore the previous sync folder or set up a new sync folder.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDoesNotExist" xml:space="preserve">
+    <value>Sync folder not found. It may have been deleted, renamed, or moved. Restore it or set up a new sync folder.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalAndRemoteFoldersNotEmpty" xml:space="preserve">
+    <value>Setting up a sync folder requires an empty Windows or Proton Drive web folder. Please clear one and try again.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNotEmpty" xml:space="preserve">
+    <value>The local folder must be empty before setting up sync</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludedByAnAlreadySyncedFolder" xml:space="preserve">
+    <value>The selected folder is already included within another synced folder</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeDiverged" xml:space="preserve">
+    <value>Local volume serial number has changed. Set up a new sync folder.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeNotSupported" xml:space="preserve">
+    <value>Unsupported local drive type. Try setting up sync folder on a different local drive.</value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootNotRegistered" xml:space="preserve">
+    <value>Sync folder was unexpectedly unregistered. Set up a new sync folder.</value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootMissingSyncRootFlag" xml:space="preserve">
+    <value>Sync folder is invalid. Set up a new sync folder.</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingOnDemandSyncRootExists" xml:space="preserve">
+    <value>This folder is already synced on-demand. Set up a new sync folder.</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists" xml:space="preserve">
+    <value>This folder contains a subfolder synced on-demand. Set up a new sync folder.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludesAnAlreadySyncedFolder" xml:space="preserve">
+    <value>The selected folder contains an already synced folder</value>
+  </data>
+  <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace" xml:space="preserve">
+    <value>Not enough free space on this device</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientLocalFreeSpace" xml:space="preserve">
+    <value>Free up space or deselect the checkbox</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientDeviceQuota" xml:space="preserve">
+    <value>The maximum number of synced computers has been reached. Delete unnecessary computers from Proton Drive on web.</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosDisabled" xml:space="preserve">
+    <value>Proton Photos unavailable</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosNotReady" xml:space="preserve">
+    <value>Photos feature not ready</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotoImportFailed" xml:space="preserve">
+    <value>Photo import failed</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemDoesNotExist" xml:space="preserve">
+    <value>Can’t access shared Proton Drive file or folder. Check if it is still shared with you.</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemPermissionsDiverged" xml:space="preserve">
+    <value>Permissions of shared Proton Drive file or folder have changed. Toggle its sync off and on again to resolve.</value>
+  </data>
+  <data name="MappingErrorCode_Value_SharingDisabled" xml:space="preserve">
+    <value>Sharing is temporarily unavailable</value>
+  </data>
+  <data name="MappingErrorCode_Value_None" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MappingSetupStatus_Value_Failed" xml:space="preserve">
+    <value>Failed to set up sync folders</value>
+  </data>
+  <data name="MappingSetupStatus_Value_None" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MappingSetupStatus_Value_Succeeded" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="MappingSetupStatus_Value_PartiallySucceeded" xml:space="preserve">
+    <value>Failed to set up some sync folders</value>
+  </data>
+  <data name="MappingSetupStatus_Value_SettingUp" xml:space="preserve">
+    <value>Setting up sync folders...</value>
+  </data>
+  <data name="SessionStatus_Value_Ending" xml:space="preserve">
+    <value>Signing out...</value>
+  </data>
+  <data name="SessionStatus_Value_Failed" xml:space="preserve">
+    <value>Sign-in failed. Try checking your internet connection.</value>
+  </data>
+  <data name="SessionStatus_Value_NotStarted" xml:space="preserve">
+    <value>Signed out</value>
+  </data>
+  <data name="SessionStatus_Value_SigningIn" xml:space="preserve">
+    <value>Signing in...</value>
+  </data>
+  <data name="SessionStatus_Value_Started" xml:space="preserve">
+    <value>Signed in</value>
+  </data>
+  <data name="SessionStatus_Value_Starting" xml:space="preserve">
+    <value>Signing in...</value>
+  </data>
+  <data name="SyncStatus_Value_DetectingUpdates" xml:space="preserve">
+    <value>Fetching updates...</value>
+  </data>
+  <data name="SyncStatus_Value_Idle" xml:space="preserve">
+    <value>Synced</value>
+  </data>
+  <data name="SyncStatus_Value_Offline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="SyncStatus_Value_Initializing" xml:space="preserve">
+    <value>Setting up...</value>
+  </data>
+  <data name="SyncStatus_Value_Paused" xml:space="preserve">
+    <value>Paused</value>
+  </data>
+  <data name="SyncStatus_Value_Synchronizing" xml:space="preserve">
+    <value>Synchronizing...</value>
+  </data>
+  <data name="SyncStatus_Value_Terminated" xml:space="preserve">
+    <value />
+  </data>
+  <data name="SyncStatus_Value_Terminating" xml:space="preserve">
+    <value>Terminating...</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Fix" xml:space="preserve">
+    <value>Bug Fixes</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Improvement" xml:space="preserve">
+    <value>Improvements</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Feature" xml:space="preserve">
+    <value>New Features</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveVolumeDiverged" xml:space="preserve">
+    <value>Can’t access your Proton Drive files, possibly due to a password reset. Set up a new sync folder.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDoesNotExist" xml:space="preserve">
+    <value>Can’t access your Proton Drive files, possibly due to a device folder deletion. Set up a new sync folder.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveHostDeviceDiverged" xml:space="preserve">
+    <value>Can’t access your Proton Drive files, possibly due to a device deletion. Set up a new sync folder.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDiverged" xml:space="preserve">
+    <value>Proton Drive folder has been moved. Set up a new sync folder.</value>
+  </data>
+  <data name="AccountErrorCode_Value_AccountSwitchingFailed" xml:space="preserve">
+    <value>Failed to switch account. Restart the app.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Cancelled" xml:space="preserve">
+    <value>Aborted</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TransferAbortedDueToFileChange" xml:space="preserve">
+    <value>Upload aborted because file changed during sync. App will retry automatically</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent" xml:space="preserve">
+    <value>File skipped because it has changed too recently. App will retry automatically</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DirectoryNotFound" xml:space="preserve">
+    <value>Could not find a part of the path</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DuplicateName" xml:space="preserve">
+    <value>Name already in use</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_FreeSpaceExceeded" xml:space="preserve">
+    <value>Not enough free space</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IdentityMismatch" xml:space="preserve">
+    <value>File or folder has diverged</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_InvalidName" xml:space="preserve">
+    <value>The name contains characters not supported by Windows. Please remove the following characters to allow syncing: \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MetadataMismatch" xml:space="preserve">
+    <value>File or folder has diverged</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ObjectNotFound" xml:space="preserve">
+    <value>File or folder does not exist</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Offline" xml:space="preserve">
+    <value>Offline</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_PathNotFound" xml:space="preserve">
+    <value>File or folder does not exist</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_SharingViolation" xml:space="preserve">
+    <value>File or folder is being used by another app</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TimedOut" xml:space="preserve">
+    <value>Timed out</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ServerError" xml:space="preserve">
+    <value>Something went wrong</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_NetworkError" xml:space="preserve">
+    <value>Can't connect to Proton Drive. Try checking your internet connection.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_RateLimited" xml:space="preserve">
+    <value>Something went wrong</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_UnauthorizedAccess" xml:space="preserve">
+    <value>Not enough permissions</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CloudFileProviderNotRunning" xml:space="preserve">
+    <value>Please ensure that your cloud storage provider (e.g., OneDrive) is running and connected.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CyclicRedundancyCheck" xml:space="preserve">
+    <value>Data error (cyclic redundancy check). Please, check your drive (USB, disk etc...) for file system errors and bad sectors.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum" xml:space="preserve">
+    <value>Live Photo cannot be uploaded.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Unknown" xml:space="preserve">
+    <value>Something went wrong</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MissingIndividuallySharedFile" xml:space="preserve">
+    <value>The original file shared with you has been deleted, moved or renamed.
+Toggle its sync off and on again to restore it and clear this error.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNonSyncable" xml:space="preserve">
+    <value>The local folder is not eligible for synchronization. Set up a new sync folder.</value>
+  </data>
+  <data name="SyncStatus_Value_Failed" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludedByAnAlreadySyncedFolder" xml:space="preserve">
+    <value>The folder is included by an already synced folder</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludesAnAlreadySyncedFolder" xml:space="preserve">
+    <value>The folder contains an already synced folder</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_InsufficientLocalFreeSpace" xml:space="preserve">
+    <value>Free up space or deselect the checkbox.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFileSystemAccessFailed" xml:space="preserve">
+    <value>Can't access the folder</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderDoesNotExist" xml:space="preserve">
+    <value>The folder cannot be found</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderNotEmpty" xml:space="preserve">
+    <value>The folder must be empty before setting up sync</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalVolumeNotSupported" xml:space="preserve">
+    <value>Unsupported drive type</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NonSyncableFolder" xml:space="preserve">
+    <value>The folder is not eligible for sync</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NetworkFolderNotSupported" xml:space="preserve">
+    <value>Syncing folders from network drives is not supported</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_Succeeded" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FileSystemErrorCode_Value_Partial" xml:space="preserve">
+    <value>This file is not available locally and cannot be uploaded. To resolve, please delete it and restore a copy from the Proton Drive trash if available.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IntegrityFailure" xml:space="preserve">
+    <value>Verification of data failed</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationError" xml:space="preserve">
+    <value>Synchronization failed</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyFile" xml:space="preserve">
+    <value>File is read-only</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyRoot" xml:space="preserve">
+    <value>View-only files and folders can't be modified. Turn sync off and on under "Shared with me" to resolve.</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenProtonDrive" xml:space="preserve">
+    <value>_Open Proton Drive</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenInBrowser" xml:space="preserve">
+    <value>Open in _browser</value>
+  </data>
+  <data name="SystemTray_Menu_Item_SignIn" xml:space="preserve">
+    <value>_Sign in</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenLocalFolder" xml:space="preserve">
+    <value>Open local _folder</value>
+  </data>
+  <data name="SystemTray_Menu_Item_ResumeSync" xml:space="preserve">
+    <value>_Resume the synchronization</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSync" xml:space="preserve">
+    <value>_Pause the synchronization</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor1Hour" xml:space="preserve">
+    <value>Pause for 1 hour</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor4Hours" xml:space="preserve">
+    <value>Pause for 4 hours</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor8Hours" xml:space="preserve">
+    <value>Pause for 8 hours</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow" xml:space="preserve">
+    <value>Pause until tomorrow (8AM)</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncIndefinitely" xml:space="preserve">
+    <value>Pause indefinitely</value>
+  </data>
+  <data name="SystemTray_Menu_Item_Exit" xml:space="preserve">
+    <value>E_xit</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_Username" xml:space="preserve">
+    <value>Email or _username</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_Password" xml:space="preserve">
+    <value>_Password</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_SecondPassword" xml:space="preserve">
+    <value>Second password</value>
+  </data>
+  <data name="SignIn_Text_Username_HelpText" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="SignIn_Title_2FA" xml:space="preserve">
+    <value>Two-factor authentication</value>
+  </data>
+  <data name="SignIn_Text_2FACode" xml:space="preserve">
+    <value>Enter the code from your authenticator app</value>
+  </data>
+  <data name="SignIn_Text_SecurityKey" xml:space="preserve">
+    <value>Insert a security key linked to your Proton Account.</value>
+  </data>
+  <data name="SignIn_Text_No2FAMethodFound" xml:space="preserve">
+    <value>No two-factor authentication method found.</value>
+  </data>
+  <data name="SignIn_Message_SigningIn" xml:space="preserve">
+    <value>Signing in to your account</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_None" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_Unknown" xml:space="preserve">
+    <value>enabling on-demand sync failed</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported" xml:space="preserve">
+    <value>local drive type is not supported</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_RemovableVolumeNotSupported" xml:space="preserve">
+    <value>removable drives are not supported</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_NetworkVolumeNotSupported" xml:space="preserve">
+    <value>network drives are not supported</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingOnDemandSyncRootExists" xml:space="preserve">
+    <value>it is already synced on-demand by {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists" xml:space="preserve">
+    <value>it contains a subfolder synced on-demand by {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Label_Description" xml:space="preserve">
+    <value>Selected folders will sync to Proton Drive. The files will be backed up, and available on your other devices.</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Title" xml:space="preserve">
+    <value>Back up your folders</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders" xml:space="preserve">
+    <value>_Add more folders</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText" xml:space="preserve">
+    <value>Add another folder to synchronize</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Title" xml:space="preserve">
+    <value>Your Proton Drive folder</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Description" xml:space="preserve">
+    <value>Access my files and other synced devices here</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Location" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder" xml:space="preserve">
+    <value>_Change</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder_HelpText" xml:space="preserve">
+    <value>Change your Proton Drive root folder.</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Title" xml:space="preserve">
+    <value>Get more storage</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Recommended" xml:space="preserve">
+    <value>Recommended</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular" xml:space="preserve">
+    <value>Most popular</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Vpn" xml:space="preserve">
+    <value>VPN: Ultra fast and private</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded" xml:space="preserve">
+    <value>Premium value included</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PasswordManager" xml:space="preserve">
+    <value>Pass: Encrypted password manager</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Mail" xml:space="preserve">
+    <value>Mail: Custom and secure email</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions" xml:space="preserve">
+    <value>Recover previous file versions</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers" xml:space="preserve">
+    <value>Up to {0} users</value>
+    <comment>Only for number greater than 1.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month" xml:space="preserve">
+    <value>month</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage" xml:space="preserve">
+    <value>storage</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus" xml:space="preserve">
+    <value>Get Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited" xml:space="preserve">
+    <value>Get _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo" xml:space="preserve">
+    <value>Get _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_Upgrade" xml:space="preserve">
+    <value>_Upgrade</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_NotNow" xml:space="preserve">
+    <value>_Not now</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Error_InvalidSyncFolder" xml:space="preserve">
+    <value>Invalid sync folder</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Button_GetMoreStorage" xml:space="preserve">
+    <value>Get more storage</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_StorageNotAvailable" xml:space="preserve">
+    <value>Space info not available</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_UsedSpaceFormat" xml:space="preserve">
+    <value>{0} of {1} used</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Title" xml:space="preserve">
+    <value>Storage</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Tooltip" xml:space="preserve">
+    <value>Manage storage</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line1" xml:space="preserve">
+    <value>This process may take a few minutes.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line2" xml:space="preserve">
+    <value>You can safely minimize or close the window.</value>
+  </data>
+  <data name="Main_Activity_Column_Progress_Tooltip_Finalizing" xml:space="preserve">
+    <value>Finalizing...</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Description" xml:space="preserve">
+    <value>Easily sync files and folders shared with you to your computer.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1" xml:space="preserve">
+    <value>Select files or folders to sync.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2" xml:space="preserve">
+    <value>Access shared files in your Proton Drive folder.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3" xml:space="preserve">
+    <value>Edit them, upload new ones, and access them offline.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1_Label" xml:space="preserve">
+    <value>1.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2_Label" xml:space="preserve">
+    <value>2.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3_Label" xml:space="preserve">
+    <value>3.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_GetStarted" xml:space="preserve">
+    <value>Get _started</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Viewer" xml:space="preserve">
+    <value>Viewer</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Editor" xml:space="preserve">
+    <value>Editor</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Tooltip" xml:space="preserve">
+    <value>Permissions granted to you by the owner</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions" xml:space="preserve">
+    <value>Permissions</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedBy" xml:space="preserve">
+    <value>Shared by</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedOn" xml:space="preserve">
+    <value>Shared on</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync" xml:space="preserve">
+    <value>Sync</value>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_OpenFolder" xml:space="preserve">
+    <value>_Open folder</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_RemoveMe" xml:space="preserve">
+    <value>_Remove me</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync_Info_Tooltip" xml:space="preserve">
+    <value>Enable to make the shared file or folder accessible from your computer.
+Contents of files will be downloaded on demand only.</value>  </data>
+  <data name="FileSystemNameValidationResult_Value_Valid" xml:space="preserve">
+    <value />
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Empty" xml:space="preserve">
+    <value>Name is empty</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_TooLong" xml:space="preserve">
+    <value>Name too long</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_ContainsInvalidCharacter" xml:space="preserve">
+    <value>Name contains an invalid character</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithSpace" xml:space="preserve">
+    <value>Name ends with a space</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithPeriod" xml:space="preserve">
+    <value>Name ends with a period</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Reserved" xml:space="preserve">
+    <value>Name not supported by Windows</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder" xml:space="preserve">
+    <value>Unable to add 1 folder</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat" xml:space="preserve">
+    <value>Unable to add {0} folder(s)</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat" xml:space="preserve">
+    <value>{0} folder(s) cannot be synced because they are system folder(s)</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludedByAnAlreadySyncedFolderFormat" xml:space="preserve">
+    <value>{0} folder(s) cannot be synced because they are included in a folder already synced to Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludesAnAlreadySyncedFolderFormat" xml:space="preserve">
+    <value>{0} folder(s) cannot be synced because they have a subfolder already synced to Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalVolumeNotSupportedFormat" xml:space="preserve">
+    <value>{0} folder(s) cannot be synced because they are located on a non-supported drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NetworkFolderNotSupportedFormat" xml:space="preserve">
+    <value>{0} folder(s) cannot be synced because network folders are not supported</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFolderDoesNotExistFormat" xml:space="preserve">
+    <value>{0} folder(s) cannot be found or cannot be opened</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFileSystemAccessFailedFormat" xml:space="preserve">
+    <value>{0} folder(s) cannot be accessed</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_NotSupported" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Totp" xml:space="preserve">
+    <value>Authenticator app</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Fido2" xml:space="preserve">
+    <value>Security key</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_UsernameRequired" xml:space="preserve">
+    <value>Username is required</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_PasswordRequired" xml:space="preserve">
+    <value>Password is required</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SomethingWentWrong" xml:space="preserve">
+    <value>Something went wrong</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SessionExpired" xml:space="preserve">
+    <value>Your session has expired. Sign in to continue.</value>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Create" xml:space="preserve">
+    <value>Creating</value>
+    <comment>Indicates a local folder being created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Delete" xml:space="preserve">
+    <value>Deleting</value>
+    <comment>Indicates the local file or folder being deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Download" xml:space="preserve">
+    <value>Downloading from Proton Drive</value>
+    <comment>Indicates a file being downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Move" xml:space="preserve">
+    <value>Moving</value>
+    <comment>Indicates the local file or folder being moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Rename" xml:space="preserve">
+    <value>Renaming</value>
+    <comment>Indicates the local file or folder being renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Upload" xml:space="preserve">
+    <value>Uploading to Proton Drive</value>
+    <comment>Indicates a  file being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_FetchUpdates" xml:space="preserve">
+    <value>Fetching updates</value>
+    <comment>Indicates local file system changes being fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Create" xml:space="preserve">
+    <value>Creating on Proton Drive</value>
+    <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete" xml:space="preserve">
+    <value>Moving to Proton Drive Trash</value>
+    <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download" xml:space="preserve">
+    <value>Downloading from Proton Drive</value>
+    <comment>Indicates a file is being downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Move" xml:space="preserve">
+    <value>Moving on Proton Drive</value>
+    <comment>Indicates the file or folder is being moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Rename" xml:space="preserve">
+    <value>Renaming on Proton Drive</value>
+    <comment>Indicates the file or folder is being renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Upload" xml:space="preserve">
+    <value>Uploading to Proton Drive</value>
+    <comment>Indicates the file is being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_FetchUpdates" xml:space="preserve">
+    <value>Fetching updates from Proton Drive</value>
+    <comment>Indicates changes are being fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Create" xml:space="preserve">
+    <value>Created on Proton Drive</value>
+    <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete" xml:space="preserve">
+    <value>Moved to Proton Drive Trash</value>
+    <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download" xml:space="preserve">
+    <value>Downloaded from Proton Drive</value>
+    <comment>Indicates a file has been downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Move" xml:space="preserve">
+    <value>Moved on Proton Drive</value>
+    <comment>Indicates the file or folder has been moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Rename" xml:space="preserve">
+    <value>Renamed on Proton Drive</value>
+    <comment>Indicates the file or folder has been renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Upload" xml:space="preserve">
+    <value>Uploaded to Proton Drive</value>
+    <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_FetchUpdates" xml:space="preserve">
+    <value>Updates fetched from Proton Drive</value>
+    <comment>Indicates changes have been fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Create" xml:space="preserve">
+    <value>Created</value>
+    <comment>Indicates a local folder has been created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Delete" xml:space="preserve">
+    <value>Deleted</value>
+    <comment>Indicates a local file or folder has been deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Download" xml:space="preserve">
+    <value>Downloaded from Proton Drive</value>
+    <comment>Indicates a file has been downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Move" xml:space="preserve">
+    <value>Moved</value>
+    <comment>Indicates a local file or folder has been moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Rename" xml:space="preserve">
+    <value>Renamed</value>
+    <comment>Indicates a local file or folder has been renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Upload" xml:space="preserve">
+    <value>Uploaded to Proton Drive</value>
+    <comment>Indicates a file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_FetchUpdates" xml:space="preserve">
+    <value>Updates fetched</value>
+    <comment>Indicates local file system changes have been fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Notification_Storage_HeaderText" xml:space="preserve">
+    <value>Out of storage space</value>
+  </data>
+  <data name="Notification_Storage_Message" xml:space="preserve">
+    <value>Upgrade to get more storage space and upload your files.</value>
+  </data>
+  <data name="Notification_Storage_Button_AddStorage" xml:space="preserve">
+    <value>Add Storage</value>
+  </data>
+</root>

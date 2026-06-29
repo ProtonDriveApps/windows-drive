@@ -1,0 +1,271 @@
+﻿<UserControl
+    x:Class="Proton.Drive.App.Windows.Views.Main.MyComputer.MyComputerView"
+    x:ClassModifier="internal"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="clr-namespace:Proton.Drive.App.Windows.Toolkit.Behaviors"
+    xmlns:controls="clr-namespace:Proton.Drive.App.Windows.Controls"
+    xmlns:converters="clr-namespace:Proton.Drive.App.Windows.Toolkit.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:loc="clr-namespace:Proton.Drive.App.Windows.Resources"
+    xmlns:mapping="clr-namespace:Proton.Drive.Sdk.Sync.Agent.Mapping;assembly=Proton.Drive.Sdk.Sync.Agent"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:myComputer="clr-namespace:Proton.Drive.App.Windows.Views.Main.MyComputer"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance myComputer:MyComputerViewModel}">
+    <Grid>
+        <Border Background="Transparent">
+            <Border.Style>
+                <Style TargetType="Border">
+                    <Style.Triggers>
+                        <DataTrigger
+                            Binding="{Binding IsOnboarding}"
+                            Value="True">
+                            <DataTrigger.Setters>
+                                <Setter Property="Effect">
+                                    <Setter.Value>
+                                        <BlurEffect Radius="20" />
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger.Setters>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+
+            <ScrollViewer
+                VerticalScrollBarVisibility="Auto"
+                Padding="24"
+                Focusable="False">
+                <Grid Margin="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock
+                        Grid.Row="0"
+                        Text="{loc:Resource Main_MyComputer_Title}"
+                        Style="{StaticResource Heading1Style}" />
+
+                    <Grid
+                        Grid.Row="1"
+                        Margin="0,10,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock
+                            Text="{loc:Resource Main_MyComputer_Description}"
+                            Foreground="{StaticResource GrayBrush}" />
+                    </Grid>
+
+                    <TextBlock
+                        AutomationProperties.HeadingLevel="Level2"
+                        Grid.Row="2"
+                        Text="{loc:Resource Main_MyComputer_Device_Label}"
+                        FontWeight="SemiBold"
+                        Margin="0,24,0,0" />
+
+                    <Button
+                        AutomationProperties.AutomationId="EditDeviceNameButton"
+                        AutomationProperties.HelpText="{loc:Resource Main_MyComputer_Device_HelpText}"
+                        AutomationProperties.Name="RenameDeviceButton"
+                        Grid.Row="3"
+                        Command="{Binding EditDeviceNameCommand}"
+                        Style="{StaticResource SectionButtonStyle}"
+                        VerticalContentAlignment="Center"
+                        Padding="16"
+                        Margin="0,20,0,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <Image
+                                Source="{StaticResource Icon.Computer}"
+                                Height="16"
+                                VerticalAlignment="Center" />
+
+                            <Grid
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                Visibility="{Binding IsEditing, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}"
+                                Height="32">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBox
+                                    Name="RenameDeviceTextBox"
+                                    AutomationProperties.HelpText="{loc:Resource Main_MyComputer_Device_Rename_HelpText}"
+                                    Grid.Column="0"
+                                    Text="{Binding NewDeviceName, FallbackValue='', UpdateSourceTrigger=PropertyChanged}"
+                                    Background="{Binding Background, RelativeSource={RelativeSource AncestorType={x:Type Control}}}"
+                                    IsEnabled="{Binding SaveDeviceNameCommand.IsRunning, Converter={x:Static converters:BooleanToOppositeBooleanConverter.Instance}}"
+                                    MaxLength="255"
+                                    MaxLines="1"
+                                    Width="250"
+                                    VerticalAlignment="Center"
+                                    Margin="20,0,0,0">
+                                    <TextBox.Style>
+                                        <Style
+                                            TargetType="TextBox"
+                                            BasedOn="{StaticResource {x:Type TextBox}}">
+                                            <Style.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding IsEditing}"
+                                                    Value="True">
+                                                    <Setter Property="FocusManager.FocusedElement" Value="{Binding RelativeSource={RelativeSource Mode=Self}}" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+
+                                    <i:Interaction.Behaviors>
+                                        <behaviors:SelectAllOnFocusTextBoxBehavior />
+                                    </i:Interaction.Behaviors>
+                                </TextBox>
+
+                                <Image
+                                    Grid.Column="1"
+                                    Source="{StaticResource Icon.Error}"
+                                    ToolTip="{loc:Resource Main_MyComputer_Device_Rename_Error_Tooltip}"
+                                    Visibility="{Binding IsNewDeviceNameValid, Converter={x:Static converters:BooleanToVisibilityConverter.TrueIsCollapsed}}"
+                                    Width="16"
+                                    Height="16"
+                                    VerticalAlignment="Center"
+                                    Margin="20,0,0,0" />
+
+                                <controls:ProgressRing
+                                    Grid.Column="2"
+                                    Visibility="{Binding SaveDeviceNameCommand.IsRunning, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}"
+                                    Width="16"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center" />
+
+                                <Button
+                                    AutomationProperties.HelpText="{loc:Resource Main_MyComputer_Device_Rename_Button_Save_HelpText}"
+                                    Grid.Column="3"
+                                    Content="{loc:Resource Dialog_Button_Save}"
+                                    Command="{Binding SaveDeviceNameCommand}"
+                                    IsDefault="True"
+                                    Style="{StaticResource PrimaryButtonStyle}"
+                                    VerticalAlignment="Center" />
+
+                                <Button
+                                    AutomationProperties.HelpText="{loc:Resource Main_MyComputer_Device_Rename_Button_Cancel_HelpText}"
+                                    Grid.Column="4"
+                                    Content="{loc:Resource Dialog_Button_Cancel}"
+                                    Command="{Binding CancelDeviceNameCommand}"
+                                    IsCancel="True"
+                                    VerticalAlignment="Center"
+                                    Margin="20,0,0,0" />
+                            </Grid>
+
+                            <TextBlock
+                                Grid.Column="1"
+                                Text="{Binding HostDevice.Name, FallbackValue=''}"
+                                TextTrimming="CharacterEllipsis"
+                                Visibility="{Binding IsEditing, Converter={x:Static converters:BooleanToVisibilityConverter.TrueIsCollapsed}}"
+                                MaxWidth="600"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center"
+                                Margin="15,0,0,0">
+                                <i:Interaction.Behaviors>
+                                    <behaviors:TextBlockAutoToolTipBehavior />
+                                </i:Interaction.Behaviors>
+                            </TextBlock>
+
+                            <StackPanel
+                                Grid.Column="2"
+                                Visibility="{Binding IsEditing, Converter={x:Static converters:BooleanToVisibilityConverter.TrueIsCollapsed}}">
+                                <StackPanel
+                                    Orientation="Horizontal"
+                                    Visibility="{Binding HostDevice.ExistsOnRemote, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}, FallbackValue={x:Static Visibility.Collapsed}}"
+                                    VerticalAlignment="Center">
+                                    <AccessText
+                                        Text="{loc:Resource Main_MyComputer_Device_Button_Rename}"
+                                        Foreground="{StaticResource GrayBrush}"
+                                        VerticalAlignment="Center" />
+
+                                    <Image
+                                        Source="{StaticResource Icon.Pencil}"
+                                        Style="{StaticResource FontIconStyle}"
+                                        Height="16"
+                                        VerticalAlignment="Center"
+                                        Margin="10,0,0,0" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
+
+                    <myComputer:FolderListView
+                        Grid.Row="4"
+                        DataContext="{Binding Folders}" />
+
+                    <ItemsControl
+                        AutomationProperties.AutomationId="ForeignDevicesItemsControl"
+                        Grid.Row="5"
+                        ItemsSource="{Binding ForeignDevices}"
+                        Visibility="{Binding ForeignDevices.Count, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={StaticResource IntZero}}"
+                        Margin="0,24,0,0">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate DataType="{x:Type myComputer:DeviceViewModel}">
+                                <Border
+                                    Style="{StaticResource RoundedSection.DarkTheme.Error}"
+                                    Visibility="{Binding SetupStatus, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static mapping:MappingSetupStatus.Failed}}"
+                                    Margin="0,10,0,0">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Image
+                                            Grid.Column="0"
+                                            Source="{StaticResource Icon.Error}"
+                                            Width="16"
+                                            Height="16"
+                                            VerticalAlignment="Center" />
+
+                                        <StackPanel
+                                            Grid.Column="1"
+                                            Margin="15,0,0,0">
+                                            <TextBlock
+                                                Text="{Binding Name}"
+                                                FontWeight="SemiBold" />
+                                            <TextBlock
+                                                Text="{Binding SetupErrorCode, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}}"
+                                                TextTrimming="CharacterEllipsis"
+                                                ToolTip="{Binding SetupErrorCode, Converter={x:Static converters:EnumToDisplayTextConverter.Instance}}">
+                                                <i:Interaction.Behaviors>
+                                                    <behaviors:TextBlockAutoToolTipBehavior />
+                                                </i:Interaction.Behaviors>
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </ScrollViewer>
+        </Border>
+
+        <myComputer:StorageOptimizationOnboardingView Visibility="{Binding IsOnboarding, Converter={x:Static converters:BooleanToVisibilityConverter.FalseIsCollapsed}}" />
+    </Grid>
+</UserControl>

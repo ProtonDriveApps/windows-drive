@@ -1,0 +1,1771 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountDisplayStatus_Value_AccountError">
+    <value></value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SessionError">
+    <value>Aanmelding mislukt</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SettingUp">
+    <value>Instellen...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SignedOut">
+    <value>Uitgelogd</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningIn">
+    <value>Aanmelden...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningOut">
+    <value>Uitloggen...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_Succeeded">
+    <value>Aangemeld</value>
+  </data>
+  <data name="AccountErrorCode_Value_AccountSwitchingFailed">
+    <value>Kan niet van account wisselen. Start de app opnieuw.</value>
+  </data>
+  <data name="AccountErrorCode_Value_Delinquent">
+    <value>Account heeft onbetaalde facturen. Ga naar uw dashboard om te betalen of laat uw beheerder weten.</value>
+  </data>
+  <data name="AccountErrorCode_Value_DriveAccessFailed">
+    <value>Kan geen verbinding maken met Proton Drive. Controleer uw internetverbinding.</value>
+  </data>
+  <data name="AccountErrorCode_Value_NoDriveAccess">
+    <value>Upgrade uw abonnement om toegang te krijgen tot Proton Drive</value>
+  </data>
+  <data name="AccountErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Create">
+    <value>Maken...</value>
+    <comment>Indicates a local folder being created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Delete">
+    <value>Verwijderen…</value>
+    <comment>Indicates the local file or folder being deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Download">
+    <value>Downloaden van Proton Drive</value>
+    <comment>Indicates a file being downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Updates ophalen</value>
+    <comment>Indicates local file system changes being fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Move">
+    <value>Verplaatsen</value>
+    <comment>Indicates the local file or folder being moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Rename">
+    <value>Hernoemen</value>
+    <comment>Indicates the local file or folder being renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Upload">
+    <value>Uploaden naar Proton Drive</value>
+    <comment>Indicates a  file being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Create">
+    <value>Aangemaakt</value>
+    <comment>Indicates a local folder has been created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Delete">
+    <value>Verwijderd</value>
+    <comment>Indicates a local file or folder has been deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Download">
+    <value>Gedownload van Proton Drive</value>
+    <comment>Indicates a file has been downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Updates opgehaald</value>
+    <comment>Indicates local file system changes have been fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Move">
+    <value>Verplaatst</value>
+    <comment>Indicates a local file or folder has been moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Rename">
+    <value>Hernoemd</value>
+    <comment>Indicates a local file or folder has been renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Upload">
+    <value>Geüpload naar Proton Drive</value>
+    <comment>Indicates a file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Create">
+    <value>Aanmaken op Proton Drive</value>
+    <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
+    <value>Verplaatsen naar Proton Drive Prullenbak</value>
+    <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
+    <value>Downloaden van Proton Drive</value>
+    <comment>Indicates a file is being downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Updates van Proton Drive ophalen</value>
+    <comment>Indicates changes are being fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Move">
+    <value>Verplaatsen op Proton Drive</value>
+    <comment>Indicates the file or folder is being moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Rename">
+    <value>Hernoemen op Proton Drive</value>
+    <comment>Indicates the file or folder is being renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Upload">
+    <value>Uploaden naar Proton Drive</value>
+    <comment>Indicates the file is being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Create">
+    <value>Gemaakt op Proton Drive</value>
+    <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
+    <value>Verplaatst naar Proton Drive Prullenbak</value>
+    <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
+    <value>Gedownload van Proton Drive</value>
+    <comment>Indicates a file has been downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Updates opgehaald uit Proton Drive</value>
+    <comment>Indicates changes have been fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Move">
+    <value>Verplaatst op Proton Drive</value>
+    <comment>Indicates the file or folder has been moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Rename">
+    <value>Hernoemd op Proton Drive</value>
+    <comment>Indicates the file or folder has been renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Upload">
+    <value>Geüpload naar Proton Drive</value>
+    <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="AppDisplayStatus_Value_AccountError">
+    <value>Instellen van een account mislukt</value>
+  </data>
+  <data name="AppDisplayStatus_Value_FinishingUp">
+    <value>Beëindigen ...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Offline">
+    <value>Offline</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SettingUp">
+    <value>Instellen...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignInError">
+    <value>Aanmelden mislukt</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignedOut">
+    <value>Uitgelogd</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningIn">
+    <value>Aanmelden...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningOut">
+    <value>Uitloggen...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SyncFolderError">
+    <value>Het instellen van sync mappen is mislukt</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationError">
+    <value>Synchronisatie mislukt</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationPaused">
+    <value>Synchronisatie gepauzeerd</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationWarning">
+    <value>Sommige items zijn niet gesynchroniseerd</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronized">
+    <value>Gesynchroniseerd</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronizing">
+    <value>Synchroniseren...</value>
+  </data>
+  <data name="BugReport_Button_Cancel">
+    <value>_Annuleer</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel_HelpText">
+    <value>Uw rapport annuleren</value>
+  </data>
+  <data name="BugReport_Button_Report">
+    <value>_Rapport</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Report_HelpText">
+    <value>Uw rapport verzenden</value>
+  </data>
+  <data name="BugReport_Button_ShowLogs">
+    <value>Toon _logs</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs">
+    <value>_App Logs toevoegen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs_Tooltip">
+    <value>Het rapport bevat de nieuwste applicatie logbestanden en installatie logbestanden</value>
+  </data>
+  <data name="BugReport_NeedHelp_Description">
+    <value>Beknopte handleiding voor installatie, gebruik van de app en bestandssynchronisatie.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_FAQ">
+    <value>Veelgestelde vragen (FAQ)</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks">
+    <value>Leer hoe de Proton Drive-app werkt</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowSharedFilesWork">
+    <value>Toegang tot gedeelde bestanden</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_SyncFolders">
+    <value>Synchroniseer mappen naar Proton Drive</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_UseOnDemandSync">
+    <value>Gebruik synchronisatie op aanvraag</value>
+  </data>
+  <data name="BugReport_NeedHelp_Title">
+    <value>Hulp nodig om aan de slag te gaan met Proton Drive?</value>
+  </data>
+  <data name="BugReport_Text_Description_HelpText">
+    <value>Beschrijving. Wat ging er fout? Wat zijn de exacte stappen die u uitvoerde? (minimaal 10 tekens)</value>
+  </data>
+  <data name="BugReport_Text_Description_Label">
+    <value>_Omschrijving</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_Description_Label_Requirement">
+    <value>(min. 10 karakters)</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_ExactSteps">
+    <value>Wat zijn de exacte stappen die u hebt uitgevoerd?</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_WhatWentWrong">
+    <value>Wat is er misgegaan?</value>
+  </data>
+  <data name="BugReport_Text_Email_HelpText">
+    <value>E-mail (verplicht veld)</value>
+  </data>
+  <data name="BugReport_Text_Email_Label">
+    <value>_E-mail</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_HelpText">
+    <value>Issue titel (verplicht veld)</value>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Label">
+    <value>_Titel</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Watermark">
+    <value>Issue titel</value>
+  </data>
+  <data name="BugReport_Text_ReportSuccessfullySent">
+    <value>Rapport succesvol verzonden. Bedankt.</value>
+  </data>
+  <data name="BugReport_Title">
+    <value>Feedback over Proton Drive</value>
+  </data>
+  <data name="Dialog_Button_Cancel">
+    <value>Annuleren</value>
+  </data>
+  <data name="Dialog_Button_Ok">
+    <value>Oké</value>
+  </data>
+  <data name="Dialog_Button_Save">
+    <value>_Bewaar</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="FileSystemErrorCode_Value_Cancelled">
+    <value>Geannuleerd</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CloudFileProviderNotRunning">
+    <value>Zorg ervoor dat uw cloudopslagprovider (bijv. OneDrive) draait en verbonden is.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CyclicRedundancyCheck">
+    <value>Gegevensfout (cyclische redundantie controle). Controleer uw schijf (USB, schijf enz...) voor bestandssysteemfouten en slechte sectoren.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DirectoryNotFound">
+    <value>Kan een deel van het pad niet vinden</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DuplicateName">
+    <value>Naam al in gebruik</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_FreeSpaceExceeded">
+    <value>Niet voldoende vrije ruimte.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IdentityMismatch">
+    <value>Bestand of map is afgeweken</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IntegrityFailure">
+    <value>Verificatie gegevens mislukt</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_InvalidName">
+    <value>De naam bevat tekens die niet ondersteund worden door Windows. Verwijder de volgende tekens om synchronisatie toe te staan: \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
+    <value>Bestand overgeslagen omdat het te recent veranderd is. De app zal automatisch opnieuw proberen</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
+    <value>Live foto kan niet worden geüpload.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MetadataMismatch">
+    <value>Bestand of map is afgeweken</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MissingIndividuallySharedFile">
+    <value>Het originele bestand dat met u gedeeld is, is verwijderd, verplaatst of hernoemd.
+Zet de synchronisatie uit en weer aan om deze te herstellen en deze fout te verwijderen.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_NetworkError">
+    <value>Kan geen verbinding maken met de Proton Drive. Controleer uw internetverbinding.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ObjectNotFound">
+    <value>Bestand of map bestaat niet</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Offline">
+    <value>Offline</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Partial">
+    <value>Dit bestand is niet lokaal beschikbaar en kan niet worden opgeladen. Om het op te lossen, verwijder het en herstel een kopie uit de Proton Drive prullenbak indien beschikbaar.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_PathNotFound">
+    <value>Bestand of map bestaat niet</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_RateLimited">
+    <value>Er is iets fout gegaan</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyFile">
+    <value>Bestand is alleen-lezen</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyRoot">
+    <value>Alleen lezen-bestanden en mappen kunnen niet worden gewijzigd. Schakel synchronisatie uit en in onder "Gedeeld met mij" om op te lossen.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ServerError">
+    <value>Er is iets fout gegaan.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_SharingViolation">
+    <value>Bestand of map wordt gebruikt door een andere app</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TimedOut">
+    <value>Verlopen</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TransferAbortedDueToFileChange">
+    <value>Upload afgebroken omdat bestand gewijzigd is tijdens synchronisatie. App zal automatisch opnieuw proberen</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_UnauthorizedAccess">
+    <value>Onvoldoende rechten</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Unknown">
+    <value>Er is iets fout gegaan.</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_ContainsInvalidCharacter">
+    <value>Naam bevat een ongeldig teken</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Empty">
+    <value>Naam niet ingevuld</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithPeriod">
+    <value>Naam eindigt op een punt</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithSpace">
+    <value>Naam eindigt op een spatie</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Reserved">
+    <value>Naam niet ondersteund door Windows</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_TooLong">
+    <value>Naam te lang</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Valid">
+    <value></value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_CheckingForUpdate">
+    <value>Zoeken naar updates...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_DownloadingAnUpdate">
+    <value>Update downloaden...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpToDate">
+    <value>Bijgewerkt</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
+    <value>Updates controleren is mislukt</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Update vereist</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
+    <value>Update beschikbaar</value>
+  </data>
+  <data name="Main_About_Button_UpdateNow">
+    <value>_Nu updaten</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Button_UpdateNow_HelpText">
+    <value>Er is een nieuwe versie van Proton Drive beschikbaar, update deze nu.</value>
+  </data>
+  <data name="Main_About_Label_CurrentVersion">
+    <value>Huidige versie</value>
+  </data>
+  <data name="Main_About_Label_ReleaseDate">
+    <value>Releasedatum</value>
+  </data>
+  <data name="Main_About_Link_PrivacyPolicy">
+    <value>_Privacybeleid</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Link_TermsOfService">
+    <value>_Servicevoorwaarden</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_ReleaseHistory_Label_New">
+    <value>NIEUW</value>
+  </data>
+  <data name="Main_About_ReleaseHistory_Title">
+    <value>Wat is er nieuw</value>
+  </data>
+  <data name="Main_About_Title">
+    <value>Over</value>
+  </data>
+  <data name="Main_Account_Account_Button_ManageAccount">
+    <value>Account beheren</value>
+  </data>
+  <data name="Main_Account_Account_HelpText">
+    <value>Beheer uw account</value>
+  </data>
+  <data name="Main_Account_Account_Info_UnknownUser">
+    <value>Onbekende gebruiker</value>
+  </data>
+  <data name="Main_Account_Label_Account">
+    <value>Account</value>
+  </data>
+  <data name="Main_Account_Label_Security">
+    <value>Beveiliging</value>
+  </data>
+  <data name="Main_Account_Password_Button_ChangePassword">
+    <value>_Wijziging</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Password_Description">
+    <value>Wijzig het wachtwoord van uw account</value>
+  </data>
+  <data name="Main_Account_Password_HelpText">
+    <value>Wijzig uw Proton Drive wachtwoord</value>
+  </data>
+  <data name="Main_Account_Password_Title">
+    <value>Wachtwoord</value>
+  </data>
+  <data name="Main_Account_Plan_Button_SeePlans">
+    <value>Zie _abonnementen</value>
+  </data>
+  <data name="Main_Account_Plan_Description">
+    <value>Krijg meer opslag</value>
+  </data>
+  <data name="Main_Account_Plan_HelpText">
+    <value>Zie andere Proton Drive abonnementen</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Button_Manage">
+    <value>_Beheren</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_SessionManagement_Description">
+    <value>Tenzij u uitlogt of uw wachtwoord wijzigt, blijft uw sessie actief. Sessies verlopen na 60 dagen van inactiviteit.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_HelpText">
+    <value>Beheer uw sessie. De sessie zal verlopen na 60 dagen van inactiviteit.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Title">
+    <value>Sessiebeheer</value>
+  </data>
+  <data name="Main_Account_SignOut_Description">
+    <value>Log uit en schakel synchronisatie uit. U kunt zich aanmelden met hetzelfde account om de synchronisatie te hervatten.</value>
+  </data>
+  <data name="Main_Account_SignOut_HelpText">
+    <value>Afmelden bij Proton Drive</value>
+  </data>
+  <data name="Main_Account_SignOut_Title">
+    <value>_Uitloggen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Storage_Button_UpgradePlan">
+    <value>Abonnement upgraden</value>
+  </data>
+  <data name="Main_Account_Storage_Info_EnsureMoreStorage">
+    <value>Haal nu meer opslagruimte op om ononderbroken synchronisatie te verzekeren.</value>
+  </data>
+  <data name="Main_Account_Storage_Info_UsedSpaceFormat">
+    <value>Totaal gebruikte ruimte: {0} van {1}</value>
+  </data>
+  <data name="Main_Account_Storage_Title">
+    <value>Opslagcapaciteit</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageExceeded">
+    <value>Synchronisatie gestopt. Uw account heeft de opslagcapaciteit overschreden.</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageLimit">
+    <value>U staat op het punt uw opslaglimiet te bereiken.</value>
+  </data>
+  <data name="Main_Account_Title">
+    <value>Account</value>
+  </data>
+  <data name="Main_Activity_Button_PauseSync">
+    <value>_Synchronisatie pauzeren</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Rename">
+    <value>Hernoemen</value>
+  </data>
+  <data name="Main_Activity_Button_Rename_Tooltip">
+    <value>Wijzig de naam van dit item om het synchronisatieprobleem op te lossen</value>
+  </data>
+  <data name="Main_Activity_Button_ResumeSync">
+    <value>_Synchronisatie hervatten</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Retry">
+    <value>Opnieuw synchroniseren</value>
+  </data>
+  <data name="Main_Activity_Column_Folder">
+    <value>Map</value>
+  </data>
+  <data name="Main_Activity_Column_Name">
+    <value>Naam</value>
+  </data>
+  <data name="Main_Activity_Column_Progress_Tooltip_Finalizing">
+    <value>Finaliseren...</value>
+  </data>
+  <data name="Main_Activity_Column_Size">
+    <value>Grootte</value>
+  </data>
+  <data name="Main_Activity_Column_Status">
+    <value>Status</value>
+  </data>
+  <data name="Main_Activity_Column_Synced">
+    <value>Gesynchroniseerd</value>
+  </data>
+  <data name="Main_Activity_Column_Type">
+    <value>Soort</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Button_ShowMore">
+    <value>Toon meer details</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Description">
+    <value>Klik voor meer informatie over deze problemen</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_HelpText">
+    <value>Toon alle fouten in een nieuwe sectie</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_MultipleItemsFormat">
+    <value>Er zijn {0} problemen</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_SingleItem">
+    <value>Er is 1 probleem</value>
+  </data>
+  <data name="Main_Activity_Errors_Title">
+    <value>Synchronisatie problemen ({0})</value>
+  </data>
+  <data name="Main_Activity_Errors_Title_Tooltip">
+    <value>Terug naar activiteit</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Description">
+    <value>Synchroniseer informatie over bestanden en mappen zal hier verschijnen</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_HelpText">
+    <value>Uw bestanden zijn up to date</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Title">
+    <value>Uw bestanden zijn up to date</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line1">
+    <value>Dit proces kan enkele minuten duren.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line2">
+    <value>U kunt het venster veilig minimaliseren of sluiten.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_HelpText">
+    <value>Synchronisatie wordt geïnitialiseerd</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Title">
+    <value>Uw drive aan het instellen...</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Description">
+    <value>Klik op "Resume sync" om synchronisatie in te schakelen</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_HelpText">
+    <value>Synchronisatie is gepauzeerd</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Title">
+    <value>Synchronisatie is gepauzeerd</value>
+  </data>
+  <data name="Main_Activity_Rename_CurrentName_Label">
+    <value>Huidige naam:</value>
+  </data>
+  <data name="Main_Activity_Rename_Description">
+    <value>De naam van dit item bevat tekens die niet worden ondersteund door Windows.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_AlreadyExists">
+    <value>Naam al in gebruik</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_ContainsInvalidCharacter">
+    <value>Naam bevat ongeldige tekens</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Failed">
+    <value>Er is iets misgegaan</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Required">
+    <value>Naam is verplicht</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Label">
+    <value>Nieuwe naam:</value>
+  </data>
+  <data name="Main_Activity_Rename_Status_Value_Renaming">
+    <value>Hernoemen...</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion">
+    <value>Verwijder het volgende om door te gaan met synchroniseren:</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion_CharacterList">
+    <value>/ : * ? &gt; &lt; " |</value>
+  </data>
+  <data name="Main_Activity_Rename_Title">
+    <value>Item hernoemen</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUp">
+    <value>Instellen...</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUpFormat">
+    <value>Instellen... ({0} items voorbereid voor synchronisatie)</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SyncPausedUntilFormat">
+    <value>(tot {0})</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>een ogenblik geleden</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
+    <value>{0} dagen geleden</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_HoursAgoFormat">
+    <value>{0} uur geleden</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_MinutesAgoFormat">
+    <value>{0} minuten geleden</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneDayAgo">
+    <value>één dag geleden</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneHourAgo">
+    <value>één uur geleden</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneMinuteAgo">
+    <value>één minuut geleden</value>
+  </data>
+  <data name="Main_Activity_Title">
+    <value>Activiteit</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Mappen die vanaf uw computers worden gesynchroniseerd, verschijnen in het gedeelte "Computers" in uw Drive-apps.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Button_Rename">
+    <value>_Naam wijzigen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Device_HelpText">
+    <value>Hernoem uw apparaat</value>
+  </data>
+  <data name="Main_MyComputer_Device_Label">
+    <value>Dit apparaat</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Cancel_HelpText">
+    <value>Apparaat hernoemen annuleren</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Save_HelpText">
+    <value>Apparaatnaam opslaan</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Error_Tooltip">
+    <value>Ongeldige apparaatnaam: de nieuwe naam mag niet leeg zijn en mag niet meer dan 255 tekens bevatten.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_HelpText">
+    <value>Hernoem apparaat</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Button_AddMore">
+    <value>_Meer mappen toevoegen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Description">
+    <value>Een map toevoegen zal al zijn gegevens back-uppen naar Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Info_Saving">
+    <value>Mappen opslaan...</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Title">
+    <value>Mappen toevoegen</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludedByAnAlreadySyncedFolderFormat">
+    <value>{0} map(pen) kan/kunnen niet worden gesynchroniseerd omdat deze zich in een map bevindt/bevinden die al met Proton Drive is gesynchroniseerd</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludesAnAlreadySyncedFolderFormat">
+    <value>{0} map(pen) kan/kunnen niet worden gesynchroniseerd omdat er een submap in zit die al met Proton Drive is gesynchroniseerd</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFileSystemAccessFailedFormat">
+    <value>{0} mappen zijn niet toegankelijk</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFolderDoesNotExistFormat">
+    <value>{0} mappen kunnen niet gevonden of geopend worden</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalVolumeNotSupportedFormat">
+    <value>{0} map(pen) kan/kunnen niet gesynchroniseerd worden omdat deze zich op een niet ondersteunde drive bevindt/bevinden.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NetworkFolderNotSupportedFormat">
+    <value>{0} map(pen) kan/kunnen niet worden gesynchroniseerd omdat netwerkmappen niet worden ondersteund.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat">
+    <value>{0} map(pen) kan/kunnen niet worden gesynchroniseerd omdat het systeemmappen zijn.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
+    <value>Kan {0} mappen niet toevoegen</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder">
+    <value>Kan 1 map niet toevoegen</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add">
+    <value>_Mappen toevoegen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst">
+    <value>Uw eerste mappen toevoegen om te synchroniseren</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddNext">
+    <value>Een nieuwe map toevoegen om te synchroniseren</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_Name">
+    <value>Naam</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization">
+    <value>Opslagruimte optimaliseren</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization_Info_Tooltip">
+    <value>Optimaliseer opslag door synchronisatie op aanvraag toe te staan.
+Bestanden nemen de lokale ruimte alleen in beslag wanneer u ze opent of kiest om ze altijd op dit apparaat te houden. U kunt
+opslag optimalisatie op elk gewenst moment uitschakelen.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Description">
+    <value>Map toevoegen om veilig te beginnen met het synchroniseren van bestanden naar de cloud</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Title">
+    <value>Synchroniseer uw bestanden veilig</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Label">
+    <value>Mappen synchroniseren vanaf dit apparaat</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_OpenFolder">
+    <value>_Map openen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder">
+    <value>_Map verwijderen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm">
+    <value>Map verwijderen</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_1">
+    <value>Alle bestanden die zijn toegevoegd aan "{0}" map zullen niet langer worden gesynchroniseerd en deze map zal worden verplaatst naar de prullenbak in Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_2">
+    <value>Bestaande bestanden blijven op uw computer.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_1">
+    <value>Sommige bestanden in de map{0}worden misschien alleen in de cloud opgeslagen. Verwijderen van deze map zal stoppen met synchroniseren en verplaatsen naar prullenbak in de Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_2">
+    <value>Om een lokale kopie van alle bestanden op uw computer te houden, schakelt u eerst Optimaliseer opslag uit voor deze map. Als opslagoptimalisatie al is uitgeschakeld, schakel deze aan en uit. Wacht tot de download voltooid is (u kunt de status controleren in de Verkenner), verwijder daarna de map van het synchroniseren onder de Mijn Computer sectie.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_1">
+    <value>Bestanden die al gedownload zijn blijven op uw toestel.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_2">
+    <value>Bestanden die alleen in de cloud zijn opgeslagen, worden van uw toestel verwijderd.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Title">
+    <value>Map verwijderen?</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_1">
+    <value>Bestanden in "{0}" map zullen nu altijd beschikbaar zijn op uw apparaat. Het kan een paar minuten duren voordat alle bestanden klaar zijn met downloaden (u kunt de status controleren in de Verkenner).</value>
+    <comment>Placeholder {0}: folder name</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_2">
+    <value>U kunt nog steeds handmatig ruimte vrijmaken voor individuele bestanden in hun instellingen.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Title">
+    <value>Alle bestanden zijn altijd beschikbaar op dit apparaat</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1">
+    <value>De "{0}" map kan geen op demand sync gebruiken om de opslag te optimaliseren, omdat {1}.</value>
+    <comment>Placeholder {0}: folder name. Placeholder {1}: the reason text, one of resources with "StorageOptimizationErrorCode_Value_..." key.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_2">
+    <value>Uw bestanden worden nog steeds gesynchroniseerd met Proton Drive en blijven beschikbaar op uw computer en in de cloud.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Title">
+    <value>Optimalisatie van opslagruimte niet beschikbaar</value>
+  </data>
+  <data name="Main_MyComputer_Link_LearnMore">
+    <value>Meer informatie</value>
+  </data>
+  <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
+    <value>Onboarding van mijn computer negeren</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Button_Next">
+    <value>_Volgende</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Description">
+    <value>Schakel synchronisatie op aanvraag in om schijfruimte te besparen. Bestanden nemen alleen lokale opslag in als u ze opent of markeert als "Altijd op dit apparaat houden".</value>
+    <comment>"Always keep on this device" is the exact text displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Title">
+    <value>Opslagruimte optimaliseren</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted">
+    <value>Aan de _slag</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1">
+    <value>Klik met de rechtermuisknop op een bestand of map die is gesynchroniseerd met Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2">
+    <value>Kies "Altijd op dit apparaat houden" om het offline op te slaan, of "Ruimte vrij maken" om het enkel in de cloud te bewaren.</value>
+    <comment>"Always keep on this device" and "Free up space" are the exact texts displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Title">
+    <value>Opslagruimte beheren</value>
+  </data>
+  <data name="Main_MyComputer_Title">
+    <value>Mijn computer</value>
+  </data>
+  <data name="Main_Photos_Folders_Error_ImportFailed">
+    <value>Importeren mislukt. Probeer de map te verwijderen en opnieuw te importeren. Als het probleem aanhoudt, neem dan contact op met support.</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportedItemsFormat">
+    <value>{0} van {1} geïmporteerd</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportingItemsFormat">
+    <value>Importeren... {0} van {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_Items_Label">
+    <value>item(s)</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Albums beheren</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
+    <value>_Map openen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Remove">
+    <value>_Verwijderen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Retry">
+    <value>_Opnieuw proberen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_NoItemsFound_Label">
+    <value>Geen foto's/video's gevonden</value>
+  </data>
+  <data name="Main_Photos_Folders_WaitingToImport">
+    <value>Wachten op importeren...</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Description">
+    <value>Stapsgewijze handleiding hoe u uw Google Foto's exporteert</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Title">
+    <value>1. Uw Google Foto's exporteren</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Description">
+    <value>Dit moet de uitgepakte map met uw geëxporteerde foto's en video's zijn.</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Title">
+    <value>2. Google Foto's map importeren</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_SelectFolder_Button">
+    <value>Map selecteren</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Title">
+    <value>Importeren vanuit Google Foto's</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Description">
+    <value>Importeer een lokale map vanaf uw computer</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Title">
+    <value>Map importeren</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Description">
+    <value>Importeer Google foto's uit Google Takeout</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Title">
+    <value>Importeren vanuit Google Foto's</value>
+  </data>
+  <data name="Main_Photos_Import_Link_HowImportWorks">
+    <value>Hoe werkt het importeren van foto's?</value>
+  </data>
+  <data name="Main_Photos_Import_Title">
+    <value>Importeer foto's</value>
+  </data>
+  <data name="Main_Photos_Info_Duplicates">
+    <value>We importeren alleen wat nieuw is — dubbele items worden automatisch overgeslagen.</value>
+  </data>
+  <data name="Main_Photos_Title">
+    <value>Foto's</value>
+  </data>
+  <data name="Main_Photos_Warning_UploadUnavailable">
+    <value>Het uploaden van foto's is tijdelijk niet beschikbaar</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Button_Change">
+    <value>_Wijzigen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_HelpText">
+    <value>Wijzig uw hoofdmap van Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Title">
+    <value>Locatie</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Krijg vroege toegang en help ons nieuwe versies van Proton Drive te testen.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Bèta toegang</value>
+  </data>
+  <data name="Main_Settings_Label_AccountRootFolder">
+    <value>Uw Proton Drive map:</value>
+  </data>
+  <data name="Main_Settings_Label_General">
+    <value>Algemeen</value>
+  </data>
+  <data name="Main_Settings_Language_Button_Restart">
+    <value>Nu herstarten</value>
+  </data>
+  <data name="Main_Settings_Language_Message_PleaseRestart">
+    <value>Herstart het programma om taalwijziging door te voeren</value>
+  </data>
+  <data name="Main_Settings_Language_Title">
+    <value>Taal</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_HelpText">
+    <value>Open Proton Drive bij het opstarten van Windows</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_Title">
+    <value>Open bij opstarten</value>
+  </data>
+  <data name="Main_Settings_Title">
+    <value>Instellingen</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Name">
+    <value>Naam</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions">
+    <value>Machtigingen</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Tooltip">
+    <value>Machtigingen verleend door de eigenaar</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Editor">
+    <value>Bewerker</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Viewer">
+    <value>Kijker</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedBy">
+    <value>Gedeeld door</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedOn">
+    <value>Gedeeld op</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync">
+    <value>Synchroniseren</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync_Info_Tooltip">
+    <value>Inschakelen om het gedeelde bestand of map vanaf uw computer toegankelijk te maken.
+De inhoud van bestanden wordt alleen op aanvraag gedownload.</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad">
+    <value>Laden van gegevens mislukt</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Plural">
+    <value>{0} items konden niet opgeladen worden</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Singular">
+    <value>{0} item kon niet opgeladen worden</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Description">
+    <value>Bestanden en mappen die gedeeld werden zullen hier verschijnen</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Title">
+    <value>Nog niets gedeeld</value>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_OpenFolder">
+    <value>_Map openen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_RemoveMe">
+    <value>_Verwijder mij</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_Close_HelpText">
+    <value>Negeer gedeeld met mij onboarding</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_GetStarted">
+    <value>Aan de slag</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Description">
+    <value>Synchroniseer gemakkelijk bestanden en mappen die met u zijn gedeeld met uw computer.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1">
+    <value>Selecteer bestanden of mappen om te synchroniseren.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2">
+    <value>Toegang tot gedeelde bestanden in uw Proton Drive-map.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3">
+    <value>Bewerk ze, upload nieuwe en krijg offline toegang.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3_Label">
+    <value>3.</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Plural">
+    <value>{0} van {1} items gesynchroniseerd</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Singular">
+    <value>{0} van {1} item gesynchroniseerd</value>
+  </data>
+  <data name="Main_SharedWithMe_Title">
+    <value>Gedeeld met mij</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Advice">
+    <value>Om nieuwe items toe te voegen, stop met het synchroniseren van een aantal oude items.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Limit">
+    <value>U kan slechts {0} items tegelijk synchroniseren.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_SharingUnavailable">
+    <value>Delen is tijdelijk niet beschikbaar</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About">
+    <value>Over</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About_HelpText">
+    <value>Menu-item: Over</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account">
+    <value>Account</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account_HelpText">
+    <value>Menu-item: Account</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity">
+    <value>Activiteit</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity_HelpText">
+    <value>Menu-item: Activiteit</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help">
+    <value>Hulp</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help_HelpText">
+    <value>Menu-item: Hulp</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer">
+    <value>Mijn computer</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer_HelpText">
+    <value>Menu-item: Mijn computer</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos">
+    <value>Foto's</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_PhotosImport">
+    <value>Foto's importeren</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos_HelpText">
+    <value>Menu-item: Foto's</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings">
+    <value>Instellingen</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings_HelpText">
+    <value>Menu-item: Instellingen</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe">
+    <value>Gedeeld met mij</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe_HelpText">
+    <value>Menu-item: Gedeeld met mij</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceededQuota_Description">
+    <value>Synchronisatie gestopt: uw account heeft de opslagcapaciteit overschreden</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceedingQuota_Description">
+    <value>U staat op het punt uw opslaglimiet te bereiken</value>
+  </data>
+  <data name="Main_Sidebar_Notification_GetStarted_Description">
+    <value>Aan de slag</value>
+  </data>
+  <data name="Main_Sidebar_Notification_NewVersion_Description">
+    <value>Er is een nieuwe versie van Proton Drive beschikbaar!</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SharingUnavailable_Description">
+    <value>Delen is tijdelijk niet beschikbaar</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SyncFoldersFailure_Description">
+    <value>Een map kon niet gesynchroniseerd worden</value>
+  </data>
+  <data name="Main_Sidebar_Notification_UpdateRequired_Description">
+    <value>Om Proton Drive te blijven gebruiken moet u upgraden naar de nieuwste versie</value>
+  </data>
+  <data name="Main_Sidebar_Offer_Button_GetDeal">
+    <value>Kies deze _deal</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Sidebar_Storage_Button_GetMoreStorage">
+    <value>Krijg meer opslag</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_StorageNotAvailable">
+    <value>Ruimte-informatie niet beschikbaar</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_UsedSpaceFormat">
+    <value>{0} van {1} gebruikt</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Title">
+    <value>Opslag</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Tooltip">
+    <value>Opslagruimte beheren</value>
+  </data>
+  <data name="Main_Window_Title">
+    <value>Proton Drive</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>Deze map bevat een submap met synchronisatie op aanvraag. Stel een nieuwe gesynchroniseerde map in.</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>Deze map is al gesynchroniseerd op aanvraag. Stel een nieuwe gesynchroniseerde map in.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveAccessFailed">
+    <value>Kan geen verbinding maken met Proton Drive. Controleer uw internetverbinding.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDiverged">
+    <value>De Proton Drive map is verplaatst. Stel een nieuwe sync map in.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDoesNotExist">
+    <value>Geen toegang tot uw Proton Drive-bestanden, mogelijk als gevolg van het verwijderen van de apparaatmap. Stel een nieuwe sync map in.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveHostDeviceDiverged">
+    <value>Geen toegang tot uw Proton Drive-bestanden, mogelijk als gevolg van het verwijderen van een apparaat. Stel een nieuwe sync map in.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveShareDiverged">
+    <value>Kan geen toegang krijgen tot uw Proton Drive-bestanden, mogelijk als gevolg van een reset van het wachtwoord. Stel een nieuwe sync map in.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveVolumeDiverged">
+    <value>Kan geen toegang krijgen tot uw Proton Drive-bestanden, mogelijk als gevolg van een reset van het wachtwoord. Stel een nieuwe sync map in.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientDeviceQuota">
+    <value>Het maximale aantal gesynchroniseerde computers is bereikt. Verwijder onnodige computers van Proton Drive op het web.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientLocalFreeSpace">
+    <value>Maak ruimte vrij of deselecteer het selectievakje</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalAndRemoteFoldersNotEmpty">
+    <value>Het opzetten van een synchronisatiemap vereist een lege Windows of Proton Drive web map. Wis er een en probeer het opnieuw.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFileSystemAccessFailed">
+    <value>Kan geen toegang krijgen of lokale synchronisatiemap aanmaken. We blijven het opnieuw proberen.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDiverged">
+    <value>De gesynchroniseerde map werd vervangen door een nieuwe map in het pad. Herstel de vorige sync map of stel een nieuwe sync map in.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDoesNotExist">
+    <value>Synchronisatiemap niet gevonden. Deze mogelijk verwijderd, hernoemd of verplaatst. Herstel deze of stel een nieuwe synchronisatiemap in.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludedByAnAlreadySyncedFolder">
+    <value>De geselecteerde map is opgenomen in een andere gesynchroniseerde map</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludesAnAlreadySyncedFolder">
+    <value>De geselecteerde map bevat een reeds gesynchroniseerde map</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNonSyncable">
+    <value>De lokale map komt niet in aanmerking voor synchronisatie. Maak een nieuwe synchronisatie map aan.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNotEmpty">
+    <value>De map moet leeg zijn voordat u synchronisatie kunt instellen</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeDiverged">
+    <value>Het serienummer van het lokale volume is gewijzigd. Stel een nieuwe sync map in.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeNotSupported">
+    <value>Niet-ondersteund lokale schijftype. Probeer de synchronisatiemap op een andere lokale schijf in te stellen.</value>
+  </data>
+  <data name="MappingErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootMissingSyncRootFlag">
+    <value>Sync folder is ongeldig. Stel een nieuwe sync folder in.</value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootNotRegistered">
+    <value>De gesynchroniseerde map is onverwachts niet geregistreerd. Stel een nieuwe gesynchroniseerde map in.</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotoImportFailed">
+    <value>Foto importeren mislukt</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosDisabled">
+    <value>Proton Foto's niet beschikbaar</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosNotReady">
+    <value>Foto's functie niet gereed</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemDoesNotExist">
+    <value>Kan geen toegang krijgen tot het gedeelde Proton Drive bestand of map. Controleer of die nog steeds met u gedeeld wordt.</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemPermissionsDiverged">
+    <value>Machtigingen van gedeeld Proton Drive bestand of map zijn veranderd. Schakel de synchronisatie uit en weer in om op te lossen.</value>
+  </data>
+  <data name="MappingErrorCode_Value_SharingDisabled">
+    <value>Delen is tijdelijk niet beschikbaar</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Failed">
+    <value>Het instellen van synchronisatie mappen is mislukt</value>
+  </data>
+  <data name="MappingSetupStatus_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingSetupStatus_Value_PartiallySucceeded">
+    <value>Het instellen van sommige synchronisatie mappen is mislukt</value>
+  </data>
+  <data name="MappingSetupStatus_Value_SettingUp">
+    <value>Synchronisatiemappen instellen...</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Succeeded">
+    <value>Oké</value>
+  </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Opslag toevoegen</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Geen opslagruimte meer</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Upgrade om meer opslagruimte te krijgen en upload uw bestanden.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
+    <value>_Wijzigen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder_HelpText">
+    <value>Wijzig uw hoofdmap van Proton Drive.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Error_InvalidSyncFolder">
+    <value>Ongeldige synchronisatiemap</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Description">
+    <value>Hier mijn bestanden en andere gesynchroniseerde apparaten bekijken</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Location">
+    <value>Locatie</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Title">
+    <value>Uw Proton Drive map</value>
+  </data>
+  <data name="Onboarding_Button_Continue">
+    <value>_Doorgaan</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_Button_FinishSetup">
+    <value>_Configuratie voltooien</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders">
+    <value>_Meer mappen toevoegen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText">
+    <value>Voeg een andere map toe om te synchroniseren</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Label_Description">
+    <value>Geselecteerde mappen zullen gesynchroniseerd worden naar Proton Drive. De bestanden zullen worden geback-upt, en beschikbaar op uw andere apparaten.</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Title">
+    <value>Maak een back-up van uw mappen</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Koop Drive_Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Koop _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Koop _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_NotNow">
+    <value>_Niet nu</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_Upgrade">
+    <value>_Upgrade</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Mail">
+    <value>Mail: Aangepaste en veilige e-mail</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>maand</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Meest populair</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Tot {0} gebruikers</value>
+    <comment>Only for number greater than 1.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
+    <value>Pass: Versleutelde wachtwoordmanager</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Premiumwaarde inbegrepen</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Recommended">
+    <value>Aanbevolen</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Herstel vorige bestandsversies</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>opslagruimte</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Vpn">
+    <value>VPN: Ultrasnel en privé</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Title">
+    <value>Krijg meer opslag</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
+    <value>Importeren mislukt. Het album bestaat niet.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Importeren mislukt. De map bestaat niet.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
+    <value>Importeren mislukt. Maximum aantal albums bereikt.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfPhotosPerAlbumReached">
+    <value>Importeren mislukt. Maximum aantal foto's per album bereikt.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_Unknown">
+    <value>Importeren mislukt. Probeer het opnieuw.</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Failed">
+    <value>Importeren mislukt</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Importing">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Interrupted">
+    <value>Importeren is onderbroken</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_NotStarted">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_SetupFailed">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Succeeded">
+    <value>Importeren geslaagd</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_ValidationFailed">
+    <value></value>
+  </data>
+  <data name="ReleaseNoteType_Value_Feature">
+    <value>Nieuwe Features</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Fix">
+    <value>Fout correcties</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Improvement">
+    <value>Verbeteringen</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Fido2">
+    <value>Beveiligingssleutel</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_NotSupported">
+    <value></value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Totp">
+    <value>Authenticatie app</value>
+  </data>
+  <data name="SessionStatus_Value_Ending">
+    <value>Uitloggen...</value>
+  </data>
+  <data name="SessionStatus_Value_Failed">
+    <value>Aanmelden mislukt. Controleer uw internetverbinding.</value>
+  </data>
+  <data name="SessionStatus_Value_NotStarted">
+    <value>Uitgelogd</value>
+  </data>
+  <data name="SessionStatus_Value_SigningIn">
+    <value>Aanmelden...</value>
+  </data>
+  <data name="SessionStatus_Value_Started">
+    <value>Aangemeld</value>
+  </data>
+  <data name="SessionStatus_Value_Starting">
+    <value>Aanmelden...</value>
+  </data>
+  <data name="SignIn_Button_Authenticate">
+    <value>_Authenticeer</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_Back">
+    <value>_Terug</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignIn">
+    <value>_Aanmelden</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignInAsAnotherUser">
+    <value>Of aanmelden als een andere gebruiker</value>
+  </data>
+  <data name="SignIn_Button_Unlock">
+    <value>_Ontgrendel</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_CreateAccount">
+    <value>_Account aanmaken</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_ForgotPassword">
+    <value>_Wachtwoord vergeten?</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_LearnMore">
+    <value>Meer informatie</value>
+  </data>
+  <data name="SignIn_Message_SigningIn">
+    <value>Aanmelden bij uw account</value>
+  </data>
+  <data name="SignIn_Text_2FACode">
+    <value>Voer de code van uw Authenticator-app in</value>
+  </data>
+  <data name="SignIn_Text_No2FAMethodFound">
+    <value>Geen tweestapsverificatiemethode gevonden.</value>
+  </data>
+  <data name="SignIn_Text_Password">
+    <value>_Wachtwoord</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_SecondPassword">
+    <value>Tweede wachtwoord</value>
+  </data>
+  <data name="SignIn_Text_SecurityKey">
+    <value>Voeg een beveiligingssleutel toe die gekoppeld is aan uw Proton Account.</value>
+  </data>
+  <data name="SignIn_Text_SecurityKeyNotSupported">
+    <value>Uw systeem ondersteunt geen beveiligingssleutel</value>
+  </data>
+  <data name="SignIn_Text_Username">
+    <value>E-mail of gebruikersnaam</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_Username_HelpText">
+    <value>Gebruikersnaam</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_PasswordRequired">
+    <value>Wachtwoord is vereist</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SessionExpired">
+    <value>Uw sessie is verlopen. Log opnieuw in om door te gaan.</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SomethingWentWrong">
+    <value>Er is iets fout gegaan</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_UsernameRequired">
+    <value>Gebruikersnaam is vereist</value>
+  </data>
+  <data name="SignIn_Title_2FA">
+    <value>Tweestapsverificatie</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>het bevat een submap op aanvraag gesynchroniseerd door {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>het is al op aanvraag gesynchroniseerd door {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_NetworkVolumeNotSupported">
+    <value>netwerk schijven worden niet ondersteund</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_RemovableVolumeNotSupported">
+    <value>verwijderbare schijven worden niet ondersteund</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_Unknown">
+    <value>het inschakelen van synchronisatie op aanvraag is mislukt</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
+    <value>lokaal schijftype wordt niet ondersteund</value>
+  </data>
+  <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
+    <value>Onvoldoende vrije ruimte op dit apparaat</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludedByAnAlreadySyncedFolder">
+    <value>De map is opgenomen door een reeds gesynchroniseerde map</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludesAnAlreadySyncedFolder">
+    <value>De map bevat een reeds gesynchroniseerde map</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_InsufficientLocalFreeSpace">
+    <value>Maak ruimte vrij of deselecteer het selectievakje.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFileSystemAccessFailed">
+    <value>Geen toegang tot de map</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderDoesNotExist">
+    <value>Kan de map niet vinden</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderNotEmpty">
+    <value>De map moet leeg zijn voordat u synchronisatie kunt instellen</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalVolumeNotSupported">
+    <value>Niet-ondersteund station type</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NetworkFolderNotSupported">
+    <value>Mappen synchroniseren van netwerkschijven wordt niet ondersteund</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NonSyncableFolder">
+    <value>De map komt niet in aanmerking voor synchronisatie</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_Succeeded">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_DetectingUpdates">
+    <value>Updates ophalen...</value>
+  </data>
+  <data name="SyncStatus_Value_Failed">
+    <value>Fout</value>
+  </data>
+  <data name="SyncStatus_Value_Idle">
+    <value>Gesynchroniseerd</value>
+  </data>
+  <data name="SyncStatus_Value_Initializing">
+    <value>Instellen...</value>
+  </data>
+  <data name="SyncStatus_Value_Offline">
+    <value>Offline</value>
+  </data>
+  <data name="SyncStatus_Value_Paused">
+    <value>Onderbroken</value>
+  </data>
+  <data name="SyncStatus_Value_Synchronizing">
+    <value>Synchroniseren...</value>
+  </data>
+  <data name="SyncStatus_Value_Terminated">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_Terminating">
+    <value>Beëindigen...</value>
+  </data>
+  <data name="SystemTray_Menu_Item_Exit">
+    <value>E_xit</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenInBrowser">
+    <value>Openen in de _browser</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenLocalFolder">
+    <value>Lokale _map openen</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenProtonDrive">
+    <value>_Open Proton Drive</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSync">
+    <value>_Pauzeer de synchronisatie</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
+    <value>Pause for 1 hour</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor4Hours">
+    <value>Pause for 4 hours</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor8Hours">
+    <value>Pause for 8 hours</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncIndefinitely">
+    <value>Pause indefinitely</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow">
+    <value>Pause until tomorrow (8AM)</value>
+  </data>
+  <data name="SystemTray_Menu_Item_ResumeSync">
+    <value>_Resume the synchronization</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_SignIn">
+    <value>_Aanmelden</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="ToggleSwitch_Off">
+    <value>Uit</value>
+  </data>
+  <data name="ToggleSwitch_On">
+    <value>Aan</value>
+  </data>
+</root>

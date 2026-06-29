@@ -1,6 +1,6 @@
 # Proton Drive app for Windows
 
-Copyright (c) 2025 Proton AG
+Copyright (c) 2026 Proton AG
 
 ## License
 
@@ -15,3 +15,4 @@ You can download the latest stable release from the [Proton Drive official websi
 ## Contributions
 
 Contributions are not accepted at the moment.
+

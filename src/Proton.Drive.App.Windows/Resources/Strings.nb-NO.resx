@@ -1,0 +1,1772 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountDisplayStatus_Value_AccountError">
+    <value></value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SessionError">
+    <value>Kunne ikke logge på</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SettingUp">
+    <value>Konfigurerer...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SignedOut">
+    <value>Logget av</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningIn">
+    <value>Logger på...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningOut">
+    <value>Logger av...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_Succeeded">
+    <value>Logget på</value>
+  </data>
+  <data name="AccountErrorCode_Value_AccountSwitchingFailed">
+    <value>Kan ikke bytte konto. Start appen på nytt.</value>
+  </data>
+  <data name="AccountErrorCode_Value_Delinquent">
+    <value>Kontoen har ubetalte fakturaer. Gå til kontrollpanelet for å betale, eller gi beskjed til administratoren.</value>
+  </data>
+  <data name="AccountErrorCode_Value_DriveAccessFailed">
+    <value>Kan ikke koble til Proton Drive. Prøv å undersøke internett-tilkoblingen din.</value>
+  </data>
+  <data name="AccountErrorCode_Value_NoDriveAccess">
+    <value>For å få tilgang til Proton Drive, oppgrader planen din</value>
+  </data>
+  <data name="AccountErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Create">
+    <value>Oppretter</value>
+    <comment>Indicates a local folder being created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Delete">
+    <value>Sletter</value>
+    <comment>Indicates the local file or folder being deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Download">
+    <value>Laster ned fra Proton Drive</value>
+    <comment>Indicates a file being downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Henter oppdateringer</value>
+    <comment>Indicates local file system changes being fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Move">
+    <value>Flytter</value>
+    <comment>Indicates the local file or folder being moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Rename">
+    <value>Gir nytt navn</value>
+    <comment>Indicates the local file or folder being renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Upload">
+    <value>Laster opp til Proton Drive</value>
+    <comment>Indicates a  file being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Create">
+    <value>Opprettet</value>
+    <comment>Indicates a local folder has been created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Delete">
+    <value>Slettet</value>
+    <comment>Indicates a local file or folder has been deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Download">
+    <value>Lastet ned fra Proton Drive</value>
+    <comment>Indicates a file has been downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Oppdateringer hentet</value>
+    <comment>Indicates local file system changes have been fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Move">
+    <value>Flyttet</value>
+    <comment>Indicates a local file or folder has been moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Rename">
+    <value>Omdøpt</value>
+    <comment>Indicates a local file or folder has been renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Upload">
+    <value>Lastet opp til Proton Drive</value>
+    <comment>Indicates a file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Create">
+    <value>Oppretter på Proton Drive</value>
+    <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
+    <value>Flytter til papirkurv i Proton Drive</value>
+    <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
+    <value>Laster ned fra Proton Drive</value>
+    <comment>Indicates a file is being downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Henter oppdateringer fra Proton Drive</value>
+    <comment>Indicates changes are being fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Move">
+    <value>Flytter på Proton Drive</value>
+    <comment>Indicates the file or folder is being moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Rename">
+    <value>Gir nytt navn på Proton Drive</value>
+    <comment>Indicates the file or folder is being renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Upload">
+    <value>Laster opp til Proton Drive</value>
+    <comment>Indicates the file is being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Create">
+    <value>Opprettet på Proton Drive</value>
+    <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
+    <value>Flyttet til papirkurv i Proton Drive</value>
+    <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
+    <value>Lastet ned fra Proton Drive</value>
+    <comment>Indicates a file has been downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Oppdateringer hentet fra Proton Drive</value>
+    <comment>Indicates changes have been fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Move">
+    <value>Flyttet på Proton Drive</value>
+    <comment>Indicates the file or folder has been moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Rename">
+    <value>Omdøpt på Proton Drive</value>
+    <comment>Indicates the file or folder has been renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Upload">
+    <value>Lastet opp til Proton Drive</value>
+    <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="AppDisplayStatus_Value_AccountError">
+    <value>Kunne ikke konfigurere en konto</value>
+  </data>
+  <data name="AppDisplayStatus_Value_FinishingUp">
+    <value>Fullfører...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Offline">
+    <value>Frakoblet</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SettingUp">
+    <value>Konfigurerer...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignInError">
+    <value>Kunne ikke logge på</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignedOut">
+    <value>Logget av</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningIn">
+    <value>Logger på...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningOut">
+    <value>Logger av...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SyncFolderError">
+    <value>Kan ikke konfigurere synkroniseringsmapper</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationError">
+    <value>Synkronisering mislyktes</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationPaused">
+    <value>Synkronisering satt på pause</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationWarning">
+    <value>Noen elementer kunne ikke synkroniseres</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronized">
+    <value>Synkronisert</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronizing">
+    <value>Synkroniserer...</value>
+  </data>
+  <data name="BugReport_Button_Cancel">
+    <value>_Avbryt</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel_HelpText">
+    <value>Avbryt rapporten din</value>
+  </data>
+  <data name="BugReport_Button_Report">
+    <value>_Rapport</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Report_HelpText">
+    <value>Send inn rapporten din</value>
+  </data>
+  <data name="BugReport_Button_ShowLogs">
+    <value>Vis _logger</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs">
+    <value>_Inkluder applogger</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs_Tooltip">
+    <value>Rapporten vil inneholde de nyeste apploggfilene og installasjonsloggfilene</value>
+  </data>
+  <data name="BugReport_NeedHelp_Description">
+    <value>Hurtigguider for oppsett, bruk av appen og filsynkronisering.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_FAQ">
+    <value>Ofte stilte spørsmål (FAQ)</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks">
+    <value>Lær hvordan Proton Drive-appen fungerer</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowSharedFilesWork">
+    <value>Tilgang til delte filer</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_SyncFolders">
+    <value>Synkroniser mapper til Proton Drive</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_UseOnDemandSync">
+    <value>Bruk synkronisering ved behov</value>
+  </data>
+  <data name="BugReport_NeedHelp_Title">
+    <value>Trenger du hjelp til å komme i gang med Proton Drive?</value>
+  </data>
+  <data name="BugReport_Text_Description_HelpText">
+    <value>Beskrivelse. Hva gikk galt? Hva er de nøyaktige trinnene du utførte? (minimum 10 tegn)</value>
+  </data>
+  <data name="BugReport_Text_Description_Label">
+    <value>_Beskrivelse</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_Description_Label_Requirement">
+    <value>(minimum 10 tegn)</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_ExactSteps">
+    <value>Hva er de nøyaktige trinnene du utførte?</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_WhatWentWrong">
+    <value>Hva gikk galt?</value>
+  </data>
+  <data name="BugReport_Text_Email_HelpText">
+    <value>E-post (obligatorisk felt)</value>
+  </data>
+  <data name="BugReport_Text_Email_Label">
+    <value>_E-post</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_HelpText">
+    <value>Sakstittel (obligatorisk felt)</value>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Label">
+    <value>_Tittel</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Watermark">
+    <value>Sakstittel</value>
+  </data>
+  <data name="BugReport_Text_ReportSuccessfullySent">
+    <value>Rapporten er sendt. Takk.</value>
+  </data>
+  <data name="BugReport_Title">
+    <value>Proton Drive-tilbakemelding</value>
+  </data>
+  <data name="Dialog_Button_Cancel">
+    <value>Avbryt</value>
+  </data>
+  <data name="Dialog_Button_Ok">
+    <value>OK</value>
+  </data>
+  <data name="Dialog_Button_Save">
+    <value>_Lagre</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="FileSystemErrorCode_Value_Cancelled">
+    <value>Avbrutt</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CloudFileProviderNotRunning">
+    <value>Sørg for at skylagringsleverandøren (f.eks. OneDrive) kjører og er tilkoblet.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CyclicRedundancyCheck">
+    <value>Datafeil (syklisk redundanskontroll). Sjekk stasjonen din (USB, disk osv...) for filsystemfeil og dårlige sektorer.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DirectoryNotFound">
+    <value>Fant ikke en del av banen</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DuplicateName">
+    <value>Navn allerede i bruk</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_FreeSpaceExceeded">
+    <value>Ikke nok ledig plass</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IdentityMismatch">
+    <value>Filen eller mappen samsvarer ikke.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IntegrityFailure">
+    <value>Verifisering av data mislyktes</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_InvalidName">
+    <value>Navnet inneholder tegn som ikke støttes av Windows. Fjern følgende tegn for å tillate synkronisering: \ / : * ? " &lt;&gt; |</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
+    <value>Filen hoppet over fordi den har endret seg for nylig. Appen prøver automatisk på nytt</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
+    <value>Live-bilder kan ikke lastes opp.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MetadataMismatch">
+    <value>Filen eller mappen samsvarer ikke.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MissingIndividuallySharedFile">
+    <value>Den opprinnelige filen delt med deg, har blitt slettet, flyttet eller gitt nytt navn.
+Slå synkroniseringen av og på igjen for å gjenopprette den og fjerne denne feilen.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_NetworkError">
+    <value>Kan ikke koble til Proton Drive. Prøv å undersøke internett-tilkoblingen din.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ObjectNotFound">
+    <value>Fil eller mappe finnes ikke</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Offline">
+    <value>Frakoblet</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Partial">
+    <value>Denne filen er ikke tilgjengelig lokalt og kan ikke lastes opp. For å løse dette, slett den og gjenopprett en kopi fra Proton Drive-papirkurven hvis tilgjengelig.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_PathNotFound">
+    <value>Fil eller mappe finnes ikke</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_RateLimited">
+    <value>Noe gikk galt</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyFile">
+    <value>Filen er skrivebeskyttet</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyRoot">
+    <value>Skrivebeskyttede filer og mapper kan ikke endres. Slå synkronisering av og på under "Delt med meg" for å løse problemet.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ServerError">
+    <value>Noe gikk galt</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_SharingViolation">
+    <value>Fil eller mappe brukes av en annen app</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TimedOut">
+    <value>Tidsavbrudd</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TransferAbortedDueToFileChange">
+    <value>Opplastingen ble avbrutt fordi filen ble endret under synkronisering. Appen prøver automatisk på nytt</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_UnauthorizedAccess">
+    <value>Ikke nok tillatelser</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Unknown">
+    <value>Noe gikk galt</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_ContainsInvalidCharacter">
+    <value>Navnet inneholder et ugyldig tegn</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Empty">
+    <value>Navn er tomt</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithPeriod">
+    <value>Navn slutter med et punktum</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithSpace">
+    <value>Navn slutter med et mellomrom</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Reserved">
+    <value>Navn støttes ikke av Windows</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_TooLong">
+    <value>Navn er for langt</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Valid">
+    <value></value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_CheckingForUpdate">
+    <value>Ser etter oppdatering...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_DownloadingAnUpdate">
+    <value>Laster ned en oppdatering...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpToDate">
+    <value>Oppdatert</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
+    <value>Kunne ikke se etter oppdatering</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Oppdatering kreves</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
+    <value>Oppdatering tilgjengelig</value>
+  </data>
+  <data name="Main_About_Button_UpdateNow">
+    <value>_Oppdater nå</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Button_UpdateNow_HelpText">
+    <value>En ny versjon av Proton Drive er tilgjengelig, oppdater den nå.</value>
+  </data>
+  <data name="Main_About_Label_CurrentVersion">
+    <value>Gjeldende versjon</value>
+  </data>
+  <data name="Main_About_Label_ReleaseDate">
+    <value>Utgivelsesdato</value>
+  </data>
+  <data name="Main_About_Link_PrivacyPolicy">
+    <value>_Personvernerklæring</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Link_TermsOfService">
+    <value>_Brukervilkår</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_ReleaseHistory_Label_New">
+    <value>NY</value>
+  </data>
+  <data name="Main_About_ReleaseHistory_Title">
+    <value>Hva er nytt</value>
+  </data>
+  <data name="Main_About_Title">
+    <value>Om</value>
+  </data>
+  <data name="Main_Account_Account_Button_ManageAccount">
+    <value>Administrer _konto</value>
+  </data>
+  <data name="Main_Account_Account_HelpText">
+    <value>Administrer kontoen din</value>
+  </data>
+  <data name="Main_Account_Account_Info_UnknownUser">
+    <value>Ukjent bruker</value>
+  </data>
+  <data name="Main_Account_Label_Account">
+    <value>Konto</value>
+  </data>
+  <data name="Main_Account_Label_Security">
+    <value>Sikkerhet</value>
+  </data>
+  <data name="Main_Account_Password_Button_ChangePassword">
+    <value>_Endre</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Password_Description">
+    <value>Endre passordet for kontoen din.</value>
+  </data>
+  <data name="Main_Account_Password_HelpText">
+    <value>Endre passordet ditt for Proton Drive</value>
+  </data>
+  <data name="Main_Account_Password_Title">
+    <value>Passord</value>
+  </data>
+  <data name="Main_Account_Plan_Button_SeePlans">
+    <value>Se _planer</value>
+  </data>
+  <data name="Main_Account_Plan_Description">
+    <value>Skaff deg mer lagringskapasitet</value>
+  </data>
+  <data name="Main_Account_Plan_HelpText">
+    <value>Se andre planer for Proton Drive</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Button_Manage">
+    <value>_Administrer</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_SessionManagement_Description">
+    <value>Med mindre du logger av kontoen din eller endrer passordet ditt, vil økten din forbli aktiv. Økter utløper etter 60 dager med inaktivitet.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_HelpText">
+    <value>Administrer økten din. Etter 60 dager med inaktivitet utløper økten.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Title">
+    <value>Administrasjon av økter</value>
+  </data>
+  <data name="Main_Account_SignOut_Description">
+    <value>Logg av og deaktiver synkronisering. Du kan logge på igjen med den samme kontoen for å gjenoppta synkroniseringen.</value>
+  </data>
+  <data name="Main_Account_SignOut_HelpText">
+    <value>Logg av fra Proton Drive</value>
+  </data>
+  <data name="Main_Account_SignOut_Title">
+    <value>_Logg av</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Storage_Button_UpgradePlan">
+    <value>Oppgrader plan</value>
+  </data>
+  <data name="Main_Account_Storage_Info_EnsureMoreStorage">
+    <value>For å sikre uavbrutt synkronisering, skaff deg mer lagringsplass nå.</value>
+  </data>
+  <data name="Main_Account_Storage_Info_UsedSpaceFormat">
+    <value>Lagringskapasitet brukt: {0} av {1}</value>
+  </data>
+  <data name="Main_Account_Storage_Title">
+    <value>Lagringskapasitet</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageExceeded">
+    <value>Synkroniseringen stoppet. Kontoen din har overskredet lagringskapasiteten.</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageLimit">
+    <value>Du er i ferd med å nå lagringsgrensen.</value>
+  </data>
+  <data name="Main_Account_Title">
+    <value>Konto</value>
+  </data>
+  <data name="Main_Activity_Button_PauseSync">
+    <value>_Pause synkronisering</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Rename">
+    <value>Gi nytt navn</value>
+  </data>
+  <data name="Main_Activity_Button_Rename_Tooltip">
+    <value>Gi nytt navn til dette elementet for å løse synkroniseringsproblemet</value>
+  </data>
+  <data name="Main_Activity_Button_ResumeSync">
+    <value>_Gjenoppta synkronisering</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Retry">
+    <value>Prøv å synkronisere på nytt</value>
+  </data>
+  <data name="Main_Activity_Column_Folder">
+    <value>Mappe</value>
+  </data>
+  <data name="Main_Activity_Column_Name">
+    <value>Navn</value>
+  </data>
+  <data name="Main_Activity_Column_Progress_Tooltip_Finalizing">
+    <value>Fullfører...</value>
+  </data>
+  <data name="Main_Activity_Column_Size">
+    <value>Størrelse</value>
+  </data>
+  <data name="Main_Activity_Column_Status">
+    <value>Status</value>
+  </data>
+  <data name="Main_Activity_Column_Synced">
+    <value>Synkronisert</value>
+  </data>
+  <data name="Main_Activity_Column_Type">
+    <value>Type</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Button_ShowMore">
+    <value>Vis flere detaljer</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Description">
+    <value>Klikk for å finne ut mer om disse problemene</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_HelpText">
+    <value>Vis alle feilene i en ny seksjon</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_MultipleItemsFormat">
+    <value>Det er {0} problemer</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_SingleItem">
+    <value>Det er 1 problem</value>
+  </data>
+  <data name="Main_Activity_Errors_Title">
+    <value>Synkroniser problemer ({0})</value>
+  </data>
+  <data name="Main_Activity_Errors_Title_Tooltip">
+    <value>Tilbake til aktivitet</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Description">
+    <value>Synkroniseringsinformasjon om filer og mapper vises her</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_HelpText">
+    <value>Filene dine er oppdatert</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Title">
+    <value>Filene dine er oppdatert</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line1">
+    <value>Denne prosessen kan ta noen minutter.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line2">
+    <value>Du kan trygt minimere eller lukke vinduet.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_HelpText">
+    <value>Synkronisering blir initialisert</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Title">
+    <value>Konfigurasjon av stasjonen...</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Description">
+    <value>Klikk "Gjenoppta synkronisering" for å aktivere synkroniseringen</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_HelpText">
+    <value>Synkronisering er satt på pause</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Title">
+    <value>Synkronisering er satt på pause</value>
+  </data>
+  <data name="Main_Activity_Rename_CurrentName_Label">
+    <value>Nåværende navn:</value>
+  </data>
+  <data name="Main_Activity_Rename_Description">
+    <value>Navnet på dette elementet inneholder tegn som ikke støttes i Windows.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_AlreadyExists">
+    <value>Navn allerede i bruk</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_ContainsInvalidCharacter">
+    <value>Navnet inneholder ugyldige tegn</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Failed">
+    <value>Noe gikk galt</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Required">
+    <value>Navn kreves</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Label">
+    <value>Nytt navn:</value>
+  </data>
+  <data name="Main_Activity_Rename_Status_Value_Renaming">
+    <value>Gir nytt navn...</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion">
+    <value>Fjern følgende for å fortsette synkroniseringen:</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion_CharacterList">
+    <value>/ : * ? &gt; &lt; " |</value>
+  </data>
+  <data name="Main_Activity_Rename_Title">
+    <value>Gir nytt navn til element</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUp">
+    <value>Konfigurerer...</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUpFormat">
+    <value>Konfigurerer...({0} elementer forberedt for synkronisering)</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SyncPausedUntilFormat">
+    <value>(frem til {0})</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>for et øyeblikk siden</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
+    <value>{0} dager siden</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_HoursAgoFormat">
+    <value>{0} timer siden</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_MinutesAgoFormat">
+    <value>{0} minutter siden</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneDayAgo">
+    <value>en dag siden</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneHourAgo">
+    <value>en time siden</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneMinuteAgo">
+    <value>for ett minutt siden</value>
+  </data>
+  <data name="Main_Activity_Title">
+    <value>Aktivitet</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Mapper som er synkronisert fra datamaskinene dine, vises i "Datamaskiner"-delen på tvers av Drive-appene dine.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Button_Rename">
+    <value>_Gi nytt navn</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Device_HelpText">
+    <value>Gi nytt navn til enheten din</value>
+  </data>
+  <data name="Main_MyComputer_Device_Label">
+    <value>Denne enheten</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Cancel_HelpText">
+    <value>Avbryt endring av navn på enhet</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Save_HelpText">
+    <value>Lagre enhetsnavnet</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Error_Tooltip">
+    <value>Ugyldig enhetsnavn: det nye navnet må ikke være tomt og må ikke overstige 255 tegn.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_HelpText">
+    <value>Gi nytt navn til enheten din</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Button_AddMore">
+    <value>_Legg til flere mapper</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Description">
+    <value>Ved tilføyelse av en mappe sikkerhetskopieres alle dens data til Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Info_Saving">
+    <value>Lagrer mapper...</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Title">
+    <value>Legg til mapper</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludedByAnAlreadySyncedFolderFormat">
+    <value>{0} mapper kan ikke synkroniseres fordi de er inkludert i en mappe som allerede er synkronisert til Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludesAnAlreadySyncedFolderFormat">
+    <value>{0} mapper kan ikke synkroniseres fordi en undermappe allerede er synkronisert til Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFileSystemAccessFailedFormat">
+    <value>{0} mapper kan ikke nås</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFolderDoesNotExistFormat">
+    <value>{0} mapper ble ikke funnet eller kan ikke åpnes</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalVolumeNotSupportedFormat">
+    <value>{0} mapper kan ikke synkroniseres fordi de ligger på en stasjon som ikke støttes</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NetworkFolderNotSupportedFormat">
+    <value>{0} mapper kan ikke synkroniseres fordi nettverksmapper ikke støttes</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat">
+    <value>{0} mapper kan ikke synkroniseres fordi de er systemmapper</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
+    <value>Kan ikke legge til {0} mapper</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder">
+    <value>Kan ikke legge til 1 mappe</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add">
+    <value>_Legg til mapper</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst">
+    <value>Legg til de første mappene som skal synkroniseres</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddNext">
+    <value>Legg til en ny mappe som skal synkroniseres</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_Name">
+    <value>Navn</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization">
+    <value>Optimaliser lagring</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization_Info_Tooltip">
+    <value>Optimaliser lagring ved å aktivere behovsbetinget synkronisering.
+Filer opptar bare lokal plass når du åpner dem eller
+alltid velger å beholde dem på denne enheten. Du kan
+deaktivere lagringsoptimalisering når som helst.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Description">
+    <value>Legg til mappe for å begynne å synkronisere filer til skyen på en sikker måte</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Title">
+    <value>Synkroniser filene dine på en sikker måte</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Label">
+    <value>Mapper som synkroniseres fra denne enheten</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_OpenFolder">
+    <value>_Åpne mappe</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder">
+    <value>_Fjern mappe</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm">
+    <value>Fjern mappe</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_1">
+    <value>Eventuelle filer som legges til i '{0}'-mappen vil ikke lenger bli synkronisert, og denne mappen vil bli flyttet til papirkurven i Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_2">
+    <value>Eksisterende filer vil forbli på datamaskinen din.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_1">
+    <value>Noen filer i "{0}"-mappen kan kanskje bare lagres i skyen. Hvis du fjerner denne mappen, stopper synkroniseringen og den flyttes til papirkurven i Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_2">
+    <value>Hvis du vil beholde en lokal kopi av alle filene på datamaskinen, må du først slå av Optimaliser lagring for denne mappen. Hvis lagringsoptimalisering allerede er slått av, slår du funksjonen på og av igjen. Vent til at nedlastingen er fullført (du kan sjekke statusen i filutforskeren), og deretter fjerner du mappen fra synkronisering under delen Min datamaskin.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_1">
+    <value>Filer som allerede er lastet ned vil forbli på enheten din.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_2">
+    <value>Filer som bare er lagret i skyen, vil bli fjernet fra enheten din.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Title">
+    <value>Fjerne mappe?</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_1">
+    <value>Filer i "{0}"-mappen vil nå alltid være tilgjengelig på enheten. Det kan ta noen minutter før alle filene er ferdig nedlastet (du kan sjekke statusen i Filutforsker).</value>
+    <comment>Placeholder {0}: folder name</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_2">
+    <value>Du kan fortsatt manuelt frigjøre plass til individuelle filer i innstillingene deres.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Title">
+    <value>Alle filer er alltid tilgjengelige på denne enheten</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1">
+    <value>"{0}"-mappen kan ikke bruke behovsbetinget synkronisering for å optimalisere lagringen, fordi {1}.</value>
+    <comment>Placeholder {0}: folder name. Placeholder {1}: the reason text, one of resources with "StorageOptimizationErrorCode_Value_..." key.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_2">
+    <value>Filene dine vil fortsatt synkroniseres med Proton Drive og forblir tilgjengelige på både datamaskinen og i skyen.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Title">
+    <value>Lagringsoptimalisering utilgjengelig</value>
+  </data>
+  <data name="Main_MyComputer_Link_LearnMore">
+    <value>Lær mer</value>
+  </data>
+  <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
+    <value>Avbryt datamaskinintegrasjonen min</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Button_Next">
+    <value>_Neste</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Description">
+    <value>Aktiver behovsbetinget synkronisering for å spare plass på harddisken. Filer opptar bare lokal lagring når du åpner dem eller merker dem som "Behold alltid på denne enheten".</value>
+    <comment>"Always keep on this device" is the exact text displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Title">
+    <value>Optimaliser lagring</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted">
+    <value>Kom i _gang</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1">
+    <value>Høyreklikk på hvilken som helst fil eller mappe synkronisert med Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2">
+    <value>Velg "Behold alltid på denne enheten" for å lagre den i frakoblet modus, eller "Frigjør plass" for å beholde den kun i skyen.</value>
+    <comment>"Always keep on this device" and "Free up space" are the exact texts displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Title">
+    <value>Administrasjon av lagringsplass</value>
+  </data>
+  <data name="Main_MyComputer_Title">
+    <value>Min datamaskin</value>
+  </data>
+  <data name="Main_Photos_Folders_Error_ImportFailed">
+    <value>Import mislyktes. Prøv å fjerne mappen og importere den på nytt. Hvis problemet vedvarer, kontakt brukerstøtte.</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportedItemsFormat">
+    <value>Importerte {0} av {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportingItemsFormat">
+    <value>Importerer... {0} av {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_Items_Label">
+    <value>Elementer</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Administrer _album</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
+    <value>_Åpne mappe</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Remove">
+    <value>_Fjern</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Retry">
+    <value>_Prøv igjen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_NoItemsFound_Label">
+    <value>Ingen bilder/videoer funnet</value>
+  </data>
+  <data name="Main_Photos_Folders_WaitingToImport">
+    <value>Venter på å importere ...</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Description">
+    <value>Trinnvis veiledning for hvordan du eksporterer dine Google-bilder</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Title">
+    <value>1. Eksporter Google-bildene dine</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Description">
+    <value>Det må være den utpakkede mappen som inneholder de eksporterte bildene og videoene dine.</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Title">
+    <value>2. Importer mappen med Google-bilder</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_SelectFolder_Button">
+    <value>Velg mappe</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Title">
+    <value>Importer fra Google-bilder</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Description">
+    <value>Importer en lokal mappe fra datamaskinen din</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Title">
+    <value>Importer en mappe</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Description">
+    <value>Importer Google-bilder fra Google Takeout</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Title">
+    <value>Importer fra Google-bilder</value>
+  </data>
+  <data name="Main_Photos_Import_Link_HowImportWorks">
+    <value>Hvordan fungerer bildeimport?</value>
+  </data>
+  <data name="Main_Photos_Import_Title">
+    <value>Importer bilder</value>
+  </data>
+  <data name="Main_Photos_Info_Duplicates">
+    <value>Vi importerer bare det som er nytt – duplikater hoppes over automatisk.</value>
+  </data>
+  <data name="Main_Photos_Title">
+    <value>Bilder</value>
+  </data>
+  <data name="Main_Photos_Warning_UploadUnavailable">
+    <value>Opplasting av bilder er midlertidig utilgjengelig</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Button_Change">
+    <value>_Endre</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_HelpText">
+    <value>Endre rotmappen til Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Title">
+    <value>Plassering</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Få tidlig tilgang og hjelp oss med å teste nye versjoner av Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Beta-tilgang</value>
+  </data>
+  <data name="Main_Settings_Label_AccountRootFolder">
+    <value>Din Proton Drive-mappe:</value>
+  </data>
+  <data name="Main_Settings_Label_General">
+    <value>Generelt</value>
+  </data>
+  <data name="Main_Settings_Language_Button_Restart">
+    <value>Start på nytt nå</value>
+  </data>
+  <data name="Main_Settings_Language_Message_PleaseRestart">
+    <value>Start programmet på nytt for å bruke språkendringen</value>
+  </data>
+  <data name="Main_Settings_Language_Title">
+    <value>Språk</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_HelpText">
+    <value>Åpne Proton Drive ved oppstart av Windows</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_Title">
+    <value>Åpne ved oppstart</value>
+  </data>
+  <data name="Main_Settings_Title">
+    <value>Innstillinger</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Name">
+    <value>Navn</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions">
+    <value>Tillatelser</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Tooltip">
+    <value>Tillatelser gitt til deg av eieren</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Editor">
+    <value>Redigerer</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Viewer">
+    <value>Leser</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedBy">
+    <value>Delt av</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedOn">
+    <value>Delt den</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync">
+    <value>Synkroniser</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync_Info_Tooltip">
+    <value>Aktiver for å gjøre den delte filen eller mappen tilgjengelig fra datamaskinen din.
+Innholdet i filer vil kun bli lastet ned på forespørsel.</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad">
+    <value>Kunne ikke laste inn data</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Plural">
+    <value>{0} elementer kunne ikke lastes inn</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Singular">
+    <value>{0} element kunne ikke lastes inn</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Description">
+    <value>Filer og mapper som er delt med deg, vises her</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Title">
+    <value>Ingenting delt enda</value>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_OpenFolder">
+    <value>_Åpne mappe</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_RemoveMe">
+    <value>_Fjern meg</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_Close_HelpText">
+    <value>Avvis delt med meg velkomst</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_GetStarted">
+    <value>Kom i _gang</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Description">
+    <value>Synkroniser enkelt filer og mapper som er delt med deg til datamaskinen din.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1">
+    <value>Velg filer eller mapper som skal synkroniseres.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2">
+    <value>Få tilgang til delte filer i Proton Drive-mappen.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3">
+    <value>Rediger de, last opp nye og få frakoblet tilgang til de.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3_Label">
+    <value>3.</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Plural">
+    <value>{0} av {1} elementer synkronisert</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Singular">
+    <value>{0} av {1} element synkronisert</value>
+  </data>
+  <data name="Main_SharedWithMe_Title">
+    <value>Delt med meg</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Advice">
+    <value>For å legge til nye elementer, slutt å synkronisere noen av de gamle.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Limit">
+    <value>Du kan bare synkronisere {0} elementer samtidig.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_SharingUnavailable">
+    <value>Deling er midlertidig utilgjengelig</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About">
+    <value>Om</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About_HelpText">
+    <value>Menyelement: Om</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account">
+    <value>Konto</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account_HelpText">
+    <value>Menyelement: Konto</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity">
+    <value>Aktivitet</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity_HelpText">
+    <value>Menyelement: Aktivitet</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help">
+    <value>Hjelp</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help_HelpText">
+    <value>Menyelement: Hjelp</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer">
+    <value>Min datamaskin</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer_HelpText">
+    <value>Menyelement: Min datamaskin</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos">
+    <value>Bilder</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_PhotosImport">
+    <value>Importer bilder</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos_HelpText">
+    <value>Menyelement: Bilder</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings">
+    <value>Innstillinger</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings_HelpText">
+    <value>Menyelement: Innstillinger</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe">
+    <value>Delt med meg</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe_HelpText">
+    <value>Menyelement: Delt med meg</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceededQuota_Description">
+    <value>Synkroniseringen stoppet: kontoen din har overskredet lagringskapasiteten</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceedingQuota_Description">
+    <value>Du er i ferd med å nå lagringsgrensen</value>
+  </data>
+  <data name="Main_Sidebar_Notification_GetStarted_Description">
+    <value>Kom i gang</value>
+  </data>
+  <data name="Main_Sidebar_Notification_NewVersion_Description">
+    <value>En ny versjon av Proton Drive er tilgjengelig!</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SharingUnavailable_Description">
+    <value>Deling er midlertidig utilgjengelig</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SyncFoldersFailure_Description">
+    <value>En mappe kunne ikke synkroniseres</value>
+  </data>
+  <data name="Main_Sidebar_Notification_UpdateRequired_Description">
+    <value>For å fortsette å bruke Proton Drive, må du oppdatere til den nyeste versjonen</value>
+  </data>
+  <data name="Main_Sidebar_Offer_Button_GetDeal">
+    <value>Skaff deg _tilbudet</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Sidebar_Storage_Button_GetMoreStorage">
+    <value>Skaff deg mer lagringskapasitet</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_StorageNotAvailable">
+    <value>Status på lagring ikke tilgjengelig</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_UsedSpaceFormat">
+    <value>{0} av {1} brukt</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Title">
+    <value>Lagringsplass</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Tooltip">
+    <value>Administrer lagringsplass</value>
+  </data>
+  <data name="Main_Window_Title">
+    <value>Proton Drive</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>Denne mappen inneholder en undermappe som synkroniseres ved behov. Sett opp en ny synkroniseringsmappe.</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>Denne mappen synkroniseres allerede ved behov. Sett opp en ny synkroniseringsmappe.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveAccessFailed">
+    <value>Kan ikke koble til Proton Drive. Prøv å undersøke internett-tilkoblingen din.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDiverged">
+    <value>Proton Drive-mappen er flyttet. Konfigurer en ny synkroniseringsmappe.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDoesNotExist">
+    <value>Får ikke tilgang til Proton Drive-filene dine, muligens på grunn av sletting av en enhetsmappe. Sett opp en ny synkroniseringsmappe.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveHostDeviceDiverged">
+    <value>Får ikke tilgang til Proton Drive-filene dine, muligens på grunn av sletting av en enhet. Sett opp en ny synkroniseringsmappe.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveShareDiverged">
+    <value>Får ikke tilgang til Proton Drive-filene dine, muligens på grunn av en tilbakestilling av passord. Sett opp en ny synkroniseringsmappe.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveVolumeDiverged">
+    <value>Får ikke tilgang til Proton Drive-filene dine, muligens på grunn av en tilbakestilling av passord. Sett opp en ny synkroniseringsmappe.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientDeviceQuota">
+    <value>Maksimalt antall synkroniserte datamaskiner er nådd. Slett unødvendige datamaskiner fra Proton Drive på nettet.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientLocalFreeSpace">
+    <value>Frigjør plass eller fjern markeringen i avmerkingsboksen</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalAndRemoteFoldersNotEmpty">
+    <value>Oppsett av en synkroniseringsmappe krever en tom Windows- eller Proton Drive-nettmappe. Tøm en og prøv på nytt.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFileSystemAccessFailed">
+    <value>Kan ikke få tilgang til eller opprette en lokal synkroniseringsmappe. Vi fortsetter å prøve på nytt.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDiverged">
+    <value>Synkroniseringsmappen ble erstattet av en ny mappe i banen. Gjenopprett den forrige synkroniseringsmappen eller sett opp en ny synkroniseringsmappe.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDoesNotExist">
+    <value>Finner ikke synkroniseringsmappen. Den kan ha blitt slettet, gitt nytt navn eller flyttet. Gjenopprett den eller sett opp en ny synkroniseringsmappe.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludedByAnAlreadySyncedFolder">
+    <value>Den valgte mappen er allerede inkludert i en annen synkronisert mappe</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludesAnAlreadySyncedFolder">
+    <value>Valgt mappe inneholder en allerede synkronisert mappe</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNonSyncable">
+    <value>Den lokale mappen er ikke kvalifisert for synkronisering. Sett opp en ny synkroniseringsmappe.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNotEmpty">
+    <value>Lokal mappe må være tom før synkronisering konfigureres</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeDiverged">
+    <value>Serienummeret til det lokale volumet er endret. Opprett en ny synkroniseringsmappe.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeNotSupported">
+    <value>Lokal stasjonstype som ikke støttes. Prøv å sette opp synkroniseringsmappen på en annen lokal stasjon.</value>
+  </data>
+  <data name="MappingErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootMissingSyncRootFlag">
+    <value>Synkroniseringsmappen er ugyldig. Konfigurer en ny synkroniseringsmappe.</value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootNotRegistered">
+    <value>Synkroniseringsmappen ble uventet avregistrert. Sett opp en ny synkroniseringsmappe.</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotoImportFailed">
+    <value>Importen av bildet var ikke vellykket</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosDisabled">
+    <value>Proton-bilder utilgjengelig</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosNotReady">
+    <value>Bilder-funksjonen er ikke klar</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemDoesNotExist">
+    <value>Får ikke tilgang til delt Proton Drive-fil eller -mappe. Sjekk om den fortsatt er delt med deg.</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemPermissionsDiverged">
+    <value>Tillatelsene til delt Proton Drive-fil eller -mappe er endret. Slå synkroniseringen av og på igjen for å løse problemet.</value>
+  </data>
+  <data name="MappingErrorCode_Value_SharingDisabled">
+    <value>Deling er midlertidig utilgjengelig</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Failed">
+    <value>Kan ikke konfigurere synkroniseringsmapper</value>
+  </data>
+  <data name="MappingSetupStatus_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingSetupStatus_Value_PartiallySucceeded">
+    <value>Kan ikke konfigurere enkelte synkroniseringsmapper</value>
+  </data>
+  <data name="MappingSetupStatus_Value_SettingUp">
+    <value>Konfigurerer synkroniseringsmapper...</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Succeeded">
+    <value>OK</value>
+  </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Legg til lagringsplass</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Tom for lagringsplass</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Oppgrader for å få mer lagringsplass og laste opp filene dine.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
+    <value>_Endre</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder_HelpText">
+    <value>Endre rotmappen til Proton Drive.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Error_InvalidSyncFolder">
+    <value>Ugyldig synkroniseringsmappe</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Description">
+    <value>Få tilgang til filene mine og andre synkroniserte enheter her</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Location">
+    <value>Plassering</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Title">
+    <value>Din Proton Drive-mappe</value>
+  </data>
+  <data name="Onboarding_Button_Continue">
+    <value>_Fortsett</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_Button_FinishSetup">
+    <value>_Fullfør oppsettet</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders">
+    <value>_Legg til flere mapper</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText">
+    <value>Legg til en annen mappe som skal synkroniseres</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Label_Description">
+    <value>Valgte mapper synkroniseres til Proton Drive. Filene blir sikkerhetskopiert og tilgjengelig på de andre enhetene dine.</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Title">
+    <value>Sikkerhetskopier mappene dine</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Skaff deg Drive_Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Skaff deg _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Skaff deg_Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_NotNow">
+    <value>_Ikke nå</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_Upgrade">
+    <value>_Oppgrader</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Mail">
+    <value>Post: tilpasset og sikker e-post</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>måned</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Mest populær</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Opptil {0} brukere</value>
+    <comment>Only for number greater than 1.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
+    <value>Pass: kryptert passordbehandler</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Premiumverdi inkludert</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Recommended">
+    <value>Anbefalt</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Gjenopprett tidligere filversjoner</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>lagring</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Vpn">
+    <value>VPN: ultraraskt og privat</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Title">
+    <value>Skaff deg mer lagringskapasitet</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
+    <value>Importen var ikke vellykket. Albumet finnes ikke.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Importen var ikke vellykket. Mappen finnes ikke.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
+    <value>Importen var ikke vellykket. Maksimalt antall album er nådd.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfPhotosPerAlbumReached">
+    <value>Importen var ikke vellykket. Maksimalt antall bilder per album er nådd.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_Unknown">
+    <value>Importen var ikke vellykket. Prøv igjen.</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Failed">
+    <value>Importen mislyktes</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Importing">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Interrupted">
+    <value>Importen ble avbrutt</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_NotStarted">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_SetupFailed">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Succeeded">
+    <value>Importering fullført</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_ValidationFailed">
+    <value></value>
+  </data>
+  <data name="ReleaseNoteType_Value_Feature">
+    <value>Nye funksjoner</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Fix">
+    <value>Feilrettinger</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Improvement">
+    <value>Forbedringer</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Fido2">
+    <value>Sikkerhetsnøkkel</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_NotSupported">
+    <value></value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Totp">
+    <value>Autentiseringsapp</value>
+  </data>
+  <data name="SessionStatus_Value_Ending">
+    <value>Logger av...</value>
+  </data>
+  <data name="SessionStatus_Value_Failed">
+    <value>Pålogging mislyktes. Prøv å sjekke internettforbindelsen din.</value>
+  </data>
+  <data name="SessionStatus_Value_NotStarted">
+    <value>Logget av</value>
+  </data>
+  <data name="SessionStatus_Value_SigningIn">
+    <value>Logger på...</value>
+  </data>
+  <data name="SessionStatus_Value_Started">
+    <value>Logget på</value>
+  </data>
+  <data name="SessionStatus_Value_Starting">
+    <value>Logger på...</value>
+  </data>
+  <data name="SignIn_Button_Authenticate">
+    <value>_Autentiser</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_Back">
+    <value>_Tilbake</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignIn">
+    <value>_Logg på</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignInAsAnotherUser">
+    <value>Eller logg på som en annen bruker</value>
+  </data>
+  <data name="SignIn_Button_Unlock">
+    <value>_Lås opp</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_CreateAccount">
+    <value>_Opprett konto</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_ForgotPassword">
+    <value>_Glemt passordet ditt?</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_LearnMore">
+    <value>Lær mer</value>
+  </data>
+  <data name="SignIn_Message_SigningIn">
+    <value>Logger på kontoen din</value>
+  </data>
+  <data name="SignIn_Text_2FACode">
+    <value>Skriv inn koden fra autentiseringsappen</value>
+  </data>
+  <data name="SignIn_Text_No2FAMethodFound">
+    <value>Ingen tofaktorautentiseringsmetode funnet.</value>
+  </data>
+  <data name="SignIn_Text_Password">
+    <value>_Passord</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_SecondPassword">
+    <value>Andre passord</value>
+  </data>
+  <data name="SignIn_Text_SecurityKey">
+    <value>Sett inn en sikkerhetsnøkkel knyttet til Proton-kontoen din.</value>
+  </data>
+  <data name="SignIn_Text_SecurityKeyNotSupported">
+    <value>Systemet ditt støtter ikke sikkerhetsnøkkel</value>
+  </data>
+  <data name="SignIn_Text_Username">
+    <value>E-post eller _brukernavn</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_Username_HelpText">
+    <value>Brukernavn</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_PasswordRequired">
+    <value>Passord kreves</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SessionExpired">
+    <value>Økten din er utløpt. Logg på for å fortsette.</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SomethingWentWrong">
+    <value>Noe gikk galt</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_UsernameRequired">
+    <value>Brukernavn kreves</value>
+  </data>
+  <data name="SignIn_Title_2FA">
+    <value>Tofaktorautentisering</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>den inneholder en undermappe som synkroniseres ved behov av {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>den synkroniseres allerede ved behov av {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_NetworkVolumeNotSupported">
+    <value>nettverksstasjoner støttes ikke</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_RemovableVolumeNotSupported">
+    <value>flyttbare stasjoner støttes ikke</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_Unknown">
+    <value>aktivering av behovsbetinget synkronisering mislyktes</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
+    <value>lokal stasjonstype støttes ikke</value>
+  </data>
+  <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
+    <value>Ikke nok ledig plass på denne enheten</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludedByAnAlreadySyncedFolder">
+    <value>Mappen er inkludert i en allerede synkronisert mappe</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludesAnAlreadySyncedFolder">
+    <value>Mappen inneholder en allerede synkronisert mappe</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_InsufficientLocalFreeSpace">
+    <value>Frigjør plass eller fjern markeringen i avmerkingsboksen.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFileSystemAccessFailed">
+    <value>Får ikke tilgang til mappen</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderDoesNotExist">
+    <value>Finner ikke mappen</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderNotEmpty">
+    <value>Mappen må være tom før synkronisering konfigureres</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalVolumeNotSupported">
+    <value>Ikke støttet stasjonstype</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NetworkFolderNotSupported">
+    <value>Synkronisering av mapper fra nettverksstasjoner støttes ikke</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NonSyncableFolder">
+    <value>Mappen er ikke kvalifisert for synkronisering</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_Succeeded">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_DetectingUpdates">
+    <value>Henter oppdateringer...</value>
+  </data>
+  <data name="SyncStatus_Value_Failed">
+    <value>Feil</value>
+  </data>
+  <data name="SyncStatus_Value_Idle">
+    <value>Synkronisert</value>
+  </data>
+  <data name="SyncStatus_Value_Initializing">
+    <value>Konfigurerer...</value>
+  </data>
+  <data name="SyncStatus_Value_Offline">
+    <value>Frakoblet</value>
+  </data>
+  <data name="SyncStatus_Value_Paused">
+    <value>Satt på pause</value>
+  </data>
+  <data name="SyncStatus_Value_Synchronizing">
+    <value>Synkroniserer...</value>
+  </data>
+  <data name="SyncStatus_Value_Terminated">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_Terminating">
+    <value>Terminerer...</value>
+  </data>
+  <data name="SystemTray_Menu_Item_Exit">
+    <value>_Avslutt</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenInBrowser">
+    <value>Åpne i _nettleser</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenLocalFolder">
+    <value>Åpne lokal _mappe</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenProtonDrive">
+    <value>_Åpne Proton Drive</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSync">
+    <value>_Pause synkroniseringen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
+    <value>Pause i 1 time</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor4Hours">
+    <value>Pause i 4 timer</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor8Hours">
+    <value>Pause i 8 timer</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncIndefinitely">
+    <value>Pause på ubestemt tid</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow">
+    <value>Pause til i morgen (kl. 08.00)</value>
+  </data>
+  <data name="SystemTray_Menu_Item_ResumeSync">
+    <value>_Gjenoppta synkroniseringen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_SignIn">
+    <value>_Logg på</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="ToggleSwitch_Off">
+    <value>Av</value>
+  </data>
+  <data name="ToggleSwitch_On">
+    <value>På</value>
+  </data>
+</root>

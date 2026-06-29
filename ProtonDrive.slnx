@@ -8,22 +8,22 @@
   <Folder Name="/App/">
     <File Path="src/.editorconfig" />
     <File Path="src/Directory.Build.props" />
-    <Project Path="src/ProtonDrive.App.Windows/ProtonDrive.App.Windows.csproj">
+    <Project Path="src/Proton.Drive.Sdk.Sync.Agent/Proton.Drive.Sdk.Sync.Agent.csproj" />
+    <Project Path="src/Proton.Drive.Sdk.Sync.Adapter/Proton.Drive.Sdk.Sync.Adapter.csproj" />
+    <Project Path="src/Proton.Drive.App.Windows/Proton.Drive.App.Windows.csproj">
       <Platform Solution="*|ARM64" Project="ARM64" />
       <Platform Solution="*|x64" Project="x64" />
       <Platform Solution="*|x86" Project="x86" />
     </Project>
-    <Project Path="src/ProtonDrive.App/ProtonDrive.App.csproj" />
-    <Project Path="src/ProtonDrive.Client/ProtonDrive.Client.csproj" />
-    <Project Path="src/ProtonDrive.Sync.DataAccess/ProtonDrive.Sync.DataAccess.csproj" />
-    <Project Path="src/ProtonDrive.Native.Windows/ProtonDrive.Native.Windows.csproj" />
-    <Project Path="src/ProtonDrive.Shared/ProtonDrive.Shared.csproj" />
-    <Project Path="src/ProtonDrive.Sync.Adapter/ProtonDrive.Sync.Adapter.csproj" />
-    <Project Path="src/ProtonDrive.Sync.Agent/ProtonDrive.Sync.Agent.csproj" />
-    <Project Path="src/ProtonDrive.Sync.Engine/ProtonDrive.Sync.Engine.csproj" />
-    <Project Path="src/ProtonDrive.Sync.Shared/ProtonDrive.Sync.Shared.csproj" />
-    <Project Path="src/ProtonDrive.Sync.Windows/ProtonDrive.Sync.Windows.csproj" />
-    <Project Path="src/ProtonDrive.Update/ProtonDrive.Update.csproj" />
+    <Project Path="src/Proton.Drive.App/Proton.Drive.App.csproj" />
+    <Project Path="src/Proton.Drive.Native.Windows/Proton.Drive.Native.Windows.csproj" />
+    <Project Path="src/Proton.Drive.Shared/Proton.Drive.Shared.csproj" />
+    <Project Path="src/Proton.Drive.Sdk.Sync.Client/Proton.Drive.Sdk.Sync.Client.csproj" />
+    <Project Path="src/Proton.Drive.Sdk.Sync.DataAccess/Proton.Drive.Sdk.Sync.DataAccess.csproj" />
+    <Project Path="src/Proton.Drive.Sdk.Sync.Engine/Proton.Drive.Sdk.Sync.Engine.csproj" />
+    <Project Path="src/Proton.Drive.Sdk.Sync.Shared/Proton.Drive.Sdk.Sync.Shared.csproj" />
+    <Project Path="src/Proton.Drive.Sdk.Sync.Windows/Proton.Drive.Sdk.Sync.Windows.csproj" />
+    <Project Path="src/Proton.Drive.Update/Proton.Drive.Update.csproj" />
   </Folder>
   <Folder Name="/Configuration/">
     <File Path=".editorconfig" />
@@ -40,14 +40,14 @@
   </Folder>
   <Folder Name="/Installer/">
     <File Path="installer/.editorconfig" />
-    <Project Path="installer/ProtonDrive.Installer.Bundle/ProtonDrive.Installer.Bundle.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0">
+    <Project Path="installer/Proton.Drive.Installer.Bundle/Proton.Drive.Installer.Bundle.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0">
       <Platform Solution="*|Any CPU" Project="x64" />
       <Build Project="false" />
     </Project>
-    <Project Path="installer/ProtonDrive.Installer.Extensions/ProtonDrive.Installer.Extensions.csproj">
+    <Project Path="installer/Proton.Drive.Installer.Extensions/Proton.Drive.Installer.Extensions.csproj">
       <Build Project="false" />
     </Project>
-    <Project Path="installer/ProtonDrive.Installer.Package/ProtonDrive.Installer.Package.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0">
+    <Project Path="installer/Proton.Drive.Installer.Package/Proton.Drive.Installer.Package.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0">
       <Platform Solution="*|Any CPU" Project="x64" />
       <Build Project="false" />
     </Project>

@@ -1,0 +1,127 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>$(DefaultTargetFramework)-windows10.0.17763.0</TargetFramework>
+    <WindowsSdkPackageVersion>10.0.17763.56</WindowsSdkPackageVersion>
+    <UseWPF>true</UseWPF>
+    <StartupObject>Proton.Drive.App.Windows.Program</StartupObject>
+    <ApplicationIcon>../../assets/ProtonDrive.ico</ApplicationIcon>
+    <AssemblyName>ProtonDrive</AssemblyName>
+    <AssemblyTitle>Proton Drive</AssemblyTitle>
+    <Platforms>AnyCPU;x64;ARM64;x86</Platforms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishReadyToRun>false</PublishReadyToRun>
+    <PublishTrimmed>false</PublishTrimmed>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.WindowsDesktop.App.WindowsForms" />
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" />
+    <PackageReference Include="Microsoft.Web.WebView2" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" />
+    <PackageReference Include="morelinq" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Proton.Drive.App\Proton.Drive.App.csproj" />
+    <ProjectReference Include="..\Proton.Drive.Native.Windows\Proton.Drive.Native.Windows.csproj" />
+    <ProjectReference Include="..\Proton.Drive.Sdk.Sync.Windows\Proton.Drive.Sdk.Sync.Windows.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Icons\Notification\Active.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Error.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Inactive.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Synchronized.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Synchronizing.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Offline.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Offline.Dark.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Paused.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Paused.Dark.ico" />
+    <EmbeddedResource Include="Resources\Icons\Notification\Warning.ico" />
+    <Resource Include="Views\SignIn\Banner.DarkTheme.2FA.png" />
+    <Resource Include="Views\SignIn\Banner.DarkTheme.png" />
+    <Resource Include="Views\SignIn\Banner.No2FA.DarkTheme.png" />
+    <Resource Include="Views\SignIn\SecurityKey.DarkTheme.png" />
+    <Resource Include="Views\Main\Activity\PausedSyncPlaceholder.png" />
+    <Resource Include="Views\Main\Activity\ActivityListPlaceholder.png" />
+    <Resource Include="Views\Main\Activity\InitializingSyncPlaceholder.png" />
+    <Resource Include="Views\Main\MyComputer\FolderListPlaceholder.png" />
+    <Resource Include="Views\Main\MyComputer\StorageOptimizationOnboardingPart1.png" />
+    <Resource Include="Views\Main\MyComputer\StorageOptimizationOnboardingPart2.png" />
+    <Resource Include="Views\Main\SharedWithMe\SharedWithMeListPlaceholder.png" />
+    <Resource Include="Views\Main\SharedWithMe\SharedWithMeOnboarding.png" />
+    <Resource Include="Views\Onboarding\FileExplorer.png" />
+    <Resource Include="Views\SignIn\SecurityKey.NotSupported.DarkTheme.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\.locale-state.metadata" />
+    <None Remove="Views\SignIn\Banner.No2FA.DarkTheme.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Strings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
+
+    <EmbeddedResource Update="Resources\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resources\Icons\Logo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <TargetPath>Logo.png</TargetPath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Resources\Notifications\Notifications.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Notifications\Promos2026\promo-logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Notifications\Promos2026\proton-unlimited-2026-eur.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Notifications\Promos2026\proton-unlimited-2026-usd.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Notifications\SummerSale2026\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Notifications\SummerSale2026\summer26-duo-40.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Notifications\SummerSale2026\summer26-family-50.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Notifications\SummerSale2026\summer26-plus-40.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Notifications\SummerSale2026\summer26-unlimited-50.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Notifications\UpgradePlan\red-storage-logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

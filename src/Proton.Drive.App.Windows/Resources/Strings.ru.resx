@@ -1,0 +1,1772 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountDisplayStatus_Value_AccountError">
+    <value></value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SessionError">
+    <value>Не удалось войти</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SettingUp">
+    <value>Установка...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SignedOut">
+    <value>Выполнен выход</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningIn">
+    <value>Выполняется вход...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningOut">
+    <value>Выход...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_Succeeded">
+    <value>Вход выполнен</value>
+  </data>
+  <data name="AccountErrorCode_Value_AccountSwitchingFailed">
+    <value>Не удалось переключить аккаунт. Перезапустите приложение.</value>
+  </data>
+  <data name="AccountErrorCode_Value_Delinquent">
+    <value>У аккаунта есть неоплаченные счета. Перейдите в панель управления, чтобы оплатить, или сообщите вашему администратору.</value>
+  </data>
+  <data name="AccountErrorCode_Value_DriveAccessFailed">
+    <value>Не удается подключиться к Proton Drive. Попробуйте проверить ваше интернет-подключение.</value>
+  </data>
+  <data name="AccountErrorCode_Value_NoDriveAccess">
+    <value>Чтобы получить доступ к Proton Drive, улучшите тариф</value>
+  </data>
+  <data name="AccountErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Create">
+    <value>Создание</value>
+    <comment>Indicates a local folder being created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Delete">
+    <value>Удаление</value>
+    <comment>Indicates the local file or folder being deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Download">
+    <value>Загрузка с Proton Drive</value>
+    <comment>Indicates a file being downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Загрузка обновлений</value>
+    <comment>Indicates local file system changes being fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Move">
+    <value>Перемещение</value>
+    <comment>Indicates the local file or folder being moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Rename">
+    <value>Переименование</value>
+    <comment>Indicates the local file or folder being renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Upload">
+    <value>Загрузка на Proton Drive</value>
+    <comment>Indicates a  file being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Create">
+    <value>Создано</value>
+    <comment>Indicates a local folder has been created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Delete">
+    <value>Удаленно</value>
+    <comment>Indicates a local file or folder has been deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Download">
+    <value>Скачано с Proton Drive</value>
+    <comment>Indicates a file has been downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Обновления загружены</value>
+    <comment>Indicates local file system changes have been fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Move">
+    <value>Перемещено</value>
+    <comment>Indicates a local file or folder has been moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Rename">
+    <value>Переименовано</value>
+    <comment>Indicates a local file or folder has been renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Upload">
+    <value>Загружено на Proton Drive</value>
+    <comment>Indicates a file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Create">
+    <value>Создание на Proton Drive</value>
+    <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
+    <value>Moving to Proton Drive Trash</value>
+    <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
+    <value>Загрузка с Proton Drive</value>
+    <comment>Indicates a file is being downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Загрузка обновлений с Proton Drive</value>
+    <comment>Indicates changes are being fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Move">
+    <value>Перемещение на Proton Drive</value>
+    <comment>Indicates the file or folder is being moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Rename">
+    <value>Переименование на Proton Drive</value>
+    <comment>Indicates the file or folder is being renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Upload">
+    <value>Загрузка на Proton Drive</value>
+    <comment>Indicates the file is being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Create">
+    <value>Создано на Proton Drive</value>
+    <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
+    <value>Moved to Proton Drive Trash</value>
+    <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
+    <value>Скачано с Proton Drive</value>
+    <comment>Indicates a file has been downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Обновления загружены с Proton Drive</value>
+    <comment>Indicates changes have been fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Move">
+    <value>Перемещено на Proton Drive</value>
+    <comment>Indicates the file or folder has been moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Rename">
+    <value>Переименовано на Proton Drive</value>
+    <comment>Indicates the file or folder has been renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Upload">
+    <value>Загружено на Proton Drive</value>
+    <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="AppDisplayStatus_Value_AccountError">
+    <value>Не удалось настроить аккаунт</value>
+  </data>
+  <data name="AppDisplayStatus_Value_FinishingUp">
+    <value>Завершаем...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Offline">
+    <value>Офлайн</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SettingUp">
+    <value>Установка...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignInError">
+    <value>Не удалось войти</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SignedOut">
+    <value>Выполнен выход</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningIn">
+    <value>Выполняется вход...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SigningOut">
+    <value>Выход...</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SyncFolderError">
+    <value>Не удалось настроить папки синхронизации</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationError">
+    <value>Сбой синхронизации</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationPaused">
+    <value>Синхронизация приостановлена</value>
+  </data>
+  <data name="AppDisplayStatus_Value_SynchronizationWarning">
+    <value>Некоторые элементы не удалось синхронизировать</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronized">
+    <value>Синхронизировано</value>
+  </data>
+  <data name="AppDisplayStatus_Value_Synchronizing">
+    <value>Синхронизация...</value>
+  </data>
+  <data name="BugReport_Button_Cancel">
+    <value>_Отменить</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel_HelpText">
+    <value>Отмена отправки отчета</value>
+  </data>
+  <data name="BugReport_Button_Report">
+    <value>_Отчет</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Report_HelpText">
+    <value>Отправьте отчет</value>
+  </data>
+  <data name="BugReport_Button_ShowLogs">
+    <value>Показать _журналы</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs">
+    <value>_Включить логи приложения</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs_Tooltip">
+    <value>В отчет будут включены последние файлы журналов приложений и журналов установки.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Description">
+    <value>Quick guides for setup, app use, and file sync.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_FAQ">
+    <value>Frequently asked questions (FAQ)</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks">
+    <value>Learn how the Proton Drive app works</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowSharedFilesWork">
+    <value>Access shared files</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_SyncFolders">
+    <value>Sync folders to Proton Drive</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_UseOnDemandSync">
+    <value>Use on-demand sync</value>
+  </data>
+  <data name="BugReport_NeedHelp_Title">
+    <value>Need help getting started with Proton Drive?</value>
+  </data>
+  <data name="BugReport_Text_Description_HelpText">
+    <value>Описание. Что пошло не так? Какие именно шаги вы предприняли? (минимум 10 символов)</value>
+  </data>
+  <data name="BugReport_Text_Description_Label">
+    <value>_Описание</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_Description_Label_Requirement">
+    <value>(минимум 10 символов)</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_ExactSteps">
+    <value>Какие именно шаги вы выполняли?</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_WhatWentWrong">
+    <value>Что пошло не так?</value>
+  </data>
+  <data name="BugReport_Text_Email_HelpText">
+    <value>Электронная почта (обязательное поле)</value>
+  </data>
+  <data name="BugReport_Text_Email_Label">
+    <value>_Электронная почта</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_HelpText">
+    <value>Заголовок проблемы (обязательное поле)</value>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Label">
+    <value>_Заголовок</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Watermark">
+    <value>Заголовок проблемы</value>
+  </data>
+  <data name="BugReport_Text_ReportSuccessfullySent">
+    <value>Report successfully sent. Thank you.</value>
+  </data>
+  <data name="BugReport_Title">
+    <value>Proton Drive Feedback</value>
+  </data>
+  <data name="Dialog_Button_Cancel">
+    <value>Отмена</value>
+  </data>
+  <data name="Dialog_Button_Ok">
+    <value>Да</value>
+  </data>
+  <data name="Dialog_Button_Save">
+    <value>_Сохранить</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="FileSystemErrorCode_Value_Cancelled">
+    <value>Отменено</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CloudFileProviderNotRunning">
+    <value>Убедитесь, что ваш облачный провайдер хранения (например, OneDrive) запущен и подключен.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CyclicRedundancyCheck">
+    <value>Ошибка данных (контрольная сумма). Пожалуйста, проверьте ваше хранилище (USB, диск и т.д.) на ошибки файловой системы и поврежденные сектора.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DirectoryNotFound">
+    <value>Не удалось найти часть пути</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DuplicateName">
+    <value>Имя уже используется</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_FreeSpaceExceeded">
+    <value>Недостаточно свободного места</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IdentityMismatch">
+    <value>Файл или папка разошлись</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IntegrityFailure">
+    <value>Проверка данных не удалась</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_InvalidName">
+    <value>Имя содержит символы, не поддерживаемые Windows. Пожалуйста, удалите следующие символы для синхронизации: \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
+    <value>Файл пропущен, так как он изменился слишком недавно. Приложение автоматически попытается повторить операцию</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
+    <value>Live Photo cannot be uploaded.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MetadataMismatch">
+    <value>Файл или папка разошлись</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MissingIndividuallySharedFile">
+    <value>Исходный файл, которым поделились с вами, был удален, перемещен или переименован.
+Отключите и снова включите его синхронизацию, чтобы восстановить файл и устранить ошибку.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_NetworkError">
+    <value>Не удается подключиться к Proton Drive. Попробуйте проверить ваше интернет-подключение.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ObjectNotFound">
+    <value>Файл или папка не существует</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Offline">
+    <value>Офлайн</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Partial">
+    <value>Этот файл недоступен локально и не может быть загружен. Чтобы устранить проблему, удалите его и восстановите копию из Корзины Proton Drive, если она доступна.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_PathNotFound">
+    <value>Файл или папка не существует</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_RateLimited">
+    <value>Что-то пошло не так</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyFile">
+    <value>Файл доступен только для чтения</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyRoot">
+    <value>Файлы и папки только для просмотра нельзя изменять. Отключите и снова включите синхронизацию в разделе «Поделенные со мной», чтобы устранить проблему.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ServerError">
+    <value>Что-то пошло не так</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_SharingViolation">
+    <value>Файл или папка используется другим приложением</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TimedOut">
+    <value>Время ожидания истекло</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TransferAbortedDueToFileChange">
+    <value>Загрузка прервана, так как файл изменился во время синхронизации. Приложение автоматически попытается повторить попытку</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_UnauthorizedAccess">
+    <value>Недостаточно прав</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Unknown">
+    <value>Что-то пошло не так</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_ContainsInvalidCharacter">
+    <value>Имя содержит некорректный символ</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Empty">
+    <value>Имя не указано</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithPeriod">
+    <value>Имя заканчивается интервалом</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithSpace">
+    <value>Имя заканчивается недействительным символом</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Reserved">
+    <value>Имя не поддерживается Windows</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_TooLong">
+    <value>Имя слишком длинное</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Valid">
+    <value></value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_CheckingForUpdate">
+    <value>Проверка наличия обновления...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_DownloadingAnUpdate">
+    <value>Загрузка обновления...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpToDate">
+    <value>Актуально</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
+    <value>Сбой проверки наличия обновлений</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Update required</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
+    <value>Update available</value>
+  </data>
+  <data name="Main_About_Button_UpdateNow">
+    <value>_Обновить сейчас</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Button_UpdateNow_HelpText">
+    <value>Доступна новая версия Proton Drive. Обновите приложение сейчас.</value>
+  </data>
+  <data name="Main_About_Label_CurrentVersion">
+    <value>Текущая версия</value>
+  </data>
+  <data name="Main_About_Label_ReleaseDate">
+    <value>Дата выпуска</value>
+  </data>
+  <data name="Main_About_Link_PrivacyPolicy">
+    <value>_Privacy policy</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Link_TermsOfService">
+    <value>_Terms of service</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_ReleaseHistory_Label_New">
+    <value>НОВОЕ</value>
+  </data>
+  <data name="Main_About_ReleaseHistory_Title">
+    <value>Что нового</value>
+  </data>
+  <data name="Main_About_Title">
+    <value>О программе</value>
+  </data>
+  <data name="Main_Account_Account_Button_ManageAccount">
+    <value>Управлять _аккаунтом</value>
+  </data>
+  <data name="Main_Account_Account_HelpText">
+    <value>Управляйте своим аккаунтом</value>
+  </data>
+  <data name="Main_Account_Account_Info_UnknownUser">
+    <value>Неизвестный пользователь</value>
+  </data>
+  <data name="Main_Account_Label_Account">
+    <value>Аккаунт</value>
+  </data>
+  <data name="Main_Account_Label_Security">
+    <value>Безопасность</value>
+  </data>
+  <data name="Main_Account_Password_Button_ChangePassword">
+    <value>_Изменить</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Password_Description">
+    <value>Измените пароль для вашего аккаунта.</value>
+  </data>
+  <data name="Main_Account_Password_HelpText">
+    <value>Измените ваш пароль Proton Drive</value>
+  </data>
+  <data name="Main_Account_Password_Title">
+    <value>Пароль</value>
+  </data>
+  <data name="Main_Account_Plan_Button_SeePlans">
+    <value>Посмотреть _тарифы</value>
+  </data>
+  <data name="Main_Account_Plan_Description">
+    <value>Получите больше места в хранилище</value>
+  </data>
+  <data name="Main_Account_Plan_HelpText">
+    <value>Посмотрите другие тарифы Proton Drive</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Button_Manage">
+    <value>_Управлять</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_SessionManagement_Description">
+    <value>Пока вы не выйдете из своей учётной записи либо не измените свой пароль, ваша сессия остаётся активной. Срок действия сессий истекает после 60 дней бездействия.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_HelpText">
+    <value>Управляйте своим сеансом. После 60 дней неактивности сеанс истечет.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Title">
+    <value>Управление сеансами</value>
+  </data>
+  <data name="Main_Account_SignOut_Description">
+    <value>Выйдите и отключите синхронизацию. Вы можете снова войти в систему с тем же аккаунтом для возобновления синхронизации.</value>
+  </data>
+  <data name="Main_Account_SignOut_HelpText">
+    <value>Выйти из Proton Drive</value>
+  </data>
+  <data name="Main_Account_SignOut_Title">
+    <value>_Выйти</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Storage_Button_UpgradePlan">
+    <value>Улучшить тариф</value>
+  </data>
+  <data name="Main_Account_Storage_Info_EnsureMoreStorage">
+    <value>Чтобы обеспечить бесперебойную синхронизацию, получите больше хранилища прямо сейчас.</value>
+  </data>
+  <data name="Main_Account_Storage_Info_UsedSpaceFormat">
+    <value>Использовано: {0} из {1}</value>
+  </data>
+  <data name="Main_Account_Storage_Title">
+    <value>Объём хранилища</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageExceeded">
+    <value>Синхронизация остановлена. Объем хранилища вашего аккаунта превышен.</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageLimit">
+    <value>Вы близки к достижению лимита хранилища.</value>
+  </data>
+  <data name="Main_Account_Title">
+    <value>Аккаунт</value>
+  </data>
+  <data name="Main_Activity_Button_PauseSync">
+    <value>_Приостановить синхронизацию</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Rename">
+    <value>Переименовать</value>
+  </data>
+  <data name="Main_Activity_Button_Rename_Tooltip">
+    <value>Переименуйте этот элемент для исправления проблемы синхронизации</value>
+  </data>
+  <data name="Main_Activity_Button_ResumeSync">
+    <value>_Возобновить синхронизацию</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Retry">
+    <value>Повторить синхронизацию</value>
+  </data>
+  <data name="Main_Activity_Column_Folder">
+    <value>Папка</value>
+  </data>
+  <data name="Main_Activity_Column_Name">
+    <value>Название</value>
+  </data>
+  <data name="Main_Activity_Column_Progress_Tooltip_Finalizing">
+    <value>Завершение...</value>
+  </data>
+  <data name="Main_Activity_Column_Size">
+    <value>Размер</value>
+  </data>
+  <data name="Main_Activity_Column_Status">
+    <value>Статус</value>
+  </data>
+  <data name="Main_Activity_Column_Synced">
+    <value>Синхронизировано</value>
+  </data>
+  <data name="Main_Activity_Column_Type">
+    <value>Тип</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Button_ShowMore">
+    <value>Показать подробности</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Description">
+    <value>Нажмите, чтобы узнать подробнее об этих проблемах</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_HelpText">
+    <value>Отобразить все ошибки в новом разделе</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_MultipleItemsFormat">
+    <value>Имеется {0} проблем</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_SingleItem">
+    <value>Есть 1 проблема</value>
+  </data>
+  <data name="Main_Activity_Errors_Title">
+    <value>Проблемы синхронизации ({0})</value>
+  </data>
+  <data name="Main_Activity_Errors_Title_Tooltip">
+    <value>Вернуться к активности</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Description">
+    <value>Здесь будет отображаться информация о синхронизации файлов и папок</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_HelpText">
+    <value>Ваши файлы актуальны</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Title">
+    <value>Ваши файлы актуальны</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line1">
+    <value>Этот процесс может занять несколько минут.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line2">
+    <value>Вы можете безопасно свернуть или закрыть окно.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_HelpText">
+    <value>Инициализация синхронизации</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Title">
+    <value>Настройка вашего Drive...</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Description">
+    <value>Нажмите «Возобновить синхронизацию», чтобы включить синхронизацию</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_HelpText">
+    <value>Синхронизация приостановлена</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Title">
+    <value>Синхронизация приостановлена</value>
+  </data>
+  <data name="Main_Activity_Rename_CurrentName_Label">
+    <value>Текущее имя:</value>
+  </data>
+  <data name="Main_Activity_Rename_Description">
+    <value>Имя этого элемента содержит символы, не поддерживаемые в Windows.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_AlreadyExists">
+    <value>Имя уже используется</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_ContainsInvalidCharacter">
+    <value>Имя содержит недопустимые символы</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Failed">
+    <value>Что-то пошло не так</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Required">
+    <value>Требуется имя</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Label">
+    <value>Новое имя:</value>
+  </data>
+  <data name="Main_Activity_Rename_Status_Value_Renaming">
+    <value>Переименование...</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion">
+    <value>Чтобы продолжить синхронизацию, удалите следующее:</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion_CharacterList">
+    <value>/ : * ? &gt; &lt; " |</value>
+  </data>
+  <data name="Main_Activity_Rename_Title">
+    <value>Переименование элемента</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUp">
+    <value>Установка...</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUpFormat">
+    <value>Подготовка... ({0} подготовлены для синхронизации)</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SyncPausedUntilFormat">
+    <value>(until {0})</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>a moment ago</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
+    <value>{0} дней назад</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_HoursAgoFormat">
+    <value>{0} часов назад</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_MinutesAgoFormat">
+    <value>{0} минут назад</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneDayAgo">
+    <value>день назад</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneHourAgo">
+    <value>час назад</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneMinuteAgo">
+    <value>минуту назад</value>
+  </data>
+  <data name="Main_Activity_Title">
+    <value>Активность</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Folders synced from your computers will appear in the "Computers" section across your Drive apps.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Button_Rename">
+    <value>_Переименовать</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Device_HelpText">
+    <value>Переименуйте ваше устройство</value>
+  </data>
+  <data name="Main_MyComputer_Device_Label">
+    <value>Это устройство</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Cancel_HelpText">
+    <value>Отменить переименование устройства</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Save_HelpText">
+    <value>Сохраните название устройства</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Error_Tooltip">
+    <value>Недопустимое название устройства: новое название не должно быть пустым и превышать 255 символов.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_HelpText">
+    <value>Переименуйте ваше устройство</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Button_AddMore">
+    <value>_Добавить больше папок</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Description">
+    <value>Добавление папки создаст резервную копию всех её данных в Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Info_Saving">
+    <value>Сохранение папок...</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Title">
+    <value>Добавить папки</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludedByAnAlreadySyncedFolderFormat">
+    <value>{0} folder(s) cannot be synced because they are included in a folder already synced to Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludesAnAlreadySyncedFolderFormat">
+    <value>{0} folder(s) cannot be synced because they have a subfolder already synced to Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFileSystemAccessFailedFormat">
+    <value>Невозможно получить доступ к {0} папке/папкам</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFolderDoesNotExistFormat">
+    <value>Не удается найти или открыть {0} папку (папки, папок).</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalVolumeNotSupportedFormat">
+    <value>{0} folder(s) cannot be synced because they are located on a non-supported drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NetworkFolderNotSupportedFormat">
+    <value>{0} папка (папки, папок) не может (могут) быть синхронизирована (синхронизированы), так как сетевые папки не поддерживаются.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat">
+    <value>Невозможно синхронизировать {0} папок, поскольку они являются системными папками.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
+    <value>Невозможно добавить {0} папку/папки/папок</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder">
+    <value>Невозможно добавить 1 папку</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add">
+    <value>_Добавить папки</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst">
+    <value>Добавьте ваши первые папки для синхронизации</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddNext">
+    <value>Добавьте новую папку для синхронизации</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_Name">
+    <value>Название</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization">
+    <value>Оптимизация хранилища</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization_Info_Tooltip">
+    <value>Оптимизируйте хранение, включив синхронизацию по требованию.
+Файлы занимают место на устройстве только при открытии или
+при выборе опции «Всегда хранить на этом устройстве». Вы можете
+отключить оптимизацию хранения в любое время.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Description">
+    <value>Добавьте папку для безопасной синхронизации файлов с облаком</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Title">
+    <value>Безопасно синхронизируйте ваши файлы</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Label">
+    <value>Папки, синхронизируемые с этого устройства</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_OpenFolder">
+    <value>_Открыть папку</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder">
+    <value>_Удалить папку</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm">
+    <value>Удалить папку</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_1">
+    <value>Все файлы, добавленные в папку «{0}», больше не будут синхронизироваться, и эта папка будет перемещена в Корзину Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_2">
+    <value>Существующие файлы останутся на вашем компьютере.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_1">
+    <value>Некоторые файлы в папке «{0}» могут храниться только в облаке. Удаление этой папки приведет к прекращению синхронизации и перемещению ее в Корзину в Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_2">
+    <value>Чтобы сохранить локальную копию всех файлов на компьютере, сначала отключите оптимизацию хранилища для этой папки. Если оптимизация хранилища уже отключена, включите и выключите ее. Дождитесь завершения загрузки (состояние можно проверить в Проводнике), а затем удалите папку из синхронизации в разделе «Мой компьютер».</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_1">
+    <value>Файлы, которые уже были загружены, останутся на вашем устройстве.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_2">
+    <value>Файлы, хранящиеся только в облаке, будут удалены с вашего устройства.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Title">
+    <value>Удалить папку?</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_1">
+    <value>Файлы в папке «{0}» теперь всегда будут доступны на вашем устройстве. Загрузка всех файлов может занять несколько минут (статус можно проверить в Проводнике).</value>
+    <comment>Placeholder {0}: folder name</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_2">
+    <value>Вы все еще можете вручную освободить место для отдельных файлов в их настройках.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Title">
+    <value>Все файлы всегда доступны на этом устройстве</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1">
+    <value>Папка «{0}» не может использовать синхронизацию по требованию для оптимизации хранения, потому что {1}.</value>
+    <comment>Placeholder {0}: folder name. Placeholder {1}: the reason text, one of resources with "StorageOptimizationErrorCode_Value_..." key.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_2">
+    <value>Ваши файлы будут по-прежнему синхронизироваться с Proton Drive и оставаться доступными как на вашем компьютере, так и в облаке.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Title">
+    <value>Оптимизация хранения недоступна</value>
+  </data>
+  <data name="Main_MyComputer_Link_LearnMore">
+    <value>Learn more</value>
+  </data>
+  <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
+    <value>Отключить приветствие на компьютере</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Button_Next">
+    <value>_Далее</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Description">
+    <value>Включите синхронизацию по требованию для экономии места на жестком диске. Файлы занимают локальное хранилище только при их открытии или при отметке «Всегда хранить на этом устройстве».</value>
+    <comment>"Always keep on this device" is the exact text displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Title">
+    <value>Оптимизировать хранение</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted">
+    <value>_Начать работу</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1">
+    <value>Нажмите правой клавишей мыши на любом файле или папке, которые синхронизируются с помощью Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2">
+    <value>Выберите «Всегда хранить на этом устройстве», чтобы сохранить файл офлайн, или «Free up space», чтобы оставить его только в облаке.</value>
+    <comment>"Always keep on this device" and "Free up space" are the exact texts displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Title">
+    <value>Управление хранением</value>
+  </data>
+  <data name="Main_MyComputer_Title">
+    <value>Мой компьютер</value>
+  </data>
+  <data name="Main_Photos_Folders_Error_ImportFailed">
+    <value>Импорт не удался. Попробуйте удалить папку и импортировать её снова. Если проблема сохранится, обратитесь в службу поддержки.</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportedItemsFormat">
+    <value>Импортировано {0} из {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportingItemsFormat">
+    <value>Импорт... {0} из {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_Items_Label">
+    <value>элемент(ов)</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Manage _albums</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
+    <value>_Открыть папку</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Remove">
+    <value>_Удалить</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Retry">
+    <value>_Повторить</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_NoItemsFound_Label">
+    <value>Фото и видео не найдены</value>
+  </data>
+  <data name="Main_Photos_Folders_WaitingToImport">
+    <value>Ожидание импорта...</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Description">
+    <value>Пошаговое руководство по экспорту фотографий из Google Photos</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Title">
+    <value>1. Экспортируйте ваши фотографии из Google Photos</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Description">
+    <value>Это должна быть распакованная папка с вашими экспортированными фотографиями и видео.</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Title">
+    <value>2. Импортируйте папку из Google Photos</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_SelectFolder_Button">
+    <value>Выбрать папку</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Title">
+    <value>Импорт из Google Photos</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Description">
+    <value>Импорт локальной папки с вашего компьютера.</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Title">
+    <value>Импорт папки</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Description">
+    <value>Импорт фотографий из Google Takeout</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Title">
+    <value>Импорт из Google Photos</value>
+  </data>
+  <data name="Main_Photos_Import_Link_HowImportWorks">
+    <value>How does photo import work?</value>
+  </data>
+  <data name="Main_Photos_Import_Title">
+    <value>Импорт фото</value>
+  </data>
+  <data name="Main_Photos_Info_Duplicates">
+    <value>We'll only import what's new — duplicates are skipped automatically.</value>
+  </data>
+  <data name="Main_Photos_Title">
+    <value>Фото</value>
+  </data>
+  <data name="Main_Photos_Warning_UploadUnavailable">
+    <value>Загрузка фото временно недоступна</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Button_Change">
+    <value>_Изменить</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_HelpText">
+    <value>Измените корневую папку Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Title">
+    <value>Расположение</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Get early access and help us test new versions of Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Beta access</value>
+  </data>
+  <data name="Main_Settings_Label_AccountRootFolder">
+    <value>Ваша папка Proton Drive:</value>
+  </data>
+  <data name="Main_Settings_Label_General">
+    <value>Общее</value>
+  </data>
+  <data name="Main_Settings_Language_Button_Restart">
+    <value>Перезапустить сейчас</value>
+  </data>
+  <data name="Main_Settings_Language_Message_PleaseRestart">
+    <value>Перезапустите приложение, чтобы изменить язык</value>
+  </data>
+  <data name="Main_Settings_Language_Title">
+    <value>Язык</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_HelpText">
+    <value>Открывать Proton Drive при запуске Windows</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_Title">
+    <value>Открывать при запуске</value>
+  </data>
+  <data name="Main_Settings_Title">
+    <value>Настройки</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Name">
+    <value>Название</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions">
+    <value>Разрешения</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Tooltip">
+    <value>Права, предоставленные вам владельцем</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Editor">
+    <value>Редактор</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Viewer">
+    <value>Только просмотр</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedBy">
+    <value>Поделиться через</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedOn">
+    <value>Поделиться на</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync">
+    <value>Синхронизация</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync_Info_Tooltip">
+    <value>Включите, чтобы сделать общий файл или папку доступными на вашем компьютере.
+Содержимое файлов будет скачиваться только по требованию.</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad">
+    <value>Не удалось загрузить данные</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Plural">
+    <value>Не удалось загрузить {0} элементов</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Singular">
+    <value>Не удалось загрузить {0} элемент</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Description">
+    <value>Файлы и папки, которыми с вами поделились, появятся здесь</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Title">
+    <value>Пока нет общих файлов</value>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_OpenFolder">
+    <value>_Открыть папку</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_RemoveMe">
+    <value>_Удалите меня</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_Close_HelpText">
+    <value>Отключить инструкцию «Поделенные со мной»</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_GetStarted">
+    <value>_Начать работу</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Description">
+    <value>Легко синхронизируйте общие файлы и папки с вашим компьютером.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1">
+    <value>Выберите файлы или папки для синхронизации.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2">
+    <value>Получите доступ к общим файлам в вашей папке Proton Drive.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3">
+    <value>Редактируйте их, загружайте новые и получайте к ним офлайн доступ.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3_Label">
+    <value>3.</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Plural">
+    <value>Синхронизировано {0} из {1} элементов</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Singular">
+    <value>Синхронизировано {0} из {1} элемента</value>
+  </data>
+  <data name="Main_SharedWithMe_Title">
+    <value>Доступные мне</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Advice">
+    <value>Чтобы добавить новые элементы, прекратите синхронизацию некоторых старых.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Limit">
+    <value>Вы можете синхронизировать только {0} элементов одновременно.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_SharingUnavailable">
+    <value>Обмен файлами временно недоступен</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About">
+    <value>О программе</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About_HelpText">
+    <value>Пункт меню: О программе</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account">
+    <value>Аккаунт</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account_HelpText">
+    <value>Пункт меню: Аккаунт</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity">
+    <value>Активность</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity_HelpText">
+    <value>Пункт меню: Активность</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help">
+    <value>Помощь</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help_HelpText">
+    <value>Пункт меню: Справка</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer">
+    <value>Мой компьютер</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer_HelpText">
+    <value>Пункт меню: Мой компьютер</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos">
+    <value>Фото</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_PhotosImport">
+    <value>Импорт фото</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos_HelpText">
+    <value>Элемент меню: Фото</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings">
+    <value>Настройки</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings_HelpText">
+    <value>Пункт меню: Настройки</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe">
+    <value>Доступные мне</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe_HelpText">
+    <value>Пункт меню: Поделенные со мной</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceededQuota_Description">
+    <value>Синхронизация остановлена: объем хранилища вашего аккаунта превышен</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceedingQuota_Description">
+    <value>Вы близки к достижению лимита хранилища</value>
+  </data>
+  <data name="Main_Sidebar_Notification_GetStarted_Description">
+    <value>Начать работу</value>
+  </data>
+  <data name="Main_Sidebar_Notification_NewVersion_Description">
+    <value>Доступна новая версия Proton Drive!</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SharingUnavailable_Description">
+    <value>Обмен файлами временно недоступен</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SyncFoldersFailure_Description">
+    <value>Не удалось синхронизировать папку</value>
+  </data>
+  <data name="Main_Sidebar_Notification_UpdateRequired_Description">
+    <value>Чтобы продолжить использование Proton Drive, обновите его до последней версии</value>
+  </data>
+  <data name="Main_Sidebar_Offer_Button_GetDeal">
+    <value>Воспользуйтесь _предложением</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Sidebar_Storage_Button_GetMoreStorage">
+    <value>Получите больше места в хранилище</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_StorageNotAvailable">
+    <value>Информация о месте недоступна</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_UsedSpaceFormat">
+    <value>{0} из {1} занято</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Title">
+    <value>Хранилище</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Tooltip">
+    <value>Управлять хранилищем</value>
+  </data>
+  <data name="Main_Window_Title">
+    <value>Proton Drive</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>В этой папке содержится подпапка, синхронизируемая по требованию. Настройте новую папку для синхронизации.</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>Эта папка уже синхронизируется по требованию. Настройте новую папку для синхронизации.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveAccessFailed">
+    <value>Не удается подключиться к Proton Drive. Попробуйте проверить ваше интернет-подключение.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDiverged">
+    <value>Папка Proton Drive была перемещена. Настройте новую папку для синхронизации.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDoesNotExist">
+    <value>Невозможно получить доступ к файлам Proton Drive, возможно, из-за удаления папки устройства. Настройте новую папку для синхронизации.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveHostDeviceDiverged">
+    <value>Невозможно получить доступ к файлам Proton Drive, возможно, из-за удаления устройства. Настройте новую папку для синхронизации.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveShareDiverged">
+    <value>Невозможно получить доступ к файлам Proton Drive, возможно, из-за сброса пароля. Настройте новую папку для синхронизации.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveVolumeDiverged">
+    <value>Невозможно получить доступ к файлам Proton Drive, возможно, из-за сброса пароля. Настройте новую папку для синхронизации.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientDeviceQuota">
+    <value>Достигнуто максимальное количество синхронизируемых компьютеров. Удалите ненужные компьютеры из Proton Drive в Сети.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientLocalFreeSpace">
+    <value>Освободите место или снимите отметку с чекбокса</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalAndRemoteFoldersNotEmpty">
+    <value>Для настройки папки синхронизации требуется пустая папка в Windows или на веб-сервисе Proton Drive. Очистите одну из них и попробуйте снова.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFileSystemAccessFailed">
+    <value>Невозможно получить доступ или создать локальную папку синхронизации. Мы будем повторять попытки.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDiverged">
+    <value>Папка синхронизации была заменена новой в указанном пути. Восстановите предыдущую папку синхронизации или настройте новую.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDoesNotExist">
+    <value>Папка синхронизации не найдена. Возможно, она была удалена, переименована или перемещена. Восстановите её или настройте новую папку для синхронизации.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludedByAnAlreadySyncedFolder">
+    <value>Выбранная папка уже включена в другую синхронизированную папку</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludesAnAlreadySyncedFolder">
+    <value>Выбранная папка содержит папку, уже синхронизируемую</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNonSyncable">
+    <value>Локальная папка не подходит для синхронизации. Настройте новую папку для синхронизации.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNotEmpty">
+    <value>Перед настройкой синхронизации локальная папка должна быть пустой</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeDiverged">
+    <value>Local volume serial number has changed. Set up a new sync folder.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeNotSupported">
+    <value>Тип локального хранилища не поддерживается. Попробуйте настроить папку синхронизации на другом хранилище.</value>
+  </data>
+  <data name="MappingErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootMissingSyncRootFlag">
+    <value>Папка синхронизации недействительна. Настройте новую папку синхронизации.</value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootNotRegistered">
+    <value>Папка синхронизации была неожиданно отменена. Настройте новую папку для синхронизации.</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotoImportFailed">
+    <value>Импорт фото не удался</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosDisabled">
+    <value>Proton Photos недоступно</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosNotReady">
+    <value>Функция «Фото» не готова</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemDoesNotExist">
+    <value>Не удаётся получить доступ к общему файлу или папке Proton Drive. Проверьте, есть ли у вас ещё доступ к ним.</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemPermissionsDiverged">
+    <value>Разрешения для общего файла или папки в Proton Drive изменились. Чтобы устранить проблему, отключите и снова включите их синхронизацию.</value>
+  </data>
+  <data name="MappingErrorCode_Value_SharingDisabled">
+    <value>Обмен файлами временно недоступен</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Failed">
+    <value>Не удалось настроить папки синхронизации</value>
+  </data>
+  <data name="MappingSetupStatus_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingSetupStatus_Value_PartiallySucceeded">
+    <value>Не удалось настроить некоторые папки синхронизации</value>
+  </data>
+  <data name="MappingSetupStatus_Value_SettingUp">
+    <value>Настройка папок синхронизации...</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Succeeded">
+    <value>Да</value>
+  </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Add Storage</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Out of storage space</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Upgrade to get more storage space and upload your files.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
+    <value>_Изменить</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder_HelpText">
+    <value>Измените корневую папку Proton Drive.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Error_InvalidSyncFolder">
+    <value>Недопустимая папка синхронизации</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Description">
+    <value>Получите доступ к моим файлам и другим синхронизированным устройствам здесь</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Location">
+    <value>Расположение</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Title">
+    <value>Ваша папка Proton Drive</value>
+  </data>
+  <data name="Onboarding_Button_Continue">
+    <value>_Продолжить</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_Button_FinishSetup">
+    <value>_Завершить настройку</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders">
+    <value>_Добавить ещё папки</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText">
+    <value>Добавьте еще одну папку для синхронизации</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Label_Description">
+    <value>Выбранные папки будут синхронизированы с Proton Drive. Файлы создадут резервные копии и будут доступны на ваших других устройствах.</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Title">
+    <value>Создайте резервную копию ваших папок</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Get Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Get _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Get _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_NotNow">
+    <value>_Не сейчас</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_Upgrade">
+    <value>_Обновить</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Mail">
+    <value>Mail: Custom and secure email</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>month</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Most popular</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Up to {0} users</value>
+    <comment>Only for number greater than 1.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
+    <value>Pass: Encrypted password manager</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Premium value included</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Recommended">
+    <value>Рекомендованный</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Recover previous file versions</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>storage</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Vpn">
+    <value>VPN: Ultra fast and private</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Title">
+    <value>Получите больше места в хранилище</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
+    <value>Импорт не удался. Альбом не существует.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Import failed. The folder does not exist.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
+    <value>Импорт не удался. Достигнуто максимальное количество альбомов.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfPhotosPerAlbumReached">
+    <value>Импорт не удался. Достигнуто максимальное количество фото в альбоме.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_Unknown">
+    <value>Импорт не удался. Попробуйте ещё раз.</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Failed">
+    <value>Импорт не удался</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Importing">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Interrupted">
+    <value>Импорт прерван</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_NotStarted">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_SetupFailed">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Succeeded">
+    <value>Импорт успешно завершён</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_ValidationFailed">
+    <value></value>
+  </data>
+  <data name="ReleaseNoteType_Value_Feature">
+    <value>Новые функции</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Fix">
+    <value>Исправления ошибок</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Improvement">
+    <value>Улучшения</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Fido2">
+    <value>Security key</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_NotSupported">
+    <value></value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Totp">
+    <value>Authenticator app</value>
+  </data>
+  <data name="SessionStatus_Value_Ending">
+    <value>Выход...</value>
+  </data>
+  <data name="SessionStatus_Value_Failed">
+    <value>Не удалось войти. Попробуйте проверить ваше интернет-подключение.</value>
+  </data>
+  <data name="SessionStatus_Value_NotStarted">
+    <value>Выполнен выход</value>
+  </data>
+  <data name="SessionStatus_Value_SigningIn">
+    <value>Выполняется вход...</value>
+  </data>
+  <data name="SessionStatus_Value_Started">
+    <value>Вход выполнен</value>
+  </data>
+  <data name="SessionStatus_Value_Starting">
+    <value>Выполняется вход...</value>
+  </data>
+  <data name="SignIn_Button_Authenticate">
+    <value>_Аутентифицироваться</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_Back">
+    <value>_Назад</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignIn">
+    <value>_Войти</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignInAsAnotherUser">
+    <value>Или войдите как другой пользователь</value>
+  </data>
+  <data name="SignIn_Button_Unlock">
+    <value>_Разблокировать</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_CreateAccount">
+    <value>_Create account</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_ForgotPassword">
+    <value>_Forgot your password?</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_LearnMore">
+    <value>Learn more</value>
+  </data>
+  <data name="SignIn_Message_SigningIn">
+    <value>Вход в ваш аккаунт</value>
+  </data>
+  <data name="SignIn_Text_2FACode">
+    <value>Введите код из приложения-аутентификатора</value>
+  </data>
+  <data name="SignIn_Text_No2FAMethodFound">
+    <value>No two-factor authentication method found.</value>
+  </data>
+  <data name="SignIn_Text_Password">
+    <value>_Пароль</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_SecondPassword">
+    <value>Второй пароль</value>
+  </data>
+  <data name="SignIn_Text_SecurityKey">
+    <value>Insert a security key linked to your Proton Account.</value>
+  </data>
+  <data name="SignIn_Text_SecurityKeyNotSupported">
+    <value>Your system does not support security key</value>
+  </data>
+  <data name="SignIn_Text_Username">
+    <value>Электронная почта или _имя пользователя</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_Username_HelpText">
+    <value>Имя пользователя</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_PasswordRequired">
+    <value>Нужно ввести пароль</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SessionExpired">
+    <value>Ваш сеанс истек. Войдите, чтобы продолжить.</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SomethingWentWrong">
+    <value>Что-то пошло не так</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_UsernameRequired">
+    <value>Требуется имя пользователя</value>
+  </data>
+  <data name="SignIn_Title_2FA">
+    <value>Двухфакторная аутентификация</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>в ней содержится подпапка, синхронизируемая по требованию через {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>она уже синхронизируется по требованию через {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_NetworkVolumeNotSupported">
+    <value>сетевые хранилища не поддерживаются</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_RemovableVolumeNotSupported">
+    <value>съемные накопители не поддерживаются</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_Unknown">
+    <value>не удалось включить синхронизацию по требованию</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
+    <value>тип локального хранилища не поддерживается</value>
+  </data>
+  <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
+    <value>На этом устройстве недостаточно свободного места</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludedByAnAlreadySyncedFolder">
+    <value>Папка включена в уже синхронизируемую папку</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludesAnAlreadySyncedFolder">
+    <value>Папка содержит уже синхронизируемую папку</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_InsufficientLocalFreeSpace">
+    <value>Освободите место или снимите отметку с чекбокса.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFileSystemAccessFailed">
+    <value>Невозможно получить доступ к папке</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderDoesNotExist">
+    <value>Папка не найдена</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderNotEmpty">
+    <value>Перед настройкой синхронизации папка должна быть пустой</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalVolumeNotSupported">
+    <value>Тип хранилища не поддерживается</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NetworkFolderNotSupported">
+    <value>Синхронизация папок с сетевых хранилищ не поддерживается</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NonSyncableFolder">
+    <value>Папка не подходит для синхронизации</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_Succeeded">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_DetectingUpdates">
+    <value>Получение обновлений...</value>
+  </data>
+  <data name="SyncStatus_Value_Failed">
+    <value>Ошибка</value>
+  </data>
+  <data name="SyncStatus_Value_Idle">
+    <value>Синхронизировано</value>
+  </data>
+  <data name="SyncStatus_Value_Initializing">
+    <value>Установка...</value>
+  </data>
+  <data name="SyncStatus_Value_Offline">
+    <value>Офлайн</value>
+  </data>
+  <data name="SyncStatus_Value_Paused">
+    <value>Приостановлено</value>
+  </data>
+  <data name="SyncStatus_Value_Synchronizing">
+    <value>Синхронизация...</value>
+  </data>
+  <data name="SyncStatus_Value_Terminated">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_Terminating">
+    <value>Завершение...</value>
+  </data>
+  <data name="SystemTray_Menu_Item_Exit">
+    <value>В_ыход</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenInBrowser">
+    <value>Открыть в _браузере</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenLocalFolder">
+    <value>Открыть локальную _папку</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenProtonDrive">
+    <value>_Открыть Proton Drive</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSync">
+    <value>_Приостановить синхронизацию</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
+    <value>Pause for 1 hour</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor4Hours">
+    <value>Pause for 4 hours</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor8Hours">
+    <value>Pause for 8 hours</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncIndefinitely">
+    <value>Pause indefinitely</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow">
+    <value>Pause until tomorrow (8AM)</value>
+  </data>
+  <data name="SystemTray_Menu_Item_ResumeSync">
+    <value>_Resume the synchronization</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_SignIn">
+    <value>_Войти</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="ToggleSwitch_Off">
+    <value>Выкл</value>
+  </data>
+  <data name="ToggleSwitch_On">
+    <value>Включено</value>
+  </data>
+</root>
