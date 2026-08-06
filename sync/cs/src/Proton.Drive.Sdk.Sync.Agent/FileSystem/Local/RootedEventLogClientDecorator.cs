@@ -5,6 +5,8 @@ namespace Proton.Drive.Sdk.Sync.Agent.FileSystem.Local;
 
 internal sealed class RootedEventLogClientDecorator : IEventLogClient<long>
 {
+    private readonly TimeSpan _localEventSettlingDelay = TimeSpan.FromSeconds(1);
+
     private readonly ILogger<RootedEventLogClientDecorator> _logger;
     private readonly IRootDirectory<long> _rootDirectory;
     private readonly IRootableEventLogClient<long> _decoratedInstance;
@@ -39,5 +41,9 @@ internal sealed class RootedEventLogClientDecorator : IEventLogClient<long>
         _decoratedInstance.Disable();
     }
 
-    public Task GetEventsAsync() => Task.CompletedTask;
+    public Task GetEventsAsync()
+    {
+        // This delay is required to give enough time for the event callback to happen.
+        return Task.Delay(_localEventSettlingDelay);
+    }
 }

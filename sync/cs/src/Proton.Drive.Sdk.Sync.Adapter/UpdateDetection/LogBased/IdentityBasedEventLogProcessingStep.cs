@@ -19,9 +19,11 @@ internal class IdentityBasedEventLogProcessingStep<TId, TAltId> : SuccessStep<TI
     private readonly AdapterTree<TId, TAltId> _adapterTree;
     private readonly FileVersionMapping<TId, TAltId> _fileVersionMapping;
     private readonly IReadOnlyDictionary<TId, RootInfo<TAltId>> _syncRoots;
+    private readonly TwoPassUpdateDetectionSwitch _twoPassUpdateDetectionSwitch;
 
     public IdentityBasedEventLogProcessingStep(
         ILogger<IdentityBasedEventLogProcessingStep<TId, TAltId>> logger,
+        Replica replica,
         AdapterTree<TId, TAltId> adapterTree,
         IDirtyNodes<TId, TAltId> dirtyNodes,
         IIdentitySource<TId> idSource,
@@ -29,14 +31,18 @@ internal class IdentityBasedEventLogProcessingStep<TId, TAltId> : SuccessStep<TI
         FileVersionMapping<TId, TAltId> fileVersionMapping,
         IReadOnlyDictionary<TId, RootInfo<TAltId>> syncRoots,
         ICopiedNodes<TId, TAltId> copiedNodes,
-        IItemExclusionFilter itemExclusionFilter)
-        : base(logger, adapterTree, dirtyNodes, idSource, nodeUpdateDetection, syncRoots, copiedNodes, itemExclusionFilter)
+        IItemExclusionFilter itemExclusionFilter,
+        TwoPassUpdateDetectionSwitch twoPassUpdateDetectionSwitch)
+        : base(logger, replica, adapterTree, dirtyNodes, idSource, nodeUpdateDetection, syncRoots, copiedNodes, itemExclusionFilter)
     {
         _logger = logger;
         _adapterTree = adapterTree;
         _fileVersionMapping = fileVersionMapping;
         _syncRoots = syncRoots;
+        _twoPassUpdateDetectionSwitch = twoPassUpdateDetectionSwitch;
     }
+
+    protected override bool DirtyParentIsPreservedOnLogBasedUpdate => _twoPassUpdateDetectionSwitch.IsDisabled;
 
     public void Execute(int volumeId, string scope, EventLogEntry<TAltId> entry)
     {

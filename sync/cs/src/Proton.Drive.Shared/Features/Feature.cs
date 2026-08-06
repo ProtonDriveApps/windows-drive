@@ -19,4 +19,5 @@ public enum Feature
     DriveWindowsOffers,
     DriveWindowsOffersSystemNotificationPopup,
     DriveWindowsStorageOptimizationDisabled,
+    DriveWindowsTwoPassUpdateDetectionDisabled,
 }

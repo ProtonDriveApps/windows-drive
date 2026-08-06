@@ -16,6 +16,8 @@ using Proton.Drive.Sdk.Sync.Shared.FileSystem;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem.Integration;
 using Proton.Drive.Shared;
 using Proton.Drive.Shared.Configuration;
+using Proton.Drive.Shared.Features;
+using Proton.Drive.Shared.Reporting;
 using Proton.Drive.Shared.Telemetry;
 using Proton.Drive.Shared.Threading;
 
@@ -54,6 +56,8 @@ internal sealed class SyncAgentFactory
     private readonly ILoggerFactory _loggerFactory;
     private readonly IErrorCounter _errorCounter;
     private readonly IExcelTemporaryFileDetectionCounter _excelTemporaryFileDetectionCounter;
+    private readonly IFeatureFlagProvider _featureFlagProvider;
+    private readonly IErrorReporting _errorReporting;
 
     public SyncAgentFactory(
         AppConfig appConfig,
@@ -70,7 +74,9 @@ internal sealed class SyncAgentFactory
         IClock clock,
         ILoggerFactory loggerFactory,
         IErrorCounter errorCounter,
-        IExcelTemporaryFileDetectionCounter excelTemporaryFileDetectionCounter)
+        IExcelTemporaryFileDetectionCounter excelTemporaryFileDetectionCounter,
+        IFeatureFlagProvider featureFlagProvider,
+        IErrorReporting errorReporting)
     {
         _appConfig = appConfig;
         _remoteFileSystemClientFactory = remoteFileSystemClientFactory;
@@ -87,6 +93,8 @@ internal sealed class SyncAgentFactory
         _loggerFactory = loggerFactory;
         _errorCounter = errorCounter;
         _excelTemporaryFileDetectionCounter = excelTemporaryFileDetectionCounter;
+        _featureFlagProvider = featureFlagProvider;
+        _errorReporting = errorReporting;
     }
 
     public async Task<SyncAgent> GetSyncAgentAsync(IReadOnlyCollection<RemoteToLocalMapping> mappings, CancellationToken cancellationToken = default)
@@ -144,7 +152,9 @@ internal sealed class SyncAgentFactory
             remoteEventLogClient,
             _clock,
             _errorCounter,
-            _excelTemporaryFileDetectionCounter);
+            _excelTemporaryFileDetectionCounter,
+            _featureFlagProvider,
+            _errorReporting);
 
         var localFileSystemClient = new LocalDecoratedFileSystemClientFactory(
                 _localVolumeInfoProvider,
@@ -187,7 +197,9 @@ internal sealed class SyncAgentFactory
             localEventLogClient,
             _clock,
             _errorCounter,
-            _excelTemporaryFileDetectionCounter);
+            _excelTemporaryFileDetectionCounter,
+            _featureFlagProvider,
+            _errorReporting);
 
         var serialScheduler = new SerialScheduler();
         var syncEngine = new SyncEngine<long>(

@@ -26,6 +26,8 @@ using Proton.Drive.Sdk.Sync.Shared.Trees.Operations;
 using Proton.Drive.Shared;
 using Proton.Drive.Shared.Configuration;
 using Proton.Drive.Shared.Extensions;
+using Proton.Drive.Shared.Features;
+using Proton.Drive.Shared.Reporting;
 using Proton.Drive.Shared.Repository;
 using Proton.Drive.Shared.Telemetry;
 using Proton.Drive.Shared.Threading;
@@ -40,6 +42,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
     private readonly ITreeChangeRepository<TId> _detectedUpdateRepository;
     private readonly IIdentitySource<TId> _idSource;
     private readonly IFileSystemClient<TAltId> _fileSystemClient;
+    private readonly IErrorReporting _errorReporting;
 
     private readonly ExternalFileRevisionProviderProxy _externalFileRevisionProvider;
     private readonly MappedNodeIdentityProviderProxy _mappedNodeIdProvider;
@@ -84,12 +87,15 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
         IEventLogClient<TAltId> eventLogClient,
         IClock clock,
         IErrorCounter errorCounter,
-        IExcelTemporaryFileDetectionCounter excelTemporaryFileDetectionCounter)
+        IExcelTemporaryFileDetectionCounter excelTemporaryFileDetectionCounter,
+        IFeatureFlagProvider featureFlagProvider,
+        IErrorReporting errorReporting)
     {
         _adapterTreeRepository = adapterTreeRepository;
         _detectedUpdateRepository = detectedUpdateRepository;
         _idSource = idSource;
         _fileSystemClient = fileSystemClient;
+        _errorReporting = errorReporting;
 
         var syncRoots = new Dictionary<TId, RootInfo<TAltId>>();
 
@@ -158,6 +164,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
             contentVersionSequence,
             new UpdateLogging<TId, TAltId>(
                 loggerFactory.CreateLogger<NodeUpdateDetection<TId, TAltId>>(),
+                replica,
                 FileSystemTree),
             excelTemporaryFileDetectionCounter);
 
@@ -175,6 +182,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
 
         var operationExecutionSuccessStep = new OperationExecution.SuccessStep<TId, TAltId>(
             loggerFactory.CreateLogger<OperationExecution.SuccessStep<TId, TAltId>>(),
+            replica,
             FileSystemTree,
             _dirtyNodes,
             idSource,
@@ -223,6 +231,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
             FileSystemTree,
             fileSystemEnumeration,
             new RootEnumerationSuccessStep<TId, TAltId>(
+                replica,
                 FileSystemTree,
                 _dirtyNodes,
                 idSource,
@@ -243,6 +252,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
                 fileSystemEnumeration,
                 new NodeEnumerationSuccessStep<TId, TAltId>(
                     loggerFactory.CreateLogger<NodeEnumerationSuccessStep<TId, TAltId>>(),
+                    replica,
                     FileSystemTree,
                     _dirtyNodes,
                     idSource,
@@ -261,6 +271,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
                     nodeUpdateDetection),
                 new ChildrenEnumerationSuccessStep<TId, TAltId>(
                     loggerFactory.CreateLogger<ChildrenEnumerationSuccessStep<TId, TAltId>>(),
+                    replica,
                     FileSystemTree,
                     _dirtyNodes,
                     idSource,
@@ -284,7 +295,8 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
             FileSystemTree,
             DirtyTree,
             syncRoots,
-            nodeUpdateDetection);
+            nodeUpdateDetection,
+            errorReporting);
 
         var stateBasedUpdateDetection = new StateBasedUpdateDetection<TId, TAltId>(
             loggerFactory.CreateLogger<StateBasedUpdateDetection<TId, TAltId>>(),
@@ -298,6 +310,11 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
             dirtyNodeUpdateDetection,
             deletionDetection,
             _stateBasedUpdateDetectionExecutionStatistics);
+
+        var twoPassUpdateDetectionSwitch = new TwoPassUpdateDetectionSwitch(
+            featureFlagProvider,
+            replica,
+            loggerFactory.CreateLogger<TwoPassUpdateDetectionSwitch>());
 
         var logBasedUpdateDetection = new LogBasedUpdateDetection<TId, TAltId>(
             loggerFactory,
@@ -313,11 +330,13 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
             fileVersionMapping,
             copiedNodes,
             exclusionFilter,
-            updateDetectionSequencer);
+            updateDetectionSequencer,
+            twoPassUpdateDetectionSwitch);
 
         _updateDetection = new UpdateDetection<TId, TAltId>(
             stateBasedUpdateDetection,
-            logBasedUpdateDetection);
+            logBasedUpdateDetection,
+            twoPassUpdateDetectionSwitch);
 
         if (stateMaintenanceTreeRepository != null)
         {

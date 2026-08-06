@@ -16,6 +16,7 @@ internal class NodeEnumerationSuccessStep<TId, TAltId> : SuccessStep<TId, TAltId
 {
     public NodeEnumerationSuccessStep(
         ILogger<NodeEnumerationSuccessStep<TId, TAltId>> logger,
+        Replica replica,
         AdapterTree<TId, TAltId> adapterTree,
         IDirtyNodes<TId, TAltId> dirtyNodes,
         IIdentitySource<TId> idSource,
@@ -23,7 +24,7 @@ internal class NodeEnumerationSuccessStep<TId, TAltId> : SuccessStep<TId, TAltId
         ICopiedNodes<TId, TAltId> copiedNodes,
         NodeUpdateDetection<TId, TAltId> nodeUpdateDetection,
         IItemExclusionFilter itemExclusionFilter)
-        : base(logger, adapterTree, dirtyNodes, idSource, nodeUpdateDetection, syncRoots, copiedNodes, itemExclusionFilter)
+        : base(logger, replica, adapterTree, dirtyNodes, idSource, nodeUpdateDetection, syncRoots, copiedNodes, itemExclusionFilter)
     {
     }
 

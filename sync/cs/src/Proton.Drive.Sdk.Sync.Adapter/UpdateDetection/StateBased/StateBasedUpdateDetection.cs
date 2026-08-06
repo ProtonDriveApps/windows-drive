@@ -62,7 +62,7 @@ internal sealed class StateBasedUpdateDetection<TId, TAltId> : IExecutionStatist
         await DetectRootUpdates(cancellationToken).ConfigureAwait(false);
     }
 
-    public async Task ExecuteAsync(CancellationToken cancellationToken)
+    public async Task ExecuteAsync(bool includeDeletions, CancellationToken cancellationToken)
     {
         cancellationToken.ThrowIfCancellationRequested();
         _executionStatistics.ClearFailures();
@@ -83,7 +83,10 @@ internal sealed class StateBasedUpdateDetection<TId, TAltId> : IExecutionStatist
                 }
             }
 
-            await _deletionDetection.ExecuteAsync(cancellationToken).ConfigureAwait(false);
+            if (includeDeletions)
+            {
+                await _deletionDetection.ExecuteAsync(cancellationToken).ConfigureAwait(false);
+            }
         }
         finally
         {

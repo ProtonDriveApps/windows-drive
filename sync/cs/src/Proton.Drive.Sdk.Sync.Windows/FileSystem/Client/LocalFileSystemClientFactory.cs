@@ -15,6 +15,7 @@ public sealed class LocalFileSystemClientFactory : ILocalFileSystemClientFactory
     private readonly IFileMetadataGenerator _fileMetadataGenerator;
     private readonly IPhotoTagsGenerator _photoTagsGenerator;
     private readonly ILoggerFactory _loggerFactory;
+    private readonly EnumerationOptions? _enumerationOptions;
 
     private readonly Action<MetricEvent> _recordMetric;
 
@@ -25,7 +26,8 @@ public sealed class LocalFileSystemClientFactory : ILocalFileSystemClientFactory
         IFileMetadataGenerator fileMetadataGenerator,
         IPhotoTagsGenerator photoTagsGenerator,
         IMetricsRecorder metricsRecorder,
-        ILoggerFactory loggerFactory)
+        ILoggerFactory loggerFactory,
+        EnumerationOptions? enumerationOptions = null)
     {
         _localVolumeInfoProvider = localVolumeInfoProvider;
         _featureFlagProvider = featureFlagProvider;
@@ -33,6 +35,7 @@ public sealed class LocalFileSystemClientFactory : ILocalFileSystemClientFactory
         _fileMetadataGenerator = fileMetadataGenerator;
         _photoTagsGenerator = photoTagsGenerator;
         _loggerFactory = loggerFactory;
+        _enumerationOptions = enumerationOptions;
 
         _recordMetric = metricsRecorder.Record;
     }
@@ -56,7 +59,8 @@ public sealed class LocalFileSystemClientFactory : ILocalFileSystemClientFactory
             _photoTagsGenerator,
             _localVolumeInfoProvider,
             _recordMetric,
-            _loggerFactory);
+            _loggerFactory,
+            _enumerationOptions);
     }
 
     public IPhotoFileSystemClient<long> CreatePhotoClient()

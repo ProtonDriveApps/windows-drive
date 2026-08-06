@@ -28,7 +28,7 @@
     <PackageVersion Include="Roslynator.Analyzers" Version="4.15.0" />
     <PackageVersion Include="Sentry" Version="6.6.0" />
     <PackageVersion Include="StyleCop.Analyzers" Version="1.2.0-beta.556" />
-    <PackageVersion Include="SkiaSharp" Version="4.148.0" />
+    <PackageVersion Include="SkiaSharp" Version="4.150.1" />
     <PackageVersion Include="Vanara.PInvoke.CldApi" Version="5.0.5" />
     <PackageVersion Include="Vanara.PInvoke.Shell32" Version="5.0.5" />
   </ItemGroup>

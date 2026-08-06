@@ -19,6 +19,7 @@ internal abstract partial class SuccessStep<TId, TAltId>
     where TAltId : IEquatable<TAltId>
 {
     private readonly ILogger _logger;
+    private readonly Replica _replica;
     private readonly AdapterTree<TId, TAltId> _adapterTree;
     private readonly IDirtyNodes<TId, TAltId> _dirtyNodes;
     private readonly IIdentitySource<TId> _idSource;
@@ -31,6 +32,7 @@ internal abstract partial class SuccessStep<TId, TAltId>
 
     protected SuccessStep(
         ILogger logger,
+        Replica replica,
         AdapterTree<TId, TAltId> adapterTree,
         IDirtyNodes<TId, TAltId> dirtyNodes,
         IIdentitySource<TId> idSource,
@@ -47,7 +49,10 @@ internal abstract partial class SuccessStep<TId, TAltId>
         _copiedNodes = copiedNodes;
         _nodeUpdateDetection = nodeUpdateDetection;
         _itemExclusionFilter = itemExclusionFilter;
+        _replica = replica;
     }
+
+    protected virtual bool DirtyParentIsPreservedOnLogBasedUpdate => false;
 
     public void ValidateAndUpdate(
         AdapterTreeNode<TId, TAltId>? node,
@@ -64,12 +69,15 @@ internal abstract partial class SuccessStep<TId, TAltId>
             parentNode.IsRoot || incomingNodeModel.AltId.IsDefault() || incomingNodeModel.AltId.VolumeId == parentNode.AltId.VolumeId,
             "Parent and child nodes belong to different volumes");
 
-        // Log based update detection preserves DirtyAttributes and DirtyParent flags if booth are set.
-        // During the state based update detection the node state is known for sure, therefore,
+        // Log-based update detection preserves DirtyAttributes if both DirtyAttributes and DirtyParent flags are set.
+        // During the state-based update detection the node state is known for sure, therefore,
         // node dirtiness flags are removed, but not ones indicating dirtiness of children or descendants.
+        // If DirtyParent is not always removed, state-based detection risks causing deletion of nodes
+        // that were moved or renamed during the traversal, from a not-yet-visited part of the tree to an already-visited one.
         const AdapterNodeStatus flags = AdapterNodeStatus.DirtyAttributes | AdapterNodeStatus.DirtyParent;
+        var flagsToPreserve = DirtyParentIsPreservedOnLogBasedUpdate ? flags : AdapterNodeStatus.DirtyAttributes;
         var dirtyFlagsToRemove = isLogBased && incomingNodeModel.Status.HasFlag(flags)
-            ? (AdapterNodeStatus.DirtyNodeMask & ~flags)
+            ? (AdapterNodeStatus.DirtyNodeMask & ~flagsToPreserve)
             : AdapterNodeStatus.DirtyNodeMask;
 
         var status = incomingNodeModel.Status & ~dirtyFlagsToRemove;
@@ -125,7 +133,8 @@ internal abstract partial class SuccessStep<TId, TAltId>
         if (isFolderMove && parentNode.FromParentToRoot().SkipLast(1).Any(n => n.Id.Equals(node!.Id)))
         {
             _logger.LogWarning(
-                "Moving Adapter Tree {Type} node with Id={Id} to parent with Id={ParentId} is a cyclic move",
+                "Moving {Replica} Adapter Tree {Type} node with Id={Id} to parent with Id={ParentId} is a cyclic move",
+                _replica,
                 node!.Type,
                 node.Id,
                 parentNode.Id);
@@ -188,12 +197,12 @@ internal abstract partial class SuccessStep<TId, TAltId>
 
         if (node.IsNodeOrBranchDeleted())
         {
-            _logger.LogDebug("Adapter Tree {Type} node with Id={Id} is in already deleted branch", node.Type, node.Id);
+            _logger.LogDebug("{Replica} Adapter Tree {Type} node with Id={Id} is in already deleted branch", _replica, node.Type, node.Id);
 
             return;
         }
 
-        _logger.LogDebug("Marking Adapter Tree {Type} node with Id={Id} as deleted", node.Type, node.Id);
+        _logger.LogDebug("Marking {Replica} Adapter Tree {Type} node with Id={Id} as deleted", _replica, node.Type, node.Id);
 
         // Directories deleted while in a dirty branch are marked with the DirtyDescendants flag.
         var dirtyStatus = node.Type == NodeType.Directory && BranchIsDirty(node)
@@ -205,7 +214,7 @@ internal abstract partial class SuccessStep<TId, TAltId>
 
     protected void RemoveAltId(AdapterTreeNode<TId, TAltId> node)
     {
-        _logger.LogDebug("Updating Adapter Tree {Type} node with Id={Id} to remove AltId value={AltId}", node.Type, node.Id, node.AltId);
+        _logger.LogDebug("Updating {Replica} Adapter Tree {Type} node with Id={Id} to remove AltId value={AltId}", _replica, node.Type, node.Id, node.AltId);
 
         var updatedNodeModel = IncomingAdapterTreeNodeModel<TId, TAltId>
             .FromNodeModel(node.Model)
@@ -216,7 +225,12 @@ internal abstract partial class SuccessStep<TId, TAltId>
 
     protected void AppendDirtyStatus(AdapterTreeNode<TId, TAltId> node, AdapterNodeStatus value)
     {
-        _logger.LogInformation("Updating Adapter Tree {Type} node with Id={Id} to append status flag(s) ({Flags})", node.Type, node.Id, value);
+        _logger.LogInformation(
+            "Updating {Replica} Adapter Tree {Type} node with Id={Id} to append status flag(s) ({Flags})",
+            _replica,
+            node.Type,
+            node.Id,
+            value);
 
         var incoming = IncomingAdapterTreeNodeModel<TId, TAltId>
             .FromNodeModel(node.Model)
@@ -227,7 +241,7 @@ internal abstract partial class SuccessStep<TId, TAltId>
 
     protected void SetStateUpdateFlags(AdapterTreeNode<TId, TAltId> node, AdapterNodeStatus value)
     {
-        _logger.LogDebug("Updating Adapter Tree {Type} node with Id={Id} state update flag(s) to ({Value})", node.Type, node.Id, value);
+        _logger.LogDebug("Updating {Replica} Adapter Tree {Type} node with Id={Id} state update flag(s) to ({Value})", _replica, node.Type, node.Id, value);
 
         var incoming = IncomingAdapterTreeNodeModel<TId, TAltId>
             .FromNodeModel(node.Model)
@@ -238,7 +252,7 @@ internal abstract partial class SuccessStep<TId, TAltId>
 
     protected void SetDirtyStatus(AdapterTreeNode<TId, TAltId> node, AdapterNodeStatus value)
     {
-        _logger.LogInformation("Updating Adapter Tree {Type} node with Id={Id} to set status flag(s) ({Flags})", node.Type, node.Id, value);
+        _logger.LogInformation("Updating {Replica} Adapter Tree {Type} node with Id={Id} to set status flag(s) ({Flags})", _replica, node.Type, node.Id, value);
 
         var incoming = IncomingAdapterTreeNodeModel<TId, TAltId>
             .FromNodeModel(node.Model)
@@ -283,7 +297,8 @@ internal abstract partial class SuccessStep<TId, TAltId>
 
         _logger.Log(
             loggingLevel,
-            "Ignored {Type} \"{Name}\" \"{Root}\"/{Id} {AltId} at parent {ParentId} {ParentAltId}, Attributes=({Attributes}), PlaceholderState=({PlaceholderState})",
+            "Ignored {Replica} {Type} \"{Name}\" \"{Root}\"/{Id} {AltId} at parent {ParentId} {ParentAltId}, Attributes=({Attributes}), PlaceholderState=({PlaceholderState})",
+            _replica,
             attributes.HasFlag(FileAttributes.Directory) ? NodeType.Directory : NodeType.File,
             _logger.GetSensitiveValueForLogging(name),
             parentNode.GetSyncRoot().Name,
@@ -319,7 +334,8 @@ internal abstract partial class SuccessStep<TId, TAltId>
 
         // New file system object appeared with the reused ID
         _logger.LogWarning(
-            "Adapter Tree {Type} node with Id={Id} {AltId} doesn't match the expected, marking it as deleted",
+            "{Replica} Adapter Tree {Type} node with Id={Id} {AltId} doesn't match the expected, marking it as deleted",
+            _replica,
             node.Type,
             node.Id,
             node.AltId);

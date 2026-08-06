@@ -15,7 +15,7 @@ namespace Proton.Drive.Sdk.Sync.Windows.FileSystem.Client;
 
 internal sealed class OnDemandHydrationFileSystemClient : FileSystemClientBase, IFileSystemClient<long>
 {
-    private static readonly EnumerationOptions EnumerationOptions = new()
+    private static readonly EnumerationOptions DefaultEnumerationOptions = new()
     {
         AttributesToSkip = default,
         ReturnSpecialDirectories = false,
@@ -29,6 +29,7 @@ internal sealed class OnDemandHydrationFileSystemClient : FileSystemClientBase, 
     private readonly ILocalVolumeInfoProvider _localVolumeInfoProvider;
     private readonly Action<MetricEvent> _recordMetric;
     private readonly ILoggerFactory _loggerFactory;
+    private readonly EnumerationOptions _enumerationOptions;
     private string? _currentConnectionRootPath;
     private int _numberOfConnections;
 
@@ -42,7 +43,8 @@ internal sealed class OnDemandHydrationFileSystemClient : FileSystemClientBase, 
         IPhotoTagsGenerator photoTagsGenerator,
         ILocalVolumeInfoProvider localVolumeInfoProvider,
         Action<MetricEvent> recordMetric,
-        ILoggerFactory loggerFactory)
+        ILoggerFactory loggerFactory,
+        EnumerationOptions? enumerationOptions = null)
     {
         _featureFlagProvider = featureFlagProvider;
         _thumbnailGenerator = thumbnailGenerator;
@@ -51,6 +53,7 @@ internal sealed class OnDemandHydrationFileSystemClient : FileSystemClientBase, 
         _localVolumeInfoProvider = localVolumeInfoProvider;
         _recordMetric = recordMetric;
         _loggerFactory = loggerFactory;
+        _enumerationOptions = enumerationOptions ?? DefaultEnumerationOptions;
     }
 
     public void Connect(string syncRootPath, IFileHydrationDemandHandler<long> fileHydrationDemandHandler)
@@ -144,7 +147,7 @@ internal sealed class OnDemandHydrationFileSystemClient : FileSystemClientBase, 
 
         var parentId = directory.ObjectId;
 
-        var entries = directory.EnumerateFileSystemEntries(fileName: null, EnumerationOptions, ownsHandle: true).WithExceptionMapping(info.Id);
+        var entries = directory.EnumerateFileSystemEntries(fileName: null, _enumerationOptions, ownsHandle: true).WithExceptionMapping(info.Id);
 
         return entries.Select(x => x.ToNodeInfo(parentId)).ToAsyncEnumerable();
     }

@@ -111,7 +111,7 @@ internal class EventLogClient : IRootableEventLogClient<long>
         LogEntriesReceived?.Invoke(this, eventArgs);
     }
 
-    public static IReadOnlyCollection<EventLogEntry<long>> ToEventLogEntries(IReadOnlyCollection<RenamedExtendedEventArgs> e)
+    private static IReadOnlyCollection<EventLogEntry<long>> ToEventLogEntries(IReadOnlyCollection<RenamedExtendedEventArgs> e)
     {
         var result = new List<EventLogEntry<long>>(e.Count);
         result.AddRange(e.Select(ToEventLogEntry));
@@ -119,7 +119,7 @@ internal class EventLogClient : IRootableEventLogClient<long>
         return result.AsReadOnly();
     }
 
-    public static EventLogEntry<long> ToEventLogEntry(RenamedExtendedEventArgs e)
+    private static EventLogEntry<long> ToEventLogEntry(RenamedExtendedEventArgs e)
     {
         return new EventLogEntry<long>(ToEventLogChangeType(e.ChangeType))
         {

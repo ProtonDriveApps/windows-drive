@@ -13,10 +13,6 @@ internal unsafe class FileSystemEnumerator : CriticalFinalizerObject, IEnumerato
 {
     private const int StandardBufferSize = 4096;
 
-    // We need to have enough room for at least a single entry. The filename alone can be 255 * 2 = 510 bytes,
-    // we'll ensure we have a reasonable buffer for all of the other metadata as well.
-    private const int MinimumBufferSize = 1024;
-
     private readonly SafeFileHandle _directoryHandle;
     private readonly bool _ownsHandle;
     private readonly string? _fileName;
@@ -116,7 +112,7 @@ internal unsafe class FileSystemEnumerator : CriticalFinalizerObject, IEnumerato
         var requestedBufferSize = _options.BufferSize;
         _bufferLength = requestedBufferSize <= 0
             ? StandardBufferSize
-            : Math.Max(MinimumBufferSize, requestedBufferSize);
+            : requestedBufferSize;
 
         // This FILE_ID_BOTH_DIR_INFORMATION structure must be aligned on a LONGLONG (8-byte) boundary.
         // If a buffer contains two or more of these structures, the NextEntryOffset value in each

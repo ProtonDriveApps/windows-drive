@@ -9,4 +9,6 @@ public interface IErrorReporting
     void CaptureException(Exception ex);
 
     void CaptureError(string message);
+
+    void CaptureWarning(string message);
 }

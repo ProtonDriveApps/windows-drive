@@ -3,6 +3,7 @@ using Proton.Drive.Sdk.Sync.Adapter.Trees.Adapter;
 using Proton.Drive.Sdk.Sync.Adapter.Trees.Dirty;
 using Proton.Drive.Sdk.Sync.Shared;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;
+using Proton.Drive.Shared.Reporting;
 
 namespace Proton.Drive.Sdk.Sync.Adapter.UpdateDetection.StateBased;
 
@@ -15,6 +16,7 @@ internal sealed class DeletionDetection<TId, TAltId>
     private readonly ITransactedScheduler _syncScheduler;
     private readonly IReadOnlyDictionary<TId, RootInfo<TAltId>> _syncRoots;
     private readonly NodeUpdateDetection<TId, TAltId> _nodeUpdateDetection;
+    private readonly IErrorReporting _errorReporting;
     private readonly DirtyNodesTraversal<TId, TAltId> _dirtyNodesTraversal;
 
     public DeletionDetection(
@@ -24,13 +26,15 @@ internal sealed class DeletionDetection<TId, TAltId>
         AdapterTree<TId, TAltId> adapterTree,
         DirtyTree<TId> dirtyTree,
         IReadOnlyDictionary<TId, RootInfo<TAltId>> syncRoots,
-        NodeUpdateDetection<TId, TAltId> nodeUpdateDetection)
+        NodeUpdateDetection<TId, TAltId> nodeUpdateDetection,
+        IErrorReporting errorReporting)
     {
         _logger = logger;
         _replica = replica;
         _syncScheduler = syncScheduler;
         _syncRoots = syncRoots;
         _nodeUpdateDetection = nodeUpdateDetection;
+        _errorReporting = errorReporting;
 
         _dirtyNodesTraversal = new DirtyNodesTraversal<TId, TAltId>(adapterTree, dirtyTree);
     }
@@ -111,7 +115,7 @@ internal sealed class DeletionDetection<TId, TAltId>
 
     private void LogDetectedDeletions(int volumeId, int deletedNodeCount)
     {
-        const int bulkDeletionWarningMinimumCount = 100;
+        const int bulkDeletionWarningMinimumCount = 1000;
 
         var isBulkDeletion = deletedNodeCount >= bulkDeletionWarningMinimumCount;
 
@@ -122,6 +126,8 @@ internal sealed class DeletionDetection<TId, TAltId>
                 _replica,
                 volumeId,
                 deletedNodeCount);
+
+            _errorReporting.CaptureWarning($"{_replica} adapter detected a bulk deletion on volume with Id={volumeId}: {deletedNodeCount} deletions");
         }
         else
         {

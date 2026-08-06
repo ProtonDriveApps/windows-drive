@@ -20,6 +20,7 @@ internal sealed class SuccessStep<TId, TAltId> : Shared.SuccessStep<TId, TAltId>
 
     public SuccessStep(
         ILogger<SuccessStep<TId, TAltId>> logger,
+        Replica replica,
         AdapterTree<TId, TAltId> adapterTree,
         IDirtyNodes<TId, TAltId> dirtyNodes,
         IIdentitySource<TId> idSource,
@@ -28,7 +29,7 @@ internal sealed class SuccessStep<TId, TAltId> : Shared.SuccessStep<TId, TAltId>
         NodeUpdateDetection<TId, TAltId> nodeUpdateDetection,
         IItemExclusionFilter itemExclusionFilter,
         FileVersionMapping<TId, TAltId> fileVersionMapping)
-        : base(logger, adapterTree, dirtyNodes, idSource, nodeUpdateDetection, syncRoots, copiedNodes, itemExclusionFilter)
+        : base(logger, replica, adapterTree, dirtyNodes, idSource, nodeUpdateDetection, syncRoots, copiedNodes, itemExclusionFilter)
     {
         _logger = logger;
         _adapterTree = adapterTree;

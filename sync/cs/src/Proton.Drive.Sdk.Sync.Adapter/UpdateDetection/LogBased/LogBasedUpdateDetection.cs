@@ -30,6 +30,8 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
     private bool _started;
     private bool _isFaulty;
     private ReceivedEventLogEntries<TAltId>? _logEntries;
+    private int _processedEventCount;
+    private int _processedDeletionEventCount;
 
     public LogBasedUpdateDetection(
         ILoggerFactory loggerFactory,
@@ -45,7 +47,8 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
         FileVersionMapping<TId, TAltId> fileVersionMapping,
         ICopiedNodes<TId, TAltId> copiedNodes,
         IItemExclusionFilter itemExclusionFilter,
-        UpdateDetectionSequencer updateDetectionSequencer)
+        UpdateDetectionSequencer updateDetectionSequencer,
+        TwoPassUpdateDetectionSwitch twoPassUpdateDetectionSwitch)
     {
         _logger = loggerFactory.CreateLogger<LogBasedUpdateDetection<TId, TAltId>>();
         _replica = replica;
@@ -60,6 +63,7 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
 
         _eventLogProcessingStep = new IdentityBasedEventLogProcessingStep<TId, TAltId>(
             loggerFactory.CreateLogger<IdentityBasedEventLogProcessingStep<TId, TAltId>>(),
+            replica,
             adapterTree,
             dirtyNodes,
             idSource,
@@ -67,7 +71,8 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
             fileVersionMapping,
             syncRoots,
             copiedNodes,
-            itemExclusionFilter);
+            itemExclusionFilter,
+            twoPassUpdateDetectionSwitch);
     }
 
     public IExecutionStatistics ExecutionStatistics => _executionStatistics;
@@ -146,6 +151,9 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
 
         async Task InternalProcessAllLogEntries()
         {
+            _processedEventCount = 0;
+            _processedDeletionEventCount = 0;
+
             if (!await ProcessLogEntries(cancellationToken).ConfigureAwait(false))
             {
                 return;
@@ -153,6 +161,15 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
 
             while (GetLogEntries() && await ProcessLogEntries(cancellationToken).ConfigureAwait(false))
             {
+            }
+
+            if (_processedEventCount > 0)
+            {
+                _logger.LogInformation(
+                    "{Replica} update detection processed {NumberOfEvents} event(s) ({NumberOfDeletionEvents} of which delete/move-out event(s))",
+                    _replica,
+                    _processedEventCount,
+                    _processedDeletionEventCount);
             }
         }
     }
@@ -182,11 +199,23 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
 
             _eventLogProcessingStep.Execute(_logEntries.VolumeId, _logEntries.Scope, entry);
 
-            if (entry.ChangeType == EventLogChangeType.Error)
+            switch (entry.ChangeType)
             {
-                // The presence of the event log entry of type Error indicates failure
-                // to retrieve event log entries, the absence indicates success.
-                hasError = true;
+                case EventLogChangeType.Error:
+                    // The presence of the event log entry of type Error indicates failure
+                    // to retrieve event log entries, the absence indicates success.
+                    hasError = true;
+                    continue;
+
+                case EventLogChangeType.Skipped:
+                    continue;
+            }
+
+            _processedEventCount++;
+
+            if (entry.ChangeType is EventLogChangeType.Deleted or EventLogChangeType.DeletedOrMovedFrom)
+            {
+                _processedDeletionEventCount++;
             }
         }
 

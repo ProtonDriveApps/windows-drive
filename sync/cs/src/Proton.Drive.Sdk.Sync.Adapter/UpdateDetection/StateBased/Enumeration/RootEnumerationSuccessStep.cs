@@ -18,6 +18,7 @@ internal sealed class RootEnumerationSuccessStep<TId, TAltId> : SuccessStep<TId,
     private readonly ILogger<RootEnumerationSuccessStep<TId, TAltId>> _logger;
 
     public RootEnumerationSuccessStep(
+        Replica replica,
         AdapterTree<TId, TAltId> adapterTree,
         IDirtyNodes<TId, TAltId> dirtyNodes,
         IIdentitySource<TId> idSource,
@@ -27,7 +28,7 @@ internal sealed class RootEnumerationSuccessStep<TId, TAltId> : SuccessStep<TId,
         IItemExclusionFilter itemExclusionFilter,
         RootMigrationStep<TId, TAltId> rootMigration,
         ILogger<RootEnumerationSuccessStep<TId, TAltId>> logger)
-        : base(logger, adapterTree, dirtyNodes, idSource, nodeUpdateDetection, syncRoots, copiedNodes, itemExclusionFilter)
+        : base(logger, replica, adapterTree, dirtyNodes, idSource, nodeUpdateDetection, syncRoots, copiedNodes, itemExclusionFilter)
     {
         _adapterTree = adapterTree;
         _syncRoots = syncRoots;
