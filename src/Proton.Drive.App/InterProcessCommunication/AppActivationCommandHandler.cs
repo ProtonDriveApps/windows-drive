@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.InterProcessCommunication;
+namespace Proton.Drive.App.InterProcessCommunication;
 
 /// <summary>
 /// Handles the app activation request from the second instance of the app.

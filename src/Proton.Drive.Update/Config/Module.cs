@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Proton.Drive.Shared.Diagnostics;
 using Proton.Drive.Update.Updates;

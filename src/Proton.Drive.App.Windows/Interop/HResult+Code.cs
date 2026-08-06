@@ -1,4 +1,4 @@
-﻿// Copyright © .NET Foundation and Contributors. All rights reserved.
+// Copyright © .NET Foundation and Contributors. All rights reserved.
 // Licensed under the MIT license. See LICENSE-MIT file in the project root for full license information.
 //
 // Adapted from https://github.com/dotnet/pinvoke/blob/master/src/Windows.Core/HResult%2BCode.cs

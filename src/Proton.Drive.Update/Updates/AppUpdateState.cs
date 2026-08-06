@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.Update.Updates;
+namespace Proton.Drive.Update.Updates;
 
 /// <inheritdoc />
 internal class AppUpdateState : IAppUpdateState

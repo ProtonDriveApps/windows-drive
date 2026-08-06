@@ -1,4 +1,4 @@
-﻿using System.Windows.Threading;
+using System.Windows.Threading;
 using Proton.Drive.Shared.Threading;
 
 namespace Proton.Drive.App.Windows.Toolkit.Threading;

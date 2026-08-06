@@ -1,4 +1,4 @@
-﻿using Proton.Drive.App.Docs;
+using Proton.Drive.App.Docs;
 
 namespace Proton.Drive.App.InterProcessCommunication;
 

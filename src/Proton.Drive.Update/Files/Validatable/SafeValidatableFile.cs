@@ -1,4 +1,4 @@
-﻿using Proton.Drive.Shared.Extensions;
+using Proton.Drive.Shared.Extensions;
 
 namespace Proton.Drive.Update.Files.Validatable;
 

@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Proton.Drive.App.Windows.Configuration.Hyperlinks;
 using Proton.Drive.App.Windows.Toolkit.Threading;
 using Proton.Drive.Sdk.Sync.Shared.Authentication;

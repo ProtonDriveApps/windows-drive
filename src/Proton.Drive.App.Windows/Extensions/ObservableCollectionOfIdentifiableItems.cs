@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using Proton.Drive.Shared;
 
 namespace Proton.Drive.App.Windows.Extensions;

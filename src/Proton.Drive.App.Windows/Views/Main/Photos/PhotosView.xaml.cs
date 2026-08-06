@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.Main.Photos;
+namespace Proton.Drive.App.Windows.Views.Main.Photos;
 
 internal partial class PhotosView
 {

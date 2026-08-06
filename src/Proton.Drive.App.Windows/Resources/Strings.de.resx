@@ -333,25 +333,25 @@
     <value>Der Bericht enthält die neuesten App-Protokolldateien und Installationsprotokolldateien</value>
   </data>
   <data name="BugReport_NeedHelp_Description">
-    <value>Quick guides for setup, app use, and file sync.</value>
+    <value>Kurzanleitungen zur Einrichtung, zur Nutzung der App und zur Dateisynchronisation.</value>
   </data>
   <data name="BugReport_NeedHelp_Link_FAQ">
-    <value>Frequently asked questions (FAQ)</value>
+    <value>Häufig gestellte Fragen (FAQ)</value>
   </data>
   <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks">
-    <value>Learn how the Proton Drive app works</value>
+    <value>So funktioniert die Proton Drive-App</value>
   </data>
   <data name="BugReport_NeedHelp_Link_HowSharedFilesWork">
-    <value>Access shared files</value>
+    <value>Auf freigegebene Dateien zugreifen</value>
   </data>
   <data name="BugReport_NeedHelp_Link_SyncFolders">
-    <value>Sync folders to Proton Drive</value>
+    <value>Ordner mit Proton Drive synchronisieren</value>
   </data>
   <data name="BugReport_NeedHelp_Link_UseOnDemandSync">
-    <value>Use on-demand sync</value>
+    <value>Synchronisation nach Bedarf verwenden</value>
   </data>
   <data name="BugReport_NeedHelp_Title">
-    <value>Need help getting started with Proton Drive?</value>
+    <value>Benötigen Sie Hilfe beim Umgang mit Proton Drive?</value>
   </data>
   <data name="BugReport_Text_Description_HelpText">
     <value>Beschreibung. Was ist schiefgelaufen? Welche exakten Schritte hast du zuvor durchgeführt? (mindestens 10 Zeichen)</value>
@@ -387,10 +387,10 @@
     <value>Titel des Problems</value>
   </data>
   <data name="BugReport_Text_ReportSuccessfullySent">
-    <value>Report successfully sent. Thank you.</value>
+    <value>Der Bericht wurde erfolgreich gesendet. Vielen Dank.</value>
   </data>
   <data name="BugReport_Title">
-    <value>Proton Drive Feedback</value>
+    <value>Rückmeldungen zu Proton Drive</value>
   </data>
   <data name="Dialog_Button_Cancel">
     <value>Abbrechen</value>
@@ -537,11 +537,11 @@ Schalte ihre Synchronisierung aus und wieder ein, um sie wiederherzustellen und 
     <value>Veröffentlichungsdatum</value>
   </data>
   <data name="Main_About_Link_PrivacyPolicy">
-    <value>_Privacy policy</value>
+    <value>_Datenschutzerklärung</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_About_Link_TermsOfService">
-    <value>_Terms of service</value>
+    <value>_Nutzungsbedingungen</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_About_ReleaseHistory_Label_New">
@@ -935,7 +935,7 @@ Schalte ihre Synchronisierung aus und wieder ein, um sie wiederherzustellen und 
     <value>Speicheroptimierung nicht verfügbar</value>
   </data>
   <data name="Main_MyComputer_Link_LearnMore">
-    <value>Learn more</value>
+    <value>Mehr erfahren</value>
   </data>
   <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
     <value>Einrichtung meines Computers abbrechen</value>
@@ -1039,7 +1039,7 @@ Schalte ihre Synchronisierung aus und wieder ein, um sie wiederherzustellen und 
     <value>Von Google-Fotos importieren</value>
   </data>
   <data name="Main_Photos_Import_Link_HowImportWorks">
-    <value>How does photo import work?</value>
+    <value>Wie funktioniert das Importieren von Fotos?</value>
   </data>
   <data name="Main_Photos_Import_Title">
     <value>Fotos importieren</value>
@@ -1582,15 +1582,15 @@ Der Inhalt der Dateien wird nur bei Bedarf heruntergeladen.</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Link_CreateAccount">
-    <value>_Create account</value>
+    <value>Konto _erstellen</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Link_ForgotPassword">
-    <value>_Forgot your password?</value>
+    <value>_Passwort vergessen?</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Link_LearnMore">
-    <value>Learn more</value>
+    <value>Mehr erfahren</value>
   </data>
   <data name="SignIn_Message_SigningIn">
     <value>Anmeldung in dein Konto</value>

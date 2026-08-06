@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Input;
 using Proton.Drive.App.Windows.SystemIntegration;
 using Proton.Drive.Sdk.Sync.Agent.Mapping.SyncFolders;
 using Proton.Drive.Sdk.Sync.Client.Shares.SharedWithMe;

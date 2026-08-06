@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Text.Json;
 using Proton.Drive.App.InterProcessCommunication;
 using Proton.Drive.App.Windows.Interop;

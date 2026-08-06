@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Notifications.Contracts;
+namespace Proton.Drive.App.Notifications.Contracts;
 
 public sealed class Offer
 {

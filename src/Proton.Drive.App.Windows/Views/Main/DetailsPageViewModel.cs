@@ -1,4 +1,4 @@
-﻿using Proton.Drive.App.Windows.Views.Shared.Navigation;
+using Proton.Drive.App.Windows.Views.Shared.Navigation;
 
 namespace Proton.Drive.App.Windows.Views.Main;
 

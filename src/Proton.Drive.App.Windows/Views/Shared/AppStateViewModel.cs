@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Proton.Drive.Sdk.Sync.Agent.Account;
 using Proton.Drive.Sdk.Sync.Agent.Mapping;
 using Proton.Drive.Sdk.Sync.Agent.Volumes;

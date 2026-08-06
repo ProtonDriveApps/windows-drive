@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Nodes;
+using System.Text.Json.Nodes;
 
 namespace Proton.Drive.App.Windows.InterProcessCommunication;
 

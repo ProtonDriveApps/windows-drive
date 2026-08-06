@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Proton.Drive.App.Notifications;
 using Proton.Drive.App.Notifications.Offers;

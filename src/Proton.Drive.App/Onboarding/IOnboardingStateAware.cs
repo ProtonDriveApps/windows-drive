@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Onboarding;
+namespace Proton.Drive.App.Onboarding;
 
 public interface IOnboardingStateAware
 {

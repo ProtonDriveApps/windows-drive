@@ -1,4 +1,4 @@
-﻿using System.Text;
+using System.Text;
 using Proton.Drive.Sdk.Sync.Agent.Mapping;
 
 namespace Proton.Drive.App.Windows.Views.Main.MyComputer;

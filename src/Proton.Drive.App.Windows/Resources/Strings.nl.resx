@@ -1740,22 +1740,22 @@ De inhoud van bestanden wordt alleen op aanvraag gedownload.</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
-    <value>Pause for 1 hour</value>
+    <value>Pauzeer voor 1 uur</value>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncFor4Hours">
-    <value>Pause for 4 hours</value>
+    <value>Pauzeer voor 4 uur</value>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncFor8Hours">
-    <value>Pause for 8 hours</value>
+    <value>Pauzeer voor 8 uur</value>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncIndefinitely">
-    <value>Pause indefinitely</value>
+    <value>Voor onbepaalde tijd pauzeren</value>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow">
-    <value>Pause until tomorrow (8AM)</value>
+    <value>Pauzeer tot morgen (8.00 uur)</value>
   </data>
   <data name="SystemTray_Menu_Item_ResumeSync">
-    <value>_Resume the synchronization</value>
+    <value>_Hervat de synchronisatie</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_SignIn">

@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Toolkit.Behaviors;
+namespace Proton.Drive.App.Windows.Toolkit.Behaviors;
 
 internal interface IVisibilityListener
 {

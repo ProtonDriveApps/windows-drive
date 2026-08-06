@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -1205,6 +1205,12 @@ disable storage optimization at any time.</value>
   <data name="FileSystemErrorCode_Value_DirectoryNotFound" xml:space="preserve">
     <value>Could not find a part of the path</value>
   </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound" xml:space="preserve">
+    <value>The folder where this item was going to be downloaded could not be found</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound" xml:space="preserve">
+    <value>The folder where this item was going to be uploaded could not be found</value>
+  </data>
   <data name="FileSystemErrorCode_Value_DuplicateName" xml:space="preserve">
     <value>Name already in use</value>
   </data>
@@ -1252,6 +1258,9 @@ disable storage optimization at any time.</value>
   </data>
   <data name="FileSystemErrorCode_Value_CyclicRedundancyCheck" xml:space="preserve">
     <value>Data error (cyclic redundancy check). Please, check your drive (USB, disk etc...) for file system errors and bad sectors.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError" xml:space="preserve">
+    <value>The file could not be transferred because of a local storage error. Please check that your drive is working correctly.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum" xml:space="preserve">
     <value>Live Photo cannot be uploaded.</value>
@@ -1329,11 +1338,11 @@ Toggle its sync off and on again to restore it and clear this error.</value>
     <value>Open local _folder</value>
   </data>
   <data name="SystemTray_Menu_Item_ResumeSync" xml:space="preserve">
-    <value>_Resume the synchronization</value>
+    <value>_Resume sync</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSync" xml:space="preserve">
-    <value>_Pause the synchronization</value>
+    <value>_Pause sync</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncFor1Hour" xml:space="preserve">

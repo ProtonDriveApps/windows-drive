@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.Main.Activity;
+namespace Proton.Drive.App.Windows.Views.Main.Activity;
 
 internal partial class RenameRemoteNodeView
 {

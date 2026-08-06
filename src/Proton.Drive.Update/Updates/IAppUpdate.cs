@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.Update.Updates;
+namespace Proton.Drive.Update.Updates;
 
 /// <summary>
 /// Interface to the app update state plus the app update related operations.

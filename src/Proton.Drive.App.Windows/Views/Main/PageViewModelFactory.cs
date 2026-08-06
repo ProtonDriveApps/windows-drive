@@ -1,4 +1,4 @@
-﻿using Proton.Drive.App.Windows.Views.Main.About;
+using Proton.Drive.App.Windows.Views.Main.About;
 using Proton.Drive.App.Windows.Views.Main.Account;
 using Proton.Drive.App.Windows.Views.Main.Activity;
 using Proton.Drive.App.Windows.Views.Main.MyComputer;

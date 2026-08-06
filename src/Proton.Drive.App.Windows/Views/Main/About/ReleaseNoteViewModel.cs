@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.Main.About;
+namespace Proton.Drive.App.Windows.Views.Main.About;
 
 internal sealed class ReleaseNoteViewModel
 {

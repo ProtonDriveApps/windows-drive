@@ -1,4 +1,4 @@
-﻿using System.Windows.Media;
+using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Proton.Drive.App.Windows.Views.Shared;
 using Proton.Drive.Sdk.Sync.Agent.Mapping;

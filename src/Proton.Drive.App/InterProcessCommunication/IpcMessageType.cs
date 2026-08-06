@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.InterProcessCommunication;
+namespace Proton.Drive.App.InterProcessCommunication;
 
 public static class IpcMessageType
 {

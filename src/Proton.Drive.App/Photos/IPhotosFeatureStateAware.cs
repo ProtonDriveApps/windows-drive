@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Photos;
+namespace Proton.Drive.App.Photos;
 
 public interface IPhotosFeatureStateAware
 {

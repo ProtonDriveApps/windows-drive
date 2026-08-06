@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Settings;
+namespace Proton.Drive.App.Settings;
 
 public sealed class NotificationSettings
 {

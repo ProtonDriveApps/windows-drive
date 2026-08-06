@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.Main.SharedWithMe;
+namespace Proton.Drive.App.Windows.Views.Main.SharedWithMe;
 
 internal partial class SharedWithMeView
 {

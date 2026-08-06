@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.Shared.Navigation;
+namespace Proton.Drive.App.Windows.Views.Shared.Navigation;
 
 /// <summary>
 /// A collection of navigatable pages handled by the navigation service.

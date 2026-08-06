@@ -1,4 +1,4 @@
-﻿using Proton.Drive.Shared.Telemetry;
+using Proton.Drive.Shared.Telemetry;
 
 namespace Proton.Drive.App.Windows.Diagnostics.Telemetry.FirstLaunch;
 

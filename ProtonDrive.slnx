@@ -8,21 +8,21 @@
   <Folder Name="/App/">
     <File Path="src/.editorconfig" />
     <File Path="src/Directory.Build.props" />
-    <Project Path="src/Proton.Drive.Sdk.Sync.Agent/Proton.Drive.Sdk.Sync.Agent.csproj" />
-    <Project Path="src/Proton.Drive.Sdk.Sync.Adapter/Proton.Drive.Sdk.Sync.Adapter.csproj" />
+    <Project Path="src/Proton.Drive.App/Proton.Drive.App.csproj" />
     <Project Path="src/Proton.Drive.App.Windows/Proton.Drive.App.Windows.csproj">
       <Platform Solution="*|ARM64" Project="ARM64" />
       <Platform Solution="*|x64" Project="x64" />
       <Platform Solution="*|x86" Project="x86" />
     </Project>
-    <Project Path="src/Proton.Drive.App/Proton.Drive.App.csproj" />
     <Project Path="src/Proton.Drive.Native.Windows/Proton.Drive.Native.Windows.csproj" />
-    <Project Path="src/Proton.Drive.Shared/Proton.Drive.Shared.csproj" />
-    <Project Path="src/Proton.Drive.Sdk.Sync.Client/Proton.Drive.Sdk.Sync.Client.csproj" />
-    <Project Path="src/Proton.Drive.Sdk.Sync.DataAccess/Proton.Drive.Sdk.Sync.DataAccess.csproj" />
-    <Project Path="src/Proton.Drive.Sdk.Sync.Engine/Proton.Drive.Sdk.Sync.Engine.csproj" />
-    <Project Path="src/Proton.Drive.Sdk.Sync.Shared/Proton.Drive.Sdk.Sync.Shared.csproj" />
-    <Project Path="src/Proton.Drive.Sdk.Sync.Windows/Proton.Drive.Sdk.Sync.Windows.csproj" />
+    <Project Path="sync/cs/src/Proton.Drive.Sdk.Sync.Agent/Proton.Drive.Sdk.Sync.Agent.csproj" />
+    <Project Path="sync/cs/src/Proton.Drive.Sdk.Sync.Adapter/Proton.Drive.Sdk.Sync.Adapter.csproj" />
+    <Project Path="sync/cs/src/Proton.Drive.Sdk.Sync.Client/Proton.Drive.Sdk.Sync.Client.csproj" />
+    <Project Path="sync/cs/src/Proton.Drive.Sdk.Sync.DataAccess/Proton.Drive.Sdk.Sync.DataAccess.csproj" />
+    <Project Path="sync/cs/src/Proton.Drive.Sdk.Sync.Engine/Proton.Drive.Sdk.Sync.Engine.csproj" />
+    <Project Path="sync/cs/src/Proton.Drive.Sdk.Sync.Shared/Proton.Drive.Sdk.Sync.Shared.csproj" />
+    <Project Path="sync/cs/src/Proton.Drive.Sdk.Sync.Windows/Proton.Drive.Sdk.Sync.Windows.csproj" />
+    <Project Path="sync/cs/src/Proton.Drive.Shared/Proton.Drive.Shared.csproj" />
     <Project Path="src/Proton.Drive.Update/Proton.Drive.Update.csproj" />
   </Folder>
   <Folder Name="/Configuration/">

@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.Input;
+using CommunityToolkit.Mvvm.Input;
 using Proton.Drive.App.Windows.Views;
 
 namespace Proton.Drive.App.Windows.Dialogs;

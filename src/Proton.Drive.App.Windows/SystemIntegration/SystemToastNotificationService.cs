@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Runtime.InteropServices;
 using Microsoft.Toolkit.Uwp.Notifications;
 using Proton.Drive.App.Notifications;

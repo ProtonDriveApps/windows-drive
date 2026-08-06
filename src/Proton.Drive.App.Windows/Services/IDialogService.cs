@@ -1,4 +1,4 @@
-﻿using Proton.Drive.App.Windows.Dialogs;
+using Proton.Drive.App.Windows.Dialogs;
 using Proton.Drive.App.Windows.Views;
 
 namespace Proton.Drive.App.Windows.Services;

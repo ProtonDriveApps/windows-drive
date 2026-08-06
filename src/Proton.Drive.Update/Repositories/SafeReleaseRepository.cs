@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using Proton.Drive.Update.Helpers;
 using Proton.Drive.Update.Releases;
 

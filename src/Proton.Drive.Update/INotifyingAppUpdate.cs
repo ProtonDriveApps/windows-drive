@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.Update;
+namespace Proton.Drive.Update;
 
 public interface INotifyingAppUpdate
 {

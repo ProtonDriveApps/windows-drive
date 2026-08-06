@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.Update.Updates;
+namespace Proton.Drive.Update.Updates;
 
 /// <summary>
 /// Performs app updates download directory cleanup only once.

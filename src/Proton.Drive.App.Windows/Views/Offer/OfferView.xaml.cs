@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.Offer;
+namespace Proton.Drive.App.Windows.Views.Offer;
 
 internal partial class OfferView
 {

@@ -1,4 +1,4 @@
-﻿using System.Windows.Controls;
+using System.Windows.Controls;
 
 namespace Proton.Drive.App.Windows.Views.Main.MyComputer;
 

@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using CommunityToolkit.Mvvm.Input;
 using Proton.Drive.App.Update;
 using Proton.Drive.App.Windows.Configuration.Hyperlinks;

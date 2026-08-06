@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.Shared.Notification;
+namespace Proton.Drive.App.Windows.Views.Shared.Notification;
 
 internal sealed class NotificationBadge
 {

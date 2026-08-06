@@ -20,13 +20,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Proton.Drive.Sdk.Sync.Client\Proton.Drive.Sdk.Sync.Client.csproj" />
-    <ProjectReference Include="..\Proton.Drive.Sdk.Sync.DataAccess\Proton.Drive.Sdk.Sync.DataAccess.csproj" />
-    <ProjectReference Include="..\Proton.Drive.Shared\Proton.Drive.Shared.csproj" />
-    <ProjectReference Include="..\Proton.Drive.Sdk.Sync.Adapter\Proton.Drive.Sdk.Sync.Adapter.csproj" />
-    <ProjectReference Include="..\Proton.Drive.Sdk.Sync.Agent\Proton.Drive.Sdk.Sync.Agent.csproj" />
-    <ProjectReference Include="..\Proton.Drive.Sdk.Sync.Engine\Proton.Drive.Sdk.Sync.Engine.csproj" />
-    <ProjectReference Include="..\Proton.Drive.Sdk.Sync.Shared\Proton.Drive.Sdk.Sync.Shared.csproj" />
+    <ProjectReference Include="..\..\sync\cs\src\Proton.Drive.Sdk.Sync.Adapter\Proton.Drive.Sdk.Sync.Adapter.csproj" />
+    <ProjectReference Include="..\..\sync\cs\src\Proton.Drive.Sdk.Sync.Agent\Proton.Drive.Sdk.Sync.Agent.csproj" />
+    <ProjectReference Include="..\..\sync\cs\src\Proton.Drive.Sdk.Sync.Client\Proton.Drive.Sdk.Sync.Client.csproj" />
+    <ProjectReference Include="..\..\sync\cs\src\Proton.Drive.Sdk.Sync.DataAccess\Proton.Drive.Sdk.Sync.DataAccess.csproj" />
+    <ProjectReference Include="..\..\sync\cs\src\Proton.Drive.Sdk.Sync.Engine\Proton.Drive.Sdk.Sync.Engine.csproj" />
+    <ProjectReference Include="..\..\sync\cs\src\Proton.Drive.Sdk.Sync.Shared\Proton.Drive.Sdk.Sync.Shared.csproj" />
+    <ProjectReference Include="..\..\sync\cs\src\Proton.Drive.Shared\Proton.Drive.Shared.csproj" />
     <ProjectReference Include="..\Proton.Drive.Update\Proton.Drive.Update.csproj" />
   </ItemGroup>
 

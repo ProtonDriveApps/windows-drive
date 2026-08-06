@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Proton.Drive.Shared.Threading;
 
 namespace Proton.Drive.Update.Updates;

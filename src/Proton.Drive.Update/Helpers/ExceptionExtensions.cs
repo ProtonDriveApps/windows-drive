@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Net.Sockets;
 
 namespace Proton.Drive.Update.Helpers;

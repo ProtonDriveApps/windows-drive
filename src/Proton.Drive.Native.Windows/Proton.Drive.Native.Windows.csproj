@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Proton.Drive.Shared\Proton.Drive.Shared.csproj" />
+    <ProjectReference Include="..\..\sync\cs\src\Proton.Drive.Shared\Proton.Drive.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>

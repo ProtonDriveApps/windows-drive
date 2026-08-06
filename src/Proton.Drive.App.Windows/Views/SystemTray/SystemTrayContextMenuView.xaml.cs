@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.SystemTray;
+namespace Proton.Drive.App.Windows.Views.SystemTray;
 
 internal partial class SystemTrayContextMenuView
 {

@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.Update.Updates;
+namespace Proton.Drive.Update.Updates;
 
 /// <summary>
 /// Suppresses expected exceptions of <see cref="NotifyingAppUpdate.StartUpdating"/> method.

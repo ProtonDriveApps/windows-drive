@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Microsoft.Web.WebView2.Wpf;
 using Proton.Drive.App.Windows.Dialogs.HumanVerification;
 using Proton.Drive.App.Windows.Services;

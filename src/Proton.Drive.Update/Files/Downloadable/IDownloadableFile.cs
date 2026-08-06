@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.Update.Files.Downloadable;
+namespace Proton.Drive.Update.Files.Downloadable;
 
 internal interface IDownloadableFile
 {

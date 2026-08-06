@@ -1,4 +1,4 @@
-﻿using System.Buffers;
+using System.Buffers;
 using Microsoft.Extensions.Logging;
 using Proton.Drive.Sdk.Sync.Agent.Services;
 using Proton.Drive.Shared.Configuration;

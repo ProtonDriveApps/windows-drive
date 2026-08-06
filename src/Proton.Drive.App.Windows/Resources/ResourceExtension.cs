@@ -1,4 +1,4 @@
-﻿using System.Windows.Markup;
+using System.Windows.Markup;
 
 namespace Proton.Drive.App.Windows.Resources;
 

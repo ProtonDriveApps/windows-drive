@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.Shared;
+namespace Proton.Drive.App.Windows.Views.Shared;
 
 public enum IconStatus
 {

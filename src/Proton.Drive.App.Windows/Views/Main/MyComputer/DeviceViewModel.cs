@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Proton.Drive.Sdk.Sync.Agent.Devices;
 using Proton.Drive.Sdk.Sync.Agent.Mapping;
 

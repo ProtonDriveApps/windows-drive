@@ -1,4 +1,4 @@
-﻿using Proton.Drive.App.Onboarding;
+using Proton.Drive.App.Onboarding;
 using Proton.Drive.Sdk.Sync.Agent;
 using Proton.Drive.Shared;
 

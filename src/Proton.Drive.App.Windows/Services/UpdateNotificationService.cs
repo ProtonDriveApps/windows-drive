@@ -1,4 +1,4 @@
-﻿using Proton.Drive.App.Notifications;
+using Proton.Drive.App.Notifications;
 using Proton.Drive.App.Update;
 using Proton.Drive.App.Windows.Configuration.Hyperlinks;
 using Proton.Drive.App.Windows.Views.Main;

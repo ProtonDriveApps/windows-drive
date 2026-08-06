@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Reporting;
+namespace Proton.Drive.App.Reporting;
 
 public sealed class IntentionalCrashException : Exception
 {

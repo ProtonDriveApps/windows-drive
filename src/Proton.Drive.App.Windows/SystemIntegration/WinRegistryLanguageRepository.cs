@@ -1,4 +1,4 @@
-﻿using System.Security;
+using System.Security;
 using Microsoft.Extensions.Logging;
 using Microsoft.Win32;
 using Proton.Drive.App.Settings;

@@ -1,4 +1,4 @@
-﻿using Proton.Drive.Update.Contracts;
+using Proton.Drive.Update.Contracts;
 
 namespace Proton.Drive.App.Windows.Views.Main.About;
 

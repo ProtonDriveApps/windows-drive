@@ -1,4 +1,4 @@
-﻿using Proton.Drive.App.Onboarding;
+using Proton.Drive.App.Onboarding;
 
 namespace Proton.Drive.App.Settings;
 

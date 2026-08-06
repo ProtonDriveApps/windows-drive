@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.Update.Files.Validatable;
+namespace Proton.Drive.Update.Files.Validatable;
 
 /// <summary>
 /// Caches positive file validation result while file length and modification date has not changed.

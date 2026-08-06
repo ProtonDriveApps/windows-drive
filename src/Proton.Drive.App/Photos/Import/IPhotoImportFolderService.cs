@@ -1,4 +1,4 @@
-﻿using Proton.Drive.Sdk.Sync.Agent.Mapping;
+using Proton.Drive.Sdk.Sync.Agent.Mapping;
 
 namespace Proton.Drive.App.Photos.Import;
 

@@ -1,4 +1,4 @@
-﻿using Proton.Drive.Shared.Threading;
+using Proton.Drive.Shared.Threading;
 
 namespace Proton.Drive.Update.Updates;
 

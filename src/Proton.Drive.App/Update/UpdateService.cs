@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.Messaging;
+using CommunityToolkit.Mvvm.Messaging;
 using Proton.Drive.App.EarlyAccess;
 using Proton.Drive.Sdk.Sync.Agent.Services;
 using Proton.Drive.Sdk.Sync.Agent.Settings;

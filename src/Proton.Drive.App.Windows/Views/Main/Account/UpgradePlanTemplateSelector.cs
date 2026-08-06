@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using System.Windows.Controls;
 using Proton.Drive.Sdk.Sync.Agent.Account;
 

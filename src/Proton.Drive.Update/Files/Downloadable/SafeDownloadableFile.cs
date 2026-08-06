@@ -1,4 +1,4 @@
-﻿using Proton.Drive.Shared.Extensions;
+using Proton.Drive.Shared.Extensions;
 using Proton.Drive.Update.Helpers;
 
 namespace Proton.Drive.Update.Files.Downloadable;

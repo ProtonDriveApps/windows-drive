@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Controls;
+namespace Proton.Drive.App.Windows.Controls;
 
 internal enum ToggleSwitchContentPlacement
 {

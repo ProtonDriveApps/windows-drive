@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
@@ -132,7 +132,7 @@ internal sealed class RenameRemoteNodeViewModel : ObservableValidator, IDialogVi
 
         if (_syncState.Status is not SyncStatus.Synchronizing)
         {
-            _syncService.PauseUntil(resumeAt: null);
+            _syncService.PauseUntil(time: null);
         }
 
         try

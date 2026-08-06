@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.Main.Account;
+namespace Proton.Drive.App.Windows.Views.Main.Account;
 
 /// <summary>
 /// User account status that is created by combining Session status and Account status

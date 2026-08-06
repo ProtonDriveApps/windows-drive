@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using Microsoft.Extensions.Logging;
 using Proton.Drive.App.Settings;
 using Proton.Drive.Sdk.Sync.Agent.Account;

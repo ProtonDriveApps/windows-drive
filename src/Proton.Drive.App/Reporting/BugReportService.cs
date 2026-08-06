@@ -1,4 +1,4 @@
-﻿using System.IO.Compression;
+using System.IO.Compression;
 using Microsoft.Extensions.Logging;
 using Proton.Drive.Sdk.Sync.Client;
 using Proton.Drive.Sdk.Sync.Client.BugReport;

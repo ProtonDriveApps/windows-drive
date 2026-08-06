@@ -40,6 +40,7 @@
                 <ResourceDictionary Source="/Resources/Styles/ListBoxStyle.xaml" />
                 <ResourceDictionary Source="/Themes/Generic.CustomChromeWindow.xaml" />
                 <ResourceDictionary Source="/Themes/Generic.ToggleSwitch.xaml" />
+                <ResourceDictionary Source="/Themes/Generic.SplitButton.xaml" />
                 <ResourceDictionary Source="/Themes/Generic.ProgressRingStyle.xaml" />
                 <ResourceDictionary Source="/Resources/Icons/ProtonDriveLogo.xaml" />
                 <ResourceDictionary Source="/Resources/Styles/WindowStyle.xaml" />

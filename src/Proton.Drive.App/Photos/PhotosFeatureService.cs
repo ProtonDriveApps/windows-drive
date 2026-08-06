@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Proton.Drive.App.Onboarding;
 using Proton.Drive.App.Photos.Volume;
 using Proton.Drive.Sdk.Sync.Agent.Services;

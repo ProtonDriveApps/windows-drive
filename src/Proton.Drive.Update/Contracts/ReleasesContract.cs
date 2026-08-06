@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.Update.Contracts;
+namespace Proton.Drive.Update.Contracts;
 
 internal class ReleasesContract
 {

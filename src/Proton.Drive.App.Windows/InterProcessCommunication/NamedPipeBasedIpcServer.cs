@@ -1,4 +1,4 @@
-﻿using System.IO.Pipes;
+using System.IO.Pipes;
 using System.Text.Json;
 using Microsoft.Extensions.Logging;
 using Proton.Drive.App.InterProcessCommunication;

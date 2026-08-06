@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.Main.MyComputer;
+namespace Proton.Drive.App.Windows.Views.Main.MyComputer;
 
 internal sealed class RemoveClassicFolderConfirmationViewModel : RemoveFolderConfirmationViewModelBase
 {

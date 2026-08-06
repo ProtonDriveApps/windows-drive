@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Photos.Volume;
+namespace Proton.Drive.App.Photos.Volume;
 
 internal interface IPhotoVolumeService
 {

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Windows.Data;
@@ -102,7 +102,10 @@ internal sealed class SyncStateViewModel
                 return null;
             }
 
-            return pausedUntil.Date == DateTimeOffset.Now.Date ? pausedUntil.ToString("t") : pausedUntil.ToString("g");
+            // We always display local time, regardless if paused until value contains universal or local time value
+            pausedUntil = pausedUntil.ToLocalTime();
+
+            return pausedUntil.Date == _clock.UtcNow.ToLocalTime().Date ? pausedUntil.ToString("t") : pausedUntil.ToString("g");
         }
     }
 
@@ -138,7 +141,7 @@ internal sealed class SyncStateViewModel
 
             if (value)
             {
-                _syncService.PauseUntil(resumeAt: null);
+                _syncService.PauseUntil(time: null);
             }
             else
             {
@@ -328,13 +331,12 @@ internal sealed class SyncStateViewModel
             return;
         }
 
-        _syncService.PauseUntil(resumeAt: DateTimeOffset.Now.AddHours(numberOfHours));
+        _syncService.PauseUntil(_clock.UtcNow.AddHours(numberOfHours));
     }
 
     private void PauseSyncUntilTomorrowMorning()
     {
-        var now = DateTimeOffset.Now;
-        _syncService.PauseUntil(resumeAt: new DateTimeOffset(new DateOnly(now.Year, now.Month, now.Day).AddDays(1), new TimeOnly(8, 0), now.Offset));
+        _syncService.PauseUntil(_clock.UtcNow.ToLocalTime().AddDays(1).Date.AddHours(8));
     }
 
     private void ResumeSync()

@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Windows.Input;
 using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -138,6 +138,25 @@ internal sealed class SyncActivityItemViewModel : ObservableObject
             : $"Activity_{replica}_Succeeded_{type}_Value_{value}";
     }
 
+    private static string GetErrorMessageResourceKeyPattern(Replica replica)
+    {
+        const string type = EnumToDisplayTextConverter.TypeNamePlaceholder;
+        const string value = EnumToDisplayTextConverter.ValueNamePlaceholder;
+
+        return $"{type}_{replica}_Value_{value}";
+    }
+
+    private static string? GetErrorMessage(FileSystemErrorCode errorCode, Replica replica, string? defaultErrorMessage)
+    {
+        return errorCode switch
+        {
+            FileSystemErrorCode.DirectoryNotFound => EnumToDisplayTextConverter.Convert(
+                value: errorCode,
+                parameter: GetErrorMessageResourceKeyPattern(replica)) ?? defaultErrorMessage,
+            _ => defaultErrorMessage,
+        };
+    }
+
     private void OnDataItemUpdated(SyncActivityItem<long> value)
     {
         // Only some properties of data item can change
@@ -147,7 +166,7 @@ internal sealed class SyncActivityItemViewModel : ObservableObject
         }
 
         ErrorCode = value.ErrorCode;
-        ErrorMessage = value.ErrorMessage;
+        ErrorMessage = GetErrorMessage(value.ErrorCode, value.Replica, value.ErrorMessage);
         Progress = value.Progress;
         OnPropertyChanged(nameof(Size));
         OnPropertyChanged(nameof(RootId));

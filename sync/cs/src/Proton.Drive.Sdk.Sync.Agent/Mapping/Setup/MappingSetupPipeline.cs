@@ -1,0 +1,77 @@
+using System.Diagnostics;
+using Microsoft.Extensions.Logging;
+using Proton.Drive.Sdk.Sync.Agent.Settings;
+
+namespace Proton.Drive.Sdk.Sync.Agent.Mapping.Setup;
+
+internal sealed class MappingSetupPipeline : IMappingSetupPipeline
+{
+    private readonly MappingValidationDispatcher _validation;
+    private readonly MappingFoldersSetupDispatcher _foldersSetup;
+    private readonly MappingSetupFinalizationDispatcher _setupFinish;
+    private readonly ILogger<MappingSetupPipeline> _logger;
+
+    public MappingSetupPipeline(
+        MappingValidationDispatcher validation,
+        MappingFoldersSetupDispatcher foldersSetup,
+        MappingSetupFinalizationDispatcher setupFinish,
+        ILogger<MappingSetupPipeline> logger)
+    {
+        _validation = validation;
+        _foldersSetup = foldersSetup;
+        _setupFinish = setupFinish;
+        _logger = logger;
+    }
+
+    public async Task<MappingState> SetUpAsync(
+        RemoteToLocalMapping mapping,
+        IReadOnlySet<string> otherLocalSyncFolders,
+        CancellationToken cancellationToken)
+    {
+        _logger.LogInformation("Setting up sync folder mapping {Id} ({Type})", mapping.Id, mapping.Type);
+        var startTimestamp = Stopwatch.GetTimestamp();
+
+        var result = await SetUpMappingAsync(mapping, otherLocalSyncFolders, cancellationToken).ConfigureAwait(false);
+
+        if (result.Status is not MappingSetupStatus.Succeeded)
+        {
+            _logger.LogError("Setting up sync folder mapping {Id} ({Type}) failed", mapping.Id, mapping.Type);
+
+            return result;
+        }
+
+        _logger.LogInformation("Setting up sync folder mapping {Id} ({Type}) succeeded in {ElapsedTime}", mapping.Id, mapping.Type, Stopwatch.GetElapsedTime(startTimestamp));
+
+        // Setup succeeded, mapping is complete
+        mapping.Status = MappingStatus.Complete;
+
+        return result;
+    }
+
+    private async Task<MappingState> SetUpMappingAsync(
+        RemoteToLocalMapping mapping,
+        IReadOnlySet<string> otherLocalSyncFolders,
+        CancellationToken cancellationToken)
+    {
+        // Validation
+        var result = await _validation.ValidateAsync(mapping, otherLocalSyncFolders, cancellationToken).ConfigureAwait(false);
+
+        if (result.Status is not MappingSetupStatus.Succeeded)
+        {
+            return result;
+        }
+
+        // Folders setup
+        result = await _foldersSetup.SetUpFoldersAsync(mapping, cancellationToken).ConfigureAwait(false);
+
+        if (result.Status is not MappingSetupStatus.Succeeded)
+        {
+            return result;
+        }
+
+        // Finishing
+        result = await _setupFinish.FinishSetupAsync(mapping, cancellationToken).ConfigureAwait(false);
+
+        return result;
+    }
+}

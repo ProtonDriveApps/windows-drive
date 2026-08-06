@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.Update.Files.UpdatesFolder;
+namespace Proton.Drive.Update.Files.UpdatesFolder;
 
 internal interface IUpdatesFolder
 {

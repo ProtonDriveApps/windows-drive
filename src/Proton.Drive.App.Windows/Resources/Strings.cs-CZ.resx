@@ -1459,7 +1459,7 @@ Obsah souborů bude stažen jen na vyžádání.</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Mail">
-    <value>Mail: Vlastní a zabezpečený e-mail</value>
+    <value>Mail: Bezpečný e-mail na míru</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Month">
     <value>měsíc</value>
@@ -1468,7 +1468,7 @@ Obsah souborů bude stažen jen na vyžádání.</value>
     <value>Nejoblíbenější</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
-    <value>Až {0} uživatelé</value>
+    <value>Až {0} uživatelů</value>
     <comment>Only for number greater than 1.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PasswordManager">

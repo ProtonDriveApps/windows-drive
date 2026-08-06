@@ -1,4 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.ComponentModel;
 using Proton.Drive.App.Windows.Toolkit.Behaviors;
 using Proton.Drive.App.Windows.Views.Shared.Navigation;
 

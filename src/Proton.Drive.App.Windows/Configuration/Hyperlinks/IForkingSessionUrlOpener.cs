@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Configuration.Hyperlinks;
+namespace Proton.Drive.App.Windows.Configuration.Hyperlinks;
 
 internal interface IForkingSessionUrlOpener
 {

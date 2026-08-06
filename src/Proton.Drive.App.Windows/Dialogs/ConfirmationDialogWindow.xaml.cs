@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Dialogs;
+namespace Proton.Drive.App.Windows.Dialogs;
 
 internal partial class ConfirmationDialogWindow : IClosableDialog
 {

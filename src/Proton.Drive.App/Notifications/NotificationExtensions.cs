@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Notifications;
+namespace Proton.Drive.App.Notifications;
 
 public static class NotificationExtensions
 {

@@ -808,6 +808,24 @@ namespace Proton.Drive.App.Windows.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The folder where this item was going to be downloaded could not be found.
+        /// </summary>
+        internal static string FileSystemErrorCode_Local_Value_DirectoryNotFound {
+            get {
+                return ResourceManager.GetString("FileSystemErrorCode_Local_Value_DirectoryNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The folder where this item was going to be uploaded could not be found.
+        /// </summary>
+        internal static string FileSystemErrorCode_Remote_Value_DirectoryNotFound {
+            get {
+                return ResourceManager.GetString("FileSystemErrorCode_Remote_Value_DirectoryNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Aborted.
         /// </summary>
         internal static string FileSystemErrorCode_Value_Cancelled {
@@ -894,6 +912,15 @@ namespace Proton.Drive.App.Windows.Resources {
         internal static string FileSystemErrorCode_Value_LastWriteTimeTooRecent {
             get {
                 return ResourceManager.GetString("FileSystemErrorCode_Value_LastWriteTimeTooRecent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file could not be transferred because of a local storage error. Please check that your drive is working correctly..
+        /// </summary>
+        internal static string FileSystemErrorCode_Value_LocalStorageError {
+            get {
+                return ResourceManager.GetString("FileSystemErrorCode_Value_LocalStorageError", resourceCulture);
             }
         }
         
@@ -4651,7 +4678,7 @@ namespace Proton.Drive.App.Windows.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Pause the synchronization.
+        ///   Looks up a localized string similar to _Pause sync.
         /// </summary>
         internal static string SystemTray_Menu_Item_PauseSync {
             get {
@@ -4705,7 +4732,7 @@ namespace Proton.Drive.App.Windows.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to _Resume the synchronization.
+        ///   Looks up a localized string similar to _Resume sync.
         /// </summary>
         internal static string SystemTray_Menu_Item_ResumeSync {
             get {

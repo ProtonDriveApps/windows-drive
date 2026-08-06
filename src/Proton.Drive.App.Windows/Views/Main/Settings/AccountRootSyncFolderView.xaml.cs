@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.Main.Settings;
+namespace Proton.Drive.App.Windows.Views.Main.Settings;
 
 internal partial class AccountRootSyncFolderView
 {

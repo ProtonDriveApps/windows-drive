@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Diagnostics;
 
 namespace Proton.Drive.App.Windows.Configuration.Hyperlinks;

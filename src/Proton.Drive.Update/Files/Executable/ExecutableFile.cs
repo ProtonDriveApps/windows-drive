@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using Proton.Drive.Shared.Diagnostics;
 
 namespace Proton.Drive.Update.Files.Executable;

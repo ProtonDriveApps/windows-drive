@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.BugReport;
+namespace Proton.Drive.App.Windows.Views.BugReport;
 
 internal partial class BugReportView
 {

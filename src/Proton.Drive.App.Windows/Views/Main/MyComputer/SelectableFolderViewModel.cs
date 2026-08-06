@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Proton.Drive.App.Windows.SystemIntegration;

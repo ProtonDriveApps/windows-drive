@@ -21,6 +21,9 @@
 
   <ItemGroup>
     <FrameworkReference Include="Microsoft.WindowsDesktop.App.WindowsForms" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" />
     <PackageReference Include="Microsoft.Web.WebView2" />
@@ -31,7 +34,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Proton.Drive.App\Proton.Drive.App.csproj" />
     <ProjectReference Include="..\Proton.Drive.Native.Windows\Proton.Drive.Native.Windows.csproj" />
-    <ProjectReference Include="..\Proton.Drive.Sdk.Sync.Windows\Proton.Drive.Sdk.Sync.Windows.csproj" />
+    <ProjectReference Include="..\..\sync\cs\src\Proton.Drive.Sdk.Sync.Windows\Proton.Drive.Sdk.Sync.Windows.csproj" />
   </ItemGroup>
 
   <ItemGroup>

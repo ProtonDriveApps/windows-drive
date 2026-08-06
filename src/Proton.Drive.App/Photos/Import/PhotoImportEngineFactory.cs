@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Proton.Drive.Sdk.Sync.Agent.Volumes;
 using Proton.Drive.Sdk.Sync.Client.FileUploading;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;

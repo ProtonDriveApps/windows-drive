@@ -1,4 +1,4 @@
-﻿using System.Windows.Input;
+using System.Windows.Input;
 
 namespace Proton.Drive.App.Windows.Toolkit;
 

@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.Main;
+namespace Proton.Drive.App.Windows.Views.Main;
 
 internal partial class NavigationMenu
 {

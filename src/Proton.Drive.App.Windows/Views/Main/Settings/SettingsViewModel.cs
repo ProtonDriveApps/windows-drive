@@ -1,4 +1,4 @@
-﻿using System.Windows.Input;
+using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using Proton.Drive.App.EarlyAccess;
 using Proton.Drive.App.Localization;

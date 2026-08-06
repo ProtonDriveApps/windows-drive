@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.SignIn;
+namespace Proton.Drive.App.Windows.Views.SignIn;
 
 public enum SecondFactorInputPage
 {

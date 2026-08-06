@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows.Media;
 
 namespace Proton.Drive.App.Windows.SystemIntegration;

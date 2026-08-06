@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Photos.Import;
+namespace Proton.Drive.App.Photos.Import;
 
 public readonly struct PhotoImportFolderCurrentPosition
 {

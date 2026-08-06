@@ -1,4 +1,4 @@
-﻿using Proton.Drive.Native.Authentication;
+using Proton.Drive.Native.Authentication;
 using Proton.Drive.Sdk.Sync.Shared.Authentication;
 using Proton.Drive.Shared.Authentication;
 

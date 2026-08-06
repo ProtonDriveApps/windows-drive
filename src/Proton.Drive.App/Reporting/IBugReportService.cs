@@ -1,4 +1,4 @@
-﻿using Proton.Drive.Sdk.Sync.Client.BugReport;
+using Proton.Drive.Sdk.Sync.Client.BugReport;
 using Proton.Drive.Shared;
 
 namespace Proton.Drive.App.Reporting;

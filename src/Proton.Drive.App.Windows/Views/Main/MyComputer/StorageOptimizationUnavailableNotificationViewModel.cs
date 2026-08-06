@@ -1,4 +1,4 @@
-﻿using Proton.Drive.App.Windows.Dialogs;
+using Proton.Drive.App.Windows.Dialogs;
 using Proton.Drive.App.Windows.Toolkit.Converters;
 using Proton.Drive.Sdk.Sync.Agent.Mapping;
 

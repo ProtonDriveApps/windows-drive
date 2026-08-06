@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.Main.Account;
+namespace Proton.Drive.App.Windows.Views.Main.Account;
 
 internal partial class AccountView
 {

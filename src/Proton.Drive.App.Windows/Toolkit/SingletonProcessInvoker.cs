@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Toolkit;
+namespace Proton.Drive.App.Windows.Toolkit;
 
 public static class SingletonProcessInvoker
 {

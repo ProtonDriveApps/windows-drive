@@ -16,7 +16,7 @@
     "Offer": {
       "Title": "% Claim 500 GB for 1$",
       "ImageUrl": "Resources/Notifications/Promos2026/proton-unlimited-2026-usd.png",
-      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=drive2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=DEGOOGLE&fullscreen=auto&start=checkout&ref=upgrade-drive-windows-app-sidebar-intro-pricing-free"
+      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=DEGOOGLE&fullscreen=auto&start=checkout&ref=upgrade-drive-windows-app-sidebar-intro-pricing-free"
     }
   },
   {
@@ -35,7 +35,7 @@
     "Offer": {
       "Title": "% Claim 500 GB for 1€",
       "ImageUrl": "Resources/Notifications/Promos2026/proton-unlimited-2026-eur.png",
-      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=drive2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=DEGOOGLE&fullscreen=auto&start=checkout&ref=upgrade-drive-windows-app-sidebar-intro-pricing-free"
+      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=DEGOOGLE&fullscreen=auto&start=checkout&ref=upgrade-drive-windows-app-sidebar-intro-pricing-free"
     }
   },
   {
@@ -54,7 +54,7 @@
     "Offer": {
       "Title": "% Claim 500 GB for 1$",
       "ImageUrl": "Resources/Notifications/Promos2026/proton-unlimited-2026-usd.png",
-      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=drive2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=DEGOOGLE&fullscreen=auto&start=checkout&ref=upgrade-drive-windows-app-sidebar-intro-pricing-free"
+      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=DEGOOGLE&fullscreen=auto&start=checkout&ref=upgrade-drive-windows-app-sidebar-intro-pricing-free"
     }
   },
   {
@@ -73,7 +73,7 @@
     "Offer": {
       "Title": "% Claim 500 GB for 1€",
       "ImageUrl": "Resources/Notifications/Promos2026/proton-unlimited-2026-eur.png",
-      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=drive2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=DEGOOGLE&fullscreen=auto&start=checkout&ref=upgrade-drive-windows-app-sidebar-intro-pricing-free"
+      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=DEGOOGLE&fullscreen=auto&start=checkout&ref=upgrade-drive-windows-app-sidebar-intro-pricing-free"
     }
   },
   // Summer Sale 2026 notifications for free users

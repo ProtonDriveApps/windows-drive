@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Windows;
 using Microsoft.Xaml.Behaviors;
 using Proton.Drive.App.Windows.Views.Shared;

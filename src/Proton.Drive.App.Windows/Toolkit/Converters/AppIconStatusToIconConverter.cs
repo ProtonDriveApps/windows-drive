@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Drawing;
 using Proton.Drive.App.Windows.SystemIntegration;
 using Proton.Drive.App.Windows.Views.Shared;

@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Drive.Services.Shared;
+namespace Proton.Drive.App.Drive.Services.Shared;
 
 public enum DataServiceStatus
 {

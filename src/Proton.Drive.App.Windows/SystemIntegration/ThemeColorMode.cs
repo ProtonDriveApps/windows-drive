@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.SystemIntegration;
+namespace Proton.Drive.App.Windows.SystemIntegration;
 
 internal enum ThemeColorMode
 {

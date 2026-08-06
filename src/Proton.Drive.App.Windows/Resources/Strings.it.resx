@@ -1064,7 +1064,7 @@ disattivare l'ottimizzazione della memoria in qualsiasi momento.</value>
     <value>Cambia la cartella di base di Proton Drive.</value>
   </data>
   <data name="Main_Settings_AccountRootFolder_Title">
-    <value>Localizzazione</value>
+    <value>Posizione</value>
   </data>
   <data name="Main_Settings_EarlyAccess_HelpText">
     <value>Ottieni l'accesso anticipato e aiutaci a testare le nuove versioni di Proton Drive.</value>
@@ -1412,7 +1412,7 @@ I contenuti dei file verranno scaricati sono se necessari.</value>
     <value>Accedi ai miei file e ad altri dispositivi sincronizzati qui</value>
   </data>
   <data name="Onboarding_AccountRootFolderSelection_Label_Location">
-    <value>Localizzazione</value>
+    <value>Posizione</value>
   </data>
   <data name="Onboarding_AccountRootFolderSelection_Title">
     <value>La tua cartella Proton Drive</value>

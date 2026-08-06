@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.EarlyAccess;
+namespace Proton.Drive.App.EarlyAccess;
 
 public interface IEarlyAccessStateAware
 {

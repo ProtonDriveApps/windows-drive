@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Notifications.Offers;
+namespace Proton.Drive.App.Notifications.Offers;
 
 public sealed record Offer
 {

@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace Proton.Drive.App.Windows.Views.Shared.Navigation;

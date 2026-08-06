@@ -1,4 +1,4 @@
-﻿using Proton.Drive.Sdk.Sync.Agent.Volumes;
+using Proton.Drive.Sdk.Sync.Agent.Volumes;
 
 namespace Proton.Drive.App.Photos.Import;
 

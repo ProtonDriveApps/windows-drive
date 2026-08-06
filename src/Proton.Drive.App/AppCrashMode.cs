@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App;
+namespace Proton.Drive.App;
 
 public enum AppCrashMode
 {

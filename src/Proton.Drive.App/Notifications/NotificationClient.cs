@@ -1,4 +1,4 @@
-﻿using Proton.Drive.Sdk.Sync.Client;
+using Proton.Drive.Sdk.Sync.Client;
 using Proton.Drive.Shared.Extensions;
 using Proton.Drive.Shared.Repository;
 

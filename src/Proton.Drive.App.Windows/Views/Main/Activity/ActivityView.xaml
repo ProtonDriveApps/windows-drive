@@ -19,6 +19,10 @@
     d:DataContext="{d:DesignInstance activity:SyncStateViewModel}">
     <UserControl.Resources>
         <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/MenuItemStyle.DarkTheme.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
             <DataTemplate
                 x:Key="ActivityItemSizeCellTemplate"
                 DataType="activity:SyncActivityItemViewModel">
@@ -74,7 +78,7 @@
                     <Button
                         Content="{loc:Resource Main_Activity_Button_Rename}"
                         CommandParameter="{Binding .}"
-                        Command="{Binding DataContext.FixItemNameCommand, RelativeSource={RelativeSource AncestorType=ListView}}"
+                        Command="{Binding DataContext.FixItemNameCommand, RelativeSource={RelativeSource FindAncestor, AncestorType=activity:ActivityView}}"
                         Style="{StaticResource FramedButtonStyle}"
                         ToolTip="{loc:Resource Main_Activity_Button_Rename_Tooltip}"
                         Visibility="{Binding ErrorCode, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.NotEqualIsCollapsed}, ConverterParameter={x:Static fileSystem:FileSystemErrorCode.InvalidName}}" />
@@ -418,7 +422,7 @@
                     <TextBlock
                         Foreground="{StaticResource GrayBrush}"
                         Visibility="{Binding FormattedSynchronizationPausedUntil, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={x:Null}}"
-                        Margin="7,0,0,0">
+                        Margin="4,0,0,0">
                         <TextBlock.Text>
                             <MultiBinding StringFormat="{loc:Resource Main_Activity_Status_Value_SyncPausedUntilFormat}">
                                 <Binding Path="FormattedSynchronizationPausedUntil" />
@@ -520,23 +524,24 @@
                         ContentTemplate="{StaticResource SynchronizationStatusTemplate}"
                         Margin="24,5,0,0" />
 
-                    <ToggleButton
+                    <controls:ToggleSplitButton
                         AutomationProperties.AutomationId="PauseAndResumeToggleButton"
                         Grid.Column="1"
                         Grid.Row="1"
                         IsChecked="{Binding Paused}"
                         VerticalAlignment="Top"
                         Margin="0,0,20,0">
-                        <ToggleButton.Style>
+                        <controls:ToggleSplitButton.Style>
                             <Style
-                                TargetType="ToggleButton"
-                                BasedOn="{StaticResource StatelessToggleButtonStyle.DarkTheme}">
+                                TargetType="{x:Type controls:ToggleSplitButton}"
+                                BasedOn="{StaticResource ToggleSplitButtonStyle}">
                                 <Style.Triggers>
                                     <DataTrigger
                                         Binding="{Binding Paused}"
                                         Value="True">
                                         <Setter Property="Content" Value="{loc:Resource Main_Activity_Button_ResumeSync}" />
                                     </DataTrigger>
+
                                     <DataTrigger
                                         Binding="{Binding Paused}"
                                         Value="False">
@@ -544,8 +549,45 @@
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
-                        </ToggleButton.Style>
-                    </ToggleButton>
+                        </controls:ToggleSplitButton.Style>
+
+                        <controls:ToggleSplitButton.DropDownMenu>
+                            <ContextMenu
+                                DataContext="{Binding PlacementTarget.DataContext, RelativeSource={RelativeSource Self}}"
+                                Style="{StaticResource DarkContextMenuStyle}">
+                                <MenuItem
+                                    AutomationProperties.AutomationId="PauseSyncFor1HourButton"
+                                    CommandParameter="1"
+                                    Command="{Binding PauseSyncTemporarilyCommand}"
+                                    FontSize="14"
+                                    Header="{loc:Resource SystemTray_Menu_Item_PauseSyncFor1Hour}"
+                                    Style="{StaticResource DarkMenuItemStyle}" />
+
+                                <MenuItem
+                                    AutomationProperties.AutomationId="PauseSyncFor4HoursButton"
+                                    CommandParameter="4"
+                                    Command="{Binding PauseSyncTemporarilyCommand}"
+                                    FontSize="14"
+                                    Header="{loc:Resource SystemTray_Menu_Item_PauseSyncFor4Hours}"
+                                    Style="{StaticResource DarkMenuItemStyle}" />
+
+                                <MenuItem
+                                    AutomationProperties.AutomationId="PauseSyncFor8HoursButton"
+                                    CommandParameter="8"
+                                    Command="{Binding PauseSyncTemporarilyCommand}"
+                                    FontSize="14"
+                                    Header="{loc:Resource SystemTray_Menu_Item_PauseSyncFor8Hours}"
+                                    Style="{StaticResource DarkMenuItemStyle}" />
+
+                                <MenuItem
+                                    AutomationProperties.AutomationId="PauseSyncUntilTomorrowMorningButton"
+                                    Command="{Binding PauseSyncUntilTomorrowMorningCommand}"
+                                    FontSize="14"
+                                    Header="{loc:Resource SystemTray_Menu_Item_PauseSyncUntilTomorrow}"
+                                    Style="{StaticResource DarkMenuItemStyle}" />
+                            </ContextMenu>
+                        </controls:ToggleSplitButton.DropDownMenu>
+                    </controls:ToggleSplitButton>
                 </Grid>
             </Grid>
 
@@ -658,7 +700,6 @@
                     IsChecked="{Binding IsDisplayingDetails}"
                     Style="{StaticResource TransparentButtonStyle}"
                     Visibility="{Binding FailedItems.Count, Converter={x:Static converters:ObjectEqualityToVisibilityConverter.EqualIsCollapsed}, ConverterParameter={StaticResource IntZero}}"
-                    HorizontalContentAlignment="Stretch"
                     Padding="0"
                     Margin="10,10,10,10">
                     <Border Style="{StaticResource RoundedSection.DarkTheme.Error}">

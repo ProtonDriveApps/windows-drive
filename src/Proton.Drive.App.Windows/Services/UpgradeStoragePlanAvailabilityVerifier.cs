@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Services;
+namespace Proton.Drive.App.Windows.Services;
 
 internal sealed class UpgradeStoragePlanAvailabilityVerifier : IUpgradeStoragePlanAvailabilityVerifier
 {

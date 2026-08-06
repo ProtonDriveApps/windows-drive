@@ -1,4 +1,4 @@
-﻿using System.Security;
+using System.Security;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using Proton.Drive.App.Windows.Extensions;

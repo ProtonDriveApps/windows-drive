@@ -1,4 +1,4 @@
-﻿using Proton.Drive.Shared;
+using Proton.Drive.Shared;
 
 namespace Proton.Drive.App.Drive.Services.Shared;
 

@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.IO.Pipes;
 
 namespace Proton.Drive.App.Windows.InterProcessCommunication;

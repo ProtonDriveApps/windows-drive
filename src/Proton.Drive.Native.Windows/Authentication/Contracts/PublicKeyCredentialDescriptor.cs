@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.Native.Authentication.Contracts;
+namespace Proton.Drive.Native.Authentication.Contracts;
 
 internal sealed class PublicKeyCredentialDescriptor
 {

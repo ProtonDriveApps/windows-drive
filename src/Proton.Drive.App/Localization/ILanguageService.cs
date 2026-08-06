@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Localization;
+namespace Proton.Drive.App.Localization;
 
 public interface ILanguageService
 {

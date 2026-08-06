@@ -1,4 +1,4 @@
-﻿using Proton.Drive.Shared.Configuration;
+using Proton.Drive.Shared.Configuration;
 
 namespace Proton.Drive.App.Windows.Configuration.Hyperlinks;
 

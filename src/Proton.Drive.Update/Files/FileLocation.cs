@@ -1,4 +1,4 @@
-﻿using System.Web;
+using System.Web;
 
 namespace Proton.Drive.Update.Files;
 

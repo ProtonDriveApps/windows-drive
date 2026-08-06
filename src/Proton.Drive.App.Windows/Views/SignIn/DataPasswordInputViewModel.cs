@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
 using Proton.Drive.App.Windows.Toolkit;

@@ -1,4 +1,4 @@
-﻿using Proton.Drive.App.Windows.Views.Shared.Sorting;
+using Proton.Drive.App.Windows.Views.Shared.Sorting;
 
 namespace Proton.Drive.App.Windows.Views.Main.SharedWithMe;
 

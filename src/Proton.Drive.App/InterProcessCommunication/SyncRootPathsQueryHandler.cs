@@ -1,4 +1,4 @@
-﻿using Proton.Drive.Sdk.Sync.Shared;
+using Proton.Drive.Sdk.Sync.Shared;
 
 namespace Proton.Drive.App.InterProcessCommunication;
 

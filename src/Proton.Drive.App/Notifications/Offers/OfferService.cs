@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using Microsoft.Extensions.Logging;
 using Proton.Drive.App.Notifications.Contracts;
 using Proton.Drive.Sdk.Sync.Agent.Account;

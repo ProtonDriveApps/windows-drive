@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Proton.Drive.Sdk.Sync.Client;
 using Proton.Drive.Shared;
 using Proton.Drive.Shared.Extensions;

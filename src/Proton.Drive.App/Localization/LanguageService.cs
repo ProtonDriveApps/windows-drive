@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using Microsoft.Extensions.Logging;
 using Proton.Drive.App.Settings;
 using Proton.Drive.Shared.Localization;

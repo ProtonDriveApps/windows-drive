@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.Update.Files.Validatable;
+namespace Proton.Drive.Update.Files.Validatable;
 
 internal interface IValidatableFile
 {

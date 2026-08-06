@@ -1,4 +1,4 @@
-﻿/*
+/*
 MIT License
 
 Copyright (c) .NET Foundation and Contributors. All rights reserved.

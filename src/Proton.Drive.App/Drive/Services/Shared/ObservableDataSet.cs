@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using Proton.Drive.Shared;
 
 namespace Proton.Drive.App.Drive.Services.Shared;

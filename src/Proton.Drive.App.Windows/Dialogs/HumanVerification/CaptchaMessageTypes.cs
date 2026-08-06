@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Dialogs.HumanVerification;
+namespace Proton.Drive.App.Windows.Dialogs.HumanVerification;
 
 internal sealed class CaptchaMessageTypes
 {

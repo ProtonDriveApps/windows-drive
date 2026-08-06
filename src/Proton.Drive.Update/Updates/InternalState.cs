@@ -1,4 +1,4 @@
-﻿using Proton.Drive.Update.Releases;
+using Proton.Drive.Update.Releases;
 
 namespace Proton.Drive.Update.Updates;
 

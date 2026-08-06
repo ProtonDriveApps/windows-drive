@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Views.Shared.Navigation;
+namespace Proton.Drive.App.Windows.Views.Shared.Navigation;
 
 /// <summary>
 /// An interface through which navigation service interacts with pages it handles.

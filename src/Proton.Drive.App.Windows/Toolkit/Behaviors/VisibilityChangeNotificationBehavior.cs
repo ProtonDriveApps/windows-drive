@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using Microsoft.Xaml.Behaviors;
 
 namespace Proton.Drive.App.Windows.Toolkit.Behaviors;

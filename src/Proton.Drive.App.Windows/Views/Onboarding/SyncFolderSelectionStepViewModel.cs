@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Proton.Drive.App.Onboarding;
 using Proton.Drive.App.Windows.Views.Main.MyComputer;

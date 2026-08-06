@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Photos;
+namespace Proton.Drive.App.Photos;
 
 public sealed record PhotosFeatureState(PhotosFeatureStatus Status, string? ErrorMessage = null)
 {

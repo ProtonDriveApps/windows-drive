@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Proton.Drive.Shared;
 using Proton.Drive.Shared.Extensions;

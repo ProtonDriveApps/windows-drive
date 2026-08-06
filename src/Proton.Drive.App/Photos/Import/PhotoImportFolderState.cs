@@ -1,4 +1,4 @@
-﻿using Proton.Drive.Sdk.Sync.Shared.FileSystem.Photos;
+using Proton.Drive.Sdk.Sync.Shared.FileSystem.Photos;
 
 namespace Proton.Drive.App.Photos.Import;
 

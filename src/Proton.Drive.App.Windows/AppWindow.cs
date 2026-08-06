@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows;
+namespace Proton.Drive.App.Windows;
 
 public enum AppWindow
 {

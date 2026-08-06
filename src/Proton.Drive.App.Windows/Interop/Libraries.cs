@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.Windows.Interop;
+namespace Proton.Drive.App.Windows.Interop;
 
 internal static class Libraries
 {

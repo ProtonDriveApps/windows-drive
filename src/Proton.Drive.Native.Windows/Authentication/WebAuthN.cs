@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using Proton.Drive.Native.Authentication.Contracts;
 using Proton.Drive.Shared;
 using Proton.Drive.Shared.Authentication;

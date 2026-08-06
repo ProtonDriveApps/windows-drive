@@ -1,4 +1,4 @@
-﻿namespace Proton.Drive.App.SystemIntegration;
+namespace Proton.Drive.App.SystemIntegration;
 
 public interface IClipboard
 {
