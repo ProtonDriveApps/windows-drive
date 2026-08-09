@@ -14,6 +14,7 @@ using Proton.Drive.Sdk.Sync.Shared;
 using Proton.Drive.Sdk.Sync.Shared.Diagnostics.TemporaryFiles;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem.Integration;
+using Proton.Drive.Sdk.Sync.Shared.Ignore;
 using Proton.Drive.Shared;
 using Proton.Drive.Shared.Configuration;
 using Proton.Drive.Shared.Features;
@@ -116,6 +117,12 @@ internal sealed class SyncAgentFactory
             localAdapterSettings.BackupFolderName,
             localAdapterSettings.TempFolderName);
 
+        // User defined ignore rules are evaluated on the local replica only. Applying them on the
+        // remote replica would report remote items as deleted and delete the local counterparts.
+        var localIgnoreRuleProvider = new FileSystemIgnoreRuleProvider(
+            _loggerFactory.CreateLogger<FileSystemIgnoreRuleProvider>(),
+            honoursGitIgnoreFiles: true);
+
         var remoteAdapterDatabase = new RemoteAdapterDatabase(new DatabaseConfig(Path.Combine(_appConfig.AppDataPath, "RemoteAdapter.sqlite")));
         var localAdapterDatabase = new LocalAdapterDatabase(new DatabaseConfig(Path.Combine(_appConfig.AppDataPath, "LocalAdapter.sqlite")));
         var syncEngineDatabase = new SyncEngineDatabase(new DatabaseConfig(Path.Combine(_appConfig.AppDataPath, "SyncEngine.sqlite")));
@@ -145,6 +152,7 @@ internal sealed class SyncAgentFactory
             new EvenIdentitySource(),
             new FileNameFactory<long>(TempFileNamePattern),
             specialFolderNames,
+            NullIgnoreRuleProvider.Instance,
             _appConfig.MaxRemoteFileAccessRetryInterval,
             _appConfig.MaxFileRevisionCreationInterval,
             minDelayBeforeFileUpload: TimeSpan.Zero,
@@ -190,6 +198,7 @@ internal sealed class SyncAgentFactory
             new OddIdentitySource(),
             new FileNameFactory<long>(TempFileNamePattern),
             specialFolderNames,
+            localIgnoreRuleProvider,
             _appConfig.MaxLocalFileAccessRetryInterval,
             maxFileRevisionCreationInterval: TimeSpan.Zero,
             _appConfig.MinDelayBeforeFileUpload,
