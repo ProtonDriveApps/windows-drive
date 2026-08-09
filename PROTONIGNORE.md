@@ -53,20 +53,29 @@ Differences from Git worth knowing:
 
 ## What a rule does and does not do
 
-An ignore rule keeps an item **out of** synchronization. It never takes an item **out of** the
-cloud.
-
-Concretely: if a rule matches an item the client has not indexed yet, that item is never uploaded.
-If a rule matches an item the client already knows about, the rule is skipped and the item keeps
-syncing. A line saying so is written to the log.
+**Adding a rule never costs data.** If a rule starts matching something that is already synced,
+the rule is skipped for that item and it keeps syncing. A line saying so goes to the log.
 
 This is deliberate. Inside the sync engine, "the adapter no longer sees this item" and "the user
-deleted this item" are the same event. Applying a new rule to already indexed data would be
-reported as a deletion and would delete that data from Proton Drive on every other device. So the
-practical rule is: **write the ignore file before you put the data into the sync folder.**
+deleted this item" are the same event, so honouring a new rule on already indexed data would
+delete that data from Proton Drive on every other device. The practical consequence is that a rule
+takes effect for what arrives after it, not for what is already there.
 
 To apply a rule to something already synced, move it out of the sync folder, let the client
 propagate the removal, then move it back.
+
+**Renaming into an ignored name does remove the cloud copy.** If a rule matches because the item
+was renamed, not because the rule set changed, the item is treated as having left the synchronized
+name space and the copy under the old name is removed, exactly as it has always worked when
+something is renamed to a temporary file name. The local file is untouched.
+
+The two cases are told apart by the name: if the indexed name and the incoming name are equal, only
+the rules changed and the item is kept. If they differ, it is a rename.
+
+This distinction matters more than it looks. Explorer does not create anything under its final
+name, a new folder is `Neuer Ordner` first and a new file is `New Text Document.txt` first. Without
+the distinction, everything created through Explorer would be indexed under the placeholder name,
+then renamed into the ignored name, and would then be pinned into synchronization forever.
 
 Rules are evaluated on the local replica only. On the remote replica they are not applied at all,
 since excluding a remote item would delete the local one.
