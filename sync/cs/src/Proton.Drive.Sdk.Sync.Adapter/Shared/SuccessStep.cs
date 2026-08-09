@@ -297,13 +297,19 @@ internal abstract partial class SuccessStep<TId, TAltId>
             return false;
         }
 
-        if (decision == ItemExclusionDecision.ExcludeByUserRule && existingNode != null)
+        if (decision == ItemExclusionDecision.ExcludeByUserRule &&
+            existingNode != null &&
+            _adapterTree.NameEqualityComparer.Equals(existingNode.Name, name))
         {
-            // The item is already indexed, so it might already exist on the opposite replica.
-            // Honouring the ignore rule now would be reported to the Sync Engine as a deletion,
-            // and the Sync Engine would delete the item from the opposite replica.
-            // User defined ignore rules therefore only prevent items from entering synchronization,
-            // they never remove items that are already part of it.
+            // The item is already indexed and its name has not changed, so what changed is the rule
+            // set. Honouring the rule now would be reported to the Sync Engine as a deletion, and the
+            // Sync Engine would delete the item from the opposite replica. A rule that starts
+            // matching must never cost data, so the item keeps being synced.
+            //
+            // A rename into an ignored name is a different matter and deliberately not covered here.
+            // There the user moved the item out of the synchronized name space, which is the same
+            // thing that happens when something is renamed to a temporary file name, and the
+            // built-in exclusions have always reported that as a deletion.
             _logger.LogInformation(
                 "{Replica} {Type} \"{Name}\" \"{Root}\"/{Id} matches a user defined ignore rule, but is already indexed and keeps being synced",
                 _replica,
