@@ -350,3 +350,6 @@ vcpkg_installed/
 
 # Visual Studio project launch settings
 **/Properties/launchSettings.json
+
+# Include specific solution folders into source control that were ignored above
+!src/Proton.Drive.Update/Releases/
