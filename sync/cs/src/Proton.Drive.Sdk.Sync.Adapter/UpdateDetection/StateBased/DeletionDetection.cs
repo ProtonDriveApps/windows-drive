@@ -39,12 +39,16 @@ internal sealed class DeletionDetection<TId, TAltId>
         _dirtyNodesTraversal = new DirtyNodesTraversal<TId, TAltId>(adapterTree, dirtyTree);
     }
 
-    public async Task ExecuteAsync(CancellationToken cancellationToken)
+    public async Task<int> ExecuteAsync(CancellationToken cancellationToken)
     {
+        var numberOfDeletedNodes = 0;
+
         foreach (var volumeSyncRoots in GetEnabledSyncRootsGroupedByVolume())
         {
-            await ScheduleAndCommit(() => DetectDeletions(volumeSyncRoots, cancellationToken)).ConfigureAwait(false);
+            await ScheduleAndCommit(() => numberOfDeletedNodes += DetectDeletions(volumeSyncRoots, cancellationToken)).ConfigureAwait(false);
         }
+
+        return numberOfDeletedNodes;
     }
 
     private IEnumerable<IReadOnlyCollection<(TId NodeId, RootInfo<TAltId> Root)>> GetEnabledSyncRootsGroupedByVolume()
@@ -55,7 +59,7 @@ internal sealed class DeletionDetection<TId, TAltId>
             .Select(g => g.Select(r => (r.Key, r.Value)).ToList().AsReadOnly());
     }
 
-    private void DetectDeletions(IReadOnlyCollection<(TId NodeId, RootInfo<TAltId> Root)> syncRoots, CancellationToken cancellationToken)
+    private int DetectDeletions(IReadOnlyCollection<(TId NodeId, RootInfo<TAltId> Root)> syncRoots, CancellationToken cancellationToken)
     {
         var volumeId = syncRoots.Select(x => x.Root.VolumeId).FirstOrDefault();
 
@@ -66,12 +70,12 @@ internal sealed class DeletionDetection<TId, TAltId>
                 _replica,
                 volumeId);
 
-            return;
+            return 0;
         }
 
         _logger.LogDebug("There are no dirty branches left on {Replica} adapter on volume with Id={VolumeId}, deleting lost nodes", _replica, volumeId);
 
-        DeleteNodes(volumeId, syncRoots, cancellationToken);
+        return DeleteNodes(syncRoots, cancellationToken);
     }
 
     private bool HasBranchesToEnumerate(IEnumerable<(TId NodeId, RootInfo<TAltId> Root)> syncRoots, CancellationToken cancellationToken)
@@ -94,48 +98,57 @@ internal sealed class DeletionDetection<TId, TAltId>
         return false;
     }
 
-    private void DeleteNodes(int volumeId, IEnumerable<(TId NodeId, RootInfo<TAltId> Root)> syncRoots, CancellationToken cancellationToken)
+    private int DeleteNodes(IEnumerable<(TId NodeId, RootInfo<TAltId> Root)> syncRoots, CancellationToken cancellationToken)
     {
-        var nodes = syncRoots.SelectMany(syncRoot => NodesToDelete(syncRoot.NodeId, cancellationToken));
-        var deletedNodeCount = 0;
+        var totalDeletedNodeCount = 0;
 
-        foreach (var node in nodes)
+        foreach (var syncRoot in syncRoots)
         {
-            DetectNodeUpdate(node, null);
-            deletedNodeCount++;
+            var nodes = NodesToDelete(syncRoot.NodeId, cancellationToken);
+            var deletedNodeCount = 0;
+
+            foreach (var node in nodes)
+            {
+                DetectNodeUpdate(node, null);
+                deletedNodeCount++;
+            }
+
+            LogDetectedDeletions(syncRoot.Root, deletedNodeCount);
+
+            totalDeletedNodeCount += deletedNodeCount;
         }
+
+        return totalDeletedNodeCount;
+    }
+
+    private void LogDetectedDeletions(RootInfo<TAltId> root, int deletedNodeCount)
+    {
+        const int bulkDeletionWarningThreshold = 1000;
 
         if (deletedNodeCount == 0)
         {
             return;
         }
 
-        LogDetectedDeletions(volumeId, deletedNodeCount);
-    }
-
-    private void LogDetectedDeletions(int volumeId, int deletedNodeCount)
-    {
-        const int bulkDeletionWarningMinimumCount = 1000;
-
-        var isBulkDeletion = deletedNodeCount >= bulkDeletionWarningMinimumCount;
+        var isBulkDeletion = deletedNodeCount >= bulkDeletionWarningThreshold;
 
         if (isBulkDeletion)
         {
             _logger.LogWarning(
-                "{Replica} adapter detected a bulk deletion on volume with Id={VolumeId}: {DeletedCount} deletions",
+                "{Replica} adapter detected {DeletedCount} deletions on root {RootId}",
                 _replica,
-                volumeId,
-                deletedNodeCount);
+                deletedNodeCount,
+                root.Id);
 
-            _errorReporting.CaptureWarning($"{_replica} adapter detected a bulk deletion on volume with Id={volumeId}: {deletedNodeCount} deletions");
+            _errorReporting.CaptureWarning($"{_replica} adapter detected a bulk deletion on root {root.Id}: {deletedNodeCount} deletions");
         }
         else
         {
             _logger.LogInformation(
-                "{Replica} adapter detected {DeletedCount} lost or deleted node(s) on volume with Id={VolumeId}",
+                "{Replica} adapter detected {DeletedCount} deletions on root {RootId}",
                 _replica,
                 deletedNodeCount,
-                volumeId);
+                root.Id);
         }
     }
 

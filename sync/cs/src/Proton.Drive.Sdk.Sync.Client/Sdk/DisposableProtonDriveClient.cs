@@ -1,32 +1,29 @@
-using Proton.Drive.Sdk;
 using Proton.Drive.Shared.Devices;
 using Proton.Sdk.Caching;
+using Proton.Sdk.Configuration;
 using Proton.Sdk.Telemetry;
 
 namespace Proton.Drive.Sdk.Sync.Client.Sdk;
 
 internal sealed class DisposableProtonDriveClient : IDisposable
 {
-    private readonly SqliteCacheRepository _entityCacheRepository;
-    private readonly SqliteCacheRepository _secretCacheRepository;
+    private readonly SqliteCacheRepository _cacheRepository;
 
     public DisposableProtonDriveClient(
         IHttpClientFactory httpClientFactory,
-        IAccountClient accountClient,
+        IProtonAccountClient accountClient,
         IClientInstanceIdentityProvider clientInstanceIdentityProvider,
-        Proton.Sdk.IFeatureFlagProvider featureFlagProvider,
+        IFeatureFlagProvider featureFlagProvider,
         ITelemetry sdkDiagnostics)
     {
-        _entityCacheRepository = SqliteCacheRepository.OpenInMemory();
-        _secretCacheRepository = SqliteCacheRepository.OpenInMemory();
+        _cacheRepository = SqliteCacheRepository.OpenInMemory();
 
         try
         {
             Instance = new ProtonDriveClient(
                 new SdkHttpClientFactoryDecorator(httpClientFactory),
                 accountClient,
-                _entityCacheRepository,
-                _secretCacheRepository,
+                _cacheRepository,
                 featureFlagProvider,
                 sdkDiagnostics,
                 new ProtonDriveClientOptions
@@ -46,7 +43,6 @@ internal sealed class DisposableProtonDriveClient : IDisposable
 
     public void Dispose()
     {
-        _entityCacheRepository.Dispose();
-        _secretCacheRepository.Dispose();
+        _cacheRepository.Dispose();
     }
 }

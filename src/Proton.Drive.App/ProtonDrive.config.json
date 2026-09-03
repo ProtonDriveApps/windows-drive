@@ -6,6 +6,7 @@
     "DataBaseUrl": "https://drive-api.proton.me/data/",
     "PaymentsBaseUrl": "https://drive-api.proton.me/payments/",
     "DriveBaseUrl": "https://drive-api.proton.me/drive/",
+    "DriveSdkBaseUrl": "https://drive-api.proton.me/",
     "FeatureBaseUrl": "https://drive-api.proton.me/feature/",
     "ContactsBaseUrl": "https://drive-api.proton.me/contacts/",
     "ClientVersion": "windows-drive@{AppVersion}",
@@ -134,7 +135,7 @@
               "fileSizeLimitBytes": "20971520", // 20 MB
               "retainedFileCountLimit": "100",
               "retainedFileTimeLimit": "60.00:00:00",
-              "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:l}{NewLine}{Exception}"
+              "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}]{Scope:l} {Message:l}{NewLine}{Exception}"
             }
           }
         ]

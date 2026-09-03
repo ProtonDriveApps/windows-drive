@@ -4,7 +4,6 @@ using System.Reflection;
 using System.Text.Json;
 using Microsoft.Extensions.DependencyInjection;
 using Proton.Cryptography.Pgp;
-using Proton.Drive.Sdk;
 using Proton.Drive.Sdk.Sync.Client.Albums;
 using Proton.Drive.Sdk.Sync.Client.Authentication;
 using Proton.Drive.Sdk.Sync.Client.Authentication.Sessions;
@@ -59,7 +58,6 @@ public static class ApiClientConfigurator
     public static readonly string FeatureHttpClientName = "Feature";
     public static readonly string ContactsHttpClientName = "Contacts";
     public static readonly string FileRevisionUpdateHttpClientName = "FileRevisionUpdate";
-    public static readonly string BlocksHttpClientName = "Blocks";
     public static readonly string PaymentsHttpClientName = "Payments";
     public static readonly string TlsPinningReportHttpClientName = "TlsPinningReport";
     public static readonly string ErrorReportHttpClientName = "ErrorReport";
@@ -169,7 +167,7 @@ public static class ApiClientConfigurator
         services.AddSingleton<IPhotoHashProvider, PhotoHashProvider>();
         services.AddSingleton<IPhotoDuplicateService, PhotoDuplicateService>();
 
-        services.AddApiHttpClient(SdkHttpClientName, GetDriveBaseAddress, GetDriveApiNumberOfRetries, _ => Timeout.InfiniteTimeSpan)
+        services.AddApiHttpClient(SdkHttpClientName, GetDriveSdkBaseAddress, GetDriveApiNumberOfRetries, _ => Timeout.InfiniteTimeSpan)
             .EnableAuthorization()
             ;
 
@@ -220,11 +218,6 @@ public static class ApiClientConfigurator
             .AddApiClient<IFileRevisionUpdateApiClient>()
             ;
 
-        // TODO: inject TLS pinning configuration provider to make it apparent that there is more than the base address to differentiate HTTP clients
-        services.AddApiHttpClient(BlocksHttpClientName, GetDriveBaseAddress, GetDriveApiNumberOfRetries, GetBlocksTimeout)
-            .EnableAuthorization()
-            ;
-
         services.AddApiHttpClients(
                 FeatureHttpClientName + NonCriticalHttpClientNameSuffix,
                 GetFeatureBaseAddress,
@@ -254,7 +247,7 @@ public static class ApiClientConfigurator
             ;
 
         services.AddSingleton<IAddressKeyProvider, AddressKeyProvider>();
-        services.AddSingleton<IAccountClient, SdkAccountClient>();
+        services.AddSingleton<IProtonAccountClient, SdkAccountClient>();
         services.AddSingleton(provider => new Func<IAddressKeyProvider>(provider.GetRequiredService<IAddressKeyProvider>));
         services.AddSingleton<ICryptographyService, CryptographyService>();
         services.AddSingleton<IRemoteNodeService, RemoteNodeService>();
@@ -282,13 +275,13 @@ public static class ApiClientConfigurator
         static Uri GetContactsBaseAddress(DriveApiConfig config) => EnsureEndsWithSlash(config.ContactsBaseUrl, "Missing Contacts base URL.");
         static Uri GetDataBaseAddress(DriveApiConfig config) => EnsureEndsWithSlash(config.DataBaseUrl, "Missing Data base URL.");
         static Uri GetDriveBaseAddress(DriveApiConfig config) => EnsureEndsWithSlash(config.DriveBaseUrl, "Missing Drive base URL.");
+        static Uri GetDriveSdkBaseAddress(DriveApiConfig config) => EnsureEndsWithSlash(config.DriveSdkBaseUrl, "Missing Drive SDK base URL.");
         static Uri GetPaymentsBaseAddress(DriveApiConfig config) => EnsureEndsWithSlash(config.PaymentsBaseUrl, "Missing Payments base URL.");
 
         static int GetDefaultNumberOfRetries(DriveApiConfig config) => config.DefaultNumberOfRetries;
         static int GetDriveApiNumberOfRetries(DriveApiConfig config) => config.DriveApiNumberOfRetries;
 
         static TimeSpan GetDefaultTimeout(DriveApiConfig config) => config.Timeout;
-        static TimeSpan GetBlocksTimeout(DriveApiConfig config) => config.BlocksTimeout;
         static TimeSpan GetRevisionUpdateTimeout(DriveApiConfig config) => config.RevisionUpdateTimeout;
     }
 
@@ -297,7 +290,7 @@ public static class ApiClientConfigurator
         // UserAddressChangeHandler is not directly referenced, therefore it is instantiated explicitly
         provider.GetRequiredService<UserAddressChangeHandler>();
 
-        PgpEnvironment.DefaultTimeProviderOverride = provider.GetRequiredService<CryptographyTimeProvider>();
+        PgpConfiguration.DefaultTimeProviderOverride = provider.GetRequiredService<CryptographyTimeProvider>();
     }
 
     private static ApiClientBuilder AddApiHttpClients(

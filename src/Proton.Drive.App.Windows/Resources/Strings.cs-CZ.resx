@@ -402,6 +402,12 @@
     <value>_Uložit</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>Složku, do které měla být tato položka stažena, se nepodařilo najít</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>Složku, do které měla být tato položka nahrána, se nepodařilo najít</value>
+  </data>
   <data name="FileSystemErrorCode_Value_Cancelled">
     <value>Přerušeno</value>
   </data>
@@ -431,6 +437,9 @@
   </data>
   <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
     <value>Soubor přeskočen, protože se změnil příliš nedávno. Aplikace automaticky pokus zopakuje</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>Soubor se nepodařilo přenést kvůli chybě místního úložiště. Zkontrolujte prosím, zda váš disk funguje správně.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
     <value>Live Photo nelze nahrát.</value>

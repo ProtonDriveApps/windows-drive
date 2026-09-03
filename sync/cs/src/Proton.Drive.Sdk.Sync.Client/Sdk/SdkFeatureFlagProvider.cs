@@ -3,7 +3,7 @@ using Proton.Drive.Shared.Features;
 
 namespace Proton.Drive.Sdk.Sync.Client.Sdk;
 
-internal sealed class SdkFeatureFlagProvider : Proton.Sdk.IFeatureFlagProvider
+internal sealed class SdkFeatureFlagProvider : Proton.Sdk.Configuration.IFeatureFlagProvider
 {
     private readonly IFeatureFlagProvider _featureFlagProvider;
     private readonly ILogger<SdkFeatureFlagProvider> _logger;
@@ -18,7 +18,7 @@ internal sealed class SdkFeatureFlagProvider : Proton.Sdk.IFeatureFlagProvider
     {
         if (!Enum.TryParse<Feature>(flagName, ignoreCase: true, out var feature))
         {
-            _logger.LogWarning("Feature flag '{FlagName}' is not recognized.", flagName);
+            _logger.LogWarning("Feature flag \"{FlagName}\" is not recognized", flagName);
             return false;
         }
 

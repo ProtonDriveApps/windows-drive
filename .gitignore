@@ -345,11 +345,8 @@ healthchecksdb
 # UI Tests recording
 *.mp4
 
-# vcpkg
-vcpkg_installed/
-
 # Visual Studio project launch settings
 **/Properties/launchSettings.json
 
-# Include specific solution folders into source control that were ignored above
+# Include specific solution folders into source control that would be ignored due to above settings
 !src/Proton.Drive.Update/Releases/

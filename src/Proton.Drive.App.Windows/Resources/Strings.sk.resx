@@ -402,6 +402,12 @@
     <value>_Uložiť</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>Priečinok, do ktorého sa mala táto položka stiahnuť, sa nepodarilo nájsť</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>Priečinok, do ktorého sa mala táto položka nahrať, sa nepodarilo nájsť</value>
+  </data>
   <data name="FileSystemErrorCode_Value_Cancelled">
     <value>Prerušené</value>
   </data>
@@ -431,6 +437,9 @@
   </data>
   <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
     <value>Súbor bol vynechaný, pretože sa len nedávno zmenil. Aplikácia sa automaticky pokúsi o opakovanie</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>Súbor sa nepodarilo preniesť kvôli chybe lokálneho úložiska. Skontrolujte, či váš disk funguje správne.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
     <value>Živé fotografie nie je možné nahrať.</value>
@@ -1756,7 +1765,7 @@ Obsah súborov sa bude sťahovať len na požiadanie.</value>
     <value>Pozastaviť do zajtra (8:00 ráno)</value>
   </data>
   <data name="SystemTray_Menu_Item_ResumeSync">
-    <value>Pokr_račovať v synchronizácii</value>
+    <value>Obnoviť synch_ronizáciu</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_SignIn">

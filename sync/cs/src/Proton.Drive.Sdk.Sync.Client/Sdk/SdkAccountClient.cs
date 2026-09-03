@@ -1,22 +1,20 @@
 using Proton.Cryptography.Pgp;
-using Proton.Drive.Sdk;
+using Proton.Drive.Sdk.Account.Addresses;
 using Proton.Drive.Sdk.Sync.Client.Cryptography;
-using Proton.Sdk.Addresses;
-using AddressId = Proton.Sdk.Addresses.AddressId;
 
 namespace Proton.Drive.Sdk.Sync.Client.Sdk;
 
-internal sealed class SdkAccountClient(IAddressKeyProvider addressKeyProvider) : IAccountClient
+internal sealed class SdkAccountClient(IAddressKeyProvider addressKeyProvider) : IProtonAccountClient
 {
     private readonly IAddressKeyProvider _addressKeyProvider = addressKeyProvider;
 
-    public async ValueTask<Proton.Sdk.Addresses.Address> GetAddressAsync(AddressId addressId, CancellationToken cancellationToken)
+    public async ValueTask<Account.Addresses.Address> GetAddressAsync(AddressId addressId, CancellationToken cancellationToken)
     {
         var address = await _addressKeyProvider.GetAddressAsync(addressId.ToString(), cancellationToken).ConfigureAwait(false);
         return ConvertToSdkAddress(address);
     }
 
-    public async ValueTask<Proton.Sdk.Addresses.Address> GetDefaultAddressAsync(CancellationToken cancellationToken)
+    public async ValueTask<Account.Addresses.Address> GetCurrentUserDefaultAddressAsync(CancellationToken cancellationToken)
     {
         var address = await _addressKeyProvider.GetUserDefaultAddressAsync(cancellationToken).ConfigureAwait(false);
         return ConvertToSdkAddress(address);
@@ -39,11 +37,11 @@ internal sealed class SdkAccountClient(IAddressKeyProvider addressKeyProvider) :
         return new ValueTask<IReadOnlyList<PgpPublicKey>>(_addressKeyProvider.GetPublicKeysForEmailAddressAsync(emailAddress, cancellationToken));
     }
 
-    private static Proton.Sdk.Addresses.Address ConvertToSdkAddress(Cryptography.Address address)
+    private static Account.Addresses.Address ConvertToSdkAddress(Cryptography.Address address)
     {
         var addressId = (AddressId)address.Id;
 
-        return new Proton.Sdk.Addresses.Address(
+        return new Account.Addresses.Address(
             addressId,
             order: 0,
             address.EmailAddress,
@@ -52,9 +50,9 @@ internal sealed class SdkAccountClient(IAddressKeyProvider addressKeyProvider) :
             address.PrimaryKeyIndex);
     }
 
-    private static Proton.Sdk.Addresses.AddressKey ConvertToSdkAddressKey(AddressId addressId, Cryptography.AddressKey addressKey, bool isPrimary)
+    private static Account.Addresses.AddressKey ConvertToSdkAddressKey(AddressId addressId, Cryptography.AddressKey addressKey, bool isPrimary)
     {
-        return new Proton.Sdk.Addresses.AddressKey(
+        return new Account.Addresses.AddressKey(
             addressId,
             (AddressKeyId)addressKey.Id,
             isPrimary,

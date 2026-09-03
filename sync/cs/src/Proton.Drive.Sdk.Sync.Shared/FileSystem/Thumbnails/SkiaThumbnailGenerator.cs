@@ -74,7 +74,7 @@ public sealed class SkiaThumbnailGenerator : IThumbnailGenerator
             var exceptionType = exception.GetType().Name;
             _logger.LogWarning(
                 exception,
-                "Thumbnail generation (Skia) failed for file extension \"{Extension}\": {ExceptionType}: {HResult}",
+                "Thumbnail generation (Skia) failed for file extension \"{Extension}\": {ExceptionType}: 0x{HResult:x8}",
                 fileExtensionToLog,
                 exceptionType,
                 exception.HResult);

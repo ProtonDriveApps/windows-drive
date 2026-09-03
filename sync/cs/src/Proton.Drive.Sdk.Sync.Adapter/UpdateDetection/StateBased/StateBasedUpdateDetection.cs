@@ -7,6 +7,7 @@ using Proton.Drive.Sdk.Sync.Shared;
 using Proton.Drive.Sdk.Sync.Shared.Collections.Generic;
 using Proton.Drive.Sdk.Sync.Shared.ExecutionStatistics;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;
+using Proton.Drive.Sdk.Sync.Shared.Logging;
 using Proton.Drive.Shared.Threading;
 
 namespace Proton.Drive.Sdk.Sync.Adapter.UpdateDetection.StateBased;
@@ -68,32 +69,37 @@ internal sealed class StateBasedUpdateDetection<TId, TAltId> : IExecutionStatist
         _executionStatistics.ClearFailures();
         var startTimestamp = Stopwatch.GetTimestamp();
 
-        try
+        using (_logger.BeginScope(_replica.ToLogScope()))
+        using (_logger.BeginScope(LogScope.StateBasedUpdateDetection))
         {
-            foreach (var (syncRootNodeId, syncRoot) in _syncRoots)
+            try
             {
-                if (!syncRoot.IsEnabled)
+                foreach (var (syncRootNodeId, syncRoot) in _syncRoots)
                 {
-                    continue;
+                    if (!syncRoot.IsEnabled)
+                    {
+                        continue;
+                    }
+
+                    await foreach (var node in DirtyNodes(syncRootNodeId, cancellationToken).ConfigureAwait(false))
+                    {
+                        await DetectUpdates(node, cancellationToken).ConfigureAwait(false);
+                    }
                 }
 
-                await foreach (var node in DirtyNodes(syncRootNodeId, cancellationToken).ConfigureAwait(false))
+                if (includeDeletions)
                 {
-                    await DetectUpdates(node, cancellationToken).ConfigureAwait(false);
+                    var numberOfDeletedNodes = await _deletionDetection.ExecuteAsync(cancellationToken).ConfigureAwait(false);
+                    _executionStatistics.Deleted.Add(numberOfDeletedNodes);
                 }
             }
-
-            if (includeDeletions)
+            finally
             {
-                await _deletionDetection.ExecuteAsync(cancellationToken).ConfigureAwait(false);
+                _logger.LogInformation(
+                    "Finished {Replica} state-based update detection in {ElapsedTime}",
+                    _replica,
+                    Stopwatch.GetElapsedTime(startTimestamp));
             }
-        }
-        finally
-        {
-            _logger.LogInformation(
-                "Finished {Replica} state-based update detection in {ElapsedTime}",
-                _replica,
-                Stopwatch.GetElapsedTime(startTimestamp));
         }
     }
 

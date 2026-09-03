@@ -132,7 +132,7 @@ internal class Win32ThumbnailGenerator : IThumbnailGenerator
         {
             var exceptionType = exception.GetType().Name;
             _logger.LogWarning(
-                "Thumbnail generation (Win32) failed for file extension \"{Extension}\": {ExceptionType}: {HResult}",
+                "Thumbnail generation (Win32) failed for file extension \"{Extension}\": {ExceptionType}: 0x{HResult:x8}",
                 fileExtensionToLog,
                 exceptionType,
                 exception.HResult);

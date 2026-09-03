@@ -5,17 +5,15 @@ namespace Proton.Drive.Sdk.Sync.Client.Sdk;
 internal sealed class DisposableSdkClient<TClient> : IDisposable
     where TClient : class
 {
-    private readonly SqliteCacheRepository _entityCacheRepository;
-    private readonly SqliteCacheRepository _secretCacheRepository;
+    private readonly SqliteCacheRepository _cacheRepository;
 
-    public DisposableSdkClient(Func<SqliteCacheRepository, SqliteCacheRepository, TClient> clientFactory)
+    public DisposableSdkClient(Func<SqliteCacheRepository, TClient> clientFactory)
     {
-        _entityCacheRepository = SqliteCacheRepository.OpenInMemory();
-        _secretCacheRepository = SqliteCacheRepository.OpenInMemory();
+        _cacheRepository = SqliteCacheRepository.OpenInMemory();
 
         try
         {
-            Instance = clientFactory(_entityCacheRepository, _secretCacheRepository);
+            Instance = clientFactory(_cacheRepository);
         }
         catch
         {
@@ -28,7 +26,6 @@ internal sealed class DisposableSdkClient<TClient> : IDisposable
 
     public void Dispose()
     {
-        _entityCacheRepository.Dispose();
-        _secretCacheRepository.Dispose();
+        _cacheRepository.Dispose();
     }
 }

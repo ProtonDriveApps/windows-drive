@@ -402,6 +402,12 @@
     <value>_儲存</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>The folder where this item was going to be downloaded could not be found</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>The folder where this item was going to be uploaded could not be found</value>
+  </data>
   <data name="FileSystemErrorCode_Value_Cancelled">
     <value>已取消</value>
   </data>
@@ -431,6 +437,9 @@
   </data>
   <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
     <value>檔案已略過，因為變更時間過於近期。應用程式將會自動重試。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>The file could not be transferred because of a local storage error. Please check that your drive is working correctly.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
     <value>Live Photo cannot be uploaded.</value>
@@ -1736,7 +1745,7 @@
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSync">
-    <value>_暫停同步</value>
+    <value>_Pause sync</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
@@ -1755,7 +1764,7 @@
     <value>Pause until tomorrow (8AM)</value>
   </data>
   <data name="SystemTray_Menu_Item_ResumeSync">
-    <value>_Resume the synchronization</value>
+    <value>_Resume sync</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_SignIn">

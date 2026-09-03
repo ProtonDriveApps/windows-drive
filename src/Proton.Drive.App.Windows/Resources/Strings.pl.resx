@@ -402,6 +402,12 @@
     <value>Zapisz</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>The folder where this item was going to be downloaded could not be found</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>The folder where this item was going to be uploaded could not be found</value>
+  </data>
   <data name="FileSystemErrorCode_Value_Cancelled">
     <value>Przerwano</value>
   </data>
@@ -431,6 +437,9 @@
   </data>
   <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
     <value>Plik został pominięty, ponieważ został ostatnio zmieniony. Aplikacja spróbuje ponownie rozwiązać problem</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>The file could not be transferred because of a local storage error. Please check that your drive is working correctly.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
     <value>Nie można przesłać zdjęcia Live Photo.</value>
@@ -1737,7 +1746,7 @@ Zawartość plików będzie pobierana na żądanie.</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSync">
-    <value>Wstrzymaj synchronizację</value>
+    <value>_Pause sync</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
@@ -1756,7 +1765,7 @@ Zawartość plików będzie pobierana na żądanie.</value>
     <value>Pause until tomorrow (8AM)</value>
   </data>
   <data name="SystemTray_Menu_Item_ResumeSync">
-    <value>_Resume the synchronization</value>
+    <value>_Resume sync</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_SignIn">

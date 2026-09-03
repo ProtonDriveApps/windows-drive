@@ -402,6 +402,12 @@
     <value>_Bewaar</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>De map waarin dit item zou worden gedownload, kon niet worden gevonden</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>De map waarin dit item zou worden geüpload, kon niet worden gevonden</value>
+  </data>
   <data name="FileSystemErrorCode_Value_Cancelled">
     <value>Geannuleerd</value>
   </data>
@@ -431,6 +437,9 @@
   </data>
   <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
     <value>Bestand overgeslagen omdat het te recent veranderd is. De app zal automatisch opnieuw proberen</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>Het bestand kon niet worden overgedragen vanwege een lokale opslagfout. Controleer of uw schijf correct werkt.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
     <value>Live foto kan niet worden geüpload.</value>
@@ -1736,7 +1745,7 @@ De inhoud van bestanden wordt alleen op aanvraag gedownload.</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSync">
-    <value>_Pauzeer de synchronisatie</value>
+    <value>_Synchronisatie pauzeren</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
@@ -1755,7 +1764,7 @@ De inhoud van bestanden wordt alleen op aanvraag gedownload.</value>
     <value>Pauzeer tot morgen (8.00 uur)</value>
   </data>
   <data name="SystemTray_Menu_Item_ResumeSync">
-    <value>_Hervat de synchronisatie</value>
+    <value>_Synchronisatie hervatten</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_SignIn">

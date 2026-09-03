@@ -402,6 +402,12 @@
     <value>Αποθήκευση</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>Δεν ήταν δυνατή η εύρεση του φακέλου όπου επρόκειτο να γίνει λήψη αυτού του στοιχείου.</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>Δεν ήταν δυνατή η εύρεση του φακέλου όπου επρόκειτο να μεταφορτωθεί αυτό το στοιχείο</value>
+  </data>
   <data name="FileSystemErrorCode_Value_Cancelled">
     <value>Απορρίφθηκε</value>
   </data>
@@ -431,6 +437,9 @@
   </data>
   <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
     <value>Το αρχείο παραλείφθηκε επειδή έχει αλλάξει πολύ πρόσφατα. Η εφαρμογή θα προσπαθήσει ξανά αυτόματα</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>Δεν ήταν δυνατή η μεταφορά του αρχείου λόγω σφάλματος τοπικής αποθήκευσης. Παρακαλούμε ελέγξτε ότι η μονάδα δίσκου σας λειτουργεί σωστά.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
     <value>Η Ζωντανή Φωτογραφία δεν μπορεί να μεταφορτωθεί.</value>
@@ -1737,7 +1746,7 @@
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSync">
-    <value>Παύση του συγχρονισμού</value>
+    <value>_Παύση συγχρονισμού</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
@@ -1756,7 +1765,7 @@
     <value>Παύση μέχρι αύριο (8 π.μ.)</value>
   </data>
   <data name="SystemTray_Menu_Item_ResumeSync">
-    <value>_Επαναφορά συγχρονισμού</value>
+    <value>_Συνέχεια συγχρονισμού</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_SignIn">

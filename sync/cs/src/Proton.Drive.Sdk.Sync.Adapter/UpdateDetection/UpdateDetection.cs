@@ -4,7 +4,7 @@ using Proton.Drive.Sdk.Sync.Shared.ExecutionStatistics;
 
 namespace Proton.Drive.Sdk.Sync.Adapter.UpdateDetection;
 
-internal class UpdateDetection<TId, TAltId> : IExecutionStatisticsProvider
+internal class UpdateDetection<TId, TAltId> : IUpdateDetector
     where TId : IEquatable<TId>
     where TAltId : IEquatable<TAltId>
 {

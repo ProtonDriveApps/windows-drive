@@ -4,7 +4,6 @@ using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text.Json;
 using Polly.CircuitBreaker;
-using Proton.Drive.Sdk;
 using Proton.Drive.Sdk.Nodes;
 using Proton.Drive.Sdk.Nodes.Download;
 using Proton.Drive.Sdk.Nodes.Upload;
@@ -12,7 +11,7 @@ using Proton.Drive.Sdk.Nodes.Upload.Verification;
 using Proton.Drive.Sdk.Sync.Client.Cryptography;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;
 using Proton.Drive.Shared.Client;
-using Proton.Sdk;
+using Proton.Sdk.Api;
 
 namespace Proton.Drive.Sdk.Sync.Client;
 
@@ -57,7 +56,7 @@ internal static class ExceptionMapping
             NodeNotFoundException => CreateFileSystemClientException(FileSystemErrorCode.ObjectNotFound),
             RevisionDraftConflictException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
             InvalidNodeTypeException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
-            ValidationException ex => CreateFileSystemClientException(ToErrorCode(ex.Code ?? Proton.Sdk.Api.ResponseCode.CustomCode)),
+            ValidationException ex => CreateFileSystemClientException(ToErrorCode(ex.Code ?? (int)ResponseCode.CustomCode)),
             ProtonDriveException => CreateFileSystemClientException(FileSystemErrorCode.Unknown),
 
             // Proton SDK and Proton Drive SDK lets some HTTP client exceptions to bubble up
@@ -128,7 +127,7 @@ internal static class ExceptionMapping
             IntegrityException;
     }
 
-    private static FileSystemErrorCode ToErrorCode(Proton.Sdk.Api.ResponseCode value)
+    private static FileSystemErrorCode ToErrorCode(int value)
     {
         // Proton SDK API response codes match legacy API response codes
         return ToErrorCode((ResponseCode)value);

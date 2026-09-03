@@ -557,7 +557,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
 
         if (parameters.Photos.Count == 0)
         {
-            _logger.LogWarning("No photos to add to album with ID {AlbumID}. Skipping request.", albumLinkId);
+            _logger.LogWarning("No photos to add to album with ID \"{AlbumID}\". Skipping request.", albumLinkId);
             return;
         }
 
@@ -577,7 +577,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
             if (numberOfAlreadyExistsErrors > 0)
             {
                 _logger.LogInformation(
-                    "In current batch, {NumberOfFiles} Photo file(s) were already in the album with ID {AlbumId}",
+                    "In current batch, {NumberOfFiles} Photo file(s) were already in the album with ID \"{AlbumId}\"",
                     numberOfAlreadyExistsErrors,
                     albumLinkId);
             }
@@ -588,7 +588,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
             if (numberOfMissingRelatedFilesErrors > 0)
             {
                 _logger.LogWarning(
-                    "In current batch, {NumberOfFiles} Photo files(s) failed to add to the album with ID {AlbumId} due to missing related files. Failure is ignored",
+                    "In current batch, {NumberOfFiles} Photo files(s) failed to add to the album with ID \"{AlbumId}\" due to missing related files. Failure is ignored",
                     numberOfMissingRelatedFilesErrors,
                     albumLinkId);
             }
@@ -599,7 +599,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
             if (numberOfInvalidRequirementsErrors > 0)
             {
                 _logger.LogWarning(
-                    "In current batch, {NumberOfFiles} Photo files(s) failed to add to the album with ID {AlbumId} due to invalid requirements. Failure is ignored",
+                    "In current batch, {NumberOfFiles} Photo files(s) failed to add to the album with ID \"{AlbumId}\" due to invalid requirements. Failure is ignored",
                     numberOfInvalidRequirementsErrors,
                     albumLinkId);
             }
@@ -612,7 +612,7 @@ internal sealed class RemoteFileSystemClient : RemoteFileSystemClientBase, IFile
             foreach (var failure in otherFailures)
             {
                 _logger.LogError(
-                    "Adding Photo file with ID {FileID} to the album with ID {AlbumId} failed: {ErrorCode} {ErrorMessage}",
+                    "Adding Photo file with ID \"{FileID}\" to the album with ID \"{AlbumId}\" failed: {ErrorCode} {ErrorMessage}",
                     failure.LinkId,
                     albumLinkId,
                     failure.Response.Code,

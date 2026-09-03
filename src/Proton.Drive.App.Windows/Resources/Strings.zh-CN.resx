@@ -402,6 +402,12 @@
     <value>保存(_S)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>找不到该项原本要下载到的文件夹</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>找不到该项原本要上传到的文件夹</value>
+  </data>
   <data name="FileSystemErrorCode_Value_Cancelled">
     <value>已中止</value>
   </data>
@@ -431,6 +437,9 @@
   </data>
   <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
     <value>由于文件最近更改过多而跳过。应用程序将自动重试</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>文件因本地存储错误而无法传输，请检查您的驱动器是否工作正常。</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
     <value>Live Photo 无法上传。</value>

@@ -12,5 +12,5 @@ public class ConcurrentInteger
 
     public void Decrement() => Interlocked.Decrement(ref _value);
 
-    public void Add(int value) => Interlocked.Add(ref value, value);
+    public void Add(int value) => Interlocked.Add(ref _value, value);
 }

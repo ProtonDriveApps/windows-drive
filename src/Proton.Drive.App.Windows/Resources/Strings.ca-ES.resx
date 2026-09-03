@@ -402,6 +402,12 @@
     <value>_Desa</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>No s'ha pogut trobar la carpeta on s'havia de descarregar aquest element</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>No s'ha pogut trobar la carpeta on s'havia de carregar aquest element</value>
+  </data>
   <data name="FileSystemErrorCode_Value_Cancelled">
     <value>Anul·lat</value>
   </data>
@@ -431,6 +437,9 @@
   </data>
   <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
     <value>S'ha omès el fitxer perquè ha canviat massa recentment. L'aplicació es tornarà a provar automàticament.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>No s'ha pogut transferir el fitxer a causa d'un error d'emmagatzematge local. Comproveu que el dispositiu funcioni correctament.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
     <value>La foto en viu no s'ha pogut carregar.</value>
@@ -938,7 +947,7 @@ desactivar l'optimització d'emmagatzematge en qualsevol moment.</value>
     <value>Optimització d'emmagatzematge no disponible</value>
   </data>
   <data name="Main_MyComputer_Link_LearnMore">
-    <value>Per saber-ne més</value>
+    <value>Més informació</value>
   </data>
   <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
     <value>Descarta la incorporació en aquest ordinador</value>
@@ -1593,7 +1602,7 @@ El contingut dels fitxers es descarregarà només sota demanda.</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Link_LearnMore">
-    <value>Per saber-ne més</value>
+    <value>Més informació</value>
   </data>
   <data name="SignIn_Message_SigningIn">
     <value>Inici de sessió al vostre compte</value>
@@ -1756,7 +1765,7 @@ El contingut dels fitxers es descarregarà només sota demanda.</value>
     <value>Pausa fins demà (8 del matí)</value>
   </data>
   <data name="SystemTray_Menu_Item_ResumeSync">
-    <value>_Prosseguir la sincronització</value>
+    <value>_Continua la sincronització</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_SignIn">

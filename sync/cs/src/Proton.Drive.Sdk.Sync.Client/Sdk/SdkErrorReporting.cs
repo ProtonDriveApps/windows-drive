@@ -1,8 +1,9 @@
 using Microsoft.Extensions.Logging;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;
 using Proton.Drive.Sdk.Telemetry;
+using Proton.Drive.Shared.Client;
 using Proton.Drive.Shared.Reporting;
-using Proton.Sdk;
+using Proton.Sdk.Api;
 using Proton.Sdk.Telemetry;
 
 namespace Proton.Drive.Sdk.Sync.Client.Sdk;
@@ -68,9 +69,9 @@ internal sealed class SdkErrorReporting(IErrorReporting errorReporting, ILogger<
         {
             if (exception is ProtonApiException
                 {
-                    Code: Proton.Sdk.Api.ResponseCode.TooManyChildren
-                    or Proton.Sdk.Api.ResponseCode.InsufficientQuota
-                    or Proton.Sdk.Api.ResponseCode.InsufficientSpace,
+                    Code: (int)ResponseCode.TooManyChildren
+                    or (int)ResponseCode.InsufficientQuota
+                    or (int)ResponseCode.InsufficientSpace,
                 })
             {
                 return false;

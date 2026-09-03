@@ -402,6 +402,12 @@
     <value>_Salvează</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>Folderul unde urma să fie descărcat acest fișier nu a putut fi găsit.</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>Folderul unde urma să fie încărcat acest fișier nu a putut fi găsit.</value>
+  </data>
   <data name="FileSystemErrorCode_Value_Cancelled">
     <value>Anulat</value>
   </data>
@@ -431,6 +437,9 @@
   </data>
   <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
     <value>Fișier ignorat deoarece a fost modificat prea recent. Aplicația va reîncerca automat.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>Fișierul nu a putut fi transferat din cauza unei erori de stocare locală. Verificați dacă unitatea funcționează corect.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
     <value>Fotografiile în direct nu pot fi încărcate.</value>
@@ -1735,7 +1744,7 @@ Conținutul fișierelor va fi descărcat numai la cerere.</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSync">
-    <value>_Suspendare sincronizare</value>
+    <value>Sus_pendare sincronizare</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">

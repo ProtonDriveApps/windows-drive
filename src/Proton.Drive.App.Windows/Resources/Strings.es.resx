@@ -402,6 +402,12 @@
     <value>Guardar</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>No se ha podido encontrar la carpeta donde se iba a descargar este elemento</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>No se ha podido encontrar la carpeta donde se iba a subir este elemento</value>
+  </data>
   <data name="FileSystemErrorCode_Value_Cancelled">
     <value>Cancelado</value>
   </data>
@@ -431,6 +437,9 @@
   </data>
   <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
     <value>Se ha omitido el archivo porque ha cambiado demasiado recientemente. La aplicación volverá a intentarlo automáticamente.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>No se ha podido transferir el archivo debido a un error de almacenamiento local. Comprueba que tu unidad funciona correctamente.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
     <value>No se puede subir la "Live Photo"</value>

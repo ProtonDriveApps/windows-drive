@@ -11,6 +11,7 @@ using Proton.Drive.Sdk.Sync.Engine.Shared.Trees.Update;
 using Proton.Drive.Sdk.Sync.Shared;
 using Proton.Drive.Sdk.Sync.Shared.Adapters;
 using Proton.Drive.Sdk.Sync.Shared.ExecutionStatistics;
+using Proton.Drive.Sdk.Sync.Shared.Logging;
 using Proton.Drive.Sdk.Sync.Shared.Property;
 using Proton.Drive.Sdk.Sync.Shared.Trees;
 using Proton.Drive.Sdk.Sync.Shared.Trees.Changes;
@@ -226,13 +227,22 @@ public class SyncEngine<TId> : IInitializable, IExecutionStatisticsProvider
             _logger.LogInformation("Started synchronization");
             var startTimestamp = Stopwatch.GetTimestamp();
 
-            await _remoteConsolidation.Execute(cancellationToken).ConfigureAwait(false);
+            using (_logger.BeginScope(LogScope.Consolidation))
+            {
+                await _remoteConsolidation.Execute(cancellationToken).ConfigureAwait(false);
 
-            await _localConsolidation.Execute(cancellationToken).ConfigureAwait(false);
+                await _localConsolidation.Execute(cancellationToken).ConfigureAwait(false);
+            }
 
-            await _reconciliation.Execute(cancellationToken).ConfigureAwait(false);
+            using (_logger.BeginScope(LogScope.Reconciliation))
+            {
+                await _reconciliation.Execute(cancellationToken).ConfigureAwait(false);
+            }
 
-            await _propagation.Execute(cancellationToken).ConfigureAwait(false);
+            using (_logger.BeginScope(LogScope.Propagation))
+            {
+                await _propagation.Execute(cancellationToken).ConfigureAwait(false);
+            }
 
             _hasChangesToSync = await Schedule(GetHasChangesToSync, cancellationToken).ConfigureAwait(false);
 

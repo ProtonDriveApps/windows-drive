@@ -6,6 +6,16 @@ internal class LogBasedUpdateDetectionExecutionStatistics : IExecutionStatistics
 {
     private bool _failed;
 
+    // Success is not reported
+    int IExecutionStatistics.Succeeded => 0;
+
+    // Only failure is reported
+    int IExecutionStatistics.Failed => _failed ? 1 : 0;
+
+    int IExecutionStatistics.Skipped => 0;
+
+    int IExecutionStatistics.Deleted => 0;
+
     public void Succeeded()
     {
         _failed = false;
@@ -15,13 +25,4 @@ internal class LogBasedUpdateDetectionExecutionStatistics : IExecutionStatistics
     {
         _failed = true;
     }
-
-    // Success is not reported
-    int IExecutionStatistics.Succeeded => 0;
-
-    // Only failure is reported
-    int IExecutionStatistics.Failed => _failed ? 1 : 0;
-
-    // Skipped is not reported
-    int IExecutionStatistics.Skipped => 0;
 }

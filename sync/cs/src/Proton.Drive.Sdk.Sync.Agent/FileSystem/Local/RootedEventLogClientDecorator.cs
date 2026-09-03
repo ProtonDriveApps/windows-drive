@@ -5,7 +5,7 @@ namespace Proton.Drive.Sdk.Sync.Agent.FileSystem.Local;
 
 internal sealed class RootedEventLogClientDecorator : IEventLogClient<long>
 {
-    private readonly TimeSpan _localEventSettlingDelay = TimeSpan.FromSeconds(1);
+    private readonly TimeSpan _localEventSettlingDelay = TimeSpan.FromMilliseconds(10);
 
     private readonly ILogger<RootedEventLogClientDecorator> _logger;
     private readonly IRootDirectory<long> _rootDirectory;

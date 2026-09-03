@@ -1,5 +1,8 @@
+using System.Text.Json.Serialization;
+
 namespace Proton.Drive.Shared.Features;
 
+[JsonConverter(typeof(JsonStringEnumConverter<Feature>))]
 public enum Feature
 {
     DriveAlbumsDisabled,
@@ -7,9 +10,11 @@ public enum Feature
     DriveCryptoEncryptBlocksWithPgpAeadDisabled,
     DriveDownloadVerificationDisabled,
     DrivePhotosUploadDisabled,
+    DriveSmallFileUpload,
     DriveSharingDisabled,
     DriveSharingEditingDisabled,
     DriveUploadVerificationDisabled,
+    DriveWindowsBulkDeletionSquashingDisabled,
     DriveWindowsDeviceEventHandlingDisabled,
     DriveWindowsFileConsistencyGuard,
     DriveWindowsFileConsistencyGuardDownloadWave1,

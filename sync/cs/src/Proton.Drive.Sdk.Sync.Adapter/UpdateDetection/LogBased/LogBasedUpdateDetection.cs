@@ -5,6 +5,7 @@ using Proton.Drive.Sdk.Sync.Adapter.Trees.Adapter;
 using Proton.Drive.Sdk.Sync.Shared;
 using Proton.Drive.Sdk.Sync.Shared.ExecutionStatistics;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;
+using Proton.Drive.Sdk.Sync.Shared.Logging;
 using Proton.Drive.Shared;
 using Proton.Drive.Shared.Logging;
 using Proton.Drive.Shared.Threading;
@@ -128,26 +129,31 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
         _ = _updateDetection.Run();
     }
 
-    private Task ProcessAllLogEntries(CancellationToken cancellationToken)
+    private async Task ProcessAllLogEntries(CancellationToken cancellationToken)
     {
         if (!_started)
         {
             _logger.LogWarning("{Replica} event log-based update detection is not started", _replica);
-
-            return Task.CompletedTask;
+            return;
         }
 
         if (_isFaulty)
         {
-            return Task.CompletedTask;
+            return;
         }
 
-        return
-            WithLoggedException(() =>
-                WithSafeCancellation(() =>
-                    WithFaultyStateDetection(() =>
-                        ScheduleExecution(() =>
-                            Schedule(InternalProcessAllLogEntries)))));
+        using (_logger.BeginScope(LogScope.UpdateDetection))
+        using (_logger.BeginScope(_replica.ToLogScope()))
+        using (_logger.BeginScope(LogScope.LogBasedUpdateDetection))
+        {
+            await WithLoggedException(() =>
+                    WithSafeCancellation(() =>
+                        WithFaultyStateDetection(() =>
+                            ScheduleExecution(() =>
+                                Schedule(InternalProcessAllLogEntries))))).ConfigureAwait(false);
+        }
+
+        return;
 
         async Task InternalProcessAllLogEntries()
         {
@@ -166,7 +172,7 @@ internal class LogBasedUpdateDetection<TId, TAltId> : IExecutionStatisticsProvid
             if (_processedEventCount > 0)
             {
                 _logger.LogInformation(
-                    "{Replica} update detection processed {NumberOfEvents} event(s) ({NumberOfDeletionEvents} of which delete/move-out event(s))",
+                    "{Replica} update detection processed {NumberOfEvents} event(s) ({NumberOfDeletionEvents} delete/move-from)",
                     _replica,
                     _processedEventCount,
                     _processedDeletionEventCount);

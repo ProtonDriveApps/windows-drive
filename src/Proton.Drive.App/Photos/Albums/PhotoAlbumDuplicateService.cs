@@ -164,7 +164,7 @@ internal sealed class PhotoAlbumDuplicateService : IPhotoAlbumDuplicateService
         }
         catch (Exception ex) when (ex.IsDriveClientException())
         {
-            _logger.LogWarning(ex, "Failed to decrypt album with ID: {LinkId}", linkResponse.Link.Id);
+            _logger.LogWarning(ex, "Failed to decrypt album with ID: \"{LinkId}\"", linkResponse.Link.Id);
             return null;
         }
     }

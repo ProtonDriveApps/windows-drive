@@ -402,6 +402,12 @@
     <value>_Захаваць</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>Папка, у якую павінен быў быць спампаваны гэты элемент, не знойдзена</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>Папка, у якую павінен быў быць запампаваны гэты элемент, не знойдзена</value>
+  </data>
   <data name="FileSystemErrorCode_Value_Cancelled">
     <value>Перарвана</value>
   </data>
@@ -431,6 +437,9 @@
   </data>
   <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
     <value>Файл прапушчаны, бо ён змяняўся зусім нядаўна. Праграма аўтаматычна паўторыць спробу.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>Файл не ўдалося перадаць з-за памылкі лакальнага сховішча. Праверце, ці правільна працуе ваш дыск.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
     <value>Немагчыма запампаваць Live Photo.</value>
@@ -1318,7 +1327,7 @@
     <value>Вызваліце прастору або здыміце выбар</value>
   </data>
   <data name="MappingErrorCode_Value_LocalAndRemoteFoldersNotEmpty">
-    <value>Патрабуецца пустая папка Windows для наладжвання сінхранізацыі або папка Proton Drive створаная ў вэб-інтэрфейсе. Ачысціце папку і паспрабуйце яшчэ раз.</value>
+    <value>Патрабуецца пустая папка Windows для наладжвання сінхранізацыі або папка Proton Drive створаная ў вэб-інтэрфейсе. Ачысціце папку і паўтарыце спробу.</value>
   </data>
   <data name="MappingErrorCode_Value_LocalFileSystemAccessFailed">
     <value>Немагчыма атрымаць доступ або стварыць лакальную папку для сінхранізацыі. Будзе зроблена паўторная спроба.</value>
@@ -1506,7 +1515,7 @@
     <value>Збой імпарту. Дасягнута максімальная колькасць фатаграфій на альбом.</value>
   </data>
   <data name="PhotoImportErrorCode_Value_Unknown">
-    <value>Збой імпарту. Паспрабуйце яшчэ раз.</value>
+    <value>Збой імпарту. Паўтарыце спробу.</value>
   </data>
   <data name="PhotoImportFolderStatus_Value_Failed">
     <value>Збой імпарту</value>
@@ -1741,19 +1750,19 @@
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
-    <value>Прыпынена на 1 гадзіну</value>
+    <value>Прыпыніць на 1 гадзіну</value>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncFor4Hours">
-    <value>Прыпынена на 4 гадзіны</value>
+    <value>Прыпыніць на 4 гадзіны</value>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncFor8Hours">
-    <value>Прыпынена на 8 гадзін</value>
+    <value>Прыпыніць на 8 гадзін</value>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncIndefinitely">
     <value>Прыпынена на нявызначаны тэрмін</value>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow">
-    <value>Прыпынена да заўтра (да 8 гадзін раніцы)</value>
+    <value>Прыпыніць да заўтрашняга дня (аднавіць сінхранізацыю ў 8 гадзін раніцы)</value>
   </data>
   <data name="SystemTray_Menu_Item_ResumeSync">
     <value>_Узнавіць сінхранізацыю</value>

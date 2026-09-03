@@ -36,7 +36,7 @@ internal sealed class PhotoAlbumService : IPhotoAlbumService
                 throw new FileSystemClientException("Album creation failed: missing ID", FileSystemErrorCode.Unknown);
             }
 
-            _logger.LogInformation("Created album with ID {ID}", album.Id);
+            _logger.LogInformation("Created album with ID \"{AlbumId}\"", album.Id);
 
             return album.Id;
         }
@@ -53,12 +53,12 @@ internal sealed class PhotoAlbumService : IPhotoAlbumService
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        _logger.LogDebug("Adding batch of {Count} photo files to album with ID {AlbumId}", files.Count, albumLinkId);
+        _logger.LogDebug("Adding batch of {Count} photo files to album with ID \"{AlbumId}\"", files.Count, albumLinkId);
 
         var albumNode = new NodeInfo<string>().WithParentId(albumLinkId);
         await _remoteFileSystemClient.MoveAsync(files, albumNode, cancellationToken).ConfigureAwait(false);
 
-        _logger.LogInformation("Finished adding batch of {Count} photo files to album with ID {AlbumId}", files.Count, albumLinkId);
+        _logger.LogInformation("Finished adding batch of {Count} photo files to album with ID \"{AlbumId}\"", files.Count, albumLinkId);
     }
 
     public ValueTask<string?> FindDuplicateAlbumAsync(string volumeId, string shareId, string albumName, CancellationToken cancellationToken)

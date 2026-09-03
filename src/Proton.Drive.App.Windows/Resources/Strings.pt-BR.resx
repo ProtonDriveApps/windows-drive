@@ -333,13 +333,13 @@
     <value>O relatório incluirá os registros mais recentes do aplicativo e de instalação.</value>
   </data>
   <data name="BugReport_NeedHelp_Description">
-    <value>Quick guides for setup, app use, and file sync.</value>
+    <value>Guias rápidos para configuração, uso do aplicativo e sincronização de arquivos.</value>
   </data>
   <data name="BugReport_NeedHelp_Link_FAQ">
     <value>Perguntas frequentes (FAQ)</value>
   </data>
   <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks">
-    <value>Learn how the Proton Drive app works</value>
+    <value>Saiba como funciona o aplicativo do Proton Drive</value>
   </data>
   <data name="BugReport_NeedHelp_Link_HowSharedFilesWork">
     <value>Acessar arquivos compartilhados</value>
@@ -351,7 +351,7 @@
     <value>Usar a sincronização sob demanda</value>
   </data>
   <data name="BugReport_NeedHelp_Title">
-    <value>Need help getting started with Proton Drive?</value>
+    <value>Precisa de ajuda para começar a usar o Proton Drive?</value>
   </data>
   <data name="BugReport_Text_Description_HelpText">
     <value>Descrição. O que deu errado? Quais foram os passos exatos que você realizou? (mínimo de 10 caracteres)</value>
@@ -387,7 +387,7 @@
     <value>Titulo do problema</value>
   </data>
   <data name="BugReport_Text_ReportSuccessfullySent">
-    <value>Report successfully sent. Thank you.</value>
+    <value>O relatório foi enviado com sucesso. Obrigado.</value>
   </data>
   <data name="BugReport_Title">
     <value>Feedback do Proton Drive</value>
@@ -401,6 +401,12 @@
   <data name="Dialog_Button_Save">
     <value>_Salvar</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>Não foi possível localizar a pasta onde esse item seria baixado</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>Não foi possível localizar a pasta onde esse item seria enviado</value>
   </data>
   <data name="FileSystemErrorCode_Value_Cancelled">
     <value>Cancelado</value>
@@ -431,6 +437,9 @@
   </data>
   <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
     <value>O arquivo foi ignorado porque foi alterado muito recentemente. O aplicativo tentará novamente automaticamente.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>The file could not be transferred because of a local storage error. Please check that your drive is working correctly.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
     <value>Não foi possível enviar a Live Photo.</value>

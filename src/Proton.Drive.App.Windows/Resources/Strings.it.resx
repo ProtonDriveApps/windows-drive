@@ -402,6 +402,12 @@
     <value>_Salva</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>Impossibile individuare la cartella in cui avrebbe dovuto essere scaricato questo elemento</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>Impossibile trovare la cartella in cui doveva essere caricato questo elemento</value>
+  </data>
   <data name="FileSystemErrorCode_Value_Cancelled">
     <value>Interrotto</value>
   </data>
@@ -431,6 +437,9 @@
   </data>
   <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
     <value>File ignorato perché è stato modificato troppo di recente. L'app riproverà automaticamente</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>Non è stato possibile trasferire il file a causa di un errore di archiviazione locale. Verifica che l'unità funzioni correttamente.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
     <value>Live Photo non può essere caricata.</value>
@@ -1756,7 +1765,7 @@ I contenuti dei file verranno scaricati sono se necessari.</value>
     <value>Pausa fino a domani (8AM)</value>
   </data>
   <data name="SystemTray_Menu_Item_ResumeSync">
-    <value>Riprendi la sincronizzazione</value>
+    <value>_Riprendi la sincronizzazione</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_SignIn">

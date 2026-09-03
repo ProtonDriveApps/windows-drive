@@ -1,5 +1,7 @@
 <Project>
 
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" Condition="'' != $([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
   <PropertyGroup>
     <DefaultTargetFramework>net10.0</DefaultTargetFramework>
     <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)ProtonDrive.ruleset</CodeAnalysisRuleSet>
@@ -7,7 +9,6 @@
 
     <Product>Proton Drive</Product>
     <Company>Proton AG</Company>
-    <Version>3.0.4</Version>
 
     <Nullable>enable</Nullable>
     <NeutralLanguage>en</NeutralLanguage>

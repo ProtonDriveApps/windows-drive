@@ -5,10 +5,12 @@ public class ConcurrentExecutionStatistics : IExecutionStatistics
     public ConcurrentInteger Succeeded { get; } = new();
     public ConcurrentInteger Failed { get; } = new();
     public ConcurrentInteger Skipped { get; } = new();
+    public ConcurrentInteger Deleted { get; } = new();
 
     int IExecutionStatistics.Succeeded => Succeeded.Value;
     int IExecutionStatistics.Failed => Failed.Value;
     int IExecutionStatistics.Skipped => Skipped.Value;
+    int IExecutionStatistics.Deleted => Deleted.Value;
 
     public void ClearFailures()
     {

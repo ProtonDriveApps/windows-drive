@@ -72,10 +72,10 @@ internal sealed class PhotoFileSystemClient : IPhotoFileSystemClient<long>
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        var photoFileEnumeration = Directory.EnumerateFiles(info.Path)
+        var photoFileEnumeration = WithMappedException(() => Directory.EnumerateFiles(info.Path)
             .Where(EntryIsNotSystemItem)
             .Where(FileExtensionIsSupported)
-            .OrderBy(childPath => childPath, StringComparer.OrdinalIgnoreCase);
+            .OrderBy(childPath => childPath, StringComparer.OrdinalIgnoreCase));
 
         return WithMappedException(photoFileEnumeration)
             .Select(path => NodeInfo<long>.File().WithPath(path).WithName(Path.GetFileName(path)))

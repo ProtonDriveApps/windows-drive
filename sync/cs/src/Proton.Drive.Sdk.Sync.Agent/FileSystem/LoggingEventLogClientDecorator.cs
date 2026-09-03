@@ -29,14 +29,14 @@ internal sealed class LoggingEventLogClientDecorator<TId> : IEventLogClient<TId>
 
     public void Enable()
     {
-        _logger.LogInformation("Enabling directory change observation on {Volume}/\"{Scope}\"", _volumeId, _scope);
+        _logger.LogInformation("Enabling directory change observation on {Volume}/\"{EventScope}\"", _volumeId, _scope);
 
         _decoratedInstance.Enable();
     }
 
     public void Disable()
     {
-        _logger.LogInformation("Disabling directory change observation on {Volume}/\"{Scope}\"", _volumeId, _scope);
+        _logger.LogInformation("Disabling directory change observation on {Volume}/\"{EventScope}\"", _volumeId, _scope);
 
         _decoratedInstance.Disable();
     }
@@ -82,7 +82,7 @@ internal sealed class LoggingEventLogClientDecorator<TId> : IEventLogClient<TId>
     private void LogEntry(EventLogEntry<TId> entry)
     {
         _logger.LogDebug(
-            "Event received on {Volume}/\"{Scope}\": {changeType} {Type} \"{path}\"/{ParentId}/{Id}, Attributes=({Attributes}), PlaceholderState=({PlaceholderState}), LastWriteTime={LastWriteTime:O}, Size={Size}, Revision={RevisionId}",
+            "Event received on {Volume}/\"{EventScope}\": {changeType} {Type} \"{path}\"/{ParentId}/{Id}, Attributes=({Attributes}), PlaceholderState=({PlaceholderState}), LastWriteTime={LastWriteTime:O}, Size={Size}, Revision={RevisionId}",
             _volumeId,
             _scope,
             entry.ChangeType,
@@ -100,7 +100,7 @@ internal sealed class LoggingEventLogClientDecorator<TId> : IEventLogClient<TId>
     private void LogMove(EventLogEntry<TId> entry)
     {
         _logger.LogDebug(
-            "Event received on {Volume}/\"{Scope}\": {changeType} {Type} \"{oldPath}\" to \"{path}\"/{ParentId}/{Id}, Attributes=({Attributes}), LastWriteTime={LastWriteTime:O}, Size={Size}",
+            "Event received on {Volume}/\"{EventScope}\": {changeType} {Type} \"{oldPath}\" to \"{path}\"/{ParentId}/{Id}, Attributes=({Attributes}), LastWriteTime={LastWriteTime:O}, Size={Size}",
             _volumeId,
             _scope,
             entry.ChangeType,
@@ -116,6 +116,6 @@ internal sealed class LoggingEventLogClientDecorator<TId> : IEventLogClient<TId>
 
     private void LogError(EventLogEntry<TId> entry)
     {
-        _logger.LogInformation("Event received on {Volume}/\"{Scope}\": {changeType}", _volumeId, _scope, entry.ChangeType);
+        _logger.LogInformation("Event received on {Volume}/\"{EventScope}\": {changeType}", _volumeId, _scope, entry.ChangeType);
     }
 }

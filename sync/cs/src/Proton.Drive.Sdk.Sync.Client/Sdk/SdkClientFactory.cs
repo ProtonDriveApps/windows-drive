@@ -1,4 +1,3 @@
-using Proton.Drive.Sdk;
 using Proton.Drive.Sdk.Sync.Client.Authentication;
 using Proton.Drive.Shared.Devices;
 using Proton.Sdk.Telemetry;
@@ -8,7 +7,7 @@ namespace Proton.Drive.Sdk.Sync.Client.Sdk;
 internal sealed class SdkClientFactory : ISdkClientFactory, ISdkPhotosClientFactory, IDisposable
 {
     private readonly IHttpClientFactory _httpClientFactory;
-    private readonly IAccountClient _accountClient;
+    private readonly IProtonAccountClient _accountClient;
     private readonly IClientInstanceIdentityProvider _clientInstanceIdentityProvider;
     private readonly SdkFeatureFlagProvider _sdkFeatureFlagProvider;
     private readonly ITelemetry _sdkDiagnostics;
@@ -20,7 +19,7 @@ internal sealed class SdkClientFactory : ISdkClientFactory, ISdkPhotosClientFact
     public SdkClientFactory(
         IAuthenticationService authenticationService,
         IHttpClientFactory httpClientFactory,
-        IAccountClient accountClient,
+        IProtonAccountClient accountClient,
         IClientInstanceIdentityProvider clientInstanceIdentityProvider,
         SdkFeatureFlagProvider sdkSdkFeatureFlagProvider,
         ITelemetry sdkDiagnostics)
@@ -62,12 +61,11 @@ internal sealed class SdkClientFactory : ISdkClientFactory, ISdkPhotosClientFact
 
     private DisposableSdkClient<ProtonDriveClient> CreateClient()
     {
-        return new DisposableSdkClient<ProtonDriveClient>((entityRepo, secretRepo) =>
+        return new DisposableSdkClient<ProtonDriveClient>(cacheRepository =>
             new ProtonDriveClient(
                 new SdkHttpClientFactoryDecorator(_httpClientFactory),
                 _accountClient,
-                entityRepo,
-                secretRepo,
+                cacheRepository,
                 _sdkFeatureFlagProvider,
                 _sdkDiagnostics,
                 GetClientOptions()));
@@ -75,12 +73,11 @@ internal sealed class SdkClientFactory : ISdkClientFactory, ISdkPhotosClientFact
 
     private DisposableSdkClient<ProtonPhotosClient> CreatePhotosClient()
     {
-        return new DisposableSdkClient<ProtonPhotosClient>((entityRepo, secretRepo) =>
+        return new DisposableSdkClient<ProtonPhotosClient>(cacheRepository =>
             new ProtonPhotosClient(
                 new SdkHttpClientFactoryDecorator(_httpClientFactory),
                 _accountClient,
-                entityRepo,
-                secretRepo,
+                cacheRepository,
                 _sdkFeatureFlagProvider,
                 _sdkDiagnostics,
                 GetClientOptions()));

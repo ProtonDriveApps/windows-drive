@@ -8,6 +8,7 @@ using Proton.Drive.Sdk.Sync.Engine;
 using Proton.Drive.Sdk.Sync.Shared;
 using Proton.Drive.Sdk.Sync.Shared.ExecutionStatistics;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;
+using Proton.Drive.Sdk.Sync.Shared.Logging;
 using Proton.Drive.Sdk.Sync.Shared.SyncActivity;
 using Proton.Drive.Sdk.Sync.Shared.Trees;
 using Proton.Drive.Shared;
@@ -19,7 +20,7 @@ namespace Proton.Drive.Sdk.Sync.Agent;
 
 internal class SyncAgent : IDisposable
 {
-    private static readonly TimeSpan SynchronizationDelayInterval = TimeSpan.FromSeconds(5);
+    internal static readonly TimeSpan SynchronizationDelayInterval = TimeSpan.FromSeconds(5);
     private static readonly TimeSpan SynchronizationRetryInterval = TimeSpan.FromSeconds(60);
     private static readonly TimeSpan SynchronizationTimerInterval = TimeSpan.FromSeconds(2);
     private static readonly TimeSpan StatisticsPollInterval = TimeSpan.FromMilliseconds(300);
@@ -51,6 +52,7 @@ internal class SyncAgent : IDisposable
     private TickCount _updateDetectionCompletedAt;
     private TickCount _synchronizationCompletedAt;
     private Task _syncEngineTask = Task.CompletedTask;
+    private int _syncCycleCounter;
 
     public SyncAgent(
         GenericAdapter<long, string> remoteAdapter,
@@ -353,10 +355,28 @@ internal class SyncAgent : IDisposable
 
         try
         {
+            _syncCycleCounter++;
+            _logger.LogInformation("Synchronization pass started (cycle #{SyncCycleCounter})", _syncCycleCounter);
+
+            var retryCounter = 0;
             do
             {
-                await DetectUpdatesAsync(cancellationToken).ConfigureAwait(false);
-                await SynchronizeAsync(cancellationToken).ConfigureAwait(false);
+                if (retryCounter > 0)
+                {
+                    _logger.LogInformation("Synchronization pass started (cycle #{SyncCycleCounter}.{RetryCount})", _syncCycleCounter, retryCounter);
+                }
+
+                using (_logger.BeginScope(LogScope.UpdateDetection))
+                {
+                    await DetectUpdatesAsync(cancellationToken).ConfigureAwait(false);
+                }
+
+                using (_logger.BeginScope(LogScope.Synchronization))
+                {
+                    await SynchronizeAsync(cancellationToken).ConfigureAwait(false);
+                }
+
+                retryCounter++;
             }
             while (await ShouldRetrySynchronization(cancellationToken).ConfigureAwait(false));
         }
@@ -384,6 +404,8 @@ internal class SyncAgent : IDisposable
             {
                 Status = _paused ? SyncStatus.Paused : SyncStatus.Idle;
             }
+
+            _logger.LogInformation("Synchronization pass finished (cycle #{SyncCycleCounter})", _syncCycleCounter);
         }
     }
 
@@ -397,6 +419,7 @@ internal class SyncAgent : IDisposable
         await _remoteAdapter.DetectUpdatesAsync(cancellationToken).ConfigureAwait(false);
 
         cancellationToken.ThrowIfCancellationRequested();
+
         await _localAdapter.DetectUpdatesAsync(cancellationToken).ConfigureAwait(false);
 
         _updateDetectionCompletedAt = _clock.TickCount;

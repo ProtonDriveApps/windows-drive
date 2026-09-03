@@ -57,7 +57,7 @@ internal class IdentityBasedEventLogProcessingStep<TId, TAltId> : SuccessStep<TI
     private void ProcessEvent(int volumeId, string scope, EventLogEntry<TAltId> entry)
     {
         _logger.LogDebug(
-            "Started processing event on {Volume}/\"{Scope}\": {ChangeType} \"{Path}\"/{ParentId}/{Id}, OldPath=\"{OldPath}\"",
+            "Started processing event on {Volume}/\"{EventScope}\": {ChangeType} \"{Path}\"/{ParentId}/{Id}, OldPath=\"{OldPath}\"",
             volumeId,
             scope,
             entry.ChangeType,
@@ -127,7 +127,7 @@ internal class IdentityBasedEventLogProcessingStep<TId, TAltId> : SuccessStep<TI
         }
 
         _logger.LogDebug(
-            "Finished processing event on {Volume}/\"{Scope}\": {ChangeType} \"{Path}\"/{ParentId}/{Id}, OldPath=\"{OldPath}\"",
+            "Finished processing event on {Volume}/\"{EventScope}\": {ChangeType} \"{Path}\"/{ParentId}/{Id}, OldPath=\"{OldPath}\"",
             volumeId,
             scope,
             entry.ChangeType,
@@ -185,7 +185,7 @@ internal class IdentityBasedEventLogProcessingStep<TId, TAltId> : SuccessStep<TI
 
     private void OnSkippedEntries(string scope)
     {
-        _logger.LogInformation("Event log entries were skipped, marking Adapter Tree root nodes for event scope \"{Scope}\" as dirty", scope);
+        _logger.LogInformation("Event log entries were skipped, marking Adapter Tree root nodes for event scope \"{EventScope}\" as dirty", scope);
 
         var syncRootNodes = _adapterTree.Root.Children.Where(child =>
             _syncRoots.Any(pair => pair.Key.Equals(child.Id) && pair.Value.EventScope == scope)
@@ -203,7 +203,7 @@ internal class IdentityBasedEventLogProcessingStep<TId, TAltId> : SuccessStep<TI
 
         if (!hasAffectedSyncRoots)
         {
-            _logger.LogError("There is no Adapter Tree root nodes for event scope \"{Scope}\"", scope);
+            _logger.LogError("There is no Adapter Tree root nodes for event scope \"{EventScope}\"", scope);
         }
     }
 

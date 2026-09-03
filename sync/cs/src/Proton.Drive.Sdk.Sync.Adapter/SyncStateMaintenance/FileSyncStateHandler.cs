@@ -5,9 +5,12 @@ using Proton.Drive.Sdk.Sync.Adapter.OperationExecution;
 using Proton.Drive.Sdk.Sync.Adapter.Shared;
 using Proton.Drive.Sdk.Sync.Adapter.Trees.Adapter;
 using Proton.Drive.Sdk.Sync.Adapter.Trees.StateMaintenance;
+using Proton.Drive.Sdk.Sync.Adapter.UpdateDetection;
+using Proton.Drive.Sdk.Sync.Shared;
 using Proton.Drive.Sdk.Sync.Shared.Adapters;
 using Proton.Drive.Sdk.Sync.Shared.Collections.Generic;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;
+using Proton.Drive.Sdk.Sync.Shared.Logging;
 using Proton.Drive.Sdk.Sync.Shared.Trees.FileSystem;
 using Proton.Drive.Sdk.Sync.Shared.Trees.FileSystem.Traversal;
 using Proton.Drive.Sdk.Sync.Shared.Trees.Operations;
@@ -28,6 +31,7 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
     where TAltId : IEquatable<TAltId>
 {
     private readonly ILogger<FileSyncStateHandler<TId, TAltId>> _logger;
+    private readonly Replica _replica;
     private readonly IScheduler _executionScheduler;
     private readonly IScheduler _syncScheduler;
     private readonly AdapterTree<TId, TAltId> _adapterTree;
@@ -49,6 +53,7 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
 
     public FileSyncStateHandler(
         ILogger<FileSyncStateHandler<TId, TAltId>> logger,
+        Replica replica,
         AppConfig appConfig,
         IScheduler scheduler,
         IScheduler executionScheduler,
@@ -61,6 +66,7 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
         FailureStep<TId, TAltId> failureStep)
     {
         _logger = logger;
+        _replica = replica;
         _executionScheduler = executionScheduler;
         _syncScheduler = syncScheduler;
         _adapterTree = adapterTree;
@@ -121,9 +127,13 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        while (_syncedNodeIds.TryDequeue(out var nodeId))
+        using (_logger.BeginScope(_replica.ToLogScope()))
+        using (_logger.BeginScope(LogScope.SyncStateMaintenance))
         {
-            await ScheduleExecution(() => HandleFileSyncStateAsync(nodeId, isHydration: false, cancellationToken), cancellationToken).ConfigureAwait(false);
+            while (_syncedNodeIds.TryDequeue(out var nodeId))
+            {
+                await ScheduleExecution(() => HandleFileSyncStateAsync(nodeId, isHydration: false, cancellationToken), cancellationToken).ConfigureAwait(false);
+            }
         }
     }
 
@@ -131,13 +141,18 @@ internal sealed class FileSyncStateHandler<TId, TAltId> : IDisposable
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        await foreach (var nodeModel in CandidatesForStateUpdate(cancellationToken).ConfigureAwait(false))
+        using (_logger.BeginScope(_replica.ToLogScope()))
+        using (_logger.BeginScope(LogScope.SyncStateMaintenance))
         {
-            var result = nodeModel.IsHydrationPending()
-                ? await HandleFileSyncStateAsync(nodeModel.Id, isHydration: true, cancellationToken).ConfigureAwait(false)
-                : await ScheduleExecution(() => HandleFileSyncStateAsync(nodeModel.Id, isHydration: false, cancellationToken), cancellationToken).ConfigureAwait(false);
+            await foreach (var nodeModel in CandidatesForStateUpdate(cancellationToken).ConfigureAwait(false))
+            {
+                var result = nodeModel.IsHydrationPending()
+                    ? await HandleFileSyncStateAsync(nodeModel.Id, isHydration: true, cancellationToken).ConfigureAwait(false)
+                    : await ScheduleExecution(() => HandleFileSyncStateAsync(nodeModel.Id, isHydration: false, cancellationToken), cancellationToken)
+                        .ConfigureAwait(false);
 
-            AdjustTreeTraversal(result);
+                AdjustTreeTraversal(result);
+            }
         }
     }
 

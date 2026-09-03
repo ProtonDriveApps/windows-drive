@@ -48,7 +48,6 @@ internal sealed class SdkPhotosTransferClient : ISdkPhotosTransferClient
                 thumbnails,
                 onProgress: null,
                 expectedSha1Provider,
-                forPhotos: true,
                 cancellationToken);
 
             await using (controller.ConfigureAwait(false))

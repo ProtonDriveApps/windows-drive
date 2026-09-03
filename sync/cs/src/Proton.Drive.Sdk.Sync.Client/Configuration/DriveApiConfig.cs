@@ -6,6 +6,7 @@ public class DriveApiConfig
     public Uri? CoreBaseUrl { get; internal set; }
     public Uri? DataBaseUrl { get; internal set; }
     public Uri? DriveBaseUrl { get; internal set; }
+    public Uri? DriveSdkBaseUrl { get; internal set; }
     public Uri? PaymentsBaseUrl { get; internal set; }
     public Uri? FeatureBaseUrl { get; internal set; }
     public Uri? ContactsBaseUrl { get; internal set; }
