@@ -20,8 +20,6 @@ internal class LoggingAppUpdater : IAppUpdateCleanup
     {
         try
         {
-            _logger.LogInformation("Started cleaning up downloaded app updates");
-
             _origin.Cleanup();
 
             _logger.LogInformation("Finished cleaning up downloaded app updates");

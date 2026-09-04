@@ -17,13 +17,16 @@ internal sealed class LocalFolderService : ILocalFolderService
     private const string SearchAll = "*";
 
     private readonly INumberSuffixedNameGenerator _numberSuffixedNameGenerator;
+    private readonly IOpenByFileIdSupportVerifier _openByFileIdSupportVerifier;
     private readonly ILogger<LocalFolderService> _logger;
 
     public LocalFolderService(
         INumberSuffixedNameGenerator numberSuffixedNameGenerator,
+        IOpenByFileIdSupportVerifier openByFileIdSupportVerifier,
         ILogger<LocalFolderService> logger)
     {
         _numberSuffixedNameGenerator = numberSuffixedNameGenerator;
+        _openByFileIdSupportVerifier = openByFileIdSupportVerifier;
         _logger = logger;
     }
 
@@ -102,7 +105,14 @@ internal sealed class LocalFolderService : ILocalFolderService
             folderInfo = new LocalFolderInfo
             {
                 Id = folder.ObjectId,
-                VolumeInfo = volumeInfo,
+                VolumeInfo = volumeInfo with
+                {
+                    // A volume that does not advertise the capability is reported as not supporting it without
+                    // consulting the verification, so there is nothing to gain from a call that is bound to fail.
+                    VerifiedSupportsOpenByFileId =
+                        volumeInfo.Attributes.HasFlag(FileSystemAttributes.SupportsOpenByFileId)
+                        && _openByFileIdSupportVerifier.SupportsOpenByFileId(folder, volumeInfo.VolumeSerialNumber),
+                },
             };
 
             return true;

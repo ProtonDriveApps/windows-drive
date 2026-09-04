@@ -14,6 +14,7 @@ internal static class MappingSetupReportFactory
         const string setupStatusDimensionName = "setupStatus";
         const string syncModeDimensionName = "syncMode";
         const string syncMethodDimensionName = "syncMethod";
+        const string openByFileIdSupportStatusDimensionName = "openByFileIdSupportStatus";
 
         const string measurementGroupName = "drive.windows.mappings";
         const string eventName = "periodic_setup_state_report";
@@ -28,6 +29,7 @@ internal static class MappingSetupReportFactory
                     x.SyncType,
                     x.Status,
                     x.SetupStatus,
+                    x.OpenByFileIdSupportStatus,
                 })
             .Select(
                 group =>
@@ -47,6 +49,7 @@ internal static class MappingSetupReportFactory
                     dimensions.Add(syncModeDimensionName, group.Key.SyncType.ToString());
                     dimensions.Add(statusDimensionName, group.Key.Status.ToString());
                     dimensions.Add(setupStatusDimensionName, group.Key.SetupStatus.ToString());
+                    dimensions.Add(openByFileIdSupportStatusDimensionName, group.Key.OpenByFileIdSupportStatus.ToString());
                     return new TelemetryEvent(measurementGroupName, eventName, values, dimensions);
                 });
 

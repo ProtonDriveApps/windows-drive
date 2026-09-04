@@ -98,28 +98,10 @@
     <None Update="Resources\Notifications\Notifications.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\Notifications\Promos2026\promo-logo.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Notifications\Promos2026\proton-unlimited-2026-eur.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Notifications\Promos2026\proton-unlimited-2026-usd.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Update="Resources\Notifications\SummerSale2026\logo.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\Notifications\SummerSale2026\summer26-duo-40.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Notifications\SummerSale2026\summer26-family-50.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Notifications\SummerSale2026\summer26-plus-40.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Resources\Notifications\SummerSale2026\summer26-unlimited-50.png">
+    <None Update="Resources\Notifications\SummerSale2026\unlimited-50.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Resources\Notifications\UpgradePlan\red-storage-logo.png">

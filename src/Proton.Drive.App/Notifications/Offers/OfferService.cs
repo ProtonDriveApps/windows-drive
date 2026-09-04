@@ -19,8 +19,9 @@ namespace Proton.Drive.App.Notifications.Offers;
 
 internal sealed class OfferService : IStoppableService, IAccountStateAware, IUserStateAware, IRemoteSettingsAware, IFeatureFlagsAware, IDisposable
 {
-    public const string OfferRetentionFeatureCode1 = "OfferMar26DrivePlusRetentionExperiment";
-    public const string OfferRetentionFeatureCode2 = "OfferMar26UnlimitedRetentionExperiment";
+    // Core feature flags gating retention offers.
+    // Add new feature codes here to re-enable retention offer eligibility checks.
+    private static readonly string[] RetentionOfferFeatureCodes = [];
 
     private readonly AppConfig _appConfig;
     private readonly IClock _clock;
@@ -320,9 +321,20 @@ internal sealed class OfferService : IStoppableService, IAccountStateAware, IUse
             return;
         }
 
-        _eligibleForRetentionOffers =
-            await _coreFeatureClient.IsFeatureEnabledAsync(OfferRetentionFeatureCode1, cancellationToken).ConfigureAwait(false) == true ||
-            await _coreFeatureClient.IsFeatureEnabledAsync(OfferRetentionFeatureCode2, cancellationToken).ConfigureAwait(false) == true;
+        _eligibleForRetentionOffers = await IsAnyFeatureEnabledAsync(RetentionOfferFeatureCodes, cancellationToken).ConfigureAwait(false);
+    }
+
+    private async Task<bool> IsAnyFeatureEnabledAsync(IReadOnlyList<string> features, CancellationToken cancellationToken)
+    {
+        foreach (var feature in features)
+        {
+            if (await _coreFeatureClient.IsFeatureEnabledAsync(feature, cancellationToken).ConfigureAwait(false) == true)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void SetActiveOffer(Offer? offer)

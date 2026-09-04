@@ -313,7 +313,8 @@ internal sealed class OnDemandHydrationFileSystemClient : FileSystemClientBase, 
                         fileInfo.Copy().WithName(info.Name).WithPath(info.Path).WithAttributes(newAttributes).WithLastWriteTimeUtc(lastWriteTime),
                         checksumVerificationEnabled,
                         progressCallback,
-                        _recordMetric);
+                        _recordMetric,
+                        _loggerFactory.CreateLogger<ImmediatelyHydratingOnDemandRevisionCreationProcess>());
 
                     file.Dispose();
 

@@ -1,7 +1,9 @@
+using Microsoft.Extensions.Logging;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;
 using Proton.Drive.Shared;
 using Proton.Drive.Shared.Extensions;
 using Proton.Drive.Shared.IO;
+using Proton.Drive.Shared.Logging;
 using Proton.Drive.Shared.Metrics;
 
 namespace Proton.Drive.Sdk.Sync.Windows.FileSystem.Client;
@@ -13,6 +15,7 @@ internal class ClassicRevisionCreationProcess : IDestinationRevision<long>
     private readonly NodeInfo<long> _finalInfo;
     private readonly Action<Progress>? _progressCallback;
     private readonly Action<MetricEvent> _recordMetric;
+    private readonly ILogger<ClassicRevisionCreationProcess> _logger;
 
     private Stream? _contentWritingStream;
     private bool _succeeded;
@@ -24,7 +27,8 @@ internal class ClassicRevisionCreationProcess : IDestinationRevision<long>
         NodeInfo<long> finalInfo,
         bool checksumVerificationEnabled,
         Action<Progress>? progressCallback,
-        Action<MetricEvent> recordMetric)
+        Action<MetricEvent> recordMetric,
+        ILogger<ClassicRevisionCreationProcess> logger)
     {
         Ensure.NotNullOrEmpty(finalInfo.Name, nameof(finalInfo), nameof(finalInfo.Name));
 
@@ -35,6 +39,7 @@ internal class ClassicRevisionCreationProcess : IDestinationRevision<long>
         ChecksumVerificationEnabled = checksumVerificationEnabled;
         _progressCallback = progressCallback;
         _recordMetric = recordMetric;
+        _logger = logger;
     }
 
     public NodeInfo<long> FileInfo { get; }
@@ -101,6 +106,8 @@ internal class ClassicRevisionCreationProcess : IDestinationRevision<long>
     {
         if (!_succeeded)
         {
+            _logger.LogInformation("Deleting temporary file \"{Name}\"", _logger.GetSensitiveValueForLogging(_file.Name));
+
             _file.TryDelete();
         }
 

@@ -16,6 +16,9 @@ public sealed class LocalReplica
     /// </summary>
     public int InternalVolumeId { get; set; }
 
+    [JsonIgnore]
+    public OpenByFileIdSupportStatus OpenByFileIdSupportStatus { get; set; }
+
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public StorageOptimizationState? StorageOptimization { get; set; }
 }

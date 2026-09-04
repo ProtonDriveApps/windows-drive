@@ -24,7 +24,8 @@ internal sealed class MappingSetupStatistics : IMappingsAware, IMappingStateAwar
                 mapping.SyncMethod,
                 mapping.Status,
                 MappingSetupStatus.None,
-                mapping.Remote.IsReadOnly);
+                mapping.Remote.IsReadOnly,
+                mapping.Local.OpenByFileIdSupportStatus);
 
             _mappingStatisticsById.TryAdd(
                 mapping.Id,
@@ -56,7 +57,8 @@ internal sealed class MappingSetupStatistics : IMappingsAware, IMappingStateAwar
             mapping.SyncMethod,
             mapping.Status,
             mappingSetup.Status,
-            mapping.Remote.IsReadOnly);
+            mapping.Remote.IsReadOnly,
+            mapping.Local.OpenByFileIdSupportStatus);
 
         _mappingStatisticsById.TryUpdate(
             mapping.Id,

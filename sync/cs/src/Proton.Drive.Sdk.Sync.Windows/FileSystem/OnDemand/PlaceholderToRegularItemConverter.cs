@@ -29,9 +29,11 @@ public sealed class PlaceholderToRegularItemConverter : IPlaceholderToRegularIte
             return true;
         }
 
+        var statistics = default(Statistics);
+
         try
         {
-            TryConvertFolder(path, skipRoot, out _);
+            TryConvertFolder(path, skipRoot, ref statistics, out _);
 
             return true;
         }
@@ -40,6 +42,10 @@ public sealed class PlaceholderToRegularItemConverter : IPlaceholderToRegularIte
             _logger.LogError("Failed to convert to classic folder: {ExceptionType}: {ErrorCode}", ex.GetType().Name, ex.GetRelevantFormattedErrorCode());
 
             return false;
+        }
+        finally
+        {
+            LogStatistics(ref statistics);
         }
     }
 
@@ -50,9 +56,11 @@ public sealed class PlaceholderToRegularItemConverter : IPlaceholderToRegularIte
             return true;
         }
 
+        var statistics = default(Statistics);
+
         try
         {
-            TryConvertFile(path, out _);
+            TryConvertFile(path, ref statistics, out _);
 
             return true;
         }
@@ -61,6 +69,10 @@ public sealed class PlaceholderToRegularItemConverter : IPlaceholderToRegularIte
             _logger.LogError("Failed to convert to classic file: {ExceptionType}: {ErrorCode}", ex.GetType().Name, ex.GetRelevantFormattedErrorCode());
 
             return false;
+        }
+        finally
+        {
+            LogStatistics(ref statistics);
         }
     }
 
@@ -86,7 +98,7 @@ public sealed class PlaceholderToRegularItemConverter : IPlaceholderToRegularIte
         }
     }
 
-    private void TryConvertFile(string filePath, out bool deleted)
+    private void TryConvertFile(string filePath, ref Statistics statistics, out bool deleted)
     {
         deleted = false;
 
@@ -94,7 +106,7 @@ public sealed class PlaceholderToRegularItemConverter : IPlaceholderToRegularIte
         {
             using var file = FileSystemFile.Open(filePath, FileSystemFileAccess.WriteAttributes | FileSystemFileAccess.Delete);
 
-            if (TryDeletePartialFile(file))
+            if (TryDeletePartialFile(file, ref statistics))
             {
                 deleted = true;
                 return;
@@ -113,7 +125,7 @@ public sealed class PlaceholderToRegularItemConverter : IPlaceholderToRegularIte
         }
     }
 
-    private void TryConvertFolder(string folderPath, bool skipRoot, out bool deleted)
+    private void TryConvertFolder(string folderPath, bool skipRoot, ref Statistics statistics, out bool deleted)
     {
         deleted = false;
 
@@ -140,11 +152,11 @@ public sealed class PlaceholderToRegularItemConverter : IPlaceholderToRegularIte
 
                 if (entry.Attributes.HasFlag(FileAttributes.Directory))
                 {
-                    TryConvertFolder(entryFullPath, skipRoot: false, out entryDeleted);
+                    TryConvertFolder(entryFullPath, skipRoot: false, ref statistics, out entryDeleted);
                 }
                 else
                 {
-                    TryConvertFile(entryFullPath, out entryDeleted);
+                    TryConvertFile(entryFullPath, ref statistics, out entryDeleted);
                 }
 
                 folderIsEmpty &= entryDeleted;
@@ -155,7 +167,7 @@ public sealed class PlaceholderToRegularItemConverter : IPlaceholderToRegularIte
                 return;
             }
 
-            if (folderIsEmpty && TryDeleteEmptyFolder(folder))
+            if (folderIsEmpty && TryDeleteEmptyFolder(folder, ref statistics))
             {
                 deleted = true;
                 return;
@@ -174,7 +186,7 @@ public sealed class PlaceholderToRegularItemConverter : IPlaceholderToRegularIte
         }
     }
 
-    private bool TryDeletePartialFile(FileSystemFile file)
+    private bool TryDeletePartialFile(FileSystemFile file, ref Statistics statistics)
     {
         try
         {
@@ -186,6 +198,8 @@ public sealed class PlaceholderToRegularItemConverter : IPlaceholderToRegularIte
             RemoveReadOnlyAttribute(file);
             file.Delete();
 
+            statistics.NumberOfDeletedPartialFiles += 1;
+
             return true;
         }
         catch (Exception ex) when (ex.IsFileAccessException() || ex is COMException)
@@ -195,7 +209,7 @@ public sealed class PlaceholderToRegularItemConverter : IPlaceholderToRegularIte
         }
     }
 
-    private bool TryDeleteEmptyFolder(FileSystemDirectory folder)
+    private bool TryDeleteEmptyFolder(FileSystemDirectory folder, ref Statistics statistics)
     {
         try
         {
@@ -205,6 +219,8 @@ public sealed class PlaceholderToRegularItemConverter : IPlaceholderToRegularIte
             }
 
             folder.Delete(recursive: false);
+
+            statistics.NumberOfDeletedEmptyFolders += 1;
 
             return true;
         }
@@ -244,5 +260,19 @@ public sealed class PlaceholderToRegularItemConverter : IPlaceholderToRegularIte
         {
             _logger.LogWarning("Failed to exclude from sync: {ExceptionType}: {ErrorCode}", ex.GetType().Name, ex.GetRelevantFormattedErrorCode());
         }
+    }
+
+    private void LogStatistics(ref Statistics statistics)
+    {
+        _logger.LogInformation(
+            "Deleted {NumberOfFiles} partial files, {NumberOfFolders} empty folders",
+            statistics.NumberOfDeletedPartialFiles,
+            statistics.NumberOfDeletedEmptyFolders);
+    }
+
+    private ref struct Statistics
+    {
+        public int NumberOfDeletedPartialFiles { get; set; }
+        public int NumberOfDeletedEmptyFolders { get; set; }
     }
 }

@@ -9,7 +9,8 @@ internal abstract class FileSystemClientBase
     {
         cancellationToken.ThrowIfCancellationRequested();
 
-        // We cancel awaiting to move to the Recycle Bin, but the request continues
+        // We cancel awaiting to move to the Recycle Bin, but the request continues.
+        // True cancellation could be possible by returning an error (E_ABORT) from the Shell32.IFileOperationProgressSink.PreDeleteItem callback.
         return DeleteAsync(info, (fsObject, ct) => RecycleBin.MoveToRecycleBinAsync(fsObject.FullPath).WaitAsync(ct), cancellationToken);
     }
 

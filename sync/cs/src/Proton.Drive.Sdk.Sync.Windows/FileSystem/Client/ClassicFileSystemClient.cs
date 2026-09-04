@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem.Photos;
 using Proton.Drive.Shared;
@@ -32,19 +33,22 @@ internal sealed class ClassicFileSystemClient : FileSystemClientBase, IFileSyste
     private readonly IFileMetadataGenerator _fileMetadataGenerator;
     private readonly IPhotoTagsGenerator _photoTagsGenerator;
     private readonly Action<MetricEvent> _recordMetricEvent;
+    private readonly ILoggerFactory _loggerFactory;
 
     public ClassicFileSystemClient(
         IFeatureFlagProvider featureFlagProvider,
         IThumbnailGenerator thumbnailGenerator,
         IFileMetadataGenerator fileMetadataGenerator,
         IPhotoTagsGenerator photoTagsGenerator,
-        Action<MetricEvent> recordMetricEvent)
+        Action<MetricEvent> recordMetricEvent,
+        ILoggerFactory loggerFactory)
     {
         _featureFlagProvider = featureFlagProvider;
         _thumbnailGenerator = thumbnailGenerator;
         _fileMetadataGenerator = fileMetadataGenerator;
         _photoTagsGenerator = photoTagsGenerator;
         _recordMetricEvent = recordMetricEvent;
+        _loggerFactory = loggerFactory;
     }
 
     public void Connect(string syncRootPath, IFileHydrationDemandHandler<long> fileHydrationDemandHandler)
@@ -226,7 +230,8 @@ internal sealed class ClassicFileSystemClient : FileSystemClientBase, IFileSyste
                 finalInfo,
                 checksumVerificationEnabled,
                 progressCallback,
-                _recordMetricEvent);
+                _recordMetricEvent,
+                _loggerFactory.CreateLogger<ClassicRevisionCreationProcess>());
         }
         catch
         {
@@ -294,7 +299,8 @@ internal sealed class ClassicFileSystemClient : FileSystemClientBase, IFileSyste
                 fileInfo.Copy().WithName(info.Name).WithPath(info.Path).WithAttributes(fileAttributes).WithSize(size).WithLastWriteTimeUtc(lastWriteTime),
                 checksumVerificationEnabled,
                 progressCallback,
-                _recordMetricEvent);
+                _recordMetricEvent,
+                _loggerFactory.CreateLogger<ClassicRevisionCreationProcess>());
         }
         catch
         {

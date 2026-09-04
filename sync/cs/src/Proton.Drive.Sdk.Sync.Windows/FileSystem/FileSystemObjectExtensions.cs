@@ -37,4 +37,14 @@ public static class FileSystemObjectExtensions
             Attributes = (FileSystemAttributes)fileSystemFlags,
         };
     }
+
+    public static void VerifyOpenByFileIdSupport(this FileSystemObject fileSystemObject)
+    {
+        using var fileSystemObjectById = FileSystemObject.OpenById(
+            fileSystemObject.ObjectId,
+            fileSystemObject,
+            FileSystemFileAccess.ReadAttributes,
+            FileShare.ReadWrite | FileShare.Delete,
+            FileOptions.None);
+    }
 }

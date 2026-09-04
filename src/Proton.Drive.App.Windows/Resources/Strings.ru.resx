@@ -1275,7 +1275,7 @@
     <value>Чтобы продолжить использование Proton Drive, обновите его до последней версии</value>
   </data>
   <data name="Main_Sidebar_Offer_Button_GetDeal">
-    <value>Воспользуйтесь _предложением</value>
+    <value>Воспользоваться _предложением</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Sidebar_Storage_Button_GetMoreStorage">

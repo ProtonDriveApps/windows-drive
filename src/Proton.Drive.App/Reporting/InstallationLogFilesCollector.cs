@@ -124,11 +124,13 @@ internal sealed class InstallationLogFilesCollector : IStartableService
             {
                 try
                 {
+                    _logger.LogInformation("Deleting old installation log file \"{Name}\"", Path.GetFileName(filePath));
+
                     File.Delete(filePath);
                 }
                 catch (Exception ex) when (ex.IsFileAccessException())
                 {
-                    _logger.LogWarning("Failed to delete old installation log file: {Message}", ex.Message);
+                    _logger.LogWarning("Failed to delete old installation log file \"{Name}\": {Message}", Path.GetFileName(filePath), ex.Message);
                 }
             }
         }

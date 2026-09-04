@@ -115,6 +115,37 @@ public abstract class FileSystemObject : IDisposable
         }
     }
 
+    public static FileSystemObject OpenById(long fileId, FileSystemObject volumeHint, FileSystemFileAccess access, FileShare share, FileOptions options)
+    {
+        Ensure.IsTrue(fileId != 0, "Identity value not specified");
+
+        Validate(FileMode.Open, access, share, attributes: default, options);
+
+        // FILE_FLAG_BACKUP_SEMANTICS is required for opening directory handles
+        options |= (FileOptions)Kernel32.FileFlags.FILE_FLAG_BACKUP_SEMANTICS;
+
+        var handle = Internal.FileSystem.CreateHandleById(fileId, volumeHint.FileHandle, access, share, attributes: default, options);
+
+        try
+        {
+            var isAsync = (options & FileOptions.Asynchronous) != 0;
+
+            var information = Internal.FileSystem.GetFileInformation(handle);
+            var isDirectory = (information.dwFileAttributes & FileAttributes.Directory) > 0;
+
+            var path = Internal.FileSystem.GetPathByHandle(handle);
+
+            return isDirectory
+                ? new FileSystemDirectory(handle, path, access, isAsync)
+                : new FileSystemFile(handle, path, access, isAsync);
+        }
+        catch
+        {
+            handle.Dispose();
+            throw;
+        }
+    }
+
     /// <summary>
     /// Validates new file name against Windows file naming limitations.
     /// </summary>

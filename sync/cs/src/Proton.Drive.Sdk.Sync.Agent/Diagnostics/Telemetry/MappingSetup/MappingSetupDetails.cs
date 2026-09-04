@@ -13,13 +13,15 @@ public sealed record MappingSetupDetails
         SyncMethod syncMethod,
         MappingStatus status,
         MappingSetupStatus mappingSetupStatus,
-        bool isReadOnly)
+        bool isReadOnly,
+        OpenByFileIdSupportStatus openByFileIdSupportStatus)
     {
         Type = type;
         LinkType = linkType;
         SyncMethod = syncMethod;
         Status = status;
         SetupStatus = mappingSetupStatus;
+        OpenByFileIdSupportStatus = openByFileIdSupportStatus;
         SyncType = type switch
         {
             MappingType.SharedWithMeItem when isReadOnly => MappingSyncType.OneWayToLocal,
@@ -33,4 +35,5 @@ public sealed record MappingSetupDetails
     public MappingStatus Status { get; }
     public MappingSetupStatus SetupStatus { get; }
     public MappingSyncType SyncType { get; }
+    public OpenByFileIdSupportStatus OpenByFileIdSupportStatus { get; }
 }

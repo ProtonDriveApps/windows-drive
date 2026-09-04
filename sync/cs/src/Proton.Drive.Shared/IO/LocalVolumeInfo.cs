@@ -7,4 +7,5 @@ public sealed record LocalVolumeInfo
     public int VolumeSerialNumber { get; init; }
     public int MaximumComponentLength { get; init; }
     public FileSystemAttributes Attributes { get; init; }
+    public bool VerifiedSupportsOpenByFileId { get; init; }
 }

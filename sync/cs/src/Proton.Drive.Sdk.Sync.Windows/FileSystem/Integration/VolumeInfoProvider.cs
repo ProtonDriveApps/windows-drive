@@ -102,11 +102,15 @@ public class VolumeInfoProvider : ILocalVolumeInfoProvider
 
     private bool TryGetVolumeRoot(string path, [NotNullWhen(true)] out string? rootPath)
     {
-        var rootPathBuffer = new StringBuilder(PathMaxLength);
-
-        if (!Kernel32.GetVolumePathName(path, rootPathBuffer, (uint)rootPathBuffer.Capacity))
+        try
         {
-            var exception = new Win32Exception();   // Automatically gets the last Win32 error code and description
+            rootPath = Internal.FileSystem.GetVolumeRoot(path);
+            rootPath = PathComparison.EnsureTrailingSeparator(rootPath);
+
+            return true;
+        }
+        catch (Win32Exception exception)
+        {
             var pathToLog = _logger.GetSensitiveValueForLogging(path);
             _logger.LogWarning(
                 "Failed to get local volume root path for path \"{Path}\", Win32 error {ErrorCode}: {ErrorMessage}",
@@ -117,9 +121,6 @@ public class VolumeInfoProvider : ILocalVolumeInfoProvider
             rootPath = null;
             return false;
         }
-
-        rootPath = PathComparison.EnsureTrailingSeparator(rootPathBuffer.ToString());
-        return true;
     }
 
     private bool TryGetFileSystemName(string volumeRootPath, [NotNullWhen(true)] out string? fileSystemName)

@@ -28,6 +28,7 @@ public static class ServiceConfigurator
         public IServiceCollection AddWindowsSyncServices()
         {
             services.AddSingleton<ILocalVolumeInfoProvider, VolumeInfoProvider>();
+            services.AddSingleton<IOpenByFileIdSupportVerifier, OpenByFileIdSupportVerifier>();
             services.AddSingleton<ILocalFolderService, LocalFolderService>();
             services.AddSingleton<IFileSystemIdentityProvider<long>, FileSystemIdentityProvider>();
             services.AddSingleton<IReadOnlyFileAttributeRemover, ReadOnlyFileAttributeRemover>();

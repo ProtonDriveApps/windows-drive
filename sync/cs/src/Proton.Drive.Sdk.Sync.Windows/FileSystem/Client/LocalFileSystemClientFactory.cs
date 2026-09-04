@@ -47,7 +47,8 @@ public sealed class LocalFileSystemClientFactory : ILocalFileSystemClientFactory
             _thumbnailGenerator,
             _fileMetadataGenerator,
             _photoTagsGenerator,
-            _recordMetric);
+            _recordMetric,
+            _loggerFactory);
     }
 
     public IFileSystemClient<long> CreateOnDemandHydrationClient()

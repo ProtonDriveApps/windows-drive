@@ -1272,7 +1272,7 @@ Der Inhalt der Dateien wird nur bei Bedarf heruntergeladen.</value>
     <value>Um Proton Drive weiterhin nutzen zu können, musst du auf die neueste Version aktualisieren</value>
   </data>
   <data name="Main_Sidebar_Offer_Button_GetDeal">
-    <value>Sichere dir das _Angebot</value>
+    <value>_Deal sichern</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Sidebar_Storage_Button_GetMoreStorage">

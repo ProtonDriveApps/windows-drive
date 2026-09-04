@@ -1,197 +1,36 @@
-﻿[
-  // Promo 2026 notifications for free users (available one month per quarter)
-  {
-    "NotificationID": "FreeUserUpgrade-2026-Q3-USD",
-    "StartTime": "2026-07-07T12:00:00+02:00",
-    "EndTime": "2026-08-07T12:00:00+02:00",
-    "UserSubscriptionPlanCodes": [ "free" ],
-    "ExcludedUserSubscriptionPlanCouponCodes": [ "DEGOOGLE" ],
-    "UserCurrency": "USD",
-    "Type": 0,
-    "HeaderText": "Welcome offer on Proton Drive",
-    "ContentText": "Claim 500 GB at 90% OFF",
-    "ButtonText": "Claim the 90% OFF Deal",
-    "LogoImageUrl": "Resources/Notifications/Promos2026/promo-logo.png",
-    "DisplayCallToActionButton": true,
-    "Offer": {
-      "Title": "% Claim 500 GB for 1$",
-      "ImageUrl": "Resources/Notifications/Promos2026/proton-unlimited-2026-usd.png",
-      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=DEGOOGLE&fullscreen=auto&start=checkout&ref=upgrade-drive-windows-app-sidebar-intro-pricing-free"
+[
+    // Q3 2026 notifications for free users
+    {
+        "NotificationID": "SS2-2026-Free-to-Unlimited-12M-1",
+        "StartTime": "2026-08-31T12:00:00+02:00",
+        "EndTime": "2026-09-07T12:00:00+02:00",
+        "UserSubscriptionPlanCodes": [ "free" ],
+        "ExcludedUserSubscriptionPlanCouponCodes": [ "SEP26BUNDLESALE", "SEP26BUNDLEDEAL", "SEP26BUNDLESALECS", "SEP26BUNDLEDEALCS" ],
+        "Type": 0,
+        "DisplayCallToActionButton": true,
+        // No Windows notification
+        "Offer": {
+            "Title": "Get the deal",
+            "ImageUrl": "Resources/Notifications/SummerSale2026/unlimited-50.png",
+            "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=SEP26BUNDLESALE&fullscreen=auto&start=checkout&ref=offer_26_sep_drive_free_unlimited_desktop"
+        }
+    },
+    {
+        "NotificationID": "SS2-2026-Free-to-Unlimited-12M-2",
+        "StartTime": "2026-09-07T12:00:00+02:00",
+        "EndTime": "2026-09-11T12:00:00+02:00",
+        "UserSubscriptionPlanCodes": [ "free" ],
+        "ExcludedUserSubscriptionPlanCouponCodes": [ "SEP26BUNDLESALE", "SEP26BUNDLEDEAL", "SEP26BUNDLESALECS", "SEP26BUNDLEDEALCS" ],
+        "Type": 0,
+        "DisplayCallToActionButton": true,
+        "HeaderText": "Proton Unlimited 50% OFF",
+        "ContentText": "Save big on storage - offer ends soon!",
+        "ButtonText": "Claim my Deal",
+        "LogoImageUrl": "Resources/Notifications/SummerSale2026/logo.png",
+        "Offer": {
+            "Title": "Get the deal",
+            "ImageUrl": "Resources/Notifications/SummerSale2026/unlimited-50.png",
+            "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=SEP26BUNDLESALE&fullscreen=auto&start=checkout&ref=offer_26_sep_drive_free_unlimited_desktop"
+        }
     }
-  },
-  {
-    "NotificationID": "FreeUserUpgrade-2026-Q3-EUR",
-    "StartTime": "2026-07-07T12:00:00+02:00",
-    "EndTime": "2026-08-07T12:00:00+02:00",
-    "UserSubscriptionPlanCodes": [ "free" ],
-    "ExcludedUserSubscriptionPlanCouponCodes": [ "DEGOOGLE" ],
-    "UserCurrency": "EUR",
-    "Type": 0,
-    "HeaderText": "Welcome offer on Proton Drive",
-    "ContentText": "Claim 500 GB at 90% OFF",
-    "ButtonText": "Claim the 90% OFF Deal",
-    "LogoImageUrl": "Resources/Notifications/Promos2026/promo-logo.png",
-    "DisplayCallToActionButton": true,
-    "Offer": {
-      "Title": "% Claim 500 GB for 1€",
-      "ImageUrl": "Resources/Notifications/Promos2026/proton-unlimited-2026-eur.png",
-      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=DEGOOGLE&fullscreen=auto&start=checkout&ref=upgrade-drive-windows-app-sidebar-intro-pricing-free"
-    }
-  },
-  {
-    "NotificationID": "FreeUserUpgrade-2026-Q4-USD",
-    "StartTime": "2026-09-01T12:00:00+02:00",
-    "EndTime": "2026-10-01T12:00:00+02:00",
-    "UserSubscriptionPlanCodes": [ "free" ],
-    "ExcludedUserSubscriptionPlanCouponCodes": [ "DEGOOGLE" ],
-    "UserCurrency": "USD",
-    "Type": 0,
-    "HeaderText": "Welcome offer on Proton Drive",
-    "ContentText": "Claim 500 GB at 90% OFF",
-    "ButtonText": "Claim the 90% OFF Deal",
-    "LogoImageUrl": "Resources/Notifications/Promos2026/promo-logo.png",
-    "DisplayCallToActionButton": true,
-    "Offer": {
-      "Title": "% Claim 500 GB for 1$",
-      "ImageUrl": "Resources/Notifications/Promos2026/proton-unlimited-2026-usd.png",
-      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=DEGOOGLE&fullscreen=auto&start=checkout&ref=upgrade-drive-windows-app-sidebar-intro-pricing-free"
-    }
-  },
-  {
-    "NotificationID": "FreeUserUpgrade-2026-Q4-EUR",
-    "StartTime": "2026-09-01T12:00:00+02:00",
-    "EndTime": "2026-10-01T12:00:00+02:00",
-    "UserSubscriptionPlanCodes": [ "free" ],
-    "ExcludedUserSubscriptionPlanCouponCodes": [ "DEGOOGLE" ],
-    "UserCurrency": "EUR",
-    "Type": 0,
-    "HeaderText": "Welcome offer on Proton Drive",
-    "ContentText": "Claim 500 GB at 90% OFF",
-    "ButtonText": "Claim the 90% OFF Deal",
-    "LogoImageUrl": "Resources/Notifications/Promos2026/promo-logo.png",
-    "DisplayCallToActionButton": true,
-    "Offer": {
-      "Title": "% Claim 500 GB for 1€",
-      "ImageUrl": "Resources/Notifications/Promos2026/proton-unlimited-2026-eur.png",
-      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=DEGOOGLE&fullscreen=auto&start=checkout&ref=upgrade-drive-windows-app-sidebar-intro-pricing-free"
-    }
-  },
-  // Summer Sale 2026 notifications for free users
-  {
-    "NotificationID": "SS-2026-Free-to-DrivePlus-12M-1",
-    "StartTime": "2026-06-22T12:00:00+02:00",
-    "EndTime": "2026-06-29T12:00:00+02:00",
-    "UserSubscriptionPlanCodes": [ "free" ],
-    "ExcludedUserSubscriptionPlanCouponCodes": [ "JUNE26BUNDLESALE", "JUNE26SALE", "MAR26SALECS", "MAR26BUNDLESALECS" ],
-    "Type": 0,
-    // No Windows notification
-    "Offer": {
-      "Title": "SUMMER SALE",
-      "ImageUrl": "Resources/Notifications/SummerSale2026/summer26-plus-40.png",
-      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=drive2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=JUNE26SALE&fullscreen=auto&start=checkout&ref=offer_26_june_drive_free_plus_desktop"
-    }
-  },
-  {
-    "NotificationID": "SS-2026-Free-to-DrivePlus-12M-2",
-    "StartTime": "2026-06-29T12:00:00+02:00",
-    "EndTime": "2026-07-07T12:00:00+02:00",
-    "UserSubscriptionPlanCodes": [ "free" ],
-    "ExcludedUserSubscriptionPlanCouponCodes": [ "JUNE26BUNDLESALE", "JUNE26SALE", "MAR26SALECS", "MAR26BUNDLESALECS" ],
-    "Type": 0,
-    "HeaderText": "Proton Summer Sale 40% OFF",
-    "ContentText": "Save big on storage - offer ends soon!",
-    "ButtonText": "Claim my Deal",
-    "LogoImageUrl": "Resources/Notifications/SummerSale2026/logo.png",
-    "Offer": {
-      "Title": "SUMMER SALE",
-      "ImageUrl": "Resources/Notifications/SummerSale2026/summer26-plus-40.png",
-      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=drive2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=JUNE26SALE&fullscreen=auto&start=checkout&ref=offer_26_june_drive_free_plus_desktop"
-    }
-  },
-  // Summer Sale 2026 notifications for Drive Plus plan users
-  {
-    "NotificationID": "SS-2026-DrivePlus-to-Unlimited-12M-1",
-    "StartTime": "2026-06-22T12:00:00+02:00",
-    "EndTime": "2026-06-29T12:00:00+02:00",
-    "UserSubscriptionPlanCodes": [ "drive2022", "drive1tb2025", "vpn2022", "vpn2024", "pass2023", "mail2022" ],
-    "ExcludedUserSubscriptionPlanCouponCodes": [ "JUNE26BUNDLESALE", "JUNE26SALE", "MAR26SALECS", "MAR26BUNDLESALECS" ],
-    "Type": 0,
-    // No Windows notification
-    "Offer": {
-      "Title": "SUMMER SALE",
-      "ImageUrl": "Resources/Notifications/SummerSale2026/summer26-unlimited-50.png",
-      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=JUNE26BUNDLESALE&fullscreen=auto&start=checkout&ref=offer_26_june_drive_plus_unlimited_desktop"
-    }
-  },
-  {
-    "NotificationID": "SS-2026-DrivePlus-to-Unlimited-12M-2",
-    "StartTime": "2026-06-29T12:00:00+02:00",
-    "EndTime": "2026-07-07T12:00:00+02:00",
-    "UserSubscriptionPlanCodes": [ "drive2022", "drive1tb2025", "vpn2022", "vpn2024", "pass2023", "mail2022" ],
-    "ExcludedUserSubscriptionPlanCouponCodes": [ "JUNE26BUNDLESALE", "JUNE26SALE", "MAR26SALECS", "MAR26BUNDLESALECS" ],
-    "Type": 0,
-    "HeaderText": "Proton Summer Sale 50% OFF",
-    "ContentText": "Save big on storage - offer ends soon!",
-    "ButtonText": "Claim my Deal",
-    "LogoImageUrl": "Resources/Notifications/SummerSale2026/logo.png",
-    "Offer": {
-      "Title": "SUMMER SALE",
-      "ImageUrl": "Resources/Notifications/SummerSale2026/summer26-unlimited-50.png",
-      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=JUNE26BUNDLESALE&fullscreen=auto&start=checkout&ref=offer_26_june_drive_plus_unlimited_desktop"
-    }
-  },
-  // Summer Sale 2026 notifications for Unlimited plan users
-  {
-    "NotificationID": "SS-2026-Unlimited-to-Duo-12M-1",
-    "StartTime": "2026-06-22T12:00:00+02:00",
-    "EndTime": "2026-07-07T12:00:00+02:00",
-    "UserSubscriptionPlanCodes": [ "bundle2022" ],
-    "ExcludedUserSubscriptionPlanCouponCodes": [ "JUNE26BUNDLESALE", "JUNE26SALE", "MAR26SALECS", "MAR26BUNDLESALECS" ],
-    "Type": 0,
-    "HeaderText": "Proton Summer Sale 40% OFF",
-    "ContentText": "Save big on storage - offer ends soon!",
-    "ButtonText": "Claim my Deal",
-    "LogoImageUrl": "Resources/Notifications/SummerSale2026/logo.png",
-    "Offer": {
-      "Title": "SUMMER SALE",
-      "ImageUrl": "Resources/Notifications/SummerSale2026/summer26-duo-40.png",
-      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=duo2024&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=JUNE26BUNDLESALE&fullscreen=auto&start=checkout&ref=offer_26_june_drive_unlimited_duo_desktop"
-    }
-  },
-  // Summer Sale 2026 notifications for Duo and Family plan users
-  {
-    "NotificationID": "SS-2026-Duo-to-Family-12M-1",
-    "StartTime": "2026-06-22T12:00:00+02:00",
-    "EndTime": "2026-07-07T12:00:00+02:00",
-    "UserSubscriptionPlanCodes": [ "duo2024" ],
-    "ExcludedUserSubscriptionPlanCouponCodes": [ "JUNE26BUNDLESALE", "JUNE26SALE", "MAR26SALECS", "MAR26BUNDLESALECS" ],
-    "Type": 0,
-    "HeaderText": "Proton Summer Sale 50% OFF",
-    "ContentText": "Save big on storage - offer ends soon!",
-    "ButtonText": "Claim my Deal",
-    "LogoImageUrl": "Resources/Notifications/SummerSale2026/logo.png",
-    "Offer": {
-      "Title": "SUMMER SALE",
-      "ImageUrl": "Resources/Notifications/SummerSale2026/summer26-family-50.png",
-      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=family2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=JUNE26BUNDLESALE&fullscreen=auto&start=checkout&ref=offer_26_june_drive_duo_family_desktop"
-    }
-  },
-  {
-    "NotificationID": "SS-2026-Family-1M-to-Family-12M-1",
-    "StartTime": "2026-06-22T12:00:00+02:00",
-    "EndTime": "2026-07-07T12:00:00+02:00",
-    "UserSubscriptionPlanCodes": [ "family2022" ],
-    "ExcludedUserSubscriptionPlanCouponCodes": [ "JUNE26BUNDLESALE", "JUNE26SALE", "MAR26SALECS", "MAR26BUNDLESALECS" ],
-    "UserSubscriptionCycle": 1,
-    "Type": 0,
-    "HeaderText": "Proton Summer Sale 50% OFF",
-    "ContentText": "Save big on storage - offer ends soon!",
-    "ButtonText": "Claim my Deal",
-    "LogoImageUrl": "Resources/Notifications/SummerSale2026/logo.png",
-    "Offer": {
-      "Title": "SUMMER SALE",
-      "ImageUrl": "Resources/Notifications/SummerSale2026/summer26-family-50.png",
-      "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=family2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=JUNE26BUNDLESALE&fullscreen=auto&start=checkout&ref=offer_26_june_drive_family_family12_desktop"
-    }
-  }
 ]

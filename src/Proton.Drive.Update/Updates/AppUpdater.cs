@@ -41,11 +41,11 @@ internal class AppUpdater : IAppUpdateCleanup
         _releaseStorage =
             new OrderedReleaseRepository(
                 new SafeReleaseRepository(
-                    new WebReleaseRepository(config, checkForUpdateHttpClient)));
+                    new WebReleaseRepository(config, checkForUpdateHttpClient, loggerFactory.CreateLogger<WebReleaseRepository>())));
 
         _updatesFolder =
             new SafeUpdatesFolder(
-                new UpdatesFolder(config.UpdatesFolderPath, config.CurrentVersion));
+                new UpdatesFolder(config.UpdatesFolderPath, config.CurrentVersion, loggerFactory.CreateLogger<UpdatesFolder>()));
 
         _fileLocation = new FileLocation(_updatesFolder.Path);
 

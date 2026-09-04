@@ -2,6 +2,7 @@ using Microsoft.Extensions.Logging;
 using Proton.Drive.Sdk.Sync.Agent.Settings;
 using Proton.Drive.Sdk.Sync.Shared;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem.Integration;
+using Proton.Drive.Shared.IO;
 
 namespace Proton.Drive.Sdk.Sync.Agent.Mapping.Setup;
 
@@ -35,6 +36,21 @@ internal sealed class LocalFolderValidationStep : ILocalFolderValidationStep
         cancellationToken.ThrowIfCancellationRequested();
 
         return ValidateFolderItem(mapping, otherLocalSyncFolders);
+    }
+
+    private static OpenByFileIdSupportStatus ValidateOpenByFileIdSupport(LocalVolumeInfo volumeInfo)
+    {
+        if (!volumeInfo.Attributes.HasFlag(FileSystemAttributes.SupportsOpenByFileId))
+        {
+            return OpenByFileIdSupportStatus.NotSupported;
+        }
+
+        if (volumeInfo.VerifiedSupportsOpenByFileId)
+        {
+            return OpenByFileIdSupportStatus.Supported;
+        }
+
+        return OpenByFileIdSupportStatus.VerificationFailed;
     }
 
     private Task<MappingErrorCode> ValidateFolderItem(RemoteToLocalMapping mapping, IReadOnlySet<string> otherLocalSyncFolders)
@@ -154,6 +170,8 @@ internal sealed class LocalFolderValidationStep : ILocalFolderValidationStep
         {
             replica.InternalVolumeId = _volumeIdentityProvider.GetLocalVolumeId(replica.VolumeSerialNumber);
         }
+
+        replica.OpenByFileIdSupportStatus = ValidateOpenByFileIdSupport(folderInfo.VolumeInfo);
     }
 
     private bool TryGetLocalFolderInfo(string path, out LocalFolderInfo? folderInfo)

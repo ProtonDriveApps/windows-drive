@@ -2,7 +2,9 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 // See LICENSE-MIT file in the project root for full license information.
 
+using System.ComponentModel;
 using System.Runtime.InteropServices;
+using System.Text;
 using Microsoft.Win32.SafeHandles;
 using Proton.Drive.Sdk.Sync.Windows.Interop;
 using Proton.Drive.Shared.IO;
@@ -12,6 +14,8 @@ namespace Proton.Drive.Sdk.Sync.Windows.FileSystem.Internal;
 
 internal static class FileSystem
 {
+    private const int PathMaxLength = 260;
+
     public static unsafe SafeFileHandle CreateHandle(
         string path,
         FileMode mode,
@@ -45,7 +49,7 @@ internal static class FileSystem
         {
             path = PathInternal.EnsureExtendedPrefixIfNeeded(path);
 
-            return ValidFileHandle(
+            return ValidateFileHandle(
                 templateFileHandle == null
                     ? Kernel32.CreateFile(path, (Kernel32.DesiredAccess)access, share, &secAttrs, mode, flagsAndAttributes, IntPtr.Zero)
                     : Kernel32.CreateFile(path, (Kernel32.DesiredAccess)access, share, &secAttrs, mode, flagsAndAttributes, templateFileHandle),
@@ -66,7 +70,42 @@ internal static class FileSystem
         share &= ~FileShare.Inheritable;
         var flagsAndAttributes = (uint)options | (uint)attributes;
 
-        return ValidFileHandle(Kernel32.ReOpenFile(handle, (Kernel32.DesiredAccess)access, share, flagsAndAttributes));
+        return ValidateFileHandle(Kernel32.ReOpenFile(handle, (Kernel32.DesiredAccess)access, share, flagsAndAttributes));
+    }
+
+    public static unsafe SafeFileHandle CreateHandleById(
+        long fileId,
+        SafeFileHandle volumeHintHandle,
+        FileSystemFileAccess access,
+        FileShare share,
+        FileAttributes attributes,
+        FileOptions options)
+    {
+        Kernel32.SECURITY_ATTRIBUTES secAttrs = GetSecAttrs(share);
+
+        // Our Inheritable bit was stolen from Windows, but should be set in
+        // the security attributes class. Don't leave this bit set.
+        share &= ~FileShare.Inheritable;
+
+        var flagsAndAttributes = (uint)options | (uint)attributes;
+
+        // For mitigating local elevation of privilege attack through named pipes
+        // make sure we always call CreateFile with SECURITY_ANONYMOUS so that the
+        // named pipe server can't impersonate a high privileged client security context
+        // (note that this is the effective default on CreateFile2)
+        flagsAndAttributes |= Kernel32.SecurityOptions.SECURITY_SQOS_PRESENT | Kernel32.SecurityOptions.SECURITY_ANONYMOUS;
+
+        var nativeFileId = new Vanara.PInvoke.Kernel32.FILE_ID_DESCRIPTOR
+        {
+            Type = Vanara.PInvoke.Kernel32.FILE_ID_TYPE.FileIdType,
+            Id = new Vanara.PInvoke.Kernel32.FILE_ID_DESCRIPTOR.DUMMYUNIONNAME { FileId = fileId },
+        };
+
+        using (DisableMediaInsertionPrompt.Create())
+        {
+            return ValidateFileHandle(
+                Kernel32.OpenFileById(volumeHintHandle, ref nativeFileId, (Kernel32.DesiredAccess)access, share, &secAttrs, flagsAndAttributes));
+        }
     }
 
     public static Kernel32.BY_HANDLE_FILE_INFORMATION GetFileInformation(SafeFileHandle handle)
@@ -250,6 +289,56 @@ internal static class FileSystem
         }
     }
 
+    public static string GetVolumeRoot(string path)
+    {
+        var rootPathBuffer = new StringBuilder(PathMaxLength);
+
+        if (!Kernel32.GetVolumePathName(path, rootPathBuffer, (uint)rootPathBuffer.Capacity))
+        {
+            throw new Win32Exception(); // Automatically gets the last Win32 error code and description
+        }
+
+        return rootPathBuffer.ToString();
+    }
+
+    /// <summary>
+    /// Gets the final path of the file system object the specified handle refers to.
+    /// </summary>
+    /// <param name="handle">An open handle to a file or a directory.</param>
+    /// <returns>
+    /// The normalized path in DOS volume form, prefixed with <c>\\?\</c>, or with <c>\\?\UNC\</c> for network
+    /// paths.
+    /// </returns>
+    /// <remarks>
+    /// The returned value is not interchangeable with a caller supplied path. It has to be normalized before
+    /// being compared with one, combined with a relative path, or passed to a shell API.
+    /// </remarks>
+    /// <exception cref="Win32Exception">Obtaining the final path failed.</exception>
+    public static string GetPathByHandle(SafeFileHandle handle)
+    {
+        const uint dwFlags = 0; // FILE_NAME_NORMALIZED | VOLUME_NAME_DOS
+
+        var pathBuffer = new StringBuilder(PathMaxLength);
+        var bufferSize = (uint)pathBuffer.Capacity;
+
+        var size = Kernel32.GetFinalPathNameByHandle(handle, pathBuffer, bufferSize, dwFlags);
+
+        while (size > bufferSize)
+        {
+            pathBuffer.Capacity = (int)size;
+            bufferSize = (uint)pathBuffer.Capacity;
+
+            size = Kernel32.GetFinalPathNameByHandle(handle, pathBuffer, bufferSize, dwFlags);
+        }
+
+        if (size == 0)
+        {
+            throw new Win32Exception(); // Automatically gets the last Win32 error code and description
+        }
+
+        return pathBuffer.ToString();
+    }
+
     private static unsafe Kernel32.SECURITY_ATTRIBUTES GetSecAttrs(FileShare share)
     {
         var secAttrs = new Kernel32.SECURITY_ATTRIBUTES
@@ -261,7 +350,7 @@ internal static class FileSystem
         return secAttrs;
     }
 
-    private static SafeFileHandle ValidFileHandle(SafeFileHandle fileHandle, string path = "")
+    private static SafeFileHandle ValidateFileHandle(SafeFileHandle fileHandle, string path = "")
     {
         if (fileHandle.IsInvalid)
         {

@@ -1,6 +1,7 @@
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.Logging;
 using Proton.Drive.Update.Config;
 using Proton.Drive.Update.Contracts;
 using Proton.Drive.Update.Releases;
@@ -21,11 +22,13 @@ internal class WebReleaseRepository : IReleaseRepository
 
     private readonly AppUpdateConfig _config;
     private readonly HttpClient _httpClient;
+    private readonly ILogger<WebReleaseRepository> _logger;
 
-    public WebReleaseRepository(AppUpdateConfig config, HttpClient httpClient)
+    public WebReleaseRepository(AppUpdateConfig config, HttpClient httpClient, ILogger<WebReleaseRepository> logger)
     {
         _config = config;
         _httpClient = httpClient;
+        _logger = logger;
     }
 
     public async Task<IEnumerable<Release>> GetReleasesAsync()
@@ -54,10 +57,14 @@ internal class WebReleaseRepository : IReleaseRepository
     {
         var cacheFilePath = GetCacheFilePath();
 
-        if (File.Exists(cacheFilePath))
+        if (!File.Exists(cacheFilePath))
         {
-            File.Delete(cacheFilePath);
+            return;
         }
+
+        _logger.LogInformation("Deleting app release cache file \"{Name}\"", Path.GetFileName(cacheFilePath));
+
+        File.Delete(cacheFilePath);
     }
 
     private async Task<ReleasesContract> GetReleasesInternalAsync()

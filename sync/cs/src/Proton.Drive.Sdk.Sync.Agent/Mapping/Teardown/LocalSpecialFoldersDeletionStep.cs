@@ -24,22 +24,18 @@ internal sealed class LocalSpecialFoldersDeletionStep : ILocalSpecialSubfoldersD
             return;
         }
 
-        _logger.LogInformation("Deleting special folders on the local replica root");
-
         TryDeleteSubfolder(
             rootPath,
             Path.Combine(_appConfig.FolderNames.TempFolderName, _appConfig.FolderNames.TrashFolderName),
-            recursive: true,
-            () => _logger.LogInformation("Deleting trash folder with all content"));
+            recursive: true);
 
         TryDeleteSubfolder(
             rootPath,
             _appConfig.FolderNames.TempFolderName,
-            recursive: false,
-            () => _logger.LogInformation("Deleting temporary folder"));
+            recursive: false);
     }
 
-    private void TryDeleteSubfolder(string rootPath, string relativePath, bool recursive, Action loggingAction)
+    private void TryDeleteSubfolder(string rootPath, string relativePath, bool recursive)
     {
         var path = Path.Combine(rootPath, relativePath);
 
@@ -48,7 +44,14 @@ internal sealed class LocalSpecialFoldersDeletionStep : ILocalSpecialSubfoldersD
             return;
         }
 
-        loggingAction.Invoke();
+        if (recursive)
+        {
+            _logger.LogInformation("Deleting special folder \"{Name}\" with all content", relativePath);
+        }
+        else
+        {
+            _logger.LogInformation("Deleting special folder \"{Name}\"", relativePath);
+        }
 
         try
         {
@@ -56,7 +59,7 @@ internal sealed class LocalSpecialFoldersDeletionStep : ILocalSpecialSubfoldersD
         }
         catch (Exception ex) when (ex.IsFileAccessException())
         {
-            _logger.LogWarning("Failed to delete special folder \"{Path}\" on the local replica root: {ExceptionType} {HResult}", relativePath, ex.GetType().Name, ex.HResult);
+            _logger.LogWarning("Failed to delete special folder \"{Name}\" on the local replica root: {ExceptionType}: {ErrorCode}", relativePath, ex.GetType().Name, ex.GetRelevantFormattedErrorCode());
         }
     }
 }

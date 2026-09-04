@@ -1,3 +1,4 @@
+using Microsoft.Extensions.Logging;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;
 using Proton.Drive.Shared.IO;
 using Proton.Drive.Shared.Metrics;
@@ -14,8 +15,9 @@ internal sealed class ImmediatelyHydratingOnDemandRevisionCreationProcess : Clas
         NodeInfo<long> finalInfo,
         bool checksumVerificationEnabled,
         Action<Progress>? progressCallback,
-        Action<MetricEvent> recordMetricEvent)
-        : base(file, initialInfo, fileInfo, finalInfo, checksumVerificationEnabled, progressCallback, recordMetricEvent)
+        Action<MetricEvent> recordMetricEvent,
+        ILogger<ImmediatelyHydratingOnDemandRevisionCreationProcess> logger)
+        : base(file, initialInfo, fileInfo, finalInfo, checksumVerificationEnabled, progressCallback, recordMetricEvent, logger)
     {
     }
 

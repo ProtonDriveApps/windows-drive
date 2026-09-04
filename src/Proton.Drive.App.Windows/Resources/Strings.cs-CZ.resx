@@ -1275,7 +1275,7 @@ Obsah souborů bude stažen jen na vyžádání.</value>
     <value>Chcete-li nadále používat Proton Drive, budete muset aktualizovat na nejnovější verzi</value>
   </data>
   <data name="Main_Sidebar_Offer_Button_GetDeal">
-    <value>Získat _nabídku</value>
+    <value>Využít _nabídku</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_Sidebar_Storage_Button_GetMoreStorage">
