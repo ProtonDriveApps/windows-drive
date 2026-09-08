@@ -18,6 +18,7 @@ using Proton.Drive.Sdk.Sync.Shared.Adapters;
 using Proton.Drive.Sdk.Sync.Shared.Diagnostics.TemporaryFiles;
 using Proton.Drive.Sdk.Sync.Shared.ExecutionStatistics;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;
+using Proton.Drive.Sdk.Sync.Shared.Ignore;
 using Proton.Drive.Sdk.Sync.Shared.Property;
 using Proton.Drive.Sdk.Sync.Shared.SyncActivity;
 using Proton.Drive.Sdk.Sync.Shared.Trees;
@@ -79,6 +80,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
         IIdentitySource<long> contentVersionSource,
         IFileNameFactory<TId> tempFileNameFactory,
         IReadOnlyCollection<string> specialFolderNames,
+        IIgnoreRuleProvider ignoreRuleProvider,
         TimeSpan maxFileAccessRetryInterval,
         TimeSpan maxFileRevisionCreationInterval,
         TimeSpan minDelayBeforeFileUpload,
@@ -168,7 +170,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
                 FileSystemTree),
             excelTemporaryFileDetectionCounter);
 
-        var exclusionFilter = new ItemExclusionFilter(specialFolderNames);
+        var exclusionFilter = new ItemExclusionFilter(specialFolderNames, ignoreRuleProvider);
 
         var operationExecutionPreparationStep = new PreparationStep<TId, TAltId>(
             FileSystemTree,
