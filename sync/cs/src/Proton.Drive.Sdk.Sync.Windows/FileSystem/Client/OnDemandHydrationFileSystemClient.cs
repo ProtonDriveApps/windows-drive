@@ -414,6 +414,19 @@ internal sealed class OnDemandHydrationFileSystemClient : FileSystemClientBase, 
 
     public Task HydrateFileAsync(NodeInfo<long> info, CancellationToken cancellationToken)
     {
+        // CfHydratePlaceholder blocks the calling thread until the whole file content has been transferred.
+        // The transfer itself is performed by the FETCH_DATA callbacks this process receives while blocked,
+        // and those complete on thread pool threads. Blocking pool threads here would therefore risk
+        // deadlocking hydration against itself, so a dedicated thread is used instead.
+        return Task.Factory.StartNew(
+            () => HydrateFile(info, cancellationToken),
+            cancellationToken,
+            TaskCreationOptions.LongRunning | TaskCreationOptions.DenyChildAttach,
+            TaskScheduler.Default);
+    }
+
+    private void HydrateFile(NodeInfo<long> info, CancellationToken cancellationToken)
+    {
         cancellationToken.ThrowIfCancellationRequested();
 
         using var file = info.OpenAsFile(FileSystemFileAccess.ReadAttributes, FileShare.ReadWrite | FileShare.Delete);
@@ -428,8 +441,6 @@ internal sealed class OnDemandHydrationFileSystemClient : FileSystemClientBase, 
             using var cancellationRegistration = cancellationToken.Register(() => file.FileHandle.CancelIo());
 
             CfHydratePlaceholder(file.FileHandle).ThrowExceptionForHR();
-
-            return Task.CompletedTask;
         }
         catch (Exception ex) when (ExceptionMapping.TryMapException(ex, file.ObjectId, includeObjectId: false, out var mappedException))
         {

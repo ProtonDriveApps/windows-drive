@@ -439,7 +439,7 @@
     <value>Filen hoppet over fordi den har endret seg for nylig. Appen prøver automatisk på nytt</value>
   </data>
   <data name="FileSystemErrorCode_Value_LocalStorageError">
-    <value>The file could not be transferred because of a local storage error. Please check that your drive is working correctly.</value>
+    <value>Filen kunne ikke overføres på grunn av en lokal lagringsfeil. Kontroller at harddisken fungerer som den skal.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
     <value>Live-bilder kan ikke lastes opp.</value>

@@ -5,7 +5,7 @@ using Proton.Drive.Shared.Diagnostics.Metrics;
 
 namespace Proton.Drive.Sdk.Sync.Client.Instrumentation.Observability.Integrity;
 
-internal sealed class IntegrityMetricsCollector
+internal sealed class IntegrityMetricsCollector(IMeterFactory meterFactory)
 {
     private readonly ConcurrentDictionary<string, byte> _reportedDecryptionFailuresByNodeUid = new();
 
@@ -48,6 +48,11 @@ internal sealed class IntegrityMetricsCollector
 
         _meterListener.InstrumentPublished = (instrument, listener) =>
         {
+            if (instrument.Meter.Scope != meterFactory)
+            {
+                return;
+            }
+
             if (instrument is { Meter.Name: IntegrityMetrics.MeterName, Name: IntegrityMetrics.DecryptionErrorsMetricName })
             {
                 _decryptionFailuresInstrument = instrument;

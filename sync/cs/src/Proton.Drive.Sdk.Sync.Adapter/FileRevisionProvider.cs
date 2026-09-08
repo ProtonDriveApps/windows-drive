@@ -57,7 +57,30 @@ internal sealed class FileRevisionProvider<TId, TAltId> : IFileRevisionProvider<
 
         try
         {
-            return await _fileSystemClient.OpenFileForReadingAsync(fileInfo, cancellationToken).ConfigureAwait(false);
+            try
+            {
+                return await _fileSystemClient.OpenFileForReadingAsync(fileInfo, cancellationToken).ConfigureAwait(false);
+            }
+            catch (FileSystemClientException ex) when (ex.ErrorCode is FileSystemErrorCode.Partial && fileInfo.Root?.IsOnDemand == true)
+            {
+                _logger.LogInformation(
+                    "Hydrating the partial file \"{Path}\" \"{Root}\"/{Id} {ExternalId} before reading it",
+                    pathToLog,
+                    fileInfo.Root?.Id,
+                    id,
+                    fileInfo.GetCompoundId());
+
+                // Hydration makes the file content available locally, so that the file can be read directly instead of
+                // piping the content from one remote file to another. It also corrects the placeholder file size in case
+                // the plain size of the remote file was unknown.
+                var hydratedRevision = await TryHydrateAndOpenAsync(fileInfo, cancellationToken).ConfigureAwait(false);
+                if (hydratedRevision is not null)
+                {
+                    return hydratedRevision;
+                }
+
+                throw;
+            }
         }
         catch (FileSystemClientException ex)
         {
@@ -67,6 +90,21 @@ internal sealed class FileRevisionProvider<TId, TAltId> : IFileRevisionProvider<
                 $"Reading the file \"{fileInfo.Root?.Id}\"/{id} {fileInfo.GetCompoundId()} failed: {ex.CombinedMessage()}",
                 ex.ErrorCode,
                 ex);
+        }
+    }
+
+    private async Task<ISourceRevision?> TryHydrateAndOpenAsync(NodeInfo<TAltId> fileInfo, CancellationToken cancellationToken)
+    {
+        try
+        {
+            await _fileSystemClient.HydrateFileAsync(fileInfo, cancellationToken).ConfigureAwait(false);
+
+            // Hydration can correct the placeholder file size, therefore the size known to the adapter tree must not be used
+            return await _fileSystemClient.OpenFileForReadingAsync(fileInfo.Copy().WithSize(-1), cancellationToken).ConfigureAwait(false);
+        }
+        catch (FileSystemClientException)
+        {
+            return null;
         }
     }
 

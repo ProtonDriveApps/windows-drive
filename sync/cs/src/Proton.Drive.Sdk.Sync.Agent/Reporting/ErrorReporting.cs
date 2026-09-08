@@ -42,11 +42,11 @@ internal sealed class ErrorReporting : IErrorReporting
         SentrySdk.CaptureException(ex);
     }
 
-    public void CaptureException(Exception ex, ErrorTag tag)
+    public void CaptureException(Exception ex, params ErrorTag[] tags)
     {
         using (SentrySdk.PushScope())
         {
-            SentrySdk.ConfigureScope(scope => scope.SetTag(tag.Key, tag.Value));
+            SentrySdk.ConfigureScope(scope => scope.SetTags(tags.Select(tag => new KeyValuePair<string, string>(tag.Key, tag.Value))));
             SentrySdk.CaptureException(ex);
         }
     }

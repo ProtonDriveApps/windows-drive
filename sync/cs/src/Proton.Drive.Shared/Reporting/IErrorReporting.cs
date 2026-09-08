@@ -4,7 +4,7 @@ public interface IErrorReporting
 {
     bool IsEnabled { get; set; }
 
-    void CaptureException(Exception ex, ErrorTag tag);
+    void CaptureException(Exception ex, params ErrorTag[] tags);
 
     void CaptureException(Exception ex);
 

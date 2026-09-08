@@ -65,20 +65,20 @@ public static class SchedulerExtensions
 
     private class AsyncLock : IDisposable
     {
-        private readonly TaskCompletionSource<IDisposable> _acquireCompletionSource;
-        private readonly TaskCompletionSource _releaseCompletionSource;
+        // The TaskCreationOptions.RunContinuationsAsynchronously is needed to complete scheduled task as soon as the AsyncLock is disposed
+        private readonly TaskCompletionSource<IDisposable> _acquisitionCompletionSource = new(TaskCreationOptions.RunContinuationsAsynchronously);
+
+        // The TaskCreationOptions.RunContinuationsAsynchronously keeps the completion of the scheduled task off the thread that releases the lock
+        private readonly TaskCompletionSource _releaseCompletionSource = new(TaskCreationOptions.RunContinuationsAsynchronously);
 
         private AsyncLock(IScheduler scheduler, CancellationToken cancellationToken)
         {
-            _acquireCompletionSource = new TaskCompletionSource<IDisposable>();
-            _releaseCompletionSource = new TaskCompletionSource();
-
             var scheduledTask = scheduler.Schedule(Lock, cancellationToken);
-            scheduledTask.ContinueWith(_ => _acquireCompletionSource.SetCanceled(), TaskContinuationOptions.OnlyOnCanceled);
-            scheduledTask.ContinueWith(task => _acquireCompletionSource.SetException(task.Exception!.InnerException!), TaskContinuationOptions.OnlyOnFaulted);
+            scheduledTask.ContinueWith(_ => _acquisitionCompletionSource.SetCanceled(), TaskContinuationOptions.OnlyOnCanceled);
+            scheduledTask.ContinueWith(task => _acquisitionCompletionSource.SetException(task.Exception!.InnerException!), TaskContinuationOptions.OnlyOnFaulted);
         }
 
-        private Task<IDisposable> Task => _acquireCompletionSource.Task;
+        private Task<IDisposable> Task => _acquisitionCompletionSource.Task;
 
         public static Task<IDisposable> Acquire(IScheduler scheduler, CancellationToken cancellationToken) => new AsyncLock(scheduler, cancellationToken).Task;
 
@@ -86,7 +86,9 @@ public static class SchedulerExtensions
 
         private async Task Lock()
         {
-            _acquireCompletionSource.SetResult(this);
+            // The lack of TaskCreationOptions.RunContinuationsAsynchronously would block execution past this line until synchronous continuation of the task completes.
+            _acquisitionCompletionSource.SetResult(this);
+
             await _releaseCompletionSource.Task.ConfigureAwait(false);
         }
     }

@@ -23,6 +23,7 @@ internal sealed class HydrationDemandHandler<TId, TAltId> : IFileHydrationDemand
     private readonly AdapterTree<TId, TAltId> _adapterTree;
     private readonly IFileRevisionProvider<TId> _fileRevisionProvider;
     private readonly IMappedNodeIdentityProvider<TId> _mappedNodeIdProvider;
+    private readonly ICopySourceRevisionProvider<TId, TAltId> _copySourceRevisionProvider;
     private readonly IFileSizeCorrector<TId, TAltId> _fileSizeCorrector;
     private readonly SyncActivity<TId> _syncActivity;
 
@@ -33,6 +34,7 @@ internal sealed class HydrationDemandHandler<TId, TAltId> : IFileHydrationDemand
         AdapterTree<TId, TAltId> adapterTree,
         IFileRevisionProvider<TId> fileRevisionProvider,
         IMappedNodeIdentityProvider<TId> mappedNodeIdProvider,
+        ICopySourceRevisionProvider<TId, TAltId> copySourceRevisionProvider,
         IFileSizeCorrector<TId, TAltId> fileSizeCorrector,
         SyncActivity<TId> syncActivity)
     {
@@ -42,6 +44,7 @@ internal sealed class HydrationDemandHandler<TId, TAltId> : IFileHydrationDemand
         _adapterTree = adapterTree;
         _fileRevisionProvider = fileRevisionProvider;
         _mappedNodeIdProvider = mappedNodeIdProvider;
+        _copySourceRevisionProvider = copySourceRevisionProvider;
         _fileSizeCorrector = fileSizeCorrector;
         _syncActivity = syncActivity;
     }
@@ -230,14 +233,24 @@ internal sealed class HydrationDemandHandler<TId, TAltId> : IFileHydrationDemand
         cancellationToken.ThrowIfCancellationRequested();
 
         var mappedNodeId = await _mappedNodeIdProvider.GetMappedNodeIdOrDefaultAsync(nodeModel.Id, cancellationToken).ConfigureAwait(false);
-        if (mappedNodeId is null)
+        if (mappedNodeId is not null)
+        {
+            return await _fileRevisionProvider.OpenFileForReadingAsync(mappedNodeId.Value, nodeModel.ContentVersion, cancellationToken).ConfigureAwait(false);
+        }
+
+        // The node can be a not-yet-synced destination of a copy that replaced a move between volumes
+        // (for example between two "shared with me" items).
+        // The content is still available on the copy source node.
+        var result = await _copySourceRevisionProvider.OpenForReadingAsync(nodeModel.Id, cancellationToken).ConfigureAwait(false);
+
+        if (result is null)
         {
             throw new HydrationException(
                 $"File with Adapter Tree node Id={nodeModel.Id} is not mapped",
                 new FileSystemClientException(string.Empty, FileSystemErrorCode.ObjectNotFound));
         }
 
-        return await _fileRevisionProvider.OpenFileForReadingAsync(mappedNodeId.Value, nodeModel.ContentVersion, cancellationToken).ConfigureAwait(false);
+        return result;
     }
 
     private Task HydrateFileAsync(Stream destination, ISourceRevision source, CancellationToken cancellationToken)

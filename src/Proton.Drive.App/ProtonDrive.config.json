@@ -1,145 +1,145 @@
 {
-  "AppName": "Proton Drive",
-  "DriveApi": {
-    "AuthBaseUrl": "https://drive-api.proton.me/auth/",
-    "CoreBaseUrl": "https://drive-api.proton.me/core/",
-    "DataBaseUrl": "https://drive-api.proton.me/data/",
-    "PaymentsBaseUrl": "https://drive-api.proton.me/payments/",
-    "DriveBaseUrl": "https://drive-api.proton.me/drive/",
-    "DriveSdkBaseUrl": "https://drive-api.proton.me/",
-    "FeatureBaseUrl": "https://drive-api.proton.me/feature/",
-    "ContactsBaseUrl": "https://drive-api.proton.me/contacts/",
-    "ClientVersion": "windows-drive@{AppVersion}",
-    "UserAgent": "ProtonDrive/{AppVersion} ({SystemInfo})",
-    "ContentType": "application/vnd.protonmail.api+json",
-    "Timeout": "00:00:30",
-    "BlocksTimeout": "00:05:00",
-    "RevisionUpdateTimeout": "00:01:30",
-    "DefaultNumberOfRetries": 3,
-    "DriveApiNumberOfRetries": 7,
-    "FileTransferNumberOfRetries": 5,
-    "FileTransferDelayBetweenRetries": "00:01:00",
-    "EventsPollingInterval": "00:01:30",
-    "ForeignVolumeEventsPollingInterval": "00:10:00",
-    "EventsThrottleInterval": "00:00:20",
-    "DelayBeforeSwitchingOnline": "00:01:00",
-    "FeaturesUpdateInterval": "00:10:00"
-  },
-  "UserUpdateInterval": "00:05:00",
-  "OffersUpdateInterval": "01:00:00",
-  "MinFailedSetupRetryInterval": "00:00:10",
-  "MaxFailedSetupRetryInterval": "00:10:00",
-  "FailedDataRetrievalRetryInterval": "00:01:00",
-  "FileSyncStateMaintenanceInterval": "00:00:10",
-  "MaxLocalFileAccessRetryInterval": "00:10:00",
-  "MaxRemoteFileAccessRetryInterval": "00:30:00",
-  "MaxFileRevisionCreationInterval": "00:08:00",
-  "MinDelayBeforeFileUpload": "00:00:04",
-  "ContactsCacheInvalidationInterval": "12:00:00",
-  "ContactsCacheGraceInterval": "00:10:00",
-  "DelayBeforeDisplayingSyncInitializationProgress": "00:00:20",
-  "DelayBeforeShowingNotification": "00:00:10",
-  "NumberOfDaysBeforeRemovingInstallationLogFiles": 90,
-  "PeriodicTelemetryReportInterval": "00:30:00",
-  "PeriodicObservabilityReportInterval": "00:00:10",
-  "PeriodicFailuresImpactedUsersReportInterval": "00:05:00",
-  "PeriodicTransferPerformanceReportInterval": "00:01:00",
-  "PeriodicThumbnailGenerationReportInterval": "00:00:30",
-  "MaxInactivityPeriodBetweenFileTransfers": "00:00:10",
-  "ActivityQueryInterval": "06:00:00",
-  "FolderNames": {
-    "TempFolderName": "$Temp",
-    "TrashFolderName": "Trash",
-    "BackupFolderName": "$Backup",
-    "CloudFilesFolderName": "My files",
-    "ForeignDevicesFolderName": "Other computers",
-    "SharedWithMeRootFolderName": "Shared with me"
-  },
-  "MaxNumberOfConcurrentFileTransfers": 4,
-  "MaxNumberOfSyncedSharedWithMeItems": 20,
-  "FileConsistencyGuardRetryInterval": "00:30:00",
-  "FileConsistencyGuardNotApplicableSince": "2026-01-11Z",
-  "Urls": {
-    "WebClient": "https://drive.proton.me",
-    "AppDownloadPage": "https://proton.me/drive/download",
-    "TermsAndConditions": "https://proton.me/legal/terms",
-    "PrivacyPolicy": "https://proton.me/legal/privacy",
-    "ManageAccount": "https://account.proton.me/drive",
-    "SignUp": "https://account.proton.me/signup/drive",
-    "ResetPassword": "https://account.proton.me/reset-password",
-    "Dashboard": "https://account.proton.me/drive/dashboard",
-    "UpgradePlanFromOnboarding": "https://account.proton.me/drive/upgrade?ref=upgrade-drive-windows-app-onboarding",
-    "UpgradePlanFromSidebar": "https://account.proton.me/drive/upgrade?ref=upgrade-drive-windows-app-sidebar",
-    "ChangePassword": "https://account.proton.me/drive/account-password",
-    "ManageSessions": "https://account.proton.me/drive/security#sessions",
-    "HowToUseSecurityKey": "https://proton.me/support/2fa-security-key",
-    "HowToImportPhotosFromGoogle": "https://proton.me/support/how-to-import-from-google-photos",
-    "HowPhotoImportWorks": "https://proton.me/support/how-photo-import-works",
-    "ManageAlbums": "https://drive.proton.me/photos/albums",
-    "HowProtoDriveWorks": "https://proton.me/support/proton-drive-windows-app",
-    "UseOnDemandSync": "https://proton.me/support/proton-drive-windows-on-demand-sync",
-    "SyncFoldersToProtonDrive": "https://proton.me/support/proton-drive-windows-sync-folder",
-    "HowSharedWithMeFilesWork": "https://proton.me/support/shared-with-me-windows",
-    "FrequentlyAskedQuestions": "https://proton.me/support/drive",
-    "Trash": "https://drive.proton.me/trash",
-    "Docs": "https://docs.proton.me"
-  },
-  "Update": {
-    "UpdateUrl": "https://proton.me/download/drive/windows/x64/v1/version.json",
-    "CheckInterval": "03:00:00",
-    "AutoUpdateRetryInterval": "01:30:00",
-    "NotificationInterval": "1.00:00:00",
-    "MinProgressDuration": "00:00:02",
-    "CleanupDelay": "00:00:20",
-    "Timeout": "00:00:30",
-    "NumberOfRetries": 3
-  },
-  "TlsPinning": {
-    "TlsPinningReport": {
-      "Enforce": false
+    "AppName": "Proton Drive",
+    "DriveApi": {
+        "AuthBaseUrl": "https://drive-api.proton.me/auth/",
+        "CoreBaseUrl": "https://drive-api.proton.me/core/",
+        "DataBaseUrl": "https://drive-api.proton.me/data/",
+        "PaymentsBaseUrl": "https://drive-api.proton.me/payments/",
+        "DriveBaseUrl": "https://drive-api.proton.me/drive/",
+        "DriveSdkBaseUrl": "https://drive-api.proton.me/",
+        "FeatureBaseUrl": "https://drive-api.proton.me/feature/",
+        "ContactsBaseUrl": "https://drive-api.proton.me/contacts/",
+        "ClientVersion": "windows-drive@{AppVersion}",
+        "UserAgent": "ProtonDrive/{AppVersion} ({SystemInfo})",
+        "ContentType": "application/vnd.protonmail.api+json",
+        "Timeout": "00:00:30",
+        "BlocksTimeout": "00:05:00",
+        "RevisionUpdateTimeout": "00:01:30",
+        "DefaultNumberOfRetries": 3,
+        "DriveApiNumberOfRetries": 7,
+        "FileTransferNumberOfRetries": 5,
+        "FileTransferDelayBetweenRetries": "00:01:00",
+        "EventsPollingInterval": "00:01:30",
+        "ForeignVolumeEventsPollingInterval": "00:10:00",
+        "EventsThrottleInterval": "00:00:20",
+        "DelayBeforeSwitchingOnline": "00:01:00",
+        "FeaturesUpdateInterval": "00:10:00"
     },
-    "DownloadUpdate": {
-      "Enforce": false
+    "UserUpdateInterval": "00:05:00",
+    "OffersUpdateInterval": "01:00:00",
+    "MinFailedSetupRetryInterval": "00:00:10",
+    "MaxFailedSetupRetryInterval": "00:10:00",
+    "FailedDataRetrievalRetryInterval": "00:01:00",
+    "FileSyncStateMaintenanceInterval": "00:00:10",
+    "MaxLocalFileAccessRetryInterval": "00:10:00",
+    "MaxRemoteFileAccessRetryInterval": "00:30:00",
+    "MaxFileRevisionCreationInterval": "00:08:00",
+    "MinDelayBeforeFileUpload": "00:00:04",
+    "ContactsCacheInvalidationInterval": "12:00:00",
+    "ContactsCacheGraceInterval": "00:10:00",
+    "DelayBeforeDisplayingSyncInitializationProgress": "00:00:20",
+    "DelayBeforeShowingNotification": "00:00:10",
+    "NumberOfDaysBeforeRemovingInstallationLogFiles": 90,
+    "PeriodicTelemetryReportInterval": "00:30:00",
+    "PeriodicObservabilityReportInterval": "00:00:10",
+    "PeriodicFailuresImpactedUsersReportInterval": "00:05:00",
+    "PeriodicTransferPerformanceReportInterval": "00:01:00",
+    "PeriodicThumbnailGenerationReportInterval": "00:00:30",
+    "MaxInactivityPeriodBetweenFileTransfers": "00:00:10",
+    "ActivityQueryInterval": "06:00:00",
+    "FolderNames": {
+        "TempFolderName": "$Temp",
+        "TrashFolderName": "Trash",
+        "BackupFolderName": "$Backup",
+        "CloudFilesFolderName": "My files",
+        "ForeignDevicesFolderName": "Other computers",
+        "SharedWithMeRootFolderName": "Shared with me"
     },
-    "Default": {
-      "PublicKeyHashes": [
-        "CT56BhOTmj5ZIPgb/xD5mH8rY3BLo/MlhP7oPyJUEDo=",
-        "35Dx28/uzN3LeltkCBQ8RHK0tlNSa2kCpCRGNp34Gxc=",
-        "qYIukVc63DEITct8sFT7ebIq5qsWmuscaIKeJx+5J5A="
-      ],
-      "Enforce": true,
-      "SendReport": true
-    }
-  },
-  "FeatureManagement": {
-    "UpgradeStorageOnboardingStepEnabled": true
-  },
-  "Serilog": {
-    "Using": [ "Serilog.Sinks.Async", "Serilog.Sinks.File" ],
-    "MinimumLevel": {
-      "Default": "Information",
-      "Override": {
-        "Microsoft.Hosting.Lifetime": "Warning"
-      }
+    "MaxNumberOfConcurrentFileTransfers": 4,
+    "MaxNumberOfSyncedSharedWithMeItems": 20,
+    "FileConsistencyGuardRetryInterval": "00:30:00",
+    "FileConsistencyGuardNotApplicableSince": "2026-01-11Z",
+    "Urls": {
+        "WebClient": "https://drive.proton.me",
+        "AppDownloadPage": "https://proton.me/drive/download",
+        "TermsAndConditions": "https://proton.me/legal/terms",
+        "PrivacyPolicy": "https://proton.me/legal/privacy",
+        "ManageAccount": "https://account.proton.me/drive",
+        "SignUp": "https://account.proton.me/signup/drive",
+        "ResetPassword": "https://account.proton.me/reset-password",
+        "Dashboard": "https://account.proton.me/drive/dashboard",
+        "UpgradePlanFromOnboarding": "https://account.proton.me/drive/upgrade?ref=upgrade-drive-windows-app-onboarding",
+        "UpgradePlanFromSidebar": "https://account.proton.me/drive/upgrade?ref=upgrade-drive-windows-app-sidebar",
+        "ChangePassword": "https://account.proton.me/drive/account-password",
+        "ManageSessions": "https://account.proton.me/drive/security#sessions",
+        "HowToUseSecurityKey": "https://proton.me/support/2fa-security-key",
+        "HowToImportPhotosFromGoogle": "https://proton.me/support/how-to-import-from-google-photos",
+        "HowPhotoImportWorks": "https://proton.me/support/how-photo-import-works",
+        "ManageAlbums": "https://drive.proton.me/photos/albums",
+        "HowProtoDriveWorks": "https://proton.me/support/proton-drive-windows-app",
+        "UseOnDemandSync": "https://proton.me/support/proton-drive-windows-on-demand-sync",
+        "SyncFoldersToProtonDrive": "https://proton.me/support/proton-drive-windows-sync-folder",
+        "HowSharedWithMeFilesWork": "https://proton.me/support/shared-with-me-windows",
+        "FrequentlyAskedQuestions": "https://proton.me/support/drive",
+        "Trash": "https://drive.proton.me/trash",
+        "Docs": "https://docs.proton.me"
     },
-    "WriteTo:Async": {
-      "Name": "Async",
-      "Args": {
-        "configure": [
-          {
-            "Name": "File",
-            "Args": {
-              "path": "%LOCALAPPDATA%/Proton/Proton Drive/Logs/App-.log",
-              "rollingInterval": "Day",
-              "rollOnFileSizeLimit": true,
-              "fileSizeLimitBytes": "20971520", // 20 MB
-              "retainedFileCountLimit": "100",
-              "retainedFileTimeLimit": "60.00:00:00",
-              "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}]{Scope:l} {Message:l}{NewLine}{Exception}"
+    "Update": {
+        "UpdateUrl": "https://proton.me/download/drive/windows/x64/v1/version.json",
+        "CheckInterval": "03:00:00",
+        "AutoUpdateRetryInterval": "01:30:00",
+        "NotificationInterval": "1.00:00:00",
+        "MinProgressDuration": "00:00:02",
+        "CleanupDelay": "00:00:20",
+        "Timeout": "00:00:30",
+        "NumberOfRetries": 3
+    },
+    "TlsPinning": {
+        "TlsPinningReport": {
+            "Enforce": false
+        },
+        "DownloadUpdate": {
+            "Enforce": false
+        },
+        "Default": {
+            "PublicKeyHashes": [
+                "CT56BhOTmj5ZIPgb/xD5mH8rY3BLo/MlhP7oPyJUEDo=",
+                "35Dx28/uzN3LeltkCBQ8RHK0tlNSa2kCpCRGNp34Gxc=",
+                "qYIukVc63DEITct8sFT7ebIq5qsWmuscaIKeJx+5J5A="
+            ],
+            "Enforce": true,
+            "SendReport": true
+        }
+    },
+    "FeatureManagement": {
+        "UpgradeStorageOnboardingStepEnabled": true
+    },
+    "Serilog": {
+        "Using": [ "Serilog.Sinks.Async", "Serilog.Sinks.File" ],
+        "MinimumLevel": {
+            "Default": "Information",
+            "Override": {
+                "Microsoft.Hosting.Lifetime": "Warning"
             }
-          }
-        ]
-      }
+        },
+        "WriteTo:Async": {
+            "Name": "Async",
+            "Args": {
+                "configure": [
+                    {
+                        "Name": "File",
+                        "Args": {
+                            "path": "%LOCALAPPDATA%/Proton/Proton Drive/Logs/App-.log",
+                            "rollingInterval": "Day",
+                            "rollOnFileSizeLimit": true,
+                            "fileSizeLimitBytes": "20971520", // 20 MB
+                            "retainedFileCountLimit": "100",
+                            "retainedFileTimeLimit": "60.00:00:00",
+                            "outputTemplate": "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}]{Scope:l} {Message:l}{NewLine}{Exception}"
+                        }
+                    }
+                ]
+            }
+        }
     }
-  }
 }

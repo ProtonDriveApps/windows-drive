@@ -5,7 +5,7 @@ using Proton.Drive.Shared.Diagnostics.Metrics;
 
 namespace Proton.Drive.Sdk.Sync.Client.Instrumentation.Observability.Download;
 
-internal sealed class DownloadMetricsCollector
+internal sealed class DownloadMetricsCollector(IMeterFactory meterFactory)
 {
     private readonly AggregatingCollector<int, AttemptTags> _attempts = new();
     private readonly AggregatingCollector<int, FailureTags> _failures = new();
@@ -44,6 +44,11 @@ internal sealed class DownloadMetricsCollector
 
         _meterListener.InstrumentPublished = (instrument, listener) =>
         {
+            if (instrument.Meter.Scope != meterFactory)
+            {
+                return;
+            }
+
             if (instrument is { Meter.Name: DownloadMetrics.MeterName, Name: DownloadMetrics.AttemptsMetricName })
             {
                 _attemptsInstrument = instrument;

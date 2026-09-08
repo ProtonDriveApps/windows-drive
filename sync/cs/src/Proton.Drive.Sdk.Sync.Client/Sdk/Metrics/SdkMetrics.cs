@@ -21,6 +21,10 @@ internal sealed class SdkMetrics(UploadMetrics uploadMetrics, DownloadMetrics do
                 uploadMetrics.Record(uploadEvent);
                 break;
 
+            case UploadPerformanceEvent uploadPerformanceEvent:
+                uploadMetrics.Record(uploadPerformanceEvent);
+                break;
+
             case DownloadEvent downloadEvent:
                 downloadMetrics.Record(downloadEvent);
                 break;

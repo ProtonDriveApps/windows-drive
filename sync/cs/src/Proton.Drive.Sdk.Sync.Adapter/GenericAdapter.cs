@@ -389,13 +389,15 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
                     FileSystemTree));
         }
 
+        var copySourceRevisionProvider = new CopySourceRevisionProvider<TId, TAltId>(
+            loggerFactory.CreateLogger<CopySourceRevisionProvider<TId, TAltId>>(),
+            SyncScheduler,
+            copiedNodes,
+            _externalFileRevisionProvider,
+            _mappedNodeIdProvider);
+
         _fileRevisionProvider =
             new FallbackFileRevisionProviderDecorator<TId, TAltId>(
-                loggerFactory.CreateLogger<FallbackFileRevisionProviderDecorator<TId, TAltId>>(),
-                SyncScheduler,
-                copiedNodes,
-                _externalFileRevisionProvider,
-                _mappedNodeIdProvider,
                 new FileRevisionProvider<TId, TAltId>(
                     SyncScheduler,
                     FileSystemTree,
@@ -405,7 +407,8 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
                         loggerFactory.CreateLogger<EnumerationFailureStep<TId, TAltId>>(),
                         FileSystemTree),
                     minDelayBeforeFileUpload,
-                    loggerFactory.CreateLogger<FileRevisionProvider<TId, TAltId>>()));
+                    loggerFactory.CreateLogger<FileRevisionProvider<TId, TAltId>>()),
+                copySourceRevisionProvider);
 
         var fileSizeCorrector = new FileSizeCorrectionPipeline<TId, TAltId>(
             loggerFactory.CreateLogger<FileSizeCorrectionPipeline<TId, TAltId>>(),
@@ -424,6 +427,7 @@ public sealed class GenericAdapter<TId, TAltId> : ISyncAdapter<TId>, IManagedAda
             FileSystemTree,
             _externalFileRevisionProvider,
             _mappedNodeIdProvider,
+            copySourceRevisionProvider,
             fileSizeCorrector,
             _syncActivity);
     }

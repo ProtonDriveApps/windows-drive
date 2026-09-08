@@ -49,6 +49,32 @@ internal sealed class UploadMetricsMapper(UploadMetricsCollector metricsCollecto
             metrics.Add(GetFailuresTransferSizeMetric(value));
         }
 
+        foreach (var measurement in measurementsSnapshot.SmallFileThroughputs)
+        {
+            metrics.Add(new UploadSmallFileThroughputMetric(
+                measurement.Value,
+                GetLabels(measurement.Label)));
+        }
+
+        foreach (var measurement in measurementsSnapshot.LargeFileThroughputs)
+        {
+            metrics.Add(new UploadLargeFileThroughputMetric(
+                measurement.Value,
+                GetLabels(measurement.Label)));
+        }
+
+        foreach (var measurement in measurementsSnapshot.LargeRouteActiveTimeShares)
+        {
+            metrics.Add(new UploadLargeFileActiveTimeShareMetric(
+                measurement.Value,
+                GetLabels(measurement.Label)));
+        }
+
+        foreach (var value in measurementsSnapshot.SmallRouteActiveTimeShares)
+        {
+            metrics.Add(new UploadSmallFileActiveTimeShareMetric(value));
+        }
+
         return metrics.ToImmutableList();
     }
 
@@ -108,5 +134,10 @@ internal sealed class UploadMetricsMapper(UploadMetricsCollector metricsCollecto
         };
 
         return new UploadFailuresImpactedUserMetric(value, labels);
+    }
+
+    private static IReadOnlyDictionary<string, string> GetLabels(TaggedUploadPerformanceMeasurement.MetricLabel label)
+    {
+        return new Dictionary<string, string> { [label.Name] = label.Value };
     }
 }

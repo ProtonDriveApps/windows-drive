@@ -10,6 +10,33 @@ internal sealed class UploadMetrics
     public const string FailuresMetricName = "proton.drive.sdk.generic.upload.failures";
     public const string FailuresFileSizeMetricName = "proton.drive.sdk.generic.upload.failures.file_size";
     public const string FailuresTransferSizeMetricName = "proton.drive.sdk.generic.upload.failures.transfer_size";
+    public const string SmallFileThroughputMetricName = "proton.drive.sdk.upload.small_file_throughput";
+    public const string LargeFileThroughputMetricName = "proton.drive.sdk.upload.large_file_throughput";
+    public const string LargeRouteActiveTimeShareMetricName = "proton.drive.sdk.upload.large_route_active_time_share";
+    public const string SmallRouteActiveTimeShareMetricName = "proton.drive.sdk.upload.small_route_active_time_share";
+    public const string UploadRouteKeyName = "uploadRoute";
+    public const string BlockCountKeyName = "blockCount";
+    public const string SizeClassKeyName = "sizeClass";
+
+    private static readonly Dictionary<UploadRoute, string> UploadRouteMapping = new()
+    {
+        { UploadRoute.Small, "small" },
+        { UploadRoute.Block, "block" },
+    };
+
+    private static readonly Dictionary<UploadBlockCount, string> UploadBlockCountMapping = new()
+    {
+        { UploadBlockCount.Single, "single" },
+        { UploadBlockCount.Few, "few" },
+        { UploadBlockCount.Many, "many" },
+    };
+
+    private static readonly Dictionary<UploadSizeClass, string> UploadSizeClassMapping = new()
+    {
+        { UploadSizeClass.Small, "small" },
+        { UploadSizeClass.Single, "single" },
+        { UploadSizeClass.Multi, "multi" },
+    };
 
     private static readonly Dictionary<UploadError, string> UploadErrorMapping = new()
     {
@@ -26,6 +53,10 @@ internal sealed class UploadMetrics
     private readonly Counter<int> _failures;
     private readonly Histogram<long> _failuresFileSize;
     private readonly Histogram<long> _failuresTransferSize;
+    private readonly Histogram<long> _smallFileThroughput;
+    private readonly Histogram<long> _largeFileThroughput;
+    private readonly Histogram<long> _largeRouteActiveTimeShare;
+    private readonly Histogram<long> _smallRouteActiveTimeShare;
 
     public UploadMetrics(IMeterFactory meterFactory)
     {
@@ -52,6 +83,30 @@ internal sealed class UploadMetrics
             unit: "{byte}",
             description: "Number of bytes uploaded before failure",
             advice: new InstrumentAdvice<long> { HistogramBucketBoundaries = [4096, 131072, 4194304, 20971520, 1073741824, 17179869184] });
+
+        _smallFileThroughput = meter.CreateHistogram(
+            name: SmallFileThroughputMetricName,
+            unit: "KiBy/s",
+            description: "Per-file upload throughput for files smaller than 128 KiB",
+            advice: new InstrumentAdvice<long> { HistogramBucketBoundaries = [4, 8, 16, 32, 64, 128, 256, 512, 1024] });
+
+        _largeFileThroughput = meter.CreateHistogram(
+            name: LargeFileThroughputMetricName,
+            unit: "KiBy/s",
+            description: "Per-file upload throughput for files at least 128 KiB",
+            advice: new InstrumentAdvice<long> { HistogramBucketBoundaries = [8, 32, 128, 512, 2048, 8192] });
+
+        _largeRouteActiveTimeShare = meter.CreateHistogram(
+            name: LargeRouteActiveTimeShareMetricName,
+            unit: "%",
+            description: "Share of total upload time spent active on the block upload route",
+            advice: new InstrumentAdvice<long> { HistogramBucketBoundaries = [25, 50, 75, 80, 85, 90, 95, 100] });
+
+        _smallRouteActiveTimeShare = meter.CreateHistogram(
+            name: SmallRouteActiveTimeShareMetricName,
+            unit: "%",
+            description: "Share of total upload time spent active on the small-file upload route",
+            advice: new InstrumentAdvice<long> { HistogramBucketBoundaries = [10, 15, 20, 25, 50, 75, 100] });
     }
 
     public void Record(UploadEvent uploadEvent)
@@ -76,6 +131,35 @@ internal sealed class UploadMetrics
 
         _failuresFileSize.Record(uploadEvent.ApproximateExpectedSize);
         _failuresTransferSize.Record(uploadEvent.ApproximateUploadedSize);
+    }
+
+    public void Record(UploadPerformanceEvent uploadPerformanceEvent)
+    {
+        if (uploadPerformanceEvent.Metric is UploadPerformanceMetric.SmallFileThroughput &&
+            UploadRouteMapping.TryGetValue(uploadPerformanceEvent.UploadRoute, out var uploadRoute))
+        {
+            _smallFileThroughput.Record(
+                uploadPerformanceEvent.Value,
+                new KeyValuePair<string, object?>(UploadRouteKeyName, uploadRoute));
+        }
+        else if (uploadPerformanceEvent.Metric is UploadPerformanceMetric.LargeFileThroughput &&
+                 UploadBlockCountMapping.TryGetValue(uploadPerformanceEvent.BlockCount, out var blockCount))
+        {
+            _largeFileThroughput.Record(
+                uploadPerformanceEvent.Value,
+                new KeyValuePair<string, object?>(BlockCountKeyName, blockCount));
+        }
+        else if (uploadPerformanceEvent.Metric is UploadPerformanceMetric.LargeRouteActiveTimeShare &&
+                 UploadSizeClassMapping.TryGetValue(uploadPerformanceEvent.SizeClass, out var sizeClass))
+        {
+            _largeRouteActiveTimeShare.Record(
+                uploadPerformanceEvent.Value,
+                new KeyValuePair<string, object?>(SizeClassKeyName, sizeClass));
+        }
+        else if (uploadPerformanceEvent.Metric is UploadPerformanceMetric.SmallRouteActiveTimeShare)
+        {
+            _smallRouteActiveTimeShare.Record(uploadPerformanceEvent.Value);
+        }
     }
 
     private static string MapVolumeType(VolumeType volumeType)
