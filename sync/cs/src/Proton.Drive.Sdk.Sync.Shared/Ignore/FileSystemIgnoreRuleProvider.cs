@@ -8,14 +8,16 @@ namespace Proton.Drive.Sdk.Sync.Shared.Ignore;
 /// </summary>
 /// <remarks>
 /// <para>
-/// Two kinds of ignore files are recognised. A single <c>.protonignore</c> on the sync root, which
-/// applies to the whole sync root, and, when enabled, a <c>.gitignore</c> in any directory, which
-/// applies to that directory and everything below it, exactly as Git does it.
+/// Two kinds of ignore files are recognised, both in any directory of the sync root: a
+/// <c>.protonignore</c> and, when enabled, a <c>.gitignore</c>. Each applies to its own directory
+/// and everything below it, exactly as Git does it, so a sync root holding many repositories can
+/// keep one <c>.protonignore</c> per repository.
 /// </para>
 /// <para>
 /// Precedence, from weakest to strongest: shallower <c>.gitignore</c>, deeper <c>.gitignore</c>,
-/// <c>.protonignore</c>. The <c>.protonignore</c> wins so that a negated pattern there can bring
-/// back something a repository <c>.gitignore</c> excludes.
+/// shallower <c>.protonignore</c>, deeper <c>.protonignore</c>. Any <c>.protonignore</c> outranks
+/// every <c>.gitignore</c>, so that a negated pattern there can bring back something a repository
+/// <c>.gitignore</c> excludes.
 /// </para>
 /// <para>
 /// Ignore files are cached and re-read when their size or last write time changes. To keep the cost
@@ -59,7 +61,6 @@ public sealed class FileSystemIgnoreRuleProvider : IIgnoreRuleProvider
         }
 
         var segments = normalizedPath.Split('/');
-        var protonRuleSet = GetRuleSet(Path.Combine(rootLocalPath, ProtonIgnoreFileName), basePath: string.Empty);
 
         // An item is excluded if it matches itself or if any of its ancestor directories is excluded.
         // As in Git, a negated pattern cannot bring back an item from an excluded directory.
@@ -72,8 +73,10 @@ public sealed class FileSystemIgnoreRuleProvider : IIgnoreRuleProvider
             var pathIsDirectory = depth < segments.Length - 1 || isDirectory;
 
             var isExcluded =
-                protonRuleSet.Match(path, pathIsDirectory) ??
-                MatchGitIgnoreFiles(rootLocalPath, segments, depth, path, pathIsDirectory);
+                MatchIgnoreFiles(ProtonIgnoreFileName, rootLocalPath, segments, depth, path, pathIsDirectory) ??
+                (_honoursGitIgnoreFiles
+                    ? MatchIgnoreFiles(GitIgnoreFileName, rootLocalPath, segments, depth, path, pathIsDirectory)
+                    : null);
 
             if (isExcluded == true)
             {
@@ -94,23 +97,18 @@ public sealed class FileSystemIgnoreRuleProvider : IIgnoreRuleProvider
         _cache.Clear();
     }
 
-    private bool? MatchGitIgnoreFiles(string rootLocalPath, string[] segments, int depth, string path, bool isDirectory)
+    private bool? MatchIgnoreFiles(string fileName, string rootLocalPath, string[] segments, int depth, string path, bool isDirectory)
     {
-        if (!_honoursGitIgnoreFiles)
-        {
-            return null;
-        }
-
         bool? result = null;
 
-        // A .gitignore governs its own directory and everything below, a deeper one overrides a shallower one
+        // An ignore file governs its own directory and everything below, a deeper one overrides a shallower one
         for (var baseDepth = 0; baseDepth <= depth; baseDepth++)
         {
             var basePath = baseDepth == 0 ? string.Empty : string.Join('/', segments, 0, baseDepth);
 
             var filePath = basePath.Length == 0
-                ? Path.Combine(rootLocalPath, GitIgnoreFileName)
-                : Path.Combine(rootLocalPath, basePath.Replace('/', Path.DirectorySeparatorChar), GitIgnoreFileName);
+                ? Path.Combine(rootLocalPath, fileName)
+                : Path.Combine(rootLocalPath, basePath.Replace('/', Path.DirectorySeparatorChar), fileName);
 
             var match = GetRuleSet(filePath, basePath).Match(path, isDirectory);
 
