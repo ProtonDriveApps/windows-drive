@@ -5,21 +5,28 @@ This fork lets you keep files and folders inside a sync root out of synchronizat
 
 ## The two ignore files
 
-**`.protonignore`** on the root of a sync folder. It applies to that whole sync root.
+**`.protonignore`** in any directory. It applies to that directory and everything below it. One
+on the root of a sync folder applies to the whole sync root; when a sync root holds many
+repositories, each of them can carry its own.
 
 **`.gitignore`** in any directory. It applies to that directory and everything below it, exactly
 where Git would apply it. This is on by default and can be turned off by constructing
 `FileSystemIgnoreRuleProvider` with `honoursGitIgnoreFiles: false` in `SyncAgentFactory`.
 
+Patterns in either file are relative to the directory the file sits in, as in Git.
+
 Precedence, from weakest to strongest:
 
 1. a shallower `.gitignore`
 2. a deeper `.gitignore`
-3. `.protonignore`
+3. a shallower `.protonignore`
+4. a deeper `.protonignore`
 
-`.protonignore` wins last so that a negated pattern there can bring back something a repository
-`.gitignore` excludes. Example: a repo ignores `dist/`, but you want it in the cloud anyway, so you
-put `!dist/` into `.protonignore`.
+Any `.protonignore` wins over every `.gitignore`, so that a negated pattern there can bring back
+something a repository `.gitignore` excludes. Example: a repo ignores `dist/` and `.env`, but you
+want them in the cloud anyway, so you put `!dist/` and `!.env` into that repo's `.protonignore`.
+A deeper `.protonignore` overrides a shallower one, so a repository can bring back something the
+`.protonignore` on the sync root excludes.
 
 The ignore files themselves are synced like any other file. Add them to their own rules if you do
 not want that.
