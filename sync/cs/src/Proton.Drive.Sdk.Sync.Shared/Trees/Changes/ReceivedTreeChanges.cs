@@ -11,6 +11,8 @@ public sealed class ReceivedTreeChanges<TId> : IReceivedTreeChanges<TId>
     private readonly ConcurrentQueue<TreeChange<TId>> _treeChanges = new();
 
     private ITreeChangeProvider<TId>? _treeChangeProvider;
+    private volatile bool _isInitialized;
+    private TId? _lastConsumedIdOnInitialization;
     private bool _hasSkippedConsumedItems;
     private volatile TreeChange<TId>? _lastConsumedItem;
 
@@ -26,6 +28,19 @@ public sealed class ReceivedTreeChanges<TId> : IReceivedTreeChanges<TId>
     public event EventHandler? Added;
 
     public bool IsEmpty => _treeChanges.IsEmpty;
+
+    /// <summary>
+    /// Reads the identity of the last consumed tree change from the repository.
+    /// </summary>
+    /// <remarks>
+    /// Must be called before the tree change provider starts providing tree changes. Tree changes are received
+    /// on the provider's thread, which must not access the repository, as it belongs to another database connection.
+    /// </remarks>
+    public void Initialize()
+    {
+        _lastConsumedIdOnInitialization = GetLastConsumedId();
+        _isInitialized = true;
+    }
 
     public ReceivedTreeChanges<TId> ConnectTo(ITreeChangeProvider<TId> treeChangeProvider)
     {
@@ -78,9 +93,12 @@ public sealed class ReceivedTreeChanges<TId> : IReceivedTreeChanges<TId>
         // We skip incoming items until the first not yet consumed item.
         if (!_hasSkippedConsumedItems)
         {
-            var lastConsumedId = GetLastConsumedId();
+            if (!_isInitialized)
+            {
+                throw new InvalidOperationException("Not initialized");
+            }
 
-            if (treeChange.Id.CompareTo(lastConsumedId) <= 0)
+            if (treeChange.Id.CompareTo(_lastConsumedIdOnInitialization) <= 0)
             {
                 // This change has been consumed
                 _lastConsumedItem = treeChange;

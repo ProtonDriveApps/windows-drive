@@ -1,6 +1,6 @@
-namespace Proton.Drive.App.Windows.Views.Shared;
+namespace Proton.Drive.Sdk.Sync.Shared;
 
-public enum AppDisplayStatus
+public enum SyncAgentStatus
 {
     SignedOut,
     SigningIn,

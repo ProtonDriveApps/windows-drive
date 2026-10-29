@@ -265,48 +265,6 @@
     <value>Importé sur Proton Drive</value>
     <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
-  <data name="AppDisplayStatus_Value_AccountError">
-    <value>La configuration d'un compte n'a pas abouti.</value>
-  </data>
-  <data name="AppDisplayStatus_Value_FinishingUp">
-    <value>Finalisation...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Offline">
-    <value>Hors ligne</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SettingUp">
-    <value>Configuration...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignInError">
-    <value>La connexion n'a pas abouti.</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignedOut">
-    <value>Déconnecté</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningIn">
-    <value>Connexion...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningOut">
-    <value>Déconnexion...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SyncFolderError">
-    <value>La configuration des dossiers de synchronisation n'a pas abouti.</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationError">
-    <value>La synchronisation n'a pas abouti.</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationPaused">
-    <value>La synchronisation a été mise en pause.</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationWarning">
-    <value>Certains éléments n'ont pas pu être synchronisés.</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronized">
-    <value>Synchronisé</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronizing">
-    <value>Synchronisation...</value>
-  </data>
   <data name="BugReport_Button_Cancel">
     <value>_Annuler</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -799,7 +757,7 @@ Désactivez et réactivez sa synchronisation pour le restaurer et effacer cette 
     <value>Activité</value>
   </data>
   <data name="Main_MyComputer_Description">
-    <value>Les dossiers synchronisés depuis vos ordinateurs apparaîtront dans la section « Ordinateurs » de vos applications Drive.</value>
+    <value>Les dossiers synchronisés depuis vos ordinateurs apparaîtront dans la section « Ordinateurs » de votre application Drive.</value>
   </data>
   <data name="Main_MyComputer_Device_Button_Rename">
     <value>_Renommer</value>
@@ -1533,7 +1491,7 @@ Le contenu des fichiers sera téléchargé à la demande uniquement.</value>
     <value></value>
   </data>
   <data name="PhotoImportFolderStatus_Value_Succeeded">
-    <value>L'Importation a été réussie</value>
+    <value>L'Importation a réussi</value>
   </data>
   <data name="PhotoImportFolderStatus_Value_ValidationFailed">
     <value></value>
@@ -1670,6 +1628,48 @@ Le contenu des fichiers sera téléchargé à la demande uniquement.</value>
   </data>
   <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
     <value>le type de lecteur local n'est pas pris en charge.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_AccountError">
+    <value>La configuration d'un compte n'a pas abouti.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_FinishingUp">
+    <value>Finalisation...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Offline">
+    <value>Hors ligne</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SettingUp">
+    <value>Configuration...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignInError">
+    <value>La connexion n'a pas abouti.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignedOut">
+    <value>Déconnecté</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningIn">
+    <value>Connexion en cours...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningOut">
+    <value>Déconnexion en cours...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SyncFolderError">
+    <value>La configuration des dossiers de synchronisation n'a pas abouti.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationError">
+    <value>La synchronisation n'a pas abouti.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationPaused">
+    <value>La synchronisation a été mise en pause.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationWarning">
+    <value>Certains éléments n'ont pas pu être synchronisés.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronized">
+    <value>Synchronisé</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronizing">
+    <value>Synchronisation...</value>
   </data>
   <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
     <value>L’espace libre sur cet appareil est insuffisant.</value>

@@ -265,48 +265,6 @@
     <value>Uploadet til Proton Drive</value>
     <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
-  <data name="AppDisplayStatus_Value_AccountError">
-    <value>Kunne ikke oprette en konto</value>
-  </data>
-  <data name="AppDisplayStatus_Value_FinishingUp">
-    <value>Afslutter...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Offline">
-    <value>Offline</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SettingUp">
-    <value>Konfigurerer...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignInError">
-    <value>Kunne ikke logge ind</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignedOut">
-    <value>Logget ud</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningIn">
-    <value>Logger ind...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningOut">
-    <value>Logger ud...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SyncFolderError">
-    <value>Kunne ikke konfigurere synkroniseringsmapper</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationError">
-    <value>Synkronisering mislykkedes</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationPaused">
-    <value>Synkronisering sat på pause</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationWarning">
-    <value>Nogle elementer kunne ikke synkroniseres</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronized">
-    <value>Synkroniseret</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronizing">
-    <value>Synkroniserer…</value>
-  </data>
   <data name="BugReport_Button_Cancel">
     <value>_Annuller</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1668,6 +1626,48 @@ Indholdet af filerne downloades kun efter behov.</value>
   </data>
   <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
     <value>lokal drevtype understøttes ikke</value>
+  </data>
+  <data name="SyncAgentStatus_Value_AccountError">
+    <value>Kunne ikke oprette en konto</value>
+  </data>
+  <data name="SyncAgentStatus_Value_FinishingUp">
+    <value>Afslutter...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Offline">
+    <value>Offline</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SettingUp">
+    <value>Konfigurerer...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignInError">
+    <value>Kunne ikke logge ind</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignedOut">
+    <value>Logget ud</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningIn">
+    <value>Logger ind...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningOut">
+    <value>Logger ud...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SyncFolderError">
+    <value>Kunne ikke konfigurere synkroniseringsmapper</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationError">
+    <value>Synkronisering mislykkedes</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationPaused">
+    <value>Synkronisering sat på pause</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationWarning">
+    <value>Nogle elementer kunne ikke synkroniseres</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronized">
+    <value>Synkroniseret</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronizing">
+    <value>Synkroniserer…</value>
   </data>
   <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
     <value>Ikke nok ledig plads på denne enhed</value>

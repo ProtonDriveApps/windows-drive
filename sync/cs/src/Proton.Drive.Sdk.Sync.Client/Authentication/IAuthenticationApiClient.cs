@@ -6,10 +6,15 @@ namespace Proton.Drive.Sdk.Sync.Client.Authentication;
 
 internal interface IAuthenticationApiClient
 {
+    [Post("/v4/sessions")]
+    Task<UnauthenticatedSessionResponse> CreateUnauthenticatedSessionAsync(CancellationToken cancellationToken);
+
     [Post("/v4/info")]
+    [BearerAuthorizationHeader]
     Task<AuthInfo> GetAuthInfoAsync(AuthInfoRequest data, CancellationToken cancellationToken);
 
     [Post("/v4")]
+    [BearerAuthorizationHeader]
     Task<AuthResponse> LoginAsync(AuthRequest data, CancellationToken cancellationToken);
 
     [Post("/v4/2fa")]
@@ -32,8 +37,4 @@ internal interface IAuthenticationApiClient
     [Get("/v4/scopes")]
     [BearerAuthorizationHeader]
     Task<ScopesResponse> GetScopesAsync(CancellationToken cancellationToken);
-
-    [Get("/v4/modulus")]
-    [BearerAuthorizationHeader]
-    Task<ModulusResponse> GetRandomSrpModulusAsync(CancellationToken cancellationToken);
 }

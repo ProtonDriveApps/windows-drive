@@ -43,7 +43,6 @@ using Proton.Drive.Shared;
 using Proton.Drive.Shared.Caching;
 using Proton.Drive.Shared.Configuration;
 using Proton.Drive.Shared.Devices;
-using Proton.Drive.Shared.Extensions;
 using Proton.Drive.Shared.Features;
 using Proton.Drive.Shared.HumanVerification;
 using Proton.Drive.Shared.Net.Http;
@@ -52,6 +51,7 @@ using Proton.Drive.Shared.Offline;
 using Proton.Drive.Shared.Reporting;
 using Proton.Drive.Shared.Repository;
 using Proton.Drive.Shared.Telemetry;
+using Proton.Drive.Shared.Update;
 
 namespace Proton.Drive.Sdk.Sync.Agent.Configuration;
 
@@ -77,7 +77,7 @@ public static class ServiceConfigurator
                         throw new InvalidOperationException("Failed to obtain TLS pinning configuration"))
                 .AddSingleton(
                     provider => provider.GetRequiredService<IConfiguration>().GetSection("FeatureManagement").Get<LocalFeatureFlags>(options => options.BindNonPublicProperties = true) ??
-                        throw new InvalidOperationException("Failed to obtain app feature configuration"))
+                        new LocalFeatureFlags()) // Local feature flags are optional
 
                 .AddSingleton(GetDriveApiConfig)
                 .AddApiClients()
@@ -328,6 +328,14 @@ public static class ServiceConfigurator
                 .AddSingleton<RemoteDecoratedFileSystemClientFactory>()
                 .AddSingleton<RemoteDecoratedEventLogClientFactory>()
 
+                .AddSingleton<SyncAgentStateProvider>()
+                .AddSingleton<ISessionStateAware>(provider => provider.GetRequiredService<SyncAgentStateProvider>())
+                .AddSingleton<IAccountStateAware>(provider => provider.GetRequiredService<SyncAgentStateProvider>())
+                .AddSingleton<IMainVolumeStateAware>(provider => provider.GetRequiredService<SyncAgentStateProvider>())
+                .AddSingleton<IMappingsSetupStateAware>(provider => provider.GetRequiredService<SyncAgentStateProvider>())
+                .AddSingleton<ISyncStateAware>(provider => provider.GetRequiredService<SyncAgentStateProvider>())
+                .AddSingleton<IOfflineStateAware>(provider => provider.GetRequiredService<SyncAgentStateProvider>())
+
                 .AddSingleton<SyncAgentFactory>()
 
                 .AddSingleton<IFileConsistencyGuardFactory, FileConsistencyGuardFactory>()
@@ -409,11 +417,13 @@ public static class ServiceConfigurator
                 .AddSingleton(provider => new Lazy<IEnumerable<IAccountSwitchingHandler>>(provider.GetRequiredService<IEnumerable<IAccountSwitchingHandler>>))
                 .AddSingleton(provider => new Lazy<IEnumerable<ISyncFoldersAware>>(provider.GetRequiredService<IEnumerable<ISyncFoldersAware>>))
                 .AddSingleton(provider => new Lazy<IEnumerable<ISyncLifecycleStateAware>>(provider.GetRequiredService<IEnumerable<ISyncLifecycleStateAware>>))
+                .AddSingleton(provider => new Lazy<IEnumerable<ISyncAgentStateAware>>(provider.GetRequiredService<IEnumerable<ISyncAgentStateAware>>))
                 .AddSingleton(provider => new Lazy<IEnumerable<ISyncStateAware>>(provider.GetRequiredService<IEnumerable<ISyncStateAware>>))
                 .AddSingleton(provider => new Lazy<IEnumerable<ISyncStatisticsAware>>(provider.GetRequiredService<IEnumerable<ISyncStatisticsAware>>))
                 .AddSingleton(provider => new Lazy<IEnumerable<ISyncActivityAware>>(provider.GetRequiredService<IEnumerable<ISyncActivityAware>>))
                 .AddSingleton(provider => new Lazy<IEnumerable<IFeatureFlagsAware>>(provider.GetRequiredService<IEnumerable<IFeatureFlagsAware>>))
                 .AddSingleton(provider => new Lazy<IEnumerable<IOfflineStateAware>>(provider.GetRequiredService<IEnumerable<IOfflineStateAware>>))
+                .AddSingleton(provider => new Lazy<IEnumerable<IUpdateRequiredAware>>(provider.GetRequiredService<IEnumerable<IUpdateRequiredAware>>))
 
                 .AddSingleton<IGoogleTakeoutMetadataExtractor, GoogleTakeoutMetadataExtractor>()
             ;
@@ -429,6 +439,7 @@ public static class ServiceConfigurator
     private static DriveApiConfig GetDriveApiConfig(IServiceProvider provider)
     {
         var appConfig = provider.GetRequiredService<AppConfig>();
+        var systemInfoProvider = provider.GetRequiredService<ISystemInfoProvider>();
         var config = provider.GetRequiredService<IConfiguration>()
                 .GetSection("DriveApi")
                 .Get<DriveApiConfig>(options => options.BindNonPublicProperties = true)
@@ -438,31 +449,8 @@ public static class ServiceConfigurator
             .Replace("{AppVersion}", appConfig.AppVersion.ToString());
         config.UserAgent = config.UserAgent!
             .Replace("{AppVersion}", appConfig.AppVersion.ToString())
-            .Replace("{SystemInfo}", GetSystemInfo());
+            .Replace("{SystemInfo}", systemInfoProvider.SystemInfo);
 
         return config;
-    }
-
-    private static string GetSystemInfo()
-    {
-        var parts = new List<string>
-        {
-            $"Windows NT {Environment.OSVersion.Version.ToNormalized()}",
-        };
-
-        if (Environment.Is64BitOperatingSystem)
-        {
-            // System has a 64-bit processor
-            parts.Add("Win64");
-            parts.Add("x64");
-
-            if (!Environment.Is64BitProcess)
-            {
-                // A 32-bit version of the app is running on the 64-bit processor
-                parts.Add("WOW64");
-            }
-        }
-
-        return string.Join("; ", parts);
     }
 }

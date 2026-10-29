@@ -421,132 +421,6 @@ namespace Proton.Drive.App.Windows.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to set up an account.
-        /// </summary>
-        internal static string AppDisplayStatus_Value_AccountError {
-            get {
-                return ResourceManager.GetString("AppDisplayStatus_Value_AccountError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Finishing up....
-        /// </summary>
-        internal static string AppDisplayStatus_Value_FinishingUp {
-            get {
-                return ResourceManager.GetString("AppDisplayStatus_Value_FinishingUp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Offline.
-        /// </summary>
-        internal static string AppDisplayStatus_Value_Offline {
-            get {
-                return ResourceManager.GetString("AppDisplayStatus_Value_Offline", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Setting up....
-        /// </summary>
-        internal static string AppDisplayStatus_Value_SettingUp {
-            get {
-                return ResourceManager.GetString("AppDisplayStatus_Value_SettingUp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Signed out.
-        /// </summary>
-        internal static string AppDisplayStatus_Value_SignedOut {
-            get {
-                return ResourceManager.GetString("AppDisplayStatus_Value_SignedOut", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to sign in.
-        /// </summary>
-        internal static string AppDisplayStatus_Value_SignInError {
-            get {
-                return ResourceManager.GetString("AppDisplayStatus_Value_SignInError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Signing in....
-        /// </summary>
-        internal static string AppDisplayStatus_Value_SigningIn {
-            get {
-                return ResourceManager.GetString("AppDisplayStatus_Value_SigningIn", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Signing out....
-        /// </summary>
-        internal static string AppDisplayStatus_Value_SigningOut {
-            get {
-                return ResourceManager.GetString("AppDisplayStatus_Value_SigningOut", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Failed to set up sync folders.
-        /// </summary>
-        internal static string AppDisplayStatus_Value_SyncFolderError {
-            get {
-                return ResourceManager.GetString("AppDisplayStatus_Value_SyncFolderError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Synchronization failed.
-        /// </summary>
-        internal static string AppDisplayStatus_Value_SynchronizationError {
-            get {
-                return ResourceManager.GetString("AppDisplayStatus_Value_SynchronizationError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Synchronization paused.
-        /// </summary>
-        internal static string AppDisplayStatus_Value_SynchronizationPaused {
-            get {
-                return ResourceManager.GetString("AppDisplayStatus_Value_SynchronizationPaused", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Some items failed to synchronize.
-        /// </summary>
-        internal static string AppDisplayStatus_Value_SynchronizationWarning {
-            get {
-                return ResourceManager.GetString("AppDisplayStatus_Value_SynchronizationWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Synced.
-        /// </summary>
-        internal static string AppDisplayStatus_Value_Synchronized {
-            get {
-                return ResourceManager.GetString("AppDisplayStatus_Value_Synchronized", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Synchronizing....
-        /// </summary>
-        internal static string AppDisplayStatus_Value_Synchronizing {
-            get {
-                return ResourceManager.GetString("AppDisplayStatus_Value_Synchronizing", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to _Cancel.
         /// </summary>
         internal static string BugReport_Button_Cancel {
@@ -4458,6 +4332,132 @@ namespace Proton.Drive.App.Windows.Resources {
         internal static string StorageOptimizationErrorCode_Value_VolumeNotSupported {
             get {
                 return ResourceManager.GetString("StorageOptimizationErrorCode_Value_VolumeNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to set up an account.
+        /// </summary>
+        internal static string SyncAgentStatus_Value_AccountError {
+            get {
+                return ResourceManager.GetString("SyncAgentStatus_Value_AccountError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finishing up....
+        /// </summary>
+        internal static string SyncAgentStatus_Value_FinishingUp {
+            get {
+                return ResourceManager.GetString("SyncAgentStatus_Value_FinishingUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offline.
+        /// </summary>
+        internal static string SyncAgentStatus_Value_Offline {
+            get {
+                return ResourceManager.GetString("SyncAgentStatus_Value_Offline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Setting up....
+        /// </summary>
+        internal static string SyncAgentStatus_Value_SettingUp {
+            get {
+                return ResourceManager.GetString("SyncAgentStatus_Value_SettingUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signed out.
+        /// </summary>
+        internal static string SyncAgentStatus_Value_SignedOut {
+            get {
+                return ResourceManager.GetString("SyncAgentStatus_Value_SignedOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to sign in.
+        /// </summary>
+        internal static string SyncAgentStatus_Value_SignInError {
+            get {
+                return ResourceManager.GetString("SyncAgentStatus_Value_SignInError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signing in....
+        /// </summary>
+        internal static string SyncAgentStatus_Value_SigningIn {
+            get {
+                return ResourceManager.GetString("SyncAgentStatus_Value_SigningIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signing out....
+        /// </summary>
+        internal static string SyncAgentStatus_Value_SigningOut {
+            get {
+                return ResourceManager.GetString("SyncAgentStatus_Value_SigningOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to set up sync folders.
+        /// </summary>
+        internal static string SyncAgentStatus_Value_SyncFolderError {
+            get {
+                return ResourceManager.GetString("SyncAgentStatus_Value_SyncFolderError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronization failed.
+        /// </summary>
+        internal static string SyncAgentStatus_Value_SynchronizationError {
+            get {
+                return ResourceManager.GetString("SyncAgentStatus_Value_SynchronizationError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronization paused.
+        /// </summary>
+        internal static string SyncAgentStatus_Value_SynchronizationPaused {
+            get {
+                return ResourceManager.GetString("SyncAgentStatus_Value_SynchronizationPaused", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Some items failed to synchronize.
+        /// </summary>
+        internal static string SyncAgentStatus_Value_SynchronizationWarning {
+            get {
+                return ResourceManager.GetString("SyncAgentStatus_Value_SynchronizationWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synced.
+        /// </summary>
+        internal static string SyncAgentStatus_Value_Synchronized {
+            get {
+                return ResourceManager.GetString("SyncAgentStatus_Value_Synchronized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronizing....
+        /// </summary>
+        internal static string SyncAgentStatus_Value_Synchronizing {
+            get {
+                return ResourceManager.GetString("SyncAgentStatus_Value_Synchronizing", resourceCulture);
             }
         }
         

@@ -41,7 +41,7 @@ internal sealed class WinRtFileMetadataExtractor : IFileMetadataGenerator
 
         var cameraManufacturer = imageProperties.CameraManufacturer;
         var cameraModel = imageProperties.CameraModel;
-        var captureTime = imageProperties.DateTaken;
+        var captureTime = GetCaptureTime(imageProperties);
         var cameraOrientation = (int)imageProperties.Orientation;
         var cameraDevice = (cameraManufacturer + " " + cameraModel).Trim();
 
@@ -88,6 +88,11 @@ internal sealed class WinRtFileMetadataExtractor : IFileMetadataGenerator
         return WithExceptionLogging(async () => await file.Properties.GetImagePropertiesAsync(), "Cannot obtain image properties");
     }
 
+    private DateTimeOffset? GetCaptureTime(ImageProperties imageProperties)
+    {
+        return WithExceptionLogging(() => imageProperties.DateTaken, "Cannot obtain capture time");
+    }
+
     private Task<MusicProperties?> GetMusicPropertiesAsync(StorageFile file)
     {
         return WithExceptionLogging(async () => await file.Properties.GetMusicPropertiesAsync(), "Cannot obtain music properties");
@@ -110,14 +115,38 @@ internal sealed class WinRtFileMetadataExtractor : IFileMetadataGenerator
         {
             return await function.Invoke().ConfigureAwait(false);
         }
-        catch (Exception ex) when (ex.IsFileAccessException() || ex is COMException or ArgumentException)
+        catch (Exception ex) when (IsHandledException(ex))
         {
-            _logger.LogWarning(
-                "Metadata extraction failed: {FailureNote}: {ErrorCode} {ErrorMessage}",
-                failureNote,
-                ex.GetRelevantFormattedErrorCode(),
-                ex.Message);
+            LogMetadataExtractionFailure(ex, failureNote);
             return null;
         }
+    }
+
+    private TResult? WithExceptionLogging<TResult>(Func<TResult> function, string failureNote)
+        where TResult : struct
+    {
+        try
+        {
+            return function.Invoke();
+        }
+        catch (Exception ex) when (IsHandledException(ex))
+        {
+            LogMetadataExtractionFailure(ex, failureNote);
+            return null;
+        }
+    }
+
+    private static bool IsHandledException(Exception ex)
+    {
+        return ex.IsFileAccessException() || ex is COMException or ArgumentException;
+    }
+
+    private void LogMetadataExtractionFailure(Exception ex, string failureNote)
+    {
+        _logger.LogWarning(
+            "Metadata extraction failed: {FailureNote}: {ErrorCode} {ErrorMessage}",
+            failureNote,
+            ex.GetRelevantFormattedErrorCode(),
+            ex.Message);
     }
 }

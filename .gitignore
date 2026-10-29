@@ -350,3 +350,6 @@ healthchecksdb
 
 # Include specific solution folders into source control that would be ignored due to above settings
 !src/Proton.Drive.Update/Releases/
+
+# Claude Code personal settings
+.claude/settings.local.json

@@ -265,48 +265,6 @@
     <value>Загружено на Proton Drive</value>
     <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
-  <data name="AppDisplayStatus_Value_AccountError">
-    <value>Не удалось настроить аккаунт</value>
-  </data>
-  <data name="AppDisplayStatus_Value_FinishingUp">
-    <value>Завершаем...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Offline">
-    <value>Офлайн</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SettingUp">
-    <value>Установка...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignInError">
-    <value>Не удалось войти</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignedOut">
-    <value>Выполнен выход</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningIn">
-    <value>Выполняется вход...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningOut">
-    <value>Выход...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SyncFolderError">
-    <value>Не удалось настроить папки синхронизации</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationError">
-    <value>Сбой синхронизации</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationPaused">
-    <value>Синхронизация приостановлена</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationWarning">
-    <value>Некоторые элементы не удалось синхронизировать</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronized">
-    <value>Синхронизировано</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronizing">
-    <value>Синхронизация...</value>
-  </data>
   <data name="BugReport_Button_Cancel">
     <value>_Отменить</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -527,10 +485,10 @@
     <value>Сбой проверки наличия обновлений</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
-    <value>Update required</value>
+    <value>Требуется обновление</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Update available</value>
+    <value>Доступно обновление</value>
   </data>
   <data name="Main_About_Button_UpdateNow">
     <value>_Обновить сейчас</value>
@@ -546,11 +504,11 @@
     <value>Дата выпуска</value>
   </data>
   <data name="Main_About_Link_PrivacyPolicy">
-    <value>_Privacy policy</value>
+    <value>_Политика конфиденциальности</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_About_Link_TermsOfService">
-    <value>_Terms of service</value>
+    <value>_Условия использования</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_About_ReleaseHistory_Label_New">
@@ -772,7 +730,7 @@
     <value>Подготовка... ({0} подготовлены для синхронизации)</value>
   </data>
   <data name="Main_Activity_Status_Value_SyncPausedUntilFormat">
-    <value>(until {0})</value>
+    <value>(до {0})</value>
   </data>
   <data name="Main_Activity_TimeElapsed_AMomentAgo">
     <value>a moment ago</value>
@@ -947,7 +905,7 @@
     <value>Оптимизация хранения недоступна</value>
   </data>
   <data name="Main_MyComputer_Link_LearnMore">
-    <value>Learn more</value>
+    <value>Подробнее</value>
   </data>
   <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
     <value>Отключить приветствие на компьютере</value>
@@ -1051,7 +1009,7 @@
     <value>Импорт из Google Photos</value>
   </data>
   <data name="Main_Photos_Import_Link_HowImportWorks">
-    <value>How does photo import work?</value>
+    <value>Как работает импорт фото?</value>
   </data>
   <data name="Main_Photos_Import_Title">
     <value>Импорт фото</value>
@@ -1079,7 +1037,7 @@
     <value>Get early access and help us test new versions of Proton Drive.</value>
   </data>
   <data name="Main_Settings_EarlyAccess_Title">
-    <value>Beta access</value>
+    <value>Бета-доступ</value>
   </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>Ваша папка Proton Drive:</value>
@@ -1471,29 +1429,29 @@
     <value>Mail: Custom and secure email</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Month">
-    <value>month</value>
+    <value>месяц</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_MostPopular">
-    <value>Most popular</value>
+    <value>Самый популярный</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
-    <value>Up to {0} users</value>
+    <value>До {0} пользователей</value>
     <comment>Only for number greater than 1.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
     <value>Pass: Encrypted password manager</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
-    <value>Premium value included</value>
+    <value>Включены все платные функции.</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Recommended">
     <value>Рекомендованный</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
-    <value>Recover previous file versions</value>
+    <value>Восстановить предыдущие версии файла</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Storage">
-    <value>storage</value>
+    <value>хранилище</value>
     <comment>Example: 500 GB storage</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Vpn">
@@ -1548,13 +1506,13 @@
     <value>Улучшения</value>
   </data>
   <data name="SecondFactorInputPage_Value_Fido2">
-    <value>Security key</value>
+    <value>Ключ безопасности</value>
   </data>
   <data name="SecondFactorInputPage_Value_NotSupported">
     <value></value>
   </data>
   <data name="SecondFactorInputPage_Value_Totp">
-    <value>Authenticator app</value>
+    <value>Приложение для аутентификации</value>
   </data>
   <data name="SessionStatus_Value_Ending">
     <value>Выход...</value>
@@ -1594,15 +1552,15 @@
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Link_CreateAccount">
-    <value>_Create account</value>
+    <value>_Создать аккаунт</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Link_ForgotPassword">
-    <value>_Forgot your password?</value>
+    <value>_Забыли пароль?</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Link_LearnMore">
-    <value>Learn more</value>
+    <value>Подробнее</value>
   </data>
   <data name="SignIn_Message_SigningIn">
     <value>Вход в ваш аккаунт</value>
@@ -1670,6 +1628,48 @@
   </data>
   <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
     <value>тип локального хранилища не поддерживается</value>
+  </data>
+  <data name="SyncAgentStatus_Value_AccountError">
+    <value>Не удалось настроить аккаунт</value>
+  </data>
+  <data name="SyncAgentStatus_Value_FinishingUp">
+    <value>Завершаем...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Offline">
+    <value>Офлайн</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SettingUp">
+    <value>Настройка...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignInError">
+    <value>Не удалось войти</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignedOut">
+    <value>Выполнен выход</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningIn">
+    <value>Выполняется вход...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningOut">
+    <value>Выход...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SyncFolderError">
+    <value>Не удалось настроить папки синхронизации</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationError">
+    <value>Сбой синхронизации</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationPaused">
+    <value>Синхронизация приостановлена</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationWarning">
+    <value>Некоторые элементы не удалось синхронизировать</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronized">
+    <value>Синхронизировано</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronizing">
+    <value>Синхронизация...</value>
   </data>
   <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
     <value>На этом устройстве недостаточно свободного места</value>

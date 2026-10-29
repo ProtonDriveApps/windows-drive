@@ -130,14 +130,11 @@ internal static class AppServices
             .AddSingleton<AppCommands>()
             .AddSingleton<ISessionStateAware>(provider => provider.GetRequiredService<AppCommands>())
             .AddSingleton<ISyncFoldersAware>(provider => provider.GetRequiredService<AppCommands>())
+
             .AddSingleton<AppStateViewModel>()
-            .AddSingleton<ISessionStateAware>(provider => provider.GetRequiredService<AppStateViewModel>())
-            .AddSingleton<IMainVolumeStateAware>(provider => provider.GetRequiredService<AppStateViewModel>())
-            .AddSingleton<IAccountStateAware>(provider => provider.GetRequiredService<AppStateViewModel>())
-            .AddSingleton<IMappingsSetupStateAware>(provider => provider.GetRequiredService<AppStateViewModel>())
-            .AddSingleton<ISyncStateAware>(provider => provider.GetRequiredService<AppStateViewModel>())
+            .AddSingleton<ISyncAgentStateAware>(provider => provider.GetRequiredService<AppStateViewModel>())
             .AddSingleton<IUserStateAware>(provider => provider.GetRequiredService<AppStateViewModel>())
-            .AddSingleton<IOfflineStateAware>(provider => provider.GetRequiredService<AppStateViewModel>())
+
             .AddSingleton<SessionWorkflowViewModel>()
             .AddSingleton<ISessionStateAware>(provider => provider.GetRequiredService<SessionWorkflowViewModel>())
             .AddSingleton<NavigationService<DetailsPageViewModel>>()

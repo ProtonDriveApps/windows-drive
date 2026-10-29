@@ -4,7 +4,7 @@ using Proton.Drive.Shared;
 using Proton.Drive.Shared.Authentication;
 using Windows.Win32;
 using Windows.Win32.Foundation;
-using Windows.Win32.Networking.WindowsWebServices;
+using Windows.Win32.Security.Authentication.WebAuthn;
 
 namespace Proton.Drive.Native.Authentication;
 

@@ -16,11 +16,9 @@
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.HighPerformance" />
-    <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="Microsoft.Extensions.Http.Polly" />
     <PackageReference Include="Polly.Core" />
     <PackageReference Include="Proton.Drive.Sdk" />
-    <PackageReference Include="Proton.Cryptography" />
     <PackageReference Include="Refit.HttpClientFactory" />
   </ItemGroup>
 

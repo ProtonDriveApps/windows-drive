@@ -1,0 +1,1778 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountDisplayStatus_Value_AccountError">
+    <value></value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SessionError">
+    <value>サインインに失敗しました</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SettingUp">
+    <value>設定中…</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SignedOut">
+    <value>サインアウトされました</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningIn">
+    <value>サインイン中...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningOut">
+    <value>サインアウト中...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_Succeeded">
+    <value>サインイン済み</value>
+  </data>
+  <data name="AccountErrorCode_Value_AccountSwitchingFailed">
+    <value>アカウントの切り替えに失敗しました。アプリを再起動してください。</value>
+  </data>
+  <data name="AccountErrorCode_Value_Delinquent">
+    <value>アカウントには未払いの請求書があります。ダッシュボードで支払いを行うか、管理者に知らせてください。</value>
+  </data>
+  <data name="AccountErrorCode_Value_DriveAccessFailed">
+    <value>Proton Driveに接続できません。インターネット接続を確認してください。</value>
+  </data>
+  <data name="AccountErrorCode_Value_NoDriveAccess">
+    <value>Proton Driveにアクセスするには、プランをアップグレードしてください。</value>
+  </data>
+  <data name="AccountErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Create">
+    <value>作成中</value>
+    <comment>Indicates a local folder being created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Delete">
+    <value>削除中</value>
+    <comment>Indicates the local file or folder being deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Download">
+    <value>Proton Driveからダウンロード中</value>
+    <comment>Indicates a file being downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>アップデートを取得中</value>
+    <comment>Indicates local file system changes being fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Move">
+    <value>移動中</value>
+    <comment>Indicates the local file or folder being moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Rename">
+    <value>名前の変更中</value>
+    <comment>Indicates the local file or folder being renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Upload">
+    <value>Proton Driveにアップロード中</value>
+    <comment>Indicates a  file being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Create">
+    <value>作成しました</value>
+    <comment>Indicates a local folder has been created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Delete">
+    <value>削除しました</value>
+    <comment>Indicates a local file or folder has been deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Download">
+    <value>Proton Driveからダウンロードしました</value>
+    <comment>Indicates a file has been downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>アップデートを取得しました</value>
+    <comment>Indicates local file system changes have been fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Move">
+    <value>移動しました</value>
+    <comment>Indicates a local file or folder has been moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Rename">
+    <value>名前を変更しました</value>
+    <comment>Indicates a local file or folder has been renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Upload">
+    <value>Proton Driveにアップロードしました</value>
+    <comment>Indicates a file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Create">
+    <value>Proton Driveで作成中</value>
+    <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
+    <value>Proton Driveのゴミ箱に移動中</value>
+    <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
+    <value>Proton Driveからダウンロード中</value>
+    <comment>Indicates a file is being downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Proton Driveから更新を取得中</value>
+    <comment>Indicates changes are being fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Move">
+    <value>Proton Driveに移動中</value>
+    <comment>Indicates the file or folder is being moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Rename">
+    <value>Proton Driveで名前を変更中</value>
+    <comment>Indicates the file or folder is being renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Upload">
+    <value>Proton Driveにアップロード中</value>
+    <comment>Indicates the file is being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Create">
+    <value>Proton Drive で作成しました</value>
+    <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
+    <value>Proton Driveのゴミ箱に移動しました</value>
+    <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
+    <value>Proton Driveからダウンロードしました</value>
+    <comment>Indicates a file has been downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Proton Driveからアップデートを取得しました</value>
+    <comment>Indicates changes have been fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Move">
+    <value>Proton Driveに移動しました</value>
+    <comment>Indicates the file or folder has been moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Rename">
+    <value>Proton Driveで名前を変更しました</value>
+    <comment>Indicates the file or folder has been renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Upload">
+    <value>Proton Driveにアップロードしました</value>
+    <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel">
+    <value>キャンセル</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel_HelpText">
+    <value>レポートをキャンセルする</value>
+  </data>
+  <data name="BugReport_Button_Report">
+    <value>報告</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Report_HelpText">
+    <value>レポートを送信する</value>
+  </data>
+  <data name="BugReport_Button_ShowLogs">
+    <value>ログを表示</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs">
+    <value>アプリのログを含める</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs_Tooltip">
+    <value>レポートには、最新のアプリログファイルと、インストールのログファイルが含まれます</value>
+  </data>
+  <data name="BugReport_NeedHelp_Description">
+    <value>Quick guides for setup, app use, and file sync.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_FAQ">
+    <value>Frequently asked questions (FAQ)</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks">
+    <value>Learn how the Proton Drive app works</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowSharedFilesWork">
+    <value>Access shared files</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_SyncFolders">
+    <value>Sync folders to Proton Drive</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_UseOnDemandSync">
+    <value>Use on-demand sync</value>
+  </data>
+  <data name="BugReport_NeedHelp_Title">
+    <value>Need help getting started with Proton Drive?</value>
+  </data>
+  <data name="BugReport_Text_Description_HelpText">
+    <value>説明。どのような問題が発生しましたか？どのような具体的な手順を実行しましたか？(最低 10 文字)</value>
+  </data>
+  <data name="BugReport_Text_Description_Label">
+    <value>説明</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_Description_Label_Requirement">
+    <value>(最低 10 文字)</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_ExactSteps">
+    <value>どのような具体的な手順を実行しましたか？</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_WhatWentWrong">
+    <value>どのような問題が発生しましたか?</value>
+  </data>
+  <data name="BugReport_Text_Email_HelpText">
+    <value>メールアドレス(必須項目)</value>
+  </data>
+  <data name="BugReport_Text_Email_Label">
+    <value>メールアドレス</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_HelpText">
+    <value>問題のタイトル(必須項目)</value>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Label">
+    <value>タイトル</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Watermark">
+    <value>問題のタイトル</value>
+  </data>
+  <data name="BugReport_Text_ReportSuccessfullySent">
+    <value>Report successfully sent. Thank you.</value>
+  </data>
+  <data name="BugReport_Title">
+    <value>Proton Drive Feedback</value>
+  </data>
+  <data name="Dialog_Button_Cancel">
+    <value>キャンセル</value>
+  </data>
+  <data name="Dialog_Button_Ok">
+    <value>OK</value>
+  </data>
+  <data name="Dialog_Button_Save">
+    <value>保存</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>The folder where this item was going to be downloaded could not be found</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>The folder where this item was going to be uploaded could not be found</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Cancelled">
+    <value>中断しました</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CloudFileProviderNotRunning">
+    <value>クラウドストレージプロバイダ(OneDriveなど)が実行され接続されていることを確認してください。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CyclicRedundancyCheck">
+    <value>データエラー(繰り返し冗長性チェック)。ファイルシステムエラーや不良セクタを確認するために、ドライブ(USB、ディスクなど)を確認してください。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DirectoryNotFound">
+    <value>パスの一部が見つかりませんでした</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DuplicateName">
+    <value>この名前はすでに使用されています</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_FreeSpaceExceeded">
+    <value>十分な空き容量がありません</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IdentityMismatch">
+    <value>ファイルまたはフォルダが分岐しました</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IntegrityFailure">
+    <value>データの検証に失敗しました</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_InvalidName">
+    <value>名前にはWindowsでサポートされていない文字が含まれています。同期を許可するには次の文字を削除してください: \ / : * ? " &lt; &gt;|</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
+    <value>ファイルは最近変更されたためスキップされました。アプリは自動的に再試行されます</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>The file could not be transferred because of a local storage error. Please check that your drive is working correctly.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
+    <value>ライブフォトをアップロードできません。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MetadataMismatch">
+    <value>ファイルまたはフォルダが分岐しました</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MissingIndividuallySharedFile">
+    <value>あなたと共有された元のファイルが削除、移動、または名前の変更されました。
+同期をオフに切り替え、エラーを復元します。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_NetworkError">
+    <value>Proton Driveに接続できません。インターネット接続を確認してください。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ObjectNotFound">
+    <value>ファイルもしくはフォルダが存在しません</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Offline">
+    <value>オフライン</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Partial">
+    <value>このファイルはローカルで使用できないため、アップロードできません。 解決するには、それを削除し、可能な場合はProton Driveのゴミ箱からコピーを復元してください。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_PathNotFound">
+    <value>ファイルもしくはフォルダが存在しません</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_RateLimited">
+    <value>エラーが発生しました</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyFile">
+    <value>ファイルは読み取り専用</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyRoot">
+    <value>表示のみのファイルとフォルダは変更できません。解決するには同期をオフにして「私と共有」の下でオンにしてください。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ServerError">
+    <value>何か問題が発生しました</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_SharingViolation">
+    <value>ファイルまたはフォルダは別のアプリで使用されています</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TimedOut">
+    <value>タイムアウト</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TransferAbortedDueToFileChange">
+    <value>ファイルの同期中に変更されたため、アップロードは中止されました。アプリは自動的に再試行されます。</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_UnauthorizedAccess">
+    <value>権限がありません</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Unknown">
+    <value>何か問題が発生しました</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_ContainsInvalidCharacter">
+    <value>名前に無効な文字が含まれています</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Empty">
+    <value>名前が空欄です</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithPeriod">
+    <value>名前が句点で終わっています</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithSpace">
+    <value>名前がスペースで終わっています</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Reserved">
+    <value>Windowsでサポートされていない名前</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_TooLong">
+    <value>名前が長すぎます</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Valid">
+    <value></value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_CheckingForUpdate">
+    <value>アップデートを確認中...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_DownloadingAnUpdate">
+    <value>アップデートをダウンロード中...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpToDate">
+    <value>最新の状態です</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
+    <value>アップデートの確認に失敗しました</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>アップデートが必要です</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
+    <value>アップデートが利用可能です</value>
+  </data>
+  <data name="Main_About_Button_UpdateNow">
+    <value>今すぐアップデート</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Button_UpdateNow_HelpText">
+    <value>Proton Driveの新しいバージョンが利用可能です。今すぐアップデートしてください。</value>
+  </data>
+  <data name="Main_About_Label_CurrentVersion">
+    <value>現在のバージョン</value>
+  </data>
+  <data name="Main_About_Label_ReleaseDate">
+    <value>リリース日</value>
+  </data>
+  <data name="Main_About_Link_PrivacyPolicy">
+    <value>_プライバシーポリシー</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Link_TermsOfService">
+    <value>_利用規約</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_ReleaseHistory_Label_New">
+    <value>新規</value>
+  </data>
+  <data name="Main_About_ReleaseHistory_Title">
+    <value>最新情報</value>
+  </data>
+  <data name="Main_About_Title">
+    <value>詳細</value>
+  </data>
+  <data name="Main_Account_Account_Button_ManageAccount">
+    <value>アカウントを管理</value>
+  </data>
+  <data name="Main_Account_Account_HelpText">
+    <value>アカウントを管理</value>
+  </data>
+  <data name="Main_Account_Account_Info_UnknownUser">
+    <value>不明なユーザー</value>
+  </data>
+  <data name="Main_Account_Label_Account">
+    <value>アカウント</value>
+  </data>
+  <data name="Main_Account_Label_Security">
+    <value>セキュリティ</value>
+  </data>
+  <data name="Main_Account_Password_Button_ChangePassword">
+    <value>変更</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Password_Description">
+    <value>アカウントのパスワードを変更します。</value>
+  </data>
+  <data name="Main_Account_Password_HelpText">
+    <value>Proton Driveのパスワードを変更する</value>
+  </data>
+  <data name="Main_Account_Password_Title">
+    <value>パスワード</value>
+  </data>
+  <data name="Main_Account_Plan_Button_SeePlans">
+    <value>プランを見る</value>
+  </data>
+  <data name="Main_Account_Plan_Description">
+    <value>ストレージを増やす</value>
+  </data>
+  <data name="Main_Account_Plan_HelpText">
+    <value>他のProton Driveプランを見る</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Button_Manage">
+    <value>管理</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_SessionManagement_Description">
+    <value>アカウントからサインアウトするか、パスワードを変更しない限り、セッションはアクティブなままです。セッションは非アクティブになってから 60 日後に期限切れになります。</value>
+  </data>
+  <data name="Main_Account_SessionManagement_HelpText">
+    <value>セッションを管理します。60 日間の非アクティブ化後、セッションは期限切れになります。</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Title">
+    <value>セッション管理</value>
+  </data>
+  <data name="Main_Account_SignOut_Description">
+    <value>サインアウトして同期を無効にします。同じアカウントでサインインすると同期を再開することができます。</value>
+  </data>
+  <data name="Main_Account_SignOut_HelpText">
+    <value>ProtonDriveからサインアウト</value>
+  </data>
+  <data name="Main_Account_SignOut_Title">
+    <value>_サインアウト</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Storage_Button_UpgradePlan">
+    <value>プランをアップグレード</value>
+  </data>
+  <data name="Main_Account_Storage_Info_EnsureMoreStorage">
+    <value>同期が途切れないように、今すぐストレージを増やしてください。</value>
+  </data>
+  <data name="Main_Account_Storage_Info_UsedSpaceFormat">
+    <value>合計使用量: {0} / {1}</value>
+  </data>
+  <data name="Main_Account_Storage_Title">
+    <value>ストレージ容量</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageExceeded">
+    <value>同期が停止されました。あなたのアカウントはストレージ容量を超えています。</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageLimit">
+    <value>もうすぐストレージの制限に達します。</value>
+  </data>
+  <data name="Main_Account_Title">
+    <value>アカウント</value>
+  </data>
+  <data name="Main_Activity_Button_PauseSync">
+    <value>同期を一時停止</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Rename">
+    <value>名前を変更</value>
+  </data>
+  <data name="Main_Activity_Button_Rename_Tooltip">
+    <value>同期の問題を解決するには、このアイテムの名前を変更してください</value>
+  </data>
+  <data name="Main_Activity_Button_ResumeSync">
+    <value>同期を再開</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Retry">
+    <value>同期を再試行</value>
+  </data>
+  <data name="Main_Activity_Column_Folder">
+    <value>フォルダ</value>
+  </data>
+  <data name="Main_Activity_Column_Name">
+    <value>名前</value>
+  </data>
+  <data name="Main_Activity_Column_Progress_Tooltip_Finalizing">
+    <value>完了処理中...</value>
+  </data>
+  <data name="Main_Activity_Column_Size">
+    <value>サイズ</value>
+  </data>
+  <data name="Main_Activity_Column_Status">
+    <value>ステータス</value>
+  </data>
+  <data name="Main_Activity_Column_Synced">
+    <value>同期済み</value>
+  </data>
+  <data name="Main_Activity_Column_Type">
+    <value>種類</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Button_ShowMore">
+    <value>詳細を表示</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Description">
+    <value>これらの問題の詳細についてはクリックしてください</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_HelpText">
+    <value>新しいセクション内のすべてのエラーを表示します</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_MultipleItemsFormat">
+    <value>{0} の問題があります</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_SingleItem">
+    <value>1 つの問題があります</value>
+  </data>
+  <data name="Main_Activity_Errors_Title">
+    <value>問題 ({0} ) を同期</value>
+  </data>
+  <data name="Main_Activity_Errors_Title_Tooltip">
+    <value>アクティビティに戻る</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Description">
+    <value>ファイルとフォルダに関する同期情報がここに表示されます</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_HelpText">
+    <value>あなたのファイルは最新です</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Title">
+    <value>あなたのファイルは最新です</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line1">
+    <value>このプロセスには数分かかることがあります。</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line2">
+    <value>安全にウィンドウを最小化または閉じることができます。</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_HelpText">
+    <value>同期が初期化されました</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Title">
+    <value>Drive をセットアップしています...</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Description">
+    <value>同期を有効にするには「同期を再開」をクリックしてください</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_HelpText">
+    <value>同期が一時停止しました</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Title">
+    <value>同期が一時停止しました</value>
+  </data>
+  <data name="Main_Activity_Rename_CurrentName_Label">
+    <value>現在の名前:</value>
+  </data>
+  <data name="Main_Activity_Rename_Description">
+    <value>このアイテムの名前には、Windows でサポートされていない文字が含まれています。</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_AlreadyExists">
+    <value>この名前はすでに使用されています</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_ContainsInvalidCharacter">
+    <value>名前に無効な文字が含まれています</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Failed">
+    <value>エラーが発生しました</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Required">
+    <value>名前は必須です</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Label">
+    <value>新しい名前:</value>
+  </data>
+  <data name="Main_Activity_Rename_Status_Value_Renaming">
+    <value>名前の変更中...</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion">
+    <value>同期を続けるには以下を削除してください:</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion_CharacterList">
+    <value>/ : * ? &gt; &lt; " |</value>
+  </data>
+  <data name="Main_Activity_Rename_Title">
+    <value>アイテム名の変更</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUp">
+    <value>設定中…</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUpFormat">
+    <value>設定中... ({0}個のアイテムは同期用に準備されています)</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SyncPausedUntilFormat">
+    <value>({0}まで)</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>たった今</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
+    <value>{0} 日前</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_HoursAgoFormat">
+    <value>{0} 時間前</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_MinutesAgoFormat">
+    <value>{0} 分前</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneDayAgo">
+    <value>1 日前</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneHourAgo">
+    <value>1 時間前</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneMinuteAgo">
+    <value>1 分前</value>
+  </data>
+  <data name="Main_Activity_Title">
+    <value>アクティビティ</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>コンピュータから同期されたフォルダは、Driveアプリの「コンピュータ」セクションに表示されます。</value>
+  </data>
+  <data name="Main_MyComputer_Device_Button_Rename">
+    <value>名前を変更</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Device_HelpText">
+    <value>デバイス名を変更</value>
+  </data>
+  <data name="Main_MyComputer_Device_Label">
+    <value>このデバイス</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Cancel_HelpText">
+    <value>デバイス名の変更をキャンセル</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Save_HelpText">
+    <value>デバイス名を保存</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Error_Tooltip">
+    <value>無効なデバイス名: 新しい名前は空欄であってはならず、 255 文字を超えてもいけません。</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_HelpText">
+    <value>デバイス名を変更</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Button_AddMore">
+    <value>さらにフォルダを追加</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Description">
+    <value>フォルダを追加すると、すべてのデータがProton Driveにバックアップされます。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Info_Saving">
+    <value>フォルダを保存しています...</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Title">
+    <value>フォルダを追加</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludedByAnAlreadySyncedFolderFormat">
+    <value>{0} 個のフォルダーは、すでに Proton Drive に同期されているフォルダーに含まれているため、同期できません。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludesAnAlreadySyncedFolderFormat">
+    <value>{0} 個のフォルダは、すでにProton Driveに同期されているサブフォルダがあるため同期できません</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFileSystemAccessFailedFormat">
+    <value>{0} 個のフォルダにアクセスできません</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFolderDoesNotExistFormat">
+    <value>{0} 個のフォルダが見つからないか、開くことができません。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalVolumeNotSupportedFormat">
+    <value>{0} 個のフォルダーはサポートされていないドライブにあるため同期できません</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NetworkFolderNotSupportedFormat">
+    <value>{0} 個のフォルダはサポートされていないネットワークフォルダのため同期できません</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat">
+    <value>{0} 個のフォルダはシステムフォルダであるため同期できません</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
+    <value>{0} 個のフォルダを追加できません</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder">
+    <value>1 個のフォルダを追加できません</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add">
+    <value>フォルダを追加</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst">
+    <value>同期する最初のフォルダを追加</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddNext">
+    <value>同期する新しいフォルダを追加</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_Name">
+    <value>名前</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization">
+    <value>ストレージを最適化</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization_Info_Tooltip">
+    <value>オンデマンド同期を有効にすることでストレージを最適化します。ファイルは開くか、このデバイスに常に保存することを選択した場合にのみローカルスペースを占有します。ストレージの最適化はいつでも無効にすることができます。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Description">
+    <value>ファイルをクラウドに安全に同期するフォルダを追加する</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Title">
+    <value>安全にファイルを同期</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Label">
+    <value>このデバイスからフォルダを同期しています</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_OpenFolder">
+    <value>フォルダを開く</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder">
+    <value>フォルダを削除</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm">
+    <value>フォルダを削除</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_1">
+    <value>「{0}」フォルダに追加されたファイルはすべて同期が停止されます。フォルダはProton Driveのごみ箱に移動されます。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_2">
+    <value>既存のファイルはコンピュータに残ります。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_1">
+    <value>「{0}」フォルダ内の一部のファイルはクラウドにのみ保存される可能性があります。 このフォルダを削除すると、同期が停止し、Proton Driveのゴミ箱に移動されます。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_2">
+    <value>コンピュータ上にすべてのファイルのコピーを保持するには、まずこのフォルダーのストレージ最適化をオフにします。 ストレージ最適化がすでにオフになっている場合は、一度オンにして、またオフにして下さい。 そして、ダウンロードが終わるまで待ち (エクスプローラで進行状況を確認できます)、「マイコンピュータ」でこのフォルダーの同期を解除します。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_1">
+    <value>既にダウンロードされたファイルは、お使いのデバイスに残ります。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_2">
+    <value>クラウドにのみ保存されたファイルはデバイスから削除されます。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Title">
+    <value>フォルダを削除しますか？</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_1">
+    <value>「{0}」フォルダー内のファイルは常にデバイス上で利用可能になります。すべてのファイルのダウンロードが完了するまで数分かかる場合があります。(ファイルエクスプローラーでステータスを確認できます。)</value>
+    <comment>Placeholder {0}: folder name</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_2">
+    <value>個々のファイルの領域を手動で解放することができます。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Title">
+    <value>すべてのファイルは常にこのデバイスで利用可能です</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1">
+    <value>「{0}」フォルダは {1}のため、ストレージを最適化するためオンデマンド同期を使用できません。</value>
+    <comment>Placeholder {0}: folder name. Placeholder {1}: the reason text, one of resources with "StorageOptimizationErrorCode_Value_..." key.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_2">
+    <value>ファイルは引き続きProton Driveと同期され、コンピュータとクラウドの両方で利用可能です。</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Title">
+    <value>ストレージの最適化が利用できません</value>
+  </data>
+  <data name="Main_MyComputer_Link_LearnMore">
+    <value>詳細</value>
+  </data>
+  <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
+    <value>コンピュータのオンボーディングを解除</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Button_Next">
+    <value>次へ</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Description">
+    <value>ハードドライブの容量を節約するためにオンデマンド同期を有効にします。 ファイルは、ローカルストレージを占有します。ファイルを開くか、「常にこのデバイスに保存」としてマークします。</value>
+    <comment>"Always keep on this device" is the exact text displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Title">
+    <value>ストレージを最適化</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted">
+    <value>はじめましょう</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1">
+    <value>Proton Driveを使用して同期されたファイルまたはフォルダを右クリックします</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2">
+    <value>オフラインで保存するには「常にこのデバイスに保存」を選択するか、クラウドのみを維持するには「空き容量を増やす」を選択します。</value>
+    <comment>"Always keep on this device" and "Free up space" are the exact texts displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Title">
+    <value>ストレージを管理</value>
+  </data>
+  <data name="Main_MyComputer_Title">
+    <value>マイコンピューター</value>
+  </data>
+  <data name="Main_Photos_Folders_Error_ImportFailed">
+    <value>インポートに失敗しました。フォルダーを削除し、再度インポートしてみてください。問題が解決しない場合は、サポートにお問い合わせください。</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportedItemsFormat">
+    <value>インポート済み {0}/{1}</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportingItemsFormat">
+    <value>インポート中... {0}/{1}</value>
+  </data>
+  <data name="Main_Photos_Folders_Items_Label">
+    <value>アイテム</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>アルバムを管理</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
+    <value>_フォルダを開く</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Remove">
+    <value>_削除</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Retry">
+    <value>_再試行</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_NoItemsFound_Label">
+    <value>写真/動画はありません</value>
+  </data>
+  <data name="Main_Photos_Folders_WaitingToImport">
+    <value>インポート待ち...</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Description">
+    <value>Googleフォトのエクスポート手順</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Title">
+    <value>1. お客様のGoogleフォトをエクスポート</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Description">
+    <value>お客様がエクスポートした写真と動画が含まれる、解凍済みフォルダーである必要があります。</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Title">
+    <value>2. Google フォト フォルダーをインポート</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_SelectFolder_Button">
+    <value>フォルダーを選択</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Title">
+    <value>Googleフォトからインポート</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Description">
+    <value>お客様のコンピューターからローカルフォルダーをインポートします</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Title">
+    <value>フォルダーをインポート</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Description">
+    <value>Google Takeout から Google フォトをインポート</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Title">
+    <value>Googleフォトからインポート</value>
+  </data>
+  <data name="Main_Photos_Import_Link_HowImportWorks">
+    <value>写真インポートの方法について</value>
+  </data>
+  <data name="Main_Photos_Import_Title">
+    <value>写真インポート</value>
+  </data>
+  <data name="Main_Photos_Info_Duplicates">
+    <value>新しいもののみをインポートします — 重複は自動的にスキップされます。</value>
+  </data>
+  <data name="Main_Photos_Title">
+    <value>写真</value>
+  </data>
+  <data name="Main_Photos_Warning_UploadUnavailable">
+    <value>写真のアップロードは一時的に利用できません</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Button_Change">
+    <value>変更</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_HelpText">
+    <value>Proton Drive ルートフォルダを変更します。</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Title">
+    <value>場所</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>早期アクセスを取得して、Proton Drive の新しいバージョンのテストにご協力ください。</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>ベータ版アクセス</value>
+  </data>
+  <data name="Main_Settings_Label_AccountRootFolder">
+    <value>Proton Driveフォルダ:</value>
+  </data>
+  <data name="Main_Settings_Label_General">
+    <value>一般</value>
+  </data>
+  <data name="Main_Settings_Language_Button_Restart">
+    <value>今すぐ再起動</value>
+  </data>
+  <data name="Main_Settings_Language_Message_PleaseRestart">
+    <value>言語の変更を適用するにはアプリを再起動してください</value>
+  </data>
+  <data name="Main_Settings_Language_Title">
+    <value>言語</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_HelpText">
+    <value>Windows起動時にProton Driveを開く</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_Title">
+    <value>起動時に開く</value>
+  </data>
+  <data name="Main_Settings_Title">
+    <value>設定</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Name">
+    <value>名前</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions">
+    <value>権限</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Tooltip">
+    <value>所有者によってあなたに付与された権限</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Editor">
+    <value>編集者</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Viewer">
+    <value>閲覧者</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedBy">
+    <value>共有元</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedOn">
+    <value>共有日</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync">
+    <value>同期</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync_Info_Tooltip">
+    <value>共有ファイルやフォルダをコンピューターからアクセス可能にします。
+ファイルの内容はオンデマンドでのみダウンロードされます。</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad">
+    <value>データの読み込みに失敗しました</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Plural">
+    <value>{0}個のアイテムの読み込みに失敗しました</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Singular">
+    <value>{0}個のアイテムの読み込みに失敗しました</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Description">
+    <value>共有したファイルとフォルダはここに表示されます</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Title">
+    <value>まだ共有されたものはありません</value>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_OpenFolder">
+    <value>フォルダを開く</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_RemoveMe">
+    <value>削除</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_Close_HelpText">
+    <value>共有されたオンボーディングを却下</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_GetStarted">
+    <value>はじめましょう</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Description">
+    <value>あなたと共有されているファイルやフォルダを簡単にコンピューターに同期します。</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1">
+    <value>同期するファイルまたはフォルダを選択します。</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2">
+    <value>Proton Driveフォルダ内の共有ファイルにアクセスします。</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3">
+    <value>それらを編集し、新しいものをアップロードし、オフラインでアクセスします。</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3_Label">
+    <value>3.</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Plural">
+    <value>{1}個中{0}個のアイテムが同期されました</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Singular">
+    <value>{1}個中{0}個のアイテムが同期されました</value>
+  </data>
+  <data name="Main_SharedWithMe_Title">
+    <value>私と共有中</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Advice">
+    <value>新しいアイテムを追加するには、古いアイテムの同期を中止してください。</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Limit">
+    <value>{0}個のアイテムを一度に同期することができます。</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_SharingUnavailable">
+    <value>共有が一時的に利用できません</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About">
+    <value>詳細</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About_HelpText">
+    <value>メニュー項目: 詳細</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account">
+    <value>アカウント</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account_HelpText">
+    <value>メニュー項目: アカウント</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity">
+    <value>アクティビティ</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity_HelpText">
+    <value>メニュー項目: アクティビティ</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help">
+    <value>ヘルプ</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help_HelpText">
+    <value>メニュー項目: ヘルプ</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer">
+    <value>マイコンピューター</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer_HelpText">
+    <value>メニュー項目: マイコンピューター</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos">
+    <value>写真</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_PhotosImport">
+    <value>写真のインポート</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos_HelpText">
+    <value>メニュー項目: 写真</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings">
+    <value>設定</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings_HelpText">
+    <value>メニュー項目: 設定</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe">
+    <value>私と共有中</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe_HelpText">
+    <value>メニュー項目: 自分と共有</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceededQuota_Description">
+    <value>同期が停止されました。あなたのアカウントはストレージ容量を超えています。</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceedingQuota_Description">
+    <value>もうすぐストレージの制限に達します</value>
+  </data>
+  <data name="Main_Sidebar_Notification_GetStarted_Description">
+    <value>始めましょう</value>
+  </data>
+  <data name="Main_Sidebar_Notification_NewVersion_Description">
+    <value>Proton Driveの新しいバージョンが利用可能です!</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SharingUnavailable_Description">
+    <value>共有が一時的に利用できません</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SyncFoldersFailure_Description">
+    <value>フォルダの同期に失敗しました</value>
+  </data>
+  <data name="Main_Sidebar_Notification_UpdateRequired_Description">
+    <value>Proton Driveを引き続き使用するには、最新バージョンにアップデートする必要があります</value>
+  </data>
+  <data name="Main_Sidebar_Offer_Button_GetDeal">
+    <value>お得な割引をゲット</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Sidebar_Storage_Button_GetMoreStorage">
+    <value>ストレージを増やす</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_StorageNotAvailable">
+    <value>スペース情報が利用できません</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_UsedSpaceFormat">
+    <value>{1} Gb 中の {0} Gb 使用済み</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Title">
+    <value>ストレージ</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Tooltip">
+    <value>ストレージを管理</value>
+  </data>
+  <data name="Main_Window_Title">
+    <value>Proton Drive</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>このフォルダにはオンデマンドで同期されたサブフォルダが含まれています。新しい同期フォルダを設定してください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>このフォルダはオンデマンドで既に同期されています。新しい同期フォルダを設定してください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveAccessFailed">
+    <value>Proton Driveに接続できません。インターネット接続を確認してください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDiverged">
+    <value>Proton Driveフォルダが移動されました。新しい同期フォルダを設定してください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDoesNotExist">
+    <value>Proton Driveファイルにアクセスできません。おそらくデバイスフォルダの削除が原因です。新しい同期フォルダを設定してください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveHostDeviceDiverged">
+    <value>Proton Driveファイルにアクセスできません。おそらくデバイスの削除が原因です。新しい同期フォルダを設定してください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveShareDiverged">
+    <value>Proton Driveファイルにアクセスできません。おそらくパスワードのリセットが原因です。新しい同期フォルダを設定してください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveVolumeDiverged">
+    <value>Proton Driveファイルにアクセスできません。おそらくパスワードのリセットが原因です。新しい同期フォルダを設定してください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientDeviceQuota">
+    <value>同期されたコンピュータの最大数に達しました。不要なコンピュータをWeb上のProton Driveから削除してください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientLocalFreeSpace">
+    <value>空き容量を増やすか、チェックボックスの選択を解除してください</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalAndRemoteFoldersNotEmpty">
+    <value>同期フォルダを設定するには、WindowsまたはProton Drive Webフォルダが空になっている必要があります。削除してもう一度お試しください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFileSystemAccessFailed">
+    <value>ローカル同期フォルダにアクセスまたは作成できません。再試行します。</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDiverged">
+    <value>同期フォルダがパス内の新しいフォルダに置き換えられました。前の同期フォルダを復元するか、新しい同期フォルダを設定します。</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDoesNotExist">
+    <value>同期フォルダが見つかりません。削除、名前の変更、移動された可能性があります。復元するか、新しい同期フォルダを設定してください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludedByAnAlreadySyncedFolder">
+    <value>選択したフォルダはすでに別の同期されたフォルダに含まれています</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludesAnAlreadySyncedFolder">
+    <value>選択したフォルダは既に同期されているフォルダに含まれています</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNonSyncable">
+    <value>ローカルフォルダは同期の対象外です。新しい同期フォルダを設定してください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNotEmpty">
+    <value>同期を設定する前にローカルフォルダを空にする必要があります</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeDiverged">
+    <value>ローカルボリュームのシリアル番号が変更されました。新しい同期フォルダを設定してください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeNotSupported">
+    <value>サポートされていないローカルドライブタイプです。別のローカルドライブに同期フォルダを設定してみてください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootMissingSyncRootFlag">
+    <value>同期フォルダーが無効です。新しい同期フォルダーを設定してください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootNotRegistered">
+    <value>同期フォルダが予期せず登録解除されました。新しい同期フォルダを設定してください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotoImportFailed">
+    <value>写真のインポートに失敗しました</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosDisabled">
+    <value>Proton の写真は利用できません</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosNotReady">
+    <value>写真機能は準備ができていません</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemDoesNotExist">
+    <value>共有Proton Driveのファイルまたはフォルダにアクセスできません。まだ共有されているかどうかを確認してください。</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemPermissionsDiverged">
+    <value>共有Proton Driveファイルまたはフォルダの権限が変更されました。同期をオフにしてもう一度切り替えると解決します。</value>
+  </data>
+  <data name="MappingErrorCode_Value_SharingDisabled">
+    <value>共有が一時的に利用できません</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Failed">
+    <value>同期フォルダの設定に失敗しました</value>
+  </data>
+  <data name="MappingSetupStatus_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingSetupStatus_Value_PartiallySucceeded">
+    <value>いくつかの同期フォルダの設定に失敗しました</value>
+  </data>
+  <data name="MappingSetupStatus_Value_SettingUp">
+    <value>同期フォルダを設定中...</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Succeeded">
+    <value>OK</value>
+  </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>ストレージ追加</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>ストレージ容量不足</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>アップグレードしてファイルをアップロードするストレージ容量を追加</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
+    <value>変更</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder_HelpText">
+    <value>Proton Drive ルートフォルダを変更します。</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Error_InvalidSyncFolder">
+    <value>無効な同期フォルダ</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Description">
+    <value>ファイルや同期されたデバイスにアクセスする</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Location">
+    <value>場所</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Title">
+    <value>Proton Driveフォルダ</value>
+  </data>
+  <data name="Onboarding_Button_Continue">
+    <value>続行</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_Button_FinishSetup">
+    <value>セットアップを終了</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders">
+    <value>さらにフォルダを追加</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText">
+    <value>同期する別のフォルダを追加</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Label_Description">
+    <value>選択したフォルダはProton Driveに同期されます。ファイルはバックアップされ、他のデバイスで利用できます。</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Title">
+    <value>フォルダをバックアップ</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Get Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Get _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Get _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_NotNow">
+    <value>_今はしない</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_Upgrade">
+    <value>アップグレード</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Mail">
+    <value>Mail: Custom and secure email</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>ヶ月</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>一番人気</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>{0} 名のユーザーまで</value>
+    <comment>Only for number greater than 1.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
+    <value>Pass: Encrypted password manager</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>プレミアムな価値が含まれています</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Recommended">
+    <value>おすすめ</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>以前のファイルを復元</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>ストレージ</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Vpn">
+    <value>VPN: Ultra fast and private</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Title">
+    <value>ストレージを増やす</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
+    <value>インポートに失敗しました。アルバムが存在しません。</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Import failed. The folder does not exist.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
+    <value>インポートに失敗しました。アルバムの最大数に達しました。</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfPhotosPerAlbumReached">
+    <value>インポートに失敗しました。アルバムごとの写真の最大数に達しました。</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_Unknown">
+    <value>インポートに失敗しました。もう一度お試しください。</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Failed">
+    <value>インポートに失敗</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Importing">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Interrupted">
+    <value>インポートが中断されました</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_NotStarted">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_SetupFailed">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Succeeded">
+    <value>インポート成功</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_ValidationFailed">
+    <value></value>
+  </data>
+  <data name="ReleaseNoteType_Value_Feature">
+    <value>新しい機能</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Fix">
+    <value>バグ修正</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Improvement">
+    <value>改善</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Fido2">
+    <value>セキュリティキー</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_NotSupported">
+    <value></value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Totp">
+    <value>認証アプリ</value>
+  </data>
+  <data name="SessionStatus_Value_Ending">
+    <value>サインアウト中...</value>
+  </data>
+  <data name="SessionStatus_Value_Failed">
+    <value>サインインに失敗しました。インターネット接続を確認してください。</value>
+  </data>
+  <data name="SessionStatus_Value_NotStarted">
+    <value>サインアウトされました</value>
+  </data>
+  <data name="SessionStatus_Value_SigningIn">
+    <value>サインイン中...</value>
+  </data>
+  <data name="SessionStatus_Value_Started">
+    <value>サインイン済み</value>
+  </data>
+  <data name="SessionStatus_Value_Starting">
+    <value>サインイン中...</value>
+  </data>
+  <data name="SignIn_Button_Authenticate">
+    <value>認証</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_Back">
+    <value>戻る</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignIn">
+    <value>サインイン</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignInAsAnotherUser">
+    <value>または別のユーザーとしてサインイン</value>
+  </data>
+  <data name="SignIn_Button_Unlock">
+    <value>アンロック</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_CreateAccount">
+    <value>アカウントを作成</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_ForgotPassword">
+    <value>パスワードをお忘れですか？</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_LearnMore">
+    <value>詳細</value>
+  </data>
+  <data name="SignIn_Message_SigningIn">
+    <value>アカウントにサインインしています</value>
+  </data>
+  <data name="SignIn_Text_2FACode">
+    <value>認証アプリからコードを入力してください</value>
+  </data>
+  <data name="SignIn_Text_No2FAMethodFound">
+    <value>2要素認証方法が見つかりません。</value>
+  </data>
+  <data name="SignIn_Text_Password">
+    <value>パスワード</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_SecondPassword">
+    <value>セカンドパスワード</value>
+  </data>
+  <data name="SignIn_Text_SecurityKey">
+    <value>Proton アカウントにリンクされたセキュリティ キーを挿入します。</value>
+  </data>
+  <data name="SignIn_Text_SecurityKeyNotSupported">
+    <value>お使いのシステムはセキュリティキーをサポートしていません</value>
+  </data>
+  <data name="SignIn_Text_Username">
+    <value>メールアドレスまたはユーザー名</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_Username_HelpText">
+    <value>ユーザー名</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_PasswordRequired">
+    <value>パスワードは必須です</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SessionExpired">
+    <value>セッションは期限切れです。続けるにはサインインしてください。</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SomethingWentWrong">
+    <value>何か問題が発生しました</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_UsernameRequired">
+    <value>ユーザー名は必須です</value>
+  </data>
+  <data name="SignIn_Title_2FA">
+    <value>2要素認証</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>{0} によってオンデマンドで同期されたサブフォルダが含まれています</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>{0} によって既にオンデマンドで同期されています</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_NetworkVolumeNotSupported">
+    <value>ネットワークドライブはサポートされていません</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_RemovableVolumeNotSupported">
+    <value>取り外し可能なドライブはサポートされていません</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_Unknown">
+    <value>オンデマンド同期を有効にできませんでした</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
+    <value>ローカルドライブタイプはサポートされていません</value>
+  </data>
+  <data name="SyncAgentStatus_Value_AccountError">
+    <value>アカウントの設定に失敗しました</value>
+  </data>
+  <data name="SyncAgentStatus_Value_FinishingUp">
+    <value>完了処理中...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Offline">
+    <value>オフライン</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SettingUp">
+    <value>設定中…</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignInError">
+    <value>サインインに失敗しました</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignedOut">
+    <value>サインアウトされました</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningIn">
+    <value>サインイン中...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningOut">
+    <value>サインアウト中...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SyncFolderError">
+    <value>同期フォルダの設定に失敗しました</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationError">
+    <value>同期に失敗しました</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationPaused">
+    <value>同期を一時停止しました</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationWarning">
+    <value>いくつかのアイテムが同期できませんでした</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronized">
+    <value>同期済み</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronizing">
+    <value>同期中...</value>
+  </data>
+  <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
+    <value>このデバイスの空き容量が不足しています</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludedByAnAlreadySyncedFolder">
+    <value>フォルダは既に同期されているフォルダに含まれています</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludesAnAlreadySyncedFolder">
+    <value>フォルダは既に同期されているフォルダに含まれています</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_InsufficientLocalFreeSpace">
+    <value>空き容量を増やすか、チェックボックスの選択を解除してください。</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFileSystemAccessFailed">
+    <value>フォルダにアクセスできません</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderDoesNotExist">
+    <value>フォルダが見つかりません</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderNotEmpty">
+    <value>同期を設定する前にフォルダを空にする必要があります</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalVolumeNotSupported">
+    <value>サポートされていないドライブタイプ</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NetworkFolderNotSupported">
+    <value>ネットワークドライブからのフォルダの同期はサポートされていません</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NonSyncableFolder">
+    <value>このフォルダは同期対象外です</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_Succeeded">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_DetectingUpdates">
+    <value>更新を取得しています...</value>
+  </data>
+  <data name="SyncStatus_Value_Failed">
+    <value>エラー</value>
+  </data>
+  <data name="SyncStatus_Value_Idle">
+    <value>同期済み</value>
+  </data>
+  <data name="SyncStatus_Value_Initializing">
+    <value>設定中…</value>
+  </data>
+  <data name="SyncStatus_Value_Offline">
+    <value>オフライン</value>
+  </data>
+  <data name="SyncStatus_Value_Paused">
+    <value>一時停止</value>
+  </data>
+  <data name="SyncStatus_Value_Synchronizing">
+    <value>同期中...</value>
+  </data>
+  <data name="SyncStatus_Value_Terminated">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_Terminating">
+    <value>終了中...</value>
+  </data>
+  <data name="SystemTray_Menu_Item_Exit">
+    <value>終了</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenInBrowser">
+    <value>ブラウザで開く</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenLocalFolder">
+    <value>ローカルフォルダを開く</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenProtonDrive">
+    <value>Proton Driveを開く</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSync">
+    <value>同期を一時停止</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
+    <value>Pause for 1 hour</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor4Hours">
+    <value>Pause for 4 hours</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor8Hours">
+    <value>Pause for 8 hours</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncIndefinitely">
+    <value>Pause indefinitely</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow">
+    <value>Pause until tomorrow (8AM)</value>
+  </data>
+  <data name="SystemTray_Menu_Item_ResumeSync">
+    <value>同期を再開</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_SignIn">
+    <value>サインイン</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="ToggleSwitch_Off">
+    <value>オフ</value>
+  </data>
+  <data name="ToggleSwitch_On">
+    <value>オン</value>
+  </data>
+</root>

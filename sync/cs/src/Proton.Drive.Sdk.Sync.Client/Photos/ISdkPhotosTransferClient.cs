@@ -10,7 +10,7 @@ internal interface ISdkPhotosTransferClient
         long size,
         PhotosFileUploadMetadata metadata,
         Stream contentStream,
-        IEnumerable<Thumbnail> thumbnails,
+        IReadOnlyCollection<Thumbnail> thumbnails,
         Func<ReadOnlyMemory<byte>>? expectedSha1Provider,
         CancellationToken cancellationToken);
 }

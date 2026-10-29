@@ -265,48 +265,6 @@
     <value>Enviado para o Proton Drive</value>
     <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
-  <data name="AppDisplayStatus_Value_AccountError">
-    <value>Erro ao configurar uma conta</value>
-  </data>
-  <data name="AppDisplayStatus_Value_FinishingUp">
-    <value>A terminar...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Offline">
-    <value>Offline</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SettingUp">
-    <value>A configurar...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignInError">
-    <value>Erro ao iniciar sessão</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignedOut">
-    <value>Sessão terminada</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningIn">
-    <value>A iniciar sessão...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningOut">
-    <value>A terminar sessão...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SyncFolderError">
-    <value>Erro ao configurar as pastas de sincronização</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationError">
-    <value>Erro de sincronização</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationPaused">
-    <value>A sincronização foi pausada.</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationWarning">
-    <value>Alguns itens não foram sincronizados.</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronized">
-    <value>Sincronizado</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronizing">
-    <value>A sincronizar...</value>
-  </data>
   <data name="BugReport_Button_Cancel">
     <value>_Cancelar</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -527,10 +485,10 @@ Desative e volte a ativar a sincronização para o restaurar e eliminar este err
     <value>Erro ao procurar atualizações</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
-    <value>Update required</value>
+    <value>Actualização obrigatória</value>
   </data>
   <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
-    <value>Update available</value>
+    <value>Atualização disponível</value>
   </data>
   <data name="Main_About_Button_UpdateNow">
     <value>_Atualizar agora</value>
@@ -546,11 +504,11 @@ Desative e volte a ativar a sincronização para o restaurar e eliminar este err
     <value>Data de publicação</value>
   </data>
   <data name="Main_About_Link_PrivacyPolicy">
-    <value>_Privacy policy</value>
+    <value>_Política de privacidade</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_About_Link_TermsOfService">
-    <value>_Terms of service</value>
+    <value>_Termos de serviço</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="Main_About_ReleaseHistory_Label_New">
@@ -772,7 +730,7 @@ Desative e volte a ativar a sincronização para o restaurar e eliminar este err
     <value>A configurar... ({0} Itens preparados para a sincronização)</value>
   </data>
   <data name="Main_Activity_Status_Value_SyncPausedUntilFormat">
-    <value>(until {0})</value>
+    <value>(até {0})</value>
   </data>
   <data name="Main_Activity_TimeElapsed_AMomentAgo">
     <value>a moment ago</value>
@@ -947,7 +905,7 @@ desativar a otimização de armazenamento a qualquer momento.</value>
     <value>Otimização de armazenamento indisponível</value>
   </data>
   <data name="Main_MyComputer_Link_LearnMore">
-    <value>Learn more</value>
+    <value>Mais informação</value>
   </data>
   <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
     <value>Descartar a integração do meu computador</value>
@@ -1051,7 +1009,7 @@ desativar a otimização de armazenamento a qualquer momento.</value>
     <value>Importar do Google Fotos</value>
   </data>
   <data name="Main_Photos_Import_Link_HowImportWorks">
-    <value>How does photo import work?</value>
+    <value>Como funciona a importação de fotos?</value>
   </data>
   <data name="Main_Photos_Import_Title">
     <value>Importar fotos</value>
@@ -1079,7 +1037,7 @@ desativar a otimização de armazenamento a qualquer momento.</value>
     <value>Get early access and help us test new versions of Proton Drive.</value>
   </data>
   <data name="Main_Settings_EarlyAccess_Title">
-    <value>Beta access</value>
+    <value>Acesso Beta</value>
   </data>
   <data name="Main_Settings_Label_AccountRootFolder">
     <value>A sua pasta do Proton Drive:</value>
@@ -1471,29 +1429,29 @@ O conteúdo do ficheiro será transferido apenas a pedido.</value>
     <value>Mail: Custom and secure email</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Month">
-    <value>month</value>
+    <value>mês</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_MostPopular">
-    <value>Most popular</value>
+    <value>Mais popular</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
-    <value>Up to {0} users</value>
+    <value>Até {0} utilizadores</value>
     <comment>Only for number greater than 1.</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
     <value>Pass: Encrypted password manager</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
-    <value>Premium value included</value>
+    <value>Funcionalidades premium incluídas</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Recommended">
     <value>Recomendado</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
-    <value>Recover previous file versions</value>
+    <value>Recupere as versões anteriores do ficheiro</value>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Storage">
-    <value>storage</value>
+    <value>armazenamento</value>
     <comment>Example: 500 GB storage</comment>
   </data>
   <data name="Onboarding_UpgradeStorage_Label_Vpn">
@@ -1548,13 +1506,13 @@ O conteúdo do ficheiro será transferido apenas a pedido.</value>
     <value>Melhorias</value>
   </data>
   <data name="SecondFactorInputPage_Value_Fido2">
-    <value>Security key</value>
+    <value>Chave de segurança</value>
   </data>
   <data name="SecondFactorInputPage_Value_NotSupported">
     <value></value>
   </data>
   <data name="SecondFactorInputPage_Value_Totp">
-    <value>Authenticator app</value>
+    <value>Aplicação de autenticação</value>
   </data>
   <data name="SessionStatus_Value_Ending">
     <value>A terminar sessão...</value>
@@ -1594,15 +1552,15 @@ O conteúdo do ficheiro será transferido apenas a pedido.</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Link_CreateAccount">
-    <value>_Create account</value>
+    <value>_Criar uma conta</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Link_ForgotPassword">
-    <value>_Forgot your password?</value>
+    <value>_Esqueceu a sua palavra-passe?</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Link_LearnMore">
-    <value>Learn more</value>
+    <value>Saiba mais</value>
   </data>
   <data name="SignIn_Message_SigningIn">
     <value>A iniciar sessão na sua conta</value>
@@ -1670,6 +1628,48 @@ O conteúdo do ficheiro será transferido apenas a pedido.</value>
   </data>
   <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
     <value>o tipo de unidade local não é compatível.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_AccountError">
+    <value>Erro ao configurar uma conta</value>
+  </data>
+  <data name="SyncAgentStatus_Value_FinishingUp">
+    <value>A terminar...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Offline">
+    <value>Offline</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SettingUp">
+    <value>A configurar...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignInError">
+    <value>Erro ao iniciar sessão</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignedOut">
+    <value>Sessão terminada</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningIn">
+    <value>A iniciar sessão...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningOut">
+    <value>A terminar sessão...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SyncFolderError">
+    <value>Erro ao configurar as pastas de sincronização</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationError">
+    <value>Erro de sincronização</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationPaused">
+    <value>A sincronização foi pausada.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationWarning">
+    <value>Alguns itens não foram sincronizados.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronized">
+    <value>Sincronizado</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronizing">
+    <value>A sincronizar...</value>
   </data>
   <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
     <value>Não há espaço livre suficiente neste dispositivo.</value>
@@ -1746,7 +1746,7 @@ O conteúdo do ficheiro será transferido apenas a pedido.</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSync">
-    <value>_Pause sync</value>
+    <value>_Pausar a sincronização</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
@@ -1765,7 +1765,7 @@ O conteúdo do ficheiro será transferido apenas a pedido.</value>
     <value>Pause until tomorrow (8AM)</value>
   </data>
   <data name="SystemTray_Menu_Item_ResumeSync">
-    <value>_Resume sync</value>
+    <value>_Retomar a sincronização</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SystemTray_Menu_Item_SignIn">

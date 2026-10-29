@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
     x:Class="Proton.Drive.App.Windows.Views.Shared.AppStateView"
     x:ClassModifier="internal"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -7,6 +7,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:shared="clr-namespace:Proton.Drive.App.Windows.Views.Shared"
+    xmlns:syncShared="clr-namespace:Proton.Drive.Sdk.Sync.Shared;assembly=Proton.Drive.Sdk.Sync.Shared"
     TextElement.FontSize="{StaticResource TextBlock.Default.FontSize}"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance shared:AppStateViewModel}">
@@ -92,7 +93,7 @@
                     <Style.Triggers>
                         <DataTrigger
                             Binding="{Binding DisplayStatus}"
-                            Value="{x:Static shared:AppDisplayStatus.Synchronized}">
+                            Value="{x:Static syncShared:SyncAgentStatus.Synchronized}">
                             <Setter Property="Text">
                                 <Setter.Value>
                                     <MultiBinding StringFormat="{}{0} ({1})">
@@ -100,7 +101,7 @@
                                             Path="DisplayStatus"
                                             Converter="{x:Static converters:EnumToDisplayTextConverter.Instance}" />
                                         <Binding
-                                            Path="LastSynchronizedAt"
+                                            Path="LastSynchronizationTime"
                                             Converter="{x:Static converters:DateTimeToFormattedTimeElapsedConverter.Instance}" />
                                     </MultiBinding>
                                 </Setter.Value>

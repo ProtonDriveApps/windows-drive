@@ -3,6 +3,7 @@ using System.Windows.Input;
 using CommunityToolkit.Mvvm.ComponentModel;
 using Proton.Drive.App.Windows.Views.Main.Activity;
 using Proton.Drive.App.Windows.Views.Shared;
+using Proton.Drive.Sdk.Sync.Shared;
 
 namespace Proton.Drive.App.Windows.Views.SystemTray;
 
@@ -37,7 +38,7 @@ internal sealed class SystemTrayViewModel : ObservableObject
     public ICommand ResumeSyncCommand => SyncStatusViewModel.ResumeSyncCommand;
 
     public AppIconStatus AppIconStatus => _appStateViewModel.IconStatus;
-    public AppDisplayStatus AppDisplayStatus => _appStateViewModel.DisplayStatus;
+    public SyncAgentStatus AppDisplayStatus => _appStateViewModel.DisplayStatus;
 
     public bool SynchronizationPaused
     {

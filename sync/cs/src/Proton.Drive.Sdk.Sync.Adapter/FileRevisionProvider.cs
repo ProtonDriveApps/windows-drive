@@ -45,6 +45,29 @@ internal sealed class FileRevisionProvider<TId, TAltId> : IFileRevisionProvider<
     {
         var (fileInfo, initialNodeModel) = await Schedule(() => Prepare(id, contentVersion), cancellationToken).ConfigureAwait(false);
 
+        return await OpenAsync(id, contentVersion, fileInfo, initialNodeModel, cancellationToken).ConfigureAwait(false);
+    }
+
+    public async Task<ISourceRevision> GetMetadataOnlyRevisionAsync(TId id, long contentVersion, CancellationToken cancellationToken)
+    {
+        var (fileInfo, initialNodeModel) = await Schedule(() => Prepare(id, contentVersion), cancellationToken).ConfigureAwait(false);
+
+        // Last write time of remote files discovered by app version 1.4.1 and earlier is unknown, it is obtained by opening the file
+        if (fileInfo.LastWriteTimeUtc == default)
+        {
+            return await OpenAsync(id, contentVersion, fileInfo, initialNodeModel, cancellationToken).ConfigureAwait(false);
+        }
+
+        return new MetadataOnlySourceRevision(fileInfo.Size, fileInfo.LastWriteTimeUtc);
+    }
+
+    private async Task<ISourceRevision> OpenAsync(
+        TId id,
+        long contentVersion,
+        NodeInfo<TAltId> fileInfo,
+        AdapterTreeNodeModel<TId, TAltId> initialNodeModel,
+        CancellationToken cancellationToken)
+    {
         var pathToLog = _logger.GetSensitiveValueForLogging(fileInfo.Path);
         _logger.LogInformation(
             "Reading the file \"{Path}\" \"{Root}\"/{Id} {ExternalId}, ContentVersion={ContentVersion}, Size={Size} KiB",

@@ -1,16 +1,15 @@
 using System.Collections.Immutable;
-using Proton.Drive.Sdk.Sync.Client.Instrumentation.Observability.Shared;
 using Proton.Drive.Sdk.Sync.Client.Sdk.Metrics;
 
 namespace Proton.Drive.Sdk.Sync.Client.Instrumentation.Observability.Integrity;
 
 internal sealed class IntegrityMetricsMapper(IntegrityMetricsCollector metricsCollector)
 {
-    private readonly HashSet<string> _volumeTypesOfFailuresImpactedUsers = [];
+    private readonly HashSet<string> _causesOfFailuresImpactingUsers = [];
 
     public void Start()
     {
-        _volumeTypesOfFailuresImpactedUsers.Clear();
+        _causesOfFailuresImpactingUsers.Clear();
         metricsCollector.Start();
     }
 
@@ -26,9 +25,9 @@ internal sealed class IntegrityMetricsMapper(IntegrityMetricsCollector metricsCo
 
         foreach (var (tags, value) in measurementsSnapshot.DecryptionFailures)
         {
-            if (tags is { FromBefore2024: "no" })
+            if (IsKnownToBeFrom2024OrLater(tags.Recency))
             {
-                _volumeTypesOfFailuresImpactedUsers.Add(tags.VolumeType);
+                _causesOfFailuresImpactingUsers.Add(tags.CausedBy);
             }
 
             metrics.Add(GetDecryptionFailuresMetric(value, tags));
@@ -36,9 +35,9 @@ internal sealed class IntegrityMetricsMapper(IntegrityMetricsCollector metricsCo
 
         foreach (var (tags, value) in measurementsSnapshot.VerificationFailures)
         {
-            if (tags is { FromBefore2024: "no", AddressMatchingDefaultShare: "yes" })
+            if (IsKnownToBeFrom2024OrLater(tags.Recency) && tags is { AddressMatchingDefaultShare: "yes" })
             {
-                _volumeTypesOfFailuresImpactedUsers.Add(tags.VolumeType);
+                _causesOfFailuresImpactingUsers.Add(tags.CausedBy);
             }
 
             metrics.Add(GetVerificationFailuresMetric(value, tags));
@@ -48,7 +47,7 @@ internal sealed class IntegrityMetricsMapper(IntegrityMetricsCollector metricsCo
         {
             if (tags is { RetryHelped: "no" })
             {
-                _volumeTypesOfFailuresImpactedUsers.Add("unknown");
+                _causesOfFailuresImpactingUsers.Add(IntegrityMetrics.UnknownLabelValue);
             }
 
             metrics.Add(GetUploadBlockVerificationFailuresMetric(value, tags));
@@ -69,15 +68,15 @@ internal sealed class IntegrityMetricsMapper(IntegrityMetricsCollector metricsCo
 
     public ImmutableList<ObservabilityMetric> GetFailuresImpactedUserMetrics(string userPlan)
     {
-        var metrics = new List<ObservabilityMetric>(_volumeTypesOfFailuresImpactedUsers.Count);
+        var metrics = new List<ObservabilityMetric>(_causesOfFailuresImpactingUsers.Count);
 
-        foreach (var volumeType in _volumeTypesOfFailuresImpactedUsers)
+        foreach (var causedBy in _causesOfFailuresImpactingUsers)
         {
-            var tags = new FailuresImpactedUserTags(volumeType, userPlan);
+            var tags = new IntegrityFailuresImpactedUserTags(causedBy, userPlan);
             metrics.Add(GetFailuresImpactedUserMetric(1, tags));
         }
 
-        _volumeTypesOfFailuresImpactedUsers.Clear();
+        _causesOfFailuresImpactingUsers.Clear();
 
         return metrics.ToImmutableList();
     }
@@ -86,9 +85,9 @@ internal sealed class IntegrityMetricsMapper(IntegrityMetricsCollector metricsCo
     {
         var labels = new Dictionary<string, string>
         {
-            { SdkMetrics.VolumeTypeKeyName, tags.VolumeType },
             { IntegrityMetrics.FieldKeyName, tags.Field },
-            { IntegrityMetrics.FromBefore2024KeyName, tags.FromBefore2024 },
+            { IntegrityMetrics.RecencyKeyName, tags.Recency },
+            { IntegrityMetrics.CausedByKeyName, tags.CausedBy },
         };
 
         return new DecryptionFailuresMetric(value, labels);
@@ -98,10 +97,10 @@ internal sealed class IntegrityMetricsMapper(IntegrityMetricsCollector metricsCo
     {
         var labels = new Dictionary<string, string>
         {
-            { SdkMetrics.VolumeTypeKeyName, tags.VolumeType },
             { IntegrityMetrics.FieldKeyName, tags.Field },
             { IntegrityMetrics.AddressMatchingDefaultShareKeyName, tags.AddressMatchingDefaultShare },
-            { IntegrityMetrics.FromBefore2024KeyName, tags.FromBefore2024 },
+            { IntegrityMetrics.RecencyKeyName, tags.Recency },
+            { IntegrityMetrics.CausedByKeyName, tags.CausedBy },
         };
 
         return new VerificationFailuresMetric(value, labels);
@@ -139,14 +138,21 @@ internal sealed class IntegrityMetricsMapper(IntegrityMetricsCollector metricsCo
         return new DownloadChecksumVerificationAttemptsMetric(value, labels);
     }
 
-    private static IntegrityFailuresImpactedUserMetric GetFailuresImpactedUserMetric(int value, FailuresImpactedUserTags tags)
+    private static IntegrityFailuresImpactedUserMetric GetFailuresImpactedUserMetric(int value, IntegrityFailuresImpactedUserTags tags)
     {
         var labels = new Dictionary<string, string>
         {
-            { SdkMetrics.VolumeTypeKeyName, tags.VolumeType },
+            // The metric schema still requires the volume type, but integrity events no longer report it
+            { SdkMetrics.VolumeTypeKeyName, IntegrityMetrics.UnknownLabelValue },
             { SdkMetrics.UserPlanKeyName, tags.UserPlan },
+            { IntegrityMetrics.CausedByKeyName, tags.CausedBy },
         };
 
         return new IntegrityFailuresImpactedUserMetric(value, labels);
+    }
+
+    private static bool IsKnownToBeFrom2024OrLater(string recency)
+    {
+        return recency is not (IntegrityMetrics.Before2024RecencyLabelValue or IntegrityMetrics.UnknownLabelValue);
     }
 }

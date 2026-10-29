@@ -1,0 +1,1781 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountDisplayStatus_Value_AccountError">
+    <value></value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SessionError">
+    <value>Kirjautuminen epäonnistui</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SettingUp">
+    <value>Määritetään...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SignedOut">
+    <value>Uloskirjattu</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningIn">
+    <value>Kirjataan sisään...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningOut">
+    <value>Kirjataan ulos...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_Succeeded">
+    <value>Sisäänkirjautunut</value>
+  </data>
+  <data name="AccountErrorCode_Value_AccountSwitchingFailed">
+    <value>Tilin vaihto epäonnistui. Käynnistä sovellus uudelleen.</value>
+  </data>
+  <data name="AccountErrorCode_Value_Delinquent">
+    <value>Tilillä on maksamattomia laskuja. Siirry hallintapaneeliisi maksamaan tai ilmoita ylläpitäjällesi.</value>
+  </data>
+  <data name="AccountErrorCode_Value_DriveAccessFailed">
+    <value>Yhdistäminen Proton Driveen ei onnistu. Tarkista Internet-yhteytesi.</value>
+  </data>
+  <data name="AccountErrorCode_Value_NoDriveAccess">
+    <value>Käytä Proton Driveä päivittämällä tilauksesi</value>
+  </data>
+  <data name="AccountErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Create">
+    <value>Luodaan</value>
+    <comment>Indicates a local folder being created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Delete">
+    <value>Poistetaan</value>
+    <comment>Indicates the local file or folder being deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Download">
+    <value>Ladataan Proton Drivestä</value>
+    <comment>Indicates a file being downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Noudetaan muutoksia</value>
+    <comment>Indicates local file system changes being fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Move">
+    <value>Siirretään</value>
+    <comment>Indicates the local file or folder being moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Rename">
+    <value>Nimetään uudelleen</value>
+    <comment>Indicates the local file or folder being renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Upload">
+    <value>Lähetetään Proton Driveen</value>
+    <comment>Indicates a  file being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Create">
+    <value>Luotiin</value>
+    <comment>Indicates a local folder has been created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Delete">
+    <value>Poistettiin</value>
+    <comment>Indicates a local file or folder has been deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Download">
+    <value>Ladattiin Proton Drivestä</value>
+    <comment>Indicates a file has been downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Muutokset noudettiin</value>
+    <comment>Indicates local file system changes have been fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Move">
+    <value>Siirretty</value>
+    <comment>Indicates a local file or folder has been moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Rename">
+    <value>Nimettiin uudelleen</value>
+    <comment>Indicates a local file or folder has been renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Upload">
+    <value>Lähetettiin Proton Driveen</value>
+    <comment>Indicates a file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Create">
+    <value>Luodaan Proton Driveen</value>
+    <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
+    <value>Siirretään Proton Driven roskakoriin</value>
+    <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
+    <value>Ladataan Proton Drivestä</value>
+    <comment>Indicates a file is being downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Noudetaan muutoksia Proton Drivestä</value>
+    <comment>Indicates changes are being fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Move">
+    <value>Siirretään Proton Drivessä</value>
+    <comment>Indicates the file or folder is being moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Rename">
+    <value>Nimetään uudelleen Proton Drivessä</value>
+    <comment>Indicates the file or folder is being renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Upload">
+    <value>Lähetetään Proton Driveen</value>
+    <comment>Indicates the file is being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Create">
+    <value>Luotiin Proton Driveen</value>
+    <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
+    <value>Siirrettiin Proton Driven roskakoriin</value>
+    <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
+    <value>Ladattiin Proton Drivestä</value>
+    <comment>Indicates a file has been downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Muutokset noudettiin Proton Drivestä</value>
+    <comment>Indicates changes have been fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Move">
+    <value>Siirrettiin Proton Drivessä</value>
+    <comment>Indicates the file or folder has been moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Rename">
+    <value>Nimettiin uudelleen Proton Drivessä</value>
+    <comment>Indicates the file or folder has been renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Upload">
+    <value>Lähetettiin Proton Driveen</value>
+    <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel">
+    <value>_Peruuta</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel_HelpText">
+    <value>Peru raportti</value>
+  </data>
+  <data name="BugReport_Button_Report">
+    <value>_Ilmoita</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Report_HelpText">
+    <value>Lähetä raportti</value>
+  </data>
+  <data name="BugReport_Button_ShowLogs">
+    <value>Näytä _lokit</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs">
+    <value>_Sisällytä sovelluksen lokitiedot</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs_Tooltip">
+    <value>Raporttiin sisällytetään sovelluksen ja asennuksen tuoreimmat lokitiedostot</value>
+  </data>
+  <data name="BugReport_NeedHelp_Description">
+    <value>Pikaoppaat asennukseen, sovelluksen käyttöön ja tiedostojen synkronointiin.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_FAQ">
+    <value>Usein kysytyt kysymykset (UKK)</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks">
+    <value>Tutustu Proton Drive -sovelluksen toimintaan</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowSharedFilesWork">
+    <value>Käytä jaettuja tiedostoja</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_SyncFolders">
+    <value>Synkronoi kansiot Proton Driveen</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_UseOnDemandSync">
+    <value>Käytä synkronointia tarvittaessa</value>
+  </data>
+  <data name="BugReport_NeedHelp_Title">
+    <value>Tarvitsetko apua Proton Driven käytön aloittamiseen?</value>
+  </data>
+  <data name="BugReport_Text_Description_HelpText">
+    <value>Kuvaus. Mikä meni pieleen? Kerro tarkasti mitä teit ennen sitä. (vähintään 10 merkkiä)</value>
+  </data>
+  <data name="BugReport_Text_Description_Label">
+    <value>_Kuvaus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_Description_Label_Requirement">
+    <value>(vähintään 10 merkkiä)</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_ExactSteps">
+    <value>Mitkä ovat tarkat tekemäsi toimenpiteet?</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_WhatWentWrong">
+    <value>Mikä meni pieleen?</value>
+  </data>
+  <data name="BugReport_Text_Email_HelpText">
+    <value>Sähköpostiosoite (pakollinen kenttä)</value>
+  </data>
+  <data name="BugReport_Text_Email_Label">
+    <value>_Sähköpostiosoite</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_HelpText">
+    <value>Ongelman otsikko (pakollinen kenttä)</value>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Label">
+    <value>_Otsikko</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Watermark">
+    <value>Ongelman otsikko</value>
+  </data>
+  <data name="BugReport_Text_ReportSuccessfullySent">
+    <value>Raportti lähetetty onnistuneesti. Kiitos.</value>
+  </data>
+  <data name="BugReport_Title">
+    <value>Proton Driven palaute</value>
+  </data>
+  <data name="Dialog_Button_Cancel">
+    <value>Peruuta</value>
+  </data>
+  <data name="Dialog_Button_Ok">
+    <value>OK</value>
+  </data>
+  <data name="Dialog_Button_Save">
+    <value>_Tallenna</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>Kansiota, johon tämä kohde oli tarkoitus ladata, ei löytynyt</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>Kansiota, johon tämä kohde oli tarkoitus ladata, ei löytynyt</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Cancelled">
+    <value>Keskeytetty</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CloudFileProviderNotRunning">
+    <value>Varmista, että pilvitallennuksen palveluntarjoajasi (esim. OneDrive) on käynnissä ja yhdistettynä.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CyclicRedundancyCheck">
+    <value>Tietovirhe (syklinen redundanssitarkistus). Tarkista tallennusvälineesi (USB, levy jne.) tiedostojärjestelmävirheiden ja viallisten sektoreiden varalta.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DirectoryNotFound">
+    <value>Ei voitu löytää osaa sijainnista.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DuplicateName">
+    <value>Nimi on jo käytössä</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_FreeSpaceExceeded">
+    <value>Vapaa tallennustilaa ei ole riittävästi</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IdentityMismatch">
+    <value>Tiedosto tai kansio poikkeaa</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IntegrityFailure">
+    <value>Tietojen vahvistus epäonnistui</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_InvalidName">
+    <value>Nimi sisältää merkkejä, joita Windows ei tue. Poista seuraavat merkit synkronoinnin sallimiseksi: \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
+    <value>Tiedosto ohitettiin, koska sitä on muutettu liian äskettäin. Sovellus yrittää uudelleen automaattisesti</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>Tiedostoa ei voitu siirtää paikallisen tallennustilan virheen vuoksi. Tarkista, että levysi toimii oikein.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
+    <value>Live Photoa ei voi lähettää.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MetadataMismatch">
+    <value>Tiedosto tai kansio poikkeaa</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MissingIndividuallySharedFile">
+    <value>Alkuperäinen sinulle jaettu tiedosto on poistettu, siirretty tai nimetty uudelleen.
+Kytke sen synkronointi pois päältä ja takaisin päälle palauttaaksesi sen ja poistaaksesi tämän virheen.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_NetworkError">
+    <value>Yhdistäminen Proton Driveen ei onnistu. Tarkista Internet-yhteytesi.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ObjectNotFound">
+    <value>Tiedostoa tai kansiota ei ole olemassa</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Offline">
+    <value>Ei yhteyttä</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Partial">
+    <value>Tämä tiedosto ei ole paikallisesti saatavilla, eikä sitä voida lähettää. Ongelman ratkaisemiseksi voit poistaa sen ja palauttaa kopion, mikäli sellainen on saatavilla, Proton Driven roskakorista.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_PathNotFound">
+    <value>Tiedostoa tai kansiota ei ole olemassa</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_RateLimited">
+    <value>Jotain meni pieleen</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyFile">
+    <value>Tiedostoon on vain lukuoikeudet.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyRoot">
+    <value>Vain katseltavia tiedostoja ja kansioita ei voi muokata. Kytke synkronointi pois päältä ja takaisin päälle kohdassa "Jaettu kanssani" ratkaistaksesi ongelman.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ServerError">
+    <value>Jotain meni pieleen</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_SharingViolation">
+    <value>Tiedosto tai kansio on toisen sovelluksen käytössä</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TimedOut">
+    <value>Aikakatkaisu</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TransferAbortedDueToFileChange">
+    <value>Lähetys keskeytettiin, koska tiedosto muuttui synkronoinnin aikana. Sovellus yrittää uudelleen automaattisesti</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_UnauthorizedAccess">
+    <value>Riittämättömät käyttöoikeudet</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Unknown">
+    <value>Jotain meni pieleen</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_ContainsInvalidCharacter">
+    <value>Nimi sisältää virheellisen merkin</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Empty">
+    <value>Nimi on tyhjä</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithPeriod">
+    <value>Nimi päättyy pisteeseen</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithSpace">
+    <value>Nimi päättyy välilyöntiin</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Reserved">
+    <value>Windows ei tue nimeä</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_TooLong">
+    <value>Nimi on liian pitkä</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Valid">
+    <value></value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_CheckingForUpdate">
+    <value>Tarkistetaan päivityksiä...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_DownloadingAnUpdate">
+    <value>Ladataan päivitystä...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpToDate">
+    <value>Ajan tasalla</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
+    <value>Päivitystarkistus epäonnistui</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Päivitys vaaditaan</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
+    <value>Päivitys saatavilla</value>
+  </data>
+  <data name="Main_About_Button_UpdateNow">
+    <value>_Päivitä nyt</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Button_UpdateNow_HelpText">
+    <value>Uusi Proton Driven versio on saatavilla. Päivitä se nyt.</value>
+  </data>
+  <data name="Main_About_Label_CurrentVersion">
+    <value>Nykyinen versio</value>
+  </data>
+  <data name="Main_About_Label_ReleaseDate">
+    <value>Julkaisupäivä</value>
+  </data>
+  <data name="Main_About_Link_PrivacyPolicy">
+    <value>_Tietosuojakäytäntö</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Link_TermsOfService">
+    <value>_Palveluehdot</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_ReleaseHistory_Label_New">
+    <value>UUTTA</value>
+  </data>
+  <data name="Main_About_ReleaseHistory_Title">
+    <value>Mitä on muuttunut</value>
+  </data>
+  <data name="Main_About_Title">
+    <value>Tietoja</value>
+  </data>
+  <data name="Main_Account_Account_Button_ManageAccount">
+    <value>_Hallitse tiliä</value>
+  </data>
+  <data name="Main_Account_Account_HelpText">
+    <value>Hallitse tiliäsi</value>
+  </data>
+  <data name="Main_Account_Account_Info_UnknownUser">
+    <value>Tuntematon käyttäjä</value>
+  </data>
+  <data name="Main_Account_Label_Account">
+    <value>Tili</value>
+  </data>
+  <data name="Main_Account_Label_Security">
+    <value>Suojaus</value>
+  </data>
+  <data name="Main_Account_Password_Button_ChangePassword">
+    <value>_Vaihda</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Password_Description">
+    <value>Vaihda tilisi salasana.</value>
+  </data>
+  <data name="Main_Account_Password_HelpText">
+    <value>Vaihda Proton Drive -salasanasi</value>
+  </data>
+  <data name="Main_Account_Password_Title">
+    <value>Salasana</value>
+  </data>
+  <data name="Main_Account_Plan_Button_SeePlans">
+    <value>Näe _tilausvaihtoehdot</value>
+  </data>
+  <data name="Main_Account_Plan_Description">
+    <value>Hanki lisää tallennustilaa</value>
+  </data>
+  <data name="Main_Account_Plan_HelpText">
+    <value>Tarkastele muita Proton Drive -tilauksia</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Button_Manage">
+    <value>_Hallinnoi</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_SessionManagement_Description">
+    <value>Jollet kirjaudu tililtäsi ulos tai vaihda salasanaasi, istuntosi pysyy aktiivisena. Istunnot erääntyvät niiden oltua toimettomana 60 päivää.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_HelpText">
+    <value>Hallitse istuntoasi. Istunto vanhenee 60 päivän käyttämättömyyden jälkeen.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Title">
+    <value>Istuntojen hallinta</value>
+  </data>
+  <data name="Main_Account_SignOut_Description">
+    <value>Kirjaudu ulos ja poista synkronointi käytöstä. Voit kirjautua takaisin sisään samalla tilillä jatkaaksesi synkronointia.</value>
+  </data>
+  <data name="Main_Account_SignOut_HelpText">
+    <value>Kirjaudu ulos Proton Drivestä</value>
+  </data>
+  <data name="Main_Account_SignOut_Title">
+    <value>_Kirjaudu ulos</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Storage_Button_UpgradePlan">
+    <value>Päivitä tilaus</value>
+  </data>
+  <data name="Main_Account_Storage_Info_EnsureMoreStorage">
+    <value>Varmistaaksesi katkeamattoman synkronoinnin, hanki lisää tallennustilaa nyt.</value>
+  </data>
+  <data name="Main_Account_Storage_Info_UsedSpaceFormat">
+    <value>Käytetty tila yhteensä: {0}/{1}</value>
+  </data>
+  <data name="Main_Account_Storage_Title">
+    <value>Tallennuskapasiteetti</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageExceeded">
+    <value>Synkronointi pysäytetty. Tilisi on ylittänyt tallennuskapasiteetin.</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageLimit">
+    <value>Lähestyt tallennustilarajaasi.</value>
+  </data>
+  <data name="Main_Account_Title">
+    <value>Tili</value>
+  </data>
+  <data name="Main_Activity_Button_PauseSync">
+    <value>_Pysäytä synkronointi</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Rename">
+    <value>Nimeä uudelleen</value>
+  </data>
+  <data name="Main_Activity_Button_Rename_Tooltip">
+    <value>Nimeä tämä kohde uudelleen synkronointiongelman korjaamiseksi</value>
+  </data>
+  <data name="Main_Activity_Button_ResumeSync">
+    <value>_Jatka synkronointia</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Retry">
+    <value>Yritä synkronointia uudelleen</value>
+  </data>
+  <data name="Main_Activity_Column_Folder">
+    <value>Kansio</value>
+  </data>
+  <data name="Main_Activity_Column_Name">
+    <value>Nimi</value>
+  </data>
+  <data name="Main_Activity_Column_Progress_Tooltip_Finalizing">
+    <value>Viimeistellään...</value>
+  </data>
+  <data name="Main_Activity_Column_Size">
+    <value>Koko</value>
+  </data>
+  <data name="Main_Activity_Column_Status">
+    <value>Tila</value>
+  </data>
+  <data name="Main_Activity_Column_Synced">
+    <value>Synkronoitu</value>
+  </data>
+  <data name="Main_Activity_Column_Type">
+    <value>Tyyppi</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Button_ShowMore">
+    <value>Näytä lisätietoja</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Description">
+    <value>Lue lisää näistä ongelmista painamalla tästä</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_HelpText">
+    <value>Näytä kaikki virheet uudessa osiossa</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_MultipleItemsFormat">
+    <value>{0} ongelmaa</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_SingleItem">
+    <value>Yksi ongelma</value>
+  </data>
+  <data name="Main_Activity_Errors_Title">
+    <value>Synkronointiongelmia ({0})</value>
+  </data>
+  <data name="Main_Activity_Errors_Title_Tooltip">
+    <value>Palaa tapahtumaan</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Description">
+    <value>Tiedostojen ja kansioiden synkronointitiedot näkyvät täällä.</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_HelpText">
+    <value>Tiedostosi ovat ajan tasalla</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Title">
+    <value>Tiedostosi ovat ajan tasalla</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line1">
+    <value>Tämä prosessi voi kestää muutaman minuutin.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line2">
+    <value>Voit pienentää tai sulkea ikkunan.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_HelpText">
+    <value>Synkronointia valmistellaan</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Title">
+    <value>Tallennustilaasi määritetään...</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Description">
+    <value>Ota synkronointi käyttöön painamalla "Jatka synkronointia".</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_HelpText">
+    <value>Synkronointi on pysäytetty</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Title">
+    <value>Synkronointi on pysäytetty</value>
+  </data>
+  <data name="Main_Activity_Rename_CurrentName_Label">
+    <value>Nykyinen nimi:</value>
+  </data>
+  <data name="Main_Activity_Rename_Description">
+    <value>Tämän kohteen nimi sisältää merkkejä, joita Windows ei tue.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_AlreadyExists">
+    <value>Nimi on jo käytössä</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_ContainsInvalidCharacter">
+    <value>Nimi sisältää virheellisiä merkkejä</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Failed">
+    <value>Jotain meni pieleen</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Required">
+    <value>Nimi vaaditaan</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Label">
+    <value>Uusi nimi:</value>
+  </data>
+  <data name="Main_Activity_Rename_Status_Value_Renaming">
+    <value>Nimetään uudelleen...</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion">
+    <value>Jatka synkronointia poistamalla seuraavat:</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion_CharacterList">
+    <value>/ : * ? &gt; &lt; " |</value>
+  </data>
+  <data name="Main_Activity_Rename_Title">
+    <value>Kohdetta nimetään uudelleen</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUp">
+    <value>Määritetään...</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUpFormat">
+    <value>Määritetään... ({0} kohdetta valmiina synkronoitavaksi)</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SyncPausedUntilFormat">
+    <value>(päättyen {0})</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>hetki sitten</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
+    <value>{0} päivää sitten</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_HoursAgoFormat">
+    <value>{0} tuntia sitten</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_MinutesAgoFormat">
+    <value>{0} minuuttia sitten</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneDayAgo">
+    <value>päivä sitten</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneHourAgo">
+    <value>tunti sitten</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneMinuteAgo">
+    <value>minuutti sitten</value>
+  </data>
+  <data name="Main_Activity_Title">
+    <value>Tapahtumat</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Tietokoneistasi synkronoidut kansiot näkyvät Drive-sovellusten ”Tietokoneet”-osiossa.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Button_Rename">
+    <value>_Nimeä uudelleen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Device_HelpText">
+    <value>Nimeä laitteesi uudelleen</value>
+  </data>
+  <data name="Main_MyComputer_Device_Label">
+    <value>Tämä laite</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Cancel_HelpText">
+    <value>Peru laitteen uudelleennimeäminen</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Save_HelpText">
+    <value>Tallenna laitteen nimi</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Error_Tooltip">
+    <value>Virheellinen laitteen nimi: uusi nimi ei saa olla tyhjä ja sen enimmäispituus on 255 merkkiä.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_HelpText">
+    <value>Nimeä laitteesi uudelleen</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Button_AddMore">
+    <value>_Lisää kansioita</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Description">
+    <value>Kansion lisääminen varmuuskopioi kaikki sen tiedot Proton Driveen.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Info_Saving">
+    <value>Tallennetaan kansioita...</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Title">
+    <value>Lisää kansioita</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludedByAnAlreadySyncedFolderFormat">
+    <value>{0} kansiota ei voida synkronoida, koska ne sisältyvät jo Proton Driveen synkronoituun kansioon</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludesAnAlreadySyncedFolderFormat">
+    <value>{0} kansiota ei voida synkronoida, koska ne sisältävät jo Proton Driveen synkronoidun alikansion</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFileSystemAccessFailedFormat">
+    <value>{0} kansiota ei voida käyttää</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFolderDoesNotExistFormat">
+    <value>{0} kansiota ei löydy tai voida avata</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalVolumeNotSupportedFormat">
+    <value>{0} kansioita ei voida synkronoida, koska ne sijaitsevat ei-tuetulla levyllä</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NetworkFolderNotSupportedFormat">
+    <value>{0} kansiota ei voida synkronoida, koska verkkokansioita ei tueta</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat">
+    <value>{0} kansiota ei voida synkronoida, koska ne ovat järjestelmäkansioita</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
+    <value>{0} kansiota ei voitu lisätä</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder">
+    <value>Yhtä kansiota ei voitu lisätä</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add">
+    <value>_Lisää kansioita</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst">
+    <value>Lisää ensimmäiset synkronoitavat kansiosi</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddNext">
+    <value>Lisää uusi kansio synkronoitavaksi</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_Name">
+    <value>Nimi</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization">
+    <value>Optimoi tallennustila</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization_Info_Tooltip">
+    <value>Optimoi tallennustila ottamalla käyttöön tarveperusteisen synkronoinnin.
+Tiedostot vievät paikallista tilaa vain, kun avaat ne tai
+valitset, että ne säilytetään aina tällä laitteella. Voit
+poistaa tallennustilan optimoinnin käytöstä milloin tahansa.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Description">
+    <value>Lisää kansio aloittaaksesi tiedostojen turvallisen synkronoinnin pilveen</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Title">
+    <value>Synkronoi tiedostojasi turvallisesti</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Label">
+    <value>Tältä laitteelta synkronoitavat kansiot</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_OpenFolder">
+    <value>_Avaa kansio</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder">
+    <value>_Poista kansio</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm">
+    <value>Poista kansio</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_1">
+    <value>Kansioon "{0}" lisättyjä tiedostoja ei enää synkronoida, ja tämä kansio siirretään Proton Driven roskakoriin.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_2">
+    <value>Olemassa olevat tiedostot säilyvät tietokoneellasi.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_1">
+    <value>Jotkin kansiossa "{0}" olevat tiedostot saattavat olla tallennettuna vain pilveen. Tämän kansion poistaminen lopettaa synkronoinnin ja siirtää sen Proton Driven roskakoriin.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_2">
+    <value>Pitääksesi paikallisen kopion kaikista tiedostoista tietokoneellasi, poista ensin käytöstä Tallennustilan optimointi tälle kansiolle. Jos tallennustilan optimointi on jo pois päältä, kytke se päälle ja pois päältä. Odota, että lataus valmistuu (voit tarkistaa tilan Resurssienhallinnasta), ja poista sitten kansio synkronoinnista Oma tietokone -osiosta.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_1">
+    <value>Jo ladatut tiedostot säilyvät laitteellasi.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_2">
+    <value>Vain pilvipalveluun tallennetut tiedostot poistetaan laitteeltasi.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Title">
+    <value>Poistetaako kansio?</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_1">
+    <value>Tiedostot kansiossa "{0}" ovat nyt aina saatavilla laitteellasi. Voi kestää muutaman minuutin, ennen kuin kaikki tiedostot ovat latautuneet valmiiksi (voit tarkistaa tilan Resurssienhallinnasta).</value>
+    <comment>Placeholder {0}: folder name</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_2">
+    <value>Voit edelleen vapauttaa tilaa yksittäisille tiedostoille manuaalisesti niiden asetuksissa.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Title">
+    <value>Kaikki tiedostot ovat aina käytettävissä tällä laitteella</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1">
+    <value>Kansio "{0}" ei voi käyttää tarveperusteista synkronointia tallennustilan optimointiin, koska {1}.</value>
+    <comment>Placeholder {0}: folder name. Placeholder {1}: the reason text, one of resources with "StorageOptimizationErrorCode_Value_..." key.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_2">
+    <value>Tiedostosi synkronoidaan edelleen Proton Driveen ja pysyvät saatavilla sekä tietokoneellasi että pilvessä.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Title">
+    <value>Tallennustilan optimointi ei ole käytettävissä</value>
+  </data>
+  <data name="Main_MyComputer_Link_LearnMore">
+    <value>Lue lisää</value>
+  </data>
+  <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
+    <value>Ohita tietokoneen käyttöönotto</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Button_Next">
+    <value>_Seuraava</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Description">
+    <value>Ota tarvepohjainen synkronointi käyttöön kovalevytilan säästämiseksi. Tiedostot vievät paikallista tallennustilaa vain, kun avaat ne tai annat niille "Säilytä aina tällä laitteella" -merkinän.</value>
+    <comment>"Always keep on this device" is the exact text displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Title">
+    <value>Optimoi tallennustila</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted">
+    <value>_Aloita</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1">
+    <value>Napsauta hiiren kakkospainikkeella mitä tahansa Proton Drivella synkronoitavaa tiedostoa tai kansiota</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2">
+    <value>Säilytä yhteydettömässä tilassa valitsemalla "Säilytä aina tällä laitteella" tai "Vapauta tilaa säilyttääksesi vain pilvessä.</value>
+    <comment>"Always keep on this device" and "Free up space" are the exact texts displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Title">
+    <value>Tallennustilan hallinta</value>
+  </data>
+  <data name="Main_MyComputer_Title">
+    <value>Oma tietokone</value>
+  </data>
+  <data name="Main_Photos_Folders_Error_ImportFailed">
+    <value>Tuonti epäonnistui. Yritä poistaa kansio ja tuoda se uudelleen. Jos ongelma jatkuu, ota yhteyttä asiakastukeen.</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportedItemsFormat">
+    <value>{0}/{1} tuotu</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportingItemsFormat">
+    <value>Tuodaan... {0}/{1}</value>
+  </data>
+  <data name="Main_Photos_Folders_Items_Label">
+    <value>kohde(tta)</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Hallitse _albumeita</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
+    <value>_Avaa kansio</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Remove">
+    <value>_Poista</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Retry">
+    <value>_Yritä uudelleen</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_NoItemsFound_Label">
+    <value>Kuvia/videoita ei löytynyt</value>
+  </data>
+  <data name="Main_Photos_Folders_WaitingToImport">
+    <value>Odottaa tuontia...</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Description">
+    <value>Vaiheittainen opas Google Kuvien viemiseen</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Title">
+    <value>1. Vie Google Kuvasi</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Description">
+    <value>Sen on oltava purettu kansio, joka sisältää vietyjä kuvia ja videoita.</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Title">
+    <value>2. Tuo Google Kuvat -kansio</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_SelectFolder_Button">
+    <value>Valitse kansio</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Title">
+    <value>Tuo Google Kuvista</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Description">
+    <value>Tuo paikallinen kansio tietokoneeltasi</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Title">
+    <value>Tuo kansio</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Description">
+    <value>Tuo Google Kuvat Google Takeoutista</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Title">
+    <value>Tuo Google Kuvista</value>
+  </data>
+  <data name="Main_Photos_Import_Link_HowImportWorks">
+    <value>Miten kuvien tuonti toimii?</value>
+  </data>
+  <data name="Main_Photos_Import_Title">
+    <value>Tuo kuvia</value>
+  </data>
+  <data name="Main_Photos_Info_Duplicates">
+    <value>Vain uudet kansiot noudetaan - kopiot ohitetaan automaattisesti.</value>
+  </data>
+  <data name="Main_Photos_Title">
+    <value>Kuvat</value>
+  </data>
+  <data name="Main_Photos_Warning_UploadUnavailable">
+    <value>Kuvien lähetys on tilapäisesti pois käytöstä</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Button_Change">
+    <value>_Vaihda</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_HelpText">
+    <value>Vaihda Proton Drive -juurikansiotasi.</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Title">
+    <value>Sijainti</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Hanki varhainen pääsy ja auta meitä testaamaan Proton Driven uusia versioita.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Beta-käyttöoikeus</value>
+  </data>
+  <data name="Main_Settings_Label_AccountRootFolder">
+    <value>Proton Drive -kansiosi:</value>
+  </data>
+  <data name="Main_Settings_Label_General">
+    <value>Yleiset</value>
+  </data>
+  <data name="Main_Settings_Language_Button_Restart">
+    <value>Käynnistä uudelleen nyt</value>
+  </data>
+  <data name="Main_Settings_Language_Message_PleaseRestart">
+    <value>Vaihda kieli käynnistämällä sovellus uudelleen</value>
+  </data>
+  <data name="Main_Settings_Language_Title">
+    <value>Kieli</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_HelpText">
+    <value>Avaa Proton Drive Windowsin käynnistyessä</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_Title">
+    <value>Avaa käynnistettäessä</value>
+  </data>
+  <data name="Main_Settings_Title">
+    <value>Asetukset</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Name">
+    <value>Nimi</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions">
+    <value>Käyttöoikeudet</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Tooltip">
+    <value>Omistajan sinulle myöntämät oikeudet</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Editor">
+    <value>Muokkaus</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Viewer">
+    <value>Tarkastelu</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedBy">
+    <value>Jakanut</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedOn">
+    <value>Jaettu</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync">
+    <value>Synkronointi</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync_Info_Tooltip">
+    <value>Käytä, jotta jaettu tiedosto tai kansio on käytettävissä tietokoneeltasi.
+Tiedostojen sisältö ladataan vain tarvittaessa.</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad">
+    <value>Tietojen lataaminen epäonnistui</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Plural">
+    <value>{0} kohteen lataaminen epäonnistui</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Singular">
+    <value>{0} kohteen lataaminen epäonnistui</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Description">
+    <value>Kanssasi jaetut tiedostot ja kansiot näkyvät tässä</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Title">
+    <value>Mitään ei ole vielä jaettu</value>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_OpenFolder">
+    <value>_Avaa kansio</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_RemoveMe">
+    <value>_Poista minut</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_Close_HelpText">
+    <value>Ohita Jaettu kanssani -perehdytys</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_GetStarted">
+    <value>_Aloita</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Description">
+    <value>Synkronoi helposti sinulle jaettuja tiedostoja ja kansioita tietokoneellesi.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1">
+    <value>Valitse synkronoitavat tiedostot tai kansiot.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2">
+    <value>Käytä jaettuja tiedostoja Proton Drive -kansiossasi.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3">
+    <value>Muokkaa niitä, lähetä uusia ja käytä niitä yhteydettömässä tilassa.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3_Label">
+    <value>3.</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Plural">
+    <value>{0}/{1} kohdetta synkronoitu</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Singular">
+    <value>{0}/{1} kohde synkronoitu</value>
+  </data>
+  <data name="Main_SharedWithMe_Title">
+    <value>Jaettu minulle</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Advice">
+    <value>Jos haluat lisätä uusia kohteita, lopeta joidenkin vanhojen kohteiden synkronointi.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Limit">
+    <value>Voit synkronoida kerrallaan vain {0} kohdetta.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_SharingUnavailable">
+    <value>Jakaminen on tilapäisesti pois käytöstä</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About">
+    <value>Tietoja</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About_HelpText">
+    <value>Valikon kohde: Tietoja</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account">
+    <value>Tili</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account_HelpText">
+    <value>Valikon kohde: Tili</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity">
+    <value>Tapahtumat</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity_HelpText">
+    <value>Valikon kohde: Tapahtumat</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help">
+    <value>Tuki</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help_HelpText">
+    <value>Valikon kohde: Tuki</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer">
+    <value>Oma tietokone</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer_HelpText">
+    <value>Valikon kohde: Oma tietokone</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos">
+    <value>Kuvat</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_PhotosImport">
+    <value>Kuvien tuonti</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos_HelpText">
+    <value>Valikon kohde: Kuvat</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings">
+    <value>Asetukset</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings_HelpText">
+    <value>Valikon kohde: Asetukset</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe">
+    <value>Jaettu minulle</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe_HelpText">
+    <value>Valikon kohde: Jaettu minulle</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceededQuota_Description">
+    <value>Synkronointi pysäytetty: Tilisi on ylittänyt tallennuskapasiteetin</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceedingQuota_Description">
+    <value>Lähestyt tallennustilarajaasi</value>
+  </data>
+  <data name="Main_Sidebar_Notification_GetStarted_Description">
+    <value>Aloita</value>
+  </data>
+  <data name="Main_Sidebar_Notification_NewVersion_Description">
+    <value>Proton Drivestä on saatavilla uusi versio!</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SharingUnavailable_Description">
+    <value>Jakaminen on tilapäisesti pois käytöstä</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SyncFoldersFailure_Description">
+    <value>Kansion synkronointi epäonnistui</value>
+  </data>
+  <data name="Main_Sidebar_Notification_UpdateRequired_Description">
+    <value>Jatkaaksesi Proton Driven käyttöä sinun on päivitettävä uusimpaan versioon</value>
+  </data>
+  <data name="Main_Sidebar_Offer_Button_GetDeal">
+    <value>Hanki _tarjous</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Sidebar_Storage_Button_GetMoreStorage">
+    <value>Hanki lisää tallennustilaa</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_StorageNotAvailable">
+    <value>Tilatiedot eivät saatavilla</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_UsedSpaceFormat">
+    <value>{0}/{1} käytetty</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Title">
+    <value>Tallennustila</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Tooltip">
+    <value>Hallitse tallennustilaa</value>
+  </data>
+  <data name="Main_Window_Title">
+    <value>Proton Drive</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>Tämä kansio sisältää alikansion, joka synkronoidaan tarveperusteisesti. Määritä uusi synkronointikansio.</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>Tämä kansio synkronoidaan jo tarveperusteisesti. Määritä uusi synkronointikansio.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveAccessFailed">
+    <value>Yhdistäminen Proton Driveen ei onnistu. Tarkista Internet-yhteytesi.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDiverged">
+    <value>Proton Drive -kansio on siirretty. Määritä uusi synkronointikansio.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDoesNotExist">
+    <value>Proton Drive -tiedostoihisi ei päästä käsiksi, mahdollisesti laitekansion poistamisen takia. Määritä uusi synkronointikansio.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveHostDeviceDiverged">
+    <value>Proton Drive -tiedostoihisi ei päästä käsiksi, mahdollisesti laitteen poistamisen takia. Määritä uusi synkronointikansio.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveShareDiverged">
+    <value>Proton Drive -tiedostoihisi ei päästä käsiksi, mahdollisesti salasanan nollaamisen takia. Määritä uusi synkronointikansio.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveVolumeDiverged">
+    <value>Proton Drive -tiedostoihisi ei päästä käsiksi, mahdollisesti salasanan nollaamisen takia. Määritä uusi synkronointikansio.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientDeviceQuota">
+    <value>Synkronoitujen tietokoneiden enimmäismäärä on saavutettu. Poista tarpeettomat tietokoneet Proton Drivesta verkossa.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientLocalFreeSpace">
+    <value>Vapauta tilaa tai poista valintaruudun valinta</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalAndRemoteFoldersNotEmpty">
+    <value>Synkronointikansion määrittäminen vaatii tyhjän Windows- tai Proton Drive -verkkokansion. Tyhjennä sellainen ja yritä uudelleen.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFileSystemAccessFailed">
+    <value>Paikallista synkronointikansiota ei voida käyttää tai luoda. Jatkamme yrittämistä.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDiverged">
+    <value>Synkronointikansio korvattiin uudella kansiolla sijainnissa. Palauta edellinen synkronointikansio tai määritä uusi synkronointikansio.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDoesNotExist">
+    <value>Synkronointikansiota ei löydy. Se on ehkä poistettu, nimetty uudelleen tai siirretty. Palauta se tai määritä uusi synkronointikansio.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludedByAnAlreadySyncedFolder">
+    <value>Valittu kansio sisältyy jo toiseen synkronoituun kansioon</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludesAnAlreadySyncedFolder">
+    <value>Valittu kansio sisältää jo synkronoidun kansion</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNonSyncable">
+    <value>Paikallinen kansio ei kelpaa synkronoitavaksi. Määritä uusi synkronointikansio.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNotEmpty">
+    <value>Paikallisen kansion on oltava tyhjä ennen synkronoinnin määrittämistä</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeDiverged">
+    <value>Paikallisen aseman tunnistenumero on muuttunut. Määritä uusi synkronoitava kansio.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeNotSupported">
+    <value>Tukematon paikallinen levytyyppi. Kokeile määrittää synkronointikansio toiselle paikalliselle levylle.</value>
+  </data>
+  <data name="MappingErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootMissingSyncRootFlag">
+    <value>Synkronointikansio on virheellinen. Määritä uusi synkronointikansio.</value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootNotRegistered">
+    <value>Synkronointikansion rekisteröinti poistettiin odottamatta. Määritä uusi synkronointikansio.</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotoImportFailed">
+    <value>Kuvan tuonti epäonnistui</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosDisabled">
+    <value>Proton Photos ei ole käytettävissä</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosNotReady">
+    <value>Photos-ominaisuus ei ole valmis</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemDoesNotExist">
+    <value>Jaettua Proton Drive -tiedostoa tai -kansiota ei voi käyttää. Tarkista, onko se yhä jaettu sinulle.</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemPermissionsDiverged">
+    <value>Jaetun Proton Drive -tiedoston tai -kansion oikeudet ovat muuttuneet. Korjaa ongelma kytkemällä sen synkronointi pois päältä ja takaisin päälle.</value>
+  </data>
+  <data name="MappingErrorCode_Value_SharingDisabled">
+    <value>Jakaminen on tilapäisesti pois käytöstä</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Failed">
+    <value>Synkronointikansioiden määritys epäonnistui</value>
+  </data>
+  <data name="MappingSetupStatus_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingSetupStatus_Value_PartiallySucceeded">
+    <value>Joidenkin synkronointikansioiden määritys epäonnistui</value>
+  </data>
+  <data name="MappingSetupStatus_Value_SettingUp">
+    <value>Määritetään synkronointikansioita...</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Succeeded">
+    <value>OK</value>
+  </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Lisää tallennustilaa</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Tallennustila loppu</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Päivitä saadaksesi lisää tallennustilaa ja ladataksesi tiedostojasi.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
+    <value>_Vaihda</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder_HelpText">
+    <value>Vaihda Proton Drive -juurikansiotasi.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Error_InvalidSyncFolder">
+    <value>Virheellinen synkronointikansio</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Description">
+    <value>Täältä pääset omiin tiedostoihisi ja muihin synkronoituihin laitteisiin</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Location">
+    <value>Sijainti</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Title">
+    <value>Proton Drive -kansiosi</value>
+  </data>
+  <data name="Onboarding_Button_Continue">
+    <value>_Jatka</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_Button_FinishSetup">
+    <value>_Viimeistele määritys</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders">
+    <value>_Lisää kansioita</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText">
+    <value>Lisää toinen kansio synkronoitavaksi</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Label_Description">
+    <value>Valitut kansiot synkronoidaan Proton Driveen. Tiedostot varmuuskopioidaan ja ne ovat käytettävissä muilla laitteillasi.</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Title">
+    <value>Varmuuskopioi kansiosi</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Hanki Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Hanki _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Hanki _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_NotNow">
+    <value>_Ei nyt</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_Upgrade">
+    <value>_Päivitä tilaus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Mail">
+    <value>Mail: Mukautettu ja suojattu sähköposti</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>kuukausi</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Suosituimmat</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Enintään {0} käyttäjää</value>
+    <comment>Only for number greater than 1.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
+    <value>Pass: Salattu salasananhallintaohjelma</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Premium-arvo sisältyy</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Recommended">
+    <value>Suositus</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Palauta aikaisempia versioita tiedostoista.</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>tallennustila</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Vpn">
+    <value>VPN: Erittäin nopea ja yksityinen</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Title">
+    <value>Hanki lisää tallennustilaa</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
+    <value>Tuonti epäonnistui. Albumia ei ole olemassa.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Tuonti epäonnistui. Kansiota ei ole olemassa.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
+    <value>Tuonti epäonnistui. Albumien enimmäismäärä on saavutettu.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfPhotosPerAlbumReached">
+    <value>Tuonti epäonnistui. Albumin kuvien enimmäismäärä on saavutettu.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_Unknown">
+    <value>Tuonti epäonnistui. Yritä uudelleen.</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Failed">
+    <value>Tuonti epäonnistui</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Importing">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Interrupted">
+    <value>Tuonti keskeytettiin</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_NotStarted">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_SetupFailed">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Succeeded">
+    <value>Tuonti onnistui</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_ValidationFailed">
+    <value></value>
+  </data>
+  <data name="ReleaseNoteType_Value_Feature">
+    <value>Uudet ominaisuudet</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Fix">
+    <value>Korjatut virheet</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Improvement">
+    <value>Parannukset</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Fido2">
+    <value>Suojausavain</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_NotSupported">
+    <value></value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Totp">
+    <value>Todennussovellus</value>
+  </data>
+  <data name="SessionStatus_Value_Ending">
+    <value>Kirjataan ulos...</value>
+  </data>
+  <data name="SessionStatus_Value_Failed">
+    <value>Kirjautuminen epäonnistui. Tarkista Internet-yhteytesi.</value>
+  </data>
+  <data name="SessionStatus_Value_NotStarted">
+    <value>Kirjattiin ulos</value>
+  </data>
+  <data name="SessionStatus_Value_SigningIn">
+    <value>Kirjataan sisään...</value>
+  </data>
+  <data name="SessionStatus_Value_Started">
+    <value>Sisäänkirjautunut</value>
+  </data>
+  <data name="SessionStatus_Value_Starting">
+    <value>Kirjataan sisään...</value>
+  </data>
+  <data name="SignIn_Button_Authenticate">
+    <value>_Todenna</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_Back">
+    <value>_Takaisin</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignIn">
+    <value>_Kirjaudu</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignInAsAnotherUser">
+    <value>Tai kirjaudu toisena käyttäjänä</value>
+  </data>
+  <data name="SignIn_Button_Unlock">
+    <value>_Avaa lukitus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_CreateAccount">
+    <value>_Luo tili</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_ForgotPassword">
+    <value>_Unohtunut salasana?</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_LearnMore">
+    <value>Lue lisää</value>
+  </data>
+  <data name="SignIn_Message_SigningIn">
+    <value>Kirjaudutaan tilillesi</value>
+  </data>
+  <data name="SignIn_Text_2FACode">
+    <value>Syötä todennussovelluksen näyttämä koodi</value>
+  </data>
+  <data name="SignIn_Text_No2FAMethodFound">
+    <value>Kaksivaiheista tunnistautumistapaa ei löytynyt.</value>
+  </data>
+  <data name="SignIn_Text_Password">
+    <value>_Salasana</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_SecondPassword">
+    <value>Toinen salasana</value>
+  </data>
+  <data name="SignIn_Text_SecurityKey">
+    <value>Kytke Proton-tiliisi liitetty suojausavain.</value>
+  </data>
+  <data name="SignIn_Text_SecurityKeyNotSupported">
+    <value>Järjestelmäsi ei tue suojausavaimia</value>
+  </data>
+  <data name="SignIn_Text_Username">
+    <value>Sähköpostiosoite tai _käyttäjätunnus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_Username_HelpText">
+    <value>Käyttäjätunnus</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_PasswordRequired">
+    <value>Salasana vaaditaan</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SessionExpired">
+    <value>Istuntosi on erääntynyt. Kirjaudu sisään jatkaaksesi.</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SomethingWentWrong">
+    <value>Jotain meni pieleen</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_UsernameRequired">
+    <value>Käyttäjätunnus vaaditaan</value>
+  </data>
+  <data name="SignIn_Title_2FA">
+    <value>Kaksivaiheinen tunnistautuminen</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>Se sisältää alikansion, jonka {0} synkronoi tarpeen mukaan.</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>se on jo synkronoitu pyynnöstä {0}:n toimesta</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_NetworkVolumeNotSupported">
+    <value>verkkolevyjä ei tueta</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_RemovableVolumeNotSupported">
+    <value>irrotettavia levyjä ei tueta</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_Unknown">
+    <value>tarvepohjaisen synkronoinnin käyttöönotto epäonnistui</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
+    <value>paikallista levytyyppiä ei tueta</value>
+  </data>
+  <data name="SyncAgentStatus_Value_AccountError">
+    <value>Tilin määritys epäonnistui</value>
+  </data>
+  <data name="SyncAgentStatus_Value_FinishingUp">
+    <value>Viimeistellään...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Offline">
+    <value>Ei yhteyttä</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SettingUp">
+    <value>Määritetään...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignInError">
+    <value>Kirjautuminen epäonnistui</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignedOut">
+    <value>Uloskirjattu</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningIn">
+    <value>Kirjataan sisään...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningOut">
+    <value>Kirjataan ulos...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SyncFolderError">
+    <value>Synkronointikansioiden määritys epäonnistui</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationError">
+    <value>Synkronointi epäonnistui</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationPaused">
+    <value>Synkronointi keskeytetty</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationWarning">
+    <value>Joidenkin kohteiden synkronointi epäonnistui</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronized">
+    <value>Synkronoitu</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronizing">
+    <value>Synkronoidaan...</value>
+  </data>
+  <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
+    <value>Tällä laitteella ei ole tarpeeksi vapaata tilaa</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludedByAnAlreadySyncedFolder">
+    <value>Kansio sisältyy jo synkronoituun kansioon</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludesAnAlreadySyncedFolder">
+    <value>Kansio sisältää jo synkronoidun kansion</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_InsufficientLocalFreeSpace">
+    <value>Vapauta tilaa tai poista valintaruudun valinta.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFileSystemAccessFailed">
+    <value>Kansiota ei voi käyttää</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderDoesNotExist">
+    <value>Kansiota ei löytynyt</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderNotEmpty">
+    <value>Kansion on oltava tyhjä ennen synkronoinnin määrittämistä</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalVolumeNotSupported">
+    <value>Ei-tuettu levytyyppi</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NetworkFolderNotSupported">
+    <value>Verkkolevyjen kansioiden synkronointia ei tueta</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NonSyncableFolder">
+    <value>Kansio ei kelpaa synkronoitavaksi</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_Succeeded">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_DetectingUpdates">
+    <value>Noudetaan muutoksia...</value>
+  </data>
+  <data name="SyncStatus_Value_Failed">
+    <value>Virhe</value>
+  </data>
+  <data name="SyncStatus_Value_Idle">
+    <value>Synkronoitu</value>
+  </data>
+  <data name="SyncStatus_Value_Initializing">
+    <value>Määritetään...</value>
+  </data>
+  <data name="SyncStatus_Value_Offline">
+    <value>Ei yhteyttä</value>
+  </data>
+  <data name="SyncStatus_Value_Paused">
+    <value>Pysäytetty</value>
+  </data>
+  <data name="SyncStatus_Value_Synchronizing">
+    <value>Synkronoidaan...</value>
+  </data>
+  <data name="SyncStatus_Value_Terminated">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_Terminating">
+    <value>Lopetetaan...</value>
+  </data>
+  <data name="SystemTray_Menu_Item_Exit">
+    <value>_Sulje</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenInBrowser">
+    <value>Avaa _selaimessa</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenLocalFolder">
+    <value>Avaa paikallinen _kansio</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenProtonDrive">
+    <value>_Avaa Proton Drive</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSync">
+    <value>_Pysäytä synkronointi</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
+    <value>Pysäytä tunniksi</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor4Hours">
+    <value>Pysäytä 4 tunniksi</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor8Hours">
+    <value>Pysäytä 8 tunniksi</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncIndefinitely">
+    <value>Pysäytä toistaiseksi</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow">
+    <value>Pysäytä huomiseen asti (klo 8.00)</value>
+  </data>
+  <data name="SystemTray_Menu_Item_ResumeSync">
+    <value>_Jatka synkronointia</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_SignIn">
+    <value>_Kirjaudu</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="ToggleSwitch_Off">
+    <value>Ei käytössä</value>
+  </data>
+  <data name="ToggleSwitch_On">
+    <value>Käytössä</value>
+  </data>
+</root>

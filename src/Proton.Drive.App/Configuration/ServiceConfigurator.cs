@@ -1,4 +1,3 @@
-using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.DependencyInjection;
 using Polly;
 using Polly.Extensions.Http;
@@ -31,6 +30,7 @@ using Proton.Drive.Shared.Features;
 using Proton.Drive.Shared.Net.Http;
 using Proton.Drive.Shared.Offline;
 using Proton.Drive.Shared.Repository;
+using Proton.Drive.Shared.Update;
 using Proton.Drive.Update.Config;
 using ClientNotification = Proton.Drive.App.Notifications.Contracts.Notification;
 
@@ -52,7 +52,6 @@ public static class ServiceConfigurator
                 .AddSyncAgentServices()
 
                 .AddSingleton<IOsProcesses, SystemProcesses>()
-                .AddSingleton<IMessenger, WeakReferenceMessenger>()
 
                 .AddSingleton(
                     provider =>
@@ -144,6 +143,7 @@ public static class ServiceConfigurator
                 .AddSingleton<IEarlyAccessStateAware>(provider => provider.GetRequiredService<UpdateService>())
                 .AddSingleton<ISessionStateAware>(provider => provider.GetRequiredService<UpdateService>())
                 .AddSingleton<IStoppableService>(provider => provider.GetRequiredService<UpdateService>())
+                .AddSingleton<IUpdateRequiredAware>(provider => provider.GetRequiredService<UpdateService>())
 
                 .AddSingleton<SharedWithMeDataService>()
                 .AddSingleton<IAccountStateAware>(provider => provider.GetRequiredService<SharedWithMeDataService>())

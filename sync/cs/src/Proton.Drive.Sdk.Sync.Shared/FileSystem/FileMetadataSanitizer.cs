@@ -32,7 +32,7 @@ public static class FileMetadataSanitizer
             DurationInSeconds = durationIsValid ? durationInSeconds : null,
             CameraOrientation = cameraOrientationIsValid ? cameraOrientation : null,
             CameraDevice = cameraDeviceIsValid ? cameraDevice : null,
-            CaptureTime = captureTimeIsValid ? captureTime?.ToUniversalTime() : null,
+            CaptureTime = captureTimeIsValid ? captureTime : null,
             Latitude = geoLocationIsValid ? latitude : null,
             Longitude = geoLocationIsValid ? longitude : null,
         };

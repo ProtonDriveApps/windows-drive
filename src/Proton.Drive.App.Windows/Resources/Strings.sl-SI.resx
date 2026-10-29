@@ -1,0 +1,1777 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountDisplayStatus_Value_AccountError">
+    <value></value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SessionError">
+    <value>Prijava ni uspela</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SettingUp">
+    <value>Nastavitev ...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SignedOut">
+    <value>Odjavljeni ste</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningIn">
+    <value>Prijavljanje ...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningOut">
+    <value>Izpisovanje ...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_Succeeded">
+    <value>Prijava uspela</value>
+  </data>
+  <data name="AccountErrorCode_Value_AccountSwitchingFailed">
+    <value>Preklop računa ni uspel. Ponovno zaženite aplikacijo.</value>
+  </data>
+  <data name="AccountErrorCode_Value_Delinquent">
+    <value>Račun ima neplačane račune. Pojdite na svojo nadzorno ploščo, da jih plačate, ali pa o tem obvestite svojega skrbnika.</value>
+  </data>
+  <data name="AccountErrorCode_Value_DriveAccessFailed">
+    <value>Povezava s storitvijo Proton Drive ni mogoča. Poskusite preveriti internetno povezavo.</value>
+  </data>
+  <data name="AccountErrorCode_Value_NoDriveAccess">
+    <value>Če želite dostopati do aplikacije Proton Drive, nadgradite svoj paket.</value>
+  </data>
+  <data name="AccountErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Create">
+    <value>Ustvarjam</value>
+    <comment>Indicates a local folder being created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Delete">
+    <value>Brisanje</value>
+    <comment>Indicates the local file or folder being deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Download">
+    <value>Nalaganje iz storitve Proton Drive</value>
+    <comment>Indicates a file being downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Pridobivanje posodobitev</value>
+    <comment>Indicates local file system changes being fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Move">
+    <value>Premikanje</value>
+    <comment>Indicates the local file or folder being moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Rename">
+    <value>Preimenovanje</value>
+    <comment>Indicates the local file or folder being renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Upload">
+    <value>Nalaganje v Proton Drive</value>
+    <comment>Indicates a  file being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Create">
+    <value>Ustvarjeno</value>
+    <comment>Indicates a local folder has been created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Delete">
+    <value>Izbrisano</value>
+    <comment>Indicates a local file or folder has been deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Download">
+    <value>Preneseno iz storitve Proton Drive</value>
+    <comment>Indicates a file has been downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Posodobitve pridobljene</value>
+    <comment>Indicates local file system changes have been fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Move">
+    <value>Premaknjeno</value>
+    <comment>Indicates a local file or folder has been moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Rename">
+    <value>Preimenovano</value>
+    <comment>Indicates a local file or folder has been renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Upload">
+    <value>Naloženo v Proton Drive</value>
+    <comment>Indicates a file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Create">
+    <value>Ustvarjanje v storitvi Proton Drive</value>
+    <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
+    <value>Premikanje v Proton Drive smetnjak</value>
+    <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
+    <value>Nalaganje iz storitve Proton Drive</value>
+    <comment>Indicates a file is being downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Pridobivanje posodobitev iz storitve Proton Drive</value>
+    <comment>Indicates changes are being fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Move">
+    <value>Premikanje v Proton Drive</value>
+    <comment>Indicates the file or folder is being moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Rename">
+    <value>Preimenovanje v storitvi Proton Drive</value>
+    <comment>Indicates the file or folder is being renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Upload">
+    <value>Nalaganje v Proton Drive</value>
+    <comment>Indicates the file is being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Create">
+    <value>Ustvarjeno v storitvi Proton Drive</value>
+    <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
+    <value>Premaknjeno v Proton Drive smetnjak</value>
+    <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
+    <value>Preneseno iz storitve Proton Drive</value>
+    <comment>Indicates a file has been downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Posodobitve pridobljene iz storitve Proton Drive</value>
+    <comment>Indicates changes have been fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Move">
+    <value>Premaknjeno v Proton Drive</value>
+    <comment>Indicates the file or folder has been moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Rename">
+    <value>Preimenovano v storitvi Proton Drive</value>
+    <comment>Indicates the file or folder has been renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Upload">
+    <value>Naloženo v Proton Drive</value>
+    <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel">
+    <value>_Prekliči</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel_HelpText">
+    <value>Prekliči poročilo</value>
+  </data>
+  <data name="BugReport_Button_Report">
+    <value>_Prijavi</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Report_HelpText">
+    <value>Pošlji poročilo</value>
+  </data>
+  <data name="BugReport_Button_ShowLogs">
+    <value>Pokaži _dnevnike</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs">
+    <value>_Priloži dnevnike aplikacije</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs_Tooltip">
+    <value>Poročilo bo vključevalo najnovejše datoteke dnevnikov aplikacije in datoteke dnevnikov namestitve.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Description">
+    <value>Hitri vodniki za nastavitev, uporabo aplikacije in sinhronizacijo datotek.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_FAQ">
+    <value>Pogosto zastavljena vprašanja (FAQ)</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks">
+    <value>Spoznajte delovanje aplikacije Proton Drive.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowSharedFilesWork">
+    <value>Dostopajte do datotek v skupni rabi</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_SyncFolders">
+    <value>Sinhronizirajte mape s storitvijo Proton Drive</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_UseOnDemandSync">
+    <value>Uporabljajte sinhronizacijo na zahtevo</value>
+  </data>
+  <data name="BugReport_NeedHelp_Title">
+    <value>Potrebujete pomoč pri začetku uporabe Proton Drive?</value>
+  </data>
+  <data name="BugReport_Text_Description_HelpText">
+    <value>Opis. Kaj je šlo narobe? Kateri so točni koraki, ki ste jih izvedli? (najmanj 10 znakov)</value>
+  </data>
+  <data name="BugReport_Text_Description_Label">
+    <value>_Opis</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_Description_Label_Requirement">
+    <value>(Najmanj 10 znakov)</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_ExactSteps">
+    <value>Natančno katere korake ste izvedli?</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_WhatWentWrong">
+    <value>Katere težave so nastale?</value>
+  </data>
+  <data name="BugReport_Text_Email_HelpText">
+    <value>E-pošta (obvezno polje)</value>
+  </data>
+  <data name="BugReport_Text_Email_Label">
+    <value>_E-pošta</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_HelpText">
+    <value>Naslov težave (obvezno polje)</value>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Label">
+    <value>_Naslov</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Watermark">
+    <value>Naslov težave</value>
+  </data>
+  <data name="BugReport_Text_ReportSuccessfullySent">
+    <value>Poročilo je bilo uspešno poslano. Hvala.</value>
+  </data>
+  <data name="BugReport_Title">
+    <value>Povratne informacije za Proton Drive</value>
+  </data>
+  <data name="Dialog_Button_Cancel">
+    <value>Prekliči</value>
+  </data>
+  <data name="Dialog_Button_Ok">
+    <value>V redu</value>
+  </data>
+  <data name="Dialog_Button_Save">
+    <value>_Shrani</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>Mape, v katero naj bi se ta element prenesel, ni bilo mogoče najti</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>Mape, v katero naj bi se ta element naložil, ni bilo mogoče najti</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Cancelled">
+    <value>Prekinjeno</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CloudFileProviderNotRunning">
+    <value>Preverite, ali vaš ponudnik shrambe v oblaku (npr. OneDrive) deluje in je povezan.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CyclicRedundancyCheck">
+    <value>Podatkovna napaka (ciklična preverba redundance). Preverite svoj pogon (USB, disk itd.), če vsebuje napake datotečnega sistema in slabe sektorje.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DirectoryNotFound">
+    <value>Ni bilo mogoče najti dela poti</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DuplicateName">
+    <value>Ime je že v uporabi</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_FreeSpaceExceeded">
+    <value>Ni dovolj prostora</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IdentityMismatch">
+    <value>Datoteka ali mapa se razlikuje</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IntegrityFailure">
+    <value>Preverjanje podatkov ni uspelo</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_InvalidName">
+    <value>Ime vsebuje znake, ki jih Windows ne podpira. Odstranite naslednje znake za omogočanje sinhronizacije: \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
+    <value>Datoteka je bila preskočena, ker se je prehitro spremenila. Aplikacija bo samodejno poskusila znova.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>Datoteke ni bilo mogoče prenesti zaradi napake v lokalnem pomnilniku. Preverite, ali vaš disk deluje pravilno.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
+    <value>Live Photo ni mogoče naložiti.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MetadataMismatch">
+    <value>Datoteka ali mapa se razlikuje</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MissingIndividuallySharedFile">
+    <value>Izvorna datoteka, ki je bila deljena z vami, je bila izbrisana, premaknjena ali preimenovana.
+Vklopite in izklopite njeno sinhronizacijo, da jo obnovite in odpravite to napako.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_NetworkError">
+    <value>Ni se mogoče povezati s storitvijo Proton Drive. Poskusite preveriti internetno povezavo.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ObjectNotFound">
+    <value>Datoteka ali mapa ne obstaja</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Offline">
+    <value>Brez povezave</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Partial">
+    <value>Ta datoteka ni na voljo lokalno in je ni mogoče naložiti. Za rešitev te težave, jo izbrišite in obnovite kopijo iz smetnjaka Proton Drive, če je na voljo.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_PathNotFound">
+    <value>Datoteka ali mapa ne obstaja</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_RateLimited">
+    <value>Nekaj je šlo narobe.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyFile">
+    <value>Datoteka je samo za branje</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyRoot">
+    <value>Datotek in map samo za branje ni mogoče spreminjati. Za odpravo težave v razdelku »V skupni rabi z mano« izklopite in znova vklopite sinhronizacijo.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ServerError">
+    <value>Nekaj je šlo narobe.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_SharingViolation">
+    <value>Datoteko ali mapo uporablja druga aplikacija</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TimedOut">
+    <value>Čas je potekel.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TransferAbortedDueToFileChange">
+    <value>Nalaganje je prekinjeno, ker se je datoteka spremenila med sinhronizacijo. Aplikacija bo samodejno poskusila znova.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_UnauthorizedAccess">
+    <value>Ni dovolj dovoljenj</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Unknown">
+    <value>Nekaj je šlo narobe.</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_ContainsInvalidCharacter">
+    <value>Ime vsebuje neveljaven znak</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Empty">
+    <value>Ime je prazno</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithPeriod">
+    <value>Ime se konča s piko</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithSpace">
+    <value>Ime se konča s presledkom</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Reserved">
+    <value>Ime ni podprto v sistemu Windows</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_TooLong">
+    <value>Predolgo ime</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Valid">
+    <value></value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_CheckingForUpdate">
+    <value>Preverjanje za posodobitve...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_DownloadingAnUpdate">
+    <value>Prenašanje posodobitve ...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpToDate">
+    <value>Posodobljeno</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
+    <value>Ni mogoče preveriti posodobitev</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Zahtevana je posodobitev</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
+    <value>Na voljo je posodobitev.</value>
+  </data>
+  <data name="Main_About_Button_UpdateNow">
+    <value>_Posodobi zdaj</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Button_UpdateNow_HelpText">
+    <value>Nova različica Proton Drive je na voljo. Posodobite jo zdaj.</value>
+  </data>
+  <data name="Main_About_Label_CurrentVersion">
+    <value>Trenutna različica</value>
+  </data>
+  <data name="Main_About_Label_ReleaseDate">
+    <value>Datum izdaje</value>
+  </data>
+  <data name="Main_About_Link_PrivacyPolicy">
+    <value>_Pravilnik o zasebnosti</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Link_TermsOfService">
+    <value>_Pogoji storitve</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_ReleaseHistory_Label_New">
+    <value>NOVO</value>
+  </data>
+  <data name="Main_About_ReleaseHistory_Title">
+    <value>Novosti</value>
+  </data>
+  <data name="Main_About_Title">
+    <value>O programu</value>
+  </data>
+  <data name="Main_Account_Account_Button_ManageAccount">
+    <value>Upravljajte _račun</value>
+  </data>
+  <data name="Main_Account_Account_HelpText">
+    <value>Upravljajte svoj račun</value>
+  </data>
+  <data name="Main_Account_Account_Info_UnknownUser">
+    <value>Neznan uporabnik</value>
+  </data>
+  <data name="Main_Account_Label_Account">
+    <value>Račun</value>
+  </data>
+  <data name="Main_Account_Label_Security">
+    <value>Varnost</value>
+  </data>
+  <data name="Main_Account_Password_Button_ChangePassword">
+    <value>_Spremeni</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Password_Description">
+    <value>Spremenite geslo za svoj račun.</value>
+  </data>
+  <data name="Main_Account_Password_HelpText">
+    <value>Spremenite vaše geslo za Proton Drive</value>
+  </data>
+  <data name="Main_Account_Password_Title">
+    <value>Geslo</value>
+  </data>
+  <data name="Main_Account_Plan_Button_SeePlans">
+    <value>Oglejte si _pakete</value>
+  </data>
+  <data name="Main_Account_Plan_Description">
+    <value>Pridobite več prostora</value>
+  </data>
+  <data name="Main_Account_Plan_HelpText">
+    <value>Oglejte si druge pakete Proton Drive</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Button_Manage">
+    <value>_Upravljaj</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_SessionManagement_Description">
+    <value>Če se ne odjavite iz vašega računa ali spremenite gesla, bo vaša seja ostala aktivna. Seje potečejo po 60 dneh neaktivnosti.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_HelpText">
+    <value>Upravljanje seje. Po 60 dneh neaktivnosti bo seja potekla.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Title">
+    <value>Upravljanje seje</value>
+  </data>
+  <data name="Main_Account_SignOut_Description">
+    <value>Izpišite se in onemogočite sinhronizacijo. Z istim računom se lahko ponovno prijavite za nadaljevanje sinhronizacije.</value>
+  </data>
+  <data name="Main_Account_SignOut_HelpText">
+    <value>Izpiši se iz storitve Proton Drive</value>
+  </data>
+  <data name="Main_Account_SignOut_Title">
+    <value>_Odjava</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Storage_Button_UpgradePlan">
+    <value>Nadgradnja paketa</value>
+  </data>
+  <data name="Main_Account_Storage_Info_EnsureMoreStorage">
+    <value>Za zagotovitev neprekinjene sinhronizacije si zdaj priskrbite več shrambe.</value>
+  </data>
+  <data name="Main_Account_Storage_Info_UsedSpaceFormat">
+    <value>Skupaj porabljen prostor: {0} od {1}</value>
+  </data>
+  <data name="Main_Account_Storage_Title">
+    <value>Zmogljivost shrambe</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageExceeded">
+    <value>Sinhronizacija je ustavljena. Vaš račun je presegel zmogljivost shrambe.</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageLimit">
+    <value>Kmalu boste dosegli mejo svoje shrambe.</value>
+  </data>
+  <data name="Main_Account_Title">
+    <value>Račun</value>
+  </data>
+  <data name="Main_Activity_Button_PauseSync">
+    <value>_Začasno ustavi sinhronizacijo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Rename">
+    <value>Preimenuj</value>
+  </data>
+  <data name="Main_Activity_Button_Rename_Tooltip">
+    <value>Preimenuj ta predmet za odpravo težave s sinhronizacijo</value>
+  </data>
+  <data name="Main_Activity_Button_ResumeSync">
+    <value>_Nadaljuj sinhronizacijo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Retry">
+    <value>Poskusi znova sinhronizirati</value>
+  </data>
+  <data name="Main_Activity_Column_Folder">
+    <value>Mapa</value>
+  </data>
+  <data name="Main_Activity_Column_Name">
+    <value>Ime</value>
+  </data>
+  <data name="Main_Activity_Column_Progress_Tooltip_Finalizing">
+    <value>Zaključevanje ...</value>
+  </data>
+  <data name="Main_Activity_Column_Size">
+    <value>Velikost</value>
+  </data>
+  <data name="Main_Activity_Column_Status">
+    <value>Stanje</value>
+  </data>
+  <data name="Main_Activity_Column_Synced">
+    <value>Sinhronizirano</value>
+  </data>
+  <data name="Main_Activity_Column_Type">
+    <value>Vrsta</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Button_ShowMore">
+    <value>Pokaži več podrobnosti</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Description">
+    <value>Kliknite, da izveste več o teh težavah.</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_HelpText">
+    <value>Prikaži vse napake v novem razdelku.</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_MultipleItemsFormat">
+    <value>Prišlo je do {0} težav.</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_SingleItem">
+    <value>Prišlo je do ene težave.</value>
+  </data>
+  <data name="Main_Activity_Errors_Title">
+    <value>Težave pri sinhronizaciji ({0})</value>
+  </data>
+  <data name="Main_Activity_Errors_Title_Tooltip">
+    <value>Nazaj na dejavnost</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Description">
+    <value>Informacije o sinhronizaciji datotek in map se bodo pokazale tukaj.</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_HelpText">
+    <value>Vaše datoteke so posodobljene</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Title">
+    <value>Vaše datoteke so posodobljene</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line1">
+    <value>Ta postopek lahko traja nekaj minut.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line2">
+    <value>Okno lahko varno pomanjšate ali zaprete.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_HelpText">
+    <value>Sinhronizacija se inicializira</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Title">
+    <value>Nastavitev vašega pogona ...</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Description">
+    <value>Kliknite "Nadaljuj sinhronizacijo" da omogočite sinhronizacijo.</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_HelpText">
+    <value>Sinhronizacija je začasno ustavljena</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Title">
+    <value>Sinhronizacija je začasno ustavljena</value>
+  </data>
+  <data name="Main_Activity_Rename_CurrentName_Label">
+    <value>Trenutno ime:</value>
+  </data>
+  <data name="Main_Activity_Rename_Description">
+    <value>Ime tega predmeta vsebuje znake, ki niso podprti v sistemu Windows.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_AlreadyExists">
+    <value>Ime je že v uporabi</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_ContainsInvalidCharacter">
+    <value>Ime vsebuje neveljavne znake</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Failed">
+    <value>Nekaj je šlo narobe.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Required">
+    <value>Zahtevano je ime</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Label">
+    <value>Novo ime:</value>
+  </data>
+  <data name="Main_Activity_Rename_Status_Value_Renaming">
+    <value>Preimenovanje ...</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion">
+    <value>Če želite nadaljevati sinhronizacijo, odstranite naslednje:</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion_CharacterList">
+    <value>/ : * ? &gt; &lt; " |</value>
+  </data>
+  <data name="Main_Activity_Rename_Title">
+    <value>Preimenovanje predmeta</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUp">
+    <value>Nastavitev ...</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUpFormat">
+    <value>Nastavljanje... ({0} predmetov pripravljenih za sinhronizacijo)</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SyncPausedUntilFormat">
+    <value>(do {0})</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>pred kratkim</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
+    <value>pred {0} dnevi</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_HoursAgoFormat">
+    <value>pred {0} urami</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_MinutesAgoFormat">
+    <value>pred {0} minutami</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneDayAgo">
+    <value>pred 1 dnevom</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneHourAgo">
+    <value>pred eno uro</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneMinuteAgo">
+    <value>pred minuto</value>
+  </data>
+  <data name="Main_Activity_Title">
+    <value>Opravilo</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Mape, sinhronizirane z vašimi računalniki, se bodo prikazale v razdelku »Računalniki« v vseh aplikacijah Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Button_Rename">
+    <value>_Preimenuj</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Device_HelpText">
+    <value>Preimenuj napravo</value>
+  </data>
+  <data name="Main_MyComputer_Device_Label">
+    <value>Ta naprava</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Cancel_HelpText">
+    <value>Prekliči preimenovanje naprave</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Save_HelpText">
+    <value>Shrani ime naprave</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Error_Tooltip">
+    <value>Neveljavno ime naprave: novo ime ne sme biti prazno in ne sme presegati 255 znakov.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_HelpText">
+    <value>Preimenuj napravo</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Button_AddMore">
+    <value>_Dodaj več map</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Description">
+    <value>Dodajanje mape bo varnostno kopiralo vse njene podatke v Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Info_Saving">
+    <value>Shranjevanje map...</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Title">
+    <value>Dodaj mape</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludedByAnAlreadySyncedFolderFormat">
+    <value>{0} mape ni mogoče sinhronizirati, ker so vključene v mapo, ki je že sinhronizirana v Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludesAnAlreadySyncedFolderFormat">
+    <value>{0} mape ni mogoče sinhronizirati, ker so vključene v podmapo, ki je že sinhronizirana v Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFileSystemAccessFailedFormat">
+    <value>{0} map ni mogoče dostopati</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFolderDoesNotExistFormat">
+    <value>{0} mape ni mogoče najti ali odpreti</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalVolumeNotSupportedFormat">
+    <value>{0} mape ni mogoče sinhronizirati, ker se nahaja na nepodprtem pogonu</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NetworkFolderNotSupportedFormat">
+    <value>{0} mape ni mogoče sinhronizirati, ker omrežne mape niso podprte</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat">
+    <value>{0} mape ni mogoče sinhronizirati, ker gre za sistemske mape</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
+    <value>Ni mogoče dodati {0} map</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder">
+    <value>Ni mogoče dodati 1 mape</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add">
+    <value>_Dodaj mape</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst">
+    <value>Dodaj svoje prve mape za sinhronizacijo</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddNext">
+    <value>Dodaj novo mapo za sinhronizacijo</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_Name">
+    <value>Ime</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization">
+    <value>Optimizirajte shrambo</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization_Info_Tooltip">
+    <value>Optimizirajte shrambo z omogočanjem sinhronizacije na zahtevo. Datoteke zasedajo lokalni prostor le, ko jih odprete ali se odločite, da jih boste vedno obdržali na tej napravi. Optimizacijo shrambe lahko kadar koli onemogočite.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Description">
+    <value>Dodaj mapo za začetek varnega sinhroniziranja datotek v oblak</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Title">
+    <value>Varno sinhronizirajte svoje datoteke</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Label">
+    <value>Mape, ki se sinhronizirajo s te naprave</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_OpenFolder">
+    <value>_Odpri mapo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder">
+    <value>_Odstrani mapo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm">
+    <value>Odstrani mapo</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_1">
+    <value>Vse datoteke, dodane v mapo "{0}", ne bodo več sinhronizirane in ta mapa bo premaknjena v smetnjak v Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_2">
+    <value>Obstoječe datoteke bodo ostale na vašem računalniku.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_1">
+    <value>Nekatere datoteke v mapi "{0}" so morda shranjene samo v oblaku. Odstranitev te mape bo ustavila sinhronizacijo in jo premaknila v smetnjak v Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_2">
+    <value>Za shranjevanje lokalne kopije vseh datotek v računalniku, najprej izklopite Optimiziraj shrambo za to mapo. Če je optimizacija shrambe že izklopljena, jo vklopite in izklopite. Počakajte, da se nalaganje dokonča (status lahko preverite v Raziskovalcu datotek), nato odstranite mapo iz sinhronizacije pod razdelkom Moj računalnik.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_1">
+    <value>Datoteke, ki so že bile naložene, bodo ostale na vaši napravi.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_2">
+    <value>Datoteke, shranjene samo v oblaku, bodo odstranjene iz vaše naprave.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Title">
+    <value>Odstrani mapo?</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_1">
+    <value>Datoteke v mapi "{0}" bodo zdaj vedno na voljo na vaši napravi. Lahko traja nekaj minut, preden se vse datoteke naložijo (status lahko preverite v Raziskovalcu datotek).</value>
+    <comment>Placeholder {0}: folder name</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_2">
+    <value>Še vedno lahko ročno sprostite prostor za posamezne datoteke v njihovih nastavitvah.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Title">
+    <value>Vse datoteke so vedno na voljo na tej napravi</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1">
+    <value>Mapa "{0}" ne more uporabljati sinhronizacije na zahtevo za optimizacijo Shrambe, ker {1}.</value>
+    <comment>Placeholder {0}: folder name. Placeholder {1}: the reason text, one of resources with "StorageOptimizationErrorCode_Value_..." key.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_2">
+    <value>Vaše datoteke se bodo še vedno sinhronizirale s Proton Drive in bodo ostale na voljo tako na vašem računalniku kot tudi v oblaku.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Title">
+    <value>Optimizacija shrambe ni na voljo</value>
+  </data>
+  <data name="Main_MyComputer_Link_LearnMore">
+    <value>Izvedi več</value>
+  </data>
+  <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
+    <value>Opusti uvajanje svojega računalnika</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Button_Next">
+    <value>_Naprej</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Description">
+    <value>Omogočite sinhronizacijo na zahtevo za shranjevanje prostora na trdem disku. Datoteke zasedejo lokalno shrambo le, ko jih odprete ali jih označite kot "Vedno ohrani v tej napravi".</value>
+    <comment>"Always keep on this device" is the exact text displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Title">
+    <value>Optimizirajte shrambo</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted">
+    <value>Začnite _zdaj</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1">
+    <value>Z desnim klikom izberite katero koli datoteko ali mapo, sinhronizirano z uporabo Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2">
+    <value>Izberite "Vedno ohrani v tej napravi", da ga shranite brez povezave, ali "Sprosti prostor", da ga ohranite samo v oblaku.</value>
+    <comment>"Always keep on this device" and "Free up space" are the exact texts displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Title">
+    <value>Upravljanje s shrambo</value>
+  </data>
+  <data name="Main_MyComputer_Title">
+    <value>Moj računalnik</value>
+  </data>
+  <data name="Main_Photos_Folders_Error_ImportFailed">
+    <value>Uvoz ni uspel. Poskusite odstraniti mapo in jo znova uvoziti. Če to ne reši težave, se obrnite na podporo.</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportedItemsFormat">
+    <value>Uvoženo {0} od {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportingItemsFormat">
+    <value>Uvažanje... {0} od {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_Items_Label">
+    <value>predmeti</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Upravljanje _albumov</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
+    <value>_Odpri mapo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Remove">
+    <value>_Odstrani</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Retry">
+    <value>_Ponovi</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_NoItemsFound_Label">
+    <value>Ni najdenih fotografij/videoposnetkov</value>
+  </data>
+  <data name="Main_Photos_Folders_WaitingToImport">
+    <value>Čakam na uvažanje ...</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Description">
+    <value>Vodnik po korakih, kako izvoziti svoje Google Fotografije</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Title">
+    <value>1. Izvozi svoje Google Fotografije</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Description">
+    <value>Mora biti razširjena mapa, ki vsebuje vaše izvožene fotografije in videoposnetke.</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Title">
+    <value>2. Uvozi Google Fotografije mapo</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_SelectFolder_Button">
+    <value>Izberi mapo</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Title">
+    <value>Uvoz iz Google Fotografij</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Description">
+    <value>Uvozi lokalno mapo iz vašega računalnika</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Title">
+    <value>Uvozi mapo</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Description">
+    <value>Uvozi Google fotografije iz Google Takeout</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Title">
+    <value>Uvoz iz Google Fotografij</value>
+  </data>
+  <data name="Main_Photos_Import_Link_HowImportWorks">
+    <value>Kako deluje uvoz fotografij?</value>
+  </data>
+  <data name="Main_Photos_Import_Title">
+    <value>Uvozi fotografije</value>
+  </data>
+  <data name="Main_Photos_Info_Duplicates">
+    <value>Uvozili bomo samo novo – dvojniki se samodejno preskočijo.</value>
+  </data>
+  <data name="Main_Photos_Title">
+    <value>Fotografije</value>
+  </data>
+  <data name="Main_Photos_Warning_UploadUnavailable">
+    <value>Nalaganje fotografij je začasno nedosegljivo</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Button_Change">
+    <value>_Spremeni</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_HelpText">
+    <value>Spremenite svojo korensko mapo za Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Title">
+    <value>Lokacija</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Zagotovite si zgodnji dostop in nam pomagajte preizkusiti nove različice Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Beta dostop</value>
+  </data>
+  <data name="Main_Settings_Label_AccountRootFolder">
+    <value>Vaša mapa Proton Drive:</value>
+  </data>
+  <data name="Main_Settings_Label_General">
+    <value>Splošno</value>
+  </data>
+  <data name="Main_Settings_Language_Button_Restart">
+    <value>Ponovni zagon</value>
+  </data>
+  <data name="Main_Settings_Language_Message_PleaseRestart">
+    <value>Ponovno zaženite aplikacijo, da uveljavite spremembo jezika.</value>
+  </data>
+  <data name="Main_Settings_Language_Title">
+    <value>Jezik</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_HelpText">
+    <value>Odprite Proton Drive ob zagonu sistema Windows</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_Title">
+    <value>Odpri ob zagonu</value>
+  </data>
+  <data name="Main_Settings_Title">
+    <value>Nastavitve</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Name">
+    <value>Ime</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions">
+    <value>Dovoljenja</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Tooltip">
+    <value>Dovoljenja, ki vam jih je podelil lastnik</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Editor">
+    <value>Urednik</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Viewer">
+    <value>Pregledovalec</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedBy">
+    <value>Deljeno s strani</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedOn">
+    <value>V skupni rabi na</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync">
+    <value>Sinhronizacija</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync_Info_Tooltip">
+    <value>Omogoči, da bo deljena datoteka ali mapa dostopna iz vašega računalnika. Vsebina datotek bo naložena samo po potrebi.</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad">
+    <value>Nalaganje podatkov ni uspelo</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Plural">
+    <value>{0} predmetov ni bilo mogoče naložiti</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Singular">
+    <value>{0} predmeta ni bilo mogoče naložiti</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Description">
+    <value>Datoteke in mape, ki jih drugi delijo z vami, bodo prikazane tukaj.</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Title">
+    <value>Nič še ni deljeno</value>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_OpenFolder">
+    <value>_Odpri mapo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_RemoveMe">
+    <value>_Odstrani me</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_Close_HelpText">
+    <value>Opusti uvajanje Deljeno z mano</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_GetStarted">
+    <value>Začnite _zdaj</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Description">
+    <value>Preprosto sinhroniziraj datoteke in mape, deljene z vami, v svoj računalnik.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1">
+    <value>Izberi datoteke ali mape za sinhronizacijo.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2">
+    <value>Dostopajte do datotek v skupni rabi v mapi na vašem Proton Drive.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3">
+    <value>Uredite jih, naložite nove in do njih dostopajte brez povezave.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3_Label">
+    <value>3.</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Plural">
+    <value>{0} od {1} sinhroniziranih predmetov</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Singular">
+    <value>{0} od {1} predmeta sinhroniziran</value>
+  </data>
+  <data name="Main_SharedWithMe_Title">
+    <value>Deljeno z menoj</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Advice">
+    <value>Če želite dodati nove predmete, prenehajte sinhronizirati nekatere že obstoječe.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Limit">
+    <value>Naenkrat lahko sinhronizirate le {0} predmetov.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_SharingUnavailable">
+    <value>Skupna raba začasno ni na voljo</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About">
+    <value>O programu</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About_HelpText">
+    <value>Element menija: O programu</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account">
+    <value>Račun</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account_HelpText">
+    <value>Element menija: Račun</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity">
+    <value>Opravilo</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity_HelpText">
+    <value>Element menija: Dejavnost</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help">
+    <value>Pomoč</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help_HelpText">
+    <value>Element menija: Pomoč</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer">
+    <value>Moj računalnik</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer_HelpText">
+    <value>Element menija: Moj računalnik</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos">
+    <value>Fotografije</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_PhotosImport">
+    <value>Uvoz fotografij</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos_HelpText">
+    <value>Element menija: Fotografije</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings">
+    <value>Nastavitve</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings_HelpText">
+    <value>Element menija: Nastavitve</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe">
+    <value>Deljeno z menoj</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe_HelpText">
+    <value>Element menija: V skupni rabi z mano</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceededQuota_Description">
+    <value>Sinhronizacija je ustavljena: vaš račun je presegel zmogljivost shrambe</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceedingQuota_Description">
+    <value>Kmalu boste dosegli omejitev svoje shrambe</value>
+  </data>
+  <data name="Main_Sidebar_Notification_GetStarted_Description">
+    <value>Začnite</value>
+  </data>
+  <data name="Main_Sidebar_Notification_NewVersion_Description">
+    <value>Nova različica Proton Drive je na voljo!</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SharingUnavailable_Description">
+    <value>Skupna raba začasno ni na voljo</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SyncFoldersFailure_Description">
+    <value>Sinhronizacija mape ni uspela</value>
+  </data>
+  <data name="Main_Sidebar_Notification_UpdateRequired_Description">
+    <value>Za nadaljnjo uporabo Proton Drive posodobite na najnovejšo različico.</value>
+  </data>
+  <data name="Main_Sidebar_Offer_Button_GetDeal">
+    <value>Pridobi _ponudbo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Sidebar_Storage_Button_GetMoreStorage">
+    <value>Pridobite več prostora</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_StorageNotAvailable">
+    <value>Podatki o prostoru niso na voljo</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_UsedSpaceFormat">
+    <value>{0} od {1} porabljeno</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Title">
+    <value>Shramba</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Tooltip">
+    <value>Upravljanje s shrambo</value>
+  </data>
+  <data name="Main_Window_Title">
+    <value>Proton Drive</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>Ta mapa vsebuje podmapo s sinhronizacijo na zahtevo. Nastavite novo mapo za sinhronizacijo</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>Ta mapa je že sinhronizirana na zahtevo. Nastavite novo mapo za sinhronizacijo.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveAccessFailed">
+    <value>Ni se mogoče povezati s storitvijo Proton Drive. Poskusite preveriti internetno povezavo.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDiverged">
+    <value>Mapa Proton Drive je bil premaknjena. Nastavite novo sinhronizacijsko mapo.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDoesNotExist">
+    <value>Dostop do datotek Proton Drive ni mogoč, morda zaradi izbrisane mape v napravi. Nastavite novo mapo za sinhronizacijo.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveHostDeviceDiverged">
+    <value>Dostop do datotek Proton Drive ni mogoč, morda zaradi izbrisa naprave. Nastavite novo mapo za sinhronizacijo.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveShareDiverged">
+    <value>Dostop do datotek Proton Drive ni mogoč, morda zaradi ponastavitve gesla. Nastavite novo mapo za sinhronizacijo.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveVolumeDiverged">
+    <value>Dostop do datotek Proton Drive ni mogoč, morda zaradi ponastavitve gesla. Nastavite novo mapo za sinhronizacijo.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientDeviceQuota">
+    <value>Doseženo je največje dovoljeno število sinhroniziranih računalnikov. V Proton Drive na spletu izbrišite odvečne računalnike.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientLocalFreeSpace">
+    <value>Sprostite prostor ali prekličite izbor potrditvenega polja</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalAndRemoteFoldersNotEmpty">
+    <value>Za nastavitev mape za sinhronizacijo je potrebna prazna mapa v sistemu Windows ali spletna mapa Proton Drive. Izbrišite eno od njiju in poskusite znova.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFileSystemAccessFailed">
+    <value>Ne morem dostopati ali ustvariti lokalne mape za sinhronizacijo. Še naprej bomo poskušali.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDiverged">
+    <value>Mapa za sinhronizacijo je bila nadomeščena z novo mapo. Obnovite prejšnjo mapo ali pa nastavite novo mapo za sinhronizacijo.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDoesNotExist">
+    <value>Mapa za sinhronizacijo ni najdena. Moda je bila izbrisana, preimenovana ali premaknjena. Obnovite jo ali pa nastavite novo mapo za sinhronizacijo.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludedByAnAlreadySyncedFolder">
+    <value>Izbrana mapa je že vključena znotraj druge sinhronizirane mape.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludesAnAlreadySyncedFolder">
+    <value>Izbrana mapa vsebuje že sinhronizirano mapo</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNonSyncable">
+    <value>Ta lokalna mapa ni primerna za sinhronizacijo. Nastavite novo mapo za sinhronizacijo.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNotEmpty">
+    <value>Ta lokalna mapa mora biti prazna, preden jo nastavite za sinhronizacijo</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeDiverged">
+    <value>Serijska številka lokalnega nosilca je spremenjena. Nastavite novo mapo za sinhronizacijo.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeNotSupported">
+    <value>Nepodprta vrsta lokalnega pogona. Za nastavitev sinhronizacijske mape uporabite drug, podprt pogon.</value>
+  </data>
+  <data name="MappingErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootMissingSyncRootFlag">
+    <value>Mapa za sinhronizacijo ni veljavna. Nastavite drugo mapo za sinhronizacijo.</value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootNotRegistered">
+    <value>Mapa za sinhronizacijo je bila nepričakovano odjavljena. Nastavite drugo mapo za sinhronizacijo.</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotoImportFailed">
+    <value>Uvoz fotografij ni uspel</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosDisabled">
+    <value>Proton Fotografije niso na voljo</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosNotReady">
+    <value>Funkcija Fotografije trenutno ni na voljo</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemDoesNotExist">
+    <value>Dostop do datoteke ali mape, ki je v skupni rabi na Proton Drive, ni mogoč. Preverite, ali je še vedno v skupni rabi z vami.</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemPermissionsDiverged">
+    <value>Dovoljenja za datoteko ali mapo v skupni rabi v Proton Drive so se spremenila. Za odpravo težave izklopite in ponovno vklopite sinhronizacijo.</value>
+  </data>
+  <data name="MappingErrorCode_Value_SharingDisabled">
+    <value>Skupna raba začasno ni na voljo</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Failed">
+    <value>Sinhronizacije map ni bilo mogoče nastaviti</value>
+  </data>
+  <data name="MappingSetupStatus_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingSetupStatus_Value_PartiallySucceeded">
+    <value>Sinhronizacije nekaterih map ni bilo mogoče nastaviti</value>
+  </data>
+  <data name="MappingSetupStatus_Value_SettingUp">
+    <value>Nastavitev sinhronizacijskih map ...</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Succeeded">
+    <value>V redu</value>
+  </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Dodaj shrambo</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Zmanjkalo shrambe</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Nadgradite paket, da pridobite več prostora za shranjevanje in naložite svoje datoteke.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
+    <value>_Spremeni</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder_HelpText">
+    <value>Spremenite svojo korensko mapo za Proton Drive.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Error_InvalidSyncFolder">
+    <value>Neveljavna mapa za sinhronizacijo</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Description">
+    <value>Tukaj lahko dostopate do svojih datotek in drugih sinhroniziranih naprav</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Location">
+    <value>Lokacija</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Title">
+    <value>Vaša mapa Proton Drive</value>
+  </data>
+  <data name="Onboarding_Button_Continue">
+    <value>_Nadaljuj</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_Button_FinishSetup">
+    <value>_Dokončaj nastavitev</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders">
+    <value>_Dodaj več map</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText">
+    <value>Dodaj še eno mapo za sinhronizacijo</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Label_Description">
+    <value>Izbrane mape bodo sinhronizirane v Proton Drive. Datoteke bodo varnostno kopirane in dosegljive na vseh vaših napravah.</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Title">
+    <value>Varnostno kopirajte svoje mape</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Pridobite Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Pridobite _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Pridobite _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_NotNow">
+    <value>_Ne zdaj</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_Upgrade">
+    <value>_Nadgradi</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Mail">
+    <value>Mail: e-pošta po meri in varna e-pošta</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>mesec</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Najbolj priljubljeno</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>Do {0} uporabnikov</value>
+    <comment>Only for number greater than 1.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
+    <value>Pass: Šifriran upravitelj gesel</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Vključuje premijske funkcije</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Recommended">
+    <value>Priporočeno</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Obnovi prejšnje različice datoteke</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>shramba</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Vpn">
+    <value>VPN: izjemno hiter in zaseben</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Title">
+    <value>Pridobite več prostora</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
+    <value>Uvoz ni uspel. Album ne obstaja.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Uvoz ni uspel. Mapa ne obstaja.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
+    <value>Uvoz ni uspel. Doseženo je največje število albumov.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfPhotosPerAlbumReached">
+    <value>Uvoz ni uspel. Doseženo je največje število slik za posamezen album.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_Unknown">
+    <value>Uvoz ni uspel. Poskusite znova.</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Failed">
+    <value>Uvoz ni uspel</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Importing">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Interrupted">
+    <value>Uvoz je bil prekinjen.</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_NotStarted">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_SetupFailed">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Succeeded">
+    <value>Uvoz uspel</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_ValidationFailed">
+    <value></value>
+  </data>
+  <data name="ReleaseNoteType_Value_Feature">
+    <value>Nove funkcije</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Fix">
+    <value>Odprave napak</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Improvement">
+    <value>Izboljšave</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Fido2">
+    <value>Varnostni ključ</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_NotSupported">
+    <value></value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Totp">
+    <value>Aplikacija za preverjanje pristnosti</value>
+  </data>
+  <data name="SessionStatus_Value_Ending">
+    <value>Izpisovanje ...</value>
+  </data>
+  <data name="SessionStatus_Value_Failed">
+    <value>Prijava ni uspela. Poskusite preveriti internetno povezavo.</value>
+  </data>
+  <data name="SessionStatus_Value_NotStarted">
+    <value>Odjavljeni ste</value>
+  </data>
+  <data name="SessionStatus_Value_SigningIn">
+    <value>Prijavljanje ...</value>
+  </data>
+  <data name="SessionStatus_Value_Started">
+    <value>Prijava uspela</value>
+  </data>
+  <data name="SessionStatus_Value_Starting">
+    <value>Prijavljanje ...</value>
+  </data>
+  <data name="SignIn_Button_Authenticate">
+    <value>_Preveri pristnost</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_Back">
+    <value>_Nazaj</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignIn">
+    <value>_Prijava</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignInAsAnotherUser">
+    <value>Ali pa se prijavite se kot drug uporabnik</value>
+  </data>
+  <data name="SignIn_Button_Unlock">
+    <value>_Odkleni</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_CreateAccount">
+    <value>_Ustvarite račun</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_ForgotPassword">
+    <value>_Ste pozabili geslo?</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_LearnMore">
+    <value>Izvedite več</value>
+  </data>
+  <data name="SignIn_Message_SigningIn">
+    <value>Vpisovanje v vaš račun</value>
+  </data>
+  <data name="SignIn_Text_2FACode">
+    <value>Vnesite kodo iz aplikacije za preverjanje pristnosti</value>
+  </data>
+  <data name="SignIn_Text_No2FAMethodFound">
+    <value>Ni najdena nobena metoda dvofaktorske overitve.</value>
+  </data>
+  <data name="SignIn_Text_Password">
+    <value>_Geslo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_SecondPassword">
+    <value>Drugo geslo</value>
+  </data>
+  <data name="SignIn_Text_SecurityKey">
+    <value>Vstavite varnostni ključ, povezan z vašim računom Proton.</value>
+  </data>
+  <data name="SignIn_Text_SecurityKeyNotSupported">
+    <value>Vaš sistem ne podpira varnostnega ključa</value>
+  </data>
+  <data name="SignIn_Text_Username">
+    <value>E-pošta ali _uporabniško ime</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_Username_HelpText">
+    <value>Uporabniško ime</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_PasswordRequired">
+    <value>Zahtevano je geslo</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SessionExpired">
+    <value>Seja je potekla. Za nadaljevanje se vpišite.</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SomethingWentWrong">
+    <value>Nekaj je šlo narobe.</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_UsernameRequired">
+    <value>Zahtevano je uporabniško ime</value>
+  </data>
+  <data name="SignIn_Title_2FA">
+    <value>Dvojno preverjanja pristnosti</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>vsebuje podmapo, ki jo {0} sinhronizira na zahtevo</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>je že sinhroniziran na zahtevo s strani {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_NetworkVolumeNotSupported">
+    <value>omrežni pogoni niso podprti</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_RemovableVolumeNotSupported">
+    <value>odstranljivi pogoni niso podprti</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_Unknown">
+    <value>omogočanje sinhronizacije na zahtevo ni uspelo</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
+    <value>lokalni pogoni niso podprti</value>
+  </data>
+  <data name="SyncAgentStatus_Value_AccountError">
+    <value>Nastavitev računa ni uspela</value>
+  </data>
+  <data name="SyncAgentStatus_Value_FinishingUp">
+    <value>Dokončevanje ...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Offline">
+    <value>Brez povezave</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SettingUp">
+    <value>Nastavitev ...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignInError">
+    <value>Prijava ni uspela</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignedOut">
+    <value>Odjavljeni ste</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningIn">
+    <value>Prijavljanje ...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningOut">
+    <value>Izpisovanje ...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SyncFolderError">
+    <value>Sinhronizacije map ni bilo mogoče nastaviti</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationError">
+    <value>Sinhronizacija ni uspela</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationPaused">
+    <value>Sinhronizacija je začasno ustavljena</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationWarning">
+    <value>Sinhronizacije nekaterih predmetov ni uspelo izvesti</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronized">
+    <value>Sinhronizirano</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronizing">
+    <value>Sinhroniziranje ...</value>
+  </data>
+  <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
+    <value>Na napravi ni dovolj prostora</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludedByAnAlreadySyncedFolder">
+    <value>Ta mapa je že vključena v sinhronizirano mapo</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludesAnAlreadySyncedFolder">
+    <value>Ta mapa vsebuje že sinhronizirano mapo</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_InsufficientLocalFreeSpace">
+    <value>Sprostite prostor ali prekličite izbor potrditvenega polja.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFileSystemAccessFailed">
+    <value>Ne morem dostopati do mape</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderDoesNotExist">
+    <value>Mape ni bilo mogoče najti</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderNotEmpty">
+    <value>Mapa mora biti prazna, preden jo nastavite za sinhronizacijo</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalVolumeNotSupported">
+    <value>Nepodprta vrsta pogona</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NetworkFolderNotSupported">
+    <value>Sinhronizacija map iz omrežnih pogonov ni podprta</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NonSyncableFolder">
+    <value>Ta mapa ni primerna za sinhronizacijo</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_Succeeded">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_DetectingUpdates">
+    <value>Pridobivanje posodobitev ...</value>
+  </data>
+  <data name="SyncStatus_Value_Failed">
+    <value>Napaka</value>
+  </data>
+  <data name="SyncStatus_Value_Idle">
+    <value>Sinhronizirano</value>
+  </data>
+  <data name="SyncStatus_Value_Initializing">
+    <value>Nastavitev ...</value>
+  </data>
+  <data name="SyncStatus_Value_Offline">
+    <value>Brez povezave</value>
+  </data>
+  <data name="SyncStatus_Value_Paused">
+    <value>Začasno zaustavljeno</value>
+  </data>
+  <data name="SyncStatus_Value_Synchronizing">
+    <value>Sinhroniziranje ...</value>
+  </data>
+  <data name="SyncStatus_Value_Terminated">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_Terminating">
+    <value>Prekinjam ...</value>
+  </data>
+  <data name="SystemTray_Menu_Item_Exit">
+    <value>I_zhod</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenInBrowser">
+    <value>Odpri v _brskalniku</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenLocalFolder">
+    <value>Odpri lokalno _mapo</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenProtonDrive">
+    <value>_Odpri Proton Drive</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSync">
+    <value>_Začasno ustavi sinhronizacijo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
+    <value>Zaustavi za 1 uro</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor4Hours">
+    <value>Zaustavi za 4 ure</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor8Hours">
+    <value>Zaustavi za 8 ur</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncIndefinitely">
+    <value>Zaustavi za vedno</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow">
+    <value>Zaustavi do jutri (8.00)</value>
+  </data>
+  <data name="SystemTray_Menu_Item_ResumeSync">
+    <value>_Nadaljuj sinhronizacijo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_SignIn">
+    <value>_Prijava</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="ToggleSwitch_Off">
+    <value>Izklopljeno</value>
+  </data>
+  <data name="ToggleSwitch_On">
+    <value>Vklopljeno</value>
+  </data>
+</root>

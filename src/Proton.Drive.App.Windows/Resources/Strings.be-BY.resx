@@ -265,48 +265,6 @@
     <value>Запампавана ў Proton Drive</value>
     <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
-  <data name="AppDisplayStatus_Value_AccountError">
-    <value>Не ўдалося наладзіць уліковы запіс</value>
-  </data>
-  <data name="AppDisplayStatus_Value_FinishingUp">
-    <value>Завяршэнне...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Offline">
-    <value>Па-за сеткай</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SettingUp">
-    <value>Наладжванне...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignInError">
-    <value>Не ўдалося ўвайсці</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignedOut">
-    <value>Вы выйшлі</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningIn">
-    <value>Адбываецца ўваход...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningOut">
-    <value>Адбываецца выхад...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SyncFolderError">
-    <value>Не ўдалося наладзіць сінхранізацыю папак</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationError">
-    <value>Збой сінхранізацыі</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationPaused">
-    <value>Сінхранізацыя прыпынена</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationWarning">
-    <value>Некаторыя элементы не ўдалося сінхранізаваць</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronized">
-    <value>Сінхранізавана</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronizing">
-    <value>Сінхранізацыя...</value>
-  </data>
   <data name="BugReport_Button_Cancel">
     <value>_Скасаваць</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1670,6 +1628,48 @@
   </data>
   <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
     <value>тып лакальнага дыску не падтрымліваецца</value>
+  </data>
+  <data name="SyncAgentStatus_Value_AccountError">
+    <value>Не ўдалося наладзіць уліковы запіс</value>
+  </data>
+  <data name="SyncAgentStatus_Value_FinishingUp">
+    <value>Завяршэнне...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Offline">
+    <value>Па-за сеткай</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SettingUp">
+    <value>Наладжванне...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignInError">
+    <value>Не ўдалося ўвайсці</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignedOut">
+    <value>Вы выйшлі</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningIn">
+    <value>Адбываецца ўваход...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningOut">
+    <value>Адбываецца выхад...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SyncFolderError">
+    <value>Не ўдалося наладзіць сінхранізацыю папак</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationError">
+    <value>Збой сінхранізацыі</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationPaused">
+    <value>Сінхранізацыя прыпынена</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationWarning">
+    <value>Некаторыя элементы не ўдалося сінхранізаваць</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronized">
+    <value>Сінхранізавана</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronizing">
+    <value>Сінхранізацыя...</value>
   </data>
   <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
     <value>На гэтай прыладзе недастаткова свабоднага месца</value>

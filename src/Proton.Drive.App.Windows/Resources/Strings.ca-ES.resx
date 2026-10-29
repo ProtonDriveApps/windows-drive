@@ -265,48 +265,6 @@
     <value>Carregat a Proton Drive</value>
     <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
-  <data name="AppDisplayStatus_Value_AccountError">
-    <value>No s'ha pogut configurar un compte.</value>
-  </data>
-  <data name="AppDisplayStatus_Value_FinishingUp">
-    <value>S'està finalitzant...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Offline">
-    <value>Fora de línia</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SettingUp">
-    <value>S'està configurant...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignInError">
-    <value>No s'ha pogut iniciar la sessió.</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignedOut">
-    <value>S'ha tancat la sessió</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningIn">
-    <value>S'està iniciant la sessió...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningOut">
-    <value>S'està tancant la sessió...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SyncFolderError">
-    <value>No s'han pogut configurar les carpetes de sincronització.</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationError">
-    <value>No s'ha pogut sincronitzar.</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationPaused">
-    <value>S'ha pausat la sincronització.</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationWarning">
-    <value>Alguns elements no s'han pogut sincronitzar.</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronized">
-    <value>Sincronitzat</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronizing">
-    <value>S'està sincronitzant...</value>
-  </data>
   <data name="BugReport_Button_Cancel">
     <value>_Cancel·la</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1560,7 +1518,7 @@ El contingut dels fitxers es descarregarà només sota demanda.</value>
     <value>S'està tancant la sessió...</value>
   </data>
   <data name="SessionStatus_Value_Failed">
-    <value>No s'ha pogut iniciar la sessió. Comproveu la vostra connexió a internet.</value>
+    <value>No s'ha pogut iniciar la sessió. Comproveu la connexió a internet.</value>
   </data>
   <data name="SessionStatus_Value_NotStarted">
     <value>S'ha tancat la sessió</value>
@@ -1587,14 +1545,14 @@ El contingut dels fitxers es descarregarà només sota demanda.</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Button_SignInAsAnotherUser">
-    <value>O inicieu la sessió com un altre usuari</value>
+    <value>O inicieu la sessió com a un altre usuari</value>
   </data>
   <data name="SignIn_Button_Unlock">
     <value>_Desbloqueja</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Link_CreateAccount">
-    <value>_Crear un compte</value>
+    <value>_Crea un compte</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
   </data>
   <data name="SignIn_Link_ForgotPassword">
@@ -1637,7 +1595,7 @@ El contingut dels fitxers es descarregarà només sota demanda.</value>
     <value>La contrasenya és obligatòria.</value>
   </data>
   <data name="SignIn_Text_ValidationError_SessionExpired">
-    <value>La vostra sessió ha caducat. Torneu a iniciar sessió per continuar.</value>
+    <value>La sessió ha caducat. Torneu a iniciar sessió per a continuar.</value>
   </data>
   <data name="SignIn_Text_ValidationError_SomethingWentWrong">
     <value>S'ha produït un error.</value>
@@ -1670,6 +1628,48 @@ El contingut dels fitxers es descarregarà només sota demanda.</value>
   </data>
   <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
     <value>El tipus d'unitat local no està suportada</value>
+  </data>
+  <data name="SyncAgentStatus_Value_AccountError">
+    <value>No s'ha pogut configurar un compte.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_FinishingUp">
+    <value>S'està finalitzant...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Offline">
+    <value>Fora de línia</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SettingUp">
+    <value>S'està configurant...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignInError">
+    <value>No s'ha pogut iniciar la sessió.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignedOut">
+    <value>S'ha tancat la sessió</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningIn">
+    <value>S'està iniciant la sessió...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningOut">
+    <value>S'està tancant la sessió...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SyncFolderError">
+    <value>No s'han pogut configurar les carpetes de sincronització.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationError">
+    <value>No s'ha pogut sincronitzar.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationPaused">
+    <value>S'ha pausat la sincronització.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationWarning">
+    <value>Alguns elements no s'han pogut sincronitzar.</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronized">
+    <value>Sincronitzat</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronizing">
+    <value>S'està sincronitzant...</value>
   </data>
   <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
     <value>No hi ha prou espai lliure en aquest dispositiu.</value>

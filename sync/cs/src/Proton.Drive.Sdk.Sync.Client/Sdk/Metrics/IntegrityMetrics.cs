@@ -14,7 +14,8 @@ internal sealed class IntegrityMetrics
     public const string DownloadChecksumVerificationAttemptsMetricName = "proton.drive.sdk.generic.integrity.download_checksum_verification_attempts";
 
     public const string FieldKeyName = "field";
-    public const string FromBefore2024KeyName = "fromBefore2024";
+    public const string RecencyKeyName = "recency";
+    public const string CausedByKeyName = "causedBy";
     public const string AddressMatchingDefaultShareKeyName = "addressMatchingDefaultShare";
     public const string RetryHelpedKeyName = "retryHelped";
     public const string Sha1ProvidedKeyName = "sha1Provided";
@@ -22,6 +23,9 @@ internal sealed class IntegrityMetrics
     public const string FileSizeKeyName = "fileSize";
     public const string ChecksumVerifiedKeyName = "checksumVerified";
     public const string NodeUidKeyName = "uid";
+
+    public const string UnknownLabelValue = "unknown";
+    public const string Before2024RecencyLabelValue = "before_2024";
 
     private const long KiB = 1024L;
     private const long MiB = 1024L * 1024;
@@ -36,6 +40,21 @@ internal sealed class IntegrityMetrics
         { EncryptedField.NodeExtendedAttributes, "nodeExtendedAttributes" },
         { EncryptedField.NodeContentKey, "nodeContentKey" },
         { EncryptedField.Content, "content" },
+    };
+
+    private static readonly Dictionary<ItemRecency, string> RecencyMapping = new()
+    {
+        { ItemRecency.PastMonth, "past_month" },
+        { ItemRecency.PastYear, "past_year" },
+        { ItemRecency.Since2024, "since_2024" },
+        { ItemRecency.Before2024, Before2024RecencyLabelValue },
+    };
+
+    private static readonly Dictionary<ItemCreator, string> CreatorMapping = new()
+    {
+        { ItemCreator.FirstParty, "1p" },
+        { ItemCreator.ThirdPartyWithSdk, "3p-sdk" },
+        { ItemCreator.ThirdPartyWithoutSdk, "3p" },
     };
 
     private static readonly Dictionary<ChecksumVerificationResult, string> DownloadChecksumVerificationResultMapping = new()
@@ -91,9 +110,9 @@ internal sealed class IntegrityMetrics
     {
         _decryptionErrors.Add(
             1,
-            GetTag(SdkMetrics.VolumeTypeKeyName, MapVolumeType(metricEvent.VolumeType)),
             GetTag(FieldKeyName, MapField(metricEvent.Field)),
-            GetTag(FromBefore2024KeyName, MapBoolean(metricEvent.FromBefore2024, BooleanMapping.YesNo)),
+            GetTag(RecencyKeyName, MapRecency(metricEvent.Recency)),
+            GetTag(CausedByKeyName, MapCreator(metricEvent.CreatedBy)),
             GetTag(NodeUidKeyName, metricEvent.Uid.ToString()));
     }
 
@@ -101,10 +120,10 @@ internal sealed class IntegrityMetrics
     {
         _verificationErrors.Add(
             1,
-            GetTag(SdkMetrics.VolumeTypeKeyName, MapVolumeType(metricEvent.VolumeType)),
             GetTag(FieldKeyName, MapField(metricEvent.Field)),
             GetTag(AddressMatchingDefaultShareKeyName, MapBoolean(metricEvent.AddressMatchingDefaultShare, BooleanMapping.YesNo)),
-            GetTag(FromBefore2024KeyName, MapBoolean(metricEvent.FromBefore2024, BooleanMapping.YesNo)));
+            GetTag(RecencyKeyName, MapRecency(metricEvent.Recency)),
+            GetTag(CausedByKeyName, MapCreator(metricEvent.CreatedBy)));
     }
 
     public void Record(BlockVerificationErrorEvent metricEvent)
@@ -130,14 +149,19 @@ internal sealed class IntegrityMetrics
             GetTag(ChecksumVerifiedKeyName, MapBoolean(metricEvent.ChecksumVerified, BooleanMapping.TrueFalse)));
     }
 
-    private static string MapVolumeType(VolumeType volumeType)
-    {
-        return VolumeTypeMapping.GetValueOrDefault(volumeType);
-    }
-
     private static string MapField(EncryptedField field)
     {
-        return FieldMapping.GetValueOrDefault(field, "unknown");
+        return FieldMapping.GetValueOrDefault(field, UnknownLabelValue);
+    }
+
+    private static string MapRecency(ItemRecency recency)
+    {
+        return RecencyMapping.GetValueOrDefault(recency, UnknownLabelValue);
+    }
+
+    private static string MapCreator(ItemCreator creator)
+    {
+        return CreatorMapping.GetValueOrDefault(creator, UnknownLabelValue);
     }
 
     private static string MapBoolean(bool? value, BooleanMapping mapping)
@@ -148,21 +172,21 @@ internal sealed class IntegrityMetrics
             {
                 true => "yes",
                 false => "no",
-                null => "unknown",
+                null => UnknownLabelValue,
             },
             BooleanMapping.TrueFalse => value switch
             {
                 true => "true",
                 false => "false",
-                null => "unknown",
+                null => UnknownLabelValue,
             },
-            _ => "unknown",
+            _ => UnknownLabelValue,
         };
     }
 
     private static string MapChecksumVerificationResult(ChecksumVerificationResult value)
     {
-        return DownloadChecksumVerificationResultMapping.GetValueOrDefault(value, "unknown");
+        return DownloadChecksumVerificationResultMapping.GetValueOrDefault(value, UnknownLabelValue);
     }
 
     private static string MapChecksumVerificationFileSize(long value)

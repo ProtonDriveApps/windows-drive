@@ -17,6 +17,7 @@ using Proton.Drive.Sdk.Sync.Windows.FileSystem.Metadata;
 using Proton.Drive.Sdk.Sync.Windows.FileSystem.OnDemand;
 using Proton.Drive.Sdk.Sync.Windows.FileSystem.Thumbnails;
 using Proton.Drive.Sdk.Sync.Windows.Shell;
+using Proton.Drive.Shared.Configuration;
 using Proton.Drive.Shared.Telemetry;
 
 namespace Proton.Drive.Sdk.Sync.Windows.Configuration;
@@ -27,6 +28,7 @@ public static class ServiceConfigurator
     {
         public IServiceCollection AddWindowsSyncServices()
         {
+            services.AddSingleton<ISystemInfoProvider, SystemInfoProvider>();
             services.AddSingleton<ILocalVolumeInfoProvider, VolumeInfoProvider>();
             services.AddSingleton<IOpenByFileIdSupportVerifier, OpenByFileIdSupportVerifier>();
             services.AddSingleton<ILocalFolderService, LocalFolderService>();

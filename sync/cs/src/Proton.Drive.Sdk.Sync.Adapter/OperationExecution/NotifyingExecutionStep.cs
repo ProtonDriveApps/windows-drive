@@ -3,7 +3,6 @@ using Proton.Drive.Sdk.Sync.Adapter.UpdateDetection;
 using Proton.Drive.Sdk.Sync.Shared.Adapters;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;
 using Proton.Drive.Sdk.Sync.Shared.SyncActivity;
-using Proton.Drive.Sdk.Sync.Shared.Trees.FileSystem;
 using Proton.Drive.Sdk.Sync.Shared.Trees.Operations;
 using Proton.Drive.Shared.IO;
 using Proton.Drive.Shared.Telemetry;
@@ -61,9 +60,17 @@ internal sealed class NotifyingExecutionStep<TId, TAltId>
 
         try
         {
-            sourceRevision = await OpenFileForReading(operation.Model, cancellationToken).ConfigureAwait(false);
+            sourceRevision = await OpenFileForReading(operation, nodeInfo, cancellationToken).ConfigureAwait(false);
 
-            await sourceRevision.CheckReadabilityAsync(cancellationToken).ConfigureAwait(false);
+            try
+            {
+                await sourceRevision.CheckReadabilityAsync(cancellationToken).ConfigureAwait(false);
+            }
+            catch
+            {
+                await sourceRevision.DisposeAsync().ConfigureAwait(false);
+                throw;
+            }
         }
         catch (Exception exception) when (exception is IFileSystemErrorCodeProvider ex)
         {
@@ -124,10 +131,15 @@ internal sealed class NotifyingExecutionStep<TId, TAltId>
         }
     }
 
-    private Task<ISourceRevision> OpenFileForReading(AltIdentifiableFileSystemNodeModel<TId, TId> nodeModel, CancellationToken cancellationToken)
+    private Task<ISourceRevision> OpenFileForReading(ExecutableOperation<TId> operation, NodeInfo<TAltId> nodeInfo, CancellationToken cancellationToken)
     {
         // ExecutableOperation.Model.AltId contains file ID on another adapter
-        return _fileRevisionProvider.OpenFileForReadingAsync(nodeModel.AltId, nodeModel.ContentVersion, cancellationToken);
+        var nodeModel = operation.Model;
+
+        // Creating an on-demand placeholder file requires only the file metadata, the content is hydrated later on demand
+        return operation.Type is OperationType.Create && nodeInfo.Root?.IsOnDemand == true
+            ? _fileRevisionProvider.GetMetadataOnlyRevisionAsync(nodeModel.AltId, nodeModel.ContentVersion, cancellationToken)
+            : _fileRevisionProvider.OpenFileForReadingAsync(nodeModel.AltId, nodeModel.ContentVersion, cancellationToken);
     }
 
     private async Task<TResult> WithSyncActivity<TResult>(

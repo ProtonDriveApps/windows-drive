@@ -1,6 +1,10 @@
 {
     "AppName": "Proton Drive",
     "DriveApi": {
+        "ClientVersion": "windows-drive@{AppVersion}",
+        "UserAgent": "ProtonDrive/{AppVersion} ({SystemInfo})",
+        "SentryDsnPublicKey": "f4db09bc4cc144dab7455dbd71231e7f",
+        "SentryDsnProjectId": "3",
         "AuthBaseUrl": "https://drive-api.proton.me/auth/",
         "CoreBaseUrl": "https://drive-api.proton.me/core/",
         "DataBaseUrl": "https://drive-api.proton.me/data/",
@@ -9,8 +13,6 @@
         "DriveSdkBaseUrl": "https://drive-api.proton.me/",
         "FeatureBaseUrl": "https://drive-api.proton.me/feature/",
         "ContactsBaseUrl": "https://drive-api.proton.me/contacts/",
-        "ClientVersion": "windows-drive@{AppVersion}",
-        "UserAgent": "ProtonDrive/{AppVersion} ({SystemInfo})",
         "ContentType": "application/vnd.protonmail.api+json",
         "Timeout": "00:00:30",
         "BlocksTimeout": "00:05:00",

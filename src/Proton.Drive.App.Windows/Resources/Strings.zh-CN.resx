@@ -265,48 +265,6 @@
     <value>已上传至 Proton Drive</value>
     <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
-  <data name="AppDisplayStatus_Value_AccountError">
-    <value>设置账户失败</value>
-  </data>
-  <data name="AppDisplayStatus_Value_FinishingUp">
-    <value>即将完成…</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Offline">
-    <value>离线</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SettingUp">
-    <value>正在设置...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignInError">
-    <value>登录失败</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignedOut">
-    <value>已登出</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningIn">
-    <value>正在登录...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningOut">
-    <value>正在登出...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SyncFolderError">
-    <value>同步文件夹设置失败</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationError">
-    <value>同步失败</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationPaused">
-    <value>同步已暂停</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationWarning">
-    <value>有些项目无法同步</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronized">
-    <value>已同步</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronizing">
-    <value>正在同步...</value>
-  </data>
   <data name="BugReport_Button_Cancel">
     <value>取消(_C)</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1669,6 +1627,48 @@
   </data>
   <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
     <value>不支持本地硬盘类型</value>
+  </data>
+  <data name="SyncAgentStatus_Value_AccountError">
+    <value>设置账户失败</value>
+  </data>
+  <data name="SyncAgentStatus_Value_FinishingUp">
+    <value>即将完成…</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Offline">
+    <value>离线</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SettingUp">
+    <value>正在设置...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignInError">
+    <value>登录失败</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignedOut">
+    <value>已登出</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningIn">
+    <value>正在登录...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningOut">
+    <value>正在登出...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SyncFolderError">
+    <value>同步文件夹设置失败</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationError">
+    <value>同步失败</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationPaused">
+    <value>同步已暂停</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationWarning">
+    <value>有些项目无法同步</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronized">
+    <value>已同步</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronizing">
+    <value>正在同步...</value>
   </data>
   <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
     <value>设备可用空间不足</value>

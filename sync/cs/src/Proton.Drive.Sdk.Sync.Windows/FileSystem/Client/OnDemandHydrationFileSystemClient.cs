@@ -208,6 +208,9 @@ internal sealed class OnDemandHydrationFileSystemClient : FileSystemClientBase, 
         var parentDirectory = info.OpenParentDirectory(FileSystemFileAccess.ReadAttributes | FileSystemFileAccess.ReadData, FileShare.ReadWrite);
         try
         {
+            // The file content is never read when creating a placeholder file, therefore the file content source
+            // can be a metadata-only revision (see NotifyingExecutionStep). Requiring immediate hydration here
+            // would make reading the content of such revision fail.
             var result = new OnDemandFileCreationProcess(info, parentDirectory);
 
             return Task.FromResult<IDestinationRevision<long>>(result);

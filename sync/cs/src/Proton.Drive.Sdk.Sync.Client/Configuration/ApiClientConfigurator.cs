@@ -214,10 +214,6 @@ public static class ApiClientConfigurator
             .AddApiClient<IDriveHealthApiClient>()
             ;
 
-        services.AddApiHttpClients(FileRevisionUpdateHttpClientName, GetDriveBaseAddress, GetDriveApiNumberOfRetries, GetRevisionUpdateTimeout)
-            .AddApiClient<IFileRevisionUpdateApiClient>()
-            ;
-
         services.AddApiHttpClients(
                 FeatureHttpClientName + NonCriticalHttpClientNameSuffix,
                 GetFeatureBaseAddress,
@@ -282,7 +278,6 @@ public static class ApiClientConfigurator
         static int GetDriveApiNumberOfRetries(DriveApiConfig config) => config.DriveApiNumberOfRetries;
 
         static TimeSpan GetDefaultTimeout(DriveApiConfig config) => config.Timeout;
-        static TimeSpan GetRevisionUpdateTimeout(DriveApiConfig config) => config.RevisionUpdateTimeout;
     }
 
     public static void InitializeApiClients(this IServiceProvider provider)

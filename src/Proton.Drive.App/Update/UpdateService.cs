@@ -1,4 +1,3 @@
-using CommunityToolkit.Mvvm.Messaging;
 using Proton.Drive.App.EarlyAccess;
 using Proton.Drive.Sdk.Sync.Agent.Services;
 using Proton.Drive.Sdk.Sync.Agent.Settings;
@@ -6,14 +5,14 @@ using Proton.Drive.Sdk.Sync.Shared.Authentication;
 using Proton.Drive.Shared;
 using Proton.Drive.Shared.Configuration;
 using Proton.Drive.Shared.Extensions;
-using Proton.Drive.Shared.Offline;
 using Proton.Drive.Shared.Threading;
+using Proton.Drive.Shared.Update;
 using Proton.Drive.Update;
 
 namespace Proton.Drive.App.Update;
 
 internal sealed class UpdateService
-    : IDisposable, IUpdateService, IEarlyAccessStateAware, ISessionStateAware, IStoppableService, IRecipient<AppUpdateRequiredMessage>
+    : IDisposable, IUpdateService, IEarlyAccessStateAware, ISessionStateAware, IStoppableService, IUpdateRequiredAware
 {
     private readonly UpdateConfig _updateConfig;
     private readonly ClientInstanceSettings _clientInstanceSettings;
@@ -38,7 +37,6 @@ internal sealed class UpdateService
         ClientInstanceSettings clientInstanceSettings,
         INotifyingAppUpdate appUpdate,
         IScheduler scheduler,
-        IMessenger messenger,
         IClock clock)
     {
         _updateConfig = updateConfig;
@@ -49,7 +47,6 @@ internal sealed class UpdateService
         _autoUpdateRetryInterval = _updateConfig.AutoUpdateRetryInterval.RandomizedWithDeviation(0.2);
 
         _appUpdate.StateChanged += OnAppUpdateStateChanged;
-        messenger.RegisterAll(this);
 
         _checkForUpdatesTimer = scheduler.CreateTimer();
         _checkForUpdatesTimer.Interval = updateConfig.CheckInterval.RandomizedWithDeviation(0.2);
@@ -124,7 +121,7 @@ internal sealed class UpdateService
         return Task.CompletedTask;
     }
 
-    public void Receive(AppUpdateRequiredMessage message)
+    void IUpdateRequiredAware.OnUpdateRequired()
     {
         _updateRequired = true;
 

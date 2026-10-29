@@ -2,6 +2,12 @@ namespace Proton.Drive.Sdk.Sync.Client.Configuration;
 
 public class DriveApiConfig
 {
+    public string? ClientVersion { get; set; }
+    public string? UserAgent { get; set; }
+
+    public string? SentryDsnPublicKey { get; internal set; }
+    public string? SentryDsnProjectId { get; internal set; }
+
     public Uri? AuthBaseUrl { get; internal set; }
     public Uri? CoreBaseUrl { get; internal set; }
     public Uri? DataBaseUrl { get; internal set; }
@@ -10,12 +16,9 @@ public class DriveApiConfig
     public Uri? PaymentsBaseUrl { get; internal set; }
     public Uri? FeatureBaseUrl { get; internal set; }
     public Uri? ContactsBaseUrl { get; internal set; }
-    public string? ClientVersion { get; set; }
-    public string? UserAgent { get; set; }
+
     public string? ContentType { get; set; }
     public TimeSpan Timeout { get; internal set; }
-    public TimeSpan BlocksTimeout { get; internal set; }
-    public TimeSpan RevisionUpdateTimeout { get; internal set; }
     public int DefaultNumberOfRetries { get; internal set; }
     public int DriveApiNumberOfRetries { get; internal set; }
     public int FileTransferNumberOfRetries { get; internal set; }

@@ -6,6 +6,7 @@ namespace Proton.Drive.Sdk.Sync.Client;
 public interface IPaymentsApiClient
 {
     [Get("/v4/plans/default")]
+    [BearerAuthorizationHeader]
     Task<DefaultPlanResponse> GetDefaultPlanAsync(CancellationToken cancellationToken);
 
     [Get("/v4/subscription")]

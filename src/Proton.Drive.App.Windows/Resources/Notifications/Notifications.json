@@ -1,36 +1,141 @@
 [
-    // Q3 2026 notifications for free users
+    // Black Friday 2026 for free users: Unlimited in wave 1, Drive Plus in wave 2
     {
-        "NotificationID": "SS2-2026-Free-to-Unlimited-12M-1",
-        "StartTime": "2026-08-31T12:00:00+02:00",
-        "EndTime": "2026-09-07T12:00:00+02:00",
+        "NotificationID": "BF-2026-Free-to-Unlimited-12M-1",
+        "StartTime": "2026-11-02T12:00:00+01:00",
+        "EndTime": "2026-11-16T12:00:00+01:00",
         "UserSubscriptionPlanCodes": [ "free" ],
-        "ExcludedUserSubscriptionPlanCouponCodes": [ "SEP26BUNDLESALE", "SEP26BUNDLEDEAL", "SEP26BUNDLESALECS", "SEP26BUNDLEDEALCS" ],
+        "ExcludedUserSubscriptionPlanCouponCodes": [ "BF2026PARTNERS", "BF2026BUSINESS", "BF2026NEW", "BF2026TRIAL", "BF2026BUNDLE", "BF2026PARTNERSCS", "BF2026BUSINESSCS", "BF2026NEWCS", "BF2026TRIALCS", "BF2026BUNDLECS" ],
         "Type": 0,
         "DisplayCallToActionButton": true,
         // No Windows notification
         "Offer": {
-            "Title": "Get the deal",
-            "ImageUrl": "Resources/Notifications/SummerSale2026/unlimited-50.png",
-            "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=SEP26BUNDLESALE&fullscreen=auto&start=checkout&ref=offer_26_sep_drive_free_unlimited_desktop"
+            "Title": "BLACK FRIDAY",
+            "ImageUrl": "Resources/Notifications/BlackFriday2026/unlimited-50.jpg",
+            "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=BF2026NEW&fullscreen=auto&start=checkout&ref=offer_bf_26_drive_free_unlimited_windows"
         }
     },
     {
-        "NotificationID": "SS2-2026-Free-to-Unlimited-12M-2",
-        "StartTime": "2026-09-07T12:00:00+02:00",
-        "EndTime": "2026-09-11T12:00:00+02:00",
+        "NotificationID": "BF-2026-Free-to-DrivePlus-12M-2",
+        "StartTime": "2026-11-16T12:00:00+01:00",
+        "EndTime": "2026-12-01T12:00:00+01:00",
         "UserSubscriptionPlanCodes": [ "free" ],
-        "ExcludedUserSubscriptionPlanCouponCodes": [ "SEP26BUNDLESALE", "SEP26BUNDLEDEAL", "SEP26BUNDLESALECS", "SEP26BUNDLEDEALCS" ],
+        "ExcludedUserSubscriptionPlanCouponCodes": [ "BF2026PARTNERS", "BF2026BUSINESS", "BF2026NEW", "BF2026TRIAL", "BF2026BUNDLE", "BF2026PARTNERSCS", "BF2026BUSINESSCS", "BF2026NEWCS", "BF2026TRIALCS", "BF2026BUNDLECS" ],
         "Type": 0,
         "DisplayCallToActionButton": true,
-        "HeaderText": "Proton Unlimited 50% OFF",
-        "ContentText": "Save big on storage - offer ends soon!",
+        "HeaderText": "Proton Black Friday Sale",
+        "ContentText": "Save big on Proton Drive storage - offer ends soon!",
         "ButtonText": "Claim my Deal",
-        "LogoImageUrl": "Resources/Notifications/SummerSale2026/logo.png",
+        "LogoImageUrl": "Resources/Notifications/BlackFriday2026/logo.png",
         "Offer": {
-            "Title": "Get the deal",
-            "ImageUrl": "Resources/Notifications/SummerSale2026/unlimited-50.png",
-            "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=SEP26BUNDLESALE&fullscreen=auto&start=checkout&ref=offer_26_sep_drive_free_unlimited_desktop"
+            "Title": "BLACK FRIDAY",
+            "ImageUrl": "Resources/Notifications/BlackFriday2026/drive-plus-50.jpg",
+            "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=drive2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=BF2026NEW&fullscreen=auto&start=checkout&ref=offer_bf_26_drive_free_plus_windows"
+        }
+    },
+
+    // Black Friday 2026 for Drive Plus users and Mail, VPN, Pass Plus users who use Drive as free users
+    {
+        "NotificationID": "BF-2026-Plus-to-Unlimited-12M-1",
+        "StartTime": "2026-11-02T12:00:00+01:00",
+        "EndTime": "2026-11-27T12:00:00+01:00",
+        "UserSubscriptionPlanCodes": [ "drive2022", "mail2022", "vpn2022", "vpn2024", "pass2023" ],
+        "ExcludedUserSubscriptionPlanCouponCodes": [ "BF2026PARTNERS", "BF2026BUSINESS", "BF2026NEW", "BF2026TRIAL", "BF2026BUNDLE", "BF2026PARTNERSCS", "BF2026BUSINESSCS", "BF2026NEWCS", "BF2026TRIALCS", "BF2026BUNDLECS" ],
+        "Type": 0,
+        "DisplayCallToActionButton": true,
+        // No Windows notification
+        "Offer": {
+            "Title": "BLACK FRIDAY",
+            "ImageUrl": "Resources/Notifications/BlackFriday2026/unlimited-50.jpg",
+            "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=BF2026BUNDLE&fullscreen=auto&start=checkout&ref=offer_bf_26_drive_plus_unlimited_windows"
+        }
+    },
+    {
+        "NotificationID": "BF-2026-Plus-to-Unlimited-12M-2",
+        "StartTime": "2026-11-27T12:00:00+01:00",
+        "EndTime": "2026-12-01T12:00:00+01:00",
+        "UserSubscriptionPlanCodes": [ "drive2022", "mail2022", "vpn2022", "vpn2024", "pass2023" ],
+        "ExcludedUserSubscriptionPlanCouponCodes": [ "BF2026PARTNERS", "BF2026BUSINESS", "BF2026NEW", "BF2026TRIAL", "BF2026BUNDLE", "BF2026PARTNERSCS", "BF2026BUSINESSCS", "BF2026NEWCS", "BF2026TRIALCS", "BF2026BUNDLECS" ],
+        "Type": 0,
+        "DisplayCallToActionButton": true,
+        "HeaderText": "Proton Black Friday Sale",
+        "ContentText": "Save big on Proton Drive storage - offer ends soon!",
+        "ButtonText": "Claim my Deal",
+        "LogoImageUrl": "Resources/Notifications/BlackFriday2026/logo.png",
+        "Offer": {
+            "Title": "BLACK FRIDAY",
+            "ImageUrl": "Resources/Notifications/BlackFriday2026/unlimited-50.jpg",
+            "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=bundle2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=BF2026BUNDLE&fullscreen=auto&start=checkout&ref=offer_bf_26_drive_plus_unlimited_windows"
+        }
+    },
+
+    // Black Friday 2026 for Unlimited users
+    {
+        "NotificationID": "BF-2026-Unlimited-to-Duo-12M-1",
+        "StartTime": "2026-11-02T12:00:00+01:00",
+        "EndTime": "2026-11-27T12:00:00+01:00",
+        "UserSubscriptionPlanCodes": [ "bundle2022" ],
+        "ExcludedUserSubscriptionPlanCouponCodes": [ "BF2026PARTNERS", "BF2026BUSINESS", "BF2026NEW", "BF2026TRIAL", "BF2026BUNDLE", "BF2026PARTNERSCS", "BF2026BUSINESSCS", "BF2026NEWCS", "BF2026TRIALCS", "BF2026BUNDLECS" ],
+        "Type": 0,
+        "DisplayCallToActionButton": true,
+        // No Windows notification
+        "Offer": {
+            "Title": "BLACK FRIDAY",
+            "ImageUrl": "Resources/Notifications/BlackFriday2026/duo-40.jpg",
+            "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=duo2024&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=BF2026BUNDLE&fullscreen=auto&start=checkout&ref=offer_bf_26_drive_unlimited_duo_windows"
+        }
+    },
+    {
+        "NotificationID": "BF-2026-Unlimited-to-Duo-12M-2",
+        "StartTime": "2026-11-27T12:00:00+01:00",
+        "EndTime": "2026-12-01T12:00:00+01:00",
+        "UserSubscriptionPlanCodes": [ "bundle2022" ],
+        "ExcludedUserSubscriptionPlanCouponCodes": [ "BF2026PARTNERS", "BF2026BUSINESS", "BF2026NEW", "BF2026TRIAL", "BF2026BUNDLE", "BF2026PARTNERSCS", "BF2026BUSINESSCS", "BF2026NEWCS", "BF2026TRIALCS", "BF2026BUNDLECS" ],
+        "Type": 0,
+        "DisplayCallToActionButton": true,
+        "HeaderText": "Proton Black Friday Sale",
+        "ContentText": "Save big on Proton Drive storage - offer ends soon!",
+        "ButtonText": "Claim my Deal",
+        "LogoImageUrl": "Resources/Notifications/BlackFriday2026/logo.png",
+        "Offer": {
+            "Title": "BLACK FRIDAY",
+            "ImageUrl": "Resources/Notifications/BlackFriday2026/duo-40.jpg",
+            "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=duo2024&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=BF2026BUNDLE&fullscreen=auto&start=checkout&ref=offer_bf_26_drive_unlimited_duo_windows"
+        }
+    },
+
+    // Black Friday 2026 for Duo users
+    {
+        "NotificationID": "BF-2026-Duo-to-Family-12M-1",
+        "StartTime": "2026-11-02T12:00:00+01:00",
+        "EndTime": "2026-11-27T12:00:00+01:00",
+        "UserSubscriptionPlanCodes": [ "duo2024" ],
+        "ExcludedUserSubscriptionPlanCouponCodes": [ "BF2026PARTNERS", "BF2026BUSINESS", "BF2026NEW", "BF2026TRIAL", "BF2026BUNDLE", "BF2026PARTNERSCS", "BF2026BUSINESSCS", "BF2026NEWCS", "BF2026TRIALCS", "BF2026BUNDLECS" ],
+        "Type": 0,
+        "DisplayCallToActionButton": true,
+        // No Windows notification
+        "Offer": {
+            "Title": "BLACK FRIDAY",
+            "ImageUrl": "Resources/Notifications/BlackFriday2026/family-40.jpg",
+            "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=family2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=BF2026BUNDLE&fullscreen=auto&start=checkout&ref=offer_bf_26_drive_duo_family_windows"
+        }
+    },
+    {
+        "NotificationID": "BF-2026-Duo-to-Family-12M-2",
+        "StartTime": "2026-11-27T12:00:00+01:00",
+        "EndTime": "2026-12-01T12:00:00+01:00",
+        "UserSubscriptionPlanCodes": [ "duo2024" ],
+        "ExcludedUserSubscriptionPlanCouponCodes": [ "BF2026PARTNERS", "BF2026BUSINESS", "BF2026NEW", "BF2026TRIAL", "BF2026BUNDLE", "BF2026PARTNERSCS", "BF2026BUSINESSCS", "BF2026NEWCS", "BF2026TRIALCS", "BF2026BUNDLECS" ],
+        "Type": 0,
+        "DisplayCallToActionButton": true,
+        "HeaderText": "Proton Black Friday Sale",
+        "ContentText": "Save big on Proton Drive storage - offer ends soon!",
+        "ButtonText": "Claim my Deal",
+        "LogoImageUrl": "Resources/Notifications/BlackFriday2026/logo.png",
+        "Offer": {
+            "Title": "BLACK FRIDAY",
+            "ImageUrl": "Resources/Notifications/BlackFriday2026/family-40.jpg",
+            "AccountAppUrl": "https://account.proton.me/lite?action=subscribe-account&app=drive&plan=family2022&disablePlanSelector=true&cycle=12&disableCycleSelector=true&coupon=BF2026BUNDLE&fullscreen=auto&start=checkout&ref=offer_bf_26_drive_duo_family_windows"
         }
     }
 ]

@@ -1,0 +1,1776 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountDisplayStatus_Value_AccountError">
+    <value></value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SessionError">
+    <value>შესვლა ჩავარდა</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SettingUp">
+    <value>მორგება...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SignedOut">
+    <value>გასული</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningIn">
+    <value>შესვლა...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningOut">
+    <value>გასვლა...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_Succeeded">
+    <value>შეხვედით</value>
+  </data>
+  <data name="AccountErrorCode_Value_AccountSwitchingFailed">
+    <value>ანგარიშის გადართვა ჩავარდა. გადატვირთეთ აპი.</value>
+  </data>
+  <data name="AccountErrorCode_Value_Delinquent">
+    <value>ანგარიშს აქვს გადაუხდელი ინვოისები. გადადით თქვენს სამუსაო მაგიდაზე, რომ გადაიხადოთ, ან გააგებინეთ თქვენს ადმინისტრატორს.</value>
+  </data>
+  <data name="AccountErrorCode_Value_DriveAccessFailed">
+    <value>Proton Driev-სთან მიერთების შეცდომა. შეამოწმეთ თქვენი ინტერნეტკავშირი.</value>
+  </data>
+  <data name="AccountErrorCode_Value_NoDriveAccess">
+    <value>Proton Drive-სთან წვდომისთვის ასწიეთ თქვენი სატარიფო გეგმა</value>
+  </data>
+  <data name="AccountErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Create">
+    <value>შექმნა</value>
+    <comment>Indicates a local folder being created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Delete">
+    <value>იშლება</value>
+    <comment>Indicates the local file or folder being deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Download">
+    <value>გადმოწერილია Proton Drive-დან</value>
+    <comment>Indicates a file being downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>განახლებების გამოთხოვა</value>
+    <comment>Indicates local file system changes being fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Move">
+    <value>გადატანა</value>
+    <comment>Indicates the local file or folder being moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Rename">
+    <value>მიმდინარეობს სახელის გადარქმევა</value>
+    <comment>Indicates the local file or folder being renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Upload">
+    <value>იტვირთება Proton Drive-ზე</value>
+    <comment>Indicates a  file being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Create">
+    <value>შექმნილია</value>
+    <comment>Indicates a local folder has been created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Delete">
+    <value>წაშლილია</value>
+    <comment>Indicates a local file or folder has been deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Download">
+    <value>გადმოწერილია Proton Drive-დან</value>
+    <comment>Indicates a file has been downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>განახლებები გამოთხოვილია</value>
+    <comment>Indicates local file system changes have been fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Move">
+    <value>გადატანილია</value>
+    <comment>Indicates a local file or folder has been moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Rename">
+    <value>სახელის გადარქვა</value>
+    <comment>Indicates a local file or folder has been renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Upload">
+    <value>ატვირთულია Proton Drive-ზე</value>
+    <comment>Indicates a file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Create">
+    <value>იქმნება Proton Drive-ზე</value>
+    <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
+    <value>მიმდინარეობს გადატანა Proton Drive-ის ნაგვის ყუთში</value>
+    <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
+    <value>გადმოწერილია Proton Drive-დან</value>
+    <comment>Indicates a file is being downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>განახლებების გამოთხოვა Proton Drive-დან</value>
+    <comment>Indicates changes are being fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Move">
+    <value>გადატანილია Proton Drive-ზე</value>
+    <comment>Indicates the file or folder is being moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Rename">
+    <value>სახელი გადაერქმევა Proton Drive-ზე</value>
+    <comment>Indicates the file or folder is being renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Upload">
+    <value>იტვირთება Proton Drive-ზე</value>
+    <comment>Indicates the file is being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Create">
+    <value>შექმნილია Proton Drive-ზე</value>
+    <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
+    <value>გადატანილია Proton Drive-ის ნაგვის ყუთში</value>
+    <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
+    <value>გადმოწერილია Proton Drive-დან</value>
+    <comment>Indicates a file has been downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>განახლებები გამოთხოვილია Proton Drive-დან</value>
+    <comment>Indicates changes have been fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Move">
+    <value>გადატანილია Proton Drive-ზე</value>
+    <comment>Indicates the file or folder has been moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Rename">
+    <value>სახელი გადაერქვა Proton Drive-ზე</value>
+    <comment>Indicates the file or folder has been renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Upload">
+    <value>ატვირთულია Proton Drive-ზე</value>
+    <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel">
+    <value>გა_უქმება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel_HelpText">
+    <value>თქვენი ანგარიშის გაუქმება</value>
+  </data>
+  <data name="BugReport_Button_Report">
+    <value>ა_ნგარიში</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Report_HelpText">
+    <value>თქვენი ანგარიშის გაგზავნა</value>
+  </data>
+  <data name="BugReport_Button_ShowLogs">
+    <value>ჟურნა_ლის ჩვენება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs">
+    <value>აპლიკაციის _ჟურნალის დართვა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs_Tooltip">
+    <value>ეს ანგარიში შეიცავს უახლესი აპის ჟურნალის ფაილებს და დაყენების ჟურნალის ფაილებს</value>
+  </data>
+  <data name="BugReport_NeedHelp_Description">
+    <value>სწრაფი გიდები მოსარგებად, აპის გამოსაყენებლად და ფაილების სინქრონიზაციისთვის.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_FAQ">
+    <value>ხშირად დასმული კითხვები (ხდკ)</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks">
+    <value>გაიგეთ, როგორ მუშაობს Proton Drive-ის აპი</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowSharedFilesWork">
+    <value>წვდომა გაზიარებულ ფაილებტან</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_SyncFolders">
+    <value>საქაღალდეების სინქრონიზაცია Proton Drive-ზე</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_UseOnDemandSync">
+    <value>საჭიროებისამებრ სინქრონიზაციის ჩართვა</value>
+  </data>
+  <data name="BugReport_NeedHelp_Title">
+    <value>გჭირდებათ დახმარება Proton Drive-ით მუშაობის დასწყებად?</value>
+  </data>
+  <data name="BugReport_Text_Description_HelpText">
+    <value>აღწერა. რა მოხდა? რა შემდეგი ნაბიჯების გადადგმაა საჭირო? (მინ. 10 სიმბოლო)</value>
+  </data>
+  <data name="BugReport_Text_Description_Label">
+    <value>ა_ღწერა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_Description_Label_Requirement">
+    <value>(მინ 10 სიმბოლო)</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_ExactSteps">
+    <value>ზუსტად რომელი ნაბიჯები შეასრულეთ?</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_WhatWentWrong">
+    <value>რა გაფუჭდა?</value>
+  </data>
+  <data name="BugReport_Text_Email_HelpText">
+    <value>ელფოსტა (აუცილებელი ველი)</value>
+  </data>
+  <data name="BugReport_Text_Email_Label">
+    <value>_ელფოსტა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_HelpText">
+    <value>პრობლემის სათაური (აუცილებელი ველი)</value>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Label">
+    <value>სა_თაური</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Watermark">
+    <value>პრობლემის სათაური</value>
+  </data>
+  <data name="BugReport_Text_ReportSuccessfullySent">
+    <value>ანგარიში წარმატებიტ გაიგზავნა. მადლობა.</value>
+  </data>
+  <data name="BugReport_Title">
+    <value>უკუკავშირი Proton Drive-ის შესახებ</value>
+  </data>
+  <data name="Dialog_Button_Cancel">
+    <value>გაუქმება</value>
+  </data>
+  <data name="Dialog_Button_Ok">
+    <value>დიახ</value>
+  </data>
+  <data name="Dialog_Button_Save">
+    <value>_შენახვა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>საქაღალდე, საიდაც ამ ელემენტის გადმოწერა უნდა მომხდარიყო, აღმოჩენილი არაა</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>საქაღალდე, სადაც ამ ელემენტის ატვირთვა უნდა მომხდარიყო, აღმოჩენილი არაა</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Cancelled">
+    <value>გაუქმებულია</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CloudFileProviderNotRunning">
+    <value>დარწმუნდით, რომ თქვენი ღრუბლოვანი საცავის მომწოდებელი (მაგ: OneDrive) გაშვებული და დაკავშირებულია.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CyclicRedundancyCheck">
+    <value>მონაცემთა შეცდომა (ციკლური გადამოწმება). გთხოვთ, შეამოწმოთ თქვენი დრაივი (USB, დისკი და ა.შ.) ფაილ სისტემის შეცდომებისა და ცუდ სექტორებისათვის.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DirectoryNotFound">
+    <value>ბილიკის ნაწილი ვერ ვიპოვე</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DuplicateName">
+    <value>სახელი უკვე გამოიყენება</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_FreeSpaceExceeded">
+    <value>არ არის საკმარისი სივრცე</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IdentityMismatch">
+    <value>ფაილი ან საქაღალდე შეიცვალა</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IntegrityFailure">
+    <value>მონაცემების გადამოწმება ჩავარდა</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_InvalidName">
+    <value>სახელს შეიცავს სიმბოლოებს, რომლებიც Windows-ის მიერ არakirებულია. გთხოვთ, წაშალოთ შემდეგი სიმბოლოები, რათა სინქრონიზაცია განხორციელდეს: \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
+    <value>ფაილი გამოტოვებულია, რადგან მისი ცვლილების დრო მეტისმეტად ახალია. აპი თავიდან ავტომატურად ცდის</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>The file could not be transferred because of a local storage error. Please check that your drive is working correctly.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
+    <value>Live Photo-ს ატვირთვა არ შეიძლება.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MetadataMismatch">
+    <value>ფაილი ან საქაღალდე შეიცვალა</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MissingIndividuallySharedFile">
+    <value>თქვენთან გაზიარებული ორიგინალური ფაილი წაშლილია, გადაადგილებულია ან გადარქმეულდა. გამორთეთ და ხელახლა ჩართეთ მისი სინქრონიზაცია, რათა გაანახლოთ იგი და აისუფტომოთ ეს შეცდომა.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_NetworkError">
+    <value>Proton Driev-სთან მიერთების შეცდომა. შეამოწმეთ თქვენი ინტერნეტკავშირი.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ObjectNotFound">
+    <value>ფაილი, ან საქაღალდე არ არსებობს</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Offline">
+    <value>გათიშულია</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Partial">
+    <value>ეს ფაილი არ არის ადგილობრივად ხელმისაწვდომი და ვერ ატვირთება. მოგვარებისთვის, გთხოვთ, წაშალოთ იგი და, თუ ხელმისაწვდომია, აღადგინეთ მისი ასლი Proton Drive-ის ნაგვის ყუთში.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_PathNotFound">
+    <value>ფაილი, ან საქაღალდე არ არსებობს</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_RateLimited">
+    <value>რაღაც არასწორად წავიდა</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyFile">
+    <value>ფაილი მხოლოდ წაკითხვადია</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyRoot">
+    <value>მხოლოდ-წაკითხვადი ფაილებისა და საქაღალდეების შეცვლა შეუძლებელია. პრობლემის გადასაჭრელად გამორთეთ სინქრონიზაცია და თავიდან ჩართეთ "ჩემთვის გაზიარებულის" ფანჯარაში.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ServerError">
+    <value>რაღაც არასწორად წავიდა</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_SharingViolation">
+    <value>ფაილი ან საქაღალდე სხვა აპის მიერ გამოიყენება</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TimedOut">
+    <value>დრო ამოიწურა</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TransferAbortedDueToFileChange">
+    <value>ატვირთვა შეწყდა, რადგან ფაილი შეიცვალა სინქრონიზაციისას. აპი თავიდან ავტომატურად ცდის</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_UnauthorizedAccess">
+    <value>არასაკმარისი წვდომები</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Unknown">
+    <value>რაღაც არასწორად წავიდა</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_ContainsInvalidCharacter">
+    <value>სახელი დაუშვებელ სიმბოლოს შეიცავს</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Empty">
+    <value>სახელი ცარიელია</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithPeriod">
+    <value>სახელი წერტილით მთავრდება</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithSpace">
+    <value>სახელი ჰარეთი მთავრდება</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Reserved">
+    <value>სახელი მხარდაჭერილი არაა Windows-ის მიერ</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_TooLong">
+    <value>სახელი ძალიან გრძელია</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Valid">
+    <value></value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_CheckingForUpdate">
+    <value>განახლების შემოწმება...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_DownloadingAnUpdate">
+    <value>განახლების გადმოწერა...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpToDate">
+    <value>განახლებულია</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
+    <value>განახლებების შემოწმების შეცდომა</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>აუცილებელია განახლება</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
+    <value>განახლება ხელმისაწვდომია</value>
+  </data>
+  <data name="Main_About_Button_UpdateNow">
+    <value>_ახლა განახლება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Button_UpdateNow_HelpText">
+    <value>ხელმისაწვდომია Proton Drive-ის ახალი ვერსია. განაახლეთ ის ახლავე.</value>
+  </data>
+  <data name="Main_About_Label_CurrentVersion">
+    <value>მიმდინარე ვერსია</value>
+  </data>
+  <data name="Main_About_Label_ReleaseDate">
+    <value>რელიზის თარიღი</value>
+  </data>
+  <data name="Main_About_Link_PrivacyPolicy">
+    <value>_კონფიდენციალობის პოლიტიკა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Link_TermsOfService">
+    <value>_მომსახურების პირობები</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_ReleaseHistory_Label_New">
+    <value>ახალი</value>
+  </data>
+  <data name="Main_About_ReleaseHistory_Title">
+    <value>სიახლეები</value>
+  </data>
+  <data name="Main_About_Title">
+    <value>შესახებ</value>
+  </data>
+  <data name="Main_Account_Account_Button_ManageAccount">
+    <value>_ანგარიშის მართვა</value>
+  </data>
+  <data name="Main_Account_Account_HelpText">
+    <value>თქვენი ანგარიშის მართვა</value>
+  </data>
+  <data name="Main_Account_Account_Info_UnknownUser">
+    <value>უცნობი მომხმარებელი</value>
+  </data>
+  <data name="Main_Account_Label_Account">
+    <value>ანგარიში</value>
+  </data>
+  <data name="Main_Account_Label_Security">
+    <value>უსაფრთხოება</value>
+  </data>
+  <data name="Main_Account_Password_Button_ChangePassword">
+    <value>შე_ცვლა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Password_Description">
+    <value>პაროლის შეცვლა თქვენი ანგარიშისთვის.</value>
+  </data>
+  <data name="Main_Account_Password_HelpText">
+    <value>თქვენი Proton Drive-ის პაროლის შეცვლა</value>
+  </data>
+  <data name="Main_Account_Password_Title">
+    <value>პაროლი</value>
+  </data>
+  <data name="Main_Account_Plan_Button_SeePlans">
+    <value>სა_ტარიფო გეგმების ნახვა</value>
+  </data>
+  <data name="Main_Account_Plan_Description">
+    <value>მიიღეთ მეტი საცავი</value>
+  </data>
+  <data name="Main_Account_Plan_HelpText">
+    <value>იხილეთ Proton Drive-ის სხვა სატარიფო გეგმებიც</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Button_Manage">
+    <value>_მართვა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_SessionManagement_Description">
+    <value>თუ არ გახვალთ თქვენი ანგარიშიდან ან პაროლს არ შეცვლით, თქვენი სესია აქტიური დარჩება. სესიებს ვადა 60 დღის უმოქმედობის შემდეგ გასდით.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_HelpText">
+    <value>მართეთ თქვენი სესია. 60 დღე არააქტიურობის შემდეგ სესიის ვადა ამოიწურება.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Title">
+    <value>სესიების მართვა</value>
+  </data>
+  <data name="Main_Account_SignOut_Description">
+    <value>გასვლა და სინქრონიზაციის გათიშვა. სინქრონიზაციის გასაგრძელებლად, უბრალოდ, იგივე ანგარიშით შედით.</value>
+  </data>
+  <data name="Main_Account_SignOut_HelpText">
+    <value>გასვლა Proton Drive-დან</value>
+  </data>
+  <data name="Main_Account_SignOut_Title">
+    <value>_გასვლა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Storage_Button_UpgradePlan">
+    <value>ტარიფის აწევა</value>
+  </data>
+  <data name="Main_Account_Storage_Info_EnsureMoreStorage">
+    <value>უწვეტი სინქრონიზაციის უზრუნველსაყოფად მიიღეთ დამატებითი საცავი ახლავე.</value>
+  </data>
+  <data name="Main_Account_Storage_Info_UsedSpaceFormat">
+    <value>სულ გამოყენებულია სივრცე: {0} {1}-დან</value>
+  </data>
+  <data name="Main_Account_Storage_Title">
+    <value>საცავის მოცულობა</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageExceeded">
+    <value>სინქრონიზაცია გაჩერებულია. თქვენი ანგარიში აცილებს საცავის მოცულობას.</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageLimit">
+    <value>ცოტაც და საცავის ზღვარს მიაღწევთ.</value>
+  </data>
+  <data name="Main_Account_Title">
+    <value>ანგარიში</value>
+  </data>
+  <data name="Main_Activity_Button_PauseSync">
+    <value>_სინქრონიზაციის შეჩერება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Rename">
+    <value>გადარქმევა</value>
+  </data>
+  <data name="Main_Activity_Button_Rename_Tooltip">
+    <value>გადაარქვით სახელი ამ ელემენტს სინქრონიზაციის პრობლემების გამოსასწორებლად</value>
+  </data>
+  <data name="Main_Activity_Button_ResumeSync">
+    <value>სინქ_რონიზაციის გაგრძელება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Retry">
+    <value>სინქრონიზაციის თავიდან ცდა</value>
+  </data>
+  <data name="Main_Activity_Column_Folder">
+    <value>საქაღალდე</value>
+  </data>
+  <data name="Main_Activity_Column_Name">
+    <value>სახელი</value>
+  </data>
+  <data name="Main_Activity_Column_Progress_Tooltip_Finalizing">
+    <value>დასრულება...</value>
+  </data>
+  <data name="Main_Activity_Column_Size">
+    <value>ზომა</value>
+  </data>
+  <data name="Main_Activity_Column_Status">
+    <value>სტატუსი</value>
+  </data>
+  <data name="Main_Activity_Column_Synced">
+    <value>სინქრონიზებულია</value>
+  </data>
+  <data name="Main_Activity_Column_Type">
+    <value>ტიპი</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Button_ShowMore">
+    <value>მეტი დეტალის ჩვენება</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Description">
+    <value>დააწკაპუნეთ ამ პრობლემების შესახებ მეტი ინფორმაციის მისაღებად</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_HelpText">
+    <value>ყველა შეცდომის ახალ სექციაში ჩვენება</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_MultipleItemsFormat">
+    <value>აღმოჩენილია {0} პრობლემა</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_SingleItem">
+    <value>აღმოჩენილია 1 პრობლემა</value>
+  </data>
+  <data name="Main_Activity_Errors_Title">
+    <value>სინქრონიზაციის პრობლემები ({0})</value>
+  </data>
+  <data name="Main_Activity_Errors_Title_Tooltip">
+    <value>აქტივობაზე დაბრუნება</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Description">
+    <value>ფაილების და საქაღალდეების სინქრონიზაციის შესახებ ინფორმაცია აქ გამოჩნდება</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_HelpText">
+    <value>თქვენი ფაილები განახლებულია</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Title">
+    <value>თქვენი ფაილები განახლებულია</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line1">
+    <value>ამას რამდენიმე წუთი შეიძლება, დასჭირდეს.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line2">
+    <value>შეგიძლიათ, უსაფრთხოდ ჩაკეცოთ ან დახუროთ ფანჯარა.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_HelpText">
+    <value>მიმდინარეობს სინქრონიზაციის ინიციალიზაცია</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Title">
+    <value>თქვენი დისკის მორგება...</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Description">
+    <value>სინქრონიზაციის ჩასართავად დააწკაპუნეთ ღილაკზე "სინქრონისაციის გაგრძელება"</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_HelpText">
+    <value>სინქრონიზაცია შეჩერებულია</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Title">
+    <value>სინქრონიზაცია შეჩერებულია</value>
+  </data>
+  <data name="Main_Activity_Rename_CurrentName_Label">
+    <value>მიმდინარე სახელი:</value>
+  </data>
+  <data name="Main_Activity_Rename_Description">
+    <value>ამ ელემენტის სახელი შეიცავს სიმბოლოებს, რომლებიც Windows-ზე მხარდაჭერილი არაა.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_AlreadyExists">
+    <value>სახელი უკვე გამოიყენება</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_ContainsInvalidCharacter">
+    <value>სახელში დაუშვებელი სიმბოლოებია</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Failed">
+    <value>რაღაც არასწორად წავიდა</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Required">
+    <value>სახელი აუცილებელია</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Label">
+    <value>ახალი სახელი:</value>
+  </data>
+  <data name="Main_Activity_Rename_Status_Value_Renaming">
+    <value>მიმდინარეობს სახელის გადარქმევა...</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion">
+    <value>სინქრონიზაციის გასაგრძელებლად წაშალეთ შემდეგი:</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion_CharacterList">
+    <value>/ : * ? &gt; &lt; " |</value>
+  </data>
+  <data name="Main_Activity_Rename_Title">
+    <value>მიმდინარეობს ელემენტის სახელის გადარქმევა</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUp">
+    <value>მორგება...</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUpFormat">
+    <value>მორგება... (სინქრონიზაციისთვის მზადაა {0} ელემენტი)</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SyncPausedUntilFormat">
+    <value>({0}-მდე)</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>ახლახან</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
+    <value>{0} დღის წინ</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_HoursAgoFormat">
+    <value>{0} საათის წინ</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_MinutesAgoFormat">
+    <value>{0} წუთის წინ</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneDayAgo">
+    <value>ერთი დღის წინ</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneHourAgo">
+    <value>ერთი საათის წინ</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneMinuteAgo">
+    <value>ერთი წუთის წინ</value>
+  </data>
+  <data name="Main_Activity_Title">
+    <value>აქტივობა</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>თქვენი კომპიუტერიდან სინქრონიზებული სააღალდეები თქვენი Drive-ის აპების "კომპიუტერების" სექციაში გამოჩნდება.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Button_Rename">
+    <value>სახელის გადა_რქმევა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Device_HelpText">
+    <value>თქვენი მოწყობილობის სახელის გადარქმევა</value>
+  </data>
+  <data name="Main_MyComputer_Device_Label">
+    <value>ეს მოწყობილობა</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Cancel_HelpText">
+    <value>მოწყობილობის სახელის გადარქმევის გაუქმება</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Save_HelpText">
+    <value>მოწყობილობის სახელის შენახვა</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Error_Tooltip">
+    <value>არასწორი მოწყობილობის სახელი: ახალი სახელი ცარიელი არ უნდა იყოს და არც 255 სიმბოლოს უნდა აჭარბებდეს.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_HelpText">
+    <value>თქვენი მოწყობილობის სახელის გადარქმევა</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Button_AddMore">
+    <value>_მეტი საქაღალდის დამატება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Description">
+    <value>საქაღალდის დამატება მის მონაცემებს Proton Drive-ზე დაამარქაფებს.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Info_Saving">
+    <value>საქაღალდეების შენახვა...</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Title">
+    <value>საქაღალდეების დამატება</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludedByAnAlreadySyncedFolderFormat">
+    <value>{0} საქაღალდის სინქრონიზაცია შეუძლებელია, რადგან ის Proton Drive-თან უკვე სინქრონიზებულ საქაღალდეშია.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludesAnAlreadySyncedFolderFormat">
+    <value>{0} საქაღალდის სინქრონიზაცია შეუძლებელია, რადგან მათში არსებობს ქვესაქაღალდე, რომელიც უკვე სინქრონიზდება Proton Drive-სთან</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFileSystemAccessFailedFormat">
+    <value>{0} საქაღალდესთან წვდომა შეუძლებელია</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFolderDoesNotExistFormat">
+    <value>{0} საქაღალდის აღმოჩენა ან გახსნა შეუძლებელია</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalVolumeNotSupportedFormat">
+    <value>{0} საქაღალდის სინქრონიზაცია შეუძლებელია, რადგან ისინი მხარდაუჭერელ დისკზეა მოთავსებული</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NetworkFolderNotSupportedFormat">
+    <value>{0} საქაღალდის სინქრონიზაცია სეუძლებელია, რადგან ქსელური საქაღალდეები მხარდაჭერილი არაა</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat">
+    <value>{0} საქაღალდის სინქრონიზაცია შეუძლებელია, რადგან ისინი სისტემურ საქაღალდეებს წარმოადგენენ</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
+    <value>{0} საქაღალდის დამატება შეუძლებელია</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder">
+    <value>1 საქაღალდის დამატება შეუძლებელია</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add">
+    <value>ს_აქაღალდეების დამატება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst">
+    <value>დაამატეთ თქვენი პირველი საქაღალდე სინქრონიზაციისთვის</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddNext">
+    <value>ახალი საქაღალდის დამატება სინქრონიზაციისთვის</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_Name">
+    <value>სახელი</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization">
+    <value>მეხსიერების ოპტიმიზაცია</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization_Info_Tooltip">
+    <value>გაუმჯობესეთ შენახვის ოპტიმიზაცია, ჩართით მოთხოვნისფორმატული სინქრონიზაცია. ფაილები ადგილობრივ სივრცეს ი займებენ მხოლოდ მაშინ, როცა გახსნით მათ ან აიRomევთ „ყოველთვის შეინახეთ ამ მოწყობილობაზე“. შესაძლებელია ნებისმიერ დროს გამორთოთ შენახვის ოპტიმიზაცია.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Description">
+    <value>დაამატეთ საქაღალდე ფაილების ღრუბელში დაცულად სინქრონიზაციის დასაწყებად</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Title">
+    <value>დაასინქრონეს უსაფრთხოდ თქვენი ფაილები</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Label">
+    <value>ამ მოწყობილობიდან დასინქრონებული საქაღალდეები</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_OpenFolder">
+    <value>სა_ქაღალდის გახსნა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder">
+    <value>საქა_ღალდის წაშლა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm">
+    <value>საქაღალდის წაშლა</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_1">
+    <value>ნებისმიერი ფაილი, որը დაემატა საქაღალდე '{0}' აღარ დასინქრონდება და ეს საქაღალდე Proton Drive-ზე ნაგვის ყუთში იქნება გადატანილი.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_2">
+    <value>არსებული ფაილები დარჩენა თქვენს კომპიუტერზე.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_1">
+    <value>ზოგი ფაილები საქაღალდე "{0}"-ში შესაძლოა შეინახოთ მხოლოდ ღრუბელში. საქაღალდის წაშლით, სინქრონიზაცია შეჩერდება და იგი გადატანილია Proton Drive-ის ნაგვის ყუთში.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_2">
+    <value>თქვენს კომპიუტერში ყველა ფაილის ლოკალური ასლის შესანახად, პირველ რიგში გამორთეთ „საცავის ოპტიმიზაცია“ ამ საქაღალდისთვის. თუ საცავის ოპტიმიზაცია უკვე გამორთულია, ჩართეთ და შემდეგ კვლავ გამორთეთ. დაელოდეთ ჩამოტვირთვის დასრულებას (სტატუსის შემოწმება შეგიძლიათ File Explorer-ში), შემდეგ წაშალეთ საქაღალდე სინქრონიზაციიდან „ჩემი კომპიუტერის“ განყოფილებაში.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_1">
+    <value>ფაილები, რომლებიც უკვე გადმოწერილია, დარჩება თქვენს მოწყობილობაზე.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_2">
+    <value>მხოლოდ, ღრუბელში დამახსოვრებული ფაილები წაიშალება თქვენი მოწყობილობიდან.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Title">
+    <value>წავშალო საქაღალდე?</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_1">
+    <value>საქაღალდეში "{0}" არსებული ფაილები ახლა მუდამ ხელმისაწვდომი იქნება თქვენს მოწყობილობაზე. ყველა ფაილის ჩამოტვირთვას შესაძლოა რამდენიმე წუთი დასჭირდეს (სტატუსის შემოწმება შეგიძლიათ File Explorer-ში).</value>
+    <comment>Placeholder {0}: folder name</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_2">
+    <value>თქვენ მაინც შეგიძლიათ, ხელით გაათავისუფლოთ ადგილი ინდივიდუალური ფაილებისთვის მათი პარამეტრებიდან.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Title">
+    <value>ყველა ფაილი ყოველთვის ხელმისაწვდომია ამ მოწყობილობაზე</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1">
+    <value>"{0}" საქაღალდეს არ შეუძლია საჭიროებისამებრ სინქრონიზაციის გამოყენება საცავის ოპტიმიზაციისთვის. მიზეზი: {1}.</value>
+    <comment>Placeholder {0}: folder name. Placeholder {1}: the reason text, one of resources with "StorageOptimizationErrorCode_Value_..." key.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_2">
+    <value>თქვენი ფაილები კვლავ სინქრონიზდება Proton Drive-ისგან და იყიდებიან ხელმისაწვდომი როგორც თქვენს კომპიუტერში, ასევე ღრუბელში.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Title">
+    <value>საცავის ოპტიმიზაცია ხელმისაწვდომი არაა</value>
+  </data>
+  <data name="Main_MyComputer_Link_LearnMore">
+    <value>გაიგეთ მეტი</value>
+  </data>
+  <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
+    <value>ჩემი კომპიუტერის დამატების მოცილება</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Button_Next">
+    <value>შ_ემდეგი</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Description">
+    <value>ჩართეთ მოთხოვნის მიხედვით სინქრონიზაცია, რათა დაზოგოთ მყარი დისკის სივრცე. ფაილები ადგილობრივ შენახვას იფებიან მხოლოდ გახსნისას ან, როცა მონიშნავთ „ყოველფერს შეინახეთ ამ მოწყობილობაზე“.</value>
+    <comment>"Always keep on this device" is the exact text displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Title">
+    <value>საცავის ოპტიმიზაცია</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted">
+    <value>_დაიწყეთ</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1">
+    <value>მარჯვენა ღილაკით დააწკაპუნეთ Proton Drive-ით სინქრონიზებულ ნებისმიერ ფაილსა თუ საქაღალდეზე.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2">
+    <value>აირჩიეთ „ყოველთვის შეინახეთ ამ მოწყობილობაზე“, რათა შეინახოთ ფაილი ადგილობრივად, ან „Free up space“, რათა ის დარჩეს მხოლოდ ღრუბელში.</value>
+    <comment>"Always keep on this device" and "Free up space" are the exact texts displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Title">
+    <value>საცავის მართვა</value>
+  </data>
+  <data name="Main_MyComputer_Title">
+    <value>ჩემი კომპიუტერი</value>
+  </data>
+  <data name="Main_Photos_Folders_Error_ImportFailed">
+    <value>შემოტანის შეცდომა. სცადეთ საქაღალდის წაშლა და მისი ხელახლა შემოტანა. თუ პრობლემა კვლავ შენარჩუნდება, გთხოვთ, დაუკავშირდეთ მხარდაჭერას.</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportedItemsFormat">
+    <value>შემოტანილია {1}-დან {0}</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportingItemsFormat">
+    <value>შემოტანა მიმდინარეობს... {1}-დან {0}</value>
+  </data>
+  <data name="Main_Photos_Folders_Items_Label">
+    <value>ერთეული(ები)</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>_ალბომების მართვა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
+    <value>სა_ქაღალდის გახსნა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Remove">
+    <value>_წაშლა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Retry">
+    <value>_ხელახლა ცდა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_NoItemsFound_Label">
+    <value>ფოტოები/ვიდეოები ვერ მოიძებნა</value>
+  </data>
+  <data name="Main_Photos_Folders_WaitingToImport">
+    <value>შემოტანის მოლოდინი...</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Description">
+    <value>თქვენი Google Photos-ის ექსპორტის ნაბიჯ-ნაბიჯ სახელმძღვანელო</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Title">
+    <value>1. თქვენი Google Photos-ის ექსპორტი</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Description">
+    <value>ეს უნდა იყოს დაუარქივებელი საქაღალდე, რომელიც შეიცავს თქვენს ექსპორტირებულ ფოტოებსა და ვიდეოებს.</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Title">
+    <value>2. Google Photos საქაღალდის შემოტანა</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_SelectFolder_Button">
+    <value>საქაღალდის არჩევა</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Title">
+    <value>Google Photos-იდან შემოტანა</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Description">
+    <value>თქვენი კომპიუტერიდან ლოკალური საქაღალდის შემოტანა</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Title">
+    <value>საქაღალდის შემოტანა</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Description">
+    <value>Google Photos-ის შემოტანა Google Takeout-იდან</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Title">
+    <value>Google Photos-იდან შემოტანა</value>
+  </data>
+  <data name="Main_Photos_Import_Link_HowImportWorks">
+    <value>როგორ მუშაობს სურათების შემოტანა?</value>
+  </data>
+  <data name="Main_Photos_Import_Title">
+    <value>ფოტოების შემოტანა</value>
+  </data>
+  <data name="Main_Photos_Info_Duplicates">
+    <value>შემოტანილი იქნება, მხოლოდ, ახალი მონაცემები — დუბლიკატების გამოტოვება ავტომატურად ხდება.</value>
+  </data>
+  <data name="Main_Photos_Title">
+    <value>ფოტოები</value>
+  </data>
+  <data name="Main_Photos_Warning_UploadUnavailable">
+    <value>ფოტოების ატვირთვა დროებით ხელმიუწვდომელია</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Button_Change">
+    <value>შე_ცვლა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_HelpText">
+    <value>თქვენი Proton Drive-ის ძირითადი საქაღალდის შეცვლა.</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Title">
+    <value>მდებარეობა</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>მიიღეთ ადრეული წვდომა და დაგვეხმარეთ, Proton Drive-ის ახალი ვერსიები დავტესტოთ.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>წვდომა ბეტა ვერსიებზე</value>
+  </data>
+  <data name="Main_Settings_Label_AccountRootFolder">
+    <value>თქვენი Proton Drive-ის საქაღალდე:</value>
+  </data>
+  <data name="Main_Settings_Label_General">
+    <value>ზოგადი</value>
+  </data>
+  <data name="Main_Settings_Language_Button_Restart">
+    <value>ახლავე გადატვირთვა</value>
+  </data>
+  <data name="Main_Settings_Language_Message_PleaseRestart">
+    <value>გადატვირთეთ აპლიკაცია თქვენი ენის ცვლილების ძალაში შესასვლელად</value>
+  </data>
+  <data name="Main_Settings_Language_Title">
+    <value>ენა</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_HelpText">
+    <value>Proton Drive-ის გახსნა Windows-ის გაშვებისას</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_Title">
+    <value>გახსნა გაშვებისას</value>
+  </data>
+  <data name="Main_Settings_Title">
+    <value>მორგება</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Name">
+    <value>სახელი</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions">
+    <value>წვდომები</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Tooltip">
+    <value>მფლობელის მიერ თქვენთვის მონიჭებული წვდომები</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Editor">
+    <value>რედაქტორი</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Viewer">
+    <value>მთვალიერებელი</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedBy">
+    <value>გამზიარებელი</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedOn">
+    <value>გაზიარების დრო</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync">
+    <value>სინქრონიზაცია</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync_Info_Tooltip">
+    <value>ჩართეთ, რათა გაზიარებული ფაილი ან საქაღალდე ხელმისაწვდომი იყოს თქვენს კომპიუტერში. ფაილების შიგთავსი ჩამოტვირთება მხოლოდ მოთხოვნის მიხედვით.</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad">
+    <value>მონაცემების ჩატვირთვა ვერ მოხერხდა</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Plural">
+    <value>{0} ელემენტის ჩატვირთვა ჩავარდა</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Singular">
+    <value>{0} ელემენტის ჩატვირთვა ჩავარდა</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Description">
+    <value>ფაილები და საქაღალდეები, რომლებსაც თქვენ გაგიზიარებენ, აქ გამოჩნდება</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Title">
+    <value>ჯერ გაზიარებული არაფერია</value>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_OpenFolder">
+    <value>სა_ქაღალდის გახსნა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_RemoveMe">
+    <value>_წამშალე</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_Close_HelpText">
+    <value>ჩემთან გაზიარებულების დმაატების მოცილება</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_GetStarted">
+    <value>_დაიწყეთ</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Description">
+    <value>დაასინქრონეთ ადვილად გაზიარებული ფაილები და საქაღალდეები თქვენსა და თქვენს კომპიუტერს შორის.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1">
+    <value>აირჩიეთ ფაილები ან საქაღალდეები სინქრონიზაციისთვის.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2">
+    <value>წვდომა გაზიარებულ ფაილებტთან თქვენი Proton Drive-ის საქაღალდეში.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3">
+    <value>ჩაასწორეთ ელემენტები, ატვირთეთ ახლები და იქონიეთ მათთან წვდომა ინტერნეტის გარეშე.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3_Label">
+    <value>3.</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Plural">
+    <value>სინქრონიზებულია {0} ელემენტი {1}-დან</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Singular">
+    <value>სინქრონიზებულია {0} ელემენტი {1}-დან</value>
+  </data>
+  <data name="Main_SharedWithMe_Title">
+    <value>ჩემთან გაზიარებული</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Advice">
+    <value>ახალი ელემენტების დასამატებლად ჯერ ძველების სინქრონიზაცია გააჩერეთ.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Limit">
+    <value>ერთდროულად, მხოლოდ, {0} ელემენტის სინქრონიზაცია შეგიძლიათ.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_SharingUnavailable">
+    <value>გაზიარება დროებით მიუწვდომელია</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About">
+    <value>შესახებ</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About_HelpText">
+    <value>მენიუს პუნქტი: შესახებ</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account">
+    <value>ანგარიში</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account_HelpText">
+    <value>მენიუს პუნქტი: ანგარიში</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity">
+    <value>აქტივობა</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity_HelpText">
+    <value>მენიუს პუნქტი: აქტივობა</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help">
+    <value>დახმარება</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help_HelpText">
+    <value>მენიუს პუნქტი: დახმარება</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer">
+    <value>ჩემი კომპიუტერი</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer_HelpText">
+    <value>მენიუს პუნქტი: ჩემი კომპიუტერი</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos">
+    <value>ფოტოები</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_PhotosImport">
+    <value>ფოტოების შემოტანა</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos_HelpText">
+    <value>მენიუს პუნქტი: ფოტოები</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings">
+    <value>მორგება</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings_HelpText">
+    <value>მენიუს პუნქტი: მორგება</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe">
+    <value>ჩემთან გაზიარებული</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe_HelpText">
+    <value>მენიუს პუნქტი: ჩემთვის გაზიარებული</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceededQuota_Description">
+    <value>სინქრონიზაცია გაჩერებულია: თქვენი ანგარიში აცილებს საცავის მოცულობას</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceedingQuota_Description">
+    <value>ცოტაც და საცავის ზღვარს მიაღწევთ</value>
+  </data>
+  <data name="Main_Sidebar_Notification_GetStarted_Description">
+    <value>დაიწყეთ</value>
+  </data>
+  <data name="Main_Sidebar_Notification_NewVersion_Description">
+    <value>ხელმისაწვდომია Proton Drive-ის ახალი ვერსია!</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SharingUnavailable_Description">
+    <value>გაზიარება დროებით მიუწვდომელია</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SyncFoldersFailure_Description">
+    <value>საქაღალდის სინქრონიზაცია ჩავარდა</value>
+  </data>
+  <data name="Main_Sidebar_Notification_UpdateRequired_Description">
+    <value>Proton Drive-ის გამოყენების გასაგრძელებლად მისი ბოლო ვერსიაზე განახლება დაგჭირდებათ</value>
+  </data>
+  <data name="Main_Sidebar_Offer_Button_GetDeal">
+    <value>ფას_დაკლების მიღება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Sidebar_Storage_Button_GetMoreStorage">
+    <value>მიიღეთ მეტი საცავი</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_StorageNotAvailable">
+    <value>სივრცის ინფორმაცია ხელმისაწვდომი არაა</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_UsedSpaceFormat">
+    <value>გამოყენებულია {0} / {1}-დან</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Title">
+    <value>საცავი</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Tooltip">
+    <value>საცავის მართვა</value>
+  </data>
+  <data name="Main_Window_Title">
+    <value>Proton Drive</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>ეს საქაღალდე შეიცავს ქვესაქაღალდეს, რომლის სინქრონიზაციაც უკვე მიმდინარეობს. მოირგეთ ახალი სინქრონიზებული საქაღალდე.</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>ამ საქაღალდის სინქრონიზაცია უკვე მიმდინარეობს. მოირგეთ ახალი სინქრონიზებული საქაღალდე.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveAccessFailed">
+    <value>Proton Driev-სთან მიერთების შეცდომა. შეამოწმეთ თქვენი ინტერნეტკავშირი.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDiverged">
+    <value>Proton Drive-ის საქაღალდე გადატანილია. მოირგეთ ახალი საქაღალდე სინქრონიზაციისთვის.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDoesNotExist">
+    <value>Proton Drive-ის ფაილებთან წვდომა შეუძლებელია, ალბათ, საქაღალდის წაშლის გამო. მოირგეთ ახალი სინქრონიზაციის საქაღალდე.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveHostDeviceDiverged">
+    <value>Proton Drive-ის ფაილებთან წვდომა შეუძლებელია, ალბათ, მოწყობილობის წაშლის გამო. მოირგეთ ახალი სინქრონიზაციის საქაღალდე.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveShareDiverged">
+    <value>Proton Drive-ის ფაილებთან წვდომა შეუძლებელია, ალბათ, პაროლის ჩამოყრის გამო. მოირგეთ ახალი სინქრონიზაციის საქაღალდე.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveVolumeDiverged">
+    <value>Proton Drive-ის ფაილებთან წვდომა შეუძლებელია, ალბათ, პაროლის ჩამოყრის გამო. მოირგეთ ახალი სინქრონიზაციის საქაღალდე.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientDeviceQuota">
+    <value>მიღწეულია დასინქრონებული კომპიუტერების მაქს. რაოდენობა. წაშალეთ არასაჭირო კომპიუტერები Proton Drive-დან ვებზე.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientLocalFreeSpace">
+    <value>გაათავისუფლეთ ადგილი, ან მოხსენით თოლია</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalAndRemoteFoldersNotEmpty">
+    <value>სინქრონიზაციის საქაღალდის მორგებას ცარიელი Windows-ის, ან Proton Drive web-ის საქაღალდე სჭირდება. გაასუფთავეთ ერთი მაინც და თავიდან სცადეთ.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFileSystemAccessFailed">
+    <value>ლოკალური სინქრონიზაციის საქაღალდის შექმნა ან მასთან წვდომა შეუძლებელია. ჩვენ მაინც ვცდით.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDiverged">
+    <value>სინქრონიზაციის საქაღალდე შეიცვალა ბილიკის ახალი საქაღალდით. აღადგინეთ წინა სინქრონიზაციის საქაღალდე, ან მოირგეთ ახალი.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDoesNotExist">
+    <value>სინქრონიზაციის საქაღალდე აღმოჩენილი არაა. ის, ალბათ, წაშლილია, ან გადატანილია, ან მისი სახელი შეცვალეს. აღადგინეთ ის ან მოირგეთ ახალი სინქრონიზაციის საქაღალდე.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludedByAnAlreadySyncedFolder">
+    <value>არჩეული საქაღალდე უკვე შედის სხვა სინქრონიზებულ საქაღალდეში.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludesAnAlreadySyncedFolder">
+    <value>მონიშნული საქაღალდე უკვე დასინქრონებულ საქაღალდეს შეიცავს</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNonSyncable">
+    <value>ლოკალური საქაღალდე არასწორია სინქრონიზაციისთვის. მოირგეთ ახალი სინქრონიზაციის საქაღალდე.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNotEmpty">
+    <value>სინქრონიზაციის მორგებამდე ლოკალური საქაღალდე ცარიელი უნდა იყოს</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeDiverged">
+    <value>ლოკალური ტომის სერიული ნომერი შეიცვალა. მოირგეთ ახალი სინქრონიზაციის საქაღალდე.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeNotSupported">
+    <value>მხარდაუჭერელი ლოკალური დისკის ტიპი. სცადეთ, სინქრონიზაციის საქაღალდე სხვა დისკზე მოათავსოთ.</value>
+  </data>
+  <data name="MappingErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootMissingSyncRootFlag">
+    <value>სინქრონიზაციის საქაღალდე არასწორია. დააყენეთ ახალი სინქრონიზაციის საქაღალდე.</value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootNotRegistered">
+    <value>სინქრონიზაციის საქაღალდის რეგისტრაცია მოულოდნელად გაუქმდა. მოირგეთ ახალი სინქრონიზაციის საქაღალდე.</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotoImportFailed">
+    <value>ფოტოს შემოტანის შეცდომა</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosDisabled">
+    <value>Proton Photos ხელმიუწვდომელია</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosNotReady">
+    <value>ფოტოების ფუნქცია მზად არ არის</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemDoesNotExist">
+    <value>Proton Drive-ის გაზიარებულ ფაილთან ან საქაღალდესთან წვდომა შეუძლებელია. შეამოწმეთ, ისევ გაზიარებულია თუ არა თქვენთვის.</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemPermissionsDiverged">
+    <value>Proton Drive-ის გაზიარებული ფაილის ან საქაღალდის ნებართვები შეიცვალა. პრობლემის მოსაგვარებლად, გამორთეთ და ხელახლა ჩართეთ მისი სინქრონიზაცია.</value>
+  </data>
+  <data name="MappingErrorCode_Value_SharingDisabled">
+    <value>გაზიარება დროებით მიუწვდომელია</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Failed">
+    <value>საქაღალდეების სინქრონიზაციის მორგება ჩავარდა</value>
+  </data>
+  <data name="MappingSetupStatus_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingSetupStatus_Value_PartiallySucceeded">
+    <value>ზოგიერთი საქაღალდის სინქრონიზაციის მორგება ჩავარდა</value>
+  </data>
+  <data name="MappingSetupStatus_Value_SettingUp">
+    <value>საქაღალდეების სინქრონიზაციის მორგება...</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Succeeded">
+    <value>დიახ</value>
+  </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>საცავის დამატება</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>საცავში ადგილი ამოიწურა</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>ასწიეთ სატარიფო გეგმა მეტი ადგილის მისაღებად და თქვენი ფაილების ასატვირთად.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
+    <value>შე_ცვლა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder_HelpText">
+    <value>თქვენი Proton Drive-ის ძირითადი საქაღალდის შეცვლა.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Error_InvalidSyncFolder">
+    <value>არასწორი სინქრონიზაციის საქაღალდე</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Description">
+    <value>წვდომა თქვენს ფაილებთან და სხვა დასინქრონებულ მოწყობილობებთან აქედან</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Location">
+    <value>მდებარეობა</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Title">
+    <value>თქვენი Proton Drive-ის საქაღალდე</value>
+  </data>
+  <data name="Onboarding_Button_Continue">
+    <value>გაგ_რძელება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_Button_FinishSetup">
+    <value>_მორგების დასრულება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders">
+    <value>_მეტი საქაღალდის დამატება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText">
+    <value>დაამატეთ კიდევ ერთი საქაღალდე სინქრონიზაციისთვის</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Label_Description">
+    <value>მონიშნული საქაღალდეები დასინქრონებული იქნება Proton Drive-სთან. ფაილები დამარქაფზე და სხვა მოწყობილობებიდანაც იქნება ხელმისაწვდომი.</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Title">
+    <value>დაამარქაფეთ თქვენი საქაღალდეები</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Drive _Plus-ის მიღება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>_Duo-ის მიღება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>_Unlimited-ის მიღება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_NotNow">
+    <value>_არა ახლა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_Upgrade">
+    <value>სატარიფო გეგმის ა_წევა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Mail">
+    <value>Mail: მორგებული და დაცული ელფოსტა</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>თვე</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>ყველაზე პოპულარული</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>{0}-მდე მომხმარებელი</value>
+    <comment>Only for number greater than 1.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
+    <value>Pass: დაშიფრული პაროლების მმართველი</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>ფასიანი ფუნქციების ჩათვლით</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Recommended">
+    <value>რეკომენდებულია</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>წინა ფაილის ვერსიების აღდგენა</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>საცავი</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Vpn">
+    <value>VPN: ძალიან სწრაფი და კონფიდენციალური</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Title">
+    <value>მიიღეთ მეტი საცავი</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
+    <value>შემოტანის შეცდომა. ალბომი არ არსებობს.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>შემოტანა ჩავარდა. საქაღალდე არ არსებობს.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
+    <value>შემოტანის შეცდომა. მიღწეულია ალბომების მაქსიმალური რაოდენობა.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfPhotosPerAlbumReached">
+    <value>შემოტანის შეცდომა. მიღწეულია ალბომში ფოტოების მაქსიმალური რაოდენობა.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_Unknown">
+    <value>შემოტანის შეცდომა. სცადეთ ხელახლა.</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Failed">
+    <value>შემოტანის შეცდომა</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Importing">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Interrupted">
+    <value>შემოტანა შეწყდა</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_NotStarted">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_SetupFailed">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Succeeded">
+    <value>შემოტანა წარმატებით დასრულდა</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_ValidationFailed">
+    <value></value>
+  </data>
+  <data name="ReleaseNoteType_Value_Feature">
+    <value>ახალი ფუნქციები</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Fix">
+    <value>გასწორებული შეცდომები</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Improvement">
+    <value>გაუმჯობესებები</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Fido2">
+    <value>უსაფრთხოების გასაღები</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_NotSupported">
+    <value></value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Totp">
+    <value>ავთენტიკატორი აპი</value>
+  </data>
+  <data name="SessionStatus_Value_Ending">
+    <value>გასვლა...</value>
+  </data>
+  <data name="SessionStatus_Value_Failed">
+    <value>შესვლა ჩავარდა. შეამოწმეთ თქვენი ინტერნეტკავშირი.</value>
+  </data>
+  <data name="SessionStatus_Value_NotStarted">
+    <value>გასული</value>
+  </data>
+  <data name="SessionStatus_Value_SigningIn">
+    <value>შესვლა...</value>
+  </data>
+  <data name="SessionStatus_Value_Started">
+    <value>შეხვედით</value>
+  </data>
+  <data name="SessionStatus_Value_Starting">
+    <value>შესვლა...</value>
+  </data>
+  <data name="SignIn_Button_Authenticate">
+    <value>_ავთენტიკაცია</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_Back">
+    <value>_უკან</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignIn">
+    <value>_შესვლა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignInAsAnotherUser">
+    <value>ან შედით სხვა მომხმარებლით</value>
+  </data>
+  <data name="SignIn_Button_Unlock">
+    <value>_განბლოკვა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_CreateAccount">
+    <value>_ანგარიშის შექმნა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_ForgotPassword">
+    <value>_დაგავიწყდათ პაროლი?</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_LearnMore">
+    <value>გაიგეთ მეტი</value>
+  </data>
+  <data name="SignIn_Message_SigningIn">
+    <value>მიმდინარეობს თქვენს ანგარიშში შესვლა</value>
+  </data>
+  <data name="SignIn_Text_2FACode">
+    <value>შეიყვანეთ კოდი თქვენი ავთენტიკატორი აპიდან</value>
+  </data>
+  <data name="SignIn_Text_No2FAMethodFound">
+    <value>2FA-ის მეთოდი აღმოჩენილი არაა.</value>
+  </data>
+  <data name="SignIn_Text_Password">
+    <value>_პაროლი</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_SecondPassword">
+    <value>მეორე პაროლი</value>
+  </data>
+  <data name="SignIn_Text_SecurityKey">
+    <value>შეაერთეთ თქვენი Proton-ის ანგარიშზე მიბმული უსაფრთხოების გასაღები.</value>
+  </data>
+  <data name="SignIn_Text_SecurityKeyNotSupported">
+    <value>თქვენს სისტემას უსაფრთხოების გასაღების მხარდაჭერა არ გააჩნია</value>
+  </data>
+  <data name="SignIn_Text_Username">
+    <value>ელფოსტა ან მომ_ხმარებლის სახელი</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_Username_HelpText">
+    <value>მომხმარებლის სახელი</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_PasswordRequired">
+    <value>პაროლი აუცილებელია</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SessionExpired">
+    <value>თქვენს სესიის ვადა ამოიწურა. გასაგრძელებლად თავიდან შედით.</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SomethingWentWrong">
+    <value>რაღაც არასწორად წავიდა</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_UsernameRequired">
+    <value>მომხმარებლის სახელი აუცილებელია</value>
+  </data>
+  <data name="SignIn_Title_2FA">
+    <value>2FA</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>ის შეიცავს ქვესაქაღალდეს, რომლის სინქრონიზაციაც ხდება {0}-ის მიერ</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>უკვე მიმდინარეობს მისი საჭიროებისამებრი სინქრონიზაცია {0}-ის მიერ</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_NetworkVolumeNotSupported">
+    <value>ქსელური დისკები მხარდაჭერილი არაა</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_RemovableVolumeNotSupported">
+    <value>მოხსნადი დისკები მხარდაჭერილი არაა</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_Unknown">
+    <value>საჭიროებისამებრ სინქრონიზაციის ჩართვა ჩავარდა</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
+    <value>ლოკალური დისკის ტიპი მხარდაჭერილი არაა</value>
+  </data>
+  <data name="SyncAgentStatus_Value_AccountError">
+    <value>ანგარიშის მორგება ჩავარდა</value>
+  </data>
+  <data name="SyncAgentStatus_Value_FinishingUp">
+    <value>მორგების დასრულება...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Offline">
+    <value>გათიშულია</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SettingUp">
+    <value>მორგება...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignInError">
+    <value>შესვლა ჩავარდა</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignedOut">
+    <value>გასული</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningIn">
+    <value>შესვლა...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningOut">
+    <value>გასვლა...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SyncFolderError">
+    <value>საქაღალდეების სინქრონიზაციის მორგება ჩავარდა</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationError">
+    <value>სინქრონიზაცია წარუმატებელია</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationPaused">
+    <value>სინქრონიზაცია შეჩერებულია</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationWarning">
+    <value>ზოგიერთი ელემენტის სინქრონიზაცია ჩავარდა</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronized">
+    <value>სინქრონიზებულია</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronizing">
+    <value>სინქრონიზაცია...</value>
+  </data>
+  <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
+    <value>ამ მოწყობილობაზე ადგილი საკმარისი არაა</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludedByAnAlreadySyncedFolder">
+    <value>საქაღალდე უკვე დასინქრონებულ საქაღალდეშია</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludesAnAlreadySyncedFolder">
+    <value>საქაღალდე უკვე დასინქრონებულ საქაღალდეს შეიცავს</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_InsufficientLocalFreeSpace">
+    <value>გაათავისუფლეთ ადგილი, ან მოხსენით თოლია.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFileSystemAccessFailed">
+    <value>საქაღალდესთან წვდომა აკრძალულია</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderDoesNotExist">
+    <value>საქაღალდე აღმოჩენილი არაა</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderNotEmpty">
+    <value>სინქრონიზაციის მორგებამდე საქაღალდე ცარიელი უნდა იყოს</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalVolumeNotSupported">
+    <value>მხარდაუჭერელი დისკის ტიპი</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NetworkFolderNotSupported">
+    <value>ქსელური საქაღალდეეს დასინქრონება მხარდაჭერილი არაა</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NonSyncableFolder">
+    <value>საქაღალდე სინქრონიზაციისთვის შესაფერისი არაა</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_Succeeded">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_DetectingUpdates">
+    <value>განახლებების გამოთხოვა...</value>
+  </data>
+  <data name="SyncStatus_Value_Failed">
+    <value>შეცდომა</value>
+  </data>
+  <data name="SyncStatus_Value_Idle">
+    <value>სინქრონიზებულია</value>
+  </data>
+  <data name="SyncStatus_Value_Initializing">
+    <value>მორგება...</value>
+  </data>
+  <data name="SyncStatus_Value_Offline">
+    <value>გათიშულია</value>
+  </data>
+  <data name="SyncStatus_Value_Paused">
+    <value>შეჩერებულია</value>
+  </data>
+  <data name="SyncStatus_Value_Synchronizing">
+    <value>სინქრონიზაცია...</value>
+  </data>
+  <data name="SyncStatus_Value_Terminated">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_Terminating">
+    <value>შეწყვეტა...</value>
+  </data>
+  <data name="SystemTray_Menu_Item_Exit">
+    <value>_გასვლა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenInBrowser">
+    <value>_ბრაუზერში გახსნა</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenLocalFolder">
+    <value>_ლოკალური საქაღალდის გახსნა</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenProtonDrive">
+    <value>_Proton Drive-ის გახსნა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSync">
+    <value>_სინქრონიზაციის შეჩერება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
+    <value>შეჩერება 1 საათით</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor4Hours">
+    <value>შეჩერება 4 საათით</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor8Hours">
+    <value>შეჩერება 8 საათით</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncIndefinitely">
+    <value>შეჩერება განუსაზღვრელი დროით</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow">
+    <value>შეჩერება ხვალამდე</value>
+  </data>
+  <data name="SystemTray_Menu_Item_ResumeSync">
+    <value>სინქ_რონიზაციის გაგრძელება</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_SignIn">
+    <value>_შესვლა</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="ToggleSwitch_Off">
+    <value>გამორთული</value>
+  </data>
+  <data name="ToggleSwitch_On">
+    <value>ჩართ</value>
+  </data>
+</root>

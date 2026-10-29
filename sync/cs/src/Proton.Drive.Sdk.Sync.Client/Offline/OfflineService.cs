@@ -1,5 +1,4 @@
 using System.Net;
-using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.CircuitBreaker;
@@ -9,6 +8,7 @@ using Proton.Drive.Shared.Client;
 using Proton.Drive.Shared.Net.Http;
 using Proton.Drive.Shared.Offline;
 using Proton.Drive.Shared.Threading;
+using Proton.Drive.Shared.Update;
 
 namespace Proton.Drive.Sdk.Sync.Client.Offline;
 
@@ -16,9 +16,9 @@ internal sealed class OfflineService : IOfflineService, IOfflinePolicyProvider, 
 {
     private static readonly TimeSpan TimerDelayAfterSwitchingOnline = TimeSpan.FromSeconds(2);
 
-    private readonly IMessenger _messenger;
     private readonly TooManyRequestsBlockedEndpoints _blockedEndpoints;
     private readonly Lazy<IEnumerable<IOfflineStateAware>> _offlineStateAware;
+    private readonly Lazy<IEnumerable<IUpdateRequiredAware>> _updateRequiredAware;
     private readonly ILogger<OfflineService> _logger;
 
     private readonly CircuitBreakerManualControl _manualControl = new();
@@ -32,14 +32,14 @@ internal sealed class OfflineService : IOfflineService, IOfflinePolicyProvider, 
     public OfflineService(
         DriveApiConfig config,
         IScheduler scheduler,
-        IMessenger messenger,
         TooManyRequestsBlockedEndpoints blockedEndpoints,
         Lazy<IEnumerable<IOfflineStateAware>> offlineStateAware,
+        Lazy<IEnumerable<IUpdateRequiredAware>> updateRequiredAware,
         ILogger<OfflineService> logger)
     {
-        _messenger = messenger;
         _blockedEndpoints = blockedEndpoints;
         _offlineStateAware = offlineStateAware;
+        _updateRequiredAware = updateRequiredAware;
         _logger = logger;
 
         var circuitBreakerOptions = new CircuitBreakerStrategyOptions<HttpResponseMessage>
@@ -208,6 +208,9 @@ internal sealed class OfflineService : IOfflineService, IOfflinePolicyProvider, 
 
     private void OnAppUpdateRequired()
     {
-        _messenger.Send<AppUpdateRequiredMessage>();
+        foreach (var listener in _updateRequiredAware.Value)
+        {
+            listener.OnUpdateRequired();
+        }
     }
 }

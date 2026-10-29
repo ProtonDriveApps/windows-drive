@@ -59,13 +59,11 @@ internal sealed class AuthorizationHandler : DelegatingHandler
 
         if (response.StatusCode == HttpStatusCode.Unauthorized)
         {
-            // Awaiting this call would create a deadlock when Unauthorized (401) is returned to the sign-out API request.
-            _ = _authenticationService.Value.EndSessionAsync(sessionId, apiResponse ?? new ApiResponse { Code = ResponseCode.Unauthorized });
+            _authenticationService.Value.HandleSessionEnded(sessionId, apiResponse ?? new ApiResponse { Code = ResponseCode.Unauthorized });
         }
         else if (IsAccountDisabled(apiResponse))
         {
-            // Awaiting this call would create a deadlock when Account disabled (10002 or 10003) is returned to the sign-out API request.
-            _ = _authenticationService.Value.EndSessionAsync(sessionId, apiResponse);
+            _authenticationService.Value.HandleSessionEnded(sessionId, apiResponse);
         }
 
         return response;

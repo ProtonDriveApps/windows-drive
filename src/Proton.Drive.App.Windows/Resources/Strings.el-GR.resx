@@ -265,48 +265,6 @@
     <value>Μεταφορτώθηκε στο Proton Drive</value>
     <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
-  <data name="AppDisplayStatus_Value_AccountError">
-    <value>Αποτυχία ρύθμισης λογαριασμού</value>
-  </data>
-  <data name="AppDisplayStatus_Value_FinishingUp">
-    <value>Γίνεται ολοκλήρωση...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Offline">
-    <value>Εκτός σύνδεσης</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SettingUp">
-    <value>Ρύθμιση...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignInError">
-    <value>Αποτυχία σύνδεσης</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignedOut">
-    <value>Αποσυνδεδεμένος</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningIn">
-    <value>Σύνδεση ...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningOut">
-    <value>Αποσύνδεση...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SyncFolderError">
-    <value>Αποτυχία ρύθμισης φακέλων συγχρονισμού</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationError">
-    <value>Ο συγχρονισμός απέτυχε</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationPaused">
-    <value>Ο συγχρονισμός είναι σε παύση</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationWarning">
-    <value>Ορισμένα στοιχεία απέτυχαν να συγχρονιστούν</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronized">
-    <value>Συγχρονισμένο</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronizing">
-    <value>Συγχρονισμός...</value>
-  </data>
   <data name="BugReport_Button_Cancel">
     <value>Άκυρο</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -1670,6 +1628,48 @@
   </data>
   <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
     <value>ο τύπος τοπικής μονάδας δίσκου δεν υποστηρίζεται</value>
+  </data>
+  <data name="SyncAgentStatus_Value_AccountError">
+    <value>Αποτυχία ρύθμισης λογαριασμού</value>
+  </data>
+  <data name="SyncAgentStatus_Value_FinishingUp">
+    <value>Γίνεται ολοκλήρωση...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Offline">
+    <value>Εκτός σύνδεσης</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SettingUp">
+    <value>Ρύθμιση...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignInError">
+    <value>Αποτυχία σύνδεσης</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignedOut">
+    <value>Αποσυνδεθήκατε</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningIn">
+    <value>Σύνδεση...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningOut">
+    <value>Αποσύνδεση...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SyncFolderError">
+    <value>Αποτυχία ρύθμισης φακέλων συγχρονισμού</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationError">
+    <value>Ο συγχρονισμός απέτυχε</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationPaused">
+    <value>Ο συγχρονισμός είναι σε παύση</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationWarning">
+    <value>Ορισμένα στοιχεία απέτυχαν να συγχρονιστούν</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronized">
+    <value>Συγχρονισμένο</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronizing">
+    <value>Συγχρονισμός...</value>
   </data>
   <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
     <value>Δεν υπάρχει αρκετός ελεύθερος χώρος σε αυτήν τη συσκευή</value>

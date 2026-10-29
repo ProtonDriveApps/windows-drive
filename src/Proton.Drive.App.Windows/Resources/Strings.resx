@@ -998,43 +998,46 @@ disable storage optimization at any time.</value>
   <data name="AccountErrorCode_Value_None" xml:space="preserve">
     <value />
   </data>
-  <data name="AppDisplayStatus_Value_AccountError" xml:space="preserve">
+  <data name="SyncAgentStatus_Value_AccountError" xml:space="preserve">
     <value>Failed to set up an account</value>
   </data>
-  <data name="AppDisplayStatus_Value_FinishingUp" xml:space="preserve">
+  <data name="SyncAgentStatus_Value_FinishingUp" xml:space="preserve">
     <value>Finishing up...</value>
   </data>
-  <data name="AppDisplayStatus_Value_SyncFolderError" xml:space="preserve">
-    <value>Failed to set up sync folders</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SettingUp" xml:space="preserve">
-    <value>Setting up...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignedOut" xml:space="preserve">
-    <value>Signed out</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignInError" xml:space="preserve">
-    <value>Failed to sign in</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningIn" xml:space="preserve">
-    <value>Signing in...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningOut" xml:space="preserve">
-    <value>Signing out...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Offline" xml:space="preserve">
+  <data name="SyncAgentStatus_Value_Offline" xml:space="preserve">
     <value>Offline</value>
   </data>
-  <data name="AppDisplayStatus_Value_SynchronizationWarning" xml:space="preserve">
-    <value>Some items failed to synchronize</value>
+  <data name="SyncAgentStatus_Value_SettingUp" xml:space="preserve">
+    <value>Setting up...</value>
   </data>
-  <data name="AppDisplayStatus_Value_SynchronizationPaused" xml:space="preserve">
+  <data name="SyncAgentStatus_Value_SignedOut" xml:space="preserve">
+    <value>Signed out</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignInError" xml:space="preserve">
+    <value>Failed to sign in</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningIn" xml:space="preserve">
+    <value>Signing in...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningOut" xml:space="preserve">
+    <value>Signing out...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SyncFolderError" xml:space="preserve">
+    <value>Failed to set up sync folders</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationError" xml:space="preserve">
+    <value>Synchronization failed</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationPaused" xml:space="preserve">
     <value>Synchronization paused</value>
   </data>
-  <data name="AppDisplayStatus_Value_Synchronized" xml:space="preserve">
+  <data name="SyncAgentStatus_Value_SynchronizationWarning" xml:space="preserve">
+    <value>Some items failed to synchronize</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronized" xml:space="preserve">
     <value>Synced</value>
   </data>
-  <data name="AppDisplayStatus_Value_Synchronizing" xml:space="preserve">
+  <data name="SyncAgentStatus_Value_Synchronizing" xml:space="preserve">
     <value>Synchronizing...</value>
   </data>
   <data name="MappingErrorCode_Value_DriveAccessFailed" xml:space="preserve">
@@ -1313,9 +1316,6 @@ Toggle its sync off and on again to restore it and clear this error.</value>
   </data>
   <data name="FileSystemErrorCode_Value_IntegrityFailure" xml:space="preserve">
     <value>Verification of data failed</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationError" xml:space="preserve">
-    <value>Synchronization failed</value>
   </data>
   <data name="FileSystemErrorCode_Value_ReadOnlyFile" xml:space="preserve">
     <value>File is read-only</value>

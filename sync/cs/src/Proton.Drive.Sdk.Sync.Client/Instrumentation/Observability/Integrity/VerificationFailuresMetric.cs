@@ -7,7 +7,7 @@ public sealed record VerificationFailuresMetric : ObservabilityMetric
     public VerificationFailuresMetric(long value, IReadOnlyDictionary<string, string> labels)
         : base(
             "drive_sdk_integrity_verification_errors_total",
-            Version: 1,
+            Version: 2,
             DateTime.UtcNow.ToUnixTimeSeconds(),
             new ObservabilityMetricProperties(value, labels))
     {

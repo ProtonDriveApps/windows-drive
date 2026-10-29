@@ -5,7 +5,7 @@ namespace Proton.Drive.Sdk.Sync.Client.FileUploading;
 
 internal static class ThumbnailProvisionExtensions
 {
-    public static async Task<IEnumerable<Thumbnail>> GetThumbnailsAsync(this IThumbnailProvider thumbnailProvider, CancellationToken cancellationToken)
+    public static async Task<IReadOnlyCollection<Thumbnail>> GetThumbnailsAsync(this IThumbnailProvider thumbnailProvider, CancellationToken cancellationToken)
     {
         var smallThumbnail = await thumbnailProvider.GetSmallThumbnailAsync(cancellationToken).ConfigureAwait(false);
 

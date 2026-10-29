@@ -42,7 +42,7 @@ internal sealed class SdkPhotosUploadClient : ISdkPhotosUploadClient
         var metadata = new PhotosFileUploadMetadata
         {
             LastModificationTime = sourceRevision.LastWriteTimeUtc,
-            CaptureTime = fileMetadata?.CaptureTime?.DateTime,
+            CaptureTime = fileMetadata?.CaptureTime?.UtcDateTime,
             AdditionalMetadata = fileMetadata.ConvertToAdditionalMetadataProperties(),
             Tags = photoTags.Count > 0 ? photoTags.Select(tag => (SdkPhotoTag)(int)tag) : null,
             MainPhotoUid = mainPhotoUid,

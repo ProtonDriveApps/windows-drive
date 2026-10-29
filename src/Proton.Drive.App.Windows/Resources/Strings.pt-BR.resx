@@ -265,48 +265,6 @@
     <value>Enviado para Proton Drive</value>
     <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
   </data>
-  <data name="AppDisplayStatus_Value_AccountError">
-    <value>Erro ao configurar uma conta</value>
-  </data>
-  <data name="AppDisplayStatus_Value_FinishingUp">
-    <value>Concluindo...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Offline">
-    <value>Off-line</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SettingUp">
-    <value>Configurando...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignInError">
-    <value>Erro ao iniciar de sessão</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SignedOut">
-    <value>Sessão encerrada</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningIn">
-    <value>Iniciando sessão...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SigningOut">
-    <value>Encerrando a sessão...</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SyncFolderError">
-    <value>Erro ao configurar pastas de sincronização</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationError">
-    <value>Falha na sincronização</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationPaused">
-    <value>Sincronização pausada</value>
-  </data>
-  <data name="AppDisplayStatus_Value_SynchronizationWarning">
-    <value>Alguns itens falharam na sincronização</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronized">
-    <value>Sincronizado</value>
-  </data>
-  <data name="AppDisplayStatus_Value_Synchronizing">
-    <value>Sincronizando...</value>
-  </data>
   <data name="BugReport_Button_Cancel">
     <value>_Cancelar</value>
     <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
@@ -439,7 +397,7 @@
     <value>O arquivo foi ignorado porque foi alterado muito recentemente. O aplicativo tentará novamente automaticamente.</value>
   </data>
   <data name="FileSystemErrorCode_Value_LocalStorageError">
-    <value>The file could not be transferred because of a local storage error. Please check that your drive is working correctly.</value>
+    <value>O arquivo não pôde ser transferido devido a um erro de armazenamento local. Por favor, verifique se a sua unidade está funcionando corretamente.</value>
   </data>
   <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
     <value>Não foi possível enviar a Live Photo.</value>
@@ -1670,6 +1628,48 @@ O conteúdo dos arquivos será baixado sob demanda.</value>
   </data>
   <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
     <value>tipo de unidade local não é compatível</value>
+  </data>
+  <data name="SyncAgentStatus_Value_AccountError">
+    <value>Erro ao configurar uma conta</value>
+  </data>
+  <data name="SyncAgentStatus_Value_FinishingUp">
+    <value>Concluindo...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Offline">
+    <value>Off-line</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SettingUp">
+    <value>Configurando...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignInError">
+    <value>Erro ao iniciar sessão</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignedOut">
+    <value>Sessão encerrada</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningIn">
+    <value>Iniciando sessão...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningOut">
+    <value>Encerrando a sessão...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SyncFolderError">
+    <value>Erro ao configurar pastas de sincronização</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationError">
+    <value>Falha na sincronização</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationPaused">
+    <value>Sincronização pausada</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationWarning">
+    <value>Alguns itens falharam na sincronização</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronized">
+    <value>Sincronizado</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronizing">
+    <value>Sincronizando...</value>
   </data>
   <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
     <value>Não há espaço livre suficiente neste dispositivo</value>

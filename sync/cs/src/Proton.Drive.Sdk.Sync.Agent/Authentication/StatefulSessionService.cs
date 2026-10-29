@@ -228,7 +228,7 @@ public class StatefulSessionService
         cancellationToken.ThrowIfCancellationRequested();
         SetSigningIn(SigningInStatus.Authenticating);
 
-        var result = await _clientAuthenticationService.StartSessionAsync(credential, cancellationToken).ConfigureAwait(false);
+        var result = await _clientAuthenticationService.AuthenticateWithPasswordAsync(credential, cancellationToken).ConfigureAwait(false);
 
         cancellationToken.ThrowIfCancellationRequested();
 
@@ -414,6 +414,8 @@ public class StatefulSessionService
     {
         _logger.LogWarning("Session terminated by the backend");
 
+        // The client authentication service abandons the session in memory only,
+        // the persisted session is removed when ending the session explicitly.
         ScheduleEndSession(reason);
     }
 

@@ -1,0 +1,1779 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountDisplayStatus_Value_AccountError">
+    <value></value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SessionError">
+    <value>Не вдалося ввійти</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SettingUp">
+    <value>Налаштування...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SignedOut">
+    <value>Ви вийшли з облікового запису</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningIn">
+    <value>Виконується вхід...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_SigningOut">
+    <value>Триває вихід...</value>
+  </data>
+  <data name="AccountDisplayStatus_Value_Succeeded">
+    <value>Виконано вхід</value>
+  </data>
+  <data name="AccountErrorCode_Value_AccountSwitchingFailed">
+    <value>Не вдалося перемкнути обліковий запис. Перезапустіть застосунок.</value>
+  </data>
+  <data name="AccountErrorCode_Value_Delinquent">
+    <value>Обліковий запис має неоплачені рахунки. Перейдіть на панель керування, щоб сплатити, або повідомте свого адміністратора.</value>
+  </data>
+  <data name="AccountErrorCode_Value_DriveAccessFailed">
+    <value>Не вдалося з'єднатися з Proton Drive. Спробуйте перевірити ваше з'єднання з мережею.</value>
+  </data>
+  <data name="AccountErrorCode_Value_NoDriveAccess">
+    <value>Щоб отримати доступ до Proton Drive, покращте свій тариф</value>
+  </data>
+  <data name="AccountErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Create">
+    <value>Створення</value>
+    <comment>Indicates a local folder being created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Delete">
+    <value>Видалення</value>
+    <comment>Indicates the local file or folder being deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Download">
+    <value>Завантаження з Proton Drive</value>
+    <comment>Indicates a file being downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Отримання оновлень</value>
+    <comment>Indicates local file system changes being fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Move">
+    <value>Переміщення</value>
+    <comment>Indicates the local file or folder being moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Rename">
+    <value>Перейменування</value>
+    <comment>Indicates the local file or folder being renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_InProgress_SyncActivityType_Value_Upload">
+    <value>Вивантаження в Proton Drive</value>
+    <comment>Indicates a  file being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Create">
+    <value>Створено</value>
+    <comment>Indicates a local folder has been created. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Delete">
+    <value>Видалено</value>
+    <comment>Indicates a local file or folder has been deleted. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Download">
+    <value>Завантажено з Proton Drive</value>
+    <comment>Indicates a file has been downloaded. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Оновлення отримані</value>
+    <comment>Indicates local file system changes have been fetched. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Move">
+    <value>Переміщено</value>
+    <comment>Indicates a local file or folder has been moved. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Rename">
+    <value>Перейменовано</value>
+    <comment>Indicates a local file or folder has been renamed. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Local_Succeeded_SyncActivityType_Value_Upload">
+    <value>Вивантажено в Proton Drive</value>
+    <comment>Indicates a file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Create">
+    <value>Створення в Proton Drive</value>
+    <comment>Indicates a folder is being created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Delete">
+    <value>Moving to Proton Drive Trash</value>
+    <comment>Indicates the file or folder is being deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Download">
+    <value>Завантаження з Proton Drive</value>
+    <comment>Indicates a file is being downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_FetchUpdates">
+    <value>Отримання оновлень з Proton Drive</value>
+    <comment>Indicates changes are being fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Move">
+    <value>Переміщення в Proton Drive</value>
+    <comment>Indicates the file or folder is being moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Rename">
+    <value>Перейменування в Proton Drive</value>
+    <comment>Indicates the file or folder is being renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_InProgress_SyncActivityType_Value_Upload">
+    <value>Вивантаження в Proton Drive</value>
+    <comment>Indicates the file is being uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Create">
+    <value>Створено в Proton Drive</value>
+    <comment>Indicates a folder has been created on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Delete">
+    <value>Moved to Proton Drive Trash</value>
+    <comment>Indicates the file or folder has been deleted from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Download">
+    <value>Завантажено з Proton Drive</value>
+    <comment>Indicates a file has been downloaded from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_FetchUpdates">
+    <value>Отримано оновлення з Proton Drive</value>
+    <comment>Indicates changes have been fetched from Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Move">
+    <value>Переміщено в Proton Drive</value>
+    <comment>Indicates the file or folder has been moved on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Rename">
+    <value>Перейменовано в Proton Drive</value>
+    <comment>Indicates the file or folder has been renamed on Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="Activity_Remote_Succeeded_SyncActivityType_Value_Upload">
+    <value>Вивантажено в Proton Drive</value>
+    <comment>Indicates the file has been uploaded to Proton Drive. Displayed on the Activity page in the tooltip of the activity type.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel">
+    <value>_Скасувати</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Cancel_HelpText">
+    <value>Скасувати звіт</value>
+  </data>
+  <data name="BugReport_Button_Report">
+    <value>_Повідомити</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Button_Report_HelpText">
+    <value>Надіслати звіт</value>
+  </data>
+  <data name="BugReport_Button_ShowLogs">
+    <value>Показати _журнали</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs">
+    <value>_Долучити журнали застосунку</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_CheckBox_IncludeLogs_Tooltip">
+    <value>Звіт включатиме останні файли журналів застосунку та файли журналів встановлення</value>
+  </data>
+  <data name="BugReport_NeedHelp_Description">
+    <value>Quick guides for setup, app use, and file sync.</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_FAQ">
+    <value>Frequently asked questions (FAQ)</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowProtonDriveWorks">
+    <value>Learn how the Proton Drive app works</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_HowSharedFilesWork">
+    <value>Access shared files</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_SyncFolders">
+    <value>Sync folders to Proton Drive</value>
+  </data>
+  <data name="BugReport_NeedHelp_Link_UseOnDemandSync">
+    <value>Use on-demand sync</value>
+  </data>
+  <data name="BugReport_NeedHelp_Title">
+    <value>Need help getting started with Proton Drive?</value>
+  </data>
+  <data name="BugReport_Text_Description_HelpText">
+    <value>Опис. Що пішло не так? Які точні кроки ви виконали? (мінімум 10 символів)</value>
+  </data>
+  <data name="BugReport_Text_Description_Label">
+    <value>_Опис</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_Description_Label_Requirement">
+    <value>(мінімум 10 символів)</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_ExactSteps">
+    <value>Які саме дії ви виконували?</value>
+  </data>
+  <data name="BugReport_Text_Description_Watermark_WhatWentWrong">
+    <value>Що сталося?</value>
+  </data>
+  <data name="BugReport_Text_Email_HelpText">
+    <value>Пошта (обов'язкове поле)</value>
+  </data>
+  <data name="BugReport_Text_Email_Label">
+    <value>_Пошта</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_HelpText">
+    <value>Заголовок проблеми (обов'язкове поле)</value>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Label">
+    <value>_Заголовок</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="BugReport_Text_IssueTitle_Watermark">
+    <value>Заголовок проблеми</value>
+  </data>
+  <data name="BugReport_Text_ReportSuccessfullySent">
+    <value>Report successfully sent. Thank you.</value>
+  </data>
+  <data name="BugReport_Title">
+    <value>Proton Drive Feedback</value>
+  </data>
+  <data name="Dialog_Button_Cancel">
+    <value>Скасувати</value>
+  </data>
+  <data name="Dialog_Button_Ok">
+    <value>OK</value>
+  </data>
+  <data name="Dialog_Button_Save">
+    <value>_Зберегти</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="FileSystemErrorCode_Local_Value_DirectoryNotFound">
+    <value>The folder where this item was going to be downloaded could not be found</value>
+  </data>
+  <data name="FileSystemErrorCode_Remote_Value_DirectoryNotFound">
+    <value>The folder where this item was going to be uploaded could not be found</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Cancelled">
+    <value>Перервано</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CloudFileProviderNotRunning">
+    <value>Переконайтеся, що ваш постачальник хмарного сховища (наприклад, OneDrive) працює та під'єднаний.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_CyclicRedundancyCheck">
+    <value>Помилка даних (перевірка циклічної надлишковості). Перевірте свій носій (USB, диск тощо...) на наявність помилок файлової системи та пошкоджених секторів.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DirectoryNotFound">
+    <value>Не вдалося знайти частину шляху</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_DuplicateName">
+    <value>Ім'я вже використовується</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_FreeSpaceExceeded">
+    <value>Недостатньо вільного місця</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IdentityMismatch">
+    <value>Невідповідність файлу або теки</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_IntegrityFailure">
+    <value>Не вдалося перевірити дані</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_InvalidName">
+    <value>Назва містить символи, які не підтримуються Windows. Приберіть їх, щоби дозволити синхронізацію: \ / : * ? " &lt; &gt; |</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LastWriteTimeTooRecent">
+    <value>Файл пропущено, оскільки його було змінено зовсім недавно. Застосунок автоматично спробує ще раз</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_LocalStorageError">
+    <value>The file could not be transferred because of a local storage error. Please check that your drive is working correctly.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MainPhotoAlreadyInAlbum">
+    <value>Живі фото не можна завантажити.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MetadataMismatch">
+    <value>Невідповідність файлу або теки</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_MissingIndividuallySharedFile">
+    <value>Оригінальний файл, наданий вам у спільний доступ, було видалено, переміщено або перейменовано.
+Вимкніть та знову ввімкніть його синхронізацію, аби відновити його та очистити цю помилку.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_NetworkError">
+    <value>Не вдалося з'єднатися з Proton Drive. Спробуйте перевірити ваше з'єднання з мережею.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ObjectNotFound">
+    <value>Файлу або теки не існує</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Offline">
+    <value>В автономному режимі</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Partial">
+    <value>Цей файл недоступний локально і не може бути вивантажений. Аби вирішити проблему, видаліть його та відновіть копію зі смітника Proton Drive, якщо він доступний.</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_PathNotFound">
+    <value>Файлу або теки не існує</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_RateLimited">
+    <value>Виникла проблема</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyFile">
+    <value>Файл тільки для читання</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ReadOnlyRoot">
+    <value>Файли та теки, доступні тільки для перегляду, не можна змінювати. Аби вирішити цю проблему, вимкніть і ввімкніть синхронізацію в розділі «Поширено для мене».</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_ServerError">
+    <value>Виникла проблема</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_SharingViolation">
+    <value>Файл або тека використовується іншим застосунком</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TimedOut">
+    <value>Час очікування завершився</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_TransferAbortedDueToFileChange">
+    <value>Вивантаження скасовано, оскільки файл змінився під час синхронізації. Застосунок автоматично повторить спробу</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_UnauthorizedAccess">
+    <value>Недостатньо дозволів</value>
+  </data>
+  <data name="FileSystemErrorCode_Value_Unknown">
+    <value>Виникла проблема</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_ContainsInvalidCharacter">
+    <value>Назва містить неприпустимий символ</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Empty">
+    <value>Назва порожня</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithPeriod">
+    <value>Назва закінчується крапкою</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_EndsWithSpace">
+    <value>Назва закінчується пробілом</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Reserved">
+    <value>Назва не підтримується Windows</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_TooLong">
+    <value>Занадто довга назва</value>
+  </data>
+  <data name="FileSystemNameValidationResult_Value_Valid">
+    <value></value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_CheckingForUpdate">
+    <value>Перевірка наявності оновлень...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_DownloadingAnUpdate">
+    <value>Завантаження оновлення...</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpToDate">
+    <value>Актуальна версія</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateCheckFailed">
+    <value>Не вдалося перевірити наявність оновлень</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdateRequired">
+    <value>Необхідне оновлення</value>
+  </data>
+  <data name="Main_About_AppUpdateStatus_Value_UpdatesAvailable">
+    <value>Доступне оновлення</value>
+  </data>
+  <data name="Main_About_Button_UpdateNow">
+    <value>_Оновити зараз</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Button_UpdateNow_HelpText">
+    <value>Доступна нова версія Proton Drive, оновіть її зараз.</value>
+  </data>
+  <data name="Main_About_Label_CurrentVersion">
+    <value>Поточна версія</value>
+  </data>
+  <data name="Main_About_Label_ReleaseDate">
+    <value>Дата випуску</value>
+  </data>
+  <data name="Main_About_Link_PrivacyPolicy">
+    <value>_Політика приватності</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_Link_TermsOfService">
+    <value>_Умови користування</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_About_ReleaseHistory_Label_New">
+    <value>НОВА</value>
+  </data>
+  <data name="Main_About_ReleaseHistory_Title">
+    <value>Що нового</value>
+  </data>
+  <data name="Main_About_Title">
+    <value>Про програму</value>
+  </data>
+  <data name="Main_Account_Account_Button_ManageAccount">
+    <value>Керувати _обліковим записом</value>
+  </data>
+  <data name="Main_Account_Account_HelpText">
+    <value>Керування обліковим записом</value>
+  </data>
+  <data name="Main_Account_Account_Info_UnknownUser">
+    <value>Невідомий користувач</value>
+  </data>
+  <data name="Main_Account_Label_Account">
+    <value>Обліковий запис</value>
+  </data>
+  <data name="Main_Account_Label_Security">
+    <value>Безпека</value>
+  </data>
+  <data name="Main_Account_Password_Button_ChangePassword">
+    <value>_Змінити</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Password_Description">
+    <value>Змінення пароля для вашого облікового запису.</value>
+  </data>
+  <data name="Main_Account_Password_HelpText">
+    <value>Змініть пароль Proton Drive</value>
+  </data>
+  <data name="Main_Account_Password_Title">
+    <value>Пароль</value>
+  </data>
+  <data name="Main_Account_Plan_Button_SeePlans">
+    <value>Переглянути _тарифи</value>
+  </data>
+  <data name="Main_Account_Plan_Description">
+    <value>Збільшити сховище</value>
+  </data>
+  <data name="Main_Account_Plan_HelpText">
+    <value>Переглянути інші тарифи Proton Drive</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Button_Manage">
+    <value>_Керувати</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_SessionManagement_Description">
+    <value>Доки ви не вийдете зі свого облікового запису чи не зміните пароль, ваш сеанс залишатиметься активним. Термін дії сеансів завершується через 60 днів неактивності.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_HelpText">
+    <value>Керуйте своїм сеансом. Після 60 днів бездіяльності сеанс завершиться.</value>
+  </data>
+  <data name="Main_Account_SessionManagement_Title">
+    <value>Керування сеансами</value>
+  </data>
+  <data name="Main_Account_SignOut_Description">
+    <value>Вийти та вимкнути синхронізацію. Ви можете знову ввійти за допомогою того ж облікового запису, аби продовжити синхронізацію.</value>
+  </data>
+  <data name="Main_Account_SignOut_HelpText">
+    <value>Вийти з Proton Drive</value>
+  </data>
+  <data name="Main_Account_SignOut_Title">
+    <value>_Вийти</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Account_Storage_Button_UpgradePlan">
+    <value>Оновити тарифний план</value>
+  </data>
+  <data name="Main_Account_Storage_Info_EnsureMoreStorage">
+    <value>Щоби забезпечити безперебійну синхронізацію, отримайте більше сховища.</value>
+  </data>
+  <data name="Main_Account_Storage_Info_UsedSpaceFormat">
+    <value>Використано місця: {0} з {1}</value>
+  </data>
+  <data name="Main_Account_Storage_Title">
+    <value>Обсяг сховища</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageExceeded">
+    <value>Синхронізацію зупинено. Ваш обліковий запис перевищив обсяг сховища.</value>
+  </data>
+  <data name="Main_Account_Storage_Warning_StorageLimit">
+    <value>Ви майже досягли ліміту сховища.</value>
+  </data>
+  <data name="Main_Account_Title">
+    <value>Обліковий запис</value>
+  </data>
+  <data name="Main_Activity_Button_PauseSync">
+    <value>_Призупинити синхронізацію</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Rename">
+    <value>Перейменувати</value>
+  </data>
+  <data name="Main_Activity_Button_Rename_Tooltip">
+    <value>Перейменувати цей елемент, щоб виправити проблему синхронізації</value>
+  </data>
+  <data name="Main_Activity_Button_ResumeSync">
+    <value>_Відновити синхронізацію</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Activity_Button_Retry">
+    <value>Повторити синхронізацію</value>
+  </data>
+  <data name="Main_Activity_Column_Folder">
+    <value>Тека</value>
+  </data>
+  <data name="Main_Activity_Column_Name">
+    <value>Назва</value>
+  </data>
+  <data name="Main_Activity_Column_Progress_Tooltip_Finalizing">
+    <value>Завершення...</value>
+  </data>
+  <data name="Main_Activity_Column_Size">
+    <value>Розмір</value>
+  </data>
+  <data name="Main_Activity_Column_Status">
+    <value>Стан</value>
+  </data>
+  <data name="Main_Activity_Column_Synced">
+    <value>Синхронізовано</value>
+  </data>
+  <data name="Main_Activity_Column_Type">
+    <value>Тип</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Button_ShowMore">
+    <value>Показати подробиці</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Description">
+    <value>Натисніть, аби дізнатися докладніше про ці проблеми</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_HelpText">
+    <value>Показати всі помилки в новому розділі</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_MultipleItemsFormat">
+    <value>Існують {0} проблеми</value>
+  </data>
+  <data name="Main_Activity_ErrorHeader_Info_SingleItem">
+    <value>Існує 1 проблема</value>
+  </data>
+  <data name="Main_Activity_Errors_Title">
+    <value>Проблеми синхронізації ({0})</value>
+  </data>
+  <data name="Main_Activity_Errors_Title_Tooltip">
+    <value>Повернутися до активності</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Description">
+    <value>Інформація про синхронізацію файлів і тек буде показано тут</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_HelpText">
+    <value>Ваші файли було оновлено</value>
+  </data>
+  <data name="Main_Activity_Intro_Idle_Title">
+    <value>Ваші файли було оновлено</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line1">
+    <value>Цей процес може тривати кілька хвилин.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Description_Line2">
+    <value>Ви можете безпечно згорнути або закрити вікно.</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_HelpText">
+    <value>Ініціалізація синхронізації</value>
+  </data>
+  <data name="Main_Activity_Intro_Initializing_Title">
+    <value>Налаштувати сховище...</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Description">
+    <value>Натисніть «Відновити синхронізацію», щоб увімкнути синхронізацію</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_HelpText">
+    <value>Синхронізацію призупинено</value>
+  </data>
+  <data name="Main_Activity_Intro_Paused_Title">
+    <value>Синхронізацію призупинено</value>
+  </data>
+  <data name="Main_Activity_Rename_CurrentName_Label">
+    <value>Поточна назва:</value>
+  </data>
+  <data name="Main_Activity_Rename_Description">
+    <value>Назва цього елемента містить символи, які не підтримуються у Windows.</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_AlreadyExists">
+    <value>Назва вже використовується</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_ContainsInvalidCharacter">
+    <value>Назва містить неприпустимі символи</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Failed">
+    <value>Виникла проблема</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Error_Required">
+    <value>Назва обовʼязкова</value>
+  </data>
+  <data name="Main_Activity_Rename_NewName_Label">
+    <value>Нова назва:</value>
+  </data>
+  <data name="Main_Activity_Rename_Status_Value_Renaming">
+    <value>Перейменування...</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion">
+    <value>Вилучіть наступне, щоби продовжити синхронізацію:</value>
+  </data>
+  <data name="Main_Activity_Rename_Suggestion_CharacterList">
+    <value>/ : * ? &gt; &lt; " |</value>
+  </data>
+  <data name="Main_Activity_Rename_Title">
+    <value>Перейменування елемента</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUp">
+    <value>Налаштування...</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SettingUpFormat">
+    <value>Налаштування... ({0} елементів підготовлено до синхронізації)</value>
+  </data>
+  <data name="Main_Activity_Status_Value_SyncPausedUntilFormat">
+    <value>(до {0})</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_AMomentAgo">
+    <value>a moment ago</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_DaysAgoFormat">
+    <value>{0} днів тому</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_HoursAgoFormat">
+    <value>{0} годин тому</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_MinutesAgoFormat">
+    <value>{0} хвилин тому</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneDayAgo">
+    <value>день тому</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneHourAgo">
+    <value>годину тому</value>
+  </data>
+  <data name="Main_Activity_TimeElapsed_OneMinuteAgo">
+    <value>хвилину тому</value>
+  </data>
+  <data name="Main_Activity_Title">
+    <value>Діяльність</value>
+  </data>
+  <data name="Main_MyComputer_Description">
+    <value>Folders synced from your computers will appear in the "Computers" section across your Drive apps.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Button_Rename">
+    <value>_Перейменувати</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Device_HelpText">
+    <value>Перейменувати пристрій</value>
+  </data>
+  <data name="Main_MyComputer_Device_Label">
+    <value>Цей пристрій</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Cancel_HelpText">
+    <value>Скасувати перейменування пристрою</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Button_Save_HelpText">
+    <value>Зберегти назву пристрою</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_Error_Tooltip">
+    <value>Неприпустима назва пристрою: нова назва не може бути порожньою і не повинна перевищувати 255 символів.</value>
+  </data>
+  <data name="Main_MyComputer_Device_Rename_HelpText">
+    <value>Перейменувати пристрій</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Button_AddMore">
+    <value>_Додати більше тек</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Description">
+    <value>Додавання теки створить резервну копію всіх її даних у Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Info_Saving">
+    <value>Збереження тек...</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_Title">
+    <value>Додати теки</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludedByAnAlreadySyncedFolderFormat">
+    <value>{0} тек(-а) не може бути синхронізовано, оскільки вони вже включені в теку, яка синхронізована з Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_FolderIncludesAnAlreadySyncedFolderFormat">
+    <value>{0} тек(-а) не може бути синхронізовано, оскільки вони містять підтеки, які вже синхронізовані з Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFileSystemAccessFailedFormat">
+    <value>{0} тека(-и) не змогли отримати доступ</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalFolderDoesNotExistFormat">
+    <value>{0} тека(-и) не знайдено або не можна відкрити</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_LocalVolumeNotSupportedFormat">
+    <value>{0} тек(-а) не може бути синхронізовано, оскільки вони знаходяться на непідтримуваному диску</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NetworkFolderNotSupportedFormat">
+    <value>{0} тека(-и) не можуть бути синхронізовані, оскільки мережеві теки не підтримуються</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_NonSyncableFolderFormat">
+    <value>{0} тека(-и) не можуть бути синхронізовані, оскільки вони є системними</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddFoldersFormat">
+    <value>Неможливо додати {0} теку(-и)</value>
+  </data>
+  <data name="Main_MyComputer_Folders_AddFolders_ValidationError_UnableToAddOneFolder">
+    <value>Не вдалося додати 1 теку</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add">
+    <value>_Додати теки</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddFirst">
+    <value>Додайте свої перші теки для синхронізації</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Button_Add_HelpText_AddNext">
+    <value>Додати нову теку для синхронізації</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_Name">
+    <value>Назва</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization">
+    <value>Оптимізувати сховище</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Column_StorageOptimization_Info_Tooltip">
+    <value>Оптимізуйте сховище, ввімкнувши синхронізацію на вимогу.
+Файли займають локальне місце лише тоді, коли ви їх відкриваєте, або вибираєте завжди зберігати їх на цьому пристрої. Ви можете вимкнути оптимізацію сховища у будь-який час.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Description">
+    <value>Додайте теку, аби безпечно синхронізувати файли до хмари</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Intro_Title">
+    <value>Безпечно синхронізуйте ваші файли</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Label">
+    <value>Теки, що синхронізуються з цього пристрою</value>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_OpenFolder">
+    <value>_Відкрити теку</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_Menu_Item_RemoveFolder">
+    <value>_Вилучити теку</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Button_Confirm">
+    <value>Вилучити теку</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_1">
+    <value>Будь-які файли, додані до теки «{0}», більше не синхронізуватимуться, і її буде переміщено до смітника в Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Classic_Message_2">
+    <value>Наявні файли залишаться на вашому комп'ютері.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_1">
+    <value>Деякі файли в теці «{0}» можуть бути збережені лише в хмарі. Вилучення цієї теки зупинить синхронізацію та перемістить її до смітника в Proton Drive.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_2">
+    <value>Щоби зберегти локальну копію всіх файлів на вашому комп'ютері, спершу вимкніть оптимізацію сховища для цієї теки. Якщо оптимізацію сховища вже вимкнено, увімкніть і вимкніть її знову. Дочекайтеся завершення завантаження (стан можна перевірити в Провіднику файлів), а потім вилучіть теку із синхронізації в розділі «Мій комп'ютер».</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_1">
+    <value>Файли, які вже було завантажено, залишаться на вашому пристрої.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_OnDemand_Message_Item_2">
+    <value>Файли, збережені лише в хмарі, будуть вилучені з вашого пристрою.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_RemoveConfirmation_Title">
+    <value>Вилучити теку?</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_1">
+    <value>Файли в теці «{0}» тепер завжди будуть доступні на вашому пристрої. Завантаження всіх файлів може зайняти кілька хвилин (стан завантаження можна перевірити у Файловому провіднику).</value>
+    <comment>Placeholder {0}: folder name</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Message_2">
+    <value>Ви все ще можете вручну звільнити місце для окремих файлів у їхніх налаштуваннях.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationTurnedOffNotification_Title">
+    <value>Усі файли завжди доступні на цьому пристрої</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_1">
+    <value>Тека «{0}» не може використовувати синхронізацію на вимогу для оптимізації сховища, оскільки {1}.</value>
+    <comment>Placeholder {0}: folder name. Placeholder {1}: the reason text, one of resources with "StorageOptimizationErrorCode_Value_..." key.</comment>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Message_2">
+    <value>Ваші файли все одно синхронізуватимуться з Proton Drive та залишаться доступними як на вашому комп'ютері, так і в хмарі.</value>
+  </data>
+  <data name="Main_MyComputer_Folders_StorageOptimizationUnavailableNotification_Title">
+    <value>Оптимізація сховища недоступна</value>
+  </data>
+  <data name="Main_MyComputer_Link_LearnMore">
+    <value>Докладніше</value>
+  </data>
+  <data name="Main_MyComputer_OnboardingPage_Button_Close_HelpText">
+    <value>Закрити презентацію функцій використання комп'ютера</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Button_Next">
+    <value>_Далі</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Description">
+    <value>Увімкніть синхронізацію на вимогу, щоб зберегти місце на жорсткому диску. Файли займають локальне сховище лише тоді, коли ви відкриваєте їх або позначите їх як «Завжди зберігати на цьому пристрої».</value>
+    <comment>"Always keep on this device" is the exact text displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page1_Title">
+    <value>Оптимізація сховища</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Button_GetStarted">
+    <value>Розпочати _роботу</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1">
+    <value>Клацніть правою кнопкою на будь-якому файлі або теці, яка синхронізована з Proton Drive</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2">
+    <value>Виберіть «Завжди зберігати на цьому пристрої», щоб зберегти його поза мережею, або «Звільнити місце», щоб зберігати його лише в хмарі.</value>
+    <comment>"Always keep on this device" and "Free up space" are the exact texts displayed in Windows' context menu when right-clicking a file within an online storage provider like OneDrive.</comment>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_MyComputer_Onboarding_Page2_Title">
+    <value>Керування сховищем</value>
+  </data>
+  <data name="Main_MyComputer_Title">
+    <value>Мій комп'ютер</value>
+  </data>
+  <data name="Main_Photos_Folders_Error_ImportFailed">
+    <value>Не вдалося імпортувати. Спробуйте вилучити теку та імпортувати її знову. Якщо проблема залишиться, зверніться до підтримки.</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportedItemsFormat">
+    <value>Імпортовано {0} з {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_ImportingItemsFormat">
+    <value>Імпортування... {0} з {1}</value>
+  </data>
+  <data name="Main_Photos_Folders_Items_Label">
+    <value>елемент(-и)</value>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_ManageAlbums">
+    <value>Manage _albums</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_OpenFolder">
+    <value>_Відкрити теку</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Remove">
+    <value>_Видалити</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_Menu_Item_Retry">
+    <value>_Повторити</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Photos_Folders_NoItemsFound_Label">
+    <value>Фото / відео не знайдено</value>
+  </data>
+  <data name="Main_Photos_Folders_WaitingToImport">
+    <value>Очікування імпортування...</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Description">
+    <value>Покрокова інструкція, як експортувати ваші фотографії із застосунку Google</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Export_Title">
+    <value>1. Експортування ваших фото із застосунку Google</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Description">
+    <value>Це має бути розпакована тека, що містить ваші експортовані фото та відео.</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Import_Title">
+    <value>2. Імпортування теки Google Фото</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_SelectFolder_Button">
+    <value>Вибрати теку</value>
+  </data>
+  <data name="Main_Photos_ImportFromGoogle_Title">
+    <value>Імпортування з Google Фото</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Description">
+    <value>Імпортування локальної теки з вашого комп'ютера</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFolder_Title">
+    <value>Імпортування теки</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Description">
+    <value>Імпортування фотографій Google з Google Takeout</value>
+  </data>
+  <data name="Main_Photos_Import_ImportFromGoogle_Title">
+    <value>Імпортування з Google Фото</value>
+  </data>
+  <data name="Main_Photos_Import_Link_HowImportWorks">
+    <value>Як працює імпорт фотографій?</value>
+  </data>
+  <data name="Main_Photos_Import_Title">
+    <value>Імпортування фотографій</value>
+  </data>
+  <data name="Main_Photos_Info_Duplicates">
+    <value>Ми імпортуємо тільки нові дані; дублікати автоматично пропускаються.</value>
+  </data>
+  <data name="Main_Photos_Title">
+    <value>Фотографії</value>
+  </data>
+  <data name="Main_Photos_Warning_UploadUnavailable">
+    <value>Завантаження фотографій тимчасово недоступне</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Button_Change">
+    <value>_Змінити</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_HelpText">
+    <value>Змініть кореневу теку Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_AccountRootFolder_Title">
+    <value>Розташування</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_HelpText">
+    <value>Get early access and help us test new versions of Proton Drive.</value>
+  </data>
+  <data name="Main_Settings_EarlyAccess_Title">
+    <value>Бета доступ</value>
+  </data>
+  <data name="Main_Settings_Label_AccountRootFolder">
+    <value>Ваша тека Proton Drive:</value>
+  </data>
+  <data name="Main_Settings_Label_General">
+    <value>Загальні</value>
+  </data>
+  <data name="Main_Settings_Language_Button_Restart">
+    <value>Перезапустити зараз</value>
+  </data>
+  <data name="Main_Settings_Language_Message_PleaseRestart">
+    <value>Перезапустіть застосунок, щоби застосувати зміну мови.</value>
+  </data>
+  <data name="Main_Settings_Language_Title">
+    <value>Мова</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_HelpText">
+    <value>Запускати Proton Drive при запуску Windows</value>
+  </data>
+  <data name="Main_Settings_OpenOnStartup_Title">
+    <value>Відкривати при запуску системи</value>
+  </data>
+  <data name="Main_Settings_Title">
+    <value>Налаштування</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Name">
+    <value>Назва</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions">
+    <value>Дозволи</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Tooltip">
+    <value>Дозволи, надані вам власником</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Editor">
+    <value>Редактор</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Permissions_Value_Viewer">
+    <value>Переглядач</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedBy">
+    <value>Поширено користувачем</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_SharedOn">
+    <value>Поширено</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync">
+    <value>Синхронізувати</value>
+  </data>
+  <data name="Main_SharedWithMe_Column_Sync_Info_Tooltip">
+    <value>Увімкнути, щоб зробити поділений файл або теку доступними з вашого комп'ютера.
+Вміст файлів буде завантажено лише за запитом.</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad">
+    <value>Не вдалося завантажити дані</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Plural">
+    <value>Не вдалося завантажити {0} елементи</value>
+  </data>
+  <data name="Main_SharedWithMe_Error_FailedToLoad_Items_Singular">
+    <value>Не вдалося завантажити {0} елемент</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Description">
+    <value>Тут з'являться файли та теки, до яких надано спільний доступ</value>
+  </data>
+  <data name="Main_SharedWithMe_Intro_Title">
+    <value>Поки що нічим не поділилися</value>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_OpenFolder">
+    <value>_Відкрити теку</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Menu_Item_RemoveMe">
+    <value>_Вилучити мене</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_Close_HelpText">
+    <value>Закрити ознайомлення «Поширено для мене»</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Button_GetStarted">
+    <value>Розпочати _роботу</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Description">
+    <value>Легко синхронізуйте файли й теки, якими поділилися з вами, на свій комп'ютер.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1">
+    <value>Виберіть файли або теки для синхронізації.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_1_Label">
+    <value>1.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2">
+    <value>Отримайте доступ до поширених файлів у вашій теці Proton Drive.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_2_Label">
+    <value>2.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3">
+    <value>Змініть їх, вивантажте нові та отримайте доступ до них поза мережею.</value>
+  </data>
+  <data name="Main_SharedWithMe_Onboarding_Point_3_Label">
+    <value>3.</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Plural">
+    <value>{0} з {1} елементів синхронізовано</value>
+  </data>
+  <data name="Main_SharedWithMe_Status_ItemsSynced_Singular">
+    <value>{0} з {1} елемент синхронізовано</value>
+  </data>
+  <data name="Main_SharedWithMe_Title">
+    <value>Поширено для мене</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Advice">
+    <value>Щоби додати нові елементи, припиніть синхронізувати деякі зі старих.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_MaxNumberOfSyncedItems_Limit">
+    <value>Ви можете синхронізувати лише {0} елементів одночасно.</value>
+  </data>
+  <data name="Main_SharedWithMe_Warning_SharingUnavailable">
+    <value>Поширення тимчасово недоступне</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About">
+    <value>Про програму</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_About_HelpText">
+    <value>Елемент меню: Про програму</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account">
+    <value>Обліковий запис</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Account_HelpText">
+    <value>Елемент меню: Обліковий запис</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity">
+    <value>Діяльність</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Activity_HelpText">
+    <value>Елемент меню: Активність</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help">
+    <value>Допомога</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Help_HelpText">
+    <value>Елемент меню: Довідка</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer">
+    <value>Мій комп'ютер</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_MyComputer_HelpText">
+    <value>Елемент меню: Мій комп'ютер</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos">
+    <value>Фото</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_PhotosImport">
+    <value>Імпортування фотографій</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Photos_HelpText">
+    <value>Елемент меню: Фото</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings">
+    <value>Налаштування</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_Settings_HelpText">
+    <value>Елемент меню: Налаштування</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe">
+    <value>Поширено для мене</value>
+  </data>
+  <data name="Main_Sidebar_NavigationMenu_Item_SharedWithMe_HelpText">
+    <value>Елемент меню: Поширено для мене</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceededQuota_Description">
+    <value>Синхронізацію зупинено: ваш обліковий запис перевищив обсяг сховища</value>
+  </data>
+  <data name="Main_Sidebar_Notification_ExceedingQuota_Description">
+    <value>Ви майже досягли ліміту сховища</value>
+  </data>
+  <data name="Main_Sidebar_Notification_GetStarted_Description">
+    <value>Початок роботи</value>
+  </data>
+  <data name="Main_Sidebar_Notification_NewVersion_Description">
+    <value>Доступна нова версія Proton Drive!</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SharingUnavailable_Description">
+    <value>Поширення тимчасово недоступне</value>
+  </data>
+  <data name="Main_Sidebar_Notification_SyncFoldersFailure_Description">
+    <value>Не вдалося синхронізувати теку</value>
+  </data>
+  <data name="Main_Sidebar_Notification_UpdateRequired_Description">
+    <value>Щоби продовжити використовувати Proton Drive, вам потрібно оновитися до останньої версії</value>
+  </data>
+  <data name="Main_Sidebar_Offer_Button_GetDeal">
+    <value>Отримати _пропозицію</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Main_Sidebar_Storage_Button_GetMoreStorage">
+    <value>Збільшити сховище</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_StorageNotAvailable">
+    <value>Інформація про місце недоступна</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Info_UsedSpaceFormat">
+    <value>Використано {0} з {1}</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Title">
+    <value>Сховище</value>
+  </data>
+  <data name="Main_Sidebar_Storage_Tooltip">
+    <value>Керування сховищем</value>
+  </data>
+  <data name="Main_Window_Title">
+    <value>Proton Drive</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>Ця тека містить підтеку, синхронізовану на вимогу. Налаштуйте нову теку синхронізації.</value>
+  </data>
+  <data name="MappingErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>Цю теку вже синхронізовано на вимогу. Налаштуйте нову теку синхронізації.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveAccessFailed">
+    <value>Не вдалося з'єднатися з Proton Drive. Спробуйте перевірити ваше з'єднання з мережею.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDiverged">
+    <value>Теку Proton Drive було переміщено. Налаштуйте нову теку синхронізації.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveFolderDoesNotExist">
+    <value>Не вдається отримати доступ до ваших файлів Proton Drive, можливо, через видалення теки пристрою. Налаштуйте нову теку синхронізації.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveHostDeviceDiverged">
+    <value>Не вдається отримати доступ до ваших файлів Proton Drive, можливо, через видалення пристрою. Налаштуйте нову теку синхронізації.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveShareDiverged">
+    <value>Не вдається отримати доступ до ваших файлів Proton Drive, можливо, через скидання пароля. Налаштуйте нову теку синхронізації.</value>
+  </data>
+  <data name="MappingErrorCode_Value_DriveVolumeDiverged">
+    <value>Не вдається отримати доступ до ваших файлів Proton Drive, можливо, через скидання пароля. Налаштуйте нову теку синхронізації.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientDeviceQuota">
+    <value>Досягнуто максимальну кількість синхронізованих комп'ютерів. Видаліть непотрібні з Proton Drive у вебінтерфейсі.</value>
+  </data>
+  <data name="MappingErrorCode_Value_InsufficientLocalFreeSpace">
+    <value>Звільніть місце або приберіть вибір</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalAndRemoteFoldersNotEmpty">
+    <value>Налаштування теки синхронізації потребує порожньої теки Windows або вебтеки Proton Drive. Очистьте одну та спробуйте ще раз.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFileSystemAccessFailed">
+    <value>Не вдається отримати доступ або створити локальну теку синхронізації. Ми продовжимо спроби.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDiverged">
+    <value>Теку синхронізації замінено на нову теку у шляху. Відновіть попередню теку синхронізації або налаштуйте нову.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderDoesNotExist">
+    <value>Теку синхронізації не знайдено. Можливо, її було видалено, перейменовано або переміщено. Відновіть її або налаштуйте нову.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludedByAnAlreadySyncedFolder">
+    <value>Вибрана тека вже міститься в іншій синхронізованій теці</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderIncludesAnAlreadySyncedFolder">
+    <value>Вибрана тека містить вже синхронізовану теку</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNonSyncable">
+    <value>Локальна тека не підходить для синхронізації. Налаштуйте нову для синхронізації.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalFolderNotEmpty">
+    <value>Локальна тека має бути порожньою перед налаштуванням синхронізації</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeDiverged">
+    <value>Місцевий серійний номер змінився. Налаштуйте нову теку для синхронізації.</value>
+  </data>
+  <data name="MappingErrorCode_Value_LocalVolumeNotSupported">
+    <value>Непідтримуваний локальний тип диску. Спробуйте налаштувати теку для синхронізації на іншому локальному диску.</value>
+  </data>
+  <data name="MappingErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootMissingSyncRootFlag">
+    <value>Тека синхронізації недійсна. Налаштуйте нову для синхронізації.</value>
+  </data>
+  <data name="MappingErrorCode_Value_OnDemandSyncRootNotRegistered">
+    <value>Реєстрацію теки для синхронізації було неочікувано скасовано. Налаштуйте нову для синхронізації.</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotoImportFailed">
+    <value>Не вдалося імпортувати фото</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosDisabled">
+    <value>Proton Фото недоступні</value>
+  </data>
+  <data name="MappingErrorCode_Value_PhotosNotReady">
+    <value>Функція «Фото» не готова</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemDoesNotExist">
+    <value>Неможливо отримати доступ до спільного файлу або теки Proton Drive. Перевірте, чи він все ще доступний для вас.</value>
+  </data>
+  <data name="MappingErrorCode_Value_RemoteSharedWithMeItemPermissionsDiverged">
+    <value>Дозволи спільного файлу або теки Proton Drive змінилися. Вимкніть і знову ввімкніть синхронізацію, щоб вирішити проблему.</value>
+  </data>
+  <data name="MappingErrorCode_Value_SharingDisabled">
+    <value>Обмін файлами тимчасово недоступний</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Failed">
+    <value>Не вдалося налаштувати теки для синхронізації</value>
+  </data>
+  <data name="MappingSetupStatus_Value_None">
+    <value></value>
+  </data>
+  <data name="MappingSetupStatus_Value_PartiallySucceeded">
+    <value>Не вдалося налаштувати деякі теки для синхронізації</value>
+  </data>
+  <data name="MappingSetupStatus_Value_SettingUp">
+    <value>Налаштування тек для синхронізації...</value>
+  </data>
+  <data name="MappingSetupStatus_Value_Succeeded">
+    <value>OK</value>
+  </data>
+  <data name="Notification_Storage_Button_AddStorage">
+    <value>Add Storage</value>
+  </data>
+  <data name="Notification_Storage_HeaderText">
+    <value>Out of storage space</value>
+  </data>
+  <data name="Notification_Storage_Message">
+    <value>Upgrade to get more storage space and upload your files.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder">
+    <value>_Змінити</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Button_ChangeFolder_HelpText">
+    <value>Змініть кореневу теку Proton Drive.</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Error_InvalidSyncFolder">
+    <value>Недійсна тека для сигхронізації</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Description">
+    <value>Доступ до моїх файлів та інших синхронізованих пристроїв</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Label_Location">
+    <value>Розташування</value>
+  </data>
+  <data name="Onboarding_AccountRootFolderSelection_Title">
+    <value>Ваша тека Proton Drive</value>
+  </data>
+  <data name="Onboarding_Button_Continue">
+    <value>_Продовжити</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_Button_FinishSetup">
+    <value>_Завершити налаштування</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders">
+    <value>_Додати більше тек</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Button_AddMoreFolders_HelpText">
+    <value>Додати ще одну теку для синхронізації</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Label_Description">
+    <value>Вибрані теки будуть синхронізовані з Proton Drive. Файли будуть збережені в резервній копії та доступні на інших ваших пристроях.</value>
+  </data>
+  <data name="Onboarding_SyncFolderSelection_Title">
+    <value>Резервне копіювання тек</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDrivePlus">
+    <value>Get Drive _Plus</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetDuo">
+    <value>Get _Duo</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_GetUnlimited">
+    <value>Get _Unlimited</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_NotNow">
+    <value>_Не зараз</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Button_Upgrade">
+    <value>_Покращити</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Mail">
+    <value>Mail: Custom and secure email</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Month">
+    <value>місяць</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_MostPopular">
+    <value>Найпопулярніший</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_NumberOfUsers">
+    <value>До {0} користувачів</value>
+    <comment>Only for number greater than 1.</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PasswordManager">
+    <value>Pass: Encrypted password manager</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_PremiumValuesIncluded">
+    <value>Усі переваги преміум</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Recommended">
+    <value>Рекомендовано</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_RecoverVersions">
+    <value>Відновити попередні версії файлів</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Storage">
+    <value>сховище</value>
+    <comment>Example: 500 GB storage</comment>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Label_Vpn">
+    <value>VPN: Ultra fast and private</value>
+  </data>
+  <data name="Onboarding_UpgradeStorage_Title">
+    <value>Збільшити сховище</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_AlbumDoesNotExist">
+    <value>Не вдалося імпортувати. Альбому не існує.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_FolderDoesNotExist">
+    <value>Import failed. The folder does not exist.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfAlbumsReached">
+    <value>Не вдалося імпортувати. Досягнуто максимальної кількості альбомів.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_MaximumNumberOfPhotosPerAlbumReached">
+    <value>Не вдалося імпортувати. Досягнуто максимальної кількості фотографій в альбомі.</value>
+  </data>
+  <data name="PhotoImportErrorCode_Value_Unknown">
+    <value>Не вдалося імпортувати. Спробуйте ще раз.</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Failed">
+    <value>Не вдалося імпортувати</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Importing">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Interrupted">
+    <value>Імпортування перерване</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_NotStarted">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_SetupFailed">
+    <value></value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_Succeeded">
+    <value>Імпортування успішне</value>
+  </data>
+  <data name="PhotoImportFolderStatus_Value_ValidationFailed">
+    <value></value>
+  </data>
+  <data name="ReleaseNoteType_Value_Feature">
+    <value>Нові функції</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Fix">
+    <value>Виправлення помилок</value>
+  </data>
+  <data name="ReleaseNoteType_Value_Improvement">
+    <value>Покращення</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Fido2">
+    <value>Ключ безпеки</value>
+  </data>
+  <data name="SecondFactorInputPage_Value_NotSupported">
+    <value></value>
+  </data>
+  <data name="SecondFactorInputPage_Value_Totp">
+    <value>Застосунок автентифікації</value>
+  </data>
+  <data name="SessionStatus_Value_Ending">
+    <value>Триває вихід...</value>
+  </data>
+  <data name="SessionStatus_Value_Failed">
+    <value>Не вдалося ввійти. Спробуйте перевірити ваше з'єднання з мережею.</value>
+  </data>
+  <data name="SessionStatus_Value_NotStarted">
+    <value>Ви вийшли з облікового запису</value>
+  </data>
+  <data name="SessionStatus_Value_SigningIn">
+    <value>Виконується вхід...</value>
+  </data>
+  <data name="SessionStatus_Value_Started">
+    <value>Виконано вхід</value>
+  </data>
+  <data name="SessionStatus_Value_Starting">
+    <value>Виконується вхід...</value>
+  </data>
+  <data name="SignIn_Button_Authenticate">
+    <value>_Автентифікуватися</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_Back">
+    <value>_Назад</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignIn">
+    <value>_Увійти</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Button_SignInAsAnotherUser">
+    <value>Або ввійдіть як інший користувач</value>
+  </data>
+  <data name="SignIn_Button_Unlock">
+    <value>_Розблокувати</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_CreateAccount">
+    <value>_Зареєструватися</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_ForgotPassword">
+    <value>_Забули пароль?</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Link_LearnMore">
+    <value>Докладніше</value>
+  </data>
+  <data name="SignIn_Message_SigningIn">
+    <value>Вхід до вашого облікового запису</value>
+  </data>
+  <data name="SignIn_Text_2FACode">
+    <value>Введіть код з вашого додатку автентифікатора</value>
+  </data>
+  <data name="SignIn_Text_No2FAMethodFound">
+    <value>Не знайдено способів двоетапної перевірки.</value>
+  </data>
+  <data name="SignIn_Text_Password">
+    <value>_Пароль</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_SecondPassword">
+    <value>Додатковий пароль</value>
+  </data>
+  <data name="SignIn_Text_SecurityKey">
+    <value>Вставте ключ безпеки, пов’язаний з вашим обліковим записом Proton.</value>
+  </data>
+  <data name="SignIn_Text_SecurityKeyNotSupported">
+    <value>Ваша система не підтримує ключ безпеки</value>
+  </data>
+  <data name="SignIn_Text_Username">
+    <value>Пошта або _ім'я користувача</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SignIn_Text_Username_HelpText">
+    <value>Ім’я користувача</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_PasswordRequired">
+    <value>Пароль обов'язковий</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SessionExpired">
+    <value>Термін дії вашого сеансу завершився. Увійдіть, аби продовжити.</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_SomethingWentWrong">
+    <value>Виникла проблема</value>
+  </data>
+  <data name="SignIn_Text_ValidationError_UsernameRequired">
+    <value>Ім'я користувача обов'язкове</value>
+  </data>
+  <data name="SignIn_Title_2FA">
+    <value>Двоетапна перевірка</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingDescendantOnDemandSyncRootExists">
+    <value>містить підтеку, синхронізовану на вимогу {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_ConflictingOnDemandSyncRootExists">
+    <value>вона вже синхронізована на вимогу {0}</value>
+    <comment>Placeholder {0}: An application name</comment>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_NetworkVolumeNotSupported">
+    <value>Мережеві диски не підтримуються</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_None">
+    <value></value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_RemovableVolumeNotSupported">
+    <value>Знімні диски не підтримуються</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_Unknown">
+    <value>Не вдалося ввімкнути синхронізацію за запитом</value>
+  </data>
+  <data name="StorageOptimizationErrorCode_Value_VolumeNotSupported">
+    <value>тип локального диска не підтримується</value>
+  </data>
+  <data name="SyncAgentStatus_Value_AccountError">
+    <value>Не вдалося налаштувати обліковий запис</value>
+  </data>
+  <data name="SyncAgentStatus_Value_FinishingUp">
+    <value>Завершення...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Offline">
+    <value>В автономному режимі</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SettingUp">
+    <value>Налаштування...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignInError">
+    <value>Не вдалося ввійти</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SignedOut">
+    <value>Ви вийшли з облікового запису</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningIn">
+    <value>Виконується вхід...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SigningOut">
+    <value>Триває вихід...</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SyncFolderError">
+    <value>Не вдалося налаштувати синхронізацію тек</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationError">
+    <value>Помилка синхронізації</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationPaused">
+    <value>Синхронізацію призупинено</value>
+  </data>
+  <data name="SyncAgentStatus_Value_SynchronizationWarning">
+    <value>Не вдалося синхронізувати деякі елементи</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronized">
+    <value>Синхронізовано</value>
+  </data>
+  <data name="SyncAgentStatus_Value_Synchronizing">
+    <value>Синхронізація...</value>
+  </data>
+  <data name="SyncFolderValidationResult_Title_InsufficientLocalFreeSpace">
+    <value>Недостатньо вільного місця на цьому пристрої</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludedByAnAlreadySyncedFolder">
+    <value>Тека входить до вже синхронізованої теки</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_FolderIncludesAnAlreadySyncedFolder">
+    <value>Тека містить уже синхронізовану теку</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_InsufficientLocalFreeSpace">
+    <value>Звільніть місце або зніміть галочку.</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFileSystemAccessFailed">
+    <value>Не вдається отримати доступ до теки</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderDoesNotExist">
+    <value>Теку не знайдено</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalFolderNotEmpty">
+    <value>Тека має бути порожньою перед налаштуванням синхронізації</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_LocalVolumeNotSupported">
+    <value>Непідтримуваний тип диска</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NetworkFolderNotSupported">
+    <value>Синхронізація тек із мережевих дисків не підтримується</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_NonSyncableFolder">
+    <value>Тека не підлягає синхронізації</value>
+  </data>
+  <data name="SyncFolderValidationResult_Value_Succeeded">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_DetectingUpdates">
+    <value>Отримання оновлень...</value>
+  </data>
+  <data name="SyncStatus_Value_Failed">
+    <value>Помилка</value>
+  </data>
+  <data name="SyncStatus_Value_Idle">
+    <value>Синхронізовано</value>
+  </data>
+  <data name="SyncStatus_Value_Initializing">
+    <value>Налаштування...</value>
+  </data>
+  <data name="SyncStatus_Value_Offline">
+    <value>В автономному режимі</value>
+  </data>
+  <data name="SyncStatus_Value_Paused">
+    <value>Призупинено</value>
+  </data>
+  <data name="SyncStatus_Value_Synchronizing">
+    <value>Синхронізація...</value>
+  </data>
+  <data name="SyncStatus_Value_Terminated">
+    <value></value>
+  </data>
+  <data name="SyncStatus_Value_Terminating">
+    <value>Завершення...</value>
+  </data>
+  <data name="SystemTray_Menu_Item_Exit">
+    <value>_Вийти</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenInBrowser">
+    <value>Відкрити в _браузері</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenLocalFolder">
+    <value>Відкрити локальну _теку</value>
+  </data>
+  <data name="SystemTray_Menu_Item_OpenProtonDrive">
+    <value>_Відкрити Proton Drive</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSync">
+    <value>_Призупинити синхронізацію</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor1Hour">
+    <value>Pause for 1 hour</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor4Hours">
+    <value>Pause for 4 hours</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncFor8Hours">
+    <value>Pause for 8 hours</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncIndefinitely">
+    <value>Pause indefinitely</value>
+  </data>
+  <data name="SystemTray_Menu_Item_PauseSyncUntilTomorrow">
+    <value>Pause until tomorrow (8AM)</value>
+  </data>
+  <data name="SystemTray_Menu_Item_ResumeSync">
+    <value>_Відновити синхронізацію</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="SystemTray_Menu_Item_SignIn">
+    <value>_Увійти</value>
+    <comment>The underscore (_) denotes an access key, which enhances the app's accessibility by allowing users to press the letter following the underscore instead of using a mouse to click the button.</comment>
+  </data>
+  <data name="ToggleSwitch_Off">
+    <value>Вимк</value>
+  </data>
+  <data name="ToggleSwitch_On">
+    <value>Увімк</value>
+  </data>
+</root>

@@ -39,4 +39,9 @@ internal sealed class FallbackFileRevisionProviderDecorator<TId, TAltId> : IFile
             return result;
         }
     }
+
+    public Task<ISourceRevision> GetMetadataOnlyRevisionAsync(TId id, long version, CancellationToken cancellationToken)
+    {
+        return _decoratedInstance.GetMetadataOnlyRevisionAsync(id, version, cancellationToken);
+    }
 }

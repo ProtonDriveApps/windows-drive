@@ -31,9 +31,10 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
 
     private readonly SingleAction _endSession;
     private readonly SemaphoreSlim _refreshSemaphore = new(1, 1);
+    private readonly Lock _implicitEndSessionLock = new();
 
     private SecureString? _password;
-    private volatile Session? _tempSession;
+    private volatile Session? _unauthenticatedSession;
     private volatile Session? _session;
     private volatile Lazy<Task> _refreshTask = new(() => Task.CompletedTask);
     private ApiResponse? _sessionEndedImplicitlyResponse;
@@ -76,11 +77,11 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
     {
         get
         {
-            return _session ?? _tempSession;
+            return _session ?? _unauthenticatedSession;
         }
         set
         {
-            _tempSession = null;
+            _unauthenticatedSession = null;
             _session = value;
             _sessionRepository.Set(value);
         }
@@ -94,33 +95,48 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
             return FinishStartSession(null);
         }
 
-        _tempSession = session;
+        _unauthenticatedSession = session;
         _sessionEndedImplicitlyResponse = null;
 
         // API call might refresh session
         var scopesResponse = await _authenticationApiClient.GetScopesAsync(cancellationToken).Safe().ConfigureAwait(false);
         if (scopesResponse.Succeeded)
         {
-            _tempSession = _tempSession with { Scopes = scopesResponse.Scopes };
+            _unauthenticatedSession = _unauthenticatedSession with { Scopes = scopesResponse.Scopes };
         }
         else if (scopesResponse.Code == ResponseCode.Unauthorized)
         {
-            _tempSession = null;
+            _unauthenticatedSession = null;
         }
 
         return FinishStartSession(scopesResponse);
     }
 
-    public async Task<StartSessionResult> StartSessionAsync(NetworkCredential credential, CancellationToken cancellationToken)
+    public async Task<StartSessionResult> AuthenticateWithPasswordAsync(NetworkCredential credential, CancellationToken cancellationToken)
     {
         _sessionEndedImplicitlyResponse = null;
         await EndSessionAsync().ConfigureAwait(false);
+
+        var unauthenticatedSessionResponse = await _authenticationApiClient.CreateUnauthenticatedSessionAsync(cancellationToken).Safe().ConfigureAwait(false);
+        if (!unauthenticatedSessionResponse.Succeeded)
+        {
+            return StartSessionResult.Failure(StartSessionResultCode.SignInRequired, unauthenticatedSessionResponse);
+        }
+
+        // The unauthenticated session is used by the authorization handler for signing in
+        _unauthenticatedSession = new Session
+        {
+            Id = unauthenticatedSessionResponse.SessionId,
+            AccessToken = unauthenticatedSessionResponse.AccessToken,
+            RefreshToken = unauthenticatedSessionResponse.RefreshToken,
+            Scopes = unauthenticatedSessionResponse.Scopes,
+        };
 
         var authRequestData = new AuthInfoRequest { Username = credential.UserName };
         var authInfo = await _authenticationApiClient.GetAuthInfoAsync(authRequestData, cancellationToken).Safe().ConfigureAwait(false);
         if (!authInfo.Succeeded)
         {
-            return StartSessionResult.Failure(StartSessionResultCode.SignInRequired, authInfo);
+            return AbandonUnauthenticatedSession(authInfo);
         }
 
         var srpClient = _srpClientFactory.Create(credential, authInfo);
@@ -138,17 +154,17 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
             var response = await _authenticationApiClient.LoginAsync(authData, cancellationToken).Safe().ConfigureAwait(false);
             if (!response.Succeeded)
             {
-                return StartSessionResult.Failure(StartSessionResultCode.SignInRequired, response);
+                return AbandonUnauthenticatedSession(response);
             }
 
             if (!srpClientHandshake.TryComputeSharedKey(Convert.FromBase64String(response.ServerProof)))
             {
                 _logger.LogWarning("Invalid server proof");
 
-                return StartSessionResult.Failure(StartSessionResultCode.SignInRequired, new ApiResponse { Code = ResponseCode.SrpError });
+                return AbandonUnauthenticatedSession(new ApiResponse { Code = ResponseCode.SrpError });
             }
 
-            _tempSession = new Session
+            _unauthenticatedSession = new Session
             {
                 Id = response.SessionId,
                 UserId = response.UserId,
@@ -160,9 +176,9 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
                 PasswordMode = response.PasswordMode,
             };
 
-            if (_tempSession.PasswordMode != PasswordMode.Dual)
+            if (_unauthenticatedSession.PasswordMode != PasswordMode.Dual)
             {
-                if (!_tempSession.MultiFactorEnabled)
+                if (!_unauthenticatedSession.MultiFactorEnabled)
                 {
                     return await UnlockDataAsync(credential.SecurePassword, cancellationToken).ConfigureAwait(false);
                 }
@@ -174,10 +190,19 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
         {
             _logger.LogError("SRP calculation failed: {Error}", ex.CombinedMessage());
 
-            return StartSessionResult.Failure(StartSessionResultCode.SignInRequired, new ApiResponse { Code = ResponseCode.SrpError });
+            return AbandonUnauthenticatedSession(new ApiResponse { Code = ResponseCode.SrpError });
         }
 
         return FinishStartSession(null);
+
+        StartSessionResult AbandonUnauthenticatedSession(ApiResponse response)
+        {
+            // We can safely abandon unauthenticated sessions, they are ephemeral JWE sessions
+            // that are not persisted in the database.
+            _unauthenticatedSession = null;
+
+            return StartSessionResult.Failure(StartSessionResultCode.SignInRequired, response);
+        }
     }
 
     public Task<StartSessionResult> AuthenticateWithTotpAsync(string totp, CancellationToken cancellationToken)
@@ -203,7 +228,7 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
                 ClientData = fido2Response.ClientData,
                 AuthenticatorData = fido2Response.AuthenticatorData,
                 Signature = fido2Response.Signature,
-                CredentialId = fido2Response.CredentialId.ToList(),
+                CredentialId = [.. fido2Response.CredentialId],
             },
         };
 
@@ -230,7 +255,7 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
             {
                 _keyPassphraseProvider.ClearPassphrases();
 
-                var failureResult = _tempSession?.PasswordMode == PasswordMode.Dual
+                var failureResult = _unauthenticatedSession?.PasswordMode == PasswordMode.Dual
                     ? StartSessionResult.Failure(
                         StartSessionResultCode.DataPasswordRequired,
                         new ApiResponse
@@ -287,15 +312,31 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
         }
     }
 
-    public Task EndSessionAsync(string sessionId, ApiResponse apiResponse)
+    /// <summary>
+    /// Ends the session implicitly (the API closed the session).
+    /// The in-memory session is abandoned, but the persisted session is not removed.
+    /// The owner of the session state is expected to call <see cref="EndSessionAsync()"/>
+    /// in response to the <see cref="SessionEndedImplicitly"/> event.
+    /// </summary>
+    public void HandleSessionEnded(string sessionId, ApiResponse apiResponse)
     {
-        if (Session?.Id != sessionId)
+        lock (_implicitEndSessionLock)
         {
-            return Task.CompletedTask;
+            if (Session?.Id != sessionId)
+            {
+                return;
+            }
+
+            _sessionEndedImplicitlyResponse = apiResponse;
+            _unauthenticatedSession = null;
+            _session = null;
         }
 
-        _sessionEndedImplicitlyResponse = apiResponse;
-        return EndSessionAsync();
+        _cache.Clear();
+        _keyPassphraseProvider.ClearPassphrases();
+        _userClient.ClearCache();
+
+        OnSessionEnded(apiResponse);
     }
 
     private async Task<Session?> GetRefreshedSessionAsync(Session session, Lazy<Task> previousRefreshTask, CancellationToken cancellationToken)
@@ -349,7 +390,7 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
         {
             var apiResponse = await e.TryGetContentAsApiResponseAsync<ApiResponse>().ConfigureAwait(false);
 
-            await EndSessionAsync(session.Id, apiResponse ?? new ApiResponse { Code = ResponseCode.SessionRefreshFailed }).ConfigureAwait(false);
+            HandleSessionEnded(session.Id, apiResponse ?? new ApiResponse { Code = ResponseCode.SessionRefreshFailed });
 
             throw;
         }
@@ -365,7 +406,7 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
         session = session with
         {
             /* Session ID value does not change when refreshing tokens */
-            Id = response.Uid,
+            Id = response.SessionId,
             AccessToken = response.AccessToken,
             RefreshToken = response.RefreshToken,
             Scopes = response.Scopes,
@@ -373,9 +414,9 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
 
         _sessionRepository.Set(session);
 
-        if (_tempSession != null)
+        if (_unauthenticatedSession != null)
         {
-            _tempSession = session;
+            _unauthenticatedSession = session;
         }
 
         if (_session != null)
@@ -408,9 +449,9 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
         }
 
         session = session with { Scopes = response.Scopes, MultiFactorEnabled = false };
-        _tempSession = session;
+        _unauthenticatedSession = session;
 
-        if (_tempSession.PasswordMode != PasswordMode.Dual && _password != null)
+        if (_unauthenticatedSession.PasswordMode != PasswordMode.Dual && _password != null)
         {
             return await UnlockDataAsync(_password, cancellationToken).ConfigureAwait(false);
         }
@@ -420,7 +461,7 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
 
     private StartSessionResult FinishStartSession(ApiResponse? response)
     {
-        var session = _tempSession;
+        var session = _unauthenticatedSession;
         if (session == null)
         {
             Session = null;
@@ -450,7 +491,7 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
 
         _password = null;
 
-        session = _tempSession;
+        session = _unauthenticatedSession;
 
         if (session != null && _userClient.GetCachedUser() is { } user && user.Id == session.UserId)
         {
@@ -502,11 +543,6 @@ internal sealed class AuthenticationService : IAuthenticationService, ISessionPr
             {
                 // Abandon session even if logoff has failed
                 Session = null;
-            }
-
-            if (_sessionEndedImplicitlyResponse != null && session != null)
-            {
-                OnSessionEnded(_sessionEndedImplicitlyResponse);
             }
         }
     }

@@ -65,17 +65,16 @@ internal sealed class SdkErrorReporting(IErrorReporting errorReporting, ILogger<
 
         var errorMessage =
             $"{decryptionErrorEvent.Error}, \r\n" +
-            $"Volume: {decryptionErrorEvent.VolumeType}, \r\n" +
             $"Field: {decryptionErrorEvent.Field}, \r\n" +
-            $"From before 2024: {decryptionErrorEvent.FromBefore2024}, \r\n" +
+            $"Recency: {decryptionErrorEvent.Recency}, \r\n" +
+            $"Created by: {decryptionErrorEvent.CreatedBy}, \r\n" +
             $"Uid: \"{decryptionErrorEvent.Uid}\"";
 
         logger.LogWarning("Drive SDK decryption error: {ErrorDetails}", errorMessage.Replace("\r\n", string.Empty));
 
         errorReporting.CaptureException(
             new SdkDecryptionErrorException(errorMessage),
-            ErrorTag.SdkDecryptionError,
-            GetVolumeTypeTag(decryptionErrorEvent.VolumeType));
+            ErrorTag.SdkDecryptionError);
     }
 
     private static ErrorTag GetVolumeTypeTag(VolumeType volumeType)

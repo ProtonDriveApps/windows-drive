@@ -98,10 +98,19 @@
     <None Update="Resources\Notifications\Notifications.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\Notifications\SummerSale2026\logo.png">
+    <None Update="Resources\Notifications\BlackFriday2026\drive-plus-50.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Resources\Notifications\SummerSale2026\unlimited-50.png">
+    <None Update="Resources\Notifications\BlackFriday2026\duo-40.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Notifications\BlackFriday2026\family-40.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Notifications\BlackFriday2026\logo.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Notifications\BlackFriday2026\unlimited-50.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Resources\Notifications\UpgradePlan\red-storage-logo.png">

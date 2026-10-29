@@ -18,10 +18,12 @@ internal sealed class SentryOptionsProvider
         ArgumentNullException.ThrowIfNull(_driveApiConfig.CoreBaseUrl);
 
         var baseUrlHost = _driveApiConfig.CoreBaseUrl.Host;
+        var publicKey = _driveApiConfig.SentryDsnPublicKey;
+        var projectId = _driveApiConfig.SentryDsnProjectId;
 
         var options = new SentryOptions
         {
-            Dsn = $"https://f4db09bc4cc144dab7455dbd71231e7f@{baseUrlHost}/core/v4/reports/sentry/3",
+            Dsn = $"https://{publicKey}@{baseUrlHost}/core/v4/reports/sentry/{projectId}",
             Release = _driveApiConfig.ClientVersion,
             Environment = "production",
             AttachStacktrace = true,

@@ -1,3 +1,4 @@
+using System.Net.Http.Headers;
 using Proton.Drive.Sdk.Sync.Client.Configuration;
 using Proton.Drive.Shared.Client;
 using Proton.Drive.Shared.Text;
@@ -31,7 +32,11 @@ internal class BugReportClient : IBugReportClient
             }
         }
 
-        await reportClient.PostAsync("v4/reports/bug", report, cancellationToken)
+        using var request = new HttpRequestMessage(HttpMethod.Post, "v4/reports/bug");
+        request.Headers.Authorization = new AuthenticationHeaderValue("Bearer");
+        request.Content = report;
+
+        await reportClient.SendAsync(request, cancellationToken)
             .ReadFromJsonAsync<ApiResponse>(cancellationToken)
             .ThrowOnFailure()
             .ConfigureAwait(false);

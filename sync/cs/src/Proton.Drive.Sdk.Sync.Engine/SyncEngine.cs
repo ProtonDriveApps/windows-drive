@@ -37,8 +37,8 @@ public class SyncEngine<TId> : IInitializable, IExecutionStatisticsProvider
     private readonly ConcurrentExecutionStatistics _executionStatistics = new();
 
     private readonly DetectedTreeChanges<TId> _localSyncedUpdates;
-    private readonly IReceivedTreeChanges<TId> _localDetectedUpdates;
-    private readonly IReceivedTreeChanges<TId> _remoteDetectedUpdates;
+    private readonly ReceivedTreeChanges<TId> _localDetectedUpdates;
+    private readonly ReceivedTreeChanges<TId> _remoteDetectedUpdates;
 
     private readonly ConsolidationPipeline<TId> _remoteConsolidation;
     private readonly ConsolidationPipeline<TId> _localConsolidation;
@@ -202,6 +202,9 @@ public class SyncEngine<TId> : IInitializable, IExecutionStatisticsProvider
         _idSource.InitializeFrom(_localUpdateTreeRepository.GetLastId());
         _idSource.InitializeFrom(_propagationTreeRepository.GetLastId());
         _idSource.InitializeFrom(_propagationTreeRepository.GetLastAltId());
+
+        _localDetectedUpdates.Initialize();
+        _remoteDetectedUpdates.Initialize();
 
         _remoteAdapter.Initialize(
             _localAdapter,
