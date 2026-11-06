@@ -33,7 +33,7 @@ internal sealed class SyncFolderService : ISyncFolderService, IMappingsAware
         var allPaths = GetSyncedFolderPaths().ToHashSet();
 
         return
-            _localSyncFolderValidator.ValidateDrive(path) ??
+            _localSyncFolderValidator.ValidateDrive(path, SyncMethod.OnDemand) ??
             _localSyncFolderValidator.ValidatePath(path, allPaths) ??
             _localSyncFolderValidator.ValidateFolder(path, shouldBeEmpty: true) ??
             SyncFolderValidationResult.Succeeded;
@@ -44,7 +44,7 @@ internal sealed class SyncFolderService : ISyncFolderService, IMappingsAware
         var allPaths = GetSyncedFolderPaths().Concat(otherPaths).ToHashSet();
 
         return
-            _localSyncFolderValidator.ValidateDrive(path) ??
+            _localSyncFolderValidator.ValidateDrive(path, SyncMethod.Classic) ??
             _localSyncFolderValidator.ValidatePath(path, allPaths) ??
             _localSyncFolderValidator.ValidateFolder(path, shouldBeEmpty: false) ??
             SyncFolderValidationResult.Succeeded;

@@ -148,6 +148,22 @@ internal static class FileSystem
         return data;
     }
 
+    public static unsafe Kernel32.FILE_ID_INFO GetFileIdInfo(SafeFileHandle handle)
+    {
+        Kernel32.FILE_ID_INFO data = default;
+
+        if (!Kernel32.GetFileInformationByHandleEx(
+                handle,
+                Kernel32.FILE_INFO_BY_HANDLE_CLASS.FileIdInfo,
+                &data,
+                (uint)Marshal.SizeOf(data)))
+        {
+            throw Win32Marshal.GetExceptionForLastWin32Error();
+        }
+
+        return data;
+    }
+
     public static PlaceholderState GetPlaceholderState(FileAttributes attributes, uint reparseTag)
     {
         return (PlaceholderState)CldApi.CfGetPlaceholderStateFromAttributeTag((Vanara.PInvoke.FileFlagsAndAttributes)attributes, reparseTag);

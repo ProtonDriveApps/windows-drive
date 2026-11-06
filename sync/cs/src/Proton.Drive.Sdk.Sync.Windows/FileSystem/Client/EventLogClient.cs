@@ -121,6 +121,14 @@ internal class EventLogClient : IRootableEventLogClient<long>
 
     private static EventLogEntry<long> ToEventLogEntry(RenamedExtendedEventArgs e)
     {
+        if (e.FileId == default)
+        {
+            // The watcher could not determine the file ID. This happens on file systems without extended
+            // change notifications (ReFS), where the ID of a deleted or renamed-away object is not available.
+            // Request re-enumeration instead of reporting an event the sync engine cannot attribute.
+            return new EventLogEntry<long>(EventLogChangeType.Skipped);
+        }
+
         return new EventLogEntry<long>(ToEventLogChangeType(e.ChangeType))
         {
             Name = Path.GetFileName(e.Name),

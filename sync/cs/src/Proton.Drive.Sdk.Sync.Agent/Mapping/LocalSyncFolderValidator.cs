@@ -1,3 +1,4 @@
+using Proton.Drive.Sdk.Sync.Agent.Settings;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem.Integration;
 using Proton.Drive.Shared.Extensions;
 using Proton.Drive.Shared.IO;
@@ -20,12 +21,12 @@ internal sealed class LocalSyncFolderValidator : ILocalSyncFolderValidator
         _localFolderService = localFolderService;
     }
 
-    public SyncFolderValidationResult? ValidateDrive(string path)
+    public SyncFolderValidationResult? ValidateDrive(string path, SyncMethod syncMethod)
     {
         return
             ValidateFolderExists(path) ??
             ValidateDriveType(path) ??
-            ValidateFileSystem(path);
+            ValidateFileSystem(path, syncMethod);
     }
 
     public SyncFolderValidationResult? ValidatePath(string path, IReadOnlySet<string> otherPaths)
@@ -85,14 +86,17 @@ internal sealed class LocalSyncFolderValidator : ILocalSyncFolderValidator
         };
     }
 
-    private SyncFolderValidationResult? ValidateFileSystem(string path)
+    private SyncFolderValidationResult? ValidateFileSystem(string path, SyncMethod syncMethod)
     {
-        if (!_localVolumeInfoProvider.IsNtfsFileSystem(path))
+        // On-demand sync relies on the Cloud Files filter, which supports NTFS only and is not attached
+        // to Dev Drive (ReFS) volumes. Classic sync also accepts ReFS when its file IDs are usable.
+        var isSupported = syncMethod switch
         {
-            return SyncFolderValidationResult.LocalVolumeNotSupported;
-        }
+            SyncMethod.Classic => _localVolumeInfoProvider.IsClassicSyncSupportedFileSystem(path),
+            _ => _localVolumeInfoProvider.IsNtfsFileSystem(path),
+        };
 
-        return null;
+        return isSupported ? null : SyncFolderValidationResult.LocalVolumeNotSupported;
     }
 
     private SyncFolderValidationResult? ValidateFolderIsSyncable(string path)

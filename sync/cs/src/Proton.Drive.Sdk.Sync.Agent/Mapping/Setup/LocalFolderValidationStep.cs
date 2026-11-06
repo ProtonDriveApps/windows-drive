@@ -71,7 +71,7 @@ internal sealed class LocalFolderValidationStep : ILocalFolderValidationStep
         }
 
         var result =
-            ValidateDriveOfNewFolder(mapping.Local.Path, mapping.Status is MappingStatus.New) ??
+            ValidateDriveOfNewFolder(mapping.Local.Path, mapping.SyncMethod, mapping.Status is MappingStatus.New) ??
             ValidateFolder(mapping.Local.Path, otherLocalSyncFolders) ??
             ValidateFolderIdentity(mapping) ??
             MappingErrorCode.None;
@@ -79,7 +79,7 @@ internal sealed class LocalFolderValidationStep : ILocalFolderValidationStep
         return Task.FromResult(result);
     }
 
-    private MappingErrorCode? ValidateDriveOfNewFolder(string path, bool isNew)
+    private MappingErrorCode? ValidateDriveOfNewFolder(string path, SyncMethod syncMethod, bool isNew)
     {
         if (!isNew)
         {
@@ -89,7 +89,7 @@ internal sealed class LocalFolderValidationStep : ILocalFolderValidationStep
             return null;
         }
 
-        var result = _syncFolderValidator.ValidateDrive(path);
+        var result = _syncFolderValidator.ValidateDrive(path, syncMethod);
 
         if (result is null)
         {

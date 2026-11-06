@@ -13,7 +13,15 @@ internal sealed class OnDemandSyncEligibilityValidator
 
     public StorageOptimizationErrorCode? Validate(string folderPath)
     {
-        return ValidateDriveType(folderPath);
+        return ValidateDriveType(folderPath) ?? ValidateFileSystem(folderPath);
+    }
+
+    private StorageOptimizationErrorCode? ValidateFileSystem(string path)
+    {
+        // Classic sync also accepts ReFS (Dev Drive), on-demand sync does not: the Cloud Files filter
+        // supports NTFS only and is not attached to Dev Drive volumes. Without this check, registering
+        // the on-demand sync root fails later with an unspecific error.
+        return _volumeInfoProvider.IsNtfsFileSystem(path) ? null : StorageOptimizationErrorCode.VolumeNotSupported;
     }
 
     private StorageOptimizationErrorCode? ValidateDriveType(string path)
