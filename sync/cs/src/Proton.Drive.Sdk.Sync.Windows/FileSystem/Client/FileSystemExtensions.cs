@@ -1,4 +1,5 @@
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;
+using Proton.Drive.Sdk.Sync.Windows.FileSystem.Integration;
 using Proton.Drive.Sdk.Sync.Windows.FileSystem.OnDemand;
 using Proton.Drive.Shared.IO;
 using static Vanara.PInvoke.CldApi;
@@ -16,7 +17,7 @@ internal static class FileSystemExtensions
     public static NodeInfo<long> ToNodeInfo(this FileSystemEntry entry, long parentId)
     {
         return new NodeInfo<long>()
-            .WithId(entry.ObjectId)
+            .WithId(EnsureUsableObjectId(entry.ObjectId))
             .WithName(entry.Name)
             .WithAttributes(entry.Attributes)
             .WithLastWriteTimeUtc(entry.LastWriteTimeUtc)
@@ -35,7 +36,7 @@ internal static class FileSystemExtensions
             }
 
             return new NodeInfo<long>()
-                .WithId(fsObject.ObjectId)
+                .WithId(EnsureUsableObjectId(fsObject.ObjectId))
                 .WithName(fsObject.Name)
                 .WithAttributes(fsObject.Attributes)
                 .WithLastWriteTimeUtc(fsObject.LastWriteTimeUtc)
@@ -395,5 +396,23 @@ internal static class FileSystemExtensions
                 FileSystemErrorCode.IdentityMismatch,
                 expectedId);
         }
+    }
+
+    /// <summary>
+    /// Rejects file system objects that have no unique 64-bit file ID. ReFS reports
+    /// <see cref="ReFsFileId.InvalidFileId"/> when its 128-bit file ID cannot be packed into 64 bits.
+    /// Syncing such an object would risk confusing it with another one.
+    /// </summary>
+    private static long EnsureUsableObjectId(long objectId)
+    {
+        if (objectId == ReFsFileId.InvalidFileId)
+        {
+            throw new FileSystemClientException<long>(
+                "File system object has no unique 64-bit file ID",
+                FileSystemErrorCode.Unknown,
+                objectId: default);
+        }
+
+        return objectId;
     }
 }

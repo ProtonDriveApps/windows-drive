@@ -5,6 +5,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
 using Proton.Drive.Sdk.Sync.Windows.FileSystem.Internal;
 using Proton.Drive.Sdk.Sync.Windows.Interop;
@@ -30,6 +31,9 @@ public partial class FileSystemExtendedWatcher
         {
             return;
         }
+
+        // IDs remembered for basic notifications are stale after a restart
+        ForgetKnownObjects();
 
         var path = PathInternal.EnsureExtendedPrefixIfNeeded(_directory);
         // Create handle to directory being monitored
@@ -170,16 +174,15 @@ public partial class FileSystemExtendedWatcher
 
             // Get the overlapped pointer to use for this iteration.
             overlappedPointer = state.ThreadPoolBinding.AllocateNativeOverlapped(state.PreAllocatedOverlapped!);
-            continueExecuting = Kernel32.ReadDirectoryChangesExW(
-                state.DirectoryHandle,
-                state.Buffer, // the buffer is kept pinned for the duration of the sync and async operation by the PreAllocatedOverlapped
-                _internalBufferSize,
-                _includeSubdirectories,
-                (uint)_notifyFilters,
-                null,
-                overlappedPointer,
-                null,
-                Kernel32.READ_DIRECTORY_NOTIFY_INFORMATION_CLASS.ReadDirectoryNotifyExtendedInformation);
+            continueExecuting = ReadDirectoryChanges(state, overlappedPointer, _useBasicNotifications);
+
+            if (!continueExecuting && !_useBasicNotifications && Marshal.GetLastWin32Error() == ErrorInvalidFunction)
+            {
+                // The file system does not support extended change notifications (ReFS). Fall back to
+                // basic notifications and look up the file IDs by path, see ParseBasicEventBufferAndNotifyForEach.
+                _useBasicNotifications = true;
+                continueExecuting = ReadDirectoryChanges(state, overlappedPointer, useBasicNotifications: true);
+            }
         }
         catch (ObjectDisposedException)
         {
@@ -257,6 +260,7 @@ public partial class FileSystemExtendedWatcher
 
             if (numBytes == 0)
             {
+                ForgetKnownObjects();
                 NotifyInternalBufferOverflowEvent();
             }
             else
@@ -273,6 +277,12 @@ public partial class FileSystemExtendedWatcher
 
     private unsafe void ParseEventBufferAndNotifyForEach(byte[] buffer)
     {
+        if (_useBasicNotifications)
+        {
+            ParseBasicEventBufferAndNotifyForEach(buffer);
+            return;
+        }
+
         fixed (byte* b = buffer)
         {
             Kernel32.FILE_NOTIFY_EXTENDED_INFORMATION* info = (Kernel32.FILE_NOTIFY_EXTENDED_INFORMATION*)b;

@@ -250,9 +250,13 @@ internal sealed class LocalDecoratedFileSystemClientFactory
     {
         var localRootDirectory = new LocalRootDirectory(mapping.Local);
 
-        if (!_volumeInfoProvider.IsNtfsFileSystem(localRootDirectory.Path))
+        switch (syncMethod)
         {
-            throw new InvalidFileSystemException("File system is not NTFS");
+            case SyncMethod.Classic when !_volumeInfoProvider.IsClassicSyncSupportedFileSystem(localRootDirectory.Path):
+                throw new InvalidFileSystemException("File system is neither NTFS nor ReFS with supported file IDs");
+
+            case not SyncMethod.Classic when !_volumeInfoProvider.IsNtfsFileSystem(localRootDirectory.Path):
+                throw new InvalidFileSystemException("File system is not NTFS");
         }
 
         var client = syncMethod switch
