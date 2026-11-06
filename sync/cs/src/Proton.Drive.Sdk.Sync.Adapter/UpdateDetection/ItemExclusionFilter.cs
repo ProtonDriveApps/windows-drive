@@ -1,4 +1,5 @@
 using System.Collections.Frozen;
+using Proton.Drive.Sdk.Sync.Shared.Ignore;
 using Proton.Drive.Shared.IO;
 
 namespace Proton.Drive.Sdk.Sync.Adapter.UpdateDetection;
@@ -23,22 +24,50 @@ internal sealed class ItemExclusionFilter : IItemExclusionFilter
     }.ToFrozenSet(StringComparer.OrdinalIgnoreCase);
 
     private readonly IReadOnlyCollection<string> _specialFolderNames;
+    private readonly IIgnoreRuleProvider _ignoreRuleProvider;
 
-    public ItemExclusionFilter(IReadOnlyCollection<string> specialFolderNames)
+    public ItemExclusionFilter(IReadOnlyCollection<string> specialFolderNames, IIgnoreRuleProvider ignoreRuleProvider)
     {
         _specialFolderNames = specialFolderNames;
+        _ignoreRuleProvider = ignoreRuleProvider;
     }
 
-    public bool ShouldBeIgnored(string name, FileAttributes attributes, PlaceholderState placeholderState, bool parentIsSyncRoot)
+    public bool HonoursUserRules => _ignoreRuleProvider.IsEnabled;
+
+    public ItemExclusionDecision GetDecision(
+        string name,
+        FileAttributes attributes,
+        PlaceholderState placeholderState,
+        bool parentIsSyncRoot,
+        IgnoreRuleScope ignoreRuleScope)
     {
-        return ShouldBeIgnored(name, attributes, placeholderState)
-               || (parentIsSyncRoot && ShouldBeIgnoredOnSyncRoot())
-            ;
+        if (ShouldBeIgnored(name, attributes, placeholderState) || (parentIsSyncRoot && ShouldBeIgnoredOnSyncRoot()))
+        {
+            return ItemExclusionDecision.ExcludeAlways;
+        }
+
+        if (MatchesUserRule())
+        {
+            return ItemExclusionDecision.ExcludeByUserRule;
+        }
+
+        return ItemExclusionDecision.Include;
 
         bool ShouldBeIgnoredOnSyncRoot()
         {
             // Special Proton Drive folders on the replica root are ignored
             return _specialFolderNames.Contains(name, StringComparer.OrdinalIgnoreCase);
+        }
+
+        bool MatchesUserRule()
+        {
+            return _ignoreRuleProvider.IsEnabled
+                   && ignoreRuleScope.IsDefined
+                   && _ignoreRuleProvider.IsIgnored(
+                       ignoreRuleScope.RootId,
+                       ignoreRuleScope.RootLocalPath,
+                       ignoreRuleScope.RelativePath,
+                       attributes.HasFlag(FileAttributes.Directory));
         }
     }
 

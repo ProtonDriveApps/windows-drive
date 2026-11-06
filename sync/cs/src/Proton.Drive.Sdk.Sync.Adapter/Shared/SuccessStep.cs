@@ -5,6 +5,7 @@ using Proton.Drive.Sdk.Sync.Adapter.Trees.Adapter;
 using Proton.Drive.Sdk.Sync.Adapter.UpdateDetection;
 using Proton.Drive.Sdk.Sync.Shared;
 using Proton.Drive.Sdk.Sync.Shared.FileSystem;
+using Proton.Drive.Sdk.Sync.Shared.Ignore;
 using Proton.Drive.Sdk.Sync.Shared.Trees;
 using Proton.Drive.Sdk.Sync.Shared.Trees.FileSystem;
 using Proton.Drive.Shared;
@@ -313,10 +314,39 @@ internal abstract partial class SuccessStep<TId, TAltId>
             return true;
         }
 
-        var shouldBeIgnored = _itemExclusionFilter.ShouldBeIgnored(name, attributes, placeholderState, parentNode.IsSyncRoot());
+        var decision = _itemExclusionFilter.GetDecision(
+            name,
+            attributes,
+            placeholderState,
+            parentNode.IsSyncRoot(),
+            GetIgnoreRuleScope(parentNode, name));
 
-        if (!shouldBeIgnored)
+        if (decision == ItemExclusionDecision.Include)
         {
+            return false;
+        }
+
+        if (decision == ItemExclusionDecision.ExcludeByUserRule &&
+            existingNode != null &&
+            _adapterTree.NameEqualityComparer.Equals(existingNode.Name, name))
+        {
+            // The item is already indexed and its name has not changed, so what changed is the rule
+            // set. Honouring the rule now would be reported to the Sync Engine as a deletion, and the
+            // Sync Engine would delete the item from the opposite replica. A rule that starts
+            // matching must never cost data, so the item keeps being synced.
+            //
+            // A rename into an ignored name is a different matter and deliberately not covered here.
+            // There the user moved the item out of the synchronized name space, which is the same
+            // thing that happens when something is renamed to a temporary file name, and the
+            // built-in exclusions have always reported that as a deletion.
+            _logger.LogInformation(
+                "{Replica} {Type} \"{Name}\" \"{Root}\"/{Id} matches a user defined ignore rule, but is already indexed and keeps being synced",
+                _replica,
+                existingNode.Type,
+                _logger.GetSensitiveValueForLogging(name),
+                parentNode.GetSyncRoot().Name,
+                existingNode.Id);
+
             return false;
         }
 
@@ -351,6 +381,33 @@ internal abstract partial class SuccessStep<TId, TAltId>
     protected RootInfo<TAltId> GetRoot(AdapterTreeNode<TId, TAltId> node)
     {
         return node.GetRoot(_syncRoots);
+    }
+
+    private IgnoreRuleScope GetIgnoreRuleScope(AdapterTreeNode<TId, TAltId> parentNode, string name)
+    {
+        if (!_itemExclusionFilter.HonoursUserRules)
+        {
+            return IgnoreRuleScope.None;
+        }
+
+        // Sync roots themselves are never matched against ignore rules
+        if (parentNode.IsRoot)
+        {
+            return IgnoreRuleScope.None;
+        }
+
+        if (!_syncRoots.TryGetValue(parentNode.GetSyncRoot().Id, out var root) || string.IsNullOrEmpty(root.LocalPath))
+        {
+            return IgnoreRuleScope.None;
+        }
+
+        var (_, parentPath) = parentNode.Path();
+
+        var relativePath = parentPath.Length == 0
+            ? name
+            : parentPath + System.IO.Path.DirectorySeparatorChar + name;
+
+        return new IgnoreRuleScope(root.Id, root.LocalPath, relativePath);
     }
 
     private AdapterTreeNode<TId, TAltId>? ExistingNodeOfType(AdapterTreeNode<TId, TAltId>? node, NodeType expectedType)
