@@ -22,7 +22,15 @@ namespace Proton.Drive.Sdk.Sync.Shared.Ignore;
 /// <para>
 /// Ignore files are cached and re-read when their size or last write time changes. To keep the cost
 /// of a full enumeration low, an unchanged file is stat-ed at most once per
-/// <see cref="RevalidationInterval"/>.
+/// <see cref="DefaultRevalidationInterval"/>.
+/// </para>
+/// <para>
+/// An ignore file whose content is not on disk, a cloud files placeholder in the on-demand folder, is
+/// never opened. Reading it would make Windows ask the sync provider for the content, and the sync
+/// provider is this process: the hydration request waits for the scheduler that runs update
+/// detection, which in turn waits for the read, until the cloud files timeout expires. Such a file is
+/// applied once its content is on disk. Rules read before the content left the disk stay in effect
+/// as long as the size and last write time are unchanged, since dehydration does not change content.
 /// </para>
 /// </remarks>
 public sealed class FileSystemIgnoreRuleProvider : IIgnoreRuleProvider
@@ -32,16 +40,31 @@ public sealed class FileSystemIgnoreRuleProvider : IIgnoreRuleProvider
 
     private const long MaxIgnoreFileSizeInBytes = 1024 * 1024;
 
-    private static readonly TimeSpan RevalidationInterval = TimeSpan.FromSeconds(2);
+    // FILE_ATTRIBUTE_RECALL_ON_OPEN
+    private const FileAttributes RecallOnOpenAttribute = (FileAttributes)0x00040000;
+
+    // FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS
+    private const FileAttributes RecallOnDataAccessAttribute = (FileAttributes)0x00400000;
+
+    private const FileAttributes ContentNotOnDiskAttributes = FileAttributes.Offline | RecallOnOpenAttribute | RecallOnDataAccessAttribute;
+
+    private static readonly TimeSpan DefaultRevalidationInterval = TimeSpan.FromSeconds(2);
 
     private readonly ILogger<FileSystemIgnoreRuleProvider> _logger;
     private readonly bool _honoursGitIgnoreFiles;
+    private readonly TimeSpan _revalidationInterval;
     private readonly ConcurrentDictionary<string, CacheEntry> _cache = new(StringComparer.OrdinalIgnoreCase);
 
     public FileSystemIgnoreRuleProvider(ILogger<FileSystemIgnoreRuleProvider> logger, bool honoursGitIgnoreFiles = true)
+        : this(logger, honoursGitIgnoreFiles, DefaultRevalidationInterval)
+    {
+    }
+
+    internal FileSystemIgnoreRuleProvider(ILogger<FileSystemIgnoreRuleProvider> logger, bool honoursGitIgnoreFiles, TimeSpan revalidationInterval)
     {
         _logger = logger;
         _honoursGitIgnoreFiles = honoursGitIgnoreFiles;
+        _revalidationInterval = revalidationInterval;
     }
 
     public bool IsEnabled => true;
@@ -97,6 +120,18 @@ public sealed class FileSystemIgnoreRuleProvider : IIgnoreRuleProvider
         _cache.Clear();
     }
 
+    /// <summary>
+    /// Tells whether reading the file can be done without asking the sync provider for its content.
+    /// </summary>
+    /// <remarks>
+    /// FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS marks a file that is not fully present locally. A
+    /// cloud-only placeholder carries it together with FILE_ATTRIBUTE_OFFLINE.
+    /// </remarks>
+    internal static bool IsContentOnDisk(FileAttributes attributes)
+    {
+        return (attributes & ContentNotOnDiskAttributes) == 0;
+    }
+
     private bool? MatchIgnoreFiles(string fileName, string rootLocalPath, string[] segments, int depth, string path, bool isDirectory)
     {
         bool? result = null;
@@ -125,7 +160,7 @@ public sealed class FileSystemIgnoreRuleProvider : IIgnoreRuleProvider
     {
         var now = DateTime.UtcNow;
 
-        if (_cache.TryGetValue(filePath, out var entry) && now - entry.LastCheckedUtc < RevalidationInterval)
+        if (_cache.TryGetValue(filePath, out var entry) && now - entry.LastCheckedUtc < _revalidationInterval)
         {
             return entry.RuleSet;
         }
@@ -134,15 +169,22 @@ public sealed class FileSystemIgnoreRuleProvider : IIgnoreRuleProvider
         var exists = fileInfo.Exists;
         var lastWriteTimeUtc = exists ? fileInfo.LastWriteTimeUtc : default;
         var length = exists ? fileInfo.Length : -1L;
+        var contentIsOnDisk = !exists || IsContentOnDisk(fileInfo.Attributes);
 
-        if (entry is not null && entry.Exists == exists && entry.LastWriteTimeUtc == lastWriteTimeUtc && entry.Length == length)
+        if (entry is not null
+            && entry.Exists == exists
+            && entry.LastWriteTimeUtc == lastWriteTimeUtc
+            && entry.Length == length
+            && !(entry.AwaitsContent && contentIsOnDisk))
         {
             entry.LastCheckedUtc = now;
 
             return entry.RuleSet;
         }
 
-        var ruleSet = Read(filePath, basePath, exists, length);
+        var ruleSet = contentIsOnDisk
+            ? Read(filePath, basePath, exists, length)
+            : Skip(basePath);
 
         _cache[filePath] = new CacheEntry
         {
@@ -150,10 +192,20 @@ public sealed class FileSystemIgnoreRuleProvider : IIgnoreRuleProvider
             Exists = exists,
             LastWriteTimeUtc = lastWriteTimeUtc,
             Length = length,
+            AwaitsContent = !contentIsOnDisk,
             LastCheckedUtc = now,
         };
 
         return ruleSet;
+    }
+
+    private IgnoreRuleSet Skip(string basePath)
+    {
+        _logger.LogInformation(
+            "Ignore file with base path \"{BasePath}\" is not applied while its content is not on disk",
+            basePath);
+
+        return IgnoreRuleSet.Empty;
     }
 
     private IgnoreRuleSet Read(string filePath, string basePath, bool exists, long length)
@@ -194,6 +246,12 @@ public sealed class FileSystemIgnoreRuleProvider : IIgnoreRuleProvider
         public required bool Exists { get; init; }
         public required DateTime LastWriteTimeUtc { get; init; }
         public required long Length { get; init; }
+
+        /// <summary>
+        /// The file was skipped because its content was not on disk, and must be read once it is.
+        /// </summary>
+        public required bool AwaitsContent { get; init; }
+
         public DateTime LastCheckedUtc { get; set; }
     }
 }

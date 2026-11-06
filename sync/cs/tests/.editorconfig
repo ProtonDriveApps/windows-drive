@@ -1,0 +1,6 @@
+# The production code style lives in ../src/.editorconfig, which does not reach this folder.
+# Only the rules the test code trips over are repeated here, with the same severity as there.
+
+[*.cs]
+dotnet_diagnostic.SA1101.severity = none
+dotnet_diagnostic.SA1309.severity = none

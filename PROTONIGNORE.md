@@ -93,6 +93,19 @@ Ignore files are cached. An unchanged file is checked at most once every two sec
 whenever its size or last write time changes. There is no restart needed after editing one, but
 items that were already indexed under the old rules are not revisited, see above.
 
+## Ignore files that are only in the cloud
+
+In the on-demand folder an ignore file can be a placeholder whose content is not on this computer,
+typically one that came from another device, for example under `Other computers`. Such a file is
+not applied, and the client never downloads it itself: reading it would make Windows ask the client
+for the content while the client is busy with the very scan that wants to read it, and the scan
+would stall for a minute per file.
+
+As soon as the content is on disk, because the file was opened or set to "Always keep on this
+device", its rules apply. Rules that were read while the content was on disk keep applying after
+Windows frees up the space again, as long as the file itself does not change. After a restart they
+only apply again once the content is back on disk.
+
 ## Where this lives in the code
 
 | File | Role |

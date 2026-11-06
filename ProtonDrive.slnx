@@ -52,4 +52,8 @@
       <Build Project="false" />
     </Project>
   </Folder>
+  <Folder Name="/Tests/">
+    <File Path="sync/cs/tests/.editorconfig" />
+    <Project Path="sync/cs/tests/Proton.Drive.Sdk.Sync.Shared.Tests/Proton.Drive.Sdk.Sync.Shared.Tests.csproj" />
+  </Folder>
 </Solution>

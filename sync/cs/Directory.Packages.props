@@ -9,6 +9,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <PackageVersion Include="AwesomeAssertions" Version="9.5.0" />
     <PackageVersion Include="CommunityToolkit.HighPerformance" Version="8.4.2" />
     <PackageVersion Include="Dapper" Version="2.1.89" />
     <PackageVersion Include="DotNext.Threading" Version="6.10.0" />
@@ -19,7 +20,9 @@
     <PackageVersion Include="Microsoft.Extensions.Http" Version="10.0.14" />
     <PackageVersion Include="Microsoft.Extensions.Http.Polly" Version="10.0.14" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.14" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="18.10.1" />
     <PackageVersion Include="morelinq" Version="4.4.0" />
+    <PackageVersion Include="NSubstitute" Version="5.3.0" />
     <PackageVersion Include="Polly.Core" Version="8.8.0" />
     <PackageVersion Include="Proton.Drive.Sdk" Version="0.32.1-rust" />
     <PackageVersion Include="Refit.HttpClientFactory" Version="10.2.0" />
@@ -34,6 +37,8 @@
     <PackageVersion Include="SkiaSharp" Version="4.153.1" />
     <PackageVersion Include="Vanara.PInvoke.CldApi" Version="5.0.8" />
     <PackageVersion Include="Vanara.PInvoke.Shell32" Version="5.0.8" />
+    <PackageVersion Include="xunit" Version="2.9.3" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="3.1.5" />
   </ItemGroup>
   <ItemGroup>
     <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-2m69-gcr7-jv3q" />
